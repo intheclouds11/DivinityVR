@@ -7,6 +7,7 @@ namespace HurricaneVR.Framework.ControllerInput
     {
         public HVRHandSide HandSide;
 
+        public Vector3 Velocity;// { get; private set; }
         public float VelocityMagnitude;// { get; private set; }
         public float AngularVelocityMagnitude;// { get; private set; }
 
@@ -25,12 +26,11 @@ namespace HurricaneVR.Framework.ControllerInput
             {
                 DeltaZDisplay = DeltaEulerZ;
             }
-
-          
         }
 
         private void LateUpdate()
         {
+            Velocity = HVRInputManager.Instance.GetController(HandSide).Velocity;
             VelocityMagnitude = HVRInputManager.Instance.GetController(HandSide).VelocityMagnitude;
             AngularVelocityMagnitude = HVRInputManager.Instance.GetController(HandSide).AngularVelocityMagnitude;
         }

@@ -88,6 +88,11 @@ namespace HurricaneVR.Framework.Core.Utils
         {
             PlaySFX(clip, position, Random.Range(min, max), 1f);
         }
+        
+        public void PlaySFXRandomPitchAttach(AudioClip clip, Transform transformForSFX, float min, float max)
+        {
+            PlaySFXAttach(clip, transformForSFX, Random.Range(min, max), 1f);
+        }
 
         public void PlaySFXCooldown(AudioClip clip, Vector3 position, Guid sourceId, float pitch = 1f, float volume = 1f, float cooldownTime = 0.5f)
         {
@@ -106,6 +111,11 @@ namespace HurricaneVR.Framework.Core.Utils
         public void PlaySFX(AudioClip clip, Vector3 position)
         {
             PlaySFX(clip, position, 1f, 1f);
+        }
+        
+        public void PlaySFX(AudioClip clip, Transform transformForSFX)
+        {
+            PlaySFXAttach(clip, transformForSFX, 1f, 1f);
         }
 
         public void PlaySFX(AudioClip clip, Vector3 position, float pitch, float volume)
@@ -130,6 +140,36 @@ namespace HurricaneVR.Framework.Core.Utils
 
             audioSource.gameObject.SetActive(true);
             audioSource.transform.position = position;
+            audioSource.clip = clip;
+
+            audioSource.volume = volume;
+            audioSource.pitch = pitch;
+            audioSource.Play();
+        }
+        
+        public void PlaySFXAttach(AudioClip clip, Transform transformForSFX, float pitch, float volume)
+        {
+            if (clip == null)
+                return;
+
+            var audioSource = m_SFXSourcePool[m_UsedSource];
+
+            if (!audioSource)
+                return;
+
+            m_PlayingSources.Add(m_UsedSource);
+
+            m_UsedSource = m_UsedSource + 1;
+            if (m_UsedSource >= m_SFXSourcePool.Length) m_UsedSource = 0;
+
+            if (SetClipName && Application.isEditor)
+            {
+                audioSource.name = clip.name;
+            }
+
+            audioSource.gameObject.SetActive(true);
+            audioSource.transform.parent = transformForSFX;
+            audioSource.transform.position = transformForSFX.position;
             audioSource.clip = clip;
 
             audioSource.volume = volume;

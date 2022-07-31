@@ -1,4 +1,5 @@
 ﻿using System;
+using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
 
@@ -170,11 +171,15 @@ namespace HurricaneVR.Framework.ControllerInput
 
         protected virtual bool GetIsJumpActivated()
         {
-            if (RightController.ControllerType == HVRControllerType.Vive)
-            {
-                return false;//todo
-            }
+            // if (RightController.ControllerType == HVRControllerType.Vive)
+            // {
+            //     return false;//todo
+            // }
 
+            if (RightController.PrimaryButtonState.Active)
+            {
+                return true;
+            }
             return false;
         }
 
