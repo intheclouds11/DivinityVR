@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - projectile
+  - Sword
+  - Spawn at Runtime
+  - Enemy
+  - Left Hand
+  - Right Hand
   layers:
   - Default
   - TransparentFX

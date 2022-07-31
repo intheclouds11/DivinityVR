@@ -28,7 +28,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         void FixedUpdate()
         {
-
+ 
             DistanceToMostClosePoint = 1;
 
             IsColliding = false;

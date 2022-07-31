@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
+using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -12,18 +10,28 @@ namespace intheclouds
         private Transform[] originalParents;
         private Vector3[] originalLocalPositions;
         private Quaternion[] originalLocalRotations;
+        private Vector3 originalCharacterPosition;
+        private Quaternion originalCharacterRotation;
+        private HVRPlayerController hvrPlayerController;
         public GameObject tempParent;
         private AudioSource audioSource;
         public float timeInTriggerRequired = 1;
         public float grabTimeRequired = 1;
-        public bool inTrigger;
-        public float hoverTimeInTrigger;
-        public float grabTimeInTrigger;
+        public bool inTriggerLH;
+        public bool inTriggerRH;
+        public float hoverTimeInTriggerLH;
+        public float grabTimeInTriggerLH;
+        public float hoverTimeInTriggerRH;
+        public float grabTimeInTriggerRH;
         public bool activated;
-        public bool gripLatch;
+        public bool gripLatchLH;
+        public bool gripLatchRH;
+
+        public SpiritMovement spiritMovement;
 
         private void Start()
         {
+            hvrPlayerController = transform.parent.parent.GetComponentInChildren<HVRPlayerController>();
             SaveParentsandTransforms();
             audioSource = GetComponent<AudioSource>();
         }
@@ -38,14 +46,14 @@ namespace intheclouds
             if (originalParents == null) originalParents = new Transform[objectsToDeparent.Length];
             if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
             if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
+            originalCharacterPosition = hvrPlayerController.transform.position;
+            originalCharacterRotation = hvrPlayerController.transform.rotation;
 
             for (int i = 0; i < objectsToDeparent.Length; i++)
             {
                 originalParents[i] = objectsToDeparent[i].transform.parent;
                 originalLocalPositions[i] = objectsToDeparent[i].transform.localPosition;
                 originalLocalRotations[i] = objectsToDeparent[i].transform.localRotation;
-                Debug.Log($"original localPos: {originalLocalPositions[i]}");
-                Debug.Log($"original localRot: {originalLocalRotations[i]}");
             }
         }
 
@@ -53,44 +61,89 @@ namespace intheclouds
         {
             if (!HVRInputManager.Instance.RightController.GripButtonState.Active)
             {
-                gripLatch = false;
+                gripLatchRH = false;
             }
 
-            if (inTrigger)
+            if (!HVRInputManager.Instance.LeftController.GripButtonState.Active)
             {
-                if (hoverTimeInTrigger < 2)
+                gripLatchLH = false;
+            }
+
+            if (inTriggerLH)
+            {
+                if (hoverTimeInTriggerLH < 2)
                 {
-                    hoverTimeInTrigger += Time.time;
+                    hoverTimeInTriggerLH += Time.time;
                 }
 
-                if (hoverTimeInTrigger >= timeInTriggerRequired)
+                if (hoverTimeInTriggerLH >= timeInTriggerRequired)
                 {
-                    if (HVRInputManager.Instance.RightController.GripButtonState.Active)
+                    if (HVRInputManager.Instance.LeftController.GripButtonState.Active)
                     {
-                        if (grabTimeInTrigger < 2)
+                        if (grabTimeInTriggerLH < 2)
                         {
-                            grabTimeInTrigger += Time.time;
+                            grabTimeInTriggerLH += Time.time;
                         }
 
-                        if (!gripLatch && grabTimeInTrigger >= grabTimeRequired)
+                        if (!gripLatchLH && grabTimeInTriggerLH >= grabTimeRequired)
                         {
-                            gripLatch = true;
+                            if (grabTimeInTriggerRH > grabTimeInTriggerLH) return;
+                            gripLatchLH = true;
                             ToggleSpiritForm();
                         }
                     }
                 }
             }
 
-            else if (!inTrigger)
+            else if (!inTriggerLH)
             {
-                if (hoverTimeInTrigger > 0)
+                if (hoverTimeInTriggerLH > 0)
                 {
-                    hoverTimeInTrigger -= Time.time;
+                    hoverTimeInTriggerLH -= Time.time;
                 }
 
-                if (grabTimeInTrigger > 0)
+                if (grabTimeInTriggerLH > 0)
                 {
-                    grabTimeInTrigger -= Time.time;
+                    grabTimeInTriggerLH -= Time.time;
+                }
+            }
+
+            if (inTriggerRH)
+            {
+                if (hoverTimeInTriggerRH < 2)
+                {
+                    hoverTimeInTriggerRH += Time.time;
+                }
+
+                if (hoverTimeInTriggerRH >= timeInTriggerRequired)
+                {
+                    if (HVRInputManager.Instance.RightController.GripButtonState.Active)
+                    {
+                        if (grabTimeInTriggerRH < 2)
+                        {
+                            grabTimeInTriggerRH += Time.time;
+                        }
+
+                        if (!gripLatchRH && grabTimeInTriggerRH >= grabTimeRequired)
+                        {
+                            if (grabTimeInTriggerLH > grabTimeInTriggerRH) return;
+                            gripLatchRH = true;
+                            ToggleSpiritForm();
+                        }
+                    }
+                }
+            }
+
+            else if (!inTriggerRH)
+            {
+                if (hoverTimeInTriggerRH > 0)
+                {
+                    hoverTimeInTriggerRH -= Time.time;
+                }
+
+                if (grabTimeInTriggerRH > 0)
+                {
+                    grabTimeInTriggerRH -= Time.time;
                 }
             }
         }
@@ -101,10 +154,12 @@ namespace intheclouds
             if (!activated)
             {
                 Deparent();
+                spiritMovement.enabled = true;
             }
             else
             {
                 Reparent();
+                spiritMovement.enabled = false;
             }
 
             activated = !activated;
@@ -129,10 +184,11 @@ namespace intheclouds
 
         private void Reparent()
         {
+            hvrPlayerController.transform.position = originalCharacterPosition;
+            hvrPlayerController.transform.rotation = originalCharacterRotation;
             for (int i = 0; i < objectsToDeparent.Length; i++)
             {
                 objectsToDeparent[i].transform.parent = originalParents[i];
-                Debug.Log($" orig localPos: {originalLocalPositions[i]}");
                 objectsToDeparent[i].transform.localPosition = originalLocalPositions[i];
                 objectsToDeparent[i].transform.localRotation = originalLocalRotations[i];
                 if (objectsToDeparent[i].layer == LayerMask.NameToLayer("Default"))
@@ -148,17 +204,27 @@ namespace intheclouds
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+            if (other.CompareTag("Left Hand"))
             {
-                inTrigger = true;
+                inTriggerLH = true;
+            }
+
+            if (other.CompareTag("Right Hand"))
+            {
+                inTriggerRH = true;
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+            if (other.CompareTag("Left Hand"))
             {
-                inTrigger = false;
+                inTriggerLH = false;
+            }
+
+            if (other.CompareTag("Right Hand"))
+            {
+                inTriggerRH = false;
             }
         }
     }

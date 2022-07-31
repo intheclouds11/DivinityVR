@@ -12,56 +12,24 @@ namespace intheclouds
         public float currentHealth;
         public float maxHealth;
         [SerializeField] private Slider healthSlider;
-        private float currentStamina = 0;
-        public float maxStamina;
-        [SerializeField] private Slider staminaSlider;
-        public float staminaRecoveryRate;
-        public float staminaDepletionRateSprinting;
-        private HVRPlayerController playerController;
+        private float currentAP = 0;
+        public float maxAP;
+        [SerializeField] private Slider apSlider;
 
         public event Action Damaged; // use for other classes to know when player is damaged
 
         private void Start()
         {
-            playerController = GetComponent<HVRPlayerController>();
             maxHealth = playerStatsSO.health;
             currentHealth = maxHealth;
-            maxStamina = playerStatsSO.stamina;
-            currentStamina = maxStamina;
+            maxAP = playerStatsSO.actionPoints;
+            currentAP = maxAP;
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
-            staminaSlider.maxValue = maxStamina;
-            staminaSlider.value = currentStamina;
-            staminaRecoveryRate = playerStatsSO.staminaRecoveryRate;
-            staminaDepletionRateSprinting = playerStatsSO.staminaDepletionRateSprinting;
+            apSlider.maxValue = maxAP;
+            apSlider.value = currentAP;
         }
-
-        private void Update()
-        {
-            staminaSlider.value = currentStamina;
-            if (playerController.Sprinting)
-            {
-                currentStamina -= Time.deltaTime * staminaDepletionRateSprinting;
-                if (currentStamina <= 0)
-                {
-                    playerController.Sprinting = false;
-                    playerController.CanSprint = false;
-                }
-            }
-            else
-            {
-                if (currentStamina <= maxStamina)
-                {
-                    currentStamina += Time.deltaTime * staminaRecoveryRate;
-                }
-
-                if (currentStamina >= maxStamina)
-                {
-                    playerController.CanSprint = true;
-                }
-            }
-        }
-
+        
         public void TakeDamage(float damage)
         {
             Damaged?.Invoke();
