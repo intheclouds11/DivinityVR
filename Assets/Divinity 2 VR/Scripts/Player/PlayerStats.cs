@@ -9,20 +9,20 @@ namespace intheclouds
     public class PlayerStats : MonoBehaviour
     {
         public PlayerStatsSO playerStatsSO;
+        [SerializeField] private Slider healthSlider;
+        [SerializeField] private Slider apSlider;
         public float currentHealth;
         public float maxHealth;
-        [SerializeField] private Slider healthSlider;
-        private float currentAP = 0;
+        public float currentAP;
         public float maxAP;
-        [SerializeField] private Slider apSlider;
 
         public event Action Damaged; // use for other classes to know when player is damaged
 
         private void Start()
         {
-            maxHealth = playerStatsSO.health;
+            maxHealth = playerStatsSO.maxHealth;
             currentHealth = maxHealth;
-            maxAP = playerStatsSO.actionPoints;
+            maxAP = playerStatsSO.maxAP;
             currentAP = maxAP;
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;

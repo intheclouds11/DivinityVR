@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
@@ -6,200 +7,160 @@ namespace intheclouds
 {
     public class SpiritWander : MonoBehaviour
     {
+        public bool activated;
+        public Transform repositionTransform;
         public GameObject[] objectsToDeparent;
+        public float timeInTriggerRequired = 1;
+        public bool inTriggerLH;
+        public bool inTriggerRH;
+        public float timeInTriggerLH;
+        public float timeInTriggerRH;
+        private List<GameObject> spawnedGOs;
         private Transform[] originalParents;
         private Vector3[] originalLocalPositions;
         private Quaternion[] originalLocalRotations;
-        private Vector3 originalCharacterPosition;
-        private Quaternion originalCharacterRotation;
+        private Vector3 initialCharacterPosition;
+        private Quaternion initialCharacterRotation;
         private HVRPlayerController hvrPlayerController;
-        public GameObject tempParent;
         private AudioSource audioSource;
-        public float timeInTriggerRequired = 1;
-        public float grabTimeRequired = 1;
-        public bool inTriggerLH;
-        public bool inTriggerRH;
-        public float hoverTimeInTriggerLH;
-        public float grabTimeInTriggerLH;
-        public float hoverTimeInTriggerRH;
-        public float grabTimeInTriggerRH;
-        public bool activated;
-        public bool gripLatchLH;
-        public bool gripLatchRH;
+
 
         public SpiritMovement spiritMovement;
 
         private void Start()
         {
             hvrPlayerController = transform.parent.parent.GetComponentInChildren<HVRPlayerController>();
-            SaveParentsandTransforms();
+            SaveOriginalTransforms();
             audioSource = GetComponent<AudioSource>();
         }
 
         private void Update()
         {
-            ToggleAbilityCheck();
+            InputCheck();
         }
 
-        private void SaveParentsandTransforms()
+        private void SaveOriginalTransforms()
         {
-            if (originalParents == null) originalParents = new Transform[objectsToDeparent.Length];
             if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
             if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
-            originalCharacterPosition = hvrPlayerController.transform.position;
-            originalCharacterRotation = hvrPlayerController.transform.rotation;
+            initialCharacterPosition = hvrPlayerController.transform.position;
+            initialCharacterRotation = hvrPlayerController.transform.rotation;
 
             for (int i = 0; i < objectsToDeparent.Length; i++)
             {
-                originalParents[i] = objectsToDeparent[i].transform.parent;
                 originalLocalPositions[i] = objectsToDeparent[i].transform.localPosition;
                 originalLocalRotations[i] = objectsToDeparent[i].transform.localRotation;
             }
         }
 
-        private void ToggleAbilityCheck()
+        private void InputCheck()
         {
-            if (!HVRInputManager.Instance.RightController.GripButtonState.Active)
-            {
-                gripLatchRH = false;
-            }
-
-            if (!HVRInputManager.Instance.LeftController.GripButtonState.Active)
-            {
-                gripLatchLH = false;
-            }
-
             if (inTriggerLH)
             {
-                if (hoverTimeInTriggerLH < 2)
+                if (timeInTriggerLH < 2)
                 {
-                    hoverTimeInTriggerLH += Time.time;
+                    timeInTriggerLH += Time.deltaTime;
                 }
 
-                if (hoverTimeInTriggerLH >= timeInTriggerRequired)
+                if (timeInTriggerLH >= timeInTriggerRequired)
                 {
-                    if (HVRInputManager.Instance.LeftController.GripButtonState.Active)
+                    if (HVRInputManager.Instance.LeftController.GripButtonState.JustActivated)
                     {
-                        if (grabTimeInTriggerLH < 2)
-                        {
-                            grabTimeInTriggerLH += Time.time;
-                        }
-
-                        if (!gripLatchLH && grabTimeInTriggerLH >= grabTimeRequired)
-                        {
-                            if (grabTimeInTriggerRH > grabTimeInTriggerLH) return;
-                            gripLatchLH = true;
-                            ToggleSpiritForm();
-                        }
+                        ToggleSpiritForm();
                     }
                 }
             }
 
             else if (!inTriggerLH)
             {
-                if (hoverTimeInTriggerLH > 0)
-                {
-                    hoverTimeInTriggerLH -= Time.time;
-                }
-
-                if (grabTimeInTriggerLH > 0)
-                {
-                    grabTimeInTriggerLH -= Time.time;
-                }
+                timeInTriggerLH = 0;
             }
 
             if (inTriggerRH)
             {
-                if (hoverTimeInTriggerRH < 2)
+                if (timeInTriggerRH < 2)
                 {
-                    hoverTimeInTriggerRH += Time.time;
+                    timeInTriggerRH += Time.deltaTime;
                 }
 
-                if (hoverTimeInTriggerRH >= timeInTriggerRequired)
+                if (timeInTriggerRH >= timeInTriggerRequired)
                 {
-                    if (HVRInputManager.Instance.RightController.GripButtonState.Active)
+                    if (HVRInputManager.Instance.RightController.GripButtonState.JustActivated)
                     {
-                        if (grabTimeInTriggerRH < 2)
-                        {
-                            grabTimeInTriggerRH += Time.time;
-                        }
-
-                        if (!gripLatchRH && grabTimeInTriggerRH >= grabTimeRequired)
-                        {
-                            if (grabTimeInTriggerLH > grabTimeInTriggerRH) return;
-                            gripLatchRH = true;
-                            ToggleSpiritForm();
-                        }
+                        ToggleSpiritForm();
                     }
                 }
             }
 
             else if (!inTriggerRH)
             {
-                if (hoverTimeInTriggerRH > 0)
-                {
-                    hoverTimeInTriggerRH -= Time.time;
-                }
-
-                if (grabTimeInTriggerRH > 0)
-                {
-                    grabTimeInTriggerRH -= Time.time;
-                }
+                timeInTriggerRH = 0;
             }
         }
 
-        private void ToggleSpiritForm()
+        public void ToggleSpiritForm()
         {
             audioSource.Play();
             if (!activated)
             {
-                Deparent();
+                Separate();
+                hvrPlayerController.transform.position = repositionTransform.position;
                 spiritMovement.enabled = true;
             }
             else
             {
-                Reparent();
+                Reunite();
                 spiritMovement.enabled = false;
             }
 
             activated = !activated;
         }
 
-        private void Deparent()
+        private void Separate()
         {
-            SaveParentsandTransforms();
+            SaveOriginalTransforms();
+            spawnedGOs = new List<GameObject>();
             foreach (var o in objectsToDeparent)
             {
-                o.transform.parent = tempParent.transform;
-                if (o.layer == LayerMask.NameToLayer("InvisibleToMainCamera"))
+                var physicalFormObject = Instantiate(o, o.transform.position, o.transform.rotation);
+                spawnedGOs.Add(physicalFormObject);
+                var components = physicalFormObject.GetComponents<Component>();
+                var childComponents = physicalFormObject.GetComponentsInChildren<Component>();
+                foreach (var component in components)
                 {
-                    o.layer = LayerMask.NameToLayer("Default");
-                    foreach (Transform child in o.transform)
+                    if (component is not (Transform or SkinnedMeshRenderer or MeshRenderer or MeshFilter))
                     {
-                        child.gameObject.layer = LayerMask.NameToLayer("Default");
+                        Destroy(component);
                     }
+                }
+
+                foreach (var childComponent in childComponents)
+                {
+                    if (childComponent is not (Transform or SkinnedMeshRenderer or MeshRenderer or MeshFilter))
+                    {
+                        Destroy(childComponent);
+                    }
+                }
+
+                physicalFormObject.layer = LayerMask.NameToLayer("Default");
+                foreach (Transform child in physicalFormObject.transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("Default");
                 }
             }
         }
 
-        private void Reparent()
+        private void Reunite()
         {
-            hvrPlayerController.transform.position = originalCharacterPosition;
-            hvrPlayerController.transform.rotation = originalCharacterRotation;
-            for (int i = 0; i < objectsToDeparent.Length; i++)
+            hvrPlayerController.transform.position = initialCharacterPosition;
+            hvrPlayerController.transform.rotation = initialCharacterRotation;
+
+            foreach (var o in spawnedGOs)
             {
-                objectsToDeparent[i].transform.parent = originalParents[i];
-                objectsToDeparent[i].transform.localPosition = originalLocalPositions[i];
-                objectsToDeparent[i].transform.localRotation = originalLocalRotations[i];
-                if (objectsToDeparent[i].layer == LayerMask.NameToLayer("Default"))
-                {
-                    objectsToDeparent[i].layer = LayerMask.NameToLayer("InvisibleToMainCamera");
-                    foreach (Transform child in objectsToDeparent[i].transform)
-                    {
-                        child.gameObject.layer = LayerMask.NameToLayer("InvisibleToMainCamera");
-                    }
-                }
+                Destroy(o);
             }
+
+            spawnedGOs = null;
         }
 
         private void OnTriggerEnter(Collider other)

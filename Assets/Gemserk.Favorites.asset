@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a986f4395c1405daba1bf4dd5c395dd, type: 3}
   m_Name: Gemserk.Favorites
   m_EditorClassIdentifier: 
-  favoritesList: []
+  favoritesList:
+  - reference: {fileID: 0}

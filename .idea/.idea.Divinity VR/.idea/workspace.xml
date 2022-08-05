@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="" />
+    <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/HurricaneVR intheclouds/Prefabs/Hurricane VR Setup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Divinity 2 VR/HurricaneVR intheclouds/Prefabs/Hurricane VR Setup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Prefabs/lightbridge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Divinity 2 VR/Prefabs/lightbridge.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scenes/Celestial Beginnings.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scenes/Celestial Beginnings.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scenes/Celestial Beginnings_Profiles/Post Process Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scenes/Celestial Beginnings_Profiles/Post Process Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scenes/New Lighting Settings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scenes/New Lighting Settings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Mechanics/SpiritWander.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Mechanics/SpiritWander.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/SpiritMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/SpiritMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VolumetricFogProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VolumetricFogProfile.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/09/8f8264d3/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/6c/3a78475f/Space.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/fb/cd2a3a91/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/77b5607d2b8c49fa940386158c43f2341a000/75/846e37ba/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/HurricaneVR custom scripts/HVRPlayerInputs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Editor/SpiritWanderEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/MovementUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/PlayerInputsManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/UserMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -28,7 +44,6 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -74,12 +89,20 @@
       <workItem from="1659208029574" duration="631000" />
       <workItem from="1659209102892" duration="2494000" />
       <workItem from="1659282618491" duration="18026000" />
+      <workItem from="1659406335332" duration="8488000" />
+      <workItem from="1659622723698" duration="1076000" />
+      <workItem from="1659623930472" duration="112000" />
+      <workItem from="1659624064299" duration="819000" />
+      <workItem from="1659624912073" duration="53000" />
+      <workItem from="1659624978367" duration="1033000" />
+      <workItem from="1659724880472" duration="12249000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">

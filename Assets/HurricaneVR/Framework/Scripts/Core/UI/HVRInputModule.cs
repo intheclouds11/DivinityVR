@@ -280,5 +280,13 @@ namespace HurricaneVR.Framework.Core.UI
             }
         }
 
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            foreach (var pointer in Pointers)
+            {
+                pointer.CurrentUIElement = null;
+            }
+        }
     }
 }

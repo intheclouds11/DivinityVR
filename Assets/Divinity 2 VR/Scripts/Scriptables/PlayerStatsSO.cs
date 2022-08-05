@@ -4,6 +4,8 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "PlayerStats")]
 public class PlayerStatsSO : ScriptableObject
 {
-    public float health;
-    public float actionPoints;
+    public float maxHealth;
+    public float currentHealth;
+    public float maxAP;
+    public float currentAP;
 }

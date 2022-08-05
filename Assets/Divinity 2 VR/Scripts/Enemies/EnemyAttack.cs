@@ -8,10 +8,6 @@ public class EnemyAttack : MonoBehaviour
     public EnemyStatsSO enemyStatsSO;
     private float _damage;
 
-    private void Awake()
-    {
-    }
-
     private void Start()
     {
         _damage = enemyStatsSO.damage;

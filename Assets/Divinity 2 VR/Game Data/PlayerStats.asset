@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44be2b29565dbe04a853c9ca61fafca6, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  health: 100
-  stamina: 500
-  staminaRecoveryRate: 15
-  staminaDepletionRateSprinting: 15
+  maxHealth: 100
+  currentHealth: 0
+  maxAP: 5
+  currentAP: 0
