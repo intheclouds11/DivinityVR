@@ -11,10 +11,10 @@ namespace intheclouds
         public PlayerStatsSO playerStatsSO;
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider apSlider;
-        public float currentHealth;
-        public float maxHealth;
-        public float currentAP;
-        public float maxAP;
+        public int currentHealth;
+        public int maxHealth;
+        public int currentAP;
+        public int maxAP;
 
         public event Action Damaged; // use for other classes to know when player is damaged
 
@@ -33,7 +33,7 @@ namespace intheclouds
         public void TakeDamage(float damage)
         {
             Damaged?.Invoke();
-            currentHealth -= damage;
+            // currentHealth -= damage;
             healthSlider.value = currentHealth;
             if (currentHealth <= 0)
             {

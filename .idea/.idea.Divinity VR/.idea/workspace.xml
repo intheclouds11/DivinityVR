@@ -21,14 +21,18 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/09/8f8264d3/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/6c/3a78475f/Space.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/f7/3c34d9c9/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/fb/cd2a3a91/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/77b5607d2b8c49fa940386158c43f2341a000/75/846e37ba/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/HurricaneVR custom scripts/HVRPlayerInputs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/APManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Editor/SpiritWanderEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Editor/UserMenuEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/MovementUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/PlayerInputsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/UserMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/Tests/TestFixture/WinUserInput.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,7 +99,9 @@
       <workItem from="1659624064299" duration="819000" />
       <workItem from="1659624912073" duration="53000" />
       <workItem from="1659624978367" duration="1033000" />
-      <workItem from="1659724880472" duration="12249000" />
+      <workItem from="1659724880472" duration="15797000" />
+      <workItem from="1659894001493" duration="1342000" />
+      <workItem from="1660001550650" duration="11215000" />
     </task>
     <servers />
   </component>

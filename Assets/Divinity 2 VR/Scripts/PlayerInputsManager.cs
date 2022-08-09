@@ -18,11 +18,11 @@ public class PlayerInputsManager : MonoBehaviour
         // UserMenu toggle
         if (playerInputs.LeftController.SecondaryButtonState.JustActivated)
         {
-            if (userMenu.gameObject.activeInHierarchy)
+            if (userMenu.gameObject.activeInHierarchy && !userMenu.followPlayer)
             {
-                userMenu.transform.SetParent(userMenu.originalParent, false);
-                userMenu.transform.localPosition = userMenu.originalLocalPosition;
-                userMenu.transform.localRotation = userMenu.originalLocalRotation;
+                // userMenu.transform.SetParent(userMenu.originalParent, false);
+                // userMenu.transform.localPosition = userMenu.originalLocalPosition;
+                // userMenu.transform.localRotation = userMenu.originalLocalRotation;
             }
 
             userMenu.gameObject.SetActive(!userMenu.gameObject.activeInHierarchy);

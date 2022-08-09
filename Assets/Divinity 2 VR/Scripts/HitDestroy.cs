@@ -6,36 +6,24 @@ using UnityEngine.Serialization;
 
 public class HitDestroy : MonoBehaviour
 {
-    [FormerlySerializedAs("destroySpeed")] public float destroyVelocity;
-    public GameObject destroyedObj;
+    public float destroyVelocity;
+    public GameObject swapToGameObject;
 
     private void OnCollisionEnter(Collision collision)
     {
-        var collisionGameObject = collision.gameObject;
-        if (collisionGameObject.CompareTag("Sword"))
+        if (ReachedActionVelocity(collision))
         {
-            Debug.Log(collision.relativeVelocity);
-            Debug.Log(collision.relativeVelocity.x);
-            Debug.Log(collision.relativeVelocity.y);
-            Debug.Log(collision.relativeVelocity.z);
-            if (ReachedActionVelocity(collision))
-            {
-                destroyedObj.SetActive(true);
-                collisionGameObject.transform.position = this.transform.position;
-                collisionGameObject.transform.rotation = this.transform.rotation;
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.Log("hit/touch");
-            }
+            swapToGameObject.SetActive(true);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("hit a destroyable, not enough velocity to destroy");
         }
     }
 
     public bool ReachedActionVelocity(Collision collision)
     {
-        return collision.relativeVelocity.x > destroyVelocity || collision.relativeVelocity.x < -destroyVelocity ||
-               collision.relativeVelocity.y > destroyVelocity || collision.relativeVelocity.y < -destroyVelocity ||
-               collision.relativeVelocity.z > destroyVelocity || collision.relativeVelocity.z < -destroyVelocity;
+        return collision.relativeVelocity.magnitude > destroyVelocity || collision.relativeVelocity.magnitude < -destroyVelocity;
     }
 }

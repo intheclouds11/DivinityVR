@@ -5,33 +5,20 @@ using UnityEngine.Serialization;
 public class Sword : MonoBehaviour
 {
     public GameObject phasedModel;
-    [FormerlySerializedAs("OGModel")] public GameObject originalModel;
-    private Collider col;
+    public GameObject originalModel;
     public bool isPhased;
     public bool inContact;
     public float phaseTime;
 
-    [FormerlySerializedAs("lightVelocityTrigger")]
-    public float lightCollisionTrigger;
-
-    [FormerlySerializedAs("mediumVelocityTrigger")]
-    public float mediumCollisionTrigger;
-
-    [FormerlySerializedAs("highVelocityTrigger")]
-    public float fastCollisionTrigger;
-
-    [FormerlySerializedAs("lowAngularVelocityTrigger")]
-    public float lowVelocityTrigger;
-
-    [FormerlySerializedAs("mediumAngularVelocityTrigger")]
-    public float mediumVelocityTrigger;
-
-    [FormerlySerializedAs("highAngularVelocityTrigger")]
-    public float highVelocityTrigger;
+    public float lightHitTriggerSpeed;
+    public float mediumHitTriggerSpeed;
+    public float fastHitTriggerSpeed;
+    public float lowVelSwingTriggerSpeed;
+    public float mediumVelSwingTriggerSpeed;
+    public float highVelSwingTriggerSpeed;
 
     public AudioSource hitSFXAudioSource;
     public AudioSource swingSFXAudioSource;
-    private Rigidbody rb;
     private Vector3 oldPosition;
     private Vector3 newPosition;
     private Vector3 currentVelocity;
@@ -39,8 +26,6 @@ public class Sword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<BoxCollider>();
-        rb = GetComponent<Rigidbody>();
         oldPosition = transform.position;
     }
 
@@ -61,7 +46,7 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.CompareTag("Sword"))
+        if (other.gameObject.CompareTag("Sword"))
         {
             inContact = true;
         }
@@ -69,7 +54,7 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (col.gameObject.CompareTag("Sword"))
+        if (other.gameObject.CompareTag("Sword"))
         {
             inContact = false;
         }
@@ -82,7 +67,7 @@ public class Sword : MonoBehaviour
         currentVelocity = difference / Time.deltaTime;
         oldPosition = newPosition;
 
-        if (ReachedVelocity(highVelocityTrigger)) // fast swipe
+        if (ReachedVelocity(highVelSwingTriggerSpeed)) // fast swipe
         {
             if (!swingSFXAudioSource.isPlaying)
             {
@@ -90,7 +75,7 @@ public class Sword : MonoBehaviour
                 Debug.Log("fast swipe!");
             }
         }
-        else if (ReachedVelocity(mediumVelocityTrigger)) // medium swipe
+        else if (ReachedVelocity(mediumVelSwingTriggerSpeed)) // medium swipe
         {
             if (!swingSFXAudioSource.isPlaying)
             {
@@ -98,7 +83,7 @@ public class Sword : MonoBehaviour
                 Debug.Log("med swipe!");
             }
         }
-        else if (ReachedVelocity(lowVelocityTrigger)) // small swipe
+        else if (ReachedVelocity(lowVelSwingTriggerSpeed)) // small swipe
         {
             if (!swingSFXAudioSource.isPlaying)
             {
@@ -118,7 +103,7 @@ public class Sword : MonoBehaviour
             Invoke(nameof(OriginalSword), 1f);
         }
 
-        if (ReachedTriggerVelocity(lightCollisionTrigger, collision))
+        if (ReachedTriggerVelocity(lightHitTriggerSpeed, collision))
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
@@ -134,7 +119,7 @@ public class Sword : MonoBehaviour
             }
         }
 
-        if (ReachedTriggerVelocity(mediumCollisionTrigger, collision))
+        if (ReachedTriggerVelocity(mediumHitTriggerSpeed, collision))
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
@@ -150,7 +135,7 @@ public class Sword : MonoBehaviour
             }
         }
 
-        if (ReachedTriggerVelocity(fastCollisionTrigger, collision))
+        if (ReachedTriggerVelocity(fastHitTriggerSpeed, collision))
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
@@ -191,7 +176,7 @@ public class Sword : MonoBehaviour
     {
         phasedModel.SetActive(true);
         originalModel.SetActive(false);
-        Invoke(nameof(ColTriggerSwitch), 0.5f);
+        // Invoke(nameof(ColTriggerSwitch), 0.5f);
     }
 
     private void OriginalSword()
@@ -204,11 +189,11 @@ public class Sword : MonoBehaviour
 
         phasedModel.SetActive(false);
         originalModel.SetActive(true);
-        Invoke(nameof(ColTriggerSwitch), 0.5f);
+        // Invoke(nameof(ColTriggerSwitch), 0.5f);
     }
 
-    public void ColTriggerSwitch()
+    public void ColliderToggle()
     {
-        col.isTrigger = !col.isTrigger;
+        // col.isTrigger = !col.isTrigger;
     }
 }

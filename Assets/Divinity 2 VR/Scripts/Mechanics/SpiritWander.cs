@@ -10,6 +10,7 @@ namespace intheclouds
         public bool activated;
         public Transform repositionTransform;
         public GameObject[] objectsToDeparent;
+        public Transform spawnParent;
         public float timeInTriggerRequired = 1;
         public bool inTriggerLH;
         public bool inTriggerRH;
@@ -120,9 +121,10 @@ namespace intheclouds
         {
             SaveOriginalTransforms();
             spawnedGOs = new List<GameObject>();
-            foreach (var o in objectsToDeparent)
+            foreach (var obj in objectsToDeparent)
             {
-                var physicalFormObject = Instantiate(o, o.transform.position, o.transform.rotation);
+                // var physicalFormObject = Instantiate(obj, obj.transform.position, obj.transform.rotation);
+                var physicalFormObject = Instantiate(obj, obj.transform.position, obj.transform.rotation, spawnParent);
                 spawnedGOs.Add(physicalFormObject);
                 var components = physicalFormObject.GetComponents<Component>();
                 var childComponents = physicalFormObject.GetComponentsInChildren<Component>();
