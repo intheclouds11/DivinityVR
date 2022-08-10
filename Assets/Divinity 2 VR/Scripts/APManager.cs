@@ -33,9 +33,5 @@ public class APManager : MonoBehaviour
             enemiesStatsDictionary.Add(enemyStats.gameObject, enemyStats);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    
 }

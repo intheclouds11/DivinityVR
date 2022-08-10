@@ -115,7 +115,7 @@ public class Sword : MonoBehaviour
             }
             else
             {
-                hitSFXAudioSource.Play(); // TODO: turn this into PlayOneShotClip light sfx
+                // hitSFXAudioSource.Play(); // TODO: turn this into PlayOneShotClip light sfx
             }
         }
 
@@ -131,7 +131,7 @@ public class Sword : MonoBehaviour
             }
             else
             {
-                hitSFXAudioSource.Play(); // TODO: turn this into PlayOneShotClip medium sfx
+                // hitSFXAudioSource.Play(); // TODO: turn this into PlayOneShotClip medium sfx
             }
         }
 
@@ -147,29 +147,19 @@ public class Sword : MonoBehaviour
             }
             else
             {
-                hitSFXAudioSource.Play(); // TODO: turn this into PlayOneShotClip fast sfx
+                // hitSFXAudioSource.Play(); // TODO: turn this into PlayOneShotClip fast sfx
             }
         }
     }
 
     public bool ReachedTriggerVelocity(float requiredVelocity, Collision collision)
     {
-        return collision.relativeVelocity.x > requiredVelocity ||
-               collision.relativeVelocity.x < -requiredVelocity ||
-               collision.relativeVelocity.y > requiredVelocity ||
-               collision.relativeVelocity.y < -requiredVelocity ||
-               collision.relativeVelocity.z > requiredVelocity ||
-               collision.relativeVelocity.z < -requiredVelocity;
+        return collision.relativeVelocity.magnitude > requiredVelocity;
     }
 
     public bool ReachedVelocity(float requiredVelocity)
     {
-        return currentVelocity.x > requiredVelocity ||
-               currentVelocity.x < -requiredVelocity ||
-               currentVelocity.y > requiredVelocity ||
-               currentVelocity.y < -requiredVelocity ||
-               currentVelocity.z > requiredVelocity ||
-               currentVelocity.z < -requiredVelocity;
+        return currentVelocity.magnitude > requiredVelocity;
     }
 
     private void PhaseSword()

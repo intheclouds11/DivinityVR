@@ -46,7 +46,7 @@ public class PlayerMovementAP : MonoBehaviour
         if (playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
         {
             UseAP();
-            distanceMovedText.text = $"distance moved: {(int)distanceMoved}";
+            distanceMovedText.text = $"distance moved: {(int) distanceMoved}";
             currentAPText.text = $"AP consumed: {playerStats.currentAP}";
         }
     }
@@ -63,6 +63,7 @@ public class PlayerMovementAP : MonoBehaviour
         if (playerStats == null)
         {
             Debug.LogError("Couldn't get PlayerStats from APManager");
+            activated = false;
             return;
         }
     }
@@ -70,12 +71,13 @@ public class PlayerMovementAP : MonoBehaviour
     private void UseAP()
     {
         distanceMoved += Vector3.Distance(transform.position, previousPosition);
-        previousPosition = transform.position;
 
-        if (distanceMoved * 0.33f > 1)
+        if (distanceMoved > 3)
         {
             playerStats.currentAP -= 1;
-            distanceMoved = 0;
+            distanceMoved -= 3;
         }
+
+        previousPosition = transform.position;
     }
 }

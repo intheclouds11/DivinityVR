@@ -24,6 +24,6 @@ public class HitDestroy : MonoBehaviour
 
     public bool ReachedActionVelocity(Collision collision)
     {
-        return collision.relativeVelocity.magnitude > destroyVelocity || collision.relativeVelocity.magnitude < -destroyVelocity;
+        return collision.relativeVelocity.magnitude > destroyVelocity;
     }
 }
