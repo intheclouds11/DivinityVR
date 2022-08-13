@@ -40,20 +40,6 @@ namespace intheclouds
             InputCheck();
         }
 
-        private void SaveOriginalTransforms()
-        {
-            if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
-            if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
-            initialCharacterPosition = hvrPlayerController.transform.position;
-            initialCharacterRotation = hvrPlayerController.transform.rotation;
-
-            for (int i = 0; i < objectsToDeparent.Length; i++)
-            {
-                originalLocalPositions[i] = objectsToDeparent[i].transform.localPosition;
-                originalLocalRotations[i] = objectsToDeparent[i].transform.localRotation;
-            }
-        }
-
         private void InputCheck()
         {
             if (inTriggerLH)
@@ -74,7 +60,7 @@ namespace intheclouds
 
             else if (!inTriggerLH)
             {
-                timeInTriggerLH = 0;
+                timeInTriggerLH -= Time.deltaTime;
             }
 
             if (inTriggerRH)
@@ -95,7 +81,7 @@ namespace intheclouds
 
             else if (!inTriggerRH)
             {
-                timeInTriggerRH = 0;
+                timeInTriggerRH -= Time.deltaTime;
             }
         }
 
@@ -163,6 +149,20 @@ namespace intheclouds
             }
 
             spawnedGOs = null;
+        }
+
+        private void SaveOriginalTransforms()
+        {
+            if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
+            if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
+            initialCharacterPosition = hvrPlayerController.transform.position;
+            initialCharacterRotation = hvrPlayerController.transform.rotation;
+
+            for (int i = 0; i < objectsToDeparent.Length; i++)
+            {
+                originalLocalPositions[i] = objectsToDeparent[i].transform.localPosition;
+                originalLocalRotations[i] = objectsToDeparent[i].transform.localRotation;
+            }
         }
 
         private void OnTriggerEnter(Collider other)

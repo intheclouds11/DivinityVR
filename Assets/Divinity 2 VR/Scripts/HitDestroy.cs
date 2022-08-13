@@ -4,26 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class HitDestroy : MonoBehaviour
+namespace intheclouds
 {
-    public float destroyVelocity;
-    public GameObject swapToGameObject;
-
-    private void OnCollisionEnter(Collision collision)
+    public class HitDestroy : MonoBehaviour
     {
-        if (ReachedActionVelocity(collision))
-        {
-            swapToGameObject.SetActive(true);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("hit a destroyable, not enough velocity to destroy");
-        }
-    }
+        public float destroyVelocity;
+        public GameObject swapToGameObject;
 
-    public bool ReachedActionVelocity(Collision collision)
-    {
-        return collision.relativeVelocity.magnitude > destroyVelocity;
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.relativeVelocity.magnitude > destroyVelocity)
+            {
+                swapToGameObject.SetActive(true);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("hit a destroyable, not enough velocity to destroy");
+            }
+        }
     }
 }

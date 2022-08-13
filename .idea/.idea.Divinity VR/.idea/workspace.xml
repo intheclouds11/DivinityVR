@@ -30,7 +30,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Editor/UserMenuEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/MovementUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/PlayerInputsManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/ToggleMovementUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/UserMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/Weapons/WeaponAP.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/Tests/TestFixture/WinUserInput.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -102,7 +104,9 @@
       <workItem from="1659724880472" duration="15797000" />
       <workItem from="1659894001493" duration="1342000" />
       <workItem from="1660001550650" duration="11215000" />
-      <workItem from="1660094083645" duration="2582000" />
+      <workItem from="1660094083645" duration="2584000" />
+      <workItem from="1660178414297" duration="4918000" />
+      <workItem from="1660183426425" duration="504000" />
     </task>
     <servers />
   </component>

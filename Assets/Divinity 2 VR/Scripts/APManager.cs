@@ -4,34 +4,36 @@ using System.Collections.Generic;
 using intheclouds;
 using UnityEngine;
 
-public class APManager : MonoBehaviour
+namespace intheclouds
 {
-    public PlayerStats[] playersStats;
-    public Dictionary<GameObject, PlayerStats> playersStatsDictionary;
-    public EnemyStats[] enemiesStats;
-    public Dictionary<GameObject, EnemyStats> enemiesStatsDictionary;
-    public static APManager instance;
-
-    private void Awake()
+    public class APManager : MonoBehaviour
     {
-        instance = this;
-    }
+        public PlayerStats[] playersStats;
+        public Dictionary<GameObject, PlayerStats> playersStatsDictionary;
+        public EnemyStats[] enemiesStats;
+        public Dictionary<GameObject, EnemyStats> enemiesStatsDictionary;
+        public static APManager instance;
 
-    void Start()
-    {
-        playersStatsDictionary = new Dictionary<GameObject, PlayerStats>();
-        enemiesStatsDictionary = new Dictionary<GameObject, EnemyStats>();
-        playersStats = FindObjectsOfType<PlayerStats>();
-        enemiesStats = FindObjectsOfType<EnemyStats>();
-        foreach (var playerStats in playersStats)
+        private void Awake()
         {
-            playersStatsDictionary.Add(playerStats.gameObject, playerStats);
+            instance = this;
         }
 
-        foreach (var enemyStats in enemiesStats)
+        void Start()
         {
-            enemiesStatsDictionary.Add(enemyStats.gameObject, enemyStats);
+            playersStatsDictionary = new Dictionary<GameObject, PlayerStats>();
+            enemiesStatsDictionary = new Dictionary<GameObject, EnemyStats>();
+            playersStats = FindObjectsOfType<PlayerStats>();
+            enemiesStats = FindObjectsOfType<EnemyStats>();
+            foreach (var playerStats in playersStats)
+            {
+                playersStatsDictionary.Add(playerStats.gameObject, playerStats);
+            }
+
+            foreach (var enemyStats in enemiesStats)
+            {
+                enemiesStatsDictionary.Add(enemyStats.gameObject, enemyStats);
+            }
         }
     }
-    
 }

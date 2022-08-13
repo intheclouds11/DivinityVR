@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using UnityEngine;
 
-public class PlayerInputsManager : MonoBehaviour
+namespace intheclouds
 {
-    private HVRPlayerInputs playerInputs;
-    public UserMenu userMenu;
-
-    void Start()
+    public class PlayerInputsManager : MonoBehaviour
     {
-        playerInputs = GetComponent<HVRPlayerInputs>();
-    }
+        private HVRPlayerInputs playerInputs;
+        public UserMenu userMenu;
 
-    void Update()
-    {
-        // UserMenu toggle
-        if (playerInputs.LeftController.SecondaryButtonState.JustActivated)
+        void Start()
         {
-            if (userMenu.gameObject.activeInHierarchy && !userMenu.followPlayer)
-            {
-                // userMenu.transform.SetParent(userMenu.originalParent, false);
-                // userMenu.transform.localPosition = userMenu.originalLocalPosition;
-                // userMenu.transform.localRotation = userMenu.originalLocalRotation;
-            }
+            playerInputs = GetComponent<HVRPlayerInputs>();
+        }
 
-            userMenu.gameObject.SetActive(!userMenu.gameObject.activeInHierarchy);
+        void Update()
+        {
+            // UserMenu toggle
+            if (playerInputs.LeftController.SecondaryButtonState.JustActivated)
+            {
+                if (userMenu.gameObject.activeInHierarchy && !userMenu.followPlayer)
+                {
+                    // userMenu.transform.SetParent(userMenu.originalParent, false);
+                    // userMenu.transform.localPosition = userMenu.originalLocalPosition;
+                    // userMenu.transform.localRotation = userMenu.originalLocalRotation;
+                }
+
+                userMenu.gameObject.SetActive(!userMenu.gameObject.activeInHierarchy);
+            }
         }
     }
 }

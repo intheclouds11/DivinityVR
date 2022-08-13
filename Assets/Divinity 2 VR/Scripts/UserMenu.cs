@@ -6,65 +6,69 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-public class UserMenu : MonoBehaviour
+namespace intheclouds
 {
-    // public Transform originalParent;
-    // public Vector3 originalLocalPosition;
-    // public Quaternion originalLocalRotation;
-    public bool followPlayer;
-    public GameObject player;
-    public GameObject followPoint;
-
-    private void OnEnable()
+    public class UserMenu : MonoBehaviour
     {
-        transform.position = followPoint.transform.position;
-    }
+        // public Transform originalParent;
+        // public Vector3 originalLocalPosition;
+        // public Quaternion originalLocalRotation;
+        public bool followPlayer;
+        public GameObject player;
+        public GameObject followPoint;
 
-    public void Button_ResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void Button_ResetStats()
-    {
-        var playerStatsArray = FindObjectsOfType<PlayerStatsSO>();
-        foreach (var playerStats in playerStatsArray)
+        private void OnEnable()
         {
-            playerStats.currentHealth = playerStats.maxHealth;
-            playerStats.currentAP = playerStats.maxAP;
+            transform.position = followPoint.transform.position;
         }
-    }
 
-    private void Update()
-    {
-        if (followPlayer)
+        public void Button_ResetScene()
         {
-            transform.position = Vector3.Lerp(transform.position, followPoint.transform.position, 5 * Time.deltaTime);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        transform.LookAt(2 * transform.position - player.transform.position);
-    }
 
-    public void Toggle_FollowPlayer()
-    {
-        if (!followPlayer)
+        public void Button_ResetStats()
         {
-            // transform.SetParent(originalParent, true);
-            followPlayer = true;
+            var playerStatsArray = FindObjectsOfType<PlayerStatsSO>();
+            foreach (var playerStats in playerStatsArray)
+            {
+                playerStats.currentHealth = playerStats.maxHealth;
+                playerStats.currentAP = playerStats.maxAP;
+            }
         }
-        else
+
+        private void Update()
         {
-            // transform.SetParent(transform.parent.parent, true);
-            followPlayer = false;
+            if (followPlayer)
+            {
+                transform.position = Vector3.Lerp(transform.position, followPoint.transform.position, 5 * Time.deltaTime);
+            }
+
+            transform.LookAt(2 * transform.position - player.transform.position);
         }
-    }
 
-    public void Button_StartPlayerTurn()
-    {
-        Debug.Log("Turn System not implemented yet");
-    }
+        public void Toggle_FollowPlayer()
+        {
+            if (!followPlayer)
+            {
+                // transform.SetParent(originalParent, true);
+                followPlayer = true;
+            }
+            else
+            {
+                // transform.SetParent(transform.parent.parent, true);
+                followPlayer = false;
+            }
+        }
 
-    public void Button_StartEnemyTurn()
-    {
-        Debug.Log("Turn System not implemented yet");
+        public void Button_StartPlayerTurn()
+        {
+            Debug.Log("Turn System not implemented yet");
+        }
+
+        public void Button_StartEnemyTurn()
+        {
+            Debug.Log("Turn System not implemented yet");
+        }
     }
 }
