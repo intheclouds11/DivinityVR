@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpiritMovement : MonoBehaviour
 {
     private HVRPlayerController hvrPlayerController;
     private CharacterController characterController;
-    public List<GameObject> fadeGOs;
-    public bool screenFade;
     private HVRPlayerInputs playerInputs;
+    public Transform hmdTransform;
+    public List<GameObject> fadeGOs;
+    public bool screenFadeOnCollision;
     private float originalGravity;
     private float originalMaxFallSpeed;
-    public Transform hmdTransform;
     public bool verticalMovementCameraBased;
     public float horizontalSpeed = 2;
     public float verticalSpeed = 2;
@@ -23,11 +24,12 @@ public class SpiritMovement : MonoBehaviour
     private float previousTurnAmount;
     public float snapAmount;
 
-    void Awake()
+
+    private void Awake()
     {
-        playerInputs = GetComponent<HVRPlayerInputs>();
         hvrPlayerController = GetComponent<HVRPlayerController>();
         characterController = GetComponent<CharacterController>();
+        playerInputs = GetComponent<HVRPlayerInputs>();
     }
 
     private void OnEnable()
@@ -40,7 +42,7 @@ public class SpiritMovement : MonoBehaviour
         hvrPlayerController.Gravity = 0;
         hvrPlayerController.MaxFallSpeed = 0;
         characterController.enabled = false;
-        if (screenFade)
+        if (screenFadeOnCollision)
         {
             fadeGOs[0].GetComponent<HVRCanvasFade>().enabled = false;
         }
@@ -60,7 +62,7 @@ public class SpiritMovement : MonoBehaviour
         hvrPlayerController.Gravity = originalGravity;
         hvrPlayerController.MaxFallSpeed = originalMaxFallSpeed;
         characterController.enabled = true;
-        if (screenFade)
+        if (screenFadeOnCollision)
         {
             fadeGOs[0].GetComponent<HVRCanvasFade>().enabled = true;
         }

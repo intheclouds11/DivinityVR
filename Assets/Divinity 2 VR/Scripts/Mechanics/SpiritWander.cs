@@ -8,6 +8,7 @@ namespace intheclouds
     public class SpiritWander : MonoBehaviour
     {
         public bool activated;
+        public SpiritMovement spiritMovement;
         public Transform repositionTransform;
         public GameObject[] objectsToDeparent;
         public Transform spawnParent;
@@ -26,8 +27,6 @@ namespace intheclouds
         private AudioSource audioSource;
 
 
-        public SpiritMovement spiritMovement;
-
         private void Start()
         {
             hvrPlayerController = transform.parent.parent.GetComponentInChildren<HVRPlayerController>();
@@ -42,26 +41,26 @@ namespace intheclouds
 
         private void InputCheck()
         {
-            if (inTriggerLH)
-            {
-                if (timeInTriggerLH < 2)
-                {
-                    timeInTriggerLH += Time.deltaTime;
-                }
-
-                if (timeInTriggerLH >= timeInTriggerRequired)
-                {
-                    if (HVRInputManager.Instance.LeftController.GripButtonState.JustActivated)
-                    {
-                        ToggleSpiritForm();
-                    }
-                }
-            }
-
-            else if (!inTriggerLH)
-            {
-                timeInTriggerLH -= Time.deltaTime;
-            }
+            // if (inTriggerLH)
+            // {
+            //     if (timeInTriggerLH < 2)
+            //     {
+            //         timeInTriggerLH += Time.deltaTime;
+            //     }
+            //
+            //     if (timeInTriggerLH >= timeInTriggerRequired)
+            //     {
+            //         if (HVRInputManager.Instance.LeftController.GripButtonState.JustActivated)
+            //         {
+            //             ToggleSpiritForm();
+            //         }
+            //     }
+            // }
+            //
+            // else if (!inTriggerLH)
+            // {
+            //     timeInTriggerLH -= Time.deltaTime;
+            // }
 
             if (inTriggerRH)
             {
@@ -81,10 +80,14 @@ namespace intheclouds
 
             else if (!inTriggerRH)
             {
-                timeInTriggerRH -= Time.deltaTime;
+                if (timeInTriggerRH > 0)
+                {
+                    timeInTriggerRH -= Time.deltaTime;
+                }
             }
         }
 
+        // toggle spirit form and SpiritMovement.cs
         public void ToggleSpiritForm()
         {
             audioSource.Play();
@@ -103,6 +106,7 @@ namespace intheclouds
             activated = !activated;
         }
 
+        // save original transform, spawn another instance of the player and remove any unnecessary components
         private void Separate()
         {
             SaveOriginalTransforms();
@@ -130,6 +134,7 @@ namespace intheclouds
                     }
                 }
 
+                // make any masked objects visible to VRcamera
                 physicalFormObject.layer = LayerMask.NameToLayer("Default");
                 foreach (Transform child in physicalFormObject.transform)
                 {
@@ -138,6 +143,7 @@ namespace intheclouds
             }
         }
 
+        // Return to position and destroy spawnedObjs
         private void Reunite()
         {
             hvrPlayerController.transform.position = initialCharacterPosition;
@@ -167,11 +173,6 @@ namespace intheclouds
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Left Hand"))
-            {
-                inTriggerLH = true;
-            }
-
             if (other.CompareTag("Right Hand"))
             {
                 inTriggerRH = true;
@@ -180,11 +181,6 @@ namespace intheclouds
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Left Hand"))
-            {
-                inTriggerLH = false;
-            }
-
             if (other.CompareTag("Right Hand"))
             {
                 inTriggerRH = false;

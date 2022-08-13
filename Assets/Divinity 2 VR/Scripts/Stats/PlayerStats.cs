@@ -1,5 +1,6 @@
 using System;
 using HurricaneVR.Framework.Core.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,35 +10,62 @@ namespace intheclouds
     public class PlayerStats : MonoBehaviour
     {
         public PlayerStatsSO playerStatsSO;
-        [SerializeField] private Slider healthSlider;
-        [SerializeField] private Slider apSlider;
+        public string userName = "Username";
+        public Slider healthSlider;
+        public Slider physicalArmorSlider;
+        public Slider magicArmorSlider;
+        public Slider apSlider;
+        public TextMeshProUGUI healthText;
+        public TextMeshProUGUI physicalArmorText;
+        public TextMeshProUGUI magicArmorText;
         public int currentHealth;
         public int maxHealth;
+        public int currentPhysicalArmor;
+        public int maxPhysicalArmor;
+        public int currentMagicArmor;
+        public int maxMagicArmor;
         public int currentAP;
         public int maxAP;
-
+        
         public event Action Damaged; // use for other classes to know when player is damaged
 
-        private void Start()
+        private void Awake()
         {
+            userName = playerStatsSO.userName;
+            
             maxHealth = playerStatsSO.maxHealth;
             currentHealth = maxHealth;
-            maxAP = playerStatsSO.maxAP;
-            currentAP = maxAP;
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
+            healthText.text = $"{currentHealth}/{maxHealth}";
+
+            maxPhysicalArmor = playerStatsSO.maxPhysicalArmor;
+            currentPhysicalArmor = maxPhysicalArmor;
+            physicalArmorSlider.maxValue = maxPhysicalArmor;
+            physicalArmorSlider.value = currentPhysicalArmor;
+            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
+
+            maxMagicArmor = playerStatsSO.maxMagicArmor;
+            currentMagicArmor = maxMagicArmor;
+            magicArmorSlider.maxValue = maxMagicArmor;
+            magicArmorSlider.value = currentMagicArmor;
+            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
+
+            maxAP = playerStatsSO.maxAP;
+            currentAP = maxAP;
             apSlider.maxValue = maxAP;
             apSlider.value = currentAP;
         }
-        
-        public void TakeDamage(float damage)
+
+        public void TakeDamage(int damage)
         {
             Damaged?.Invoke();
-            // currentHealth -= damage;
+            currentHealth -= damage;
             healthSlider.value = currentHealth;
             if (currentHealth <= 0)
             {
-                GameManager.Instance.UpdateGameState(GameState.Lose);
+                Debug.Log("player died!!!");
+                // GameManager.Instance.UpdateGameState(GameState.Lose);
             }
         }
     }

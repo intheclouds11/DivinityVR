@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.Playing);
+        UpdateGameState(GameState.Exploration);
     }
 
     public void UpdateGameState(GameState newState)
@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour
 
         switch (newState)
         {
-            case GameState.Playing:
-                HandlePlaying();
+            case GameState.PlayerTurn:
+                HandlePlayerTurn();
                 break;
-            case GameState.Win:
-                HandleWin();
+            case GameState.EnemyTurn:
+                HandleEnemyTurn();
                 break;
-            case GameState.Lose:
-                HandleLose();
+            case GameState.Exploration:
+                HandleExploration();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -40,23 +40,26 @@ public class GameManager : MonoBehaviour
         GameStateChanged?.Invoke(newState);
     }
 
-    private void HandleLose()
+    private void HandleEnemyTurn()
     {
+        // reset enemy AP
     }
 
-    private void HandleWin()
+    private void HandlePlayerTurn()
     {
+        // reset player AP
     }
 
-    private void HandlePlaying()
+    private void HandleExploration()
     {
-        
+        // disable AP scripts?
     }
 }
 
 public enum GameState
 {
-    Playing,
-    Win,
-    Lose,
+    PlayerTurn,
+    EnemyTurn,
+    Exploration,
+    Dialogue
 }

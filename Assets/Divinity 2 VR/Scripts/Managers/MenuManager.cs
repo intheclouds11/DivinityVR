@@ -20,12 +20,12 @@ public class MenuManager : MonoBehaviour
 
     private void DisplayMenu(GameState state)
     {
-        menuCanvas.SetActive(state == GameState.Lose || state == GameState.Win);
-        loseScreen.SetActive(state == GameState.Lose);
-        // winScreen.SetActive(state == GameState.Win);
-        if (menuCanvas.activeInHierarchy)
-        {
-            OnMenuOpened?.Invoke();
-        }
+        // menuCanvas.SetActive(state == GameState.Lose || state == GameState.Win);
+        // loseScreen.SetActive(state == GameState.Lose);
+        // // winScreen.SetActive(state == GameState.Win);
+        // if (menuCanvas.activeInHierarchy)
+        // {
+        //     OnMenuOpened?.Invoke();
+        // }
     }
 }

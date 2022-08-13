@@ -12,7 +12,7 @@ namespace intheclouds
 {
     public class PlayerMovementAP : MonoBehaviour
     {
-        public bool activated;
+        public bool inCombat;
         private HVRPlayerInputs playerInputs;
         private HVRPlayerController playerController;
         private Vector3 previousPosition;
@@ -24,15 +24,19 @@ namespace intheclouds
         public TextMeshProUGUI distanceMovedText;
         public TextMeshProUGUI currentAPText;
 
-        private void Start()
+        private void Awake()
         {
             playerInputs = GetComponent<HVRPlayerInputs>();
             playerController = GetComponent<HVRPlayerController>();
         }
 
+        private void OnEnable()
+        {
+        }
+
         private void Update()
         {
-            if (!activated)
+            if (!inCombat)
             {
                 return;
             }
@@ -40,7 +44,7 @@ namespace intheclouds
             if (playerStats.currentAP == 0)
             {
                 playerController.MovementEnabled = false;
-                activated = false;
+                inCombat = false;
                 Debug.Log("Out of AP. Movement disabled.");
                 return;
             }
@@ -53,9 +57,10 @@ namespace intheclouds
             }
         }
 
+        // todo: call this when Combat Game Mode starts
         public void StartTurnSetup()
         {
-            activated = true;
+            inCombat = true;
             previousPosition = transform.position;
             distanceMoved = 0;
             apConsumed = 0;
@@ -65,7 +70,7 @@ namespace intheclouds
             if (playerStats == null)
             {
                 Debug.LogError("Couldn't get PlayerStats from APManager");
-                activated = false;
+                inCombat = false;
                 return;
             }
         }
@@ -77,6 +82,7 @@ namespace intheclouds
             if (distanceMoved > 3)
             {
                 playerStats.currentAP -= 1;
+                playerStats.apSlider.value -= 1;
                 distanceMoved -= 3;
             }
 
