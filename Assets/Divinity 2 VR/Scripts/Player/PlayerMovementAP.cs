@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
-using intheclouds;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -18,71 +13,46 @@ namespace intheclouds
         private Vector3 previousPosition;
         private PlayerStats playerStats;
         private float distanceMoved;
-        private int apConsumed;
 
         //Debugging
         public TextMeshProUGUI distanceMovedText;
-        public TextMeshProUGUI currentAPText;
 
         private void Awake()
         {
             playerInputs = GetComponent<HVRPlayerInputs>();
             playerController = GetComponent<HVRPlayerController>();
-        }
-
-        private void OnEnable()
-        {
+            playerStats = GetComponent<PlayerStats>();
         }
 
         private void Update()
         {
-            if (!inCombat)
+            if (!playerStats || !playerStats.playerTurnCombat)
             {
-                return;
-            }
-
-            if (playerStats.currentAP == 0)
-            {
-                playerController.MovementEnabled = false;
-                inCombat = false;
-                Debug.Log("Out of AP. Movement disabled.");
+                if (!playerStats.explorationMode) playerController.MovementEnabled = false;
                 return;
             }
 
             if (playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
             {
-                UseAP();
+                TrackMovementApUsage();
                 distanceMovedText.text = $"distance moved: {(int) distanceMoved}";
-                currentAPText.text = $"AP consumed: {playerStats.currentAP}";
             }
         }
 
         // todo: call this when Combat Game Mode starts
         public void StartTurnSetup()
         {
-            inCombat = true;
             previousPosition = transform.position;
             distanceMoved = 0;
-            apConsumed = 0;
-
-            APManager.instance.playersStatsDictionary.TryGetValue(this.gameObject, out var stats);
-            playerStats = stats;
-            if (playerStats == null)
-            {
-                Debug.LogError("Couldn't get PlayerStats from APManager");
-                inCombat = false;
-                return;
-            }
         }
 
-        private void UseAP()
+        private void TrackMovementApUsage()
         {
             distanceMoved += Vector3.Distance(transform.position, previousPosition);
 
             if (distanceMoved > 3)
             {
-                playerStats.currentAP -= 1;
-                playerStats.apSlider.value -= 1;
+                playerStats.UseAP(1);
                 distanceMoved -= 3;
             }
 

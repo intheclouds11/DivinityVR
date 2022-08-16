@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: Username
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 50
   maxPhysicalArmor: 10
-  currentPhysicalArmor: 0
+  currentPhysicalArmor: 5
   maxMagicArmor: 10
-  currentMagicArmor: 0
+  currentMagicArmor: 6
   maxAP: 5
-  currentAP: 0
+  currentAP: 5
   XP: 0
   gold: 0

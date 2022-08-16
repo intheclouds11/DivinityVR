@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "New EnemyStats")]
 public class EnemyStatsSO : ScriptableObject
