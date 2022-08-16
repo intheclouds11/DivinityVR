@@ -1,5 +1,4 @@
 using System;
-using HurricaneVR.Framework.Core.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,6 +17,7 @@ namespace intheclouds
         public TextMeshProUGUI healthText;
         public TextMeshProUGUI physicalArmorText;
         public TextMeshProUGUI magicArmorText;
+        public TextMeshProUGUI apText;
         public int currentHealth;
         public int maxHealth;
         public int currentPhysicalArmor;
@@ -26,35 +26,60 @@ namespace intheclouds
         public int maxMagicArmor;
         public int currentAP;
         public int maxAP;
+        public bool playerTurnCombat;
+        public bool explorationMode = true;
         
         public event Action Damaged; // use for other classes to know when player is damaged
 
         private void Awake()
         {
-            userName = playerStatsSO.userName;
+            InitializeStats();
+        }
+
+        private void Update()
+        {
+            UpdateStatsHud();
+            if (currentAP == 0)
+            {
+                playerTurnCombat = false;
+            }
             
+        }
+
+        private void InitializeStats()
+        {
+            userName = playerStatsSO.userName;
+
             maxHealth = playerStatsSO.maxHealth;
-            currentHealth = maxHealth;
+            currentHealth = playerStatsSO.currentHealth;
+
+            maxPhysicalArmor = playerStatsSO.maxPhysicalArmor;
+            currentPhysicalArmor = playerStatsSO.currentPhysicalArmor;
+
+            maxMagicArmor = playerStatsSO.maxMagicArmor;
+            currentMagicArmor = playerStatsSO.currentMagicArmor;
+
+            maxAP = playerStatsSO.maxAP;
+            currentAP = playerStatsSO.currentAP;
+        }
+
+        private void UpdateStatsHud()
+        {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
             healthText.text = $"{currentHealth}/{maxHealth}";
-
-            maxPhysicalArmor = playerStatsSO.maxPhysicalArmor;
-            currentPhysicalArmor = maxPhysicalArmor;
+            
             physicalArmorSlider.maxValue = maxPhysicalArmor;
             physicalArmorSlider.value = currentPhysicalArmor;
             physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
-
-            maxMagicArmor = playerStatsSO.maxMagicArmor;
-            currentMagicArmor = maxMagicArmor;
+            
             magicArmorSlider.maxValue = maxMagicArmor;
             magicArmorSlider.value = currentMagicArmor;
             magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
-
-            maxAP = playerStatsSO.maxAP;
-            currentAP = maxAP;
+            
             apSlider.maxValue = maxAP;
             apSlider.value = currentAP;
+            apText.text = $"{currentAP}/{maxAP}";
         }
 
         public void TakeDamage(int damage)
@@ -67,6 +92,13 @@ namespace intheclouds
                 Debug.Log("player died!!!");
                 // GameManager.Instance.UpdateGameState(GameState.Lose);
             }
+        }
+
+        public void UseAP(int apConsumed)
+        {
+            currentAP -= apConsumed;
+            apSlider.value -= apConsumed;
+            apText.text = $"{currentAP}/{maxAP}";
         }
     }
 }
