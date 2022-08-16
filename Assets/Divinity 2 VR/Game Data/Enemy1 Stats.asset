@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Enemy1 Stats
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 60
+  currentHealth: 100
   maxPhysicalArmor: 10
-  currentPhysicalArmor: 5
+  currentPhysicalArmor: 10
   maxMagicArmor: 10
-  currentMagicArmor: 4
+  currentMagicArmor: 10
   maxAP: 5
   currentAP: 5
   earnedXP: 50

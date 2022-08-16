@@ -358,10 +358,6 @@ MonoBehaviour:
   healthText: {fileID: 3153425705467912593}
   physicalArmorText: {fileID: 4740942258132062613}
   magicArmorText: {fileID: 5028263097424554687}
-  hitPopupPrefab: {fileID: 5426677873261681927, guid: 6395bca85e7663b4e8001aa70cf26d39, type: 3}
-  hitPopupsParent: {fileID: 1361799774684565243}
-  hitPopupSpeed: 0.5
-  hitPopupTimer: 2
   currentHealth: 0
   maxHealth: 0
   currentPhysicalArmor: 0
@@ -371,13 +367,9 @@ MonoBehaviour:
   currentAP: 0
   maxAP: 0
   earnedXP: 0
-  isAlive: 1
-  hurtAudioClips:
-  - {fileID: 8300000, guid: 51ad56d3985e4bb41b7af67ff4713255, type: 3}
-  - {fileID: 8300000, guid: 7f06b6bdbffa21442bf9ccbdd16eeeaf, type: 3}
-  deadAudioClips:
-  - {fileID: 8300000, guid: 05a3de94083020441bd71f7c7e324679, type: 3}
-  - {fileID: 8300000, guid: 8eed073fe9c0e89498e115af5a3a49c7, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 9ddfb5328c75fc54994728d0c5f784f8, type: 3}
+  - {fileID: 8300000, guid: a38343f2043a506419d43f9a8f442405, type: 3}
 --- !u!1 &724328383156325867
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,42 +485,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1361799774684565243
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4948745648077791026}
-  m_Layer: 0
-  m_Name: HitPopups
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4948745648077791026
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361799774684565243}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3400181433039083661}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1973038873622917432
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  m_Color: {r: 0, g: 0.2735849, b: 0.0072070765, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1285,7 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2524475, g: 0.4609449, b: 0.5754717, a: 1}
+  m_Color: {r: 0, g: 0.2735849, b: 0.0072070765, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1744,7 +1700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.4339623, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1975,20 +1931,19 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8581814690389531494}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.087}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 572625694945023074}
   - {fileID: 7775741346135358696}
   - {fileID: 6549188721771327265}
-  - {fileID: 4948745648077791026}
   m_Father: {fileID: 405365729350233380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.136}
+  m_AnchoredPosition: {x: -0, y: 2.136}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3049445180107611835
