@@ -21,10 +21,10 @@ TagManager:
   - 
   - Player
   - DynamicPose
+  - Ground
   - 
-  - 
-  - 
-  - 
+  - EnemyTrigger
+  - EnemyCollide
   - 
   - 
   - 

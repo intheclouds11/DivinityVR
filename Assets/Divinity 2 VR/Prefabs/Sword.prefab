@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4073626951655824665}
   - component: {fileID: 5328426582347607373}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7190197581808981917}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: orient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5637333262594443916}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6602342154363407589}
   - component: {fileID: 7597724808604238642}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: SFX Swing fast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702480768315516632}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 8273008199890636470}
   - component: {fileID: 4920560131412792357}
   - component: {fileID: 542229369665472837}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Object_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 2896309277240891991}
   - component: {fileID: 3900646311271127311}
   - component: {fileID: 8635833222494668289}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Object_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6911517481102165789}
   - component: {fileID: 8493317404701687764}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6909836004089717579}
   - component: {fileID: 8615105368264337160}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9030431133233859342}
   - component: {fileID: 4044193423256131053}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: SFX Hit light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3799361370838355580}
   - component: {fileID: 4671587946422996837}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GrabPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 8067578847398583149}
   - component: {fileID: 823611427448299699}
   - component: {fileID: 529129185898337540}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Object_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7267138842344841237}
   - component: {fileID: 799697659351842186}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,8 @@ GameObject:
   - component: {fileID: 6759999902488068400}
   - component: {fileID: 1912579557475883520}
   - component: {fileID: 5166435108555472783}
-  m_Layer: 0
+  - component: {fileID: 903402906}
+  m_Layer: 20
   m_Name: Sword
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -884,17 +885,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f1a886ed712e1429ae864cd2d2a3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phasedModel: {fileID: 0}
-  originalModel: {fileID: 0}
-  isPhased: 0
-  inContact: 0
-  phaseTime: 0
-  lightHitTriggerSpeed: 1
-  mediumHitTriggerSpeed: 2
-  fastHitTriggerSpeed: 5
-  lowVelSwingTriggerSpeed: 4
-  mediumVelSwingTriggerSpeed: 6
-  highVelSwingTriggerSpeed: 10
+  lightHitTriggerSpeed: 10
+  mediumHitTriggerSpeed: 15
+  fastHitTriggerSpeed: 20
+  lowVelSwingTriggerSpeed: 13
+  mediumVelSwingTriggerSpeed: 18
+  highVelSwingTriggerSpeed: 23
   hitSFXAudioSource: {fileID: 4044193423256131053}
   swingSFXAudioSource: {fileID: 7597724808604238642}
 --- !u!54 &8344662063685084029
@@ -1006,10 +1002,34 @@ MonoBehaviour:
       m_Calls: []
   HandGrabbed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 903402906}
+        m_TargetAssemblyTypeName: WeaponAP, Assembly-CSharp
+        m_MethodName: UpdateWielder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HandReleased:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 903402906}
+        m_TargetAssemblyTypeName: WeaponAP, Assembly-CSharp
+        m_MethodName: UpdateWielder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HandFullReleased:
     m_PersistentCalls:
       m_Calls: []
@@ -1076,6 +1096,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Orientation: {fileID: 7190197581808981917}
+--- !u!114 &903402906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901681597923893651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b033438ffa50c44488bad3529ea1b3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredHitSpeed: 1
+  requiredHitAP: 2
+  physicalDamage: 50
+  magicDamage: 0
+  hitCooldownTimer: 0
+  hitCooldown: 0.25
 --- !u!1 &4351125882715024775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2514542899810387469}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4310570485754763444}
   - component: {fileID: 3344313834698104298}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1211,7 @@ GameObject:
   - component: {fileID: 7397527504323884103}
   - component: {fileID: 5088870565177464216}
   - component: {fileID: 377463980411704209}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1325,7 @@ GameObject:
   - component: {fileID: 1789015382558986409}
   - component: {fileID: 1728063161095571172}
   - component: {fileID: 1495110903669198676}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1403,7 +1441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7227240076230408104}
   - component: {fileID: 2410700909872024498}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6491084600811232552}
   - component: {fileID: 949470067050030820}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1534,7 @@ GameObject:
   - component: {fileID: 9018639745302960406}
   - component: {fileID: 5341786208890766898}
   - component: {fileID: 9168180846820001087}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Object_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1579,7 +1617,7 @@ GameObject:
   - component: {fileID: 1028939174458846384}
   - component: {fileID: 8120303155157628718}
   - component: {fileID: 8495859513353488086}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Object_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

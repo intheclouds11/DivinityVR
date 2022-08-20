@@ -1,28 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Player;
-using intheclouds;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace intheclouds
 {
     public class UserMenu : MonoBehaviour
     {
-        // public Transform originalParent;
-        // public Vector3 originalLocalPosition;
-        // public Quaternion originalLocalRotation;
         public bool followPlayer;
         public GameObject player;
         public GameObject followPoint;
         public bool menuIsOpen;
         private GameObject canvasGO;
-        public PlayerStats playerStats;
-        public TextMeshProUGUI currentAPText;
 
         private void Start()
         {
@@ -32,7 +20,6 @@ namespace intheclouds
 
         private void Update()
         {
-            // Canvas placement
             if (followPlayer)
             {
                 canvasGO.transform.position = Vector3.Lerp(canvasGO.transform.position, followPoint.transform.position, 5 * Time.deltaTime);
@@ -58,14 +45,7 @@ namespace intheclouds
 
         public void Toggle_FollowPlayer()
         {
-            if (!followPlayer)
-            {
-                followPlayer = true;
-            }
-            else
-            {
-                followPlayer = false;
-            }
+            followPlayer = !followPlayer;
         }
 
         public void Button_ResetScene()

@@ -1,7 +1,9 @@
+using System;
 using HurricaneVR.Framework.Core;
 using intheclouds;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
@@ -39,16 +41,28 @@ namespace intheclouds
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
             if (hitCooldownTimer > 0 || wieldingUser == null || !wieldingUser.playerTurnCombat) return;
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.layer == LayerMask.NameToLayer("EnemyTrigger"))
             {
                 if (rb.velocity.magnitude > requiredHitSpeed)
                 {
                     if (wieldingUser.currentAP > requiredHitAP)
                     {
-                        collision.gameObject.GetComponent<EnemyStats>()?.TakeDamage(DamageType.Physical, physicalDamage);
+                        if (physicalDamage > 0)
+                        {
+                            var actualDamage = Random.Range(physicalDamage - (int) (physicalDamage * 0.1f),
+                                physicalDamage + (int) (physicalDamage * 0.1f));
+                            other.GetComponent<EnemyStats>()?.TakeDamage(DamageType.Physical, actualDamage);
+                        }
+                        else if (magicDamage > 0)
+                        {
+                            var actualDamage = Random.Range(magicDamage - (int) (magicDamage * 0.1f),
+                                magicDamage + (int) (magicDamage * 0.1f));
+                            other.GetComponent<EnemyStats>()?.TakeDamage(DamageType.Magic, actualDamage);
+                        }
+
                         wieldingUser.UseAP(requiredHitAP);
                         hitCooldownTimer += hitCooldown;
                     }

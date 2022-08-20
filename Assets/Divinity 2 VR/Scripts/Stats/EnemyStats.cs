@@ -44,10 +44,13 @@ namespace intheclouds
             if (!enemyStatsSO) return;
             maxHealth = enemyStatsSO.maxHealth;
             currentHealth = enemyStatsSO.currentHealth;
+            UpdateHealthUI();
             maxPhysicalArmor = enemyStatsSO.maxPhysicalArmor;
             currentPhysicalArmor = enemyStatsSO.currentPhysicalArmor;
+            UpdatePhysicalArmorUI();
             maxMagicArmor = enemyStatsSO.maxMagicArmor;
             currentMagicArmor = enemyStatsSO.currentMagicArmor;
+            UpdateMagicArmorUI();
 
             maxAP = enemyStatsSO.maxAP;
             currentAP = enemyStatsSO.currentAP;
@@ -55,6 +58,11 @@ namespace intheclouds
         }
 
         private void Update()
+        {
+            HitPopupUpdate();
+        }
+
+        private void HitPopupUpdate()
         {
             if (activeHitPopups.Count > 0)
             {
@@ -68,41 +76,48 @@ namespace intheclouds
                     }
                 }
             }
-
-            if (!isAlive) return;
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
-            healthText.text = $"{currentHealth}/{maxHealth}";
-            physicalArmorSlider.maxValue = maxPhysicalArmor;
-            physicalArmorSlider.value = currentPhysicalArmor;
-            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
-            magicArmorSlider.maxValue = maxMagicArmor;
-            magicArmorSlider.value = currentMagicArmor;
-            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
         }
 
-        public void TakeDamage(Weapon.DamageType type, int damage) // todo: add type of damage
+        public void TakeDamage(Weapon.DamageType damageType, int damage)
         {
             if (!isAlive) return;
-            var actualDamage = Random.Range(damage - (int) (damage * 0.9f), damage + (int) (damage * 0.1f));
-            if (currentPhysicalArmor > 0)
+
+            var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
+            newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+            activeHitPopups.Add(newHitPopup);
+
+            if (damageType == Weapon.DamageType.Physical)
             {
-                if (currentPhysicalArmor - actualDamage < 0)
+                if (currentPhysicalArmor - damage >= 0)
                 {
-                    currentHealth -= actualDamage - currentPhysicalArmor;
-                    currentPhysicalArmor = 0;
+                    currentPhysicalArmor -= damage;
                 }
                 else
                 {
-                    currentPhysicalArmor -= actualDamage;
+                    currentHealth -= damage - currentPhysicalArmor;
+                    currentPhysicalArmor = 0;
                 }
+
+                newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                UpdatePhysicalArmorUI();
             }
-            else
+            else if (damageType == Weapon.DamageType.Magic)
             {
-                currentHealth -= actualDamage;
+                if (currentMagicArmor - damage >= 0)
+                {
+                    currentMagicArmor -= damage;
+                }
+                else
+                {
+                    currentHealth -= damage - currentMagicArmor;
+                    currentMagicArmor = 0;
+                }
+
+                newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
+                UpdateMagicArmorUI();
             }
 
-            if (currentHealth > 0) // normal hurt sfx
+            if (currentHealth > 0)
             {
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.volume = 1;
@@ -110,20 +125,39 @@ namespace intheclouds
                 Damaged?.Invoke();
             }
 
-            if (currentHealth <= 0) // death sfx
+            if (currentHealth <= 0)
             {
+                currentHealth = 0;
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.volume = 0.7f;
                 audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
-                healthSlider.value = 0;
-                healthText.text = $"{0}/{maxHealth}";
                 isAlive = false;
-                // ragdoll death
+                GetComponent<Rigidbody>().isKinematic = false;
+                GetComponent<Rigidbody>().useGravity = true;
             }
 
-            var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
-            newHitPopup.GetComponent<TextMeshProUGUI>().text = actualDamage.ToString();
-            activeHitPopups.Add(newHitPopup);
+            UpdateHealthUI();
+        }
+
+        public void UpdateMagicArmorUI()
+        {
+            magicArmorSlider.maxValue = maxMagicArmor;
+            magicArmorSlider.value = currentMagicArmor;
+            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
+        }
+
+        public void UpdatePhysicalArmorUI()
+        {
+            physicalArmorSlider.maxValue = maxPhysicalArmor;
+            physicalArmorSlider.value = currentPhysicalArmor;
+            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
+        }
+
+        public void UpdateHealthUI()
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+            healthText.text = $"{currentHealth}/{maxHealth}";
         }
 
         private void OnEnable()
@@ -138,7 +172,7 @@ namespace intheclouds
 
         public void DamageEventExample()
         {
-            // Debug.Log("Enemy damaged event example");
+            // shackles of pain
         }
     }
 }

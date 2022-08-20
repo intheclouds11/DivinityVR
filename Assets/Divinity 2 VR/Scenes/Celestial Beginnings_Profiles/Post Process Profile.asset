@@ -21,7 +21,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.31
+    value: 1
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -74,7 +74,7 @@ MonoBehaviour:
     defaultState: 1
   tonemapper:
     overrideState: 1
-    value: 2
+    value: 1
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 0
-    value: -48
+    value: -4
   tint:
     overrideState: 0
     value: 0
@@ -114,16 +114,16 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 0
-    value: 17
+    value: 4
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: -1.01
   contrast:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 91
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -153,13 +153,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 1, z: 1, w: -0.058091287}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.21739134}
+    value: {x: 1, y: 0.9592818, z: 0.9408017, w: -0.08461126}
   gain:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.87363046, y: 0.8461721, z: 1, w: -0.13278008}
   masterCurve:
     overrideState: 0
     value:
@@ -1372,34 +1372,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 0.41
+    value: 0.3
   threshold:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 3.52
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0.361
   clamp:
     overrideState: 0
     value: 65472
   diffusion:
-    overrideState: 0
-    value: 7
+    overrideState: 1
+    value: 6.1
   anamorphicRatio:
     overrideState: 0
     value: 0
   color:
-    overrideState: 0
+    overrideState: 1
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 1
-    value: 0
+    value: 1
   dirtTexture:
     overrideState: 0
     value: {fileID: 0}
