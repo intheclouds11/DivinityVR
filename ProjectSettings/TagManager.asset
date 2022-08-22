@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - Left Hand
   - Right Hand
+  - EnemyHead
+  - EnemyBody
+  - MakeVisibleWhenLookingAt
   layers:
   - Default
   - TransparentFX
@@ -23,8 +26,8 @@ TagManager:
   - DynamicPose
   - Ground
   - 
-  - EnemyTrigger
-  - EnemyCollide
+  - Enemy
+  - EnemyHit
   - 
   - 
   - 

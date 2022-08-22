@@ -3,24 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TresureChest : MonoBehaviour
+namespace intheclouds
 {
-    private AudioSource audioSource;
-    public bool opened;
-
-    private void Start()
+    public class TresureChest : MonoBehaviour
     {
-        audioSource = GetComponent<AudioSource>();
-    }
+        private AudioSource audioSource;
+        public bool opened;
+        public int gold = 12;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        private void Start()
         {
-            if (!opened)
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
             {
-                opened = true;
-                audioSource.Play();
+                if (!opened)
+                {
+                    opened = true;
+                    audioSource.Play();
+                    collision.gameObject.transform.root.GetComponentInChildren<PlayerStats>().gold += gold;
+                }
             }
         }
     }

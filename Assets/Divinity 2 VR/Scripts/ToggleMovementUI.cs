@@ -28,7 +28,7 @@ public class ToggleMovementUI : MonoBehaviour
 
             if (timeInTriggerRH >= timeInTriggerRequired)
             {
-                if (HVRInputManager.Instance.RightController.GripButtonState.JustActivated)
+                if (HVRInputManager.Instance.RightController.TriggerButtonState.JustActivated)
                 {
                     ToggleVisibility();
                 }
@@ -39,7 +39,7 @@ public class ToggleMovementUI : MonoBehaviour
         {
             if (timeInTriggerRH > 0)
             {
-                timeInTriggerRH -= Time.deltaTime;
+                timeInTriggerRH = 0;
             }
         }
     }

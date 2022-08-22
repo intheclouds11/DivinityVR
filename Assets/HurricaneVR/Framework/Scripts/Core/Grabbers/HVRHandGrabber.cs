@@ -201,6 +201,17 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         public bool IsInitialLineGrab => IsLineGrab && !_primaryGrabPointGrab && PosableGrabPoint.LineInitialCanReposition;
 
+        public void SwapGrabTriggerType()
+        {
+            if (GrabTrigger == HVRGrabTrigger.Toggle)
+            {
+                GrabTrigger = HVRGrabTrigger.Active;
+            }
+            else if (GrabTrigger == HVRGrabTrigger.Toggle)
+            {
+                GrabTrigger = HVRGrabTrigger.Toggle;
+            }
+        }
 
         public HVRGrabbable TriggerHoverTarget
         {

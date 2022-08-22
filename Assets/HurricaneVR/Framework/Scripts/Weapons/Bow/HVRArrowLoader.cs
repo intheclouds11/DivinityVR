@@ -22,7 +22,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
             }
         }
 
-        private void OnStringGrabbed(HVRHandGrabber arg0, HVRGrabbable arg1)
+        protected virtual void OnStringGrabbed(HVRHandGrabber arg0, HVRGrabbable arg1)
         {
             if (!bow.ArrowNocked && ArrowPrefab)
             {

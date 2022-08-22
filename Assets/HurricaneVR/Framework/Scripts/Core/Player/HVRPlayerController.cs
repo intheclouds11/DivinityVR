@@ -316,7 +316,7 @@ namespace HurricaneVR.Framework.Core.Player
         {
             var origin = CharacterController.center - Vector3.up * (.5f * CharacterController.height - CharacterController.radius);
             IsGrounded = Physics.SphereCast(
-                transform.TransformPoint(origin) + Vector3.up * CharacterController.contactOffset, 
+                transform.TransformPoint(origin) + Vector3.up * CharacterController.contactOffset,
                 CharacterController.radius,
                 Vector3.down,
                 out var hit,

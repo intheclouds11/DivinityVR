@@ -69,14 +69,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499405150309798155}
-  m_LocalRotation: {x: 0.22003332, y: -0.672001, z: 0.22003332, w: 0.672001}
-  m_LocalPosition: {x: 0.2, y: 0.3, z: -0.0116}
+  m_LocalRotation: {x: -0.20082921, y: -0.67798793, z: -0.20082921, w: 0.67798793}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7341716579107846061}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 36.26, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -33, y: -90, z: 0}
 --- !u!1 &1162162555994468611
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrabBehaviour: 0
   PoseType: 0
-  TrackingType: 0
+  TrackingType: 1
   HoldType: 1
   GrabControl: 0
   OverrideGrabTrigger: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 903402906}
-        m_TargetAssemblyTypeName: WeaponAP, Assembly-CSharp
+        m_TargetAssemblyTypeName: intheclouds.Sword, Assembly-CSharp
         m_MethodName: UpdateWielder
         m_Mode: 1
         m_Arguments:
@@ -1019,7 +1019,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 903402906}
-        m_TargetAssemblyTypeName: WeaponAP, Assembly-CSharp
+        m_TargetAssemblyTypeName: intheclouds.Sword, Assembly-CSharp
         m_MethodName: UpdateWielder
         m_Mode: 1
         m_Arguments:
@@ -1108,12 +1108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b033438ffa50c44488bad3529ea1b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredHitSpeed: 1
-  requiredHitAP: 2
-  physicalDamage: 50
-  magicDamage: 0
-  hitCooldownTimer: 0
   hitCooldown: 0.25
+  requiredHitSpeed: 1
+  requiredAP: 2
+  physicalDamage: 0
+  magicDamage: 50
+  hitCooldownTimer: 0
 --- !u!1 &4351125882715024775
 GameObject:
   m_ObjectHideFlags: 0

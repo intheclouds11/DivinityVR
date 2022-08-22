@@ -20,4 +20,4 @@ MonoBehaviour:
   currentMagicArmor: 4
   maxAP: 5
   currentAP: 5
-  earnedXP: 50
+  earnedXP: 20

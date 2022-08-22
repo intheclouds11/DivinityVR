@@ -71,7 +71,7 @@ namespace intheclouds
 
                 if (timeInTriggerRH >= timeInTriggerRequired)
                 {
-                    if (HVRInputManager.Instance.RightController.GripButtonState.JustActivated)
+                    if (HVRInputManager.Instance.RightController.TriggerButtonState.JustActivated)
                     {
                         ToggleSpiritForm();
                     }
@@ -82,7 +82,7 @@ namespace intheclouds
             {
                 if (timeInTriggerRH > 0)
                 {
-                    timeInTriggerRH -= Time.deltaTime;
+                    timeInTriggerRH = 0;
                 }
             }
         }

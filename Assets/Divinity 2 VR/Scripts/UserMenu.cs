@@ -32,6 +32,7 @@ namespace intheclouds
         {
             if (!menuIsOpen)
             {
+                // followPlayer = true;
                 canvasGO.transform.position = followPoint.transform.position;
                 canvasGO.SetActive(true);
             }
@@ -58,11 +59,13 @@ namespace intheclouds
             var playerStatsArray = FindObjectsOfType<PlayerStats>();
             foreach (var playerStats in playerStatsArray)
             {
-                playerStats.currentHealth = playerStats.maxHealth;
-                playerStats.currentPhysicalArmor = playerStats.maxPhysicalArmor;
-                playerStats.currentMagicArmor = playerStats.maxMagicArmor;
-                playerStats.currentAP = playerStats.maxAP;
+                playerStats.currentHealth = playerStats.playerStatsSO.maxHealth;
+                playerStats.currentPhysicalArmor = playerStats.playerStatsSO.maxPhysicalArmor;
+                playerStats.currentMagicArmor = playerStats.playerStatsSO.maxMagicArmor;
+                playerStats.currentAP = playerStats.playerStatsSO.maxAP;
             }
+
+            Debug.Log("RESET STATS");
         }
         
         public void Button_ExplorationMode()

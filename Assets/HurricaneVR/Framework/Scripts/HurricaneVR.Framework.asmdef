@@ -1,5 +1,6 @@
 {
     "name": "HurricaneVR.Framework",
+    "rootNamespace": "",
     "references": [
         "Hurricane.Shared",
         "UnityEngine.SpatialTracking",

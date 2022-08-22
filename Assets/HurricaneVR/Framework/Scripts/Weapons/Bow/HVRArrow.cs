@@ -18,7 +18,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
         public HVRArrowPassthrough ForwardGrabbable { get; private set; }
 
         public bool Flying { get; set; }
-
+        
         protected virtual void Awake()
         {
             if (Notch)

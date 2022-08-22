@@ -14,5 +14,6 @@ public class PlayerStatsSO : ScriptableObject
     public int maxAP;
     public int currentAP;
     public int XP;
+    public int XPToNextLevel;
     public int gold;
 }

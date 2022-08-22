@@ -21,7 +21,6 @@ namespace intheclouds
         public GameObject hitPopupsParent;
         public float hitPopupSpeed = 0.5f;
         public float hitPopupTimer = 2;
-        private List<GameObject> activeHitPopups = new List<GameObject>();
         public int currentHealth;
         public int maxHealth;
         public int currentPhysicalArmor;
@@ -32,11 +31,15 @@ namespace intheclouds
         public int maxAP;
         public int earnedXP;
         public bool isAlive = true;
-
-        private AudioSource audioSource;
         public AudioClip[] hurtAudioClips;
         public AudioClip[] deadAudioClips;
-        public event Action Damaged; // use for other classes to know when player is damaged
+        
+        public event Action EnemyDamaged; 
+        public event Action EnemyDied; 
+
+        private AudioSource audioSource;
+        private List<GameObject> activeHitPopups = new List<GameObject>();
+
 
         private void Awake()
         {
@@ -78,7 +81,7 @@ namespace intheclouds
             }
         }
 
-        public void TakeDamage(Weapon.DamageType damageType, int damage)
+        public void TakeDamage(DamageType damageType, int damage)
         {
             if (!isAlive) return;
 
@@ -86,7 +89,7 @@ namespace intheclouds
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
             activeHitPopups.Add(newHitPopup);
 
-            if (damageType == Weapon.DamageType.Physical)
+            if (damageType == DamageType.Physical)
             {
                 if (currentPhysicalArmor - damage >= 0)
                 {
@@ -101,7 +104,7 @@ namespace intheclouds
                 newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
                 UpdatePhysicalArmorUI();
             }
-            else if (damageType == Weapon.DamageType.Magic)
+            else if (damageType == DamageType.Magic)
             {
                 if (currentMagicArmor - damage >= 0)
                 {
@@ -122,7 +125,7 @@ namespace intheclouds
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.volume = 1;
                 audioSource.PlayOneShot(hurtAudioClips[Random.Range(0, hurtAudioClips.Length)]);
-                Damaged?.Invoke();
+                EnemyDamaged?.Invoke();
             }
 
             if (currentHealth <= 0)
@@ -134,6 +137,7 @@ namespace intheclouds
                 isAlive = false;
                 GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<Rigidbody>().useGravity = true;
+                EnemyDied?.Invoke();
             }
 
             UpdateHealthUI();
@@ -162,12 +166,12 @@ namespace intheclouds
 
         private void OnEnable()
         {
-            this.Damaged += DamageEventExample;
+            this.EnemyDamaged += DamageEventExample;
         }
 
         private void OnDisable()
         {
-            this.Damaged -= DamageEventExample;
+            this.EnemyDamaged -= DamageEventExample;
         }
 
         public void DamageEventExample()
