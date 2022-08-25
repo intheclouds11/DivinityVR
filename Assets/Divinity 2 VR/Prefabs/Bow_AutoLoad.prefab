@@ -153,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374352084952456071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -617,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185757251254810107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0104, y: 0, z: 0.0671}
+  m_LocalPosition: {x: -0.0104, y: 0, z: 0.0171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -649,7 +649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185757251491260540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -699,7 +699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185757251671855757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.131}
+  m_LocalPosition: {x: 0, y: 0, z: -0.181}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -718,7 +718,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5185757251671855767
 MonoBehaviour:
@@ -1017,7 +1017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185757252327271693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0102, y: 0, z: 0.0664}
+  m_LocalPosition: {x: 0.0102, y: 0, z: 0.0164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1392,7 +1392,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.037915945, y: 0.5187477, z: 0.05763817}
-  m_Center: {x: -0.0004633665, y: 0.0030847192, z: 0.05}
+  m_Center: {x: -0.0004633665, y: 0.0030847192, z: 0}
 --- !u!65 &4126267781520109326
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1405,7 +1405,7 @@ BoxCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.0590676, y: 1.3579609, z: 0.24982658}
-  m_Center: {x: -0.005147074, y: -0.00044399317, z: -0.0405664}
+  m_Center: {x: -0.005147074, y: -0.00044399317, z: -0.0905664}
 --- !u!114 &1434098202219580612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,12 +1424,12 @@ MonoBehaviour:
   ScaleSize: 0
   SocketScale: 1
   ScaleOverride: {fileID: 4126267781520109326}
-  SocketedClip: {fileID: 0}
-  UnsocketedClip: {fileID: 0}
+  SocketedClip: {fileID: 8300000, guid: 7d853d9961e50434097fe1047f38c444, type: 3}
+  UnsocketedClip: {fileID: 8300000, guid: 71da2124ae2bb8f4d80e99c92613b202, type: 3}
   LinkedGrabbables: []
   Tags:
     Tags: {fileID: 11400000, guid: 0e83bcde818c784468e6c9a69d44702f, type: 2}
-    _data: 1
+    _data: 5
 --- !u!114 &1937837826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,13 +1483,14 @@ MonoBehaviour:
   HapticsMaxAmplitude: 1
   HapticsDuration: 0.01
   HapticsFrequency: 1
-  StringClip: {fileID: 0}
+  StringClip: {fileID: 8300000, guid: 8a95f5613a17c0f4db5b93318e947568, type: 3}
   StringMinPitch: 1
   StringMaxPitch: 1.25
-  ReleasedSFX: []
+  ReleasedSFX:
+  - {fileID: 8300000, guid: 40ffd23ea20f9b748a84d6be2407a64a, type: 3}
   StringSpring: 1000
   StringHeldSpring: 100
-  CanNockRotate: 0
+  CanNockRotate: 1
   requiredAP: 2
 --- !u!114 &1937837834
 MonoBehaviour:

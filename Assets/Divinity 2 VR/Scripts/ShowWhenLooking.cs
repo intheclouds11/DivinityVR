@@ -5,13 +5,10 @@ using UnityEngine;
 
 namespace intheclouds
 {
-    public class VisibleToCamera : MonoBehaviour
+    public class ShowWhenLooking : MonoBehaviour
     {
         public GameObject objectToShowAndHide;
         private Ray ray;
-        public float cooldownTimer;
-        public float coolDownThreshold;
-        public float coolDownAddTime;
 
         private void Start()
         {
@@ -27,10 +24,10 @@ namespace intheclouds
                 {
                     objectToShowAndHide.SetActive(true);
                 }
-            }
-            else
-            {
-                objectToShowAndHide.SetActive(false);
+                else
+                {
+                    objectToShowAndHide.SetActive(false);
+                }
             }
         }
     }

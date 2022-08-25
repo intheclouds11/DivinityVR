@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using Unity.VisualScripting;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 
 namespace intheclouds
 {
+    [SuppressMessage("ReSharper", "ArrangeAccessorOwnerBody")]
     public class PlayerStats : MonoBehaviour
     {
         public PlayerStatsSO playerStatsSO;
@@ -22,22 +24,150 @@ namespace intheclouds
         public TextMeshProUGUI magicArmorText;
         public TextMeshProUGUI apText;
         public TextMeshProUGUI goldText;
-        public int currentHealth;
-        public int maxHealth;
-        public int currentPhysicalArmor;
-        public int maxPhysicalArmor;
-        public int currentMagicArmor;
-        public int maxMagicArmor;
-        public int currentAP;
-        public int maxAP;
-        public int gold;
-        public int XP;
-        public int XPToNextLevel;
         public AudioClip levelUpClip;
-        public bool playerTurnCombat;
-        public bool explorationMode = true;
 
-        public event Action PlayerDamaged; // use for other classes to know when player is damaged
+        [Tooltip("Player's Stats")]
+        private int _currentHealth;
+        public int currentHealth
+        {
+            get { return _currentHealth; }
+            set
+            {
+                _currentHealth = value;
+                UpdateHealthInfo();
+            }
+        }
+        private int _maxHealth;
+        public int maxHealth
+        {
+            get => _maxHealth;
+            set
+            {
+                _maxHealth = value;
+                UpdateHealthInfo();
+            }
+        }
+        private int _currentPhysicalArmor;
+        public int currentPhysicalArmor
+        {
+            get { return _currentPhysicalArmor; }
+            set
+            {
+                _currentPhysicalArmor = value;
+                UpdatePhysicalArmorInfo();
+            }
+        }
+        private int _maxPhysicalArmor;
+        public int maxPhysicalArmor
+        {
+            get { return _maxPhysicalArmor; }
+            set
+            {
+                _maxPhysicalArmor = value;
+                UpdatePhysicalArmorInfo();
+            }
+        }
+        private int _currentMagicArmor;
+        public int currentMagicArmor
+        {
+            get { return _currentMagicArmor; }
+            set
+            {
+                _currentMagicArmor = value;
+                UpdateMagicArmorInfo();
+            }
+        }
+        private int _maxMagicArmor;
+        public int maxMagicArmor
+        {
+            get { return _maxMagicArmor; }
+            set
+            {
+                _maxMagicArmor = value;
+                UpdateMagicArmorInfo();
+            }
+        }
+        private int _currentAP;
+        public int currentAP
+        {
+            get { return _currentAP; }
+            set
+            {
+                _currentAP = value;
+                UpdateAPInfo();
+                if (_currentAP == 0)
+                {
+                    playerTurnCombat = false;
+                }
+            }
+        }
+        private int _maxAP;
+        public int maxAP
+        {
+            get { return _maxAP; }
+            set
+            {
+                _maxAP = value;
+                UpdateAPInfo();
+            }
+        }
+        private int _gold;
+        public int gold
+        {
+            get { return _gold; }
+            set
+            {
+                _gold = value;
+                UpdateGoldInfo();
+            }
+        }
+        private int _XP;
+        public int XP
+        {
+            get { return _XP; }
+            set
+            {
+                _XP = value;
+                UpdateXPInfo();
+            }
+        }
+        private int _XPToNextLevel;
+        public int XPToNextLevel
+        {
+            get { return _XPToNextLevel; }
+            set
+            {
+                _XPToNextLevel = value;
+                UpdateXPInfo();
+            }
+        }
+        private bool _playerTurnCombat;
+        public bool playerTurnCombat
+        {
+            get { return _playerTurnCombat; }
+            set
+            {
+                _playerTurnCombat = value;
+                if (_playerTurnCombat)
+                {
+                    // todo: apply status effects here!
+                }
+            }
+        }
+        private bool _explorationMode = true;
+        public bool explorationMode
+        {
+            get { return _explorationMode; }
+            set
+            {
+                _explorationMode = value;
+                if (_explorationMode)
+                {
+                    // todo: do something?
+                }
+            }
+        }
+        public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
 
         private void OnEnable()
         {
@@ -47,15 +177,6 @@ namespace intheclouds
         public void ToggleExplorationMode()
         {
             explorationMode = !explorationMode;
-        }
-
-        private void Update()
-        {
-            UpdateStatsHud();
-            if (currentAP == 0)
-            {
-                playerTurnCombat = false;
-            }
         }
 
         private void InitializeStats()
@@ -78,27 +199,43 @@ namespace intheclouds
             gold = playerStatsSO.gold;
         }
 
-        private void UpdateStatsHud()
+        private void UpdateGoldInfo()
+        {
+            goldText.text = $"Gold: {gold}";
+        }
+
+        private void UpdateXPInfo()
+        {
+            xpSlider.maxValue = XPToNextLevel;
+            xpSlider.value = XP;
+        }
+
+        private void UpdateAPInfo()
+        {
+            apSlider.maxValue = maxAP;
+            apSlider.value = currentAP;
+            apText.text = $"{currentAP}/{maxAP}";
+        }
+
+        private void UpdateMagicArmorInfo()
+        {
+            magicArmorSlider.maxValue = maxMagicArmor;
+            magicArmorSlider.value = currentMagicArmor;
+            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
+        }
+
+        private void UpdatePhysicalArmorInfo()
+        {
+            physicalArmorSlider.maxValue = maxPhysicalArmor;
+            physicalArmorSlider.value = currentPhysicalArmor;
+            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
+        }
+
+        private void UpdateHealthInfo()
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
             healthText.text = $"{currentHealth}/{maxHealth}";
-
-            physicalArmorSlider.maxValue = maxPhysicalArmor;
-            physicalArmorSlider.value = currentPhysicalArmor;
-            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
-
-            magicArmorSlider.maxValue = maxMagicArmor;
-            magicArmorSlider.value = currentMagicArmor;
-            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
-
-            apSlider.maxValue = maxAP;
-            apSlider.value = currentAP;
-            apText.text = $"{currentAP}/{maxAP}";
-
-            xpSlider.maxValue = XPToNextLevel;
-            xpSlider.value = XP;
-            goldText.text = $"Gold: {gold}";
         }
 
         public void TakeDamage(int damage)

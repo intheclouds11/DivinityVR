@@ -101,13 +101,13 @@ namespace intheclouds
                         {
                             var actualDamage = Random.Range(physicalDamage - (int) (physicalDamage * 0.1f),
                                 physicalDamage + (int) (physicalDamage * 0.1f));
-                            currentEnemyStats.TakeDamage(DamageType.Physical, actualDamage);
+                            currentEnemyStats.TakeDamage(wieldingUser, DamageType.Physical, actualDamage);
                         }
                         else if (magicDamage > 0)
                         {
                             var actualDamage = Random.Range(magicDamage - (int) (magicDamage * 0.1f),
                                 magicDamage + (int) (magicDamage * 0.1f));
-                            currentEnemyStats.TakeDamage(DamageType.Magic, actualDamage);
+                            currentEnemyStats.TakeDamage(wieldingUser, DamageType.Magic, actualDamage);
                         }
 
                         if (!wieldingUser.explorationMode)
@@ -116,7 +116,10 @@ namespace intheclouds
                         }
                         else
                         {
-                            wieldingUser.explorationMode = false;
+                            if (!ITCPlayerInputs.Instance.debugInteractions)
+                            {
+                                wieldingUser.explorationMode = false;
+                            }
                         }
 
                         hitCooldownTimer += hitCooldown;
@@ -143,7 +146,6 @@ namespace intheclouds
         private void OnEnemyDead()
         {
             hitCooldown = 0;
-            wieldingUser.ObtainXP(currentEnemyStats.earnedXP);
         }
 
         private void OnCollisionExit(Collision collision)

@@ -29,7 +29,7 @@ namespace intheclouds
 
         private void Start()
         {
-            hvrPlayerController = transform.parent.parent.GetComponentInChildren<HVRPlayerController>();
+            hvrPlayerController = transform.root.GetComponentInChildren<HVRPlayerController>();
             SaveOriginalTransforms();
             audioSource = GetComponent<AudioSource>();
         }

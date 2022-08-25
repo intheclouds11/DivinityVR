@@ -45,7 +45,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
                 ForwardGrabbable.enabled = false;
         }
 
-        private void OnGrabbed(HVRGrabberBase arg0, HVRGrabbable arg1)
+        protected virtual void OnGrabbed(HVRGrabberBase arg0, HVRGrabbable arg1)
         {
             Flying = false;
         }

@@ -13,21 +13,24 @@ namespace intheclouds
 
         protected override void UpdateBow()
         {
-            base.UpdateBow();
             if (wieldingUser == null) return;
 
-            if (wieldingUser.explorationMode)
+            Debug.Log("bow");
+            if (wieldingUser.explorationMode || (wieldingUser.playerTurnCombat && wieldingUser.currentAP >= requiredAP))
             {
-                NockGrabbable.enabled = true;
-            }
-            else if (wieldingUser.playerTurnCombat && wieldingUser.currentAP >= requiredAP)
-            {
+                Debug.Log("can shoot");
                 NockGrabbable.enabled = true;
             }
             else
             {
                 NockGrabbable.enabled = false;
             }
+        }
+
+        protected override void OnArrowNocked(HVRArrow arrow)
+        {
+            base.OnArrowNocked(arrow);
+            arrow.GetComponent<ITCArrow>().wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
         }
 
         protected override void OnArrowShot()
@@ -40,7 +43,10 @@ namespace intheclouds
             }
             else
             {
-                wieldingUser.explorationMode = false;
+                if (!ITCPlayerInputs.Instance.debugInteractions)
+                {
+                    wieldingUser.explorationMode = false;
+                }
             }
 
             base.OnArrowShot();

@@ -81,7 +81,7 @@ namespace intheclouds
             }
         }
 
-        public void TakeDamage(DamageType damageType, int damage)
+        public void TakeDamage(PlayerStats wieldingUser, DamageType damageType, int damage)
         {
             if (!isAlive) return;
 
@@ -135,11 +135,15 @@ namespace intheclouds
                 audioSource.volume = 0.7f;
                 audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
                 isAlive = false;
-                transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
-                transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
-                transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
-                transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().useGravity = true;
+                
+                // todo: something about this causes crashes randomly
+                // var rbBody = transform.GetChild(0).GetComponent<Rigidbody>();
+                // rbBody.isKinematic = false;
+                // rbBody.useGravity = true;
+                // Destroy(transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>()); // remove head rb since setting like above causes crash..
+                
                 EnemyDied?.Invoke();
+                wieldingUser.ObtainXP(earnedXP);
             }
 
             UpdateHealthUI();

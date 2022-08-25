@@ -2,6 +2,7 @@ using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace intheclouds
 {
@@ -35,7 +36,6 @@ namespace intheclouds
         {
             if (!menuIsOpen)
             {
-                // followPlayer = true;
                 canvasGO.transform.position = followPoint.transform.position;
                 canvasGO.SetActive(true);
             }
@@ -45,11 +45,6 @@ namespace intheclouds
             }
 
             menuIsOpen = !menuIsOpen;
-        }
-
-        public void LowGripRequired()
-        {
-            // hvrInputSettings.
         }
 
         public void Toggle_FollowPlayer()
@@ -79,6 +74,7 @@ namespace intheclouds
         public void Button_ExplorationMode()
         {
             Debug.Log("Starting Exploration Mode...");
+            Button_ResetStats();
             transform.root.GetComponentInChildren<PlayerMovementAP>().enabled = false;
             FindObjectOfType<PlayerStats>().explorationMode = true;
             FindObjectOfType<HVRPlayerController>().MovementEnabled = true;

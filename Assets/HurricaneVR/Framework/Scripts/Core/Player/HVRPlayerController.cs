@@ -37,6 +37,8 @@ namespace HurricaneVR.Framework.Core.Player
         [Tooltip("Walking speed in m/s.")]
         public float Acceleration = 15;
         public float Deacceleration = 15f;
+        public float accelerationAirborne = 0.25f;
+        public float deaccelerationAirborne = 0.25f;
         public float MoveSpeed = 1.5f;
         public float SprintAcceleration = 20f;
         [Tooltip("Sprinting speed in m/s.")]
@@ -531,8 +533,14 @@ namespace HurricaneVR.Framework.Core.Player
                     var noMovement = Mathf.Abs(movement.x) < .1f && Mathf.Abs(movement.y) < .1f;
                     if (noMovement)
                     {
+                        var deaccelerationModifier = 1f;
+                        if (!IsGrounded)
+                        {
+                            deaccelerationModifier = deaccelerationAirborne;
+                        }
+                        
+                        var deacceleration = Deacceleration * deaccelerationModifier * Time.deltaTime;
                         var dir = xzVelocity.normalized;
-                        var deacceleration = Deacceleration * Time.deltaTime;
                         if (deacceleration > xzVelocity.magnitude)
                         {
                             xzVelocity = Vector3.zero;
@@ -544,7 +552,16 @@ namespace HurricaneVR.Framework.Core.Player
                     }
                     else
                     {
-                        var acceleration = (Sprinting ? SprintAcceleration : Acceleration) * Time.deltaTime;
+                        float accelerationModifier;
+                        if (!IsGrounded)
+                        {
+                            accelerationModifier = accelerationAirborne * Acceleration;
+                        }
+                        else
+                        {
+                            accelerationModifier = Sprinting ? SprintAcceleration : Acceleration;
+                        }
+                        var acceleration = accelerationModifier * Time.deltaTime;
                         xzVelocity += acceleration * direction;
                         xzVelocity = Vector3.ClampMagnitude(xzVelocity, speed);
                     }

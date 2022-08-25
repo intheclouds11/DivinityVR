@@ -19,7 +19,7 @@ public class SpiritMovement : MonoBehaviour
     public float horizontalSpeed = 2;
     public float verticalSpeed = 2;
     public float forwardSpeed = 2;
-    public float sprintSpeed = 2;
+    public float sprintSpeedMultipler = 2;
     private bool isSprinting;
     private float previousTurnAmount;
     public float snapAmount;
@@ -113,7 +113,7 @@ public class SpiritMovement : MonoBehaviour
 
         if (isSprinting)
         {
-            transform.Translate(xMovement * sprintSpeed, yMovement * sprintSpeed, zMovement * sprintSpeed);
+            transform.Translate(xMovement * sprintSpeedMultipler, yMovement * sprintSpeedMultipler, zMovement * sprintSpeedMultipler);
         }
         else
         {
