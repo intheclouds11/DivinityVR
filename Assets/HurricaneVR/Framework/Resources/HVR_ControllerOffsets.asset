@@ -34,8 +34,8 @@ MonoBehaviour:
     Position: {x: -0.001, y: -0.005, z: -0.05}
     Rotation: {x: 40, y: 0, z: 0}
   KnucklesSteamVR:
-    Position: {x: -0.01, y: -0.02, z: -0.075}
-    Rotation: {x: 60, y: 0, z: 0}
+    Position: {x: 0.01, y: -0.015, z: -0.05}
+    Rotation: {x: 50, y: 0, z: 0}
   OculusOpenXR:
     Position: {x: 0, y: 0, z: -0.06}
     Rotation: {x: 0, y: 0, z: 0}

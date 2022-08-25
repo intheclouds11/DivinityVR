@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Notch: {fileID: 0}
-  damage: 10
+  damage: 20
   criticalMultiplier: 2
 --- !u!114 &7249371662223983648
 MonoBehaviour:

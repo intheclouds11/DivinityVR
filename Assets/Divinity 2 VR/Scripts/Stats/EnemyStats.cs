@@ -135,8 +135,10 @@ namespace intheclouds
                 audioSource.volume = 0.7f;
                 audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
                 isAlive = false;
-                GetComponent<Rigidbody>().isKinematic = false;
-                GetComponent<Rigidbody>().useGravity = true;
+                transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
+                transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
+                transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
+                transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().useGravity = true;
                 EnemyDied?.Invoke();
             }
 

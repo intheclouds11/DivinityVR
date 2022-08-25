@@ -1,4 +1,5 @@
 using HurricaneVR.Framework.Core.Player;
+using HurricaneVR.Framework.Shared;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,8 @@ namespace intheclouds
 {
     public class UserMenu : MonoBehaviour
     {
+        [Tooltip("For adjusting bindings, grip amount, etc.")]
+        public HVRInputSettings hvrInputSettings;
         public bool followPlayer;
         public GameObject player;
         public GameObject followPoint;
@@ -42,6 +45,11 @@ namespace intheclouds
             }
 
             menuIsOpen = !menuIsOpen;
+        }
+
+        public void LowGripRequired()
+        {
+            // hvrInputSettings.
         }
 
         public void Toggle_FollowPlayer()

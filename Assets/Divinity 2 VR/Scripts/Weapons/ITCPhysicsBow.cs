@@ -32,8 +32,17 @@ namespace intheclouds
 
         protected override void OnArrowShot()
         {
-            wieldingUser.UseAP(requiredAP);
-            Arrow.gameObject.layer = LayerMask.NameToLayer("Grabbable");
+            if (!wieldingUser.playerTurnCombat && !wieldingUser.explorationMode) return;
+
+            if (!wieldingUser.explorationMode)
+            {
+                wieldingUser.UseAP(requiredAP);
+            }
+            else
+            {
+                wieldingUser.explorationMode = false;
+            }
+
             base.OnArrowShot();
         }
 

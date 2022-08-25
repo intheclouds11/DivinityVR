@@ -71,10 +71,16 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+*.png
+*.png.meta
+*.fbx
+*.fbx.meta
+*.wav
+*.wav.meta
+
 Assets/Packages/Sketchfab For Unity/
 Assets/HurricaneVR/Framework/Textures/
 Assets/HurricaneVR/TechDemo/Textures/
-
 Assets/Divinity 2 VR/Art Assets/
 Assets/Divinity 2 VR/Art Assets.meta
 Assets/HurricaneVR/Documentation/
@@ -89,3 +95,28 @@ Assets/Packages/VolumetricFog/
 Assets/Divinity 2 VR/Scenes/Celestial Beginnings/
 Assets/TextMesh Pro/
 Assets/VolumetricFog/
+Assets/SteamVR/Models/
+Assets/SteamVR/Resources/
+Assets/SteamVR/Textures/
+Assets/SteamVR/InteractionSystem/Teleport/Textures/
+Assets/SteamVR/InteractionSystem/Teleport/Sounds/
+Assets/SteamVR/Prefabs/
+Assets/SteamVR/Materials/
+Assets/SteamVR/InteractionSystem/Teleport/Shaders/
+Assets/SteamVR/OpenVRUnityXRPackage/
+Assets/SteamVR/InteractionSystem/Teleport/Models/TeleportMarker.fbx.meta
+Assets/SteamVR/InteractionSystem/Teleport/Models/
+Assets/SteamVR/InteractionSystem/Teleport/Prefabs/
+Assets/SteamVR/InteractionSystem/Teleport/Materials URP/
+Assets/SteamVR/InteractionSystem/Teleport/Materials/
+Assets/SteamVR/InteractionSystem/SnapTurn/
+Assets/SteamVR/InteractionSystem/Samples/
+Assets/SteamVR/Input/Editor/Resources/Icons/
+Assets/SteamVR/InteractionSystem/Core/Icons/
+Assets/SteamVR/InteractionSystem/Core/Materials/
+Assets/SteamVR/InteractionSystem/Core/Prefabs/
+Assets/SteamVR/InteractionSystem/Core/Shaders/
+Assets/SteamVR/InteractionSystem/Hints/Materials/
+Assets/SteamVR/InteractionSystem/Hints/Textures/
+Assets/SteamVR/InteractionSystem/Longbow/Materials/
+Assets/SteamVR/InteractionSystem/Longbow/Prefabs/
