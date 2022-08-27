@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 405365729328461569}
   - component: {fileID: 6272312782901775577}
   - component: {fileID: 5557894203675145139}
+  - component: {fileID: 5251331200571489205}
   - component: {fileID: 8414986982849710238}
   - component: {fileID: 1219000984966840705}
   m_Layer: 12
@@ -150,6 +151,7 @@ MonoBehaviour:
   hitPopupPrefab: {fileID: 5426677873261681927, guid: 6395bca85e7663b4e8001aa70cf26d39, type: 3}
   hitPopupsParent: {fileID: 1361799774684565243}
   hitPopupSpeed: 0.5
+  attributes: {fileID: 0}
   isAlive: 1
   hurtAudioClips:
   - {fileID: 8300000, guid: 51ad56d3985e4bb41b7af67ff4713255, type: 3}
@@ -159,7 +161,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8eed073fe9c0e89498e115af5a3a49c7, type: 3}
   attackOnSight: 1
   enemyEngaged: 0
-  _turn: 0
 --- !u!114 &5557894203675145139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,18 @@ MonoBehaviour:
   wits: 0
   playerStats: {fileID: 0}
   enemyStats: {fileID: 6272312782901775577}
+--- !u!114 &5251331200571489205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405365729328461630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5039a9781704247bd928a5d1489c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &8414986982849710238
 AudioSource:
   m_ObjectHideFlags: 0

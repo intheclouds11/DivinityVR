@@ -164,7 +164,7 @@ namespace intheclouds
             else
             {
                 wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
-                Debug.Log($"Weapon grabbed! wieldingUser: {wieldingUser.userName}");
+                Debug.Log($"Weapon grabbed! wieldingUser: {wieldingUser.Name}");
             }
         }
     }

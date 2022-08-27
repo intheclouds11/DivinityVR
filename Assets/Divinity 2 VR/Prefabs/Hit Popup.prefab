@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1862293252481336142}
   - component: {fileID: 8664262483216651131}
   - component: {fileID: 381505249020401657}
+  - component: {fileID: 8843420424922002178}
   m_Layer: 0
   m_Name: Hit Popup
   m_TagString: Untagged
@@ -149,3 +150,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToDestroy: 2
+--- !u!114 &8843420424922002178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426677873261681927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a9afef524af1e449c7882d1022e5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

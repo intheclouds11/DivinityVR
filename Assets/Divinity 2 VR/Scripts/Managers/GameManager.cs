@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -15,10 +16,11 @@ public class GameManager : MonoBehaviour
     public List<PlayerStats> players;
     public AudioClip combatStartClip;
     public bool firstTurn;
-    public bool turnGameManager;
-    KeyValuePair<GameObject, int> currentCombatant;
+    public bool nextTurn;
+    public KeyValuePair<ICharacter, int> currentCombatant;
     public int enemiesAlive;
     public int playersAlive;
+    public TextMeshProUGUI turnOrderText;
 
     private void Awake()
     {
@@ -64,12 +66,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("COMBAT START");
         var enemyManager = enemyEngaged.GetComponentInParent<EnemyManager>();
-        Dictionary<GameObject, int> witsList = new Dictionary<GameObject, int>();
+        Dictionary<ICharacter, int> witsList = new Dictionary<ICharacter, int>();
         foreach (var enemy in enemyManager.enemyList)
         {
             enemiesAlive += 1;
             enemy.enemyEngaged = true;
-            witsList.Add(enemy.gameObject, enemy.attributes.wits);
+            witsList.Add(enemy, enemy.attributes.wits);
         }
 
         foreach (var player in players)
@@ -82,21 +84,25 @@ public class GameManager : MonoBehaviour
                 SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.transform, 1f, 1f);
             }
 
-            witsList.Add(player.gameObject, player.attributes.wits);
+            witsList.Add(player, player.attributes.wits);
         }
 
         var initialTurnOrder = from entry in witsList orderby entry.Value descending select entry;
+        var newTurnList = initialTurnOrder.ToList();
 
-        foreach (var keyValuePair in initialTurnOrder)
+        foreach (var character in newTurnList)
         {
-            Debug.Log($"character: {keyValuePair.Key}, wits: {keyValuePair.Value}");
+            if (character.Key.CharacterType.TryGetComponent(out PlayerStats playerStats))
+            {
+                playerStats.inCombat = true;
+            }
         }
 
         firstTurn = true;
-        StartCoroutine(TurnOrderCoroutine(initialTurnOrder));
+        StartCoroutine(TurnOrderCoroutine(newTurnList));
     }
 
-    private IEnumerator TurnOrderCoroutine(IOrderedEnumerable<KeyValuePair<GameObject, int>> turnOrder)
+    private IEnumerator TurnOrderCoroutine(List<KeyValuePair<ICharacter, int>> turnOrder)
     {
         if (playersAlive == 0)
         {
@@ -110,39 +116,51 @@ public class GameManager : MonoBehaviour
             StopCoroutine(TurnOrderCoroutine(turnOrder));
         }
 
-        if (firstTurn)
+        currentCombatant = turnOrder[0];
+        if (currentCombatant.Key.CharacterType.TryGetComponent(out PlayerStats playerStats))
         {
-            firstTurn = false;
-            currentCombatant = turnOrder.First();
-            if (currentCombatant.Key.TryGetComponent(out PlayerStats playerStats))
-            {
-                playerStats.turn = true;
-                turnGameManager = true;
-            }
-            else if (currentCombatant.Key.TryGetComponent(out EnemyStats enemyStats))
-            {
-                enemyStats.turn = true;
-                turnGameManager = true;
-            }
+            playerStats.turn = true;
+        }
+        else if (currentCombatant.Key.CharacterType.TryGetComponent(out EnemyStats enemyStats))
+        {
+            enemyStats.turn = true;
+        }
+        
+        turnOrderText.text = null;
+        for (int i = 0; i < turnOrder.Count; i++)
+        {
+            turnOrderText.text += $"{i}. {turnOrder[i].Key.Name}, ";
+            Debug.Log($"character: {turnOrder[i].Key}, wits: {turnOrder[i].Value}");
         }
 
-        while (turnGameManager)
+        nextTurn = false;
+
+        while (!nextTurn)
         {
             yield return null;
         }
 
+        // force current combatant turn off (for Next Turn debug UI)
+        if (currentCombatant.Key.CharacterType.TryGetComponent(out PlayerStats playerStatsDebug))
+        {
+            playerStatsDebug.turn = false;
+        }
+        else if (currentCombatant.Key.CharacterType.TryGetComponent(out EnemyStats enemyStatsDebug))
+        {
+            enemyStatsDebug.turn = false;
+        }
 
-        var newTurnList = turnOrder.ToList();
-        newTurnList.Add(newTurnList[0]);
-        newTurnList.Remove(newTurnList[0]);
+        turnOrder.Add(turnOrder[0]);
+        turnOrder.Remove(turnOrder[0]);
 
-        var newTurnOrder = newTurnList.AsEnumerable();
-        foreach (var keyValuePair in newTurnOrder)
+        foreach (var keyValuePair in turnOrder)
         {
             Debug.Log($"NEW TURN ORDER! character: {keyValuePair.Key}");
         }
 
         Debug.Log("NEXT TURN");
+
+        StartCoroutine(TurnOrderCoroutine(turnOrder));
     }
 
     private void HandleEnemyTurn()

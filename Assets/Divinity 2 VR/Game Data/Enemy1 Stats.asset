@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df96aace8fc10c4459d8761ab2a144c6, type: 3}
   m_Name: Enemy1 Stats
   m_EditorClassIdentifier: 
+  Name: Mage
   maxHealth: 100
   currentHealth: 60
   maxPhysicalArmor: 10

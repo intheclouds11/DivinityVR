@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New EnemyStats")]
 public class EnemyStatsSO : ScriptableObject
 {
+    public string Name;
     public int maxHealth;
     public int currentHealth;
     public int maxPhysicalArmor;

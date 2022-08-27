@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44be2b29565dbe04a853c9ca61fafca6, type: 3}
   m_Name: Player1 Stats
   m_EditorClassIdentifier: 
-  userName: Username
+  userName: Bern
   maxHealth: 100
   currentHealth: 100
   maxPhysicalArmor: 10
@@ -29,4 +29,4 @@ MonoBehaviour:
   intelligence: 5
   constitution: 5
   memory: 5
-  wits: 6
+  wits: 10

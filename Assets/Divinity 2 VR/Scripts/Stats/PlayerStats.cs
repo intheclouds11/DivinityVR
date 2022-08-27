@@ -10,10 +10,11 @@ using UnityEngine.UI;
 namespace intheclouds
 {
     [SuppressMessage("ReSharper", "ArrangeAccessorOwnerBody")]
-    public class PlayerStats : MonoBehaviour
+    public class PlayerStats : MonoBehaviour, ICharacter
     {
         public PlayerStatsSO playerStatsSO;
-        public string userName = "Username";
+        public string Name { get; set; }
+        public GameObject CharacterType { get; set; }
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider physicalArmorSlider;
         [SerializeField] private Slider magicArmorSlider;
@@ -97,6 +98,7 @@ namespace intheclouds
                 if (_currentAP == 0)
                 {
                     turn = false;
+                    GetComponent<PlayerMovementAP>().EndTurn();
                 }
             }
         }
@@ -149,12 +151,29 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    GameManager.Instance.turnGameManager = true;
+                    GetComponent<PlayerMovementAP>().StartTurn();
                     // todo: apply status effects here!
                 }
                 else
                 {
-                    GameManager.Instance.turnGameManager = false;
+                    GameManager.Instance.nextTurn = true;
+                }
+            }
+        }
+        private bool _inCombat;
+        public bool inCombat
+        {
+            get { return _inCombat; }
+            set
+            {
+                _inCombat = value;
+                if (_inCombat)
+                {
+                    GetComponent<PlayerMovementAP>().enabled = true;
+                }
+                else
+                {
+                    GetComponent<PlayerMovementAP>().enabled = false;
                 }
             }
         }
@@ -171,25 +190,22 @@ namespace intheclouds
             InitializeStats();
         }
 
-        public void ToggleExplorationMode()
+        public void EndTurn()
         {
-            explorationMode = !explorationMode;
+            turn = false;
         }
 
         private void InitializeStats()
         {
             attributes = GetComponent<CharacterAttributes>();
-            userName = playerStatsSO.userName;
-
+            CharacterType = gameObject;
+            Name = playerStatsSO.userName;
             maxHealth = playerStatsSO.maxHealth;
             currentHealth = playerStatsSO.currentHealth;
-
             maxPhysicalArmor = playerStatsSO.maxPhysicalArmor;
             currentPhysicalArmor = playerStatsSO.currentPhysicalArmor;
-
             maxMagicArmor = playerStatsSO.maxMagicArmor;
             currentMagicArmor = playerStatsSO.currentMagicArmor;
-
             maxAP = playerStatsSO.maxAP;
             currentAP = playerStatsSO.currentAP;
             XP = playerStatsSO.XP;
@@ -280,7 +296,7 @@ namespace intheclouds
 
         public void SaveProgress()
         {
-            playerStatsSO.userName = userName;
+            playerStatsSO.userName = Name;
 
             playerStatsSO.maxHealth = maxHealth;
             playerStatsSO.currentHealth = currentHealth;

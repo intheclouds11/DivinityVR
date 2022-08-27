@@ -1,4 +1,4 @@
- using HurricaneVR.Framework.Core.Player;
+using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +15,7 @@ namespace intheclouds
         public GameObject followPoint;
         public bool menuIsOpen;
         private GameObject canvasGO;
+        public GameObject[] controllerHints = new GameObject[2];
 
         private void Start()
         {
@@ -47,6 +48,22 @@ namespace intheclouds
             menuIsOpen = !menuIsOpen;
         }
 
+        public void Button_NextTurn()
+        {
+            if (GameManager.Instance.state == GameState.CombatStart)
+            {
+                GameManager.Instance.nextTurn = true;
+            }
+        }
+        
+        public void Button_ControllerHints()
+        {
+            foreach (var controllerHint in controllerHints)
+            {
+               controllerHint.SetActive(!controllerHint.activeSelf); 
+            }
+        }
+
         public void Toggle_FollowPlayer()
         {
             followPlayer = !followPlayer;
@@ -71,7 +88,7 @@ namespace intheclouds
 
             Debug.Log("RESET STATS");
         }
-        
+
         public void Button_ExplorationMode()
         {
             Debug.Log("Starting Exploration Mode...");
@@ -88,7 +105,7 @@ namespace intheclouds
             FindObjectOfType<PlayerStats>().turn = true;
             FindObjectOfType<PlayerStats>().explorationMode = false;
             transform.root.GetComponentInChildren<PlayerMovementAP>().enabled = true;
-            transform.root.GetComponentInChildren<PlayerMovementAP>().StartTurnSetup();
+            transform.root.GetComponentInChildren<PlayerMovementAP>().StartTurn();
         }
 
         public void Button_StartEnemyTurn()

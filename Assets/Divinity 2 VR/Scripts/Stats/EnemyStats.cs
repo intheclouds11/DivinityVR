@@ -8,9 +8,11 @@ using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
-    public class EnemyStats : MonoBehaviour
+    public class EnemyStats : MonoBehaviour, ICharacter
     {
         public EnemyStatsSO enemyStatsSO;
+        public string Name { get; set; }
+        public GameObject CharacterType { get; set; }
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider physicalArmorSlider;
         [SerializeField] private Slider magicArmorSlider;
@@ -91,6 +93,7 @@ namespace intheclouds
                 if (_currentAP == 0)
                 {
                     turn = false;
+                    GetComponent<EnemyAI>().EndTurn();
                 }
             }
         }
@@ -115,12 +118,12 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    GameManager.Instance.turnGameManager = true;
+                    GetComponent<EnemyAI>().StartTurn();
                     // todo: apply status effects here!
                 }
                 else
                 {
-                    GameManager.Instance.turnGameManager = false;
+                    GameManager.Instance.nextTurn = true;
                 }
             }
         }
@@ -154,6 +157,8 @@ namespace intheclouds
         private void InitializeStats()
         {
             attributes = GetComponent<CharacterAttributes>();
+            CharacterType = gameObject;
+            Name = enemyStatsSO.Name;
             maxHealth = enemyStatsSO.maxHealth;
             currentHealth = enemyStatsSO.currentHealth;
             maxPhysicalArmor = enemyStatsSO.maxPhysicalArmor;

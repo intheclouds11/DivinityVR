@@ -1,3 +1,4 @@
+using System;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using TMPro;
@@ -23,14 +24,19 @@ namespace intheclouds
             playerStats = GetComponent<PlayerStats>();
         }
 
+        private void OnEnable()
+        {
+            playerController.MovementEnabled = false;
+        }
+
+        private void OnDisable()
+        {
+            playerController.MovementEnabled = true;
+        }
+
         private void Update()
         {
-            if (!playerStats.turn)
-            {
-                if (!playerStats.explorationMode) playerController.MovementEnabled = false;
-                return;
-            }
-
+            if (!playerStats.turn) return;
             if (playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
             {
                 TrackMovementApUsage();
@@ -38,11 +44,16 @@ namespace intheclouds
             }
         }
 
-        // todo: call this when Combat Game Mode starts
-        public void StartTurnSetup()
+        public void StartTurn()
         {
             previousPosition = transform.position;
             distanceMoved = 0;
+            playerController.MovementEnabled = true;
+        }
+
+        public void EndTurn()
+        {
+            playerController.MovementEnabled = false;
         }
 
         private void TrackMovementApUsage()
