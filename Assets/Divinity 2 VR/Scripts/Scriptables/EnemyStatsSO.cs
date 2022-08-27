@@ -12,4 +12,10 @@ public class EnemyStatsSO : ScriptableObject
     public int maxAP;
     public int currentAP;
     public int earnedXP;
+    
+    public int strength;
+    public int finesse;
+    public int intelligence;
+    public int constitution;
+    public int wits;
 }

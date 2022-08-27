@@ -21,3 +21,8 @@ MonoBehaviour:
   maxAP: 5
   currentAP: 5
   earnedXP: 20
+  strength: 5
+  finesse: 5
+  intelligence: 5
+  constitution: 5
+  wits: 5

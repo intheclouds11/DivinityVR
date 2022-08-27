@@ -15,10 +15,8 @@ namespace intheclouds
         {
             if (wieldingUser == null) return;
 
-            Debug.Log("bow");
-            if (wieldingUser.explorationMode || (wieldingUser.playerTurnCombat && wieldingUser.currentAP >= requiredAP))
+            if (wieldingUser.explorationMode || (wieldingUser.turn && wieldingUser.currentAP >= requiredAP))
             {
-                Debug.Log("can shoot");
                 NockGrabbable.enabled = true;
             }
             else
@@ -35,7 +33,7 @@ namespace intheclouds
 
         protected override void OnArrowShot()
         {
-            if (!wieldingUser.playerTurnCombat && !wieldingUser.explorationMode) return;
+            if (!wieldingUser.turn && !wieldingUser.explorationMode) return;
 
             if (!wieldingUser.explorationMode)
             {

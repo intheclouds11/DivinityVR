@@ -11,53 +11,169 @@ namespace intheclouds
     public class EnemyStats : MonoBehaviour
     {
         public EnemyStatsSO enemyStatsSO;
-        public Slider healthSlider;
-        public Slider physicalArmorSlider;
-        public Slider magicArmorSlider;
-        public TextMeshProUGUI healthText;
-        public TextMeshProUGUI physicalArmorText;
-        public TextMeshProUGUI magicArmorText;
-        public GameObject hitPopupPrefab;
-        public GameObject hitPopupsParent;
+        [SerializeField] private Slider healthSlider;
+        [SerializeField] private Slider physicalArmorSlider;
+        [SerializeField] private Slider magicArmorSlider;
+        [SerializeField] private TextMeshProUGUI healthText;
+        [SerializeField] private TextMeshProUGUI physicalArmorText;
+        [SerializeField] private TextMeshProUGUI magicArmorText;
+        [SerializeField] private GameObject hitPopupPrefab;
+        [SerializeField] private GameObject hitPopupsParent;
         public float hitPopupSpeed = 0.5f;
-        public float hitPopupTimer = 2;
-        public int currentHealth;
-        public int maxHealth;
-        public int currentPhysicalArmor;
-        public int maxPhysicalArmor;
-        public int currentMagicArmor;
-        public int maxMagicArmor;
-        public int currentAP;
-        public int maxAP;
-        public int earnedXP;
+
+        [Tooltip("Enemy Stats")]
+        public int currentHealth
+        {
+            get { return _currentHealth; }
+            set
+            {
+                _currentHealth = value;
+                UpdateHealthInfo();
+            }
+        }
+        private int _currentHealth;
+        public int maxHealth
+        {
+            get => _maxHealth;
+            set
+            {
+                _maxHealth = value;
+                UpdateHealthInfo();
+            }
+        }
+        private int _maxHealth;
+        public int currentPhysicalArmor
+        {
+            get { return _currentPhysicalArmor; }
+            set
+            {
+                _currentPhysicalArmor = value;
+                UpdatePhysicalArmorInfo();
+            }
+        }
+        private int _currentPhysicalArmor;
+        public int maxPhysicalArmor
+        {
+            get { return _maxPhysicalArmor; }
+            set
+            {
+                _maxPhysicalArmor = value;
+                UpdatePhysicalArmorInfo();
+            }
+        }
+        private int _maxPhysicalArmor;
+        public int currentMagicArmor
+        {
+            get { return _currentMagicArmor; }
+            set
+            {
+                _currentMagicArmor = value;
+                UpdateMagicArmorInfo();
+            }
+        }
+        private int _currentMagicArmor;
+        public int maxMagicArmor
+        {
+            get { return _maxMagicArmor; }
+            set
+            {
+                _maxMagicArmor = value;
+                UpdateMagicArmorInfo();
+            }
+        }
+        private int _maxMagicArmor;
+        public int currentAP
+        {
+            get { return _currentAP; }
+            set
+            {
+                _currentAP = value;
+                if (_currentAP == 0)
+                {
+                    turn = false;
+                }
+            }
+        }
+        private int _currentAP;
+        public int maxAP
+        {
+            get { return _maxAP; }
+            set { _maxAP = value; }
+        }
+        private int _maxAP;
+        public int earnedXP
+        {
+            get { return _earnedXP; }
+            set { _earnedXP = value; }
+        }
+        private int _earnedXP;
+        public bool turn
+        {
+            get { return _turn; }
+            set
+            {
+                _turn = value;
+                if (_turn)
+                {
+                    GameManager.Instance.turnGameManager = true;
+                    // todo: apply status effects here!
+                }
+                else
+                {
+                    GameManager.Instance.turnGameManager = false;
+                }
+            }
+        }
+        private bool _turn;
+
+        public CharacterAttributes attributes;
+
         public bool isAlive = true;
         public AudioClip[] hurtAudioClips;
         public AudioClip[] deadAudioClips;
-        
-        public event Action EnemyDamaged; 
-        public event Action EnemyDied; 
-
+        public event Action EnemyDamaged;
+        public event Action EnemyDied;
         private AudioSource audioSource;
         private List<GameObject> activeHitPopups = new List<GameObject>();
 
+        public bool attackOnSight = true;
+        public bool enemyEngaged;
 
-        private void Awake()
+        private void OnEnable()
         {
             audioSource = GetComponent<AudioSource>();
-            if (!enemyStatsSO) return;
+            if (!enemyStatsSO)
+            {
+                Debug.LogError("No EnemyStatsSO assigned!", this);
+                return;
+            }
+
+            InitializeStats();
+        }
+
+        private void InitializeStats()
+        {
+            attributes = GetComponent<CharacterAttributes>();
             maxHealth = enemyStatsSO.maxHealth;
             currentHealth = enemyStatsSO.currentHealth;
-            UpdateHealthUI();
             maxPhysicalArmor = enemyStatsSO.maxPhysicalArmor;
             currentPhysicalArmor = enemyStatsSO.currentPhysicalArmor;
-            UpdatePhysicalArmorUI();
             maxMagicArmor = enemyStatsSO.maxMagicArmor;
             currentMagicArmor = enemyStatsSO.currentMagicArmor;
-            UpdateMagicArmorUI();
-
             maxAP = enemyStatsSO.maxAP;
             currentAP = enemyStatsSO.currentAP;
             earnedXP = enemyStatsSO.earnedXP;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (attackOnSight && !enemyEngaged)
+                {
+                    GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
+                }
+            }
         }
 
         private void Update()
@@ -85,6 +201,11 @@ namespace intheclouds
         {
             if (!isAlive) return;
 
+            if (!enemyEngaged)
+            {
+                GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
+            }
+
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
             activeHitPopups.Add(newHitPopup);
@@ -102,7 +223,6 @@ namespace intheclouds
                 }
 
                 newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
-                UpdatePhysicalArmorUI();
             }
             else if (damageType == DamageType.Magic)
             {
@@ -117,7 +237,6 @@ namespace intheclouds
                 }
 
                 newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
-                UpdateMagicArmorUI();
             }
 
             if (currentHealth > 0)
@@ -135,54 +254,37 @@ namespace intheclouds
                 audioSource.volume = 0.7f;
                 audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
                 isAlive = false;
-                
+
                 // todo: something about this causes crashes randomly
                 // var rbBody = transform.GetChild(0).GetComponent<Rigidbody>();
                 // rbBody.isKinematic = false;
                 // rbBody.useGravity = true;
                 // Destroy(transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>()); // remove head rb since setting like above causes crash..
-                
+
                 EnemyDied?.Invoke();
                 wieldingUser.ObtainXP(earnedXP);
             }
-
-            UpdateHealthUI();
         }
 
-        public void UpdateMagicArmorUI()
+        private void UpdateMagicArmorInfo()
         {
             magicArmorSlider.maxValue = maxMagicArmor;
             magicArmorSlider.value = currentMagicArmor;
             magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
         }
 
-        public void UpdatePhysicalArmorUI()
+        private void UpdatePhysicalArmorInfo()
         {
             physicalArmorSlider.maxValue = maxPhysicalArmor;
             physicalArmorSlider.value = currentPhysicalArmor;
             physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
         }
 
-        public void UpdateHealthUI()
+        private void UpdateHealthInfo()
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
             healthText.text = $"{currentHealth}/{maxHealth}";
-        }
-
-        private void OnEnable()
-        {
-            this.EnemyDamaged += DamageEventExample;
-        }
-
-        private void OnDisable()
-        {
-            this.EnemyDamaged -= DamageEventExample;
-        }
-
-        public void DamageEventExample()
-        {
-            // shackles of pain
         }
     }
 }

@@ -14,20 +14,19 @@ namespace intheclouds
     {
         public PlayerStatsSO playerStatsSO;
         public string userName = "Username";
-        public Slider healthSlider;
-        public Slider physicalArmorSlider;
-        public Slider magicArmorSlider;
-        public Slider apSlider;
-        public Slider xpSlider;
-        public TextMeshProUGUI healthText;
-        public TextMeshProUGUI physicalArmorText;
-        public TextMeshProUGUI magicArmorText;
-        public TextMeshProUGUI apText;
-        public TextMeshProUGUI goldText;
-        public AudioClip levelUpClip;
+        [SerializeField] private Slider healthSlider;
+        [SerializeField] private Slider physicalArmorSlider;
+        [SerializeField] private Slider magicArmorSlider;
+        [SerializeField] private Slider apSlider;
+        [SerializeField] private Slider xpSlider;
+        [SerializeField] private TextMeshProUGUI healthText;
+        [SerializeField] private TextMeshProUGUI physicalArmorText;
+        [SerializeField] private TextMeshProUGUI magicArmorText;
+        [SerializeField] private TextMeshProUGUI apText;
+        [SerializeField] private TextMeshProUGUI goldText;
+        [SerializeField] private AudioClip levelUpClip;
 
-        [Tooltip("Player's Stats")]
-        private int _currentHealth;
+        [Tooltip("Player Stats")]
         public int currentHealth
         {
             get { return _currentHealth; }
@@ -37,7 +36,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        private int _maxHealth;
+        private int _currentHealth;
         public int maxHealth
         {
             get => _maxHealth;
@@ -47,7 +46,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        private int _currentPhysicalArmor;
+        private int _maxHealth;
         public int currentPhysicalArmor
         {
             get { return _currentPhysicalArmor; }
@@ -57,7 +56,7 @@ namespace intheclouds
                 UpdatePhysicalArmorInfo();
             }
         }
-        private int _maxPhysicalArmor;
+        private int _currentPhysicalArmor;
         public int maxPhysicalArmor
         {
             get { return _maxPhysicalArmor; }
@@ -67,7 +66,7 @@ namespace intheclouds
                 UpdatePhysicalArmorInfo();
             }
         }
-        private int _currentMagicArmor;
+        private int _maxPhysicalArmor;
         public int currentMagicArmor
         {
             get { return _currentMagicArmor; }
@@ -77,7 +76,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        private int _maxMagicArmor;
+        private int _currentMagicArmor;
         public int maxMagicArmor
         {
             get { return _maxMagicArmor; }
@@ -87,7 +86,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        private int _currentAP;
+        private int _maxMagicArmor;
         public int currentAP
         {
             get { return _currentAP; }
@@ -97,11 +96,11 @@ namespace intheclouds
                 UpdateAPInfo();
                 if (_currentAP == 0)
                 {
-                    playerTurnCombat = false;
+                    turn = false;
                 }
             }
         }
-        private int _maxAP;
+        private int _currentAP;
         public int maxAP
         {
             get { return _maxAP; }
@@ -111,7 +110,7 @@ namespace intheclouds
                 UpdateAPInfo();
             }
         }
-        private int _gold;
+        private int _maxAP;
         public int gold
         {
             get { return _gold; }
@@ -121,7 +120,7 @@ namespace intheclouds
                 UpdateGoldInfo();
             }
         }
-        private int _XP;
+        private int _gold;
         public int XP
         {
             get { return _XP; }
@@ -131,7 +130,7 @@ namespace intheclouds
                 UpdateXPInfo();
             }
         }
-        private int _XPToNextLevel;
+        private int _XP;
         public int XPToNextLevel
         {
             get { return _XPToNextLevel; }
@@ -141,32 +140,30 @@ namespace intheclouds
                 UpdateXPInfo();
             }
         }
-        private bool _playerTurnCombat;
-        public bool playerTurnCombat
+        private int _XPToNextLevel;
+        public bool turn
         {
-            get { return _playerTurnCombat; }
+            get { return _turn; }
             set
             {
-                _playerTurnCombat = value;
-                if (_playerTurnCombat)
+                _turn = value;
+                if (_turn)
                 {
+                    GameManager.Instance.turnGameManager = true;
                     // todo: apply status effects here!
                 }
-            }
-        }
-        private bool _explorationMode = true;
-        public bool explorationMode
-        {
-            get { return _explorationMode; }
-            set
-            {
-                _explorationMode = value;
-                if (_explorationMode)
+                else
                 {
-                    // todo: do something?
+                    GameManager.Instance.turnGameManager = false;
                 }
             }
         }
+        private bool _turn;
+
+        public CharacterAttributes attributes;
+        public bool explorationMode = true;
+        public bool playerControlled;
+
         public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
 
         private void OnEnable()
@@ -181,6 +178,7 @@ namespace intheclouds
 
         private void InitializeStats()
         {
+            attributes = GetComponent<CharacterAttributes>();
             userName = playerStatsSO.userName;
 
             maxHealth = playerStatsSO.maxHealth;

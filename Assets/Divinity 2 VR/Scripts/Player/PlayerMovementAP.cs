@@ -7,7 +7,6 @@ namespace intheclouds
 {
     public class PlayerMovementAP : MonoBehaviour
     {
-        public bool inCombat;
         private HVRPlayerInputs playerInputs;
         private HVRPlayerController playerController;
         private Vector3 previousPosition;
@@ -26,7 +25,7 @@ namespace intheclouds
 
         private void Update()
         {
-            if (!playerStats || !playerStats.playerTurnCombat)
+            if (!playerStats.turn)
             {
                 if (!playerStats.explorationMode) playerController.MovementEnabled = false;
                 return;

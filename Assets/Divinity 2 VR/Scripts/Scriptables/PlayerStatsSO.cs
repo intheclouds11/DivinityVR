@@ -16,4 +16,11 @@ public class PlayerStatsSO : ScriptableObject
     public int XP;
     public int XPToNextLevel;
     public int gold;
+
+    public int strength;
+    public int finesse;
+    public int intelligence;
+    public int constitution;
+    public int memory;
+    public int wits;
 }

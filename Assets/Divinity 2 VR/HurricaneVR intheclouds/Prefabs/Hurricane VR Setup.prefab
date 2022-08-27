@@ -27821,9 +27821,10 @@ GameObject:
   - component: {fileID: 62497254979122419}
   - component: {fileID: 5503940816655488530}
   - component: {fileID: 5503940816643298884}
+  - component: {fileID: 2281201929545621154}
   m_Layer: 8
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28010,8 +28011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 684802376355293929}
-  requiredHoldTime: 1
-  debugInteractions: 1
+  debugInteractions: 0
 --- !u!114 &6861152580526662161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28178,6 +28178,9 @@ MonoBehaviour:
   apText: {fileID: 5027515012275266168}
   goldText: {fileID: 5503940815332734723}
   levelUpClip: {fileID: 8300000, guid: 726a3af401f0ba64b827897f6d327c4b, type: 3}
+  attributes: {fileID: 0}
+  explorationMode: 1
+  playerControlled: 1
 --- !u!114 &5503940816655488530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28185,12 +28188,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6649675074305377863}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d020cdf583d40494e81eba54aa3c653b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inCombat: 0
   distanceMovedText: {fileID: 1548901539088308849}
 --- !u!114 &5503940816643298884
 MonoBehaviour:
@@ -28215,6 +28217,25 @@ MonoBehaviour:
   forwardSpeed: 3
   sprintSpeedMultipler: 3
   snapAmount: 45
+--- !u!114 &2281201929545621154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649675074305377863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c307de298448e4ea680ec8f1e6f639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 0
+  finesse: 0
+  intelligence: 0
+  constitution: 0
+  wits: 0
+  playerStats: {fileID: 62497254979122419}
+  enemyStats: {fileID: 0}
 --- !u!1 &6649675074615586368
 GameObject:
   m_ObjectHideFlags: 0
@@ -28362,7 +28383,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 300
+  far clip plane: 1000
   field of view: 90
   orthographic: 0
   orthographic size: 5

@@ -10,9 +10,6 @@ namespace intheclouds
     public class ITCPlayerInputs : MonoBehaviour
     {
         public UserMenu menu;
-        public float requiredHoldTime;
-        private float holdTime;
-        private bool activated;
         public bool debugInteractions;
         public static ITCPlayerInputs Instance;
 

@@ -73,8 +73,6 @@ namespace intheclouds
 
                 SetLayerRecursively(child.gameObject, newLayer);
             }
-
-            Debug.Log($"checking recursively: {Time.deltaTime}");
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -89,7 +87,7 @@ namespace intheclouds
                 {
                     if (collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                     {
-                        if (!wieldingUser.playerTurnCombat && !wieldingUser.explorationMode) return;
+                        if (!wieldingUser.turn && !wieldingUser.explorationMode) return;
                         enemyRoot = collision.gameObject.transform.root.GetComponentInChildren<EnemyStats>().gameObject;
                         hitSFXAudioSource.pitch = 1 - Mathf.Clamp(collision.relativeVelocity.magnitude * 0.1f, 0f, 0.2f); // todo: not getting varied pitch
                         hitSFXAudioSource.PlayOneShot(enemyHitClip);

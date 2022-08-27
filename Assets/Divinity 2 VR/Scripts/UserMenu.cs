@@ -1,4 +1,4 @@
-using HurricaneVR.Framework.Core.Player;
+ using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -66,6 +66,7 @@ namespace intheclouds
                 playerStats.currentPhysicalArmor = playerStats.playerStatsSO.maxPhysicalArmor;
                 playerStats.currentMagicArmor = playerStats.playerStatsSO.maxMagicArmor;
                 playerStats.currentAP = playerStats.playerStatsSO.maxAP;
+                playerStats.turn = true;
             }
 
             Debug.Log("RESET STATS");
@@ -84,7 +85,7 @@ namespace intheclouds
         {
             Debug.Log("Starting Player Turn... (not fully implemented yet)");
             Button_ResetStats();
-            FindObjectOfType<PlayerStats>().playerTurnCombat = true;
+            FindObjectOfType<PlayerStats>().turn = true;
             FindObjectOfType<PlayerStats>().explorationMode = false;
             transform.root.GetComponentInChildren<PlayerMovementAP>().enabled = true;
             transform.root.GetComponentInChildren<PlayerMovementAP>().StartTurnSetup();
