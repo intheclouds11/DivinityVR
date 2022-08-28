@@ -102,7 +102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 405365729328461569}
   - component: {fileID: 6272312782901775577}
-  - component: {fileID: 5557894203675145139}
   - component: {fileID: 5251331200571489205}
   - component: {fileID: 8414986982849710238}
   - component: {fileID: 1219000984966840705}
@@ -142,6 +141,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStatsSO: {fileID: 11400000, guid: bd69e9218a57bd94397661c24b4cfbe3, type: 2}
+  hurtAudioClips:
+  - {fileID: 8300000, guid: 51ad56d3985e4bb41b7af67ff4713255, type: 3}
+  - {fileID: 8300000, guid: 7f06b6bdbffa21442bf9ccbdd16eeeaf, type: 3}
+  deadAudioClips:
+  - {fileID: 8300000, guid: 05a3de94083020441bd71f7c7e324679, type: 3}
+  - {fileID: 8300000, guid: 8eed073fe9c0e89498e115af5a3a49c7, type: 3}
   healthSlider: {fileID: 8660419544854610915}
   physicalArmorSlider: {fileID: 1332971790835146289}
   magicArmorSlider: {fileID: 2956804378196976888}
@@ -151,35 +156,9 @@ MonoBehaviour:
   hitPopupPrefab: {fileID: 5426677873261681927, guid: 6395bca85e7663b4e8001aa70cf26d39, type: 3}
   hitPopupsParent: {fileID: 1361799774684565243}
   hitPopupSpeed: 0.5
-  attributes: {fileID: 0}
   isAlive: 1
-  hurtAudioClips:
-  - {fileID: 8300000, guid: 51ad56d3985e4bb41b7af67ff4713255, type: 3}
-  - {fileID: 8300000, guid: 7f06b6bdbffa21442bf9ccbdd16eeeaf, type: 3}
-  deadAudioClips:
-  - {fileID: 8300000, guid: 05a3de94083020441bd71f7c7e324679, type: 3}
-  - {fileID: 8300000, guid: 8eed073fe9c0e89498e115af5a3a49c7, type: 3}
   attackOnSight: 1
   enemyEngaged: 0
---- !u!114 &5557894203675145139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405365729328461630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c307de298448e4ea680ec8f1e6f639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 0
-  finesse: 0
-  intelligence: 0
-  constitution: 0
-  wits: 0
-  playerStats: {fileID: 0}
-  enemyStats: {fileID: 6272312782901775577}
 --- !u!114 &5251331200571489205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d0664bf3da4243a39187ac857246e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: 2b065b500079ccb40ad4e97bc3d0041f, type: 2}
+  Settings: {fileID: 11400000, guid: 09e057189fe586f46ae3a4558ea2f716, type: 2}
   Ignorecolliders:
   - {fileID: 5128709428124046560}
   - {fileID: 5434184901134685764}
@@ -1201,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d0664bf3da4243a39187ac857246e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: 2b065b500079ccb40ad4e97bc3d0041f, type: 2}
+  Settings: {fileID: 11400000, guid: 09e057189fe586f46ae3a4558ea2f716, type: 2}
   Ignorecolliders:
   - {fileID: 5128709428124046560}
   - {fileID: 5434184901134685764}

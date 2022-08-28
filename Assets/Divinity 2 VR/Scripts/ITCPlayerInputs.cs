@@ -20,7 +20,7 @@ namespace intheclouds
         private void Start()
         {
             Instance = this;
-            playerStats = GetComponent<PlayerStats>();
+            playerStats = transform.root.GetComponent<LocalUserObjects>().PlayerStats;
         }
 
         private void Update()
@@ -34,7 +34,7 @@ namespace intheclouds
             {
                 if (holdTimeLeftPrimaryButton > holdTimeRequired)
                 {
-                    playerStats.EndTurn();
+                    playerStats.turn = false;
                     primaryButtonTriggered = true;
                     holdTimeLeftPrimaryButton = 0;
                 }

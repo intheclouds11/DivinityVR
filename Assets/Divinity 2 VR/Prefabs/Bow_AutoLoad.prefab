@@ -1181,14 +1181,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4646936102092918327}
+  - component: {fileID: 1937837826}
+  - component: {fileID: 1937837834}
   - component: {fileID: 5185757252078971367}
+  - component: {fileID: 1434098202219580612}
   - component: {fileID: 5185757252078971366}
   - component: {fileID: 5185757252078971360}
   - component: {fileID: 5185757252078971363}
   - component: {fileID: 4126267781520109326}
-  - component: {fileID: 1434098202219580612}
-  - component: {fileID: 1937837826}
-  - component: {fileID: 1937837834}
   m_Layer: 0
   m_Name: Bow_AutoLoad
   m_TagString: Untagged
@@ -1216,6 +1216,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.291, y: -259.95898, z: 89.97}
+--- !u!114 &1937837826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5419778064393409677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97de207a5313d0442af2892c4f17af71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NockGrabbable: {fileID: 5185757251671855761}
+  StringLimit: 0.4
+  StringDropLimit: 0.45
+  StringLimitStyle: 0
+  ShootThreshold: 0.2
+  Speed: 50
+  SpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ReverseArrowsRests: 0
+  LeftRest: {fileID: 5185757251254810104}
+  RightRest: {fileID: 5185757252327271698}
+  ForwardMarker: {fileID: 4646936102092918327}
+  StringHaptics: 1
+  BowHandHaptics: 1
+  HapticStep: 0.01
+  HapticsMinAmplitude: 0.1
+  HapticsMaxAmplitude: 1
+  HapticsDuration: 0.01
+  HapticsFrequency: 1
+  StringClip: {fileID: 8300000, guid: 8a95f5613a17c0f4db5b93318e947568, type: 3}
+  StringMinPitch: 1
+  StringMaxPitch: 1.25
+  ReleasedSFX:
+  - {fileID: 8300000, guid: 40ffd23ea20f9b748a84d6be2407a64a, type: 3}
+  StringSpring: 1000
+  StringHeldSpring: 100
+  CanNockRotate: 1
+  requiredAP: 2
+--- !u!114 &1937837834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5419778064393409677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4daa695d62072d64f89a844cb8274fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NockGrabbable: {fileID: 5185757251671855761}
+  ArrowPrefab: {fileID: 6770214079390613489, guid: dfdd1d7a06fee1e4cbec89907ef10e6b, type: 3}
 --- !u!114 &5185757252078971367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,19 +1400,7 @@ MonoBehaviour:
         m_CallState: 2
   HandReleased:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1937837826}
-        m_TargetAssemblyTypeName: intheclouds.ITCPhysicsBow, Assembly-CSharp
-        m_MethodName: UpdateWielder
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   HandFullReleased:
     m_PersistentCalls:
       m_Calls: []
@@ -1351,6 +1415,30 @@ MonoBehaviour:
   HandGrabbers: []
   Stabbers: []
   Stabbable: {fileID: 0}
+--- !u!114 &1434098202219580612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5419778064393409677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10345b4efa150014fb756a02715a4231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SocketOrientation: {fileID: 0}
+  CounterScale: {x: 1, y: 1, z: 1}
+  UseRendererBounds: 1
+  ScaleSize: 0
+  SocketScale: 1
+  ScaleOverride: {fileID: 4126267781520109326}
+  SocketedClip: {fileID: 8300000, guid: 7d853d9961e50434097fe1047f38c444, type: 3}
+  UnsocketedClip: {fileID: 8300000, guid: 71da2124ae2bb8f4d80e99c92613b202, type: 3}
+  LinkedGrabbables: []
+  Tags:
+    Tags: {fileID: 11400000, guid: 0e83bcde818c784468e6c9a69d44702f, type: 2}
+    _data: 5
 --- !u!54 &5185757252078971366
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1406,106 +1494,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0590676, y: 1.3579609, z: 0.24982658}
   m_Center: {x: -0.005147074, y: -0.00044399317, z: -0.0905664}
---- !u!114 &1434098202219580612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419778064393409677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10345b4efa150014fb756a02715a4231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SocketOrientation: {fileID: 0}
-  CounterScale: {x: 1, y: 1, z: 1}
-  UseRendererBounds: 1
-  ScaleSize: 0
-  SocketScale: 1
-  ScaleOverride: {fileID: 4126267781520109326}
-  SocketedClip: {fileID: 8300000, guid: 7d853d9961e50434097fe1047f38c444, type: 3}
-  UnsocketedClip: {fileID: 8300000, guid: 71da2124ae2bb8f4d80e99c92613b202, type: 3}
-  LinkedGrabbables: []
-  Tags:
-    Tags: {fileID: 11400000, guid: 0e83bcde818c784468e6c9a69d44702f, type: 2}
-    _data: 5
---- !u!114 &1937837826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419778064393409677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97de207a5313d0442af2892c4f17af71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NockGrabbable: {fileID: 5185757251671855761}
-  StringLimit: 0.4
-  StringDropLimit: 0.45
-  StringLimitStyle: 0
-  ShootThreshold: 0.2
-  Speed: 50
-  SpeedCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ReverseArrowsRests: 0
-  LeftRest: {fileID: 5185757251254810104}
-  RightRest: {fileID: 5185757252327271698}
-  ForwardMarker: {fileID: 4646936102092918327}
-  StringHaptics: 1
-  BowHandHaptics: 1
-  HapticStep: 0.01
-  HapticsMinAmplitude: 0.1
-  HapticsMaxAmplitude: 1
-  HapticsDuration: 0.01
-  HapticsFrequency: 1
-  StringClip: {fileID: 8300000, guid: 8a95f5613a17c0f4db5b93318e947568, type: 3}
-  StringMinPitch: 1
-  StringMaxPitch: 1.25
-  ReleasedSFX:
-  - {fileID: 8300000, guid: 40ffd23ea20f9b748a84d6be2407a64a, type: 3}
-  StringSpring: 1000
-  StringHeldSpring: 100
-  CanNockRotate: 1
-  requiredAP: 2
---- !u!114 &1937837834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419778064393409677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4daa695d62072d64f89a844cb8274fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NockGrabbable: {fileID: 5185757251671855761}
-  ArrowPrefab: {fileID: 6770214079390613489, guid: dfdd1d7a06fee1e4cbec89907ef10e6b, type: 3}
 --- !u!1 &5770237466304340991
 GameObject:
   m_ObjectHideFlags: 0

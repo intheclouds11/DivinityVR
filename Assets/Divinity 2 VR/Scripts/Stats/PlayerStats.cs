@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ namespace intheclouds
     public class PlayerStats : MonoBehaviour, ICharacter
     {
         public PlayerStatsSO playerStatsSO;
+        private PlayerMovementAP playerMovementAP;
         public string Name { get; set; }
         public GameObject CharacterType { get; set; }
         [SerializeField] private Slider healthSlider;
@@ -26,6 +28,10 @@ namespace intheclouds
         [SerializeField] private TextMeshProUGUI apText;
         [SerializeField] private TextMeshProUGUI goldText;
         [SerializeField] private AudioClip levelUpClip;
+
+        public bool explorationMode = true;
+
+        #region Player Stats
 
         [Tooltip("Player Stats")]
         public int currentHealth
@@ -98,7 +104,7 @@ namespace intheclouds
                 if (_currentAP == 0)
                 {
                     turn = false;
-                    GetComponent<PlayerMovementAP>().EndTurn();
+                    playerMovementAP.EndTurn();
                 }
             }
         }
@@ -151,7 +157,7 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    GetComponent<PlayerMovementAP>().StartTurn();
+                    playerMovementAP.StartTurn();
                     // todo: apply status effects here!
                 }
                 else
@@ -160,7 +166,7 @@ namespace intheclouds
                 }
             }
         }
-        private bool _inCombat;
+        private bool _turn;
         public bool inCombat
         {
             get { return _inCombat; }
@@ -169,44 +175,57 @@ namespace intheclouds
                 _inCombat = value;
                 if (_inCombat)
                 {
-                    GetComponent<PlayerMovementAP>().enabled = true;
+                    playerMovementAP.enabled = true;
                 }
                 else
                 {
-                    GetComponent<PlayerMovementAP>().enabled = false;
+                    playerMovementAP.enabled = false;
                 }
             }
         }
-        private bool _turn;
+        private bool _inCombat;
+        public bool playerControlled
+        {
+            get { return _playerControlled; }
+            set
+            {
+                _playerControlled = value;
+            }
+        }
+        [SerializeField]
+        private bool _playerControlled;
 
-        public CharacterAttributes attributes;
-        public bool explorationMode = true;
-        public bool playerControlled;
+        #endregion
+
+        #region Player Attributes
+
+        public int strength => playerStatsSO.strength;
+        public int finesse => playerStatsSO.finesse;
+        public int intelligence => playerStatsSO.intelligence;
+        public int constitution => playerStatsSO.constitution;
+        public int wits => playerStatsSO.wits;
+
+        #endregion
 
         public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
 
-        private void OnEnable()
+        private void Awake()
         {
             InitializeStats();
         }
 
-        public void EndTurn()
-        {
-            turn = false;
-        }
-
         private void InitializeStats()
         {
-            attributes = GetComponent<CharacterAttributes>();
+            playerMovementAP = GetComponent<PlayerMovementAP>();
             CharacterType = gameObject;
             Name = playerStatsSO.userName;
             maxHealth = playerStatsSO.maxHealth;
-            currentHealth = playerStatsSO.currentHealth;
             maxPhysicalArmor = playerStatsSO.maxPhysicalArmor;
-            currentPhysicalArmor = playerStatsSO.currentPhysicalArmor;
             maxMagicArmor = playerStatsSO.maxMagicArmor;
-            currentMagicArmor = playerStatsSO.currentMagicArmor;
             maxAP = playerStatsSO.maxAP;
+            currentHealth = maxHealth;
+            currentPhysicalArmor = playerStatsSO.currentPhysicalArmor;
+            currentMagicArmor = playerStatsSO.currentMagicArmor;
             currentAP = playerStatsSO.currentAP;
             XP = playerStatsSO.XP;
             XPToNextLevel = playerStatsSO.XPToNextLevel;
@@ -292,6 +311,12 @@ namespace intheclouds
             XPToNextLevel += (int) (XPToNextLevel * 0.5f);
             SFXPlayer.Instance.PlaySFX(levelUpClip, transform);
             // award 1 Attribute Point, 1 Skill Point, 1 Talent
+
+            // todo: make Coroutine for deciding what to put points into. Make it undoable
+            // example:
+            // if Constitution added
+            // constitution += 1;
+            // playerStatsSO.maxHealth = (int) Math.Round(playerStatsSO.maxHealth * 1.07f); // adds 7% to max health
         }
 
         public void SaveProgress()

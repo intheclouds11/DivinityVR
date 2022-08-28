@@ -52,16 +52,7 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            if (Grabbable.PrimaryGrabber == null)
-            {
-                wieldingUser = null;
-                Debug.Log("Weapon dropped! wieldingUser == null");
-            }
-            else
-            {
-                wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
-                Debug.Log($"Weapon grabbed! wieldingUser: {wieldingUser.Name}");
-            }
+            wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
         }
     }
 }

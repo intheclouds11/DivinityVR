@@ -24,7 +24,7 @@ namespace intheclouds
                 {
                     opened = true;
                     audioSource.Play();
-                    collision.gameObject.transform.root.GetComponentInChildren<PlayerStats>().gold += gold;
+                    collision.gameObject.transform.root.GetComponent<LocalUserObjects>().PlayerStats.gold += gold;
                 }
             }
         }

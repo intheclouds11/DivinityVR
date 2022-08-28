@@ -17,21 +17,28 @@ namespace intheclouds
         //Debugging
         public TextMeshProUGUI distanceMovedText;
 
-        private void Awake()
+        private void OnEnable()
         {
-            playerInputs = GetComponent<HVRPlayerInputs>();
-            playerController = GetComponent<HVRPlayerController>();
             playerStats = GetComponent<PlayerStats>();
         }
 
-        private void OnEnable()
+        private void SetupControls()
         {
-            playerController.MovementEnabled = false;
+            if (playerStats.playerControlled)
+            {
+                var localUserObjects = transform.root.GetComponent<LocalUserObjects>();
+                playerController = localUserObjects.HVRPlayerController;
+                playerInputs = localUserObjects.HVRPlayerInputs;
+                playerController.MovementEnabled = false;
+            }
         }
 
         private void OnDisable()
         {
-            playerController.MovementEnabled = true;
+            if (playerController)
+            {
+                playerController.MovementEnabled = true;
+            }
         }
 
         private void Update()
@@ -40,13 +47,14 @@ namespace intheclouds
             if (playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
             {
                 TrackMovementApUsage();
-                distanceMovedText.text = $"distance moved: {(int) distanceMoved}";
+                // distanceMovedText.text = $"distance moved: {(int) distanceMoved}";
             }
         }
 
         public void StartTurn()
         {
-            previousPosition = transform.position;
+            SetupControls(); // for swapping VR Rig between characters
+            previousPosition = playerController.transform.position;
             distanceMoved = 0;
             playerController.MovementEnabled = true;
         }
@@ -58,7 +66,7 @@ namespace intheclouds
 
         private void TrackMovementApUsage()
         {
-            distanceMoved += Vector3.Distance(transform.position, previousPosition);
+            distanceMoved += Vector3.Distance(playerController.transform.position, previousPosition);
 
             if (distanceMoved > 3)
             {
@@ -66,7 +74,7 @@ namespace intheclouds
                 distanceMoved -= 3;
             }
 
-            previousPosition = transform.position;
+            previousPosition = playerController.transform.position;
         }
     }
 }

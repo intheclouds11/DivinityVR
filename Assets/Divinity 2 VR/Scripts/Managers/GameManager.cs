@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             enemiesAlive += 1;
             enemy.enemyEngaged = true;
-            witsList.Add(enemy, enemy.attributes.wits);
+            witsList.Add(enemy, enemy.wits);
         }
 
         foreach (var player in players)
@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerMovementAP>().enabled = true;
             if (player.playerControlled)
             {
-                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.transform, 1f, 1f);
+                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.transform, 1f, 0.5f);
             }
 
-            witsList.Add(player, player.attributes.wits);
+            witsList.Add(player, player.wits);
         }
 
         var initialTurnOrder = from entry in witsList orderby entry.Value descending select entry;
@@ -120,10 +120,12 @@ public class GameManager : MonoBehaviour
         if (currentCombatant.Key.CharacterType.TryGetComponent(out PlayerStats playerStats))
         {
             playerStats.turn = true;
+            playerStats.currentAP = playerStats.maxAP;
         }
         else if (currentCombatant.Key.CharacterType.TryGetComponent(out EnemyStats enemyStats))
         {
             enemyStats.turn = true;
+            enemyStats.currentAP = enemyStats.maxAP;
         }
         
         turnOrderText.text = null;

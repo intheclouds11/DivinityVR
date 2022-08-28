@@ -16,7 +16,7 @@ namespace intheclouds
         protected override void OnGrabbed(HVRGrabberBase arg0, HVRGrabbable arg1)
         {
             base.OnGrabbed(arg0, arg1);
-            wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
+            wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
         }
 
         protected override void OnCollisionEnter(Collision collision)

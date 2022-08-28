@@ -83,7 +83,7 @@ namespace intheclouds
 
                 inEnemyCollider = true;
 
-                if (wieldingUser.currentAP > requiredAP)
+                if (wieldingUser.currentAP >= requiredAP)
                 {
                     if (collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                     {
@@ -108,7 +108,7 @@ namespace intheclouds
                             currentEnemyStats.TakeDamage(wieldingUser, DamageType.Magic, actualDamage);
                         }
 
-                        if (!wieldingUser.explorationMode)
+                        if (currentEnemyStats.isAlive || !wieldingUser.explorationMode)
                         {
                             wieldingUser.UseAP(requiredAP);
                         }
@@ -156,16 +156,7 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            if (grabbable.PrimaryGrabber == null)
-            {
-                wieldingUser = null;
-                Debug.Log("Weapon dropped! wieldingUser == null");
-            }
-            else
-            {
-                wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
-                Debug.Log($"Weapon grabbed! wieldingUser: {wieldingUser.Name}");
-            }
+            wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
         }
     }
 }

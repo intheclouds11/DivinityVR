@@ -11,6 +11,8 @@ namespace intheclouds
     public class EnemyStats : MonoBehaviour, ICharacter
     {
         public EnemyStatsSO enemyStatsSO;
+        public AudioClip[] hurtAudioClips;
+        public AudioClip[] deadAudioClips;
         public string Name { get; set; }
         public GameObject CharacterType { get; set; }
         [SerializeField] private Slider healthSlider;
@@ -22,6 +24,8 @@ namespace intheclouds
         [SerializeField] private GameObject hitPopupPrefab;
         [SerializeField] private GameObject hitPopupsParent;
         public float hitPopupSpeed = 0.5f;
+
+        #region Enemy Stats
 
         [Tooltip("Enemy Stats")]
         public int currentHealth
@@ -93,7 +97,7 @@ namespace intheclouds
                 if (_currentAP == 0)
                 {
                     turn = false;
-                    GetComponent<EnemyAI>().EndTurn();
+                    enemyAI.EndTurn();
                 }
             }
         }
@@ -118,7 +122,7 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    GetComponent<EnemyAI>().StartTurn();
+                    enemyAI.StartTurn();
                     // todo: apply status effects here!
                 }
                 else
@@ -129,43 +133,47 @@ namespace intheclouds
         }
         private bool _turn;
 
-        public CharacterAttributes attributes;
+        #endregion
+
+        #region Enemy Attributes
+
+        public int strength => enemyStatsSO.strength;
+        public int finesse => enemyStatsSO.finesse;
+        public int intelligence => enemyStatsSO.intelligence;
+        public int constitution => enemyStatsSO.constitution;
+        public int wits => enemyStatsSO.wits;
+
+        #endregion
 
         public bool isAlive = true;
-        public AudioClip[] hurtAudioClips;
-        public AudioClip[] deadAudioClips;
-        public event Action EnemyDamaged;
-        public event Action EnemyDied;
-        private AudioSource audioSource;
-        private List<GameObject> activeHitPopups = new List<GameObject>();
-
         public bool attackOnSight = true;
         public bool enemyEngaged;
 
-        private void OnEnable()
-        {
-            audioSource = GetComponent<AudioSource>();
-            if (!enemyStatsSO)
-            {
-                Debug.LogError("No EnemyStatsSO assigned!", this);
-                return;
-            }
+        public event Action EnemyDamaged;
+        public event Action EnemyDied;
+        private EnemyAI enemyAI;
+        private AudioSource audioSource;
+        private List<GameObject> activeHitPopups = new List<GameObject>();
 
+
+        private void Awake()
+        {
+            enemyAI = GetComponent<EnemyAI>();
+            audioSource = GetComponent<AudioSource>();
             InitializeStats();
         }
 
         private void InitializeStats()
         {
-            attributes = GetComponent<CharacterAttributes>();
             CharacterType = gameObject;
             Name = enemyStatsSO.Name;
             maxHealth = enemyStatsSO.maxHealth;
-            currentHealth = enemyStatsSO.currentHealth;
             maxPhysicalArmor = enemyStatsSO.maxPhysicalArmor;
-            currentPhysicalArmor = enemyStatsSO.currentPhysicalArmor;
             maxMagicArmor = enemyStatsSO.maxMagicArmor;
-            currentMagicArmor = enemyStatsSO.currentMagicArmor;
             maxAP = enemyStatsSO.maxAP;
+            currentHealth = maxHealth;
+            currentPhysicalArmor = enemyStatsSO.currentPhysicalArmor;
+            currentMagicArmor = enemyStatsSO.currentMagicArmor;
             currentAP = enemyStatsSO.currentAP;
             earnedXP = enemyStatsSO.earnedXP;
         }
