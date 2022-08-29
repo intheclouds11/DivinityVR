@@ -1,3 +1,4 @@
+using System;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
@@ -20,5 +21,21 @@ namespace intheclouds
         public GameObject rightHandPhysics;
         public GameObject rightHandModel;
         public GameObject userMenuSpawnPoint;
+        public GameObject visorSocket;
+        public GameObject turnOrderUI;
+        public GameObject audioSources;
+
+        private void Start()
+        {
+            if (PlayerStats.playerControlled)
+            {
+                turnOrderUI.transform.SetParent(Camera.transform, false);
+                turnOrderUI.transform.localPosition = Vector3.zero;
+                turnOrderUI.transform.localRotation = Quaternion.identity;
+                audioSources.transform.SetParent(HVRPlayerController.gameObject.transform);
+            }
+        }
     }
+    
+    
 }

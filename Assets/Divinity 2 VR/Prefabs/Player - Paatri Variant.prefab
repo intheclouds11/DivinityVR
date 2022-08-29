@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1523598147667807492, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_fontStyle
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2636820266284276201, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -110,6 +114,10 @@ PrefabInstance:
     - target: {fileID: 7426203053136821055, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084722306712900141, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_fontStyle
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8363194678228026307, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_Enabled

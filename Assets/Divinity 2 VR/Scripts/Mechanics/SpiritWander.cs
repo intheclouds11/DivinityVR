@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
+using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Player;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 
 namespace intheclouds
@@ -41,27 +43,6 @@ namespace intheclouds
 
         private void InputCheck()
         {
-            // if (inTriggerLH)
-            // {
-            //     if (timeInTriggerLH < 2)
-            //     {
-            //         timeInTriggerLH += Time.deltaTime;
-            //     }
-            //
-            //     if (timeInTriggerLH >= timeInTriggerRequired)
-            //     {
-            //         if (HVRInputManager.Instance.LeftController.GripButtonState.JustActivated)
-            //         {
-            //             ToggleSpiritForm();
-            //         }
-            //     }
-            // }
-            //
-            // else if (!inTriggerLH)
-            // {
-            //     timeInTriggerLH -= Time.deltaTime;
-            // }
-
             if (inTriggerRH)
             {
                 if (timeInTriggerRH < 2)
@@ -113,8 +94,7 @@ namespace intheclouds
             spawnedGOs = new List<GameObject>();
             foreach (var obj in objectsToDeparent)
             {
-                // var physicalFormObject = Instantiate(obj, obj.transform.position, obj.transform.rotation);
-                var physicalFormObject = Instantiate(obj, obj.transform.position, obj.transform.rotation, spawnParent);
+                GameObject physicalFormObject = Instantiate(obj, obj.transform.position, obj.transform.rotation, spawnParent);
                 spawnedGOs.Add(physicalFormObject);
                 var components = physicalFormObject.GetComponents<Component>();
                 var childComponents = physicalFormObject.GetComponentsInChildren<Component>();
@@ -133,13 +113,15 @@ namespace intheclouds
                         Destroy(childComponent);
                     }
                 }
+            }
 
-                // make any masked objects visible to VRcamera
-                physicalFormObject.layer = LayerMask.NameToLayer("Default");
-                foreach (Transform child in physicalFormObject.transform)
-                {
-                    child.gameObject.layer = LayerMask.NameToLayer("Default");
-                }
+            // spawn new visor (without socket)
+            var visorSocketGO = transform.root.GetComponent<LocalUserObjects>().visorSocket;
+            if (visorSocketGO.transform.childCount > 0)
+            {
+                GameObject visorOriginal = visorSocketGO.transform.GetChild(0).gameObject;
+                GameObject visorSpawned = Instantiate(visorOriginal.gameObject, visorOriginal.transform.position, visorOriginal.transform.rotation, spawnParent);
+                spawnedGOs.Add(visorSpawned);
             }
         }
 
@@ -149,9 +131,9 @@ namespace intheclouds
             hvrPlayerController.transform.position = initialCharacterPosition;
             hvrPlayerController.transform.rotation = initialCharacterRotation;
 
-            foreach (var o in spawnedGOs)
+            foreach (var spawnedGO in spawnedGOs)
             {
-                Destroy(o);
+                Destroy(spawnedGO);
             }
 
             spawnedGOs = null;

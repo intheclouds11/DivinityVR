@@ -912,8 +912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowVelSwingTriggerSpeed: 5
-  mediumVelSwingTriggerSpeed: 10
-  highVelSwingTriggerSpeed: 15
+  mediumVelSwingTriggerSpeed: 5.6
+  highVelSwingTriggerSpeed: 6
   swipeSFXAudioSource: {fileID: 7597724808604238642}
 --- !u!114 &747239356774909847
 MonoBehaviour:
@@ -956,7 +956,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 0}
+  HandGrabbedClip: {fileID: 8300000, guid: 71da2124ae2bb8f4d80e99c92613b202, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []

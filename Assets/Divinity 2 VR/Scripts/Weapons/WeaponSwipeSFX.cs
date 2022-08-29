@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -25,29 +23,25 @@ namespace intheclouds
 
         private void VelocityActions()
         {
-            if (rb.velocity.magnitude > lowVelSwingTriggerSpeed)
+            if (rb.velocity.magnitude > highVelSwingTriggerSpeed)
             {
-                if (!swipeSFXAudioSource.isPlaying)
-                {
-                    swipeSFXAudioSource.Play();
-                    Debug.Log("small swipe!");
-                }
+                if (swipeSFXAudioSource.isPlaying) return;
+                swipeSFXAudioSource.pitch = Random.Range(1.2f, 1.3f);
+                swipeSFXAudioSource.Play();
+                // Debug.Log("fast swipe!");
             }
             else if (rb.velocity.magnitude > mediumVelSwingTriggerSpeed)
             {
-                if (!swipeSFXAudioSource.isPlaying)
-                {
-                    swipeSFXAudioSource.Play();
-                    Debug.Log("med swipe!");
-                }
+                if (swipeSFXAudioSource.isPlaying) return;
+                swipeSFXAudioSource.pitch = Random.Range(1.1f, 1.15f);
+                swipeSFXAudioSource.Play();
+                // Debug.Log("med swipe!");
             }
-            else if (rb.velocity.magnitude > highVelSwingTriggerSpeed)
+            else if (rb.velocity.magnitude > lowVelSwingTriggerSpeed)
             {
-                if (!swipeSFXAudioSource.isPlaying)
-                {
-                    swipeSFXAudioSource.Play();
-                    Debug.Log("fast swipe!");
-                }
+                if (swipeSFXAudioSource.isPlaying) return;
+                swipeSFXAudioSource.pitch = Random.Range(1f, 1.05f);
+                swipeSFXAudioSource.Play();
             }
         }
     }

@@ -25,7 +25,7 @@ namespace intheclouds
             Instance = this;
             menuIsOpen = transform.GetChild(0).gameObject.activeInHierarchy;
             canvasGO = transform.GetChild(0).gameObject;
-            ListPlayers(); // need to call this anytime a player is added/removed from GameManager
+            ListPlayers(); // todo: call this anytime a player is added/removed from GameManager
 
             foreach (var player in GameManager.Instance.players)
             {
@@ -36,13 +36,6 @@ namespace intheclouds
             }
         }
 
-        public void UserSetup(PlayerStats player)
-        {
-            currentUserObjects = player.transform.root.GetComponent<LocalUserObjects>();
-            spawnPoint = currentUserObjects.userMenuSpawnPoint;
-            followThis = currentUserObjects.Camera.gameObject;
-        }
-
         private void Update()
         {
             if (followPlayer)
@@ -51,6 +44,13 @@ namespace intheclouds
             }
 
             transform.LookAt(2 * transform.position - followThis.transform.position);
+        }
+
+        public void UserSetup(PlayerStats player)
+        {
+            currentUserObjects = player.transform.root.GetComponent<LocalUserObjects>();
+            spawnPoint = currentUserObjects.userMenuSpawnPoint;
+            followThis = currentUserObjects.Camera.gameObject;
         }
 
         public void ToggleMenu()
