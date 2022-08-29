@@ -27411,10 +27411,12 @@ MonoBehaviour:
   PlayerMovementAP: {fileID: 4570675857904275113}
   Camera: {fileID: 6649675074669179270}
   leftController: {fileID: 6649675075246033740}
-  rightController: {fileID: 6649675073775481672}
   leftHandPhysics: {fileID: 472343173151820103}
+  leftHandModel: {fileID: 4977235440325308323}
+  rightController: {fileID: 6649675073775481672}
   rightHandPhysics: {fileID: 920132572292936046}
-  activePlayer: 1
+  rightHandModel: {fileID: 4633775738560472452}
+  userMenuSpawnPoint: {fileID: 5503940816554811343}
 --- !u!1 &8686513152415890841
 GameObject:
   m_ObjectHideFlags: 0

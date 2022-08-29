@@ -14,10 +14,11 @@ namespace intheclouds
         public PlayerMovementAP PlayerMovementAP;
         public Camera Camera;
         public GameObject leftController;
-        public GameObject rightController;
-        // todo: set the Rigidbody on these to isKinematic when !activePlayer
         public GameObject leftHandPhysics;
+        public GameObject leftHandModel;
+        public GameObject rightController;
         public GameObject rightHandPhysics;
-        public bool activePlayer;
+        public GameObject rightHandModel;
+        public GameObject userMenuSpawnPoint;
     }
 }

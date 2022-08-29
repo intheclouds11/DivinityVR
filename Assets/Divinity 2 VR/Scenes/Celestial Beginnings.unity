@@ -15646,6 +15646,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1579871225}
     - target: {fileID: 4107588257984366002, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
+      propertyPath: currentUserObjects
+      value: 
+      objectReference: {fileID: 1583044672}
+    - target: {fileID: 4107588257984366002, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
       propertyPath: controllerHints.Array.data[0]
       value: 
       objectReference: {fileID: 460381128}
@@ -28284,10 +28288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   players:
-  - {fileID: 172491256}
   - {fileID: 2838670730329581862}
+  - {fileID: 172491256}
   combatStartClip: {fileID: 8300000, guid: 20d02795b8472fa46bab714918c1ff3f, type: 3}
-  firstTurn: 0
   nextTurn: 0
   enemiesAlive: 0
   playersAlive: 0
@@ -39306,6 +39309,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1583044672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6785200469427271971, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+  m_PrefabInstance: {fileID: 4260653004094169133}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdc17e9aeb9f3c40833e457f371933a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1584565049
 GameObject:
   m_ObjectHideFlags: 0
@@ -46879,42 +46893,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 440152487112978801, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394223031868629616, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806972988096010841, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5305024681545703545, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5305024681949326702, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5305024682478606461, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5395569653939620132, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7045695623475046646, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
       propertyPath: menu
       value: 
       objectReference: {fileID: 980525852}
-    - target: {fileID: 7045695623475046646, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7902836536231428106, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
       propertyPath: m_Name
       value: Player - Paatri

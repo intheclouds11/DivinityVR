@@ -260,7 +260,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2638557247249882479}
         m_TargetAssemblyTypeName: intheclouds.PlayerSwapper, Assembly-CSharp
-        m_MethodName: SwapPlayer
+        m_MethodName: PlayerSwap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

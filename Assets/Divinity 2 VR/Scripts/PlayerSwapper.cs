@@ -1,25 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using HurricaneVR.Framework.Components;
+using HurricaneVR.Framework.Core.HandPoser;
+using HurricaneVR.Framework.Core.Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SpatialTracking;
 
 namespace intheclouds
 {
     public class PlayerSwapper : MonoBehaviour
     {
         private PlayerStats currentControlledPlayer;
-        
-        public IEnumerator SwapPlayer()
+
+        public void PlayerSwap()
         {
+            restart:
             foreach (var player in GameManager.Instance.players)
             {
                 // First get currently controlled player
-                while (currentControlledPlayer == null)
+                if (currentControlledPlayer == null)
                 {
                     if (player.playerControlled)
                     {
                         currentControlledPlayer = player;
-                        yield return null;
+                        goto restart;
+                    }
+                    else
+                    {
+                        continue;
                     }
                 }
 
@@ -27,7 +34,7 @@ namespace intheclouds
                 if (currentControlledPlayer.Name == GetComponentInChildren<TextMeshProUGUI>().text)
                 {
                     Debug.Log("Character is already being controlled");
-                    StopCoroutine(SwapPlayer());
+                    return;
                 }
 
                 if (player.Name == GetComponentInChildren<TextMeshProUGUI>().text)
@@ -40,36 +47,50 @@ namespace intheclouds
 
         private void EnableSwappedPlayerObjects(PlayerStats playerStats)
         {
-            var swappedPlayerObjects = currentControlledPlayer.GetComponentInParent<LocalUserObjects>();
-            swappedPlayerObjects.activePlayer = true;
+            var swappedPlayerObjects = playerStats.GetComponentInParent<LocalUserObjects>();
+            swappedPlayerObjects.PlayerStats.playerControlled = true;
             swappedPlayerObjects.HVRPlayerController.enabled = true;
             swappedPlayerObjects.HVRPlayerInputs.enabled = true;
             swappedPlayerObjects.ITCPlayerInputs.enabled = true;
-            swappedPlayerObjects.PlayerMovementAP.enabled = true;
-            swappedPlayerObjects.leftController.SetActive(true);
-            swappedPlayerObjects.rightController.SetActive(true);
+
+            swappedPlayerObjects.leftController.GetComponent<TrackedPoseDriver>().enabled = true;
+            swappedPlayerObjects.leftHandModel.GetComponent<HVRHandAnimator>().enabled = true;
             swappedPlayerObjects.leftHandPhysics.GetComponent<Rigidbody>().isKinematic = false;
+            swappedPlayerObjects.leftHandPhysics.GetComponent<HVRJointHand>().Target = swappedPlayerObjects.leftController.GetComponentInChildren<HVRControllerOffset>().transform;
+            
+            swappedPlayerObjects.rightController.GetComponent<TrackedPoseDriver>().enabled = true;
+            swappedPlayerObjects.rightHandModel.GetComponent<HVRHandAnimator>().enabled = true;
             swappedPlayerObjects.rightHandPhysics.GetComponent<Rigidbody>().isKinematic = false;
-            var cameraGOComponents = swappedPlayerObjects.Camera.gameObject.GetComponents<MonoBehaviour>();
+            swappedPlayerObjects.rightHandPhysics.GetComponent<HVRJointHand>().Target = swappedPlayerObjects.rightController.GetComponentInChildren<HVRControllerOffset>().transform;
+
+            var cameraGOComponents = swappedPlayerObjects.Camera.gameObject.GetComponents<Behaviour>();
             foreach (var component in cameraGOComponents)
             {
                 component.enabled = true;
             }
+
+            UserMenu.Instance.UserSetup(swappedPlayerObjects.PlayerStats);
         }
 
         private void DisableCurrentPlayerObjects()
         {
             var currentPlayerObjects = currentControlledPlayer.GetComponentInParent<LocalUserObjects>();
-            currentPlayerObjects.activePlayer = false;
+            currentPlayerObjects.PlayerStats.playerControlled = false;
             currentPlayerObjects.HVRPlayerController.enabled = false;
             currentPlayerObjects.HVRPlayerInputs.enabled = false;
             currentPlayerObjects.ITCPlayerInputs.enabled = false;
-            currentPlayerObjects.PlayerMovementAP.enabled = false;
-            currentPlayerObjects.leftController.SetActive(false);
-            currentPlayerObjects.rightController.SetActive(false);
+
+            currentPlayerObjects.leftController.GetComponent<TrackedPoseDriver>().enabled = false;
+            currentPlayerObjects.leftHandModel.GetComponent<HVRHandAnimator>().enabled = false;
             currentPlayerObjects.leftHandPhysics.GetComponent<Rigidbody>().isKinematic = true;
+            currentPlayerObjects.leftHandPhysics.GetComponent<HVRJointHand>().Target = currentPlayerObjects.leftHandPhysics.transform;
+            
+            currentPlayerObjects.rightController.GetComponent<TrackedPoseDriver>().enabled = false;
+            currentPlayerObjects.rightHandModel.GetComponent<HVRHandAnimator>().enabled = false;
             currentPlayerObjects.rightHandPhysics.GetComponent<Rigidbody>().isKinematic = true;
-            var cameraComponents = currentPlayerObjects.Camera.gameObject.GetComponents<MonoBehaviour>();
+            currentPlayerObjects.rightHandPhysics.GetComponent<HVRJointHand>().Target = currentPlayerObjects.rightHandPhysics.transform;
+
+            var cameraComponents = currentPlayerObjects.Camera.gameObject.GetComponents<Behaviour>();
             foreach (var cameraComponent in cameraComponents)
             {
                 cameraComponent.enabled = false;

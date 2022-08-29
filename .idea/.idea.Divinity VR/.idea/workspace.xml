@@ -48,6 +48,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.1/Editor/PlasticSCM/UI/CooldownWindowDelayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.1/Samples~/SimpleDemo/SimpleController_UsingState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Containers/BlockList.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/MemorySnapshot/Format/QueriedSnapshot/EntryType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Profiler/APITable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Profiler/ObjectData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Profiler/ObjectDataFormatter.cs" root0="SKIP_HIGHLIGHTING" />
@@ -55,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Utilities/PlatformsHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Editor/EditorCore/EditorMeshUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Editor/EditorCore/EntityEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Samples~/Runtime/Icosphere FFT/Scripts/CameraControls.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.testtools.codecoverage@1.0.1/Samples~/Tutorial/Asteroids/Tests/WeaponTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/Unity.TextMeshPro.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsUtils.cs" root0="SKIP_HIGHLIGHTING" />
@@ -63,12 +65,14 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SelectableEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/AnimationTriggers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/DefaultControls.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/RawImage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/InputField/CharacterLimitValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/ScrollRect/ScrollRectTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Util/ExceptionUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.9/Runtime/TrackedPoseDriver/TrackedPoseDriver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.4.2/Runtime/Features/Interactions/ValveIndexControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -167,7 +171,7 @@
       <workItem from="1661562056081" duration="12046000" />
       <workItem from="1661609717014" duration="11907000" />
       <workItem from="1661654608441" duration="10481000" />
-      <workItem from="1661700868069" duration="9628000" />
+      <workItem from="1661700868069" duration="16979000" />
     </task>
     <servers />
   </component>
@@ -179,25 +183,6 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Divinity 2 VR/Scripts/PlayerSwapper.cs</url>
-          <line>12</line>
-          <properties documentPath="C:\Users\patri\Documents\Unity\UnityVR\Divinity VR\Assets\Divinity 2 VR\Scripts\PlayerSwapper.cs" initialLine="12" containingFunctionPresentation="method 'BecomeCharacter'">
-            <startOffsets>
-              <option value="280" />
-            </startOffsets>
-            <endOffsets>
-              <option value="281" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

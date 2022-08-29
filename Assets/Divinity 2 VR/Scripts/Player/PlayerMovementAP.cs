@@ -20,17 +20,10 @@ namespace intheclouds
         private void OnEnable()
         {
             playerStats = GetComponent<PlayerStats>();
-        }
-
-        private void SetupControls()
-        {
-            if (playerStats.playerControlled)
-            {
-                var localUserObjects = transform.root.GetComponent<LocalUserObjects>();
-                playerController = localUserObjects.HVRPlayerController;
-                playerInputs = localUserObjects.HVRPlayerInputs;
-                playerController.MovementEnabled = false;
-            }
+            var localUserObjects = transform.root.GetComponent<LocalUserObjects>();
+            playerController = localUserObjects.HVRPlayerController;
+            playerInputs = localUserObjects.HVRPlayerInputs;
+            playerController.MovementEnabled = false;
         }
 
         private void OnDisable()
@@ -53,7 +46,6 @@ namespace intheclouds
 
         public void StartTurn()
         {
-            SetupControls(); // for swapping VR Rig between characters
             previousPosition = playerController.transform.position;
             distanceMoved = 0;
             playerController.MovementEnabled = true;

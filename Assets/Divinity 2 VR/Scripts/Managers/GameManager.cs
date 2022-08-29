@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> GameStateChanged;
     public List<PlayerStats> players;
     public AudioClip combatStartClip;
-    public bool firstTurn;
     public bool nextTurn;
     public KeyValuePair<ICharacter, int> currentCombatant;
     public int enemiesAlive;
@@ -98,7 +97,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        firstTurn = true;
         StartCoroutine(TurnOrderCoroutine(newTurnList));
     }
 

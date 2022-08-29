@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using HurricaneVR.Framework.Core.Player;
-using HurricaneVR.Framework.Shared;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,40 +8,56 @@ namespace intheclouds
 {
     public class UserMenu : MonoBehaviour
     {
-        [Tooltip("For adjusting bindings, grip amount, etc.")]
-        public LocalUserObjects currentUserObjects;
-        public bool followPlayer;
-        public GameObject player;
+        public static UserMenu Instance;
+        public GameObject[] controllerHints = new GameObject[2];
         public GameObject playerSelectButton;
+        public bool followPlayer;
+        public bool menuIsOpen;
+        public GameObject spawnPoint;
+        public GameObject followThis;
+        public LocalUserObjects currentUserObjects;
         public LayoutGroup playerSelectButtonGroup;
         private List<GameObject> currentPlayerSelectButtons = new List<GameObject>();
-        public GameObject followPoint;
-        public bool menuIsOpen;
         private GameObject canvasGO;
-        public GameObject[] controllerHints = new GameObject[2];
 
         private void Start()
         {
+            Instance = this;
             menuIsOpen = transform.GetChild(0).gameObject.activeInHierarchy;
             canvasGO = transform.GetChild(0).gameObject;
             ListPlayers(); // need to call this anytime a player is added/removed from GameManager
+
+            foreach (var player in GameManager.Instance.players)
+            {
+                if (player.playerControlled)
+                {
+                    UserSetup(player);
+                }
+            }
+        }
+
+        public void UserSetup(PlayerStats player)
+        {
+            currentUserObjects = player.transform.root.GetComponent<LocalUserObjects>();
+            spawnPoint = currentUserObjects.userMenuSpawnPoint;
+            followThis = currentUserObjects.Camera.gameObject;
         }
 
         private void Update()
         {
             if (followPlayer)
             {
-                transform.position = Vector3.Lerp(transform.position, followPoint.transform.position, 5 * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, spawnPoint.transform.position, 5 * Time.deltaTime);
             }
 
-            transform.LookAt(2 * transform.position - player.transform.position);
+            transform.LookAt(2 * transform.position - followThis.transform.position);
         }
 
         public void ToggleMenu()
         {
             if (!menuIsOpen)
             {
-                transform.position = followPoint.transform.position;
+                transform.position = spawnPoint.transform.position;
                 canvasGO.SetActive(true);
             }
             else
@@ -62,38 +76,14 @@ namespace intheclouds
             }
         }
 
+        // need to call this when player joins/leaves party
         public void ListPlayers()
         {
             foreach (var playerStats in GameManager.Instance.players)
             {
                 var playerButton = Instantiate(playerSelectButton, playerSelectButtonGroup.transform);
                 playerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerStats.Name;
-
-                //todo: assign player to button so can switch to when clicked
-
                 currentPlayerSelectButtons.Add(playerButton);
-            }
-        }
-
-        public void Button_ChangeControlledCharacter()
-        {
-            
-            
-            var playerNameSwitchingTo = GetComponentInChildren<TextMeshProUGUI>().text;
-            foreach (var p in GameManager.Instance.players)
-            {
-                if (p.Name == playerNameSwitchingTo)
-                {
-                    // if already that character, abort
-                    if (p.Name == player.GetComponent<PlayerStats>().Name)
-                    {
-                        Debug.Log("Cannot swap. Player is already active");
-                        break;
-                    }
-
-                    p.playerControlled = true;
-                    Debug.Log($"Swapped controls to {p.Name}");
-                }
             }
         }
 
