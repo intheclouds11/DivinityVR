@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "PlayerStats")]
-public class PlayerStatsSO : ScriptableObject
+[CreateAssetMenu(fileName = "CharacterStats")]
+public class CharacterStatsSO : ScriptableObject
 {
-    public string userName;
+    public string Name;
     public int maxHealth;
     public int currentHealth;
-    public int maxPhysicalArmor;
-    public int currentPhysicalArmor;
+    public int maxPoise;
+    public int currentPoise;
     public int maxMagicArmor;
     public int currentMagicArmor;
     public int maxAP;
@@ -16,11 +16,14 @@ public class PlayerStatsSO : ScriptableObject
     public int XP;
     public int XPToNextLevel;
     public int gold;
-
     public int strength;
     public int finesse;
     public int intelligence;
     public int constitution;
     public int memory;
     public int wits;
+    
+    [Tooltip("EnemyStats")]
+    public int XPDefeated;
+
 }

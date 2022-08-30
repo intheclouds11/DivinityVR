@@ -102,25 +102,25 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 0
-    value: -4
+    value: 0
   tint:
     overrideState: 0
     value: 0
   colorFilter:
     overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
   hueShift:
     overrideState: 0
-    value: 0
+    value: 5.1
   saturation:
     overrideState: 0
-    value: 4
+    value: 0.1
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: -0.5
+    value: -1
   contrast:
     overrideState: 1
     value: 91
@@ -147,19 +147,19 @@ MonoBehaviour:
     value: 0
   mixerBlueOutGreenIn:
     overrideState: 0
-    value: 0
+    value: -96
   mixerBlueOutBlueIn:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: -0.058091287}
+    overrideState: 1
+    value: {x: 0.9311328, y: 0.92695165, z: 1, w: -0.02489627}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 0.9592818, z: 0.9408017, w: -0.08461126}
+    value: {x: 0.9819675, y: 0.97480875, z: 1, w: 0.1477539}
   gain:
     overrideState: 0
-    value: {x: 0.87363046, y: 0.8461721, z: 1, w: -0.13278008}
+    value: {x: 0.9279509, y: 0.94105625, z: 1, w: -0.03319502}
   masterCurve:
     overrideState: 0
     value:
@@ -1378,10 +1378,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.3
+    value: 0.15
   threshold:
     overrideState: 1
-    value: 3.52
+    value: 4.1
   softKnee:
     overrideState: 0
     value: 0.361
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: Post Process Profile
+  m_Name: Post Process Profile VISOR ON
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -3985310333245736440}

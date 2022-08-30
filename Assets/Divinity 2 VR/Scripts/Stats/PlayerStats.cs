@@ -1,30 +1,16 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace intheclouds
 {
     [SuppressMessage("ReSharper", "ArrangeAccessorOwnerBody")]
-    public class PlayerStats : MonoBehaviour, ICharacter
+    public class PlayerStats : BaseStats
     {
-        public PlayerStatsSO playerStatsSO;
+        public LocalUserObjects LocalUserObjects;
         private PlayerMovementAP playerMovementAP;
-        public string Name { get; set; }
-        public GameObject CharacterType { get; set; }
-        [SerializeField] private Slider healthSlider;
-        [SerializeField] private Slider physicalArmorSlider;
-        [SerializeField] private Slider magicArmorSlider;
-        [SerializeField] private Slider apSlider;
-        [SerializeField] private Slider xpSlider;
-        [SerializeField] private TextMeshProUGUI healthText;
-        [SerializeField] private TextMeshProUGUI physicalArmorText;
-        [SerializeField] private TextMeshProUGUI magicArmorText;
         [SerializeField] private TextMeshProUGUI apText;
         [SerializeField] private TextMeshProUGUI goldText;
         [SerializeField] private AudioClip levelUpClip;
@@ -34,7 +20,7 @@ namespace intheclouds
         #region Player Stats
 
         [Tooltip("Player Stats")]
-        public int currentHealth
+        public override int CurrentHealth
         {
             get { return _currentHealth; }
             set
@@ -43,8 +29,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        private int _currentHealth;
-        public int maxHealth
+        public override int MaxHealth
         {
             get => _maxHealth;
             set
@@ -53,28 +38,25 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        private int _maxHealth;
-        public int currentPhysicalArmor
+        public override int CurrentPoise
         {
-            get { return _currentPhysicalArmor; }
+            get { return _currentPoise; }
             set
             {
-                _currentPhysicalArmor = value;
-                UpdatePhysicalArmorInfo();
+                _currentPoise = value;
+                UpdatePoiseInfo();
             }
         }
-        private int _currentPhysicalArmor;
-        public int maxPhysicalArmor
+        public override int MaxPoise
         {
-            get { return _maxPhysicalArmor; }
+            get { return _maxPoise; }
             set
             {
-                _maxPhysicalArmor = value;
-                UpdatePhysicalArmorInfo();
+                _maxPoise = value;
+                UpdatePoiseInfo();
             }
         }
-        private int _maxPhysicalArmor;
-        public int currentMagicArmor
+        public override int CurrentMagicArmor
         {
             get { return _currentMagicArmor; }
             set
@@ -83,8 +65,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        private int _currentMagicArmor;
-        public int maxMagicArmor
+        public override int MaxMagicArmor
         {
             get { return _maxMagicArmor; }
             set
@@ -93,8 +74,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        private int _maxMagicArmor;
-        public int currentAP
+        public override int CurrentAP
         {
             get { return _currentAP; }
             set
@@ -103,13 +83,12 @@ namespace intheclouds
                 UpdateAPInfo();
                 if (_currentAP == 0)
                 {
-                    turn = false;
+                    Turn = false;
                     playerMovementAP.EndTurn();
                 }
             }
         }
-        private int _currentAP;
-        public int maxAP
+        public override int MaxAP
         {
             get { return _maxAP; }
             set
@@ -149,8 +128,8 @@ namespace intheclouds
             }
         }
         private int _XPToNextLevel;
-        public bool turn
-        {
+        public override bool Turn
+        { 
             get { return _turn; }
             set
             {
@@ -166,7 +145,6 @@ namespace intheclouds
                 }
             }
         }
-        private bool _turn;
         public bool inCombat
         {
             get { return _inCombat; }
@@ -192,6 +170,7 @@ namespace intheclouds
                 _playerControlled = value;
             }
         }
+        
         [SerializeField]
         private bool _playerControlled;
 
@@ -199,11 +178,11 @@ namespace intheclouds
 
         #region Player Attributes
 
-        public int strength => playerStatsSO.strength;
-        public int finesse => playerStatsSO.finesse;
-        public int intelligence => playerStatsSO.intelligence;
-        public int constitution => playerStatsSO.constitution;
-        public int wits => playerStatsSO.wits;
+        public int strength => statsSO.strength;
+        public int finesse => statsSO.finesse;
+        public int intelligence => statsSO.intelligence;
+        public int constitution => statsSO.constitution;
+        public int wits => statsSO.wits;
 
         #endregion
 
@@ -217,19 +196,18 @@ namespace intheclouds
         private void InitializeStats()
         {
             playerMovementAP = GetComponent<PlayerMovementAP>();
-            CharacterType = gameObject;
-            Name = playerStatsSO.userName;
-            maxHealth = playerStatsSO.maxHealth;
-            maxPhysicalArmor = playerStatsSO.maxPhysicalArmor;
-            maxMagicArmor = playerStatsSO.maxMagicArmor;
-            maxAP = playerStatsSO.maxAP;
-            currentHealth = maxHealth;
-            currentPhysicalArmor = playerStatsSO.currentPhysicalArmor;
-            currentMagicArmor = playerStatsSO.currentMagicArmor;
-            currentAP = playerStatsSO.currentAP;
-            XP = playerStatsSO.XP;
-            XPToNextLevel = playerStatsSO.XPToNextLevel;
-            gold = playerStatsSO.gold;
+            Name = statsSO.Name;
+            MaxHealth = statsSO.maxHealth;
+            MaxPoise = statsSO.maxPoise;
+            MaxMagicArmor = statsSO.maxMagicArmor;
+            MaxAP = statsSO.maxAP;
+            CurrentHealth = MaxHealth;
+            CurrentPoise = statsSO.currentPoise;
+            CurrentMagicArmor = statsSO.currentMagicArmor;
+            CurrentAP = statsSO.currentAP;
+            XP = statsSO.XP;
+            XPToNextLevel = statsSO.XPToNextLevel;
+            gold = statsSO.gold;
         }
 
         private void UpdateGoldInfo()
@@ -245,38 +223,38 @@ namespace intheclouds
 
         private void UpdateAPInfo()
         {
-            apSlider.maxValue = maxAP;
-            apSlider.value = currentAP;
-            apText.text = $"{currentAP}/{maxAP}";
+            apSlider.maxValue = MaxAP;
+            apSlider.value = CurrentAP;
+            apText.text = $"{CurrentAP}/{MaxAP}";
         }
 
         private void UpdateMagicArmorInfo()
         {
-            magicArmorSlider.maxValue = maxMagicArmor;
-            magicArmorSlider.value = currentMagicArmor;
-            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
+            magicArmorSlider.maxValue = MaxMagicArmor;
+            magicArmorSlider.value = CurrentMagicArmor;
+            magicArmorText.text = $"{CurrentMagicArmor}/{MaxMagicArmor}";
         }
 
-        private void UpdatePhysicalArmorInfo()
+        private void UpdatePoiseInfo()
         {
-            physicalArmorSlider.maxValue = maxPhysicalArmor;
-            physicalArmorSlider.value = currentPhysicalArmor;
-            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
+            poiseSlider.maxValue = MaxPoise;
+            poiseSlider.value = CurrentPoise;
+            poiseText.text = $"{CurrentPoise}/{MaxPoise}";
         }
 
         private void UpdateHealthInfo()
         {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
-            healthText.text = $"{currentHealth}/{maxHealth}";
+            healthSlider.maxValue = MaxHealth;
+            healthSlider.value = CurrentHealth;
+            healthText.text = $"{CurrentHealth}/{MaxHealth}";
         }
 
         public void TakeDamage(int damage)
         {
             PlayerDamaged?.Invoke();
-            currentHealth -= damage;
-            healthSlider.value = currentHealth;
-            if (currentHealth <= 0)
+            CurrentHealth -= damage;
+            healthSlider.value = CurrentHealth;
+            if (CurrentHealth <= 0)
             {
                 Debug.Log("player died!!!");
                 // GameManager.Instance.UpdateGameState(GameState.Lose);
@@ -285,8 +263,8 @@ namespace intheclouds
 
         public void UseAP(int apConsumed)
         {
-            currentAP -= apConsumed;
-            apSlider.value = currentAP;
+            CurrentAP -= apConsumed;
+            apSlider.value = CurrentAP;
         }
 
         public void ObtainXP(int xp)
@@ -321,21 +299,21 @@ namespace intheclouds
 
         public void SaveProgress()
         {
-            playerStatsSO.userName = Name;
+            statsSO.Name = Name;
 
-            playerStatsSO.maxHealth = maxHealth;
-            playerStatsSO.currentHealth = currentHealth;
+            statsSO.maxHealth = MaxHealth;
+            statsSO.currentHealth = CurrentHealth;
 
-            playerStatsSO.maxPhysicalArmor = maxPhysicalArmor;
-            playerStatsSO.currentPhysicalArmor = currentPhysicalArmor;
+            statsSO.maxPoise = MaxPoise;
+            statsSO.currentPoise = CurrentPoise;
 
-            playerStatsSO.maxMagicArmor = maxMagicArmor;
-            playerStatsSO.currentMagicArmor = currentMagicArmor;
+            statsSO.maxMagicArmor = MaxMagicArmor;
+            statsSO.currentMagicArmor = CurrentMagicArmor;
 
-            playerStatsSO.maxAP = maxAP;
-            playerStatsSO.currentAP = currentAP;
-            playerStatsSO.XP = XP;
-            playerStatsSO.gold = gold;
+            statsSO.maxAP = MaxAP;
+            statsSO.currentAP = CurrentAP;
+            statsSO.XP = XP;
+            statsSO.gold = gold;
         }
     }
 }

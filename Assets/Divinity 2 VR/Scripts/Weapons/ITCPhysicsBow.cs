@@ -15,7 +15,7 @@ namespace intheclouds
         {
             if (wieldingUser == null) return;
 
-            if (wieldingUser.explorationMode || (wieldingUser.turn && wieldingUser.currentAP >= requiredAP))
+            if (wieldingUser.explorationMode || (wieldingUser.Turn && wieldingUser.CurrentAP >= requiredAP))
             {
                 NockGrabbable.enabled = true;
             }
@@ -33,7 +33,7 @@ namespace intheclouds
 
         protected override void OnArrowShot()
         {
-            if (!wieldingUser.turn && !wieldingUser.explorationMode) return;
+            if (!wieldingUser.Turn && !wieldingUser.explorationMode) return;
 
             if (!wieldingUser.explorationMode)
             {

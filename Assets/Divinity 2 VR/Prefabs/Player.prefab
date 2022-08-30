@@ -5120,7 +5120,7 @@ GameObject:
   - component: {fileID: 416946954207375379}
   - component: {fileID: 5601535192532814048}
   m_Layer: 0
-  m_Name: P Armor Text
+  m_Name: Poise Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7963,14 +7963,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5584fce40b1934145af4e81ca947a701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatsSO: {fileID: 11400000, guid: d7d669cd87ca37b458c480378fdad2e1, type: 2}
+  statsSO: {fileID: 11400000, guid: d7d669cd87ca37b458c480378fdad2e1, type: 2}
   healthSlider: {fileID: 5401035970710647839}
-  physicalArmorSlider: {fileID: 3349191446358904647}
+  poiseSlider: {fileID: 3349191446358904647}
   magicArmorSlider: {fileID: 1781898646957183954}
   apSlider: {fileID: 1405129729377947871}
   xpSlider: {fileID: 5503940816057074661}
   healthText: {fileID: 1097501511288889147}
-  physicalArmorText: {fileID: 5601535192532814048}
+  poiseText: {fileID: 5601535192532814048}
   magicArmorText: {fileID: 4791655488758437805}
   apText: {fileID: 5027515012275266168}
   goldText: {fileID: 5503940815332734723}
@@ -7989,7 +7989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d020cdf583d40494e81eba54aa3c653b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceMovedText: {fileID: 0}
 --- !u!1 &2685650069684080538
 GameObject:
   m_ObjectHideFlags: 0
@@ -16331,10 +16330,38 @@ MonoBehaviour:
       m_Calls: []
   Grabbed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Rendering.PostProcessing.PostProcessVolume,
+          Unity.Postprocessing.Runtime
+        m_MethodName: set_profile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: a8d04368ad4ec1a4da07e776f2e67c77, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.PostProcessing.PostProcessProfile,
+            Unity.Postprocessing.Runtime
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Released:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Rendering.PostProcessing.PostProcessVolume,
+          Unity.Postprocessing.Runtime
+        m_MethodName: set_profile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b766ec4434f7aa048b76f08ec1756e1a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rendering.PostProcessing.PostProcessProfile,
+            Unity.Postprocessing.Runtime
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   BeforeHoverEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -21744,7 +21771,7 @@ MonoBehaviour:
   JumpVelocity: 3
   DoubleClickThreshold: 0.25
   RotationType: 0
-  SmoothTurnSpeed: 250
+  SmoothTurnSpeed: 360
   SmoothTurnThreshold: 0.1
   SnapAmount: 45
   SnapThreshold: 0.75
@@ -22015,11 +22042,11 @@ MonoBehaviour:
   - {fileID: 2847033523827362009}
   screenFadeOnCollision: 0
   verticalMovementCameraBased: 0
+  SmoothTurnThreshold: 0.5
   horizontalSpeed: 4
-  verticalSpeed: 2
+  verticalSpeed: 3
   forwardSpeed: 4
   sprintSpeedMultipler: 2
-  snapAmount: 45
 --- !u!1 &6649675074615586368
 GameObject:
   m_ObjectHideFlags: 0
@@ -25108,7 +25135,7 @@ GameObject:
   - component: {fileID: 8767430831036969996}
   - component: {fileID: 3349191446358904647}
   m_Layer: 0
-  m_Name: Physical Armor Slider
+  m_Name: Poise Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

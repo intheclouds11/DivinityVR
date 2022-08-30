@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44be2b29565dbe04a853c9ca61fafca6, type: 3}
   m_Name: Bern Stats
   m_EditorClassIdentifier: 
-  userName: Bern
+  Name: Bern
   maxHealth: 90
   currentHealth: 90
-  maxPhysicalArmor: 10
-  currentPhysicalArmor: 10
+  maxPoise: 0
+  currentPoise: 0
   maxMagicArmor: 20
   currentMagicArmor: 20
   maxAP: 5
@@ -30,3 +30,4 @@ MonoBehaviour:
   constitution: 10
   memory: 10
   wits: 12
+  XPDefeated: 0

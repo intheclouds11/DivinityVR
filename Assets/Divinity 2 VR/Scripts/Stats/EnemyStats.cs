@@ -8,27 +8,19 @@ using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
-    public class EnemyStats : MonoBehaviour, ICharacter
+    public class EnemyStats : BaseStats
     {
-        public EnemyStatsSO enemyStatsSO;
         public AudioClip[] hurtAudioClips;
         public AudioClip[] deadAudioClips;
-        public string Name { get; set; }
-        public GameObject CharacterType { get; set; }
-        [SerializeField] private Slider healthSlider;
-        [SerializeField] private Slider physicalArmorSlider;
-        [SerializeField] private Slider magicArmorSlider;
-        [SerializeField] private TextMeshProUGUI healthText;
-        [SerializeField] private TextMeshProUGUI physicalArmorText;
-        [SerializeField] private TextMeshProUGUI magicArmorText;
         [SerializeField] private GameObject hitPopupPrefab;
         [SerializeField] private GameObject hitPopupsParent;
         public float hitPopupSpeed = 0.5f;
+        public PlayerStats playerHitBy;
 
         #region Enemy Stats
 
         [Tooltip("Enemy Stats")]
-        public int currentHealth
+        public override int CurrentHealth
         {
             get { return _currentHealth; }
             set
@@ -37,8 +29,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        private int _currentHealth;
-        public int maxHealth
+        public override int MaxHealth
         {
             get => _maxHealth;
             set
@@ -47,28 +38,25 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        private int _maxHealth;
-        public int currentPhysicalArmor
+        public override int CurrentPoise
         {
-            get { return _currentPhysicalArmor; }
+            get { return _currentPoise; }
             set
             {
-                _currentPhysicalArmor = value;
+                _currentPoise = value;
                 UpdatePhysicalArmorInfo();
             }
         }
-        private int _currentPhysicalArmor;
-        public int maxPhysicalArmor
+        public override int MaxPoise
         {
-            get { return _maxPhysicalArmor; }
+            get { return _maxPoise; }
             set
             {
-                _maxPhysicalArmor = value;
+                _maxPoise = value;
                 UpdatePhysicalArmorInfo();
             }
         }
-        private int _maxPhysicalArmor;
-        public int currentMagicArmor
+        public override int CurrentMagicArmor
         {
             get { return _currentMagicArmor; }
             set
@@ -77,8 +65,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        private int _currentMagicArmor;
-        public int maxMagicArmor
+        public override int MaxMagicArmor
         {
             get { return _maxMagicArmor; }
             set
@@ -87,8 +74,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        private int _maxMagicArmor;
-        public int currentAP
+        public override int CurrentAP
         {
             get { return _currentAP; }
             set
@@ -96,25 +82,12 @@ namespace intheclouds
                 _currentAP = value;
                 if (_currentAP == 0)
                 {
-                    turn = false;
+                    Turn = false;
                     enemyAI.EndTurn();
                 }
             }
         }
-        private int _currentAP;
-        public int maxAP
-        {
-            get { return _maxAP; }
-            set { _maxAP = value; }
-        }
-        private int _maxAP;
-        public int earnedXP
-        {
-            get { return _earnedXP; }
-            set { _earnedXP = value; }
-        }
-        private int _earnedXP;
-        public bool turn
+        public override bool Turn
         {
             get { return _turn; }
             set
@@ -131,17 +104,16 @@ namespace intheclouds
                 }
             }
         }
-        private bool _turn;
 
         #endregion
 
         #region Enemy Attributes
 
-        public int strength => enemyStatsSO.strength;
-        public int finesse => enemyStatsSO.finesse;
-        public int intelligence => enemyStatsSO.intelligence;
-        public int constitution => enemyStatsSO.constitution;
-        public int wits => enemyStatsSO.wits;
+        public int strength => statsSO.strength;
+        public int finesse => statsSO.finesse;
+        public int intelligence => statsSO.intelligence;
+        public int constitution => statsSO.constitution;
+        public int wits => statsSO.wits;
 
         #endregion
 
@@ -165,17 +137,16 @@ namespace intheclouds
 
         private void InitializeStats()
         {
-            CharacterType = gameObject;
-            Name = enemyStatsSO.Name;
-            maxHealth = enemyStatsSO.maxHealth;
-            maxPhysicalArmor = enemyStatsSO.maxPhysicalArmor;
-            maxMagicArmor = enemyStatsSO.maxMagicArmor;
-            maxAP = enemyStatsSO.maxAP;
-            currentHealth = maxHealth;
-            currentPhysicalArmor = enemyStatsSO.currentPhysicalArmor;
-            currentMagicArmor = enemyStatsSO.currentMagicArmor;
-            currentAP = enemyStatsSO.currentAP;
-            earnedXP = enemyStatsSO.earnedXP;
+            Name = statsSO.Name;
+            MaxHealth = statsSO.maxHealth;
+            MaxPoise = statsSO.maxPoise;
+            MaxMagicArmor = statsSO.maxMagicArmor;
+            MaxAP = statsSO.maxAP;
+            CurrentHealth = MaxHealth;
+            CurrentPoise = statsSO.currentPoise;
+            CurrentMagicArmor = statsSO.currentMagicArmor;
+            CurrentAP = statsSO.currentAP;
+            EarnedXP = statsSO.XPDefeated;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -214,6 +185,7 @@ namespace intheclouds
         {
             if (!isAlive) return;
 
+            playerHitBy = wieldingUser;
             if (!enemyEngaged)
             {
                 GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
@@ -225,34 +197,34 @@ namespace intheclouds
 
             if (damageType == DamageType.Physical)
             {
-                if (currentPhysicalArmor - damage >= 0)
+                if (CurrentPoise - damage >= 0)
                 {
-                    currentPhysicalArmor -= damage;
+                    CurrentPoise -= damage;
                 }
                 else
                 {
-                    currentHealth -= damage - currentPhysicalArmor;
-                    currentPhysicalArmor = 0;
+                    CurrentHealth -= damage - CurrentPoise;
+                    CurrentPoise = 0;
                 }
 
                 newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
             }
             else if (damageType == DamageType.Magic)
             {
-                if (currentMagicArmor - damage >= 0)
+                if (CurrentMagicArmor - damage >= 0)
                 {
-                    currentMagicArmor -= damage;
+                    CurrentMagicArmor -= damage;
                 }
                 else
                 {
-                    currentHealth -= damage - currentMagicArmor;
-                    currentMagicArmor = 0;
+                    CurrentHealth -= damage - CurrentMagicArmor;
+                    CurrentMagicArmor = 0;
                 }
 
                 newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
             }
 
-            if (currentHealth > 0)
+            if (CurrentHealth > 0)
             {
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.volume = 1;
@@ -260,9 +232,9 @@ namespace intheclouds
                 EnemyDamaged?.Invoke();
             }
 
-            if (currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
-                currentHealth = 0;
+                CurrentHealth = 0;
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.volume = 0.7f;
                 audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
@@ -275,29 +247,29 @@ namespace intheclouds
                 // Destroy(transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>()); // remove head rb since setting like above causes crash..
 
                 EnemyDied?.Invoke();
-                wieldingUser.ObtainXP(earnedXP);
+                wieldingUser.ObtainXP(EarnedXP);
             }
         }
 
         private void UpdateMagicArmorInfo()
         {
-            magicArmorSlider.maxValue = maxMagicArmor;
-            magicArmorSlider.value = currentMagicArmor;
-            magicArmorText.text = $"{currentMagicArmor}/{maxMagicArmor}";
+            magicArmorSlider.maxValue = MaxMagicArmor;
+            magicArmorSlider.value = CurrentMagicArmor;
+            magicArmorText.text = $"{CurrentMagicArmor}/{MaxMagicArmor}";
         }
 
         private void UpdatePhysicalArmorInfo()
         {
-            physicalArmorSlider.maxValue = maxPhysicalArmor;
-            physicalArmorSlider.value = currentPhysicalArmor;
-            physicalArmorText.text = $"{currentPhysicalArmor}/{maxPhysicalArmor}";
+            poiseSlider.maxValue = MaxPoise;
+            poiseSlider.value = CurrentPoise;
+            poiseText.text = $"{CurrentPoise}/{MaxPoise}";
         }
 
         private void UpdateHealthInfo()
         {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
-            healthText.text = $"{currentHealth}/{maxHealth}";
+            healthSlider.maxValue = MaxHealth;
+            healthSlider.value = CurrentHealth;
+            healthText.text = $"{CurrentHealth}/{MaxHealth}";
         }
     }
 }

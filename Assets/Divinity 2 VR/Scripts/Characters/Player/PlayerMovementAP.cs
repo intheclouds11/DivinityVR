@@ -14,9 +14,6 @@ namespace intheclouds
         private PlayerStats playerStats;
         private float distanceMoved;
 
-        //Debugging
-        public TextMeshProUGUI distanceMovedText;
-
         private void OnEnable()
         {
             playerStats = GetComponent<PlayerStats>();
@@ -36,7 +33,7 @@ namespace intheclouds
 
         private void Update()
         {
-            if (!playerStats.turn) return;
+            if (!playerStats.Turn) return;
             if (playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
             {
                 TrackMovementApUsage();

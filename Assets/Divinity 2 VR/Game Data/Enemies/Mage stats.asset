@@ -9,21 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df96aace8fc10c4459d8761ab2a144c6, type: 3}
-  m_Name: Knight1 Stats
+  m_Script: {fileID: 11500000, guid: 44be2b29565dbe04a853c9ca61fafca6, type: 3}
+  m_Name: Mage stats
   m_EditorClassIdentifier: 
-  Name: Knight
-  maxHealth: 120
-  currentHealth: 120
-  maxPhysicalArmor: 10
-  currentPhysicalArmor: 10
-  maxMagicArmor: 0
-  currentMagicArmor: 0
+  Name: Mage
+  maxHealth: 80
+  currentHealth: 80
+  maxPoise: 0
+  currentPoise: 0
+  maxMagicArmor: 10
+  currentMagicArmor: 10
   maxAP: 5
   currentAP: 5
-  earnedXP: 20
   strength: 10
   finesse: 10
-  intelligence: 10
+  intelligence: 11
   constitution: 10
-  wits: 11
+  memory: 10
+  wits: 13
+  XP: 0
+  XPToNextLevel: 0
+  XPDefeated: 20
+  gold: 0

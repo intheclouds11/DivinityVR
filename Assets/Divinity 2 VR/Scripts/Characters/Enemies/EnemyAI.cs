@@ -25,9 +25,9 @@ namespace intheclouds
             PlayerStats highestHealthPlayer = null;
             foreach (PlayerStats player in list)
             {
-                if (player.currentHealth > highestHealth)
+                if (player.CurrentHealth > highestHealth)
                 {
-                    highestHealth = player.currentHealth;
+                    highestHealth = player.CurrentHealth;
                     highestHealthPlayer = player;
                 }
             }

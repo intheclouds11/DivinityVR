@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7963880853321434, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 472343173151820101, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -39,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerStats - Paatri
       objectReference: {fileID: 0}
+    - target: {fileID: 2838670729375660977, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: statsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d8b80b62123681a48bcb3d4f3167b854, type: 2}
     - target: {fileID: 2838670729375660977, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: playerStatsSO
       value: 
@@ -120,6 +128,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8363194678228026307, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454006023057488856, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}

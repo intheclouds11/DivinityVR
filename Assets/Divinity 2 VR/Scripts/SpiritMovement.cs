@@ -16,13 +16,13 @@ public class SpiritMovement : MonoBehaviour
     private float originalGravity;
     private float originalMaxFallSpeed;
     public bool verticalMovementCameraBased;
+    public float SmoothTurnThreshold = .5f;
     public float horizontalSpeed = 2;
     public float verticalSpeed = 2;
     public float forwardSpeed = 2;
     public float sprintSpeedMultipler = 2;
     private bool isSprinting;
     private float previousTurnAmount;
-    public float snapAmount;
 
 
     private void Awake()
@@ -123,21 +123,21 @@ public class SpiritMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        if (Math.Abs(playerInputs.RightController.JoystickAxis.x) < 0.75f || Mathf.Abs(previousTurnAmount) > 0.75f)
-            return;
+        var input = playerInputs.RightController.JoystickAxis.x;
+        if (hvrPlayerController.RotationType == RotationType.Snap && Math.Abs(input) < hvrPlayerController.SnapThreshold)
+        {
+            if (Mathf.Abs(previousTurnAmount) > hvrPlayerController.SnapThreshold) return;
 
-        var rotation = Quaternion.Euler(0, Mathf.Sign(playerInputs.RightController.JoystickAxis.x) * snapAmount, 0);
-        transform.rotation *= rotation;
-
-
-        // if (playerInputs.RightController.JoystickAxis.x > 0.1f)
-        // {
-        //     characterController.gameObject.transform.Rotate(0, 45, 0);
-        // }
-        // else if (playerInputs.RightController.JoystickAxis.x < -0.1f)
-        // {
-        //     characterController.gameObject.transform.Rotate(0, -45, 0);
-        //
-        // }
+            var rotation = Quaternion.Euler(0, Mathf.Sign(input) * hvrPlayerController.SnapAmount, 0);
+            transform.rotation *= rotation;
+        }
+        else
+        {
+            if (Math.Abs(input) < SmoothTurnThreshold) return;
+            
+            var rotation = input * hvrPlayerController.SmoothTurnSpeed * Time.deltaTime;
+            var rotationVector = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + rotation, transform.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(rotationVector);
+        }
     }
 }

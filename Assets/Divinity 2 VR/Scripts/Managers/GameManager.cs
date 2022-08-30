@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerStats> players;
     public AudioClip combatStartClip;
     public bool nextTurn;
-    public KeyValuePair<ICharacter, int> currentCombatant;
+    public KeyValuePair<BaseStats, int> currentCombatant;
     public int enemiesAlive;
     public int playersAlive;
     public TextMeshProUGUI turnOrderText;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("COMBAT START");
         var enemyManager = enemyEngaged.GetComponentInParent<EnemyManager>();
-        Dictionary<ICharacter, int> witsList = new Dictionary<ICharacter, int>();
+        Dictionary<BaseStats, int> witsList = new Dictionary<BaseStats, int>();
         foreach (var enemy in enemyManager.enemyList)
         {
             enemiesAlive += 1;
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var character in newTurnList)
         {
-            if (character.Key.CharacterType.TryGetComponent(out PlayerStats playerStats))
+            if (character.Key.TryGetComponent(out PlayerStats playerStats))
             {
                 playerStats.inCombat = true;
             }
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TurnOrderCoroutine(newTurnList));
     }
 
-    private IEnumerator TurnOrderCoroutine(List<KeyValuePair<ICharacter, int>> turnOrder)
+    private IEnumerator TurnOrderCoroutine(List<KeyValuePair<BaseStats, int>> turnOrder)
     {
         if (playersAlive == 0)
         {
@@ -115,15 +115,15 @@ public class GameManager : MonoBehaviour
         }
 
         currentCombatant = turnOrder[0];
-        if (currentCombatant.Key.CharacterType.TryGetComponent(out PlayerStats playerStats))
+        if (currentCombatant.Key.TryGetComponent(out PlayerStats playerStats))
         {
-            playerStats.turn = true;
-            playerStats.currentAP = playerStats.maxAP;
+            playerStats.Turn = true;
+            playerStats.CurrentAP = playerStats.MaxAP;
         }
-        else if (currentCombatant.Key.CharacterType.TryGetComponent(out EnemyStats enemyStats))
+        else if (currentCombatant.Key.TryGetComponent(out EnemyStats enemyStats))
         {
-            enemyStats.turn = true;
-            enemyStats.currentAP = enemyStats.maxAP;
+            enemyStats.Turn = true;
+            enemyStats.CurrentAP = enemyStats.MaxAP;
         }
         
         turnOrderText.text = null;
@@ -141,13 +141,13 @@ public class GameManager : MonoBehaviour
         }
 
         // force current combatant turn off (for Next Turn debug UI)
-        if (currentCombatant.Key.CharacterType.TryGetComponent(out PlayerStats playerStatsDebug))
+        if (currentCombatant.Key.TryGetComponent(out PlayerStats playerStatsDebug))
         {
-            playerStatsDebug.turn = false;
+            playerStatsDebug.Turn = false;
         }
-        else if (currentCombatant.Key.CharacterType.TryGetComponent(out EnemyStats enemyStatsDebug))
+        else if (currentCombatant.Key.TryGetComponent(out EnemyStats enemyStatsDebug))
         {
-            enemyStatsDebug.turn = false;
+            enemyStatsDebug.Turn = false;
         }
 
         turnOrder.Add(turnOrder[0]);

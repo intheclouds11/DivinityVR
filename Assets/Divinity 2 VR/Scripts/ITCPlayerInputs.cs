@@ -34,7 +34,7 @@ namespace intheclouds
             {
                 if (holdTimeLeftPrimaryButton > holdTimeRequired)
                 {
-                    playerStats.turn = false;
+                    playerStats.Turn = false;
                     primaryButtonTriggered = true;
                     holdTimeLeftPrimaryButton = 0;
                 }

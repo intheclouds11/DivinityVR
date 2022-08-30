@@ -110,11 +110,11 @@ namespace intheclouds
             var playerStatsArray = FindObjectsOfType<PlayerStats>();
             foreach (var playerStats in playerStatsArray)
             {
-                playerStats.currentHealth = playerStats.playerStatsSO.maxHealth;
-                playerStats.currentPhysicalArmor = playerStats.playerStatsSO.maxPhysicalArmor;
-                playerStats.currentMagicArmor = playerStats.playerStatsSO.maxMagicArmor;
-                playerStats.currentAP = playerStats.playerStatsSO.maxAP;
-                playerStats.turn = true;
+                playerStats.CurrentHealth = playerStats.statsSO.maxHealth;
+                playerStats.CurrentPoise = playerStats.statsSO.maxPoise;
+                playerStats.CurrentMagicArmor = playerStats.statsSO.maxMagicArmor;
+                playerStats.CurrentAP = playerStats.statsSO.maxAP;
+                playerStats.Turn = true;
             }
 
             Debug.Log("RESET STATS");
@@ -133,7 +133,7 @@ namespace intheclouds
         {
             Debug.Log("Starting Player Turn... (not fully implemented yet)");
             Button_ResetStats();
-            FindObjectOfType<PlayerStats>().turn = true;
+            FindObjectOfType<PlayerStats>().Turn = true;
             FindObjectOfType<PlayerStats>().explorationMode = false;
             currentUserObjects.PlayerMovementAP.enabled = true;
             currentUserObjects.PlayerMovementAP.StartTurn();

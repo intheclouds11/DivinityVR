@@ -83,11 +83,11 @@ namespace intheclouds
 
                 inEnemyCollider = true;
 
-                if (wieldingUser.currentAP >= requiredAP)
+                if (wieldingUser.CurrentAP >= requiredAP)
                 {
                     if (collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                     {
-                        if (!wieldingUser.turn && !wieldingUser.explorationMode) return;
+                        if (!wieldingUser.Turn && !wieldingUser.explorationMode) return;
                         enemyRoot = collision.gameObject.transform.root.GetComponentInChildren<EnemyStats>().gameObject;
                         hitSFXAudioSource.pitch = 1 - Mathf.Clamp(collision.relativeVelocity.magnitude * 0.1f, 0f, 0.2f); // todo: not getting varied pitch
                         hitSFXAudioSource.PlayOneShot(enemyHitClip);
