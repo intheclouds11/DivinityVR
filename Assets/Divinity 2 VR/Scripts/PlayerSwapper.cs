@@ -72,11 +72,19 @@ namespace intheclouds
                 cameraComponent.enabled = false;
             }
             
+            // make helmet visible to camera
+            foreach (Transform childObject in currentPlayerObjects.Camera.gameObject.transform.GetChild(0))
+            {
+                if (childObject.CompareTag("Headwear"))
+                {
+                    childObject.gameObject.layer = LayerMask.NameToLayer("Default");
+                }
+            }
         }
 
-        private void EnableSwappedPlayerObjects(PlayerStats playerStats)
+        private void EnableSwappedPlayerObjects(PlayerStats swappedPlayer)
         {
-            var swappedPlayerObjects = playerStats.GetComponentInParent<LocalUserObjects>();
+            var swappedPlayerObjects = swappedPlayer.GetComponentInParent<LocalUserObjects>();
 
             var turnOrderUI = currentControlledPlayer.GetComponentInParent<LocalUserObjects>().turnOrderUI;
             turnOrderUI.transform.SetParent(swappedPlayerObjects.Camera.transform);
@@ -107,6 +115,14 @@ namespace intheclouds
                 component.enabled = true;
             }
 
+            // make helmet invisible to camera
+            foreach (Transform childObject in swappedPlayerObjects.Camera.gameObject.transform.GetChild(0))
+            {
+                if (childObject.CompareTag("Headwear"))
+                {
+                    childObject.gameObject.layer = LayerMask.NameToLayer("InvisibleToMainCamera");
+                }
+            }
             UserMenu.Instance.UserSetup(swappedPlayerObjects.PlayerStats);
         }
     }

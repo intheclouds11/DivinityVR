@@ -28,7 +28,6 @@ namespace intheclouds
         private HVRPlayerController hvrPlayerController;
         private AudioSource audioSource;
 
-
         private void Start()
         {
             hvrPlayerController = transform.root.GetComponent<LocalUserObjects>().HVRPlayerController;
@@ -98,6 +97,10 @@ namespace intheclouds
                 spawnedGOs.Add(physicalFormObject);
                 var components = physicalFormObject.GetComponents<Component>();
                 var childComponents = physicalFormObject.GetComponentsInChildren<Component>();
+                if (physicalFormObject.CompareTag("Headwear"))
+                {
+                    physicalFormObject.layer = LayerMask.NameToLayer("Default");
+                }
                 foreach (var component in components)
                 {
                     if (component is not (Transform or SkinnedMeshRenderer or MeshRenderer or MeshFilter))
@@ -117,10 +120,10 @@ namespace intheclouds
 
             // spawn new visor (without socket)
             var visorSocketGO = transform.root.GetComponent<LocalUserObjects>().visorSocket;
-            if (visorSocketGO.transform.childCount > 0)
+            if (visorSocketGO.transform.childCount > 0) // if socket not empty
             {
                 GameObject visorOriginal = visorSocketGO.transform.GetChild(0).gameObject;
-                GameObject visorSpawned = Instantiate(visorOriginal.gameObject, visorOriginal.transform.position, visorOriginal.transform.rotation, spawnParent);
+                GameObject visorSpawned = Instantiate(visorOriginal, visorOriginal.transform.position, visorOriginal.transform.rotation, spawnParent);
                 spawnedGOs.Add(visorSpawned);
             }
         }
@@ -135,7 +138,7 @@ namespace intheclouds
             {
                 Destroy(spawnedGO);
             }
-
+            
             spawnedGOs = null;
         }
 

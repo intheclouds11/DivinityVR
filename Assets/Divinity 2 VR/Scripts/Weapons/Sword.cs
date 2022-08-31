@@ -135,7 +135,7 @@ namespace intheclouds
             {
                 if (collision.relativeVelocity.magnitude > lowSpeedHitGeneric)
                 {
-                    hitSFXAudioSource.pitch = 1 - Mathf.Clamp(collision.relativeVelocity.magnitude / lowSpeedHitGeneric, 0f, 0.2f); // todo: not getting varied pitch
+                    hitSFXAudioSource.pitch = Random.Range(0.9f, 1.1f);
                     hitSFXAudioSource.PlayOneShot(genericHitClip);
                 }
             }

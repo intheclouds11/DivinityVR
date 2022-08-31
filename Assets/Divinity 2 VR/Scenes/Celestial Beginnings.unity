@@ -5508,7 +5508,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28676
+  m_Name: pb_Mesh88642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14419,7 +14419,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30260
+  m_Name: pb_Mesh90726
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16719,7 +16719,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29104
+  m_Name: pb_Mesh89190
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17480,7 +17480,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30216
+  m_Name: pb_Mesh90668
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22749,7 +22749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: b766ec4434f7aa048b76f08ec1756e1a, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a8d04368ad4ec1a4da07e776f2e67c77, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -25322,7 +25322,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30274
+  m_Name: pb_Mesh90766
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39349,7 +39349,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29244
+  m_Name: pb_Mesh89378
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -47665,7 +47665,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30438
+  m_Name: pb_Mesh90970
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -59359,6 +59359,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8135691699742310589, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135691699742310589, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
+      propertyPath: m_TagString
+      value: Headwear
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41f16855a124dca409a62a7d14488f1a, type: 3}
 --- !u!114 &2838670730329581862 stripped
@@ -59391,6 +59399,10 @@ PrefabInstance:
       propertyPath: LocalUserObjects
       value: 
       objectReference: {fileID: 2082210166}
+    - target: {fileID: 2847033524407470905, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6785200469427271971, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: turnOrderUI
       value: 
@@ -59399,6 +59411,10 @@ PrefabInstance:
       propertyPath: audioSources
       value: 
       objectReference: {fileID: 707931483}
+    - target: {fileID: 7291494475447479176, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_TagString
+      value: Headwear
+      objectReference: {fileID: 0}
     - target: {fileID: 8363194678228026307, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: menu
       value: 
@@ -59446,6 +59462,10 @@ PrefabInstance:
     - target: {fileID: 8681774726012775224, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681774726012775231, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8681774726012775231, guid: 273e27ddddd6dd54ba78764b9afa3c15, type: 3}
       propertyPath: m_Name

@@ -1269,14 +1269,14 @@ MonoBehaviour:
   HapticsMaxAmplitude: 1
   HapticsDuration: 0.01
   HapticsFrequency: 1
-  StringClip: {fileID: 8300000, guid: 8a95f5613a17c0f4db5b93318e947568, type: 3}
+  StringClip: {fileID: 0}
   StringMinPitch: 1
   StringMaxPitch: 1.25
   ReleasedSFX:
   - {fileID: 8300000, guid: 40ffd23ea20f9b748a84d6be2407a64a, type: 3}
   StringSpring: 1000
   StringHeldSpring: 100
-  CanNockRotate: 1
+  CanNockRotate: 0
   requiredAP: 2
 --- !u!114 &1937837834
 MonoBehaviour:
