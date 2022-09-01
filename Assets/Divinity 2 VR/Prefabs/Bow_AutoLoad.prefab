@@ -1189,6 +1189,7 @@ GameObject:
   - component: {fileID: 5185757252078971360}
   - component: {fileID: 5185757252078971363}
   - component: {fileID: 4126267781520109326}
+  - component: {fileID: 8316901888508260701}
   m_Layer: 0
   m_Name: Bow_AutoLoad
   m_TagString: Untagged
@@ -1206,7 +1207,7 @@ Transform:
   m_LocalRotation: {x: -0.5428482, y: -0.5408246, z: -0.45282882, w: -0.4558187}
   m_LocalPosition: {x: -3.057, y: 4.807, z: -3.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5185757251491260541}
   - {fileID: 5185757251254810104}
@@ -1229,7 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NockGrabbable: {fileID: 5185757251671855761}
-  StringLimit: 0.4
+  StringLimit: 0.5
   StringDropLimit: 0.45
   StringLimitStyle: 0
   ShootThreshold: 0.2
@@ -1240,17 +1241,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.88658273
+      value: 0.89126974
+      inSlope: 0.115048714
+      outSlope: 0.115048714
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2057519
+      outWeight: 0.9126183
+    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1269,7 +1279,7 @@ MonoBehaviour:
   HapticsMaxAmplitude: 1
   HapticsDuration: 0.01
   HapticsFrequency: 1
-  StringClip: {fileID: 0}
+  StringClip: {fileID: 8300000, guid: 8a95f5613a17c0f4db5b93318e947568, type: 3}
   StringMinPitch: 1
   StringMaxPitch: 1.25
   ReleasedSFX:
@@ -1494,6 +1504,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0590676, y: 1.3579609, z: 0.24982658}
   m_Center: {x: -0.005147074, y: -0.00044399317, z: -0.0905664}
+--- !u!114 &8316901888508260701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5419778064393409677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactSpeedRequired: 1
+  impactClip: {fileID: 8300000, guid: 74068c08db651d34f81de9affa61f55d, type: 3}
+  volume: 0.15
 --- !u!1 &5770237466304340991
 GameObject:
   m_ObjectHideFlags: 0

@@ -7972,6 +7972,7 @@ MonoBehaviour:
   healthText: {fileID: 1097501511288889147}
   poiseText: {fileID: 5601535192532814048}
   magicArmorText: {fileID: 4791655488758437805}
+  LocalUserObjects: {fileID: 6785200469427271971}
   apText: {fileID: 5027515012275266168}
   goldText: {fileID: 5503940815332734723}
   levelUpClip: {fileID: 8300000, guid: 726a3af401f0ba64b827897f6d327c4b, type: 3}
@@ -8675,7 +8676,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!225 &4046098681551278092
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16306,7 +16307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5004219602231130119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.085}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -16414,8 +16415,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4939264, y: 0.35080993, z: 0.51}
-  m_Center: {x: -0.0013574655, y: 0.063804686, z: 0.21}
+  m_Size: {x: 0.24046482, y: 0.23362233, z: 0.2224528}
+  m_Center: {x: -0.00044522545, y: 0.005210787, z: 0.20763831}
 --- !u!114 &1601402814956321055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24581,7 +24582,7 @@ GameObject:
   - component: {fileID: 176816402317583725}
   m_Layer: 6
   m_Name: Knight Helmet
-  m_TagString: Untagged
+  m_TagString: Headwear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24594,9 +24595,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7291494475447479176}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.020000003, z: 0.02}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
+  m_LocalScale: {x: 0.016, y: 0.016, z: 0.016}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6512563420492851613}
   m_RootOrder: 2

@@ -2189,7 +2189,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             SetupGrab(grabbable);
             IsClimbing = grabbable.GetComponent<HVRClimbable>();
             if (grabbable.HandGrabbedClip)
-                if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(grabbable.HandGrabbedClip, transform.position);
+                if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFXRandomPitch(grabbable.HandGrabbedClip, transform.position, 0.9f, 1.1f, 1f);
         }
 
         public void SetupGrab(HVRGrabbable grabbable)

@@ -225,7 +225,7 @@ namespace HurricaneVR.Framework.Components
         protected virtual void OnStepChanged(int step, bool raiseEvents)
         {
             if (AudioClip)
-                if(SFXPlayer.Instance) SFXPlayer.Instance.PlaySFXRandomPitch(AudioClip, transform.position, .9f, 1.1f);
+                if(SFXPlayer.Instance) SFXPlayer.Instance.PlaySFXRandomPitch(AudioClip, transform.position, .9f, 1.1f, 1f);
             if (raiseEvents)
                 DialStepChanged.Invoke(step);
         }

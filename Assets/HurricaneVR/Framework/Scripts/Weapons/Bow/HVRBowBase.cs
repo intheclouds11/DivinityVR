@@ -272,7 +272,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
         protected virtual void PlayStringSFX(float nockDistance)
         {
             var pitch = nockDistance.Remap(0, StringLimit, StringMinPitch, StringMaxPitch);
-            if(SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(StringClip, NockGrabbable.transform.position, pitch, 1f);
+            if(SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(StringClip, NockGrabbable.transform.position, pitch, 0.25f);
         }
 
         protected virtual void PlayReleasedSFX()

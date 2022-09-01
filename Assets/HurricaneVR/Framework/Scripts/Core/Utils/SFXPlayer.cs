@@ -84,9 +84,9 @@ namespace HurricaneVR.Framework.Core.Utils
             return Instantiate(SFXReferenceSource);
         }
 
-        public void PlaySFXRandomPitch(AudioClip clip, Vector3 position, float min, float max)
+        public AudioSource PlaySFXRandomPitch(AudioClip clip, Vector3 position, float min, float max, float volume)
         {
-            PlaySFX(clip, position, Random.Range(min, max), 1f);
+            return PlaySFX(clip, position, Random.Range(min, max), volume);
         }
         
         public void PlaySFXRandomPitchAttach(AudioClip clip, Transform transformForSFX, float min, float max)
@@ -118,15 +118,15 @@ namespace HurricaneVR.Framework.Core.Utils
             PlaySFXAttach(clip, transformForSFX, 1f, 1f);
         }
 
-        public void PlaySFX(AudioClip clip, Vector3 position, float pitch, float volume)
+        public AudioSource PlaySFX(AudioClip clip, Vector3 position, float pitch, float volume)
         {
             if (clip == null)
-                return;
+                return null;
 
             var audioSource = m_SFXSourcePool[m_UsedSource];
 
             if (!audioSource)
-                return;
+                return null;
 
             m_PlayingSources.Add(m_UsedSource);
 
@@ -141,10 +141,12 @@ namespace HurricaneVR.Framework.Core.Utils
             audioSource.gameObject.SetActive(true);
             audioSource.transform.position = position;
             audioSource.clip = clip;
+            // audioSource.maxDistance = 15f;
 
             audioSource.volume = volume;
             audioSource.pitch = pitch;
             audioSource.Play();
+            return audioSource;
         }
         
         public void PlaySFXAttach(AudioClip clip, Transform transformForSFX, float pitch, float volume)

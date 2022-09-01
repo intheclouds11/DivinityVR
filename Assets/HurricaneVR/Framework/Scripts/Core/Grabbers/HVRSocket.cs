@@ -656,7 +656,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void PlaySFX(AudioClip clip)
         {
-            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(clip, transform.position);
+            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFXRandomPitch(clip, transform.position, 0.9f, 1.05f, 1f);
         }
 
         protected virtual float GetSocketableScaleSize(HVRSocketable socketable)
