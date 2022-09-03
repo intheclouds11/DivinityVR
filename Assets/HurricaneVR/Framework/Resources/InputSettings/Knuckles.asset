@@ -23,9 +23,9 @@ MonoBehaviour:
   TrackPadButton: 0
   JoystickTouch: 10
   TrackPadTouch: 12
-  GripUseAnalog: 0
+  GripUseAnalog: 1
   TriggerUseAnalog: 1
-  GripThreshold: 0.1
+  GripThreshold: 0.95
   GripUseReleaseThreshold: 1
   GripReleaseThreshold: 0.7
   GripRequireReset: 0

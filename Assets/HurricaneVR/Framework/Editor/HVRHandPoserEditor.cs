@@ -9,7 +9,6 @@ using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using HurricaneVR.Framework.Shared.Utilities;
 using UnityEditor;
-
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -115,10 +114,7 @@ namespace HurricaneVR.Editor
 
         private HVRHandPoseBlend PrimaryPose
         {
-            get
-            {
-                return Poser.PrimaryPose;
-            }
+            get { return Poser.PrimaryPose; }
             set
             {
                 Poser.PrimaryPose = value;
@@ -128,10 +124,7 @@ namespace HurricaneVR.Editor
 
         public HVRHandPose SelectedPose
         {
-            get
-            {
-                return SelectedBlendPose?.Pose;
-            }
+            get { return SelectedBlendPose?.Pose; }
             set
             {
                 if (SelectedBlendPose == null) return;
@@ -191,7 +184,6 @@ namespace HurricaneVR.Editor
         {
             SceneView.duringSceneGui -= OnSceneGUI2;
             SceneView.duringSceneGui += OnSceneGUI2;
-
         }
 
 
@@ -232,7 +224,6 @@ namespace HurricaneVR.Editor
             }
 
             foreach (var c in cleanup) _map.Remove(c);
-
         }
 
         private void GetHands(ref HVRPosableHand leftHand, ref HVRPosableHand rightHand)
@@ -421,6 +412,7 @@ namespace HurricaneVR.Editor
                             {
                                 selectedFinger = i;
                             }
+
                             selectedBone = bone.Transform;
                         }
                     }
@@ -433,7 +425,8 @@ namespace HurricaneVR.Editor
         }
 
         private bool _inPrefabMode;
-
+        private bool _active;
+        
         private void OnEnable()
         {
             Poser = target as HVRHandPoser;
@@ -464,13 +457,27 @@ namespace HurricaneVR.Editor
 
             var stage = PrefabStageUtility.GetPrefabStage(Poser.gameObject);
             _inPrefabMode = stage != null;
+
+            _active = true;
+            var s = _root.schedule.Execute(EditorUpdate);
+            s.Every(1000);
+            s.Until(() => !_active);
+        }
+
+        private void EditorUpdate()
+        {
+            CheckRigidBody();
+        }
+
+        private void OnDisable()
+        {
+            _active = false;
         }
 
         private void CreatePoseIfNeeded()
         {
             if (PrimaryPose.Pose == null && HVRSettings.Instance.OpenHandPose)
             {
-
                 _root.schedule.Execute(() =>
                 {
                     PrimaryPose.SetDefaults();
@@ -485,7 +492,6 @@ namespace HurricaneVR.Editor
 
         public override VisualElement CreateInspectorGUI()
         {
-
             _root.Clear();
             _tree.CloneTree(_root);
 
@@ -534,6 +540,7 @@ namespace HurricaneVR.Editor
                 PreviewRightToggle.RegisterValueChangedCallback(OnPreviewRightChanged);
 
                 ToggleLeftAutoPose = _root.Q<Toggle>("LeftAutoPose");
+         
                 ToggleLeftAutoPose.BindProperty(SP_LeftAutoPose);
                 ToggleRightAutoPose = _root.Q<Toggle>("RightAutoPose");
                 ToggleRightAutoPose.BindProperty(SP_RightAutoPose);
@@ -611,9 +618,6 @@ namespace HurricaneVR.Editor
                 }
             }
 
-          
-
-            
 
             serializedObject.ApplyModifiedProperties();
 
@@ -676,6 +680,7 @@ namespace HurricaneVR.Editor
                 {
                     return;
                 }
+
                 _rightPhysicsPoser.LiveUpdate = evt.newValue;
             }
         }
@@ -689,6 +694,7 @@ namespace HurricaneVR.Editor
                 {
                     return;
                 }
+
                 _leftPhysicsPoser.LiveUpdate = evt.newValue;
             }
         }
@@ -735,12 +741,10 @@ namespace HurricaneVR.Editor
             {
                 _rightPhysicsPoser.LiveUpdate = SP_RightAutoPose.boolValue;
             }
-
         }
 
         private void OnPreviewLeftChanged(ChangeEvent<bool> evt)
         {
-
             CreatePoseIfNeeded();
 
             if (FullBody)
@@ -783,6 +787,18 @@ namespace HurricaneVR.Editor
             }
         }
 
+        private void CheckRigidBody()
+        {
+            var g = Poser.GetComponentInParent<HVRGrabbable>();
+            Rigidbody rb = null;
+            if (g)
+            {
+                rb = g.gameObject.GetComponent<Rigidbody>();
+            }
+
+            _root.Q("lblAutoPoseWarning").style.display = rb ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+
         private void UpdateBodyPreview(HVRHandPoseData leftpose, HVRHandPoseData rightpose, bool previewLeft, bool previewRight, bool poseChanged = false)
         {
             if (!previewRight && !previewLeft)
@@ -795,6 +811,7 @@ namespace HurricaneVR.Editor
                     SetupIKTarget(previewLeft, "LeftIKTarget", out var dummy);
                     SetupIKTarget(previewRight, "RightIKTarget", out var dummy2);
                 }
+
                 return;
             }
 
@@ -887,7 +904,6 @@ namespace HurricaneVR.Editor
             {
                 ikTargets.RightTarget = BodyPreview.transform;
             }
-
 
 
             SceneView.RepaintAll();
@@ -1318,7 +1334,6 @@ namespace HurricaneVR.Editor
                         rightHand.Pose(right);
                     }
                 }
-
             };
 
             var mirrorLeft = _root.Q<Button>("ButtonMirrorLeft");
@@ -1357,8 +1372,6 @@ namespace HurricaneVR.Editor
                         leftHand.Pose(left);
                     }
                 }
-
-
             };
         }
 
@@ -1420,10 +1433,7 @@ namespace HurricaneVR.Editor
             SelectedPoseField.bindingPath = "Pose";
             //SelectedPoseField.RegisterValueChangedCallback(OnSelectedPoseChanged);
             ////unity decide to fk with everything in 2020, hack to handle selected pose field from firing it's change event on enable that didn't happen in 2019..
-            var schedule = container.schedule.Execute(() =>
-            {
-                SelectedPoseField.RegisterValueChangedCallback(OnSelectedPoseChanged);
-            });
+            var schedule = container.schedule.Execute(() => { SelectedPoseField.RegisterValueChangedCallback(OnSelectedPoseChanged); });
             schedule.StartingIn(1000);
         }
 
@@ -1446,7 +1456,6 @@ namespace HurricaneVR.Editor
 
 
 #if UNITY_2021_1_OR_NEWER
-
             PosesListView.onSelectionChange += OnPoseSelectionChanged;
 #else
 
@@ -1471,8 +1480,6 @@ namespace HurricaneVR.Editor
 
         private void OnPoseSelectionChanged(IEnumerable<object> obj)
         {
-            
-
             if (PosesListView.selectedIndex >= Poser.PoseNames.Count)
             {
                 PosesListView.selectedIndex = Poser.PoseNames.Count - 1;
@@ -1503,7 +1510,6 @@ namespace HurricaneVR.Editor
             if (index == PrimaryIndex)
             {
                 label.AddToClassList("primarypose");
-
             }
 
             if (index < Poser.PoseNames.Count)

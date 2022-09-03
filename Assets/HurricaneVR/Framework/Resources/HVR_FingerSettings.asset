@@ -15,8 +15,8 @@ MonoBehaviour:
   OverrideThumb: 1
   OverrideIndex: 1
   OverrideTriggerGrab: 1
-  KnucklesOverrideThumb: 0
-  KnucklesOverrideIndex: 0
+  KnucklesOverrideThumb: 1
+  KnucklesOverrideIndex: 1
   KnucklesOverrideGripFingers: 0
   JoystickTouchWeight:
     Thumb: 0.291

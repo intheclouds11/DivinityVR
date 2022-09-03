@@ -269,7 +269,7 @@ namespace intheclouds
 
         public void ObtainXP(int xp)
         {
-            Debug.Log("get xp");
+            Debug.Log($"get xp {Name}", this);
             XP += xp;
 
             if (XP > XPToNextLevel)

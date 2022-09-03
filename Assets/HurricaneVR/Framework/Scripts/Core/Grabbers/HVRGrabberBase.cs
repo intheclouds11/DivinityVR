@@ -40,6 +40,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             }
         }
 
+        public HVRGrabbable HeldObject => GrabbedTarget;
 
         public HVRGrabbable GrabbedTarget
         {

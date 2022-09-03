@@ -765,7 +765,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         private void UpdateGrabIndicator()
         {
-            if (!IsHovering || !_grabIndicator)
+            if (!IsHovering || !_grabIndicator || !HoverTarget.ShowForceGrabIndicator)
                 return;
 
             if (_grabIndicator.LookAtCamera && HVRManager.Instance.Camera)

@@ -9,7 +9,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
 #if USING_OPENXR
-using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.XR.OpenXR.Input;
 #endif
 
@@ -154,7 +153,7 @@ namespace HurricaneVR.Framework.ControllerInput
 
                 if (action != null && _inputDevice != null)
                 {
-                    SendHapticImpulseCommand.Create(0, amplitude, duration);
+                    OpenXRInput.SendHapticImpulse(action, amplitude, frequency, duration, _inputDevice);
                     return;
                 }
             }

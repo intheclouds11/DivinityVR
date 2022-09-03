@@ -15,11 +15,13 @@ namespace HurricaneVR.Framework.Weapons.Bow
     {
         [Header("Bow String")]
         public HVRGrabbable NockGrabbable;
+
         public float StringLimit = .5f;
         public float StringDropLimit = .6f;
 
         [Header("Settings")]
         public HVRBowLimitStyle StringLimitStyle = HVRBowLimitStyle.Limit;
+
         public float ShootThreshold = .2f;
         public float Speed = 50f;
         public AnimationCurve SpeedCurve;
@@ -27,7 +29,6 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
 
         [Header("Transforms")]
-
         [Tooltip("Arrow Rest When the bow is held with the left hand.")]
         public Transform LeftRest;
 
@@ -39,6 +40,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
         [Header("Haptics")]
         public bool StringHaptics = true;
+
         public bool BowHandHaptics = true;
 
         [Tooltip("Number of haptic ticks by percent traveled.")]
@@ -61,6 +63,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
         [Header("SFX")]
         public AudioClip StringClip;
+
         public float StringMinPitch = 1f;
         public float StringMaxPitch = 1.25f;
 
@@ -137,8 +140,6 @@ namespace HurricaneVR.Framework.Weapons.Bow
             }
         }
 
-       
-
 
         private void Update()
         {
@@ -147,7 +148,6 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
         protected virtual void UpdateBow()
         {
-
         }
 
         private void FixedUpdate()
@@ -159,12 +159,10 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
         protected virtual void BeforeFixedUpdateBow()
         {
-
         }
 
         protected virtual void AfterFixedUpdateBow()
         {
-
         }
 
         protected virtual void FixedUpdateBow()
@@ -318,7 +316,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
 
             var grabbable = arrow.Grabbable;
-            grabbable.ForceRelease();
+            //grabbable.ForceRelease();
             grabbable.CanBeGrabbed = false;
             grabbable.Rigidbody.sleepThreshold = 0f;
             grabbable.Grabbed.AddListener(OnNockedArrowGrabbed);
@@ -332,6 +330,7 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
             if (NockHand)
             {
+                NockHand.DisableHandCollision(Arrow.Grabbable);
                 NockHand.TryGrab(NockGrabbable, true);
                 NockHand = null;
             }
@@ -369,17 +368,16 @@ namespace HurricaneVR.Framework.Weapons.Bow
             {
                 StartCoroutine(EnableBowHandCollisionRoutine(arg0, Arrow.Grabbable));
             }
+
             BowHand = null;
         }
 
         protected virtual void OnStringReleased(HVRHandGrabber arg0, HVRGrabbable arg1)
         {
-
         }
 
         protected virtual void OnStringGrabbed(HVRHandGrabber hand, HVRGrabbable nock)
         {
-
         }
 
         protected virtual void OnBowSocketed(HVRSocket arg0, HVRGrabbable arg1)
@@ -392,7 +390,6 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
         protected virtual void OnBowUnsocketed(HVRSocket arg0, HVRGrabbable arg1)
         {
-
         }
 
         protected virtual void OnArrowDropped()
@@ -403,7 +400,6 @@ namespace HurricaneVR.Framework.Weapons.Bow
             Arrow.Grabbable.CanBeGrabbed = true;
 
             Arrow = null;
-
         }
 
         protected virtual void OnArrowRemoved(HVRArrow arrow)
@@ -429,10 +425,11 @@ namespace HurricaneVR.Framework.Weapons.Bow
         {
             if (!hand || !arrow)
                 yield break;
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(1f);
             if (BowHand && BowHand == hand || !arrow)
                 yield break;
             UpdateBowHandCollision(hand, arrow, true);
+            Grabbable.IgnoreCollision(arrow, false);
         }
 
         public void OnDrawGizmosSelected()
@@ -457,6 +454,5 @@ namespace HurricaneVR.Framework.Weapons.Bow
 
     public class HVRBowEvent : UnityEvent<HVRPhysicsBow>
     {
-
     }
 }

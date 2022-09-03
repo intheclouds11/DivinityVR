@@ -1604,6 +1604,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -2635,6 +2636,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -4677,6 +4679,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -6130,6 +6133,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -9871,6 +9875,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -10416,7 +10421,6 @@ MonoBehaviour:
   ParentHandModel: 1
   BreakDistance: 1
   BreakDistanceSource: 0
-  RemainsKinematic: 1
   Stationary: 0
   ReleasedAngularConversionFactor: 1
   ReleasedVelocityFactor: 1
@@ -10530,7 +10534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258d25e1a2b14754b247fd5f28e9f682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SocketOrientation: {fileID: 0}
+  Poses: []
   CounterScale: {x: 1, y: 1, z: 1}
   UseRendererBounds: 1
   ScaleSize: 0
@@ -10539,6 +10543,7 @@ MonoBehaviour:
   SocketedClip: {fileID: 8300000, guid: 30902212c30f2dc499b9e182ed317147, type: 3}
   UnsocketedClip: {fileID: 8300000, guid: bd32f9657c51fe149afc411528af9ddf, type: 3}
   LinkedGrabbables: []
+  SocketOrientation: {fileID: 0}
 --- !u!114 &4327830743595315329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10729,6 +10734,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -11073,6 +11079,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -12312,6 +12319,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -12642,6 +12650,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -13147,13 +13156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebbffaca5ed8a340ae381fb8a5695d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoseHand: 1
   DefaultPoseHand: 1
   DynamicPoseSpeed: 16
   PhysicsPoser: {fileID: 6926949040622575909}
   Hand: {fileID: 685368731509923795}
   DefaultPoser: {fileID: 853476592148697687}
+  HandOverride: {fileID: 0}
   CurrentPoser: {fileID: 0}
+  OverridePoser: {fileID: 0}
 --- !u!1 &4661294255746530807
 GameObject:
   m_ObjectHideFlags: 0
@@ -15157,13 +15167,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebbffaca5ed8a340ae381fb8a5695d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoseHand: 1
   DefaultPoseHand: 1
   DynamicPoseSpeed: 16
   PhysicsPoser: {fileID: 0}
   Hand: {fileID: 3936018162427430213}
   DefaultPoser: {fileID: 1680123803288250849}
+  HandOverride: {fileID: 0}
   CurrentPoser: {fileID: 0}
+  OverridePoser: {fileID: 0}
 --- !u!114 &1680123803288250849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16240,13 +16251,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebbffaca5ed8a340ae381fb8a5695d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoseHand: 1
   DefaultPoseHand: 1
   DynamicPoseSpeed: 16
   PhysicsPoser: {fileID: 0}
   Hand: {fileID: 0}
   DefaultPoser: {fileID: 3628463637635272580}
+  HandOverride: {fileID: 0}
   CurrentPoser: {fileID: 0}
+  OverridePoser: {fileID: 0}
 --- !u!1 &4986497329104153153
 GameObject:
   m_ObjectHideFlags: 0
@@ -16399,6 +16411,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -19001,6 +19014,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -19345,13 +19359,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebbffaca5ed8a340ae381fb8a5695d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoseHand: 1
   DefaultPoseHand: 1
   DynamicPoseSpeed: 16
   PhysicsPoser: {fileID: 0}
   Hand: {fileID: 5639879511548400321}
   DefaultPoser: {fileID: 4637374236475479020}
+  HandOverride: {fileID: 0}
   CurrentPoser: {fileID: 0}
+  OverridePoser: {fileID: 0}
 --- !u!114 &4808375162029851155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19926,6 +19941,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -20689,6 +20705,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -20817,6 +20834,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -21672,7 +21690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandSide: 1
-  Velocity: {x: 0, y: 0, z: 0}
   VelocityMagnitude: 0
   AngularVelocityMagnitude: 0
   DeltaZDisplay: 0
@@ -22095,13 +22112,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 6649675074669179268}
   FloorOffset: {fileID: 6649675074820265859}
-  CameraScale: {fileID: 8772309797544924101}
+  CameraScale: {fileID: 0}
   CameraYOffset: 0
   EyeHeight: 1.66
   SitStanding: 0
   DebugKeyboardOffset: 1
   DebugKeyboardIncrement: 0.25
-  SaveCalibrationHeight: 0
+  SaveCalibrationHeight: 1
   DebugCalibMode: 0
   DebugCalibMovedThreshold: 0.05
   DebugKeyboardRecalibrate: 0
@@ -22386,8 +22403,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6649675075003929838}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -15.28, y: 4.1627, z: -5.688}
+  m_LocalRotation: {x: 0, y: 0.9480603, z: 0, w: 0.31809077}
+  m_LocalPosition: {x: -3.6968808, y: 4.26, z: -5.762738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22402,7 +22419,7 @@ Transform:
   - {fileID: 4271867609937524611}
   m_Father: {fileID: 8681774726012775224}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 142.905, z: 0}
 --- !u!114 &1354801162671221359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22502,7 +22519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandSide: 0
-  Velocity: {x: 0, y: 0, z: 0}
   VelocityMagnitude: 0
   AngularVelocityMagnitude: 0
   DeltaZDisplay: 0
@@ -22634,6 +22650,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -22794,6 +22811,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -23472,6 +23490,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -24367,6 +24386,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -27129,6 +27149,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -29373,6 +29394,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
+  PoseTag: 
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:

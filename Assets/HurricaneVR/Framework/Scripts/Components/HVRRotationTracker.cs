@@ -29,6 +29,7 @@ namespace HurricaneVR.Framework.Components
         public RotationTrackerAngleEvent AngleChanged = new RotationTrackerAngleEvent();
 
         [Header("Debug")]
+
         public float StepSize;
         public int Step;
 
@@ -125,13 +126,9 @@ namespace HurricaneVR.Framework.Components
     }
 
     [Serializable]
-    public class RotationTrackerAngleEvent : UnityEvent<float, float>
-    {
-    }
+    public class RotationTrackerAngleEvent : UnityEvent<float, float> { }
 
 
     [Serializable]
-    public class RotationTrackerStepEvent : UnityEvent<int>
-    {
-    }
+    public class RotationTrackerStepEvent : UnityEvent<int> { }
 }

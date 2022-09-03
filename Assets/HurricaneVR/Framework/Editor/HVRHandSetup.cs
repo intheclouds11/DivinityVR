@@ -734,7 +734,6 @@ namespace HurricaneVR
 
 
             animator.DefaultPoseHand = false;
-            animator.PoseHand = true;
             animator.PhysicsPoser = physicsPoser;
             animator.Hand = hand;
             animator.DefaultPoser = poser;
