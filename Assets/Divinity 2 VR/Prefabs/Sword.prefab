@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 8344662063685084029}
   - component: {fileID: 1912579557475883520}
   - component: {fileID: 5166435108555472783}
+  - component: {fileID: 2094961140}
   m_Layer: 20
   m_Name: Sword
   m_TagString: Sword
@@ -889,15 +890,15 @@ MonoBehaviour:
   lowSpeedHitEnemy: 5
   medSpeedHitEnemy: 10
   fastSpeedHitEnemy: 15
-  lowSpeedHitGeneric: 5
-  medSpeedHitGeneric: 10
-  fastSpeedHitGeneric: 15
+  lowSpeedHitGeneric: 100
+  medSpeedHitGeneric: 100
+  fastSpeedHitGeneric: 100
   requiredAP: 2
   physicalDamage: 30
   magicDamage: 0
   hitCooldownTimer: 0
   hitSFXAudioSource: {fileID: 4044193423256131053}
-  genericHitClip: {fileID: 8300000, guid: 2e82ad1969c37ac45bfd414a2a004cab, type: 3}
+  genericHitClip: {fileID: 0}
   enemyHitClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
 --- !u!114 &232647934
 MonoBehaviour:
@@ -1106,6 +1107,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Orientation: {fileID: 7190197581808981917}
+--- !u!114 &2094961140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901681597923893651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactSpeedRequired: 0.1
+  impactClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
+  volume: 0.15
 --- !u!1 &4351125882715024775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1289,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5660503977926652843}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a891406783c72e14d8b881608788cf5f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

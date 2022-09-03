@@ -21768,7 +21768,7 @@ MonoBehaviour:
   SprintAcceleration: 20
   RunSpeed: 6
   Gravity: 4
-  MaxFallSpeed: 6
+  MaxFallSpeed: 15
   JumpVelocity: 3
   DoubleClickThreshold: 0.25
   RotationType: 0
@@ -27023,6 +27023,7 @@ MonoBehaviour:
   HVRPlayerInputs: {fileID: 1426765535859087940}
   ITCPlayerInputs: {fileID: 8363194678228026307}
   PlayerMovementAP: {fileID: 4570675857904275113}
+  HVRCameraRig: {fileID: 6861152580749061835}
   Camera: {fileID: 6649675074669179270}
   leftController: {fileID: 6649675075246033740}
   leftHandPhysics: {fileID: 472343173151820103}

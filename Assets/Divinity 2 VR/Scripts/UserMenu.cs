@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using HurricaneVR.Framework.Core.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace intheclouds
@@ -10,30 +12,39 @@ namespace intheclouds
     {
         public static UserMenu Instance;
         public GameObject[] controllerHints = new GameObject[2];
-        public GameObject playerSelectButton;
         public bool followPlayer;
         public bool menuIsOpen;
-        public GameObject spawnPoint;
-        public GameObject followThis;
-        public LocalUserObjects currentUserObjects;
+        public GameObject playerSelectPrefab;
         public LayoutGroup playerSelectButtonGroup;
+        public Toggle SmoothTurnToggle;
+        public Toggle FollowToggle;
+        private List<HVRCameraRig> CameraRigs = new List<HVRCameraRig>();
+        private GameObject spawnPoint;
+        private GameObject followThis;
+        private LocalUserObjects currentUserObjects;
+        private List<LocalUserObjects> localUserObjectsList = new List<LocalUserObjects>();
         private List<GameObject> currentPlayerSelectButtons = new List<GameObject>();
         private GameObject canvasGO;
 
         private void Start()
         {
             Instance = this;
-            menuIsOpen = transform.GetChild(0).gameObject.activeInHierarchy;
             canvasGO = transform.GetChild(0).gameObject;
+            menuIsOpen = canvasGO.activeInHierarchy;
+            SmoothTurnToggle.onValueChanged.AddListener(OnSmoothTurnChanged);
+            FollowToggle.onValueChanged.AddListener(OnFollowPlayerChanged);
             ListPlayers(); // todo: call this anytime a player is added/removed from GameManager
 
             foreach (var player in GameManager.Instance.players)
             {
+                localUserObjectsList.Add(player.transform.root.GetComponent<LocalUserObjects>());
                 if (player.playerControlled)
                 {
                     UserSetup(player);
                 }
             }
+
+            transform.position = spawnPoint.transform.position;
         }
 
         private void Update()
@@ -51,6 +62,7 @@ namespace intheclouds
             currentUserObjects = player.transform.root.GetComponent<LocalUserObjects>();
             spawnPoint = currentUserObjects.userMenuSpawnPoint;
             followThis = currentUserObjects.Camera.gameObject;
+            CameraRigs.Add(currentUserObjects.HVRCameraRig);
         }
 
         public void ToggleMenu()
@@ -68,22 +80,60 @@ namespace intheclouds
             menuIsOpen = !menuIsOpen;
         }
 
-        public void Button_NextTurn()
-        {
-            if (GameManager.Instance.state == GameState.CombatStart)
-            {
-                GameManager.Instance.nextTurn = true;
-            }
-        }
-
         // need to call this when player joins/leaves party
         public void ListPlayers()
         {
             foreach (var playerStats in GameManager.Instance.players)
             {
-                var playerButton = Instantiate(playerSelectButton, playerSelectButtonGroup.transform);
+                var playerButton = Instantiate(playerSelectPrefab, playerSelectButtonGroup.transform);
                 playerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerStats.Name;
                 currentPlayerSelectButtons.Add(playerButton);
+            }
+        }
+        
+        public void OnSmoothTurnChanged(bool smooth)
+        {
+            foreach (var userObjects in localUserObjectsList)
+            {
+                userObjects.HVRPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
+            }
+        }
+
+        public void Button_CalibrateHeight()
+        {
+            foreach (var cameraRig in CameraRigs)
+            {
+                if (cameraRig)
+                {
+                    cameraRig.Calibrate();
+                }
+            }
+        }
+
+        public void Button_OnSitStandClicked()
+        {
+            foreach (var cameraRig in CameraRigs)
+            {
+                // Swap between Sitting and PlayerHeight (Standing scales camera eh...)
+                var index = (int) cameraRig.SitStanding;
+                if (index == 0)
+                {
+                    index = 2;
+                }
+                else
+                {
+                    index = 0;
+                }
+
+                cameraRig.SetSitStandMode((HVRSitStand) index);
+            }
+        }
+
+        public void Button_NextTurn()
+        {
+            if (GameManager.Instance.state == GameState.CombatStart)
+            {
+                GameManager.Instance.nextTurn = true;
             }
         }
 
@@ -95,9 +145,9 @@ namespace intheclouds
             }
         }
 
-        public void Toggle_FollowPlayer()
+        public void OnFollowPlayerChanged(bool toggle)
         {
-            followPlayer = !followPlayer;
+            followPlayer = toggle;
         }
 
         public void Button_ResetScene()
@@ -114,7 +164,10 @@ namespace intheclouds
                 playerStats.CurrentPoise = playerStats.statsSO.maxPoise;
                 playerStats.CurrentMagicArmor = playerStats.statsSO.maxMagicArmor;
                 playerStats.CurrentAP = playerStats.statsSO.maxAP;
-                playerStats.Turn = true;
+                if (playerStats.inCombat)
+                {
+                    playerStats.Turn = true;
+                }
             }
 
             Debug.Log("RESET STATS");

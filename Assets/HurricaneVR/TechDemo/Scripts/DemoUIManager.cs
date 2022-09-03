@@ -20,7 +20,7 @@ namespace HurricaneVR.TechDemo.Scripts
         public TextMeshProUGUI PauseText;
         public TextMeshProUGUI ForceGrabText;
         public TextMeshProUGUI LeftForceText;
-        public TextMeshProUGUI RightForceText;
+        public TextMeshProUGUI RightForceText; 
         public Slider TurnRateSlider;
         public Slider SnapTurnSlider;
         public TextMeshProUGUI TurnRateText;

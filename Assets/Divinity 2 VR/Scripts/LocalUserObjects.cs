@@ -13,6 +13,7 @@ namespace intheclouds
         public HVRPlayerInputs HVRPlayerInputs;
         public ITCPlayerInputs ITCPlayerInputs;
         public PlayerMovementAP PlayerMovementAP;
+        public HVRCameraRig HVRCameraRig;
         public Camera Camera;
         public GameObject leftController;
         public GameObject leftHandPhysics;

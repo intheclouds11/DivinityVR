@@ -240,15 +240,22 @@ namespace intheclouds
                 audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
                 isAlive = false;
 
-                // todo: something about this causes crashes randomly
-                // var rbBody = transform.GetChild(0).GetComponent<Rigidbody>();
-                // rbBody.isKinematic = false;
-                // rbBody.useGravity = true;
-                // Destroy(transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>()); // remove head rb since setting like above causes crash..
-
+                BecomeRagdoll(); // todo: something about this causes crashes randomly
+                
                 EnemyDied?.Invoke();
-                wieldingUser.ObtainXP(EarnedXP);
+                foreach (var instancePlayer in GameManager.Instance.players)
+                {
+                    instancePlayer.ObtainXP(EarnedXP);
+                }
             }
+        }
+
+        private void BecomeRagdoll()
+        {
+            // var rbBody = transform.GetChild(0).GetComponent<Rigidbody>();
+            // rbBody.isKinematic = false;
+            // rbBody.useGravity = true;
+            // Destroy(transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>()); // remove head rb since setting like above causes crash..
         }
 
         private void UpdateMagicArmorInfo()

@@ -501,14 +501,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185757251099642793}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.17298746, y: 0.085831694, z: 0.015134449, w: 0.98106027}
   m_LocalPosition: {x: 0.0075, y: -0.0355, z: 0.0626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5185757251491260541}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -20, y: 10, z: 0}
 --- !u!114 &5185757251099642796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NockGrabbable: {fileID: 5185757251671855761}
-  StringLimit: 0.5
+  StringLimit: 0.3
   StringDropLimit: 0.45
   StringLimitStyle: 0
   ShootThreshold: 0.2
@@ -1485,7 +1485,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5419778064393409677}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a891406783c72e14d8b881608788cf5f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1516,8 +1516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactSpeedRequired: 1
-  impactClip: {fileID: 8300000, guid: 74068c08db651d34f81de9affa61f55d, type: 3}
+  impactSpeedRequired: 0.1
+  impactClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
   volume: 0.15
 --- !u!1 &5770237466304340991
 GameObject:
