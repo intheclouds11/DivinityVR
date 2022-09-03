@@ -23,11 +23,11 @@ MonoBehaviour:
   currentAP: 5
   XP: 0
   XPToNextLevel: 0
-  XPDefeated: 20
   gold: 0
   strength: 10
   finesse: 10
   intelligence: 10
   constitution: 10
   memory: 10
-  wits: 11
+  wits: 13
+  XPDefeated: 20

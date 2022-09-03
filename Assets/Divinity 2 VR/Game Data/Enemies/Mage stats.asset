@@ -21,13 +21,13 @@ MonoBehaviour:
   currentMagicArmor: 10
   maxAP: 5
   currentAP: 5
+  XP: 0
+  XPToNextLevel: 0
+  gold: 0
   strength: 10
   finesse: 10
   intelligence: 11
   constitution: 10
   memory: 10
-  wits: 13
-  XP: 0
-  XPToNextLevel: 0
+  wits: 10
   XPDefeated: 20
-  gold: 0

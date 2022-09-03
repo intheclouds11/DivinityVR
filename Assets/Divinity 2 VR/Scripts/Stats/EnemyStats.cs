@@ -96,7 +96,7 @@ namespace intheclouds
                 if (_turn)
                 {
                     enemyAI.StartTurn();
-                    // todo: apply status effects here!
+                    // todo: apply status effect damage and cooldown decrement here!
                 }
                 else
                 {
