@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             playersAlive += 1;
             player.explorationMode = false;
-            player.GetComponent<PlayerMovementAP>().enabled = true;
+            player.GetComponent<LocalUserObjects>().PlayerMovementAP.enabled = true;
             if (player.playerControlled)
             {
                 SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.transform, 1f, 0.5f);
@@ -105,12 +105,16 @@ public class GameManager : MonoBehaviour
         if (playersAlive == 0)
         {
             Debug.Log($"ALL PLAYERS DEAD. RESTART FROM LAST SAVE");
+            HandleGameOver();
             StopCoroutine(TurnOrderCoroutine(turnOrder));
         }
 
         if (enemiesAlive == 0)
         {
             Debug.Log($"ENEMIES FELLED. EXITING COMBAT");
+            // todo: exit combat. reset players AP
+            
+            
             StopCoroutine(TurnOrderCoroutine(turnOrder));
         }
 
@@ -124,13 +128,13 @@ public class GameManager : MonoBehaviour
         {
             enemyStats.Turn = true;
             enemyStats.CurrentAP = enemyStats.MaxAP;
+            Debug.Log("reset enemy ap");
         }
         
         turnOrderText.text = null;
         for (int i = 0; i < turnOrder.Count; i++)
         {
             turnOrderText.text += $"{i}. {turnOrder[i].Key.Name}, ";
-            Debug.Log($"character: {turnOrder[i].Key}, wits: {turnOrder[i].Value}");
         }
 
         nextTurn = false;
@@ -153,14 +157,17 @@ public class GameManager : MonoBehaviour
         turnOrder.Add(turnOrder[0]);
         turnOrder.Remove(turnOrder[0]);
 
-        foreach (var keyValuePair in turnOrder)
-        {
-            Debug.Log($"NEW TURN ORDER! character: {keyValuePair.Key}");
-        }
-
-        Debug.Log("NEXT TURN");
+        Debug.Log($"NEXT TURN: {turnOrder[0].Key.Name}");
 
         StartCoroutine(TurnOrderCoroutine(turnOrder));
+    }
+
+    private void HandleGameOver()
+    {
+        if (UserMenu.Instance.menuIsOpen)
+        {
+            UserMenu.Instance.ToggleMenu();
+        }
     }
 
     private void HandleEnemyTurn()

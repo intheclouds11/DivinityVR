@@ -14,7 +14,7 @@ namespace intheclouds
         {
             if (!hitBy)
             {
-                hitBy = transform.parent.parent.parent.parent.GetComponent<EnemyStats>().playerHitBy.LocalUserObjects.HVRPlayerController.gameObject;
+                hitBy = transform.parent.parent.parent.GetComponent<EnemyStats>().playerHitBy.LocalUserObjects.HVRPlayerController.gameObject;
             }
 
             target = hitBy;

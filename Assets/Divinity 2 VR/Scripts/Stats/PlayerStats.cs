@@ -3,6 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
@@ -13,13 +15,14 @@ namespace intheclouds
         private PlayerMovementAP playerMovementAP;
         [SerializeField] private TextMeshProUGUI apText;
         [SerializeField] private TextMeshProUGUI goldText;
-        [SerializeField] private AudioClip levelUpClip;
+        [SerializeField] private AudioClip levelUpAudioClip;
+        [SerializeField] private AudioClip[] hurtAudioClips;
+        [SerializeField] private AudioClip[] deadAudioClips;
 
         public bool explorationMode = true;
 
         #region Player Stats
 
-        [Tooltip("Player Stats")]
         public override int CurrentHealth
         {
             get { return _currentHealth; }
@@ -129,7 +132,7 @@ namespace intheclouds
         }
         private int _XPToNextLevel;
         public override bool Turn
-        { 
+        {
             get { return _turn; }
             set
             {
@@ -165,14 +168,10 @@ namespace intheclouds
         public bool playerControlled
         {
             get { return _playerControlled; }
-            set
-            {
-                _playerControlled = value;
-            }
+            set { _playerControlled = value; }
         }
-        
-        [SerializeField]
-        private bool _playerControlled;
+
+        [SerializeField] private bool _playerControlled;
 
         #endregion
 
@@ -195,7 +194,7 @@ namespace intheclouds
 
         private void InitializeStats()
         {
-            playerMovementAP = GetComponent<PlayerMovementAP>();
+            playerMovementAP = LocalUserObjects.PlayerMovementAP;
             Name = statsSO.Name;
             MaxHealth = statsSO.maxHealth;
             MaxPoise = statsSO.maxPoise;
@@ -251,13 +250,28 @@ namespace intheclouds
 
         public void TakeDamage(int damage)
         {
-            PlayerDamaged?.Invoke();
+            var clipToPlay = Random.Range(0, hurtAudioClips.Length - 1);
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[clipToPlay], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f);
             CurrentHealth -= damage;
-            healthSlider.value = CurrentHealth;
             if (CurrentHealth <= 0)
             {
+                CurrentHealth = 0;
                 Debug.Log("player died!!!");
-                // GameManager.Instance.UpdateGameState(GameState.Lose);
+                Died();
+            }
+
+            healthSlider.value = CurrentHealth;
+            PlayerDamaged?.Invoke();
+        }
+
+        public void Died()
+        {
+            var clipToPlay = Random.Range(0, deadAudioClips.Length - 1);
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[clipToPlay], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f);
+
+            if (!UserMenu.Instance.menuIsOpen)
+            {
+                UserMenu.Instance.ToggleMenu();
             }
         }
 
@@ -287,7 +301,7 @@ namespace intheclouds
         public void LevelUp()
         {
             XPToNextLevel += (int) (XPToNextLevel * 0.5f);
-            SFXPlayer.Instance.PlaySFX(levelUpClip, transform);
+            SFXPlayer.Instance.PlaySFX(levelUpAudioClip, transform);
             // award 1 Attribute Point, 1 Skill Point, 1 Talent
 
             // todo: make Coroutine for deciding what to put points into. Make it undoable

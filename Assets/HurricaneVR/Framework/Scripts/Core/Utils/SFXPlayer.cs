@@ -89,9 +89,9 @@ namespace HurricaneVR.Framework.Core.Utils
             return PlaySFX(clip, position, Random.Range(min, max), volume);
         }
         
-        public void PlaySFXRandomPitchAttach(AudioClip clip, Transform transformForSFX, float min, float max)
+        public void PlaySFXRandomPitchAttach(AudioClip clip, Transform transformForSFX, float min, float max, float volume)
         {
-            PlaySFXAttach(clip, transformForSFX, Random.Range(min, max), 1f);
+            PlaySFXAttach(clip, transformForSFX, Random.Range(min, max), volume);
         }
 
         public void PlaySFXCooldown(AudioClip clip, Vector3 position, Guid sourceId, float pitch = 1f, float volume = 1f, float cooldownTime = 0.5f)

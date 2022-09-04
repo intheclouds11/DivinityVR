@@ -25,11 +25,20 @@ namespace intheclouds
 
         private void Update()
         {
+            CheckMenuButton();
+            CheckEndTurnButton();
+        }
+
+        private void CheckMenuButton()
+        {
             if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustActivated)
             {
                 menu.ToggleMenu();
             }
+        }
 
+        private void CheckEndTurnButton()
+        {
             if (!primaryButtonTriggered && HVRInputManager.Instance.LeftController.PrimaryButtonState.Active)
             {
                 if (holdTimeLeftPrimaryButton > holdTimeRequired)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.HandPoser;
@@ -10,7 +11,13 @@ namespace intheclouds
 {
     public class PlayerSwapper : MonoBehaviour
     {
+        public static PlayerSwapper Instance;
         private PlayerStats currentControlledPlayer;
+
+        private void Start()
+        {
+            Instance = this;
+        }
 
         public void PlayerSwap()
         {

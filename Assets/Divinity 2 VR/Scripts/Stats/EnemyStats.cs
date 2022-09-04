@@ -10,8 +10,10 @@ namespace intheclouds
 {
     public class EnemyStats : BaseStats
     {
+        public int baseDamage = 15;
         public AudioClip[] hurtAudioClips;
         public AudioClip[] deadAudioClips;
+        public TextMeshProUGUI apText;
         [SerializeField] private GameObject hitPopupPrefab;
         [SerializeField] private GameObject hitPopupsParent;
         public float hitPopupSpeed = 0.5f;
@@ -80,6 +82,7 @@ namespace intheclouds
             set
             {
                 _currentAP = value;
+                apText.text = $"AP: {CurrentAP}/{MaxAP}";
                 if (_currentAP == 0)
                 {
                     Turn = false;
@@ -147,6 +150,7 @@ namespace intheclouds
             CurrentMagicArmor = statsSO.currentMagicArmor;
             CurrentAP = statsSO.currentAP;
             EarnedXP = statsSO.XPDefeated;
+            apText.text = $"AP: {CurrentAP}/{MaxAP}";
         }
 
         private void OnTriggerEnter(Collider other)

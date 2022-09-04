@@ -29,5 +29,5 @@ MonoBehaviour:
   intelligence: 10
   constitution: 10
   memory: 10
-  wits: 12
+  wits: 14
   XPDefeated: 0

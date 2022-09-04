@@ -22,6 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/43/d5af977f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/314912d7bb3f4010b8da97a8e9d1b80b3a00/c9/6121f45a/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0c/b86bb2b8/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5f40cdb07bd44d76a23dad985a4ec283812000/83/7d7a1b1c/EditorCompilationInterface.cs" root0="SKIP_HIGHLIGHTING" />
@@ -130,10 +131,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="44392">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="44392" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -194,7 +195,7 @@
       <workItem from="1662007865975" duration="234000" />
       <workItem from="1662036854145" duration="6318000" />
       <workItem from="1662044102759" duration="710000" />
-      <workItem from="1662218492183" duration="7779000" />
+      <workItem from="1662218492183" duration="24319000" />
     </task>
     <servers />
   </component>

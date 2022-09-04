@@ -16,8 +16,8 @@ namespace intheclouds
 
         private void OnEnable()
         {
-            playerStats = GetComponent<PlayerStats>();
             var localUserObjects = transform.root.GetComponent<LocalUserObjects>();
+            playerStats = localUserObjects.PlayerStats;
             playerController = localUserObjects.HVRPlayerController;
             playerInputs = localUserObjects.HVRPlayerInputs;
             playerController.MovementEnabled = false;
