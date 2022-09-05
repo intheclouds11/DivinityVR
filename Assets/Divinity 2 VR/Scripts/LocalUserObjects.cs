@@ -28,12 +28,11 @@ namespace intheclouds
 
         private void Start()
         {
-            if (PlayerStats.playerControlled)
+            if (PlayerStats.PlayerControlled)
             {
                 turnOrderUI.transform.SetParent(Camera.transform, false);
                 turnOrderUI.transform.localPosition = Vector3.zero;
                 turnOrderUI.transform.localRotation = Quaternion.identity;
-                audioSources.transform.SetParent(HVRPlayerController.gameObject.transform);
             }
         }
     }

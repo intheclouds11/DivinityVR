@@ -12,6 +12,7 @@ namespace intheclouds
     {
         public CharacterStatsSO statsSO;
         public string Name { get; protected set; }
+        [SerializeField] protected TextMeshProUGUI nameText;
         [SerializeField] protected Slider healthSlider;
         [SerializeField] protected Slider poiseSlider;
         [SerializeField] protected Slider magicArmorSlider;
@@ -36,6 +37,7 @@ namespace intheclouds
         public virtual int CurrentAP { get; set; }
         protected int _currentAP;
         public virtual int MaxAP { get; set; }
+        protected int _maxAP;
         protected int EarnedXP { get; set; }
         public virtual bool Turn { get; set; }
         protected bool _turn;

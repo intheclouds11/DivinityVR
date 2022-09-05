@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44be2b29565dbe04a853c9ca61fafca6, type: 3}
   m_Name: Mage stats
   m_EditorClassIdentifier: 
-  Name: Mage
+  Name: Pyromancer Agent
   maxHealth: 80
   currentHealth: 80
   maxPoise: 0

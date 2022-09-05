@@ -38,7 +38,7 @@ namespace intheclouds
             foreach (var player in GameManager.Instance.players)
             {
                 localUserObjectsList.Add(player.transform.root.GetComponent<LocalUserObjects>());
-                if (player.playerControlled)
+                if (player.PlayerControlled)
                 {
                     UserSetup(player);
                 }
@@ -164,7 +164,7 @@ namespace intheclouds
                 playerStats.CurrentPoise = playerStats.statsSO.maxPoise;
                 playerStats.CurrentMagicArmor = playerStats.statsSO.maxMagicArmor;
                 playerStats.CurrentAP = playerStats.statsSO.maxAP;
-                if (playerStats.inCombat)
+                if (playerStats.InCombat)
                 {
                     playerStats.Turn = true;
                 }
@@ -178,7 +178,7 @@ namespace intheclouds
             Debug.Log("Starting Exploration Mode...");
             Button_ResetStats();
             currentUserObjects.PlayerMovementAP.enabled = false;
-            currentUserObjects.PlayerStats.explorationMode = true;
+            currentUserObjects.PlayerStats.ExplorationMode = true;
             currentUserObjects.HVRPlayerController.MovementEnabled = true;
         }
 
@@ -187,7 +187,7 @@ namespace intheclouds
             Debug.Log("Starting Player Turn... (not fully implemented yet)");
             Button_ResetStats();
             FindObjectOfType<PlayerStats>().Turn = true;
-            FindObjectOfType<PlayerStats>().explorationMode = false;
+            FindObjectOfType<PlayerStats>().ExplorationMode = false;
             currentUserObjects.PlayerMovementAP.enabled = true;
             currentUserObjects.PlayerMovementAP.StartTurn();
         }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using HurricaneVR.Framework.Core.Utils;
 using Pathfinding;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace intheclouds
         private float distanceMoved;
         private Vector3 previousPosition;
         private AIDestinationSetter aiDestinationSetter;
-        private AIPath aiPath;
+        private RichAI ai;
         private bool hasAttacked;
         private bool reachedTarget;
         private PlayerStats targetedPlayer;
@@ -25,7 +26,7 @@ namespace intheclouds
             enemyStats = GetComponent<EnemyStats>();
             animator = GetComponent<Animator>();
             aiDestinationSetter = GetComponent<AIDestinationSetter>();
-            aiPath = GetComponent<AIPath>();
+            ai = GetComponent<RichAI>();
         }
 
         public void StartTurn()
@@ -45,12 +46,12 @@ namespace intheclouds
 
 
             previousPosition = transform.position;
-            aiPath.canMove = false;
+            ai.canMove = false;
         }
 
         private void Update()
         {
-            if (!enemyStats.Turn) return;
+            if (!enemyStats.Turn || !enemyStats.isAlive) return;
 
             if (GameManager.Instance.playersAlive == 0)
             {
@@ -61,12 +62,12 @@ namespace intheclouds
             
             if (enemyStats.CurrentAP <= 0)
             {
-                aiPath.canMove = false;
+                ai.canMove = false;
                 animator.SetBool(_isWalking, false);
                 return;
             }
 
-            if (!aiPath.reachedDestination && !reachedTarget)
+            if (!ai.reachedDestination && !reachedTarget)
             {
                 ChaseTarget();
             }
@@ -84,7 +85,7 @@ namespace intheclouds
 
         private void ChaseTarget()
         {
-            aiPath.canMove = true;
+            ai.canMove = true;
             animator.SetBool(_isWalking, true);
             TrackMovementApUsage();
         }
@@ -106,7 +107,7 @@ namespace intheclouds
         {
             Debug.Log("enemy attack");
             enemyStats.CurrentAP -= 2;
-            aiPath.canMove = false;
+            ai.canMove = false;
             hasAttacked = true;
             Invoke(nameof(DelayNextAttack), 1.5f);
             animator.SetBool(_isWalking, false);
@@ -142,7 +143,7 @@ namespace intheclouds
             animator.SetBool(_isAttacking, false);
             animator.SetBool(_isWalking, false);
             reachedTarget = false;
-            aiPath.canMove = false;
+            ai.canMove = false;
             enemyStats.Turn = false;
             targetedPlayer = null;
         }

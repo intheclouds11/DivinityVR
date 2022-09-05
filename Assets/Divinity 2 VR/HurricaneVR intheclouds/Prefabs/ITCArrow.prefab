@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 769035449131628569}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8622522485921868576}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439018464933828401}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8128219890104325064}
   - component: {fileID: 4542124881925788678}
   - component: {fileID: 3942863569591616895}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: DummyGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,6 @@ MonoBehaviour:
   ParentHandModel: 1
   BreakDistance: 1
   BreakDistanceSource: 0
-  RemainsKinematic: 1
   Stationary: 0
   ReleasedAngularConversionFactor: 1
   ReleasedVelocityFactor: 1
@@ -262,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4577983985632531575}
   - component: {fileID: 4577983985632531576}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: GrabPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +308,7 @@ GameObject:
   - component: {fileID: 4577983986898937346}
   - component: {fileID: 4577983986898937348}
   - component: {fileID: 4577983986898937347}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6770214079390314357}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Arrow Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +464,7 @@ GameObject:
   - component: {fileID: 2166972318877468885}
   - component: {fileID: 4971024699136967728}
   - component: {fileID: 4858203925572147800}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: ITCArrow
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -534,9 +533,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Notch: {fileID: 0}
+  requiredAP: 2
   damage: 20
   criticalMultiplier: 2
   wieldingUser: {fileID: 0}
+  damageAudioClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
+  noDamageAudioClip: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
 --- !u!114 &7249371662223983648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,7 +563,6 @@ MonoBehaviour:
   ParentHandModel: 0
   BreakDistance: 1
   BreakDistanceSource: 0
-  RemainsKinematic: 1
   Stationary: 0
   ReleasedAngularConversionFactor: 1
   ReleasedVelocityFactor: 1
@@ -583,7 +584,7 @@ MonoBehaviour:
   LinkStartingSocket: 0
   SocketGrabPoints: []
   Rigidbody: {fileID: 0}
-  AutoApplyLayer: 1
+  AutoApplyLayer: 0
   RequireOverlapClearance: 0
   OverlapTimeout: 0.1
   FinalJointMaxAngle: 15
@@ -660,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782b616f680d4ed0a890789e57800e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SocketOrientation: {fileID: 0}
+  Poses: []
   CounterScale: {x: 1, y: 1, z: 1}
   UseRendererBounds: 1
   ScaleSize: 0
@@ -669,6 +670,7 @@ MonoBehaviour:
   SocketedClip: {fileID: 0}
   UnsocketedClip: {fileID: 0}
   LinkedGrabbables: []
+  SocketOrientation: {fileID: 0}
   SocketType: arrow
 --- !u!114 &2166972318877468885
 MonoBehaviour:
@@ -761,7 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9022137328017313333}
   - component: {fileID: 7146030337710155381}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +809,7 @@ GameObject:
   - component: {fileID: 1927872679532777810}
   - component: {fileID: 7325491320290368744}
   - component: {fileID: 8773156974043664989}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +926,7 @@ GameObject:
   - component: {fileID: 206072222356425025}
   - component: {fileID: 3029570993619431435}
   - component: {fileID: 1958653406795027615}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

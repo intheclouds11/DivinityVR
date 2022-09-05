@@ -1,5 +1,6 @@
 using System;
 using HurricaneVR.Framework.Core;
+using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,6 +10,8 @@ namespace intheclouds
 {
     public class Sword : MonoBehaviour
     {
+        public Collider hitEnemyCollider;
+        public AudioClip enemyHitClip;
         public float hitCooldown = 0.25f;
         public float lowSpeedHitEnemy = 5f;
         public float medSpeedHitEnemy = 10f;
@@ -16,15 +19,12 @@ namespace intheclouds
         public int requiredAP = 2;
         public int physicalDamage = 10;
         public int magicDamage = 0;
-        private PlayerStats wieldingUser;
+        public PlayerStats wieldingUser;
         private HVRGrabbable grabbable;
         private bool inEnemyCollider;
-        private Collision currentEnemyCollision;
+        // private Collision currentEnemyCollision;
         private EnemyStats currentEnemyStats;
-        private bool canDamage = true;
-
-        public AudioSource hitSFXAudioSource;
-        public AudioClip enemyHitClip;
+        // private bool canDamage = true;
 
         private void Start()
         {
@@ -40,18 +40,16 @@ namespace intheclouds
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (!canDamage || wieldingUser == null || !wieldingUser.Turn && !wieldingUser.explorationMode) return;
+                // if (!canDamage || wieldingUser == null || !wieldingUser.Turn && !wieldingUser.ExplorationMode) return;
+                if (wieldingUser == null || !wieldingUser.Turn && !wieldingUser.ExplorationMode) return;
 
                 if (wieldingUser.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                 {
-                    canDamage = false;
-                    currentEnemyCollision = collision;
-                    hitSFXAudioSource.pitch = 1 - Mathf.Clamp(collision.relativeVelocity.magnitude * 0.1f, 0f, 0.2f); // todo: not getting varied pitch
-                    hitSFXAudioSource.PlayOneShot(enemyHitClip);
-
+                    // canDamage = false;
+                    // currentEnemyCollision = collision;
                     currentEnemyStats = collision.gameObject.GetComponentInParent<EnemyStats>();
-                    currentEnemyStats.EnemyDied += OnEnemyDead;
-
+                    SFXPlayer.Instance.PlaySFXRandomPitchAttach(enemyHitClip, transform, 0.9f, 1.1f, 0.5f, 20);
+                    
                     if (physicalDamage > 0)
                     {
                         var actualDamage = Random.Range(physicalDamage - (int) (physicalDamage * 0.1f),
@@ -65,43 +63,37 @@ namespace intheclouds
                         currentEnemyStats.TakeDamage(wieldingUser, DamageType.Magic, actualDamage);
                     }
 
-                    if (currentEnemyStats.isAlive || !wieldingUser.explorationMode)
+                    if (currentEnemyStats.isAlive || !wieldingUser.ExplorationMode)
                     {
                         wieldingUser.UseAP(requiredAP);
-                    }
-                    else
-                    {
-                        if (!ITCPlayerInputs.Instance.debugInteractions)
-                        {
-                            wieldingUser.explorationMode = false;
-                        }
                     }
 
                     if (currentEnemyStats.isAlive)
                     {
-                        currentEnemyCollision.collider.enabled = false;
+                        // currentEnemyCollision.collider.enabled = false;
+                        hitEnemyCollider.gameObject.SetActive(false);
                         Invoke(nameof(ResetCollision), hitCooldown);
                     }
-
-                    currentEnemyStats.EnemyDied -= OnEnemyDead; // will need to change if enemy dies outside of playerturn
+                    else
+                    {
+                        hitEnemyCollider.gameObject.SetActive(true);
+                        // canDamage = true;
+                    }
                 }
             }
         }
-
-        public void OnEnemyDead()
-        {
-        }
         
-
         private void ResetCollision()
         {
-            currentEnemyCollision.collider.enabled = true;
-            canDamage = true;
+            // currentEnemyCollision.collider.enabled = true;
+            hitEnemyCollider.gameObject.SetActive(true);
+            // canDamage = true;
         }
 
         public void UpdateWielder()
         {
             wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
+            GetComponent<WeaponSwipeSFX>().wielderCharacterController = wieldingUser.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
         }
     }
 }

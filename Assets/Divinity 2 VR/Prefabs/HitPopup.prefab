@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 381505249020401657}
   - component: {fileID: 8843420424922002178}
   m_Layer: 0
-  m_Name: Hit Popup
+  m_Name: HitPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,6 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6850c20d116befd4388314dc66cdd402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticPopup: 0
+  movingPopup: 1
+  growingPopup: 1
+  translateSpeed: 0.5
   secondsToDestroy: 1.5
 --- !u!114 &8843420424922002178
 MonoBehaviour:

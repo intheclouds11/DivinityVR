@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,10 +14,11 @@ namespace intheclouds
         public int baseDamage = 15;
         public AudioClip[] hurtAudioClips;
         public AudioClip[] deadAudioClips;
+        public AudioClip baseAttackWeaponAudioClip;
+        public AudioClip footstepAudioClip;
         public TextMeshProUGUI apText;
         [SerializeField] private GameObject hitPopupPrefab;
         [SerializeField] private GameObject hitPopupsParent;
-        public float hitPopupSpeed = 0.5f;
         public PlayerStats playerHitBy;
 
         #region Enemy Stats
@@ -127,20 +129,19 @@ namespace intheclouds
         public event Action EnemyDamaged;
         public event Action EnemyDied;
         private EnemyAI enemyAI;
-        private AudioSource audioSource;
         private List<GameObject> activeHitPopups = new List<GameObject>();
 
 
         private void Awake()
         {
             enemyAI = GetComponent<EnemyAI>();
-            audioSource = GetComponent<AudioSource>();
             InitializeStats();
         }
 
         private void InitializeStats()
         {
             Name = statsSO.Name;
+            nameText.text = Name;
             MaxHealth = statsSO.maxHealth;
             MaxPoise = statsSO.maxPoise;
             MaxMagicArmor = statsSO.maxMagicArmor;
@@ -164,27 +165,6 @@ namespace intheclouds
             }
         }
 
-        private void Update()
-        {
-            HitPopupUpdate();
-        }
-
-        private void HitPopupUpdate()
-        {
-            if (activeHitPopups.Count > 0)
-            {
-                foreach (var activeHitPopup in activeHitPopups)
-                {
-                    if (activeHitPopup)
-                    {
-                        activeHitPopup.transform.Translate(0, hitPopupSpeed * Time.deltaTime, 0);
-                        activeHitPopup.transform.localScale +=
-                            (activeHitPopup.transform.localScale + new Vector3(0.001f, 0.001f, 0.001f)) * Time.deltaTime;
-                    }
-                }
-            }
-        }
-
         public void TakeDamage(PlayerStats wieldingUser, DamageType damageType, int damage)
         {
             if (!isAlive) return;
@@ -197,8 +177,7 @@ namespace intheclouds
 
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
-            activeHitPopups.Add(newHitPopup);
-
+            
             if (damageType == DamageType.Physical)
             {
                 if (CurrentPoise - damage >= 0)
@@ -230,36 +209,43 @@ namespace intheclouds
 
             if (CurrentHealth > 0)
             {
-                audioSource.pitch = Random.Range(0.9f, 1.1f);
-                audioSource.volume = 1;
-                audioSource.PlayOneShot(hurtAudioClips[Random.Range(0, hurtAudioClips.Length)]);
+                SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], transform, 0.9f, 1.1f, 1, 20);
                 EnemyDamaged?.Invoke();
             }
 
             if (CurrentHealth <= 0)
             {
-                CurrentHealth = 0;
-                audioSource.pitch = Random.Range(0.9f, 1.1f);
-                audioSource.volume = 0.7f;
-                audioSource.PlayOneShot(deadAudioClips[Random.Range(0, deadAudioClips.Length)]);
-                isAlive = false;
-
-                BecomeRagdoll(); // todo: something about this causes crashes randomly
-                
-                EnemyDied?.Invoke();
-                foreach (var instancePlayer in GameManager.Instance.players)
-                {
-                    instancePlayer.ObtainXP(EarnedXP);
-                }
+                Died();
             }
         }
 
-        private void BecomeRagdoll()
+        private void Died()
         {
-            // var rbBody = transform.GetChild(0).GetComponent<Rigidbody>();
-            // rbBody.isKinematic = false;
-            // rbBody.useGravity = true;
-            // Destroy(transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>()); // remove head rb since setting like above causes crash..
+            CurrentHealth = 0;
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform, 0.9f, 1.1f, 0.4f, 20);
+
+            isAlive = false;
+
+            EnemyDied?.Invoke();
+            foreach (var instancePlayer in GameManager.Instance.players)
+            {
+                instancePlayer.ObtainXP(EarnedXP);
+            }
+
+            EnemyManager.Instance.enemyList.Remove(this);
+            GameManager.Instance.enemiesAlive -= 1;
+            GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
+            GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
+        }
+
+        public void PlayBaseAttackWeaponSound() // triggered by anim event
+        {
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackWeaponAudioClip, transform, 0.9f, 1.1f, 0.5f, 20);
+        }
+
+        public void PlayFootStep()
+        {
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(footstepAudioClip, transform, 0.95f, 1.0f, Random.Range(0.3f, 0.5f), 20);
         }
 
         private void UpdateMagicArmorInfo()

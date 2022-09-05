@@ -28,13 +28,13 @@ TagManager:
   - Ground
   - Obstacle
   - Enemy
-  - EnemyHit
   - 
   - 
   - 
   - 
   - 
   - 
+  - HitEnemy
   - Grabbable
   - Hand
   - 

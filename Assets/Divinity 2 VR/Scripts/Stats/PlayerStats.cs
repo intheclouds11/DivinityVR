@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
@@ -18,8 +19,8 @@ namespace intheclouds
         [SerializeField] private AudioClip levelUpAudioClip;
         [SerializeField] private AudioClip[] hurtAudioClips;
         [SerializeField] private AudioClip[] deadAudioClips;
-
-        public bool explorationMode = true;
+        public GameObject infoPopupParent;
+        public GameObject infoPopupPrefab;
 
         #region Player Stats
 
@@ -100,8 +101,7 @@ namespace intheclouds
                 UpdateAPInfo();
             }
         }
-        private int _maxAP;
-        public int gold
+        public int Gold
         {
             get { return _gold; }
             set
@@ -131,6 +131,22 @@ namespace intheclouds
             }
         }
         private int _XPToNextLevel;
+        public bool ExplorationMode
+        {
+            get => _explorationMode;
+            set
+            {
+                _explorationMode = value;
+                if (_explorationMode)
+                {
+                    _turn = false;
+                    playerMovementAP.EndTurn();
+                    CurrentAP = MaxAP;
+                    InCombat = false;
+                }
+            }
+        }
+        private bool _explorationMode = true;
         public override bool Turn
         {
             get { return _turn; }
@@ -144,11 +160,15 @@ namespace intheclouds
                 }
                 else
                 {
-                    GameManager.Instance.nextTurn = true;
+                    if (InCombat)
+                    {
+                        GameManager.Instance.nextTurn = true;
+                        playerMovementAP.EndTurn();
+                    }
                 }
             }
         }
-        public bool inCombat
+        public bool InCombat
         {
             get { return _inCombat; }
             set
@@ -165,7 +185,7 @@ namespace intheclouds
             }
         }
         private bool _inCombat;
-        public bool playerControlled
+        public bool PlayerControlled
         {
             get { return _playerControlled; }
             set { _playerControlled = value; }
@@ -206,12 +226,12 @@ namespace intheclouds
             CurrentAP = statsSO.currentAP;
             XP = statsSO.XP;
             XPToNextLevel = statsSO.XPToNextLevel;
-            gold = statsSO.gold;
+            Gold = statsSO.gold;
         }
 
         private void UpdateGoldInfo()
         {
-            goldText.text = $"Gold: {gold}";
+            goldText.text = $"Gold: {Gold}";
         }
 
         private void UpdateXPInfo()
@@ -250,8 +270,7 @@ namespace intheclouds
 
         public void TakeDamage(int damage)
         {
-            var clipToPlay = Random.Range(0, hurtAudioClips.Length - 1);
-            SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[clipToPlay], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f);
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f, 20);
             CurrentHealth -= damage;
             if (CurrentHealth <= 0)
             {
@@ -266,13 +285,10 @@ namespace intheclouds
 
         public void Died()
         {
-            var clipToPlay = Random.Range(0, deadAudioClips.Length - 1);
-            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[clipToPlay], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f);
-
-            if (!UserMenu.Instance.menuIsOpen)
-            {
-                UserMenu.Instance.ToggleMenu();
-            }
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 1, 20);
+            GameManager.Instance.playersAlive -= 1;
+            GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
+            GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
         }
 
         public void UseAP(int apConsumed)
@@ -284,6 +300,10 @@ namespace intheclouds
         public void ObtainXP(int xp)
         {
             Debug.Log($"get xp {Name}", this);
+            
+            var newHitPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
+            newHitPopup.GetComponent<TextMeshProUGUI>().text = $"+{xp} XP";
+            
             XP += xp;
 
             if (XP > XPToNextLevel)
@@ -327,7 +347,7 @@ namespace intheclouds
             statsSO.maxAP = MaxAP;
             statsSO.currentAP = CurrentAP;
             statsSO.XP = XP;
-            statsSO.gold = gold;
+            statsSO.gold = Gold;
         }
     }
 }
