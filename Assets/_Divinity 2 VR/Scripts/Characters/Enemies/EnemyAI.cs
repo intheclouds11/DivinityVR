@@ -14,6 +14,7 @@ namespace intheclouds
         public AudioClip footstepAudioClip;
         public AudioClip sheatheAudioClip;
         public AudioClip unsheatheAudioClip;
+        public bool attackOnSight = true;
         public bool targetNearestPlayer;
         private EnemyStats enemyStats;
         private Animator animator;
@@ -37,6 +38,17 @@ namespace intheclouds
             animator = GetComponent<Animator>();
             aiDestinationSetter = GetComponent<AIDestinationSetter>();
             ai = GetComponent<RichAI>();
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (attackOnSight && !enemyStats.InCombat)
+                {
+                    GameManager.Instance.UpdateGameState(GameState.CombatStart, enemyStats);
+                }
+            }
         }
 
         private void Update()
@@ -177,6 +189,11 @@ namespace intheclouds
 
         #region Animation Events
 
+        public void EndUnsheathingAnimation()
+        {
+            animator.SetBool(_isUnsheathing, false);
+        }
+        
         public void PlayBaseAttackSwingSound()
         {
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackSwingAudioClip, transform, 0.9f, 1.1f, 1f, 20);

@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         foreach (var enemy in EnemyManager.Instance.enemyList)
         {
             enemiesAlive += 1;
-            enemy.EnemyEngaged = true;
+            enemy.InCombat = true;
             witsList.Add(enemy, enemy.wits);
         }
 
@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var enemy in EnemyManager.Instance.enemyList)
         {
-            enemy.EnemyEngaged = false;
+            enemy.InCombat = false;
         }
 
         if (UserMenu.Instance.menuIsOpen)

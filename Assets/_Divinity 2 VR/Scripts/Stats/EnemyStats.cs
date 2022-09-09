@@ -17,6 +17,7 @@ namespace intheclouds
         public TextMeshProUGUI apText;
         [SerializeField] private GameObject hitPopupPrefab;
         [SerializeField] private GameObject hitPopupsParent;
+        [SerializeField] private GameObject floatingStatsCanvas;
         public PlayerStats playerHitBy;
 
         #region Enemy Stats
@@ -103,6 +104,23 @@ namespace intheclouds
                 }
             }
         }
+        public bool InCombat
+        {
+            get { return _inCombat; }
+            set
+            {
+                _inCombat = value;
+                if (_inCombat)
+                {
+                    enemyAI.StartCombat();
+                }
+                else
+                {
+                    enemyAI.EndCombat();
+                }
+            }
+        }
+        private bool _inCombat;
 
         #endregion
 
@@ -121,30 +139,12 @@ namespace intheclouds
         public GameObject weaponUnsheatheParent;
         public GameObject weaponSheatheParent;
         public bool isAlive = true;
-        public bool attackOnSight = true;
-        public bool EnemyEngaged
-        {
-            get { return _enemyEngaged; }
-            set
-            {
-                _enemyEngaged = value;
-                if (_enemyEngaged)
-                {
-                    enemyAI.StartCombat();
-                }
-                else
-                {
-                    enemyAI.EndCombat();
-                }
-            }
-        }
-        private bool _enemyEngaged;
         public event Action EnemyDamaged;
         public event Action EnemyDied;
         private EnemyAI enemyAI;
         private Animator animator;
-        private List<GameObject> activeHitPopups = new List<GameObject>();
-
+        private static readonly int _isDead = Animator.StringToHash("isDead");
+        private static readonly int _isHit = Animator.StringToHash("isHit");
 
         private void Awake()
         {
@@ -169,26 +169,11 @@ namespace intheclouds
             apText.text = $"AP: {CurrentAP}/{MaxAP}";
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                if (attackOnSight && !EnemyEngaged)
-                {
-                    GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
-                }
-            }
-        }
-
         public void TakeDamage(PlayerStats wieldingUser, DamageType damageType, int damage)
         {
             if (!isAlive) return;
 
             playerHitBy = wieldingUser;
-            if (!EnemyEngaged)
-            {
-                GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
-            }
 
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
@@ -225,10 +210,19 @@ namespace intheclouds
             if (CurrentHealth > 0)
             {
                 SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], transform, 0.9f, 1.1f, 1, 20);
+                if (!weaponSheathed)
+                {
+                    animator.SetBool(_isHit, true);
+                }
+
                 EnemyDamaged?.Invoke();
             }
 
-            if (CurrentHealth <= 0)
+            if (!InCombat)
+            {
+                GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
+            }
+            else if (CurrentHealth <= 0)
             {
                 Died();
             }
@@ -236,11 +230,10 @@ namespace intheclouds
 
         private void Died()
         {
+            isAlive = false;
             CurrentHealth = 0;
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform, 0.9f, 1.1f, 0.4f, 20);
-
-            isAlive = false;
-
+            animator.SetBool(_isDead, true);
             EnemyDied?.Invoke();
             foreach (var instancePlayer in GameManager.Instance.players)
             {
@@ -252,6 +245,20 @@ namespace intheclouds
             GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
             GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
         }
+
+        #region Animation Events
+
+        public void EndHitAnimation()
+        {
+            animator.SetBool(_isHit, false);
+        }
+
+        public void EndDeathAnimation()
+        {
+            floatingStatsCanvas.SetActive(false);
+        }
+
+        #endregion
 
         private void UpdateMagicArmorInfo()
         {

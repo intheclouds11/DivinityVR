@@ -31,25 +31,25 @@ namespace intheclouds
             grabbable = GetComponent<HVRGrabbable>();
         }
 
-        private void Update()
-        {
-            if (wieldingUser == null) return;
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                // if (!canDamage || wieldingUser == null || !wieldingUser.Turn && !wieldingUser.ExplorationMode) return;
-                if (wieldingUser == null || !wieldingUser.Turn && !wieldingUser.ExplorationMode) return;
+                if (wieldingUser == null || wieldingUser.LocalUserObjects.spiritWander.activated || !wieldingUser.Turn && !wieldingUser.ExplorationMode)
+                {
+                    return;
+                }
 
                 if (wieldingUser.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                 {
-                    // canDamage = false;
-                    // currentEnemyCollision = collision;
                     currentEnemyStats = collision.gameObject.GetComponentInParent<EnemyStats>();
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(enemyHitClip, transform, 0.9f, 1.1f, 0.5f, 20);
-                    
+
+                    if (!currentEnemyStats.isAlive)
+                    {
+                        return;
+                    }
+
                     if (physicalDamage > 0)
                     {
                         var actualDamage = Random.Range(physicalDamage - (int) (physicalDamage * 0.1f),
@@ -63,31 +63,20 @@ namespace intheclouds
                         currentEnemyStats.TakeDamage(wieldingUser, DamageType.Magic, actualDamage);
                     }
 
-                    if (currentEnemyStats.isAlive || !wieldingUser.ExplorationMode)
+                    if (!wieldingUser.ExplorationMode)
                     {
                         wieldingUser.UseAP(requiredAP);
                     }
-
-                    if (currentEnemyStats.isAlive)
-                    {
-                        // currentEnemyCollision.collider.enabled = false;
-                        hitEnemyCollider.gameObject.SetActive(false);
-                        Invoke(nameof(ResetCollision), hitCooldown);
-                    }
-                    else
-                    {
-                        hitEnemyCollider.gameObject.SetActive(true);
-                        // canDamage = true;
-                    }
+                    
+                    hitEnemyCollider.gameObject.SetActive(false);
+                    Invoke(nameof(ResetCollision), hitCooldown);
                 }
             }
         }
-        
+
         private void ResetCollision()
         {
-            // currentEnemyCollision.collider.enabled = true;
             hitEnemyCollider.gameObject.SetActive(true);
-            // canDamage = true;
         }
 
         public void UpdateWielder()

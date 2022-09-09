@@ -8,6 +8,7 @@ public class ITCPopup : MonoBehaviour
     public bool staticPopup;
     public bool movingPopup;
     public bool growingPopup;
+    public float growingSpeed = 0.001f;
     public float translateSpeed;
     public float secondsToDestroy = 2;
 
@@ -27,7 +28,7 @@ public class ITCPopup : MonoBehaviour
 
             if (growingPopup)
             {
-                transform.localScale += (transform.localScale + new Vector3(0.001f, 0.001f, 0.001f)) * Time.deltaTime;
+                transform.localScale += (transform.localScale + new Vector3(growingSpeed, growingSpeed, growingSpeed)) * Time.deltaTime;
             }
         }
     }

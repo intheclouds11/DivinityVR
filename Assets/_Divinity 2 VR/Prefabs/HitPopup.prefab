@@ -152,6 +152,7 @@ MonoBehaviour:
   staticPopup: 0
   movingPopup: 1
   growingPopup: 1
+  growingSpeed: 0.0008
   translateSpeed: 0.5
   secondsToDestroy: 1.5
 --- !u!114 &8843420424922002178
