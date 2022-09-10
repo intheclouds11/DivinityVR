@@ -28,6 +28,11 @@ namespace intheclouds
         {
             CheckMenuButton();
             CheckEndTurnButton();
+            if (HVRInputManager.Instance.RightController.PrimaryButtonState.JustActivated)
+            {
+                var handAugmentHighlight = transform.parent.GetComponent<LocalUserObjects>().handAugmentHighlight;
+                handAugmentHighlight.highlighted = !handAugmentHighlight.highlighted;
+            }
         }
 
         private void CheckMenuButton()

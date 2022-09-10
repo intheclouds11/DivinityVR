@@ -1,4 +1,5 @@
 using System;
+using HighlightPlus;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
@@ -25,6 +26,7 @@ namespace intheclouds
         public GameObject visorSocket;
         public GameObject turnOrderUI;
         public SpiritWander spiritWander;
+        public HighlightEffect handAugmentHighlight;
 
         private void Start()
         {
