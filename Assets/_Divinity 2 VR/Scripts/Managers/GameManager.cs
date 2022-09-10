@@ -6,6 +6,7 @@ using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
@@ -19,15 +20,7 @@ public class GameManager : MonoBehaviour
     public GameState state;
     public static event Action<GameState> GameStateChanged;
     public List<PlayerStats> players;
-    public bool NextTurn
-    {
-        get { return _nextTurn; }
-        set
-        {
-            _nextTurn = value;
-        }
-    }
-    private bool _nextTurn;
+    public bool NextTurn;
     private BaseStats activeCombatant;
     public int enemiesAlive;
     public int playersAlive;

@@ -30,4 +30,5 @@ MonoBehaviour:
   constitution: 10
   memory: 10
   wits: 11
+  baseHandAugmentColor: {r: 1, g: 1, b: 1, a: 1}
   XPDefeated: 0

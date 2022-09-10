@@ -1,20 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 
 namespace intheclouds
 {
-    public class TresureChest : MonoBehaviour
+    public class TreasureChest : MonoBehaviour
     {
-        private AudioSource audioSource;
         public bool opened;
         public int gold = 12;
-
-        private void Start()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        public AudioClip openSFX;
+        public AudioClip closeSFX;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -23,7 +20,7 @@ namespace intheclouds
                 if (!opened)
                 {
                     opened = true;
-                    audioSource.Play();
+                    SFXPlayer.Instance.PlaySFXAttach(openSFX, transform, 1, 1);
                     collision.gameObject.transform.root.GetComponent<PlayerStats>().Gold += gold;
                 }
             }

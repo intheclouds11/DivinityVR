@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 2166972318877468885}
   - component: {fileID: 4971024699136967728}
   - component: {fileID: 4858203925572147800}
+  - component: {fileID: 3151192570311751856}
   m_Layer: 19
   m_Name: ITCArrow
   m_TagString: projectile
@@ -753,6 +754,21 @@ MonoBehaviour:
   destroyTimer: 0
   timeToDestroy: 30
   useDestroyTimer: 0
+--- !u!114 &3151192570311751856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770214079390613489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactSpeedRequired: 0.1
+  impactClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
+  volume: 0.1
 --- !u!1 &7421629758791923788
 GameObject:
   m_ObjectHideFlags: 0

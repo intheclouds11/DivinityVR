@@ -22,6 +22,7 @@ public class CharacterStatsSO : ScriptableObject
     public int constitution;
     public int memory;
     public int wits;
+    public Color baseHandAugmentColor;
     
     [Tooltip("EnemyStats")]
     public int XPDefeated;

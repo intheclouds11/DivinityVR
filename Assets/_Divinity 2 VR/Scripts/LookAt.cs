@@ -7,18 +7,19 @@ namespace intheclouds
 {
     public class LookAt : MonoBehaviour
     {
-        private GameObject target;
-        private GameObject hitBy;
+        private Transform target;
+
+        private void Awake()
+        {
+            target = GameManager.Instance.FindControlledPlayer().LocalUserObjects.Camera.transform;
+        }
 
         private void Update()
         {
-            if (!hitBy)
+            if (target != null)
             {
-                hitBy = transform.parent.parent.parent.GetComponent<EnemyStats>().playerHitBy.LocalUserObjects.HVRPlayerController.gameObject;
+                transform.LookAt(target.transform);
             }
-
-            target = hitBy;
-            transform.LookAt(target.transform);
         }
     }
 }

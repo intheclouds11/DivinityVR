@@ -21,13 +21,13 @@ namespace intheclouds
             {
                 if (!audioSource)
                 {
-                    audioSource = SFXPlayer.Instance.PlaySFXRandomPitch(impactClip, transform.position, 1f, 1f, volume * (collision.relativeVelocity.magnitude * 0.5f));
+                    audioSource = SFXPlayer.Instance.PlaySFXRandomPitch(impactClip, transform.position, 1f, 1f, volume * (collision.relativeVelocity.magnitude * 0.5f), 20);
                 }
                 else
                 {
                     if (!audioSource.isPlaying)
                     {
-                        audioSource = SFXPlayer.Instance.PlaySFXRandomPitch(impactClip, transform.position, 1f, 1f, volume * (collision.relativeVelocity.magnitude * 0.5f));
+                        audioSource = SFXPlayer.Instance.PlaySFXRandomPitch(impactClip, transform.position, 1f, 1f, volume * (collision.relativeVelocity.magnitude * 0.5f), 20);
                     }
                 }
             }

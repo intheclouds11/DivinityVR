@@ -20,19 +20,12 @@ namespace intheclouds
         private void Awake()
         {
             gameManager = GameManager.Instance;
-            Debug.Log(gameManager);
-            Debug.Log("!!!!");
         }
 
         private void Update()
         {
             CheckMenuButton();
             CheckEndTurnButton();
-            if (HVRInputManager.Instance.RightController.PrimaryButtonState.JustActivated)
-            {
-                var handAugmentHighlight = transform.parent.GetComponent<LocalUserObjects>().handAugmentHighlight;
-                handAugmentHighlight.highlighted = !handAugmentHighlight.highlighted;
-            }
         }
 
         private void CheckMenuButton()
