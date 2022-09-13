@@ -169,7 +169,7 @@ namespace intheclouds
             apText.text = $"AP: {CurrentAP}/{MaxAP}";
         }
 
-        public void TakeDamage(PlayerStats wieldingUser, DamageType damageType, int damage)
+        public void TakeDamage(PlayerStats wieldingUser, int damage, DamageType damageType, ElementalType elementalType = ElementalType.None)
         {
             if (!isAlive) return;
 

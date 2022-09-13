@@ -7,18 +7,22 @@ namespace intheclouds
 {
     public class LookAt : MonoBehaviour
     {
-        private Transform target;
+        public Transform target;
 
         private void Awake()
         {
-            target = GameManager.Instance.FindControlledPlayer().LocalUserObjects.Camera.transform;
+            if (target == null)
+            {
+                target = GameManager.Instance.FindControlledPlayer().LocalUserObjects.Camera.transform;
+            }
         }
 
         private void Update()
         {
             if (target != null)
             {
-                transform.LookAt(target.transform);
+                transform.rotation = Quaternion.LookRotation(transform.position - target.position);
+                // transform.LookAt(target.transform);
             }
         }
     }

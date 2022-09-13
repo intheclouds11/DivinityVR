@@ -14,6 +14,17 @@ namespace intheclouds
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Grabbable") || other.gameObject.layer == LayerMask.NameToLayer("HitEnemy"))
+            {
+                if (other.transform.parent != null)
+                {
+                    Destroy(other.transform.parent.gameObject);
+                }
+                else
+                {
+                    Destroy(other.gameObject);
+                }
+            }
         }
     }
 }

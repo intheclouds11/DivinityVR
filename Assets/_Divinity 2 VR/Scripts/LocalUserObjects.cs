@@ -20,16 +20,19 @@ namespace intheclouds
         public GameObject leftHandPhysics;
         public GameObject leftHandModel;
         public GameObject leftHandPalm;
+        public GameObject leftHandMagicSelectorSpawn;
         public GameObject rightController;
         public GameObject rightHandPhysics;
         public GameObject rightHandModel;
         public GameObject rightHandPalm;
+        public GameObject rightHandMagicSelectorSpawn;
         public GameObject userMenuSpawnPoint;
         public GameObject visorSocket;
         public GameObject turnOrderUI;
         public SpiritWander spiritWander;
         public HighlightEffect handAugmentHighlight;
-        public MagicSelector magicSelector;
+        public MagicSystem magicSelector;
+        public Transform magicAttachPoint;
         public GameObject skills;
         
         private void Start()
@@ -44,15 +47,15 @@ namespace intheclouds
 
         private void Update()
         {
-            if (magicSelector.selectedMagic && magicSelector.selectedMagic.activeInHierarchy)
-            {
-                magicSelector.selectedMagic.transform.parent = leftHandPalm.transform;
-                if (magicSelector.selectedMagic.transform.localPosition != Vector3.zero)
-                {
-                    magicSelector.selectedMagic.transform.localPosition = Vector3.zero;
-                    magicSelector.selectedMagic.transform.localRotation = Quaternion.identity;
-                }
-            }
+            // if (magicSelector.selectedMagic && magicSelector.selectedMagic.activeInHierarchy)
+            // {
+            //     magicSelector.selectedMagic.transform.parent = leftHandPalm.transform;
+            //     if (magicSelector.selectedMagic.transform.localPosition != magicAttachPoint.localPosition)
+            //     {
+            //         magicSelector.selectedMagic.transform.localPosition = magicAttachPoint.localPosition;
+            //         magicSelector.selectedMagic.transform.localRotation = magicAttachPoint.localRotation;
+            //     }
+            // }
         }
     }
     

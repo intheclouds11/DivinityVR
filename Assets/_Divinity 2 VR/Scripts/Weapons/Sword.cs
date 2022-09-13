@@ -54,13 +54,13 @@ namespace intheclouds
                     {
                         var actualDamage = Random.Range(physicalDamage - (int) (physicalDamage * 0.1f),
                             physicalDamage + (int) (physicalDamage * 0.1f));
-                        currentEnemyStats.TakeDamage(wieldingUser, DamageType.Physical, actualDamage);
+                        currentEnemyStats.TakeDamage(wieldingUser, actualDamage, DamageType.Physical);
                     }
                     else if (magicDamage > 0)
                     {
                         var actualDamage = Random.Range(magicDamage - (int) (magicDamage * 0.1f),
                             magicDamage + (int) (magicDamage * 0.1f));
-                        currentEnemyStats.TakeDamage(wieldingUser, DamageType.Magic, actualDamage);
+                        currentEnemyStats.TakeDamage(wieldingUser, actualDamage, DamageType.Magic);
                     }
 
                     if (!wieldingUser.ExplorationMode)

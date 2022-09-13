@@ -15,6 +15,7 @@ TagManager:
   - MakeVisibleWhenLookingAt
   - Headwear
   - Visor
+  - EngageTrigger
   layers:
   - Default
   - TransparentFX
@@ -47,7 +48,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - KillFloor
   m_SortingLayers:
   - name: Default
     uniqueID: 0

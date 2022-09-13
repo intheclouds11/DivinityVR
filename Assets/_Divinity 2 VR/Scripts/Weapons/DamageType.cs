@@ -5,4 +5,14 @@ namespace intheclouds
         Physical,
         Magic
     }
+
+    public enum ElementalType
+    {
+        Fire,
+        Water,
+        Air,
+        Earth,
+        Poison,
+        None
+    }
 }

@@ -34,13 +34,13 @@ namespace intheclouds
                 {
                     if (!CheckIfCanDamage()) return;
                     var actualDamage = Random.Range(damage - (int) (damage * 0.1f), damage + (int) (damage * 0.1f)) * criticalMultiplier;
-                    collision.gameObject.GetComponentInParent<EnemyStats>()?.TakeDamage(wieldingUser, DamageType.Physical, (int) actualDamage);
+                    collision.gameObject.GetComponentInParent<EnemyStats>()?.TakeDamage(wieldingUser, (int) actualDamage, DamageType.Physical);
                 }
                 else if (collision.gameObject.CompareTag("EnemyBody"))
                 {
                     if (!CheckIfCanDamage()) return;
                     var actualDamage = Random.Range(damage - (int) (damage * 0.1f), damage + (int) (damage * 0.1f));
-                    collision.gameObject.GetComponentInParent<EnemyStats>()?.TakeDamage(wieldingUser, DamageType.Physical, actualDamage);
+                    collision.gameObject.GetComponentInParent<EnemyStats>()?.TakeDamage(wieldingUser, actualDamage, DamageType.Physical);
                 }
 
                 if (collision.gameObject.CompareTag("EnemyBody") || collision.gameObject.CompareTag("EnemyHead"))
