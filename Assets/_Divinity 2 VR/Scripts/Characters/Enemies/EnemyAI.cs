@@ -88,6 +88,9 @@ namespace intheclouds
 
         public void StartTurn()
         {
+            // todo: add attacks based on what skills enemy has
+            
+            // base attack
             if (targetNearestPlayer)
             {
                 Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
@@ -104,7 +107,6 @@ namespace intheclouds
             targetedPlayerSW = aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
             if (targetedPlayerSW.activated)
             {
-                Debug.Log("targeting spawned object");
                 aiDestinationSetter.target = targetedPlayerSW.spawnedGOs[0].transform;
             }
 
@@ -117,17 +119,10 @@ namespace intheclouds
         {
             if (targetedPlayerSW.activated)
             {
-                Debug.Log($"changing target to targetedPlayerSW.spawnedGOs[0].transform");
-                foreach (var spawnedGO in targetedPlayerSW.spawnedGOs)
-                {
-                    Debug.Log($"spawnedGO: {spawnedGO}");
-                }
-
                 aiDestinationSetter.target = targetedPlayerSW.spawnedGOs[0].transform;
             }
             else
             {
-                Debug.Log("targetSW not activated");
                 aiDestinationSetter.target = targetedPlayer.transform;
             }
         }
@@ -218,7 +213,7 @@ namespace intheclouds
                 player = aiDestinationSetter.target.parent.gameObject.GetComponent<PlayerStats>();
             }
 
-            player.TakeDamage(enemyStats.baseDamage);
+            player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ElementalType.None, StatusEffect.None);
             if (player.CurrentHealth == 0)
             {
                 if (targetNearestPlayer)

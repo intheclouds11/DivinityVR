@@ -7,15 +7,6 @@ namespace intheclouds
 {
     public class Fireball : Magic
     {
-        public GameObject impactVFX;
-        public AudioClip noDamageAudioClip;
-        public int damage;
-        public int requiredAP;
-        public GameObject surfaceEffect;
-        
-        [HideInInspector]
-        public PlayerStats wieldingUser;
-
         private void OnDisable()
         {
             var player = GameManager.Instance.FindControlledPlayer().LocalUserObjects;
@@ -34,10 +25,10 @@ namespace intheclouds
 
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (wieldingUser.LocalUserObjects.spiritWander.activated || !wieldingUser.Turn && !wieldingUser.ExplorationMode
-                                                                         || wieldingUser.CurrentAP < requiredAP)
+                if (caster.LocalUserObjects.spiritWander.activated || !caster.Turn && !caster.ExplorationMode
+                                                                   || caster.CurrentAP < requiredAP)
                 {
-                    SFXPlayer.Instance.PlaySFXRandomPitchAttach(noDamageAudioClip, wieldingUser.LocalUserObjects.Camera.transform, 1f, 1.05f, 0.7f, 20);
+                    SFXPlayer.Instance.PlaySFXRandomPitchAttach(noDamageAudioClip, caster.LocalUserObjects.Camera.transform, 1f, 1.05f, 0.7f, 20);
                     Destroy(gameObject);
                     return;
                 }
@@ -48,19 +39,22 @@ namespace intheclouds
                     return;
                 }
 
-                var actualDamage = Random.Range(damage - (int) (damage * 0.1f), damage + (int) (damage * 0.1f));
-                enemy.TakeDamage(wieldingUser, actualDamage, DamageType.Magic, ElementalType.Fire);
-
-                if (!wieldingUser.ExplorationMode)
-                {
-                    wieldingUser.UseAP(requiredAP);
-                }
+                var actualDamage = Random.Range(baseDamage - (int) (baseDamage * 0.1f), baseDamage + (int) (baseDamage * 0.1f));
+                enemy.TakeDamage(caster, actualDamage, DamageType.Magic, ElementalType.Fire, StatusEffect.Burning);
 
                 enabled = false;
             }
 
-            if (!wieldingUser.LocalUserObjects.spiritWander.activated || wieldingUser.Turn && wieldingUser.ExplorationMode)
+            if (!caster.LocalUserObjects.spiritWander.activated)
             {
+                if (caster.Turn)
+                {
+                    caster.UseAP(requiredAP);
+                    var selectedMagic = magicSystem.selectedMagic.GetComponent<Magic>();
+                    selectedMagic.cooldownTimer = cooldown;
+                    magicSystem.DequipMagic();
+                }
+
                 SpawnFireGround();
             }
 
@@ -81,6 +75,7 @@ namespace intheclouds
             {
                 targetLocation = hit.point;
                 GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
+                fireSurface.GetComponent<SurfaceEffect>().caster = caster;
             }
         }
     }

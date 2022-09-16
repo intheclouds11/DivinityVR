@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
                 SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.transform, 1f, 0.5f);
             }
 
-            witsList.Add(player, player.wits);
+            witsList.Add(player, player.Wits);
         }
 
         var sortedTurnOrderEnumerable = from entry in witsList orderby entry.Value descending select entry;
@@ -120,16 +120,21 @@ public class GameManager : MonoBehaviour
         activeCombatant = turnOrder[0].Key;
         Debug.Log("--------------------------------");
         Debug.Log($"Active combatant: {activeCombatant.Name}");
-        if (activeCombatant.TryGetComponent(out PlayerStats playerStats))
+        if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
         {
-            playerStats.Turn = true;
-            playerStats.CurrentAP = playerStats.MaxAP;
+            combatantStats.Turn = true;
+            combatantStats.CurrentAP = combatantStats.MaxAP;
         }
-        else if (activeCombatant.TryGetComponent(out EnemyStats enemyStats))
-        {
-            enemyStats.Turn = true;
-            enemyStats.CurrentAP = enemyStats.MaxAP;
-        }
+        // if (activeCombatant.TryGetComponent(out PlayerStats playerStats))
+        // {
+        //     playerStats.Turn = true;
+        //     playerStats.CurrentAP = playerStats.MaxAP;
+        // }
+        // else if (activeCombatant.TryGetComponent(out EnemyStats enemyStats))
+        // {
+        //     enemyStats.Turn = true;
+        //     enemyStats.CurrentAP = enemyStats.MaxAP;
+        // }
 
         UpdateTurnOrderText(turnOrder);
 
@@ -224,14 +229,18 @@ public class GameManager : MonoBehaviour
     
     public void UpdateCombatantTurn()
     {
-        if (activeCombatant.TryGetComponent(out PlayerStats player))
+        if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
         {
-            player.Turn = false;
+            combatantStats.Turn = false;
         }
-        else if (activeCombatant.TryGetComponent(out EnemyStats enemyStatsDebug))
-        {
-            enemyStatsDebug.Turn = false;
-        }
+        // if (activeCombatant.TryGetComponent(out PlayerStats player))
+        // {
+        //     player.Turn = false;
+        // }
+        // else if (activeCombatant.TryGetComponent(out EnemyStats enemyStats))
+        // {
+        //     enemyStats.Turn = false;
+        // }
     }
 }
 

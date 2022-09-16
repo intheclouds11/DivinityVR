@@ -14,17 +14,22 @@ namespace intheclouds
     {
         public LocalUserObjects LocalUserObjects;
         private PlayerMovementAP playerMovementAP;
-        [SerializeField] private TextMeshProUGUI apText;
-        [SerializeField] private TextMeshProUGUI goldText;
-        [SerializeField] private AudioClip levelUpAudioClip;
-        [SerializeField] private AudioClip[] hurtAudioClips;
-        [SerializeField] private AudioClip[] deadAudioClips;
+        [SerializeField]
+        private TextMeshProUGUI apText;
+        [SerializeField]
+        private TextMeshProUGUI goldText;
+        [SerializeField]
+        private AudioClip levelUpAudioClip;
+        [SerializeField]
+        private AudioClip[] hurtAudioClips;
+        [SerializeField]
+        private AudioClip[] deadAudioClips;
         public GameObject infoPopupParent;
         public GameObject infoPopupPrefab;
-
+        
         #region Player Stats
 
-        public override int CurrentHealth
+        public virtual int CurrentHealth
         {
             get { return _currentHealth; }
             set
@@ -33,7 +38,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        public override int MaxHealth
+        public virtual int MaxHealth
         {
             get => _maxHealth;
             set
@@ -42,7 +47,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        public override int CurrentPoise
+        public virtual int CurrentPoise
         {
             get { return _currentPoise; }
             set
@@ -51,7 +56,7 @@ namespace intheclouds
                 UpdatePoiseInfo();
             }
         }
-        public override int MaxPoise
+        public virtual int MaxPoise
         {
             get { return _maxPoise; }
             set
@@ -60,7 +65,7 @@ namespace intheclouds
                 UpdatePoiseInfo();
             }
         }
-        public override int CurrentMagicArmor
+        public virtual int CurrentMagicArmor
         {
             get { return _currentMagicArmor; }
             set
@@ -69,7 +74,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        public override int MaxMagicArmor
+        public virtual int MaxMagicArmor
         {
             get { return _maxMagicArmor; }
             set
@@ -155,8 +160,12 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
+                    if (statusEffects.Count > 0)
+                    {
+                        ProcessStatusEffects();
+                    }
+
                     playerMovementAP.StartTurn();
-                    // todo: apply status effects here!
                 }
                 else
                 {
@@ -184,6 +193,7 @@ namespace intheclouds
                 }
             }
         }
+        [SerializeField]
         private bool _inCombat;
         public bool PlayerControlled
         {
@@ -191,21 +201,14 @@ namespace intheclouds
             set { _playerControlled = value; }
         }
 
-        [SerializeField] private bool _playerControlled;
-
-        #endregion
-
-        #region Player Attributes
-
-        public int strength => statsSO.strength;
-        public int finesse => statsSO.finesse;
-        public int intelligence => statsSO.intelligence;
-        public int constitution => statsSO.constitution;
-        public int wits => statsSO.wits;
+        [SerializeField]
+        private bool _playerControlled;
+        public BaseStats attacker;
 
         #endregion
 
         public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
+
 
         private void Awake()
         {
@@ -216,14 +219,28 @@ namespace intheclouds
         {
             playerMovementAP = LocalUserObjects.PlayerMovementAP;
             Name = statsSO.Name;
+            if (nameText)
+            {
+                nameText.text = Name;
+            }
+
             MaxHealth = statsSO.maxHealth;
-            MaxPoise = statsSO.maxPoise;
-            MaxMagicArmor = statsSO.maxMagicArmor;
-            MaxAP = statsSO.maxAP;
             CurrentHealth = MaxHealth;
+            MaxPoise = statsSO.maxPoise;
             CurrentPoise = statsSO.currentPoise;
+            MaxMagicArmor = statsSO.maxMagicArmor;
             CurrentMagicArmor = statsSO.currentMagicArmor;
+            MaxAP = statsSO.maxAP;
             CurrentAP = statsSO.currentAP;
+
+            Strength = statsSO.Strength;
+            Finesse = statsSO.Finesse;
+            Intelligence = statsSO.Intelligence;
+            Vitality = statsSO.Vitality;
+            Memory = statsSO.Memory;
+            Wits = statsSO.Wits;
+
+            level = statsSO.level;
             XP = statsSO.XP;
             XPToNextLevel = statsSO.XPToNextLevel;
             Gold = statsSO.gold;
@@ -268,12 +285,93 @@ namespace intheclouds
             healthText.text = $"{CurrentHealth}/{MaxHealth}";
         }
 
-        public void TakeDamage(int damage)
+        private void ProcessStatusEffects()
         {
-            CurrentHealth -= damage;
+            //todo: not working since can't iterate through modified dictionary
+            
+            foreach (var statusEffect in statusEffects)
+            {
+                if (statusEffect.Key == StatusEffect.Burning)
+                {
+                    var newLength = statusEffect.Value - 1;
+                    statusEffects.Remove(statusEffect.Key);
+                    statusEffects.Add(StatusEffect.Burning, newLength);
+                    Debug.Log($"turn start. {statusEffect.Key} will last {statusEffect.Value} more turns");
+                    int damage = (int) (4 * (1 + level * 0.5f));
+                    TakeDamage(null, damage, DamageType.Magic, ElementalType.Fire, StatusEffect.None);
+                    SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.fireDamageSFX, LocalUserObjects.HVRPlayerController.gameObject.transform, 1, 0.5f);
+                }
+            }
+        }
+
+        public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
+        {
+            this.attacker = attacker;
+
+            var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
+            newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+
+            // todo: reduce damage based on character resistance to elemental type
+            
+            if (damageType == DamageType.Physical)
+            {
+                if (CurrentPoise - damage >= 0)
+                {
+                    CurrentPoise -= damage;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.gray;
+                }
+                else
+                {
+                    CurrentPoise = 0;
+                    CurrentHealth -= damage - CurrentPoise;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                    if (statusEffect != StatusEffect.None)
+                    {
+                        if (!statusEffects.ContainsKey(statusEffect))
+                        {
+                            statusEffects.Add(statusEffect, (int) statusEffect);
+                            Debug.Log("status effect applied (first time)");
+                        }
+                        else // restart cooldown turns
+                        {
+                            statusEffects.Remove(statusEffect);
+                            statusEffects.Add(statusEffect, (int) statusEffect);
+                            Debug.Log("status effect reapplied");
+                        }
+                    }
+                }
+            }
+            else if (damageType == DamageType.Magic)
+            {
+                if (CurrentMagicArmor - damage >= 0)
+                {
+                    CurrentMagicArmor -= damage;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
+                }
+                else
+                {
+                    CurrentMagicArmor = 0;
+                    CurrentHealth -= damage - CurrentMagicArmor;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                    if (statusEffect != StatusEffect.None)
+                    {
+                        if (!statusEffects.ContainsKey(statusEffect))
+                        {
+                            statusEffects.Add(statusEffect, (int) statusEffect);
+                        }
+                        else // restart cooldown turns
+                        {
+                            statusEffects.Remove(statusEffect);
+                            statusEffects.Add(statusEffect, (int) statusEffect);
+                        }
+                    }
+                }
+            }
+
             if (CurrentHealth > 0)
             {
-                SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f, 20);
+                SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)],
+                    LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f, 20);
             }
             else
             {
@@ -286,11 +384,17 @@ namespace intheclouds
             PlayerDamaged?.Invoke();
         }
 
+        public override void Heal(BaseStats healer, int healAmount, ElementalType elementalType, StatusEffect statusEffect)
+        {
+            base.Heal(healer, healAmount, elementalType, statusEffect);
+        }
+
         public void Died()
         {
-            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 1, 20);
+            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)],
+                LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 1, 20);
             GameManager.Instance.playersAlive -= 1;
-            GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
+            GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, Wits));
             GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
         }
 

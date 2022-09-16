@@ -12,6 +12,8 @@ namespace HurricaneVR.Framework.Core.Utils
             public float Time;
         }
 
+        public AudioClip fireDamageSFX;
+
         static SFXPlayer s_Instance;
         public static SFXPlayer Instance => s_Instance;
          static int id;

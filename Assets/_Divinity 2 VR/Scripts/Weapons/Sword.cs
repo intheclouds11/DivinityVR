@@ -17,14 +17,12 @@ namespace intheclouds
         public float medSpeedHitEnemy = 10f;
         public float fastSpeedHitEnemy = 15f;
         public int requiredAP = 2;
-        public int physicalDamage = 10;
-        public int magicDamage = 0;
-        public PlayerStats wieldingUser;
+        public int baseDamage = 1;
+        public float criticalDamageMultiplier = 1.8f;
+        public PlayerStats combatant;
         private HVRGrabbable grabbable;
         private bool inEnemyCollider;
-        // private Collision currentEnemyCollision;
         private EnemyStats currentEnemyStats;
-        // private bool canDamage = true;
 
         private void Start()
         {
@@ -35,12 +33,12 @@ namespace intheclouds
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (wieldingUser == null || wieldingUser.LocalUserObjects.spiritWander.activated || !wieldingUser.Turn && !wieldingUser.ExplorationMode)
+                if (combatant == null || combatant.LocalUserObjects.spiritWander.activated || !combatant.Turn && !combatant.ExplorationMode)
                 {
                     return;
                 }
 
-                if (wieldingUser.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
+                if (combatant.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                 {
                     currentEnemyStats = collision.gameObject.GetComponentInParent<EnemyStats>();
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(enemyHitClip, transform, 0.9f, 1.1f, 0.5f, 20);
@@ -50,24 +48,15 @@ namespace intheclouds
                         return;
                     }
 
-                    if (physicalDamage > 0)
+                    var totalDamage = (int) (baseDamage * (combatant.Strength * 1.05f));
+                    currentEnemyStats.TakeDamage(combatant, Helpers.CalculateDamageRange(totalDamage, combatant, criticalDamageMultiplier),
+                        DamageType.Physical, ElementalType.None, StatusEffect.None);
+
+                    if (!combatant.ExplorationMode)
                     {
-                        var actualDamage = Random.Range(physicalDamage - (int) (physicalDamage * 0.1f),
-                            physicalDamage + (int) (physicalDamage * 0.1f));
-                        currentEnemyStats.TakeDamage(wieldingUser, actualDamage, DamageType.Physical);
-                    }
-                    else if (magicDamage > 0)
-                    {
-                        var actualDamage = Random.Range(magicDamage - (int) (magicDamage * 0.1f),
-                            magicDamage + (int) (magicDamage * 0.1f));
-                        currentEnemyStats.TakeDamage(wieldingUser, actualDamage, DamageType.Magic);
+                        combatant.UseAP(requiredAP);
                     }
 
-                    if (!wieldingUser.ExplorationMode)
-                    {
-                        wieldingUser.UseAP(requiredAP);
-                    }
-                    
                     hitEnemyCollider.gameObject.SetActive(false);
                     Invoke(nameof(ResetCollision), hitCooldown);
                 }
@@ -81,8 +70,9 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
-            GetComponent<WeaponSwipeSFX>().wielderCharacterController = wieldingUser.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
+            combatant = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
+            GetComponent<WeaponSwipeSFX>().wielderCharacterController =
+                combatant.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
         }
     }
 }

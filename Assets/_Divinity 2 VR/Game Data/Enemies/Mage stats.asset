@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Mage stats
   m_EditorClassIdentifier: 
   Name: Agent Pyromancer
+  level: 1
   maxHealth: 80
   currentHealth: 80
-  maxPoise: 0
-  currentPoise: 0
+  maxPoise: 5
+  currentPoise: 5
   maxMagicArmor: 10
   currentMagicArmor: 10
   maxAP: 5
@@ -24,10 +25,19 @@ MonoBehaviour:
   XP: 0
   XPToNextLevel: 0
   gold: 0
-  strength: 10
-  finesse: 10
-  intelligence: 11
-  constitution: 10
-  memory: 10
-  wits: 10
+  Strength: 10
+  Finesse: 10
+  Intelligence: 10
+  Vitality: 10
+  Memory: 10
+  Wits: 10
+  Warfare: 0
+  Huntsman: 0
+  Pyrokinetic: 0
+  Hydrosophist: 0
+  Aerotheurge: 0
+  Geomancer: 0
+  Retribution: 0
+  Leadership: 0
+  baseHandAugmentColor: {r: 0, g: 0, b: 0, a: 0}
   XPDefeated: 20

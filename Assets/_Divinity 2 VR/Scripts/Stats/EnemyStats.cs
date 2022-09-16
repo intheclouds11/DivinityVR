@@ -15,15 +15,12 @@ namespace intheclouds
         public AudioClip[] hurtAudioClips;
         public AudioClip[] deadAudioClips;
         public TextMeshProUGUI apText;
-        [SerializeField] private GameObject hitPopupPrefab;
-        [SerializeField] private GameObject hitPopupsParent;
-        [SerializeField] private GameObject floatingStatsCanvas;
-        public PlayerStats playerHitBy;
+        public BaseStats attacker;
 
         #region Enemy Stats
 
         [Tooltip("Enemy Stats")]
-        public override int CurrentHealth
+        public virtual int CurrentHealth
         {
             get { return _currentHealth; }
             set
@@ -32,7 +29,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        public override int MaxHealth
+        public virtual int MaxHealth
         {
             get => _maxHealth;
             set
@@ -41,7 +38,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        public override int CurrentPoise
+        public virtual int CurrentPoise
         {
             get { return _currentPoise; }
             set
@@ -50,7 +47,7 @@ namespace intheclouds
                 UpdatePhysicalArmorInfo();
             }
         }
-        public override int MaxPoise
+        public virtual int MaxPoise
         {
             get { return _maxPoise; }
             set
@@ -59,7 +56,7 @@ namespace intheclouds
                 UpdatePhysicalArmorInfo();
             }
         }
-        public override int CurrentMagicArmor
+        public virtual int CurrentMagicArmor
         {
             get { return _currentMagicArmor; }
             set
@@ -68,7 +65,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        public override int MaxMagicArmor
+        public virtual int MaxMagicArmor
         {
             get { return _maxMagicArmor; }
             set
@@ -126,11 +123,11 @@ namespace intheclouds
 
         #region Enemy Attributes
 
-        public int strength => statsSO.strength;
-        public int finesse => statsSO.finesse;
-        public int intelligence => statsSO.intelligence;
-        public int constitution => statsSO.constitution;
-        public int wits => statsSO.wits;
+        public int strength => statsSO.Strength;
+        public int finesse => statsSO.Finesse;
+        public int intelligence => statsSO.Intelligence;
+        public int constitution => statsSO.Vitality;
+        public int wits => statsSO.Wits;
 
         #endregion
 
@@ -165,15 +162,14 @@ namespace intheclouds
             CurrentPoise = statsSO.currentPoise;
             CurrentMagicArmor = statsSO.currentMagicArmor;
             CurrentAP = statsSO.currentAP;
-            EarnedXP = statsSO.XPDefeated;
             apText.text = $"AP: {CurrentAP}/{MaxAP}";
         }
 
-        public void TakeDamage(PlayerStats wieldingUser, int damage, DamageType damageType, ElementalType elementalType = ElementalType.None)
+        public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
         {
             if (!isAlive) return;
 
-            playerHitBy = wieldingUser;
+            this.attacker = attacker;
 
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
@@ -183,28 +179,28 @@ namespace intheclouds
                 if (CurrentPoise - damage >= 0)
                 {
                     CurrentPoise -= damage;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.gray;
                 }
                 else
                 {
-                    CurrentHealth -= damage - CurrentPoise;
                     CurrentPoise = 0;
+                    CurrentHealth -= damage - CurrentPoise;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
                 }
-
-                newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
             }
             else if (damageType == DamageType.Magic)
             {
                 if (CurrentMagicArmor - damage >= 0)
                 {
                     CurrentMagicArmor -= damage;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
                 }
                 else
                 {
-                    CurrentHealth -= damage - CurrentMagicArmor;
                     CurrentMagicArmor = 0;
+                    CurrentHealth -= damage - CurrentMagicArmor;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
                 }
-
-                newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
             }
 
             if (CurrentHealth > 0)
@@ -228,6 +224,11 @@ namespace intheclouds
             }
         }
 
+        public override void Heal(BaseStats healer, int healAmount, ElementalType elementalType, StatusEffect statusEffect)
+        {
+            base.Heal(healer, healAmount, elementalType, statusEffect);
+        }
+
         private void Died()
         {
             isAlive = false;
@@ -237,7 +238,7 @@ namespace intheclouds
             EnemyDied?.Invoke();
             foreach (var instancePlayer in GameManager.Instance.players)
             {
-                instancePlayer.ObtainXP(EarnedXP);
+                instancePlayer.ObtainXP(statsSO.XPDefeated);
             }
 
             EnemyManager.Instance.enemyList.Remove(this);

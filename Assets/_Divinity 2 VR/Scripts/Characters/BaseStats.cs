@@ -10,36 +10,85 @@ namespace intheclouds
     // if this causes problems, just make PlayerStats and EnemyStats separate again
     public class BaseStats : MonoBehaviour
     {
+        [Header("Stats")]
         public CharacterStatsSO statsSO;
-        public string Name { get; protected set; }
-        [SerializeField] protected TextMeshProUGUI nameText;
-        [SerializeField] protected Slider healthSlider;
-        [SerializeField] protected Slider poiseSlider;
-        [SerializeField] protected Slider magicArmorSlider;
-        [SerializeField] protected Slider apSlider;
-        [SerializeField] protected Slider xpSlider;
-        [SerializeField] protected TextMeshProUGUI healthText;
-        [SerializeField] protected TextMeshProUGUI poiseText;
-        [SerializeField] protected TextMeshProUGUI magicArmorText;
-
-        public virtual int CurrentHealth { get; set; }
+        public string Name;
+        public int level;
+        [SerializeField]
         protected int _currentHealth;
-        public virtual int MaxHealth { get; set; }
+        [SerializeField]
         protected int _maxHealth;
-        public virtual int CurrentPoise { get; set; }
+        [SerializeField]
         protected int _currentPoise;
-        public virtual int MaxPoise { get; set; }
+        [SerializeField]
         protected int _maxPoise;
-        public virtual int CurrentMagicArmor { get; set; }
+        [SerializeField]
         protected int _currentMagicArmor;
-        public virtual int MaxMagicArmor { get; set; }
+        [SerializeField]
         protected int _maxMagicArmor;
         public virtual int CurrentAP { get; set; }
+        [SerializeField]
         protected int _currentAP;
         public virtual int MaxAP { get; set; }
+        [SerializeField]
         protected int _maxAP;
-        protected int EarnedXP { get; set; }
+        public Dictionary<StatusEffect, int> statusEffects = new Dictionary<StatusEffect, int>();
         public virtual bool Turn { get; set; }
+        [SerializeField]
         protected bool _turn;
+        
+        [Header("Attributes")]
+        public int Strength; //+5% to all melee damage, can lift heavier objects
+        public int Finesse; //+5% to all ranged physical damage
+        public int Intelligence; //+5% to all int-based damage
+        public int Vitality; //+7% vitality
+        public int Memory; //1 extra magic slot (can't change these during combat)
+        public int Wits; //+1% critical damage, +1 Initiative
+
+        [Header("Skills")]
+        public int Warfare; //+5% to ~all~ physical damage
+        public int Huntsman; //+5% to ~all~ high ground damage (applies after other bonuses)
+        public int Pyrokinetic; //+5% to all fire damage
+        public int Hydrosophist; //+5% to all water damage, +5% heal amount to all heal abilities, +5% magic armour from skills and potions
+        public int Aerotheurge; //+5% to all air damage
+        public int Geomancer; //+5% to all earth and poison damage, +5% more physical armour from skills and potions
+
+        [Header("Defense")]
+        public int Retribution; //+5% damage reflected
+        public int Leadership; //+2% Dodging and +3% to all resistances - Granted to all allies in a 8m radius
+
+        [Header("Setup")]
+        [SerializeField]
+        protected TextMeshProUGUI nameText;
+        [SerializeField]
+        protected Slider healthSlider;
+        [SerializeField]
+        protected Slider poiseSlider;
+        [SerializeField]
+        protected Slider magicArmorSlider;
+        [SerializeField]
+        protected Slider apSlider;
+        [SerializeField]
+        protected Slider xpSlider;
+        [SerializeField]
+        protected TextMeshProUGUI healthText;
+        [SerializeField]
+        protected TextMeshProUGUI poiseText;
+        [SerializeField]
+        protected TextMeshProUGUI magicArmorText;
+        [SerializeField]
+        protected GameObject hitPopupPrefab;
+        [SerializeField]
+        protected GameObject hitPopupsParent;
+        [SerializeField]
+        protected GameObject floatingStatsCanvas;
+
+        public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
+        {
+        }
+
+        public virtual void Heal(BaseStats healer, int healAmount, ElementalType elementalType, StatusEffect statusEffect)
+        {
+        }
     }
 }

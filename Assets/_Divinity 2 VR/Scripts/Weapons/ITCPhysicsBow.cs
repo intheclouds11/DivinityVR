@@ -27,7 +27,7 @@ namespace intheclouds
         protected override void OnArrowNocked(HVRArrow arrow)
         {
             base.OnArrowNocked(arrow);
-            arrow.GetComponent<ITCArrow>().wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
+            arrow.GetComponent<ITCArrow>().combatant = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
         }
 
         public void UpdateWielder()

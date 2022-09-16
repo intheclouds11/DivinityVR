@@ -11,7 +11,7 @@ namespace intheclouds
         private Quaternion spawnRotation;
         private Transform spawnParent;
         public GameObject magicSlots;
-        public GameObject selectedMagic;
+        public Magic selectedMagic;
         public GameObject spawnedMagic;
 
         public GameObject description;
@@ -70,17 +70,17 @@ namespace intheclouds
         {
             if (leftHand)
             {
-                spawnedMagic = Instantiate(selectedMagic, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
+                spawnedMagic = Instantiate(selectedMagic.gameObject, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
                 Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
             }
             else
             {
-                spawnedMagic = Instantiate(selectedMagic, playerLUOs.rightHandPalm.transform.position, Quaternion.identity);
+                spawnedMagic = Instantiate(selectedMagic.gameObject, playerLUOs.rightHandPalm.transform.position, Quaternion.identity);
                 Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
             }
 
             spawnedMagic.SetActive(true);
-            spawnedMagic.GetComponent<Fireball>().wieldingUser = playerLUOs.PlayerStats;
+            spawnedMagic.GetComponent<Fireball>().caster = playerLUOs.PlayerStats;
             Grabbable = spawnedMagic.GetComponent<HVRGrabbable>();
             Grabber.TryGrab(Grabbable);
         }
@@ -128,6 +128,13 @@ namespace intheclouds
             {
                 description.SetActive(false);
             }
+        }
+
+        public void DequipMagic()
+        {
+            selectedMagic.gameObject.SetActive(false);
+            selectedMagic = null;
+            Destroy(description.transform.GetChild(0).gameObject);
         }
 
         // This is a good example for tapping button interaction

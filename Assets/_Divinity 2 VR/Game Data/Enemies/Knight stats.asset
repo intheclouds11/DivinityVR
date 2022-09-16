@@ -13,21 +13,31 @@ MonoBehaviour:
   m_Name: Knight stats
   m_EditorClassIdentifier: 
   Name: Agent Knight
+  level: 1
   maxHealth: 120
   currentHealth: 120
   maxPoise: 10
   currentPoise: 10
-  maxMagicArmor: 0
-  currentMagicArmor: 0
+  maxMagicArmor: 5
+  currentMagicArmor: 5
   maxAP: 5
   currentAP: 5
   XP: 0
   XPToNextLevel: 0
   gold: 0
-  strength: 10
-  finesse: 10
-  intelligence: 10
-  constitution: 10
-  memory: 10
-  wits: 13
+  Strength: 10
+  Finesse: 10
+  Intelligence: 10
+  Vitality: 10
+  Memory: 10
+  Wits: 11
+  Warfare: 0
+  Huntsman: 0
+  Pyrokinetic: 0
+  Hydrosophist: 0
+  Aerotheurge: 0
+  Geomancer: 0
+  Retribution: 0
+  Leadership: 0
+  baseHandAugmentColor: {r: 0, g: 0, b: 0, a: 0}
   XPDefeated: 20

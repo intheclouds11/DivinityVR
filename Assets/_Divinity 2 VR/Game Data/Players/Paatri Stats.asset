@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Paatri Stats
   m_EditorClassIdentifier: 
   Name: Paatri
+  level: 1
   maxHealth: 110
   currentHealth: 110
   maxPoise: 15
@@ -24,11 +25,19 @@ MonoBehaviour:
   XP: 0
   XPToNextLevel: 100
   gold: 0
-  strength: 10
-  finesse: 10
-  intelligence: 10
-  constitution: 10
-  memory: 10
-  wits: 11
+  Strength: 10
+  Finesse: 10
+  Intelligence: 10
+  Vitality: 10
+  Memory: 10
+  Wits: 10
+  Warfare: 0
+  Huntsman: 0
+  Pyrokinetic: 0
+  Hydrosophist: 0
+  Aerotheurge: 0
+  Geomancer: 0
+  Retribution: 0
+  Leadership: 0
   baseHandAugmentColor: {r: 1, g: 1, b: 1, a: 1}
   XPDefeated: 0

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Bern Stats
   m_EditorClassIdentifier: 
   Name: Bern
+  level: 1
   maxHealth: 90
   currentHealth: 90
-  maxPoise: 0
-  currentPoise: 0
+  maxPoise: 10
+  currentPoise: 10
   maxMagicArmor: 20
   currentMagicArmor: 20
   maxAP: 5
@@ -24,11 +25,19 @@ MonoBehaviour:
   XP: 0
   XPToNextLevel: 100
   gold: 0
-  strength: 10
-  finesse: 10
-  intelligence: 10
-  constitution: 10
-  memory: 10
-  wits: 14
+  Strength: 10
+  Finesse: 10
+  Intelligence: 10
+  Vitality: 10
+  Memory: 10
+  Wits: 12
+  Warfare: 0
+  Huntsman: 0
+  Pyrokinetic: 0
+  Hydrosophist: 0
+  Aerotheurge: 0
+  Geomancer: 0
+  Retribution: 0
+  Leadership: 0
   baseHandAugmentColor: {r: 1, g: 1, b: 1, a: 1}
   XPDefeated: 0

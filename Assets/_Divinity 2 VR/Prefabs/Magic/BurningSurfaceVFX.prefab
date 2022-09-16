@@ -4907,9 +4907,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed92b5252516c94bae7bd989c85bb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  damage: 0
+  statusEffect: 2
+  elementalType: 0
+  damage: 4
   damageClip: {fileID: 8300000, guid: fe3b797ec81f61d4daf3032fd0980b1e, type: 3}
+  caster: {fileID: 0}
 --- !u!114 &3311579263053088346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,10 +5004,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 500
+  MinDistance: 1
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
