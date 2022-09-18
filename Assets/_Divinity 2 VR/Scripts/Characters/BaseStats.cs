@@ -32,10 +32,11 @@ namespace intheclouds
         public virtual int MaxAP { get; set; }
         [SerializeField]
         protected int _maxAP;
-        public Dictionary<StatusEffect, int> statusEffects = new Dictionary<StatusEffect, int>();
         public virtual bool Turn { get; set; }
         [SerializeField]
         protected bool _turn;
+        public int baseDamage = 10;
+        public BaseStats attacker;
         
         [Header("Attributes")]
         public int Strength; //+5% to all melee damage, can lift heavier objects
@@ -59,6 +60,10 @@ namespace intheclouds
 
         [Header("Setup")]
         [SerializeField]
+        protected AudioClip[] hurtAudioClips;
+        [SerializeField]
+        protected AudioClip[] deadAudioClips;
+        [SerializeField]
         protected TextMeshProUGUI nameText;
         [SerializeField]
         protected Slider healthSlider;
@@ -68,6 +73,8 @@ namespace intheclouds
         protected Slider magicArmorSlider;
         [SerializeField]
         protected Slider apSlider;
+        [SerializeField]
+        protected TextMeshProUGUI apText;
         [SerializeField]
         protected Slider xpSlider;
         [SerializeField]
@@ -82,6 +89,9 @@ namespace intheclouds
         protected GameObject hitPopupsParent;
         [SerializeField]
         protected GameObject floatingStatsCanvas;
+        [SerializeField]
+        protected StatusEffectsContainer statusEffectsContainer;
+        public TextMeshProUGUI statusEffectsText;
 
         public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
         {

@@ -14815,12 +14815,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7354398770313419795}
-  - component: {fileID: 9117159051334093164}
+  - component: {fileID: 6855306110861726278}
   - component: {fileID: 7859904153508057978}
   - component: {fileID: 1200108098533851707}
   - component: {fileID: 741434150976983367}
   m_Layer: 20
-  m_Name: MagicFireball
+  m_Name: Fortify Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14844,7 +14844,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9117159051334093164
+--- !u!114 &6855306110861726278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14853,16 +14853,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6921882747449717690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f899610f7c111c84fbcbad22c76f434c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e8fe155ac6f8498a59899adf23b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillDescription: {fileID: 3853822207974808523, guid: dbb9576747b99a348bb9122308ab47c6, type: 3}
-  baseDamage: 4
+  cooldown: 3
+  cooldownTimer: 0
+  magicSystem: {fileID: 0}
+  magicSlot: {fileID: 0}
+  baseDamage: 0
   requiredAP: 2
-  cooldown: 2
-  impactVFX: {fileID: 132858, guid: dcbbdee2152660b41822b2eb0ccb8767, type: 3}
-  noDamageAudioClip: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
-  surfaceEffect: {fileID: 3197582652376853650, guid: b6b814dee69edbb41b8a49ab75f47503, type: 3}
+  impactVFX: {fileID: 0}
+  noDamageAudioClip: {fileID: 0}
+  surfaceEffect: {fileID: 0}
   caster: {fileID: 0}
 --- !u!114 &7859904153508057978
 MonoBehaviour:

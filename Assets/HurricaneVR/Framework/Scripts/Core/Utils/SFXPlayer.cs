@@ -13,6 +13,7 @@ namespace HurricaneVR.Framework.Core.Utils
         }
 
         public AudioClip fireDamageSFX;
+        public AudioClip noDamageSFX;
 
         static SFXPlayer s_Instance;
         public static SFXPlayer Instance => s_Instance;

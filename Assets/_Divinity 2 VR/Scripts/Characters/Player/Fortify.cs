@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
-    public class Fireball : Magic
+    public class Fortify : Magic
     {
         private void OnCollisionEnter(Collision collision)
         {
@@ -42,7 +42,6 @@ namespace intheclouds
                 {
                     caster.UseAP(requiredAP);
                 }
-
                 if (caster.Turn || !caster.InCombat)
                 {
                     OnMagicUsed();
@@ -67,7 +66,7 @@ namespace intheclouds
                 GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
                 var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
                 spawnedSurface.caster = caster;
-                spawnedSurface.damage *= caster.level * (1 + caster.Pyrokinetic);
+                spawnedSurface.damage = baseDamage * caster.level * caster.Pyrokinetic;
             }
         }
     }

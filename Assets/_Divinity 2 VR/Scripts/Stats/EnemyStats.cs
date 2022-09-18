@@ -9,18 +9,12 @@ using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
-    public class EnemyStats : BaseStats
+    public sealed class EnemyStats : BaseStats
     {
-        public int baseDamage = 15;
-        public AudioClip[] hurtAudioClips;
-        public AudioClip[] deadAudioClips;
-        public TextMeshProUGUI apText;
-        public BaseStats attacker;
-
         #region Enemy Stats
 
         [Tooltip("Enemy Stats")]
-        public virtual int CurrentHealth
+        public int CurrentHealth
         {
             get { return _currentHealth; }
             set
@@ -29,7 +23,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        public virtual int MaxHealth
+        public int MaxHealth
         {
             get => _maxHealth;
             set
@@ -38,7 +32,7 @@ namespace intheclouds
                 UpdateHealthInfo();
             }
         }
-        public virtual int CurrentPoise
+        public int CurrentPoise
         {
             get { return _currentPoise; }
             set
@@ -47,7 +41,7 @@ namespace intheclouds
                 UpdatePhysicalArmorInfo();
             }
         }
-        public virtual int MaxPoise
+        public int MaxPoise
         {
             get { return _maxPoise; }
             set
@@ -56,7 +50,7 @@ namespace intheclouds
                 UpdatePhysicalArmorInfo();
             }
         }
-        public virtual int CurrentMagicArmor
+        public int CurrentMagicArmor
         {
             get { return _currentMagicArmor; }
             set
@@ -65,7 +59,7 @@ namespace intheclouds
                 UpdateMagicArmorInfo();
             }
         }
-        public virtual int MaxMagicArmor
+        public int MaxMagicArmor
         {
             get { return _maxMagicArmor; }
             set
@@ -233,6 +227,7 @@ namespace intheclouds
         {
             isAlive = false;
             CurrentHealth = 0;
+            enemyAI.DisableAIComponents();
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform, 0.9f, 1.1f, 0.4f, 20);
             animator.SetBool(_isDead, true);
             EnemyDied?.Invoke();

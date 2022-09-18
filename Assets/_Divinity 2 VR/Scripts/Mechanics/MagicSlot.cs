@@ -1,3 +1,5 @@
+using System;
+using HighlightPlus;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,6 +13,8 @@ namespace intheclouds
         public AudioClip onSelectedAudioClip;
         public Color handAugmentColor;
         private MagicSystem magicSystem;
+        public GameObject readyArt;
+        public GameObject cooldownArt;
 
         private void Awake()
         {
@@ -19,7 +23,7 @@ namespace intheclouds
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Left Hand"))
+            if (other.CompareTag("Left Hand") && !magicSystem.spawnedMagic)
             {
                 if (dequipMagic && magicSystem.selectedMagic)
                 {
@@ -28,10 +32,15 @@ namespace intheclouds
                     return;
                 }
 
-                if (magic != null && magicSystem.selectedMagic != magic)
+                if (magic && magicSystem.selectedMagic != magic)
                 {
+                    if (magicSystem.selectedMagic)
+                    {
+                        magicSystem.DequipMagic();
+                    }
                     magicSystem.selectedMagic = magic;
                     magicSystem.selectedMagic.magicSystem = magicSystem;
+                    magicSystem.selectedMagic.magicSlot = this;
                     magicSystem.playerLUOs.handAugmentHighlight.overlayColor = handAugmentColor;
                     magicSystem.playerLUOs.handAugmentHighlight.SetGlowColor(handAugmentColor);
                     if (onSelectedAudioClip)
@@ -44,6 +53,11 @@ namespace intheclouds
                     {
                         magicSystem.description.SetActive(true);
                     }
+                }
+                
+                if (readyArt && readyArt.activeSelf && magic)
+                {
+                    readyArt.GetComponent<HighlightEffect>().highlighted = true;
                 }
             }
         }

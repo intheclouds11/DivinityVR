@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Utils;
 using Pathfinding;
+using Pathfinding.RVO;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,8 +22,8 @@ namespace intheclouds
         private float distanceToTarget;
         private float distanceMoved;
         private Vector3 previousPosition;
-        private AIDestinationSetter aiDestinationSetter;
-        private RichAI ai;
+        public AIDestinationSetter aiDestinationSetter;
+        public RichAI ai;
         private bool hasAttacked;
         private bool reachedTarget;
         private PlayerStats targetedPlayer;
@@ -62,6 +63,13 @@ namespace intheclouds
                 return;
             }
 
+            // todo: add other attacks based on what skills enemy has
+            
+            BaseAttack();
+        }
+
+        private void BaseAttack()
+        {
             if (!ai.reachedDestination && enemyStats.CurrentAP > 0)
             {
                 ChaseTarget();
@@ -88,9 +96,6 @@ namespace intheclouds
 
         public void StartTurn()
         {
-            // todo: add attacks based on what skills enemy has
-            
-            // base attack
             if (targetNearestPlayer)
             {
                 Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
@@ -129,13 +134,9 @@ namespace intheclouds
 
         public void EndTurn()
         {
-            if (enemyStats.Turn)
+            if (!enemyStats.Turn)
             {
                 enemyStats.Turn = false;
-            }
-            else
-            {
-                return;
             }
             animator.SetBool(_isAttacking, false);
             animator.SetBool(_isWalking, false);
@@ -182,13 +183,54 @@ namespace intheclouds
             animator.SetBool(_isAttacking, true);
         }
 
+        public PlayerStats FindPlayerWithHighestHealth()
+        {
+            int highestHealth = int.MinValue;
+            PlayerStats highestHealthPlayer = null;
+            foreach (PlayerStats player in GameManager.Instance.players)
+            {
+                if (player.CurrentHealth > highestHealth)
+                {
+                    highestHealth = player.CurrentHealth;
+                    highestHealthPlayer = player;
+                }
+            }
+
+            return highestHealthPlayer;
+        }
+
+        public PlayerStats FindNearestPlayer()
+        {
+            float shortestDistance = 0;
+            PlayerStats nearestPlayer = null;
+            foreach (PlayerStats player in GameManager.Instance.players)
+            {
+                var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
+                if (dist > shortestDistance)
+                {
+                    shortestDistance = dist;
+                    nearestPlayer = player;
+                }
+            }
+
+            return nearestPlayer;
+        }
+
+        public void DisableAIComponents()
+        {
+            ai.enabled = false;
+            aiDestinationSetter.enabled = false;
+            GetComponent<RVOController>().enabled = false;
+            GetComponent<Seeker>().enabled = false;
+        }
+
         #region Animation Events
 
         public void EndUnsheathingAnimation()
         {
             animator.SetBool(_isUnsheathing, false);
         }
-        
+
         public void PlayBaseAttackSwingSound()
         {
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackSwingAudioClip, transform, 0.9f, 1.1f, 1f, 20);
@@ -213,7 +255,7 @@ namespace intheclouds
                 player = aiDestinationSetter.target.parent.gameObject.GetComponent<PlayerStats>();
             }
 
-            player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ElementalType.None, StatusEffect.None);
+            player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ElementalType.None, null);
             if (player.CurrentHealth == 0)
             {
                 if (targetNearestPlayer)
@@ -253,38 +295,5 @@ namespace intheclouds
         }
 
         #endregion
-
-        public PlayerStats FindPlayerWithHighestHealth()
-        {
-            int highestHealth = int.MinValue;
-            PlayerStats highestHealthPlayer = null;
-            foreach (PlayerStats player in GameManager.Instance.players)
-            {
-                if (player.CurrentHealth > highestHealth)
-                {
-                    highestHealth = player.CurrentHealth;
-                    highestHealthPlayer = player;
-                }
-            }
-
-            return highestHealthPlayer;
-        }
-
-        public PlayerStats FindNearestPlayer()
-        {
-            float shortestDistance = 0;
-            PlayerStats nearestPlayer = null;
-            foreach (PlayerStats player in GameManager.Instance.players)
-            {
-                var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
-                if (dist > shortestDistance)
-                {
-                    shortestDistance = dist;
-                    nearestPlayer = player;
-                }
-            }
-
-            return nearestPlayer;
-        }
     }
 }

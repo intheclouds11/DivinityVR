@@ -40,13 +40,13 @@ namespace intheclouds
         {
             if (Keyboard.current.nKey.wasPressedThisFrame)
             {
-                gameManager.UpdateCombatantTurn();
+                gameManager.ForceNextTurn();
             }
             else if (!primaryButtonTriggered && HVRInputManager.Instance.LeftController.PrimaryButtonState.Active)
             {
                 if (holdTimeLeftPrimaryButton > holdTimeRequired)
                 {
-                    gameManager.UpdateCombatantTurn();
+                    gameManager.ForceNextTurn();
                     holdTimeLeftPrimaryButton = 0;
                 }
 

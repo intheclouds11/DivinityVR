@@ -17,7 +17,7 @@ namespace intheclouds
         public float criticalDamageMultiplier = 1.5f;
         public ElementalType elementalType = ElementalType.None;
         public DamageType damageType = DamageType.Physical;
-        public StatusEffect statusEffect = StatusEffect.None;
+        public StatusEffect statusEffect;
         public PlayerStats combatant;
         public AudioClip damageAudioClip;
         public AudioClip noDamageAudioClip;

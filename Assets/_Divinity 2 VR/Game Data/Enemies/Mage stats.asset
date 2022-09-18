@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Agent Pyromancer
   level: 1
-  maxHealth: 80
-  currentHealth: 80
+  maxHealth: 50
+  currentHealth: 50
   maxPoise: 5
   currentPoise: 5
   maxMagicArmor: 10

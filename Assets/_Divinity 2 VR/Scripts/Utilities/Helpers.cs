@@ -3,9 +3,6 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-/// <summary>
-/// A static class for general helpful methods
-/// </summary>
 namespace intheclouds
 {
     public static class Helpers
@@ -23,9 +20,6 @@ namespace intheclouds
             {
                 high = 1;
             }
-
-            Debug.Log($"low = {low}");
-            Debug.Log($"high = {high}");
 
             if (criticalMultiplier > 1)
             {

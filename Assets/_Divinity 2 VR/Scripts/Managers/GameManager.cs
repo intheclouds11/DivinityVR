@@ -227,20 +227,12 @@ public class GameManager : MonoBehaviour
         return null;
     }
     
-    public void UpdateCombatantTurn()
+    public void ForceNextTurn()
     {
         if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
         {
             combatantStats.Turn = false;
         }
-        // if (activeCombatant.TryGetComponent(out PlayerStats player))
-        // {
-        //     player.Turn = false;
-        // }
-        // else if (activeCombatant.TryGetComponent(out EnemyStats enemyStats))
-        // {
-        //     enemyStats.Turn = false;
-        // }
     }
 }
 

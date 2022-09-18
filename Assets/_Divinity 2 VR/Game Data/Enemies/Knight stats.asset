@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Agent Knight
   level: 1
-  maxHealth: 120
-  currentHealth: 120
+  maxHealth: 70
+  currentHealth: 70
   maxPoise: 10
   currentPoise: 10
   maxMagicArmor: 5

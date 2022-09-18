@@ -1,5 +1,9 @@
+using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
+using HurricaneVR.Framework.Core.Utils;
+using HurricaneVR.Framework.Shared;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,19 +11,17 @@ namespace intheclouds
 {
     public class MagicSystem : MonoBehaviour
     {
-        private Vector3 spawnPosition;
-        private Quaternion spawnRotation;
-        private Transform spawnParent;
         public GameObject magicSlots;
         public Magic selectedMagic;
         public GameObject spawnedMagic;
 
         public GameObject description;
         public LocalUserObjects playerLUOs;
-        private HVRHandGrabber leftHandGrabber;
-        private HVRHandGrabber rightHandGrabber;
         public HVRHandGrabber Grabber { get; set; }
         public HVRGrabbable Grabbable;
+        private HVRHandGrabber leftHandGrabber;
+        private HVRHandGrabber rightHandGrabber;
+        private float cooldownTimerNoCombat;
 
 
         private void Awake()
@@ -27,9 +29,6 @@ namespace intheclouds
             playerLUOs = transform.root.GetComponent<LocalUserObjects>();
             leftHandGrabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
             rightHandGrabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
-            spawnPosition = transform.localPosition;
-            spawnRotation = transform.localRotation;
-            spawnParent = transform.parent;
 
             if (magicSlots.activeInHierarchy)
             {
@@ -39,36 +38,52 @@ namespace intheclouds
 
         void Update()
         {
-            // Selection
             CheckTouchPadPressed();
 
-            // Activate
             if (selectedMagic)
             {
                 CheckMagicActivation();
+            }
+
+            if (!playerLUOs.PlayerStats.InCombat)
+            {
+                CooldownExploration();
+            }
+        }
+
+        private void CooldownExploration()
+        {
+            if (cooldownTimerNoCombat < 2)
+            {
+                cooldownTimerNoCombat += Time.deltaTime;
+            }
+            else if (cooldownTimerNoCombat >= 2)
+            {
+                Cooldown();
+                cooldownTimerNoCombat = 0;
             }
         }
 
         private void CheckMagicActivation()
         {
-            if (!spawnedMagic)
+            if (!spawnedMagic && selectedMagic.cooldownTimer == 0)
             {
                 if (playerLUOs.HVRPlayerInputs.LeftController.TriggerButtonState.JustActivated
                     && playerLUOs.HVRPlayerInputs.LeftController.GripButtonState.Active && !leftHandGrabber.TriggerHoverTarget)
                 {
-                    SpawnMagic(true);
+                    SpawnMagic(playerLUOs.HVRPlayerInputs.LeftController);
                 }
                 else if (playerLUOs.HVRPlayerInputs.RightController.TriggerButtonState.JustActivated
                          && playerLUOs.HVRPlayerInputs.RightController.GripButtonState.Active && !rightHandGrabber.TriggerHoverTarget)
                 {
-                    SpawnMagic(false);
+                    SpawnMagic(playerLUOs.HVRPlayerInputs.RightController);
                 }
             }
         }
 
-        private void SpawnMagic(bool leftHand)
+        private void SpawnMagic(HVRController controller)
         {
-            if (leftHand)
+            if (controller == playerLUOs.HVRPlayerInputs.LeftController)
             {
                 spawnedMagic = Instantiate(selectedMagic.gameObject, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
                 Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
@@ -80,9 +95,24 @@ namespace intheclouds
             }
 
             spawnedMagic.SetActive(true);
-            spawnedMagic.GetComponent<Fireball>().caster = playerLUOs.PlayerStats;
+            spawnedMagic.GetComponent<Magic>().caster = playerLUOs.PlayerStats;
             Grabbable = spawnedMagic.GetComponent<HVRGrabbable>();
             Grabber.TryGrab(Grabbable);
+        }
+
+        public void DequipMagic()
+        {
+            selectedMagic.gameObject.SetActive(false);
+            selectedMagic.magicSlot.readyArt.GetComponent<HighlightEffect>().highlighted = false;
+            selectedMagic = null;
+            if (description.transform.childCount > 0)
+            {
+                Destroy(description.transform.GetChild(0).gameObject);
+            }
+
+            var augmentHighlight = playerLUOs.handAugmentHighlight;
+            augmentHighlight.overlayColor = playerLUOs.PlayerStats.statsSO.baseHandAugmentColor;
+            augmentHighlight.SetGlowColor(playerLUOs.PlayerStats.statsSO.baseHandAugmentColor);
         }
 
         private void CheckTouchPadPressed()
@@ -102,7 +132,7 @@ namespace intheclouds
         {
             transform.position = spawnPoint.position;
             var newEulerAngles = spawnPoint.eulerAngles;
-            newEulerAngles = new Vector3(0, newEulerAngles.y, 0);
+            newEulerAngles = new Vector3(30, newEulerAngles.y, 0);
             transform.eulerAngles = newEulerAngles;
 
             magicSlots.SetActive(true);
@@ -130,38 +160,26 @@ namespace intheclouds
             }
         }
 
-        public void DequipMagic()
+        public void Cooldown()
         {
-            selectedMagic.gameObject.SetActive(false);
-            selectedMagic = null;
-            Destroy(description.transform.GetChild(0).gameObject);
+            foreach (Transform slotGO in magicSlots.transform)
+            {
+                var slot = slotGO.GetComponent<MagicSlot>();
+                if (slot.magic == null)
+                {
+                    return;
+                }
+
+                if (slot.magic.cooldownTimer > 0)
+                {
+                    slot.magic.cooldownTimer -= 1;
+                    slot.cooldownArt.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Cooldown: {slot.magic.cooldownTimer}";
+                }
+                if (slot.magic.cooldownTimer == 0 && !slot.readyArt.activeSelf)
+                {
+                    slot.magic.OnMagicReady();
+                }
+            }
         }
-
-        // This is a good example for tapping button interaction
-
-        // private void CheckTouchPadTouched()
-        // {
-        //     if (selectedMagic)
-        //     {
-        //         if (player.LocalUserObjects.HVRPlayerInputs.LeftController.TrackPadTouchState.JustActivated)
-        //         {
-        //             deselectCooldownTimer += 1;
-        //
-        //             if (deselectCooldownTimer > deselectCooldown)
-        //             {
-        //                 selectedMagic.SetActive(false);
-        //                 selectedMagic = null;
-        //                 deselectCooldownTimer = 0;
-        //             }
-        //         }
-        //         else
-        //         {
-        //             if (deselectCooldownTimer >= 0)
-        //             {
-        //                 deselectCooldownTimer -= Time.deltaTime;
-        //             }
-        //         }
-        //     }
-        // }
     }
 }

@@ -4907,7 +4907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed92b5252516c94bae7bd989c85bb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEffect: 2
+  statusEffect: {fileID: 4555541019295191222, guid: 6c17be75040e1bd418a9a503e12ddab9, type: 3}
   elementalType: 0
   damage: 4
   damageClip: {fileID: 8300000, guid: fe3b797ec81f61d4daf3032fd0980b1e, type: 3}

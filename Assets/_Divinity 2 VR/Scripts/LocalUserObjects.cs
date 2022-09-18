@@ -3,6 +3,7 @@ using HighlightPlus;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -31,9 +32,9 @@ namespace intheclouds
         public GameObject turnOrderUI;
         public SpiritWander spiritWander;
         public HighlightEffect handAugmentHighlight;
-        public MagicSystem magicSelector;
+        public MagicSystem magicSystem;
         public Transform magicAttachPoint;
-        public GameObject skills;
+        public GameObject abilities;
         
         private void Start()
         {

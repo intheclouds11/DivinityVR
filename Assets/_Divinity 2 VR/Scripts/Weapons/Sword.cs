@@ -50,7 +50,7 @@ namespace intheclouds
 
                     var totalDamage = (int) (baseDamage * (combatant.Strength * 1.05f));
                     currentEnemyStats.TakeDamage(combatant, Helpers.CalculateDamageRange(totalDamage, combatant, criticalDamageMultiplier),
-                        DamageType.Physical, ElementalType.None, StatusEffect.None);
+                        DamageType.Physical, ElementalType.None, null);
 
                     if (!combatant.ExplorationMode)
                     {

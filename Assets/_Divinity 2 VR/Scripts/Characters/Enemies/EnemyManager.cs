@@ -11,5 +11,9 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        foreach (Transform child in transform)
+        {
+            enemyList.Add(child.GetComponent<EnemyStats>());
+        }
     }
 }

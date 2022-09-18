@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,7 +8,7 @@ namespace intheclouds
     {
         public StatusEffect statusEffect;
         public ElementalType elementalType;
-        public int damage;
+        public int damage; // set when magic spawns surface. scales on player xp level and respective skill level
         public AudioClip damageClip;
         public BaseStats caster;
 
