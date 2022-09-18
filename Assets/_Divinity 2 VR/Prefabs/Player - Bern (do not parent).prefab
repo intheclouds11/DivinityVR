@@ -9018,6 +9018,7 @@ MonoBehaviour:
   _currentAP: 0
   _maxAP: 0
   _turn: 0
+  _inCombat: 0
   baseDamage: 10
   attacker: {fileID: 0}
   Strength: 0
@@ -9059,7 +9060,6 @@ MonoBehaviour:
   levelUpAudioClip: {fileID: 8300000, guid: 726a3af401f0ba64b827897f6d327c4b, type: 3}
   infoPopupParent: {fileID: 4797397350036318397}
   infoPopupPrefab: {fileID: 5426677873261681927, guid: c19cdb3ac83ced84d98bc3fa31cee4b4, type: 3}
-  _inCombat: 0
   _playerControlled: 1
 --- !u!114 &2736853844254265289
 MonoBehaviour:
@@ -9090,6 +9090,7 @@ MonoBehaviour:
   rightHandModel: {fileID: 4178597554380390061}
   rightHandPalm: {fileID: 5066214549937447672}
   rightHandMagicSelectorSpawn: {fileID: 5568592960715254359}
+  waist: {fileID: 9097514730571483222}
   userMenuSpawnPoint: {fileID: 3878385632280904934}
   visorSocket: {fileID: 4377966246488482606}
   turnOrderUI: {fileID: 0}
@@ -9337,7 +9338,7 @@ MonoBehaviour:
   MaxLean: 0.4
   FadeFromLean: 1
   MouseTurning: 1
-  MouseSensitivityX: 0.2
+  MouseSensitivityX: 1
   IsGrounded: 0
   _actualVelocity: 0
 --- !u!114 &7674069580632179053
@@ -9886,7 +9887,7 @@ MonoBehaviour:
   CameraScale: {fileID: 0}
   CameraYOffset: 0
   EyeHeight: 1.66
-  SitStanding: 0
+  SitStanding: 1
   DebugKeyboardOffset: 1
   DebugKeyboardIncrement: 0.25
   SaveCalibrationHeight: 1
@@ -13771,7 +13772,7 @@ Transform:
   m_GameObject: {fileID: 3878385633517898049}
   m_LocalRotation: {x: -0.02056027, y: 0.034812257, z: -0.0007601565, w: 0.9991821}
   m_LocalPosition: {x: -0.173, y: -0.046, z: 0.025}
-  m_LocalScale: {x: 0.39, y: 0.024502963, z: 0.3318938}
+  m_LocalScale: {x: 0.27, y: 0.024502963, z: 0.3318938}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6653386721971617235}
@@ -33223,6 +33224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 730631165148793463}
     m_Modifications:
+    - target: {fileID: 6855306110861726278, guid: a34eaebc4d863144c8682e3e30aea368, type: 3}
+      propertyPath: elementalType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6921882747449717690, guid: a34eaebc4d863144c8682e3e30aea368, type: 3}
       propertyPath: m_Name
       value: Fortify Ability
@@ -33536,7 +33541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859904153508057978, guid: dcb9d570fb1ee9f41b9e34b5fdfcdfc2, type: 3}
       propertyPath: ReleasedAngularFactor
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859904153508057978, guid: dcb9d570fb1ee9f41b9e34b5fdfcdfc2, type: 3}
       propertyPath: ReleasedVelocityFactor

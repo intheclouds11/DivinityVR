@@ -15,6 +15,7 @@ namespace intheclouds
         public GameObject skillDescription;
         public GameObject surfaceEffect;
         public StatusEffect statusEffect;
+        public ElementalType elementalType;
         public GameObject impactVFX;
         public AudioClip noDamageAudioClip;
         [Header("Debug")]

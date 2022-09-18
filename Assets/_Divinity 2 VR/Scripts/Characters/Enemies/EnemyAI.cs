@@ -40,7 +40,7 @@ namespace intheclouds
             aiDestinationSetter = GetComponent<AIDestinationSetter>();
             ai = GetComponent<RichAI>();
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -64,7 +64,7 @@ namespace intheclouds
             }
 
             // todo: add other attacks based on what skills enemy has
-            
+
             BaseAttack();
         }
 
@@ -81,8 +81,7 @@ namespace intheclouds
             }
             else if (enemyStats.CurrentAP < 2 && !hasAttacked)
             {
-                // could retarget and move before end turn
-                EndTurn();
+                GameManager.Instance.ForceNextTurn();
             }
         }
 
@@ -100,13 +99,13 @@ namespace intheclouds
             {
                 Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
                 targetedPlayer = FindNearestPlayer();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.gameObject.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.waist.transform;
             }
             else
             {
                 Debug.Log($"targeting player with highest health: {FindPlayerWithHighestHealth().Name}");
                 targetedPlayer = FindPlayerWithHighestHealth();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.gameObject.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.waist.transform;
             }
 
             targetedPlayerSW = aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
@@ -128,16 +127,12 @@ namespace intheclouds
             }
             else
             {
-                aiDestinationSetter.target = targetedPlayer.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.waist.transform;
             }
         }
 
         public void EndTurn()
         {
-            if (!enemyStats.Turn)
-            {
-                enemyStats.Turn = false;
-            }
             animator.SetBool(_isAttacking, false);
             animator.SetBool(_isWalking, false);
             ai.canMove = false;
@@ -252,7 +247,7 @@ namespace intheclouds
             }
             else
             {
-                player = aiDestinationSetter.target.parent.gameObject.GetComponent<PlayerStats>();
+                player = targetedPlayer;
             }
 
             player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ElementalType.None, null);
@@ -260,11 +255,11 @@ namespace intheclouds
             {
                 if (targetNearestPlayer)
                 {
-                    aiDestinationSetter.target = FindNearestPlayer().LocalUserObjects.HVRPlayerController.gameObject.transform;
+                    aiDestinationSetter.target = FindNearestPlayer().LocalUserObjects.waist.transform;
                 }
                 else
                 {
-                    aiDestinationSetter.target = FindPlayerWithHighestHealth().LocalUserObjects.HVRPlayerController.gameObject.transform;
+                    aiDestinationSetter.target = FindPlayerWithHighestHealth().LocalUserObjects.waist.transform;
                 }
             }
         }

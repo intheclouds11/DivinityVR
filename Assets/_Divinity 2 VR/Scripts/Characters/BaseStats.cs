@@ -29,15 +29,20 @@ namespace intheclouds
         public virtual int CurrentAP { get; set; }
         [SerializeField]
         protected int _currentAP;
+        [SerializeField]
+        protected int _startingAP;
         public virtual int MaxAP { get; set; }
         [SerializeField]
         protected int _maxAP;
         public virtual bool Turn { get; set; }
         [SerializeField]
         protected bool _turn;
+        [SerializeField]
+        protected bool _inCombat;
+        public virtual bool InCombat { get; set; }
         public int baseDamage = 10;
         public BaseStats attacker;
-        
+
         [Header("Attributes")]
         public int Strength; //+5% to all melee damage, can lift heavier objects
         public int Finesse; //+5% to all ranged physical damage

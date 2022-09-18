@@ -18,10 +18,11 @@ MonoBehaviour:
   currentHealth: 70
   maxPoise: 10
   currentPoise: 10
-  maxMagicArmor: 5
-  currentMagicArmor: 5
-  maxAP: 5
-  currentAP: 5
+  maxMagicArmor: 3
+  currentMagicArmor: 3
+  maxAP: 6
+  currentAP: 0
+  startingAP: 4
   XP: 0
   XPToNextLevel: 0
   gold: 0

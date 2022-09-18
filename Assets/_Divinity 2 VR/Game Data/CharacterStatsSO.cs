@@ -15,6 +15,7 @@ public class CharacterStatsSO : ScriptableObject
     public int currentMagicArmor;
     public int maxAP;
     public int currentAP;
+    public int startingAP;
     public int XP;
     public int XPToNextLevel;
     public int gold;

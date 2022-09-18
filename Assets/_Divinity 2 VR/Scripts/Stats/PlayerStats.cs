@@ -86,7 +86,6 @@ namespace intheclouds
                 UpdateAPInfo();
                 if (_currentAP == 0)
                 {
-                    Turn = false;
                     playerMovementAP.EndTurn();
                 }
             }
@@ -140,7 +139,6 @@ namespace intheclouds
                 {
                     _turn = false;
                     playerMovementAP.EndTurn();
-                    CurrentAP = MaxAP;
                     InCombat = false;
                 }
             }
@@ -154,22 +152,23 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    statusEffectsContainer.TryProcessStatusEffects();
+                    statusEffectsContainer.Cooldown();
+                    LocalUserObjects.magicSystem.Cooldown();
                     playerMovementAP.StartTurn();
                 }
                 else
                 {
                     if (InCombat)
                     {
-                        statusEffectsContainer.Cooldown();
-                        LocalUserObjects.magicSystem.Cooldown();
                         playerMovementAP.EndTurn();
                         GameManager.Instance.NextTurn = true;
+                        RefillAP();
                     }
                 }
             }
         }
-        public bool InCombat
+
+        public override bool InCombat
         {
             get { return _inCombat; }
             set
@@ -185,12 +184,18 @@ namespace intheclouds
                 }
             }
         }
-        [SerializeField]
-        private bool _inCombat;
+
         public bool PlayerControlled
         {
             get { return _playerControlled; }
-            set { _playerControlled = value; }
+            set
+            {
+                _playerControlled = value;
+                if (_playerControlled)
+                {
+                    GameManager.Instance.controlledPlayer = this;
+                }
+            }
         }
 
         [SerializeField]
@@ -222,7 +227,13 @@ namespace intheclouds
             MaxMagicArmor = statsSO.maxMagicArmor;
             CurrentMagicArmor = statsSO.currentMagicArmor;
             MaxAP = statsSO.maxAP;
-            CurrentAP = statsSO.currentAP;
+            _startingAP = statsSO.startingAP;
+            CurrentAP = _startingAP;
+
+            level = statsSO.level;
+            XP = statsSO.XP;
+            XPToNextLevel = statsSO.XPToNextLevel;
+            Gold = statsSO.gold;
 
             Strength = statsSO.Strength;
             Finesse = statsSO.Finesse;
@@ -230,11 +241,6 @@ namespace intheclouds
             Vitality = statsSO.Vitality;
             Memory = statsSO.Memory;
             Wits = statsSO.Wits;
-
-            level = statsSO.level;
-            XP = statsSO.XP;
-            XPToNextLevel = statsSO.XPToNextLevel;
-            Gold = statsSO.gold;
         }
 
         private void UpdateGoldInfo()
@@ -280,10 +286,13 @@ namespace intheclouds
         {
             this.attacker = attacker;
 
+            // todo: reduce damage based on character resistance to elemental type
+
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
 
-            // todo: reduce damage based on character resistance to elemental type
+            var newInfoPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
+            newInfoPopup.GetComponent<TextMeshProUGUI>().text = $"{damage}";
 
             if (damageType == DamageType.Physical)
             {
@@ -291,13 +300,15 @@ namespace intheclouds
                 {
                     CurrentPoise -= damage;
                     newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.gray;
+                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.gray;
                 }
                 else
                 {
                     CurrentPoise = 0;
                     CurrentHealth -= damage - CurrentPoise;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
+                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
             }
             else if (damageType == DamageType.Magic)
@@ -306,13 +317,15 @@ namespace intheclouds
                 {
                     CurrentMagicArmor -= damage;
                     newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
+                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
                 }
                 else
                 {
                     CurrentMagicArmor = 0;
                     CurrentHealth -= damage - CurrentMagicArmor;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
+                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
             }
 
@@ -356,8 +369,8 @@ namespace intheclouds
         {
             Debug.Log($"get xp {Name}", this);
 
-            var newHitPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
-            newHitPopup.GetComponent<TextMeshProUGUI>().text = $"+{xp} XP";
+            var newPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
+            newPopup.GetComponent<TextMeshProUGUI>().text = $"+{xp} XP";
 
             XP += xp;
 
@@ -384,6 +397,25 @@ namespace intheclouds
             // if Constitution added
             // constitution += 1;
             // playerStatsSO.maxHealth = (int) Math.Round(playerStatsSO.maxHealth * 1.07f); // adds 7% to max health
+        }
+
+        private void RefillAP()
+        {
+            if (_currentAP > 0)
+            {
+                if (_currentAP + _startingAP > _maxAP)
+                {
+                    CurrentAP = _maxAP;
+                }
+                else
+                {
+                    CurrentAP += _startingAP;
+                }
+            }
+            else
+            {
+                CurrentAP = _startingAP;
+            }
         }
 
         public void SaveProgress()

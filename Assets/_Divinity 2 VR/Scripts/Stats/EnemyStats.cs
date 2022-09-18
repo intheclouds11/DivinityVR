@@ -74,7 +74,16 @@ namespace intheclouds
             set
             {
                 _currentAP = value;
-                apText.text = $"AP: {CurrentAP}/{MaxAP}";
+                UpdateAPInfo();
+            }
+        }
+        public override int MaxAP
+        {
+            get { return _maxAP; }
+            set
+            {
+                _maxAP = value;
+                UpdateAPInfo();
             }
         }
         public override bool Turn
@@ -85,6 +94,7 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
+                    statusEffectsContainer.Cooldown();
                     enemyAI.StartTurn();
                     // todo: apply status effect damage and cooldown decrement here!
                 }
@@ -92,10 +102,12 @@ namespace intheclouds
                 {
                     enemyAI.EndTurn();
                     GameManager.Instance.NextTurn = true;
+                    RefillAP();
                 }
             }
         }
-        public bool InCombat
+
+        public override bool InCombat
         {
             get { return _inCombat; }
             set
@@ -111,7 +123,6 @@ namespace intheclouds
                 }
             }
         }
-        private bool _inCombat;
 
         #endregion
 
@@ -149,14 +160,14 @@ namespace intheclouds
             Name = statsSO.Name;
             nameText.text = Name;
             MaxHealth = statsSO.maxHealth;
-            MaxPoise = statsSO.maxPoise;
-            MaxMagicArmor = statsSO.maxMagicArmor;
-            MaxAP = statsSO.maxAP;
             CurrentHealth = MaxHealth;
+            MaxPoise = statsSO.maxPoise;
             CurrentPoise = statsSO.currentPoise;
+            MaxMagicArmor = statsSO.maxMagicArmor;
             CurrentMagicArmor = statsSO.currentMagicArmor;
-            CurrentAP = statsSO.currentAP;
-            apText.text = $"AP: {CurrentAP}/{MaxAP}";
+            MaxAP = statsSO.maxAP;
+            _startingAP = statsSO.startingAP;
+            CurrentAP = _startingAP;
         }
 
         public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
@@ -179,7 +190,8 @@ namespace intheclouds
                 {
                     CurrentPoise = 0;
                     CurrentHealth -= damage - CurrentPoise;
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                    statusEffectsContainer.TryAddStatusEffect(statusEffect);
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
             }
             else if (damageType == DamageType.Magic)
@@ -193,7 +205,8 @@ namespace intheclouds
                 {
                     CurrentMagicArmor = 0;
                     CurrentHealth -= damage - CurrentMagicArmor;
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+                    statusEffectsContainer.TryAddStatusEffect(statusEffect);
+                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
             }
 
@@ -275,6 +288,30 @@ namespace intheclouds
             healthSlider.maxValue = MaxHealth;
             healthSlider.value = CurrentHealth;
             healthText.text = $"{CurrentHealth}/{MaxHealth}";
+        }
+
+        private void UpdateAPInfo()
+        {
+            apText.text = $"{CurrentAP}/{MaxAP}";
+        }
+
+        private void RefillAP()
+        {
+            if (_currentAP > 0)
+            {
+                if (_currentAP + _startingAP > _maxAP)
+                {
+                    CurrentAP = _maxAP;
+                }
+                else
+                {
+                    CurrentAP += _startingAP;
+                }
+            }
+            else
+            {
+                CurrentAP = _startingAP;
+            }
         }
     }
 }

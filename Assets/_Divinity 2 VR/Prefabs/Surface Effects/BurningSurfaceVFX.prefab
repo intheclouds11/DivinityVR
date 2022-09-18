@@ -4871,6 +4871,7 @@ GameObject:
   - component: {fileID: 3197582652376567645}
   - component: {fileID: 3311579263053088346}
   - component: {fileID: 8230718625336173758}
+  - component: {fileID: 678691658454706369}
   m_Layer: 0
   m_Name: BurningSurfaceVFX
   m_TagString: Untagged
@@ -4912,6 +4913,8 @@ MonoBehaviour:
   damage: 4
   damageClip: {fileID: 8300000, guid: fe3b797ec81f61d4daf3032fd0980b1e, type: 3}
   caster: {fileID: 0}
+  cooldown: 5
+  cooldownTimer: 0
 --- !u!114 &3311579263053088346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4951,6 +4954,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.5, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &678691658454706369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197582652376853650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.01, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3197582652376859834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,7 +5140,7 @@ Transform:
   m_GameObject: {fileID: 3198632116782804386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 2, y: 0.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3197582652376499122}

@@ -163,7 +163,7 @@ namespace intheclouds
                 playerStats.CurrentHealth = playerStats.statsSO.maxHealth;
                 playerStats.CurrentPoise = playerStats.statsSO.maxPoise;
                 playerStats.CurrentMagicArmor = playerStats.statsSO.maxMagicArmor;
-                playerStats.CurrentAP = playerStats.statsSO.maxAP;
+                playerStats.CurrentAP = playerStats.statsSO.startingAP;
                 if (playerStats.InCombat)
                 {
                     playerStats.Turn = true;

@@ -9,6 +9,10 @@ namespace intheclouds
     {
         private void OnCollisionEnter(Collision collision)
         {
+            if (!enabled)
+            {
+                return;
+            }
             if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
             {
                 return;
@@ -53,21 +57,27 @@ namespace intheclouds
             impactVFX.transform.parent = null;
             impactVFX.SetActive(true);
             impactVFX.AddComponent<HVRDestroyTimer>().StartTimer(2);
+            enabled = false;
             Destroy(gameObject);
         }
 
         private void SpawnFireGround()
         {
-            RaycastHit hit;
             float length = 2;
-            Vector3 targetLocation;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, length))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, length))
             {
-                targetLocation = hit.point;
+                Debug.Log($"SpawnFireGround hit {hit.collider}");
+                if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
+                {
+                    SurfaceEffectsContainer.Instance.surfaceEffectsList.Remove(preexistingEffect);
+                    Destroy(preexistingEffect.gameObject);
+                }
+                Vector3 targetLocation = hit.point;
                 GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
                 var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
                 spawnedSurface.caster = caster;
                 spawnedSurface.damage *= caster.level * (1 + caster.Pyrokinetic);
+                SurfaceEffectsContainer.Instance.surfaceEffectsList.Add(spawnedSurface);
             }
         }
     }

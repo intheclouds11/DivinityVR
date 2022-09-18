@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI turnOrderText;
     private Coroutine turnOrderCoroutine;
     public List<KeyValuePair<BaseStats, int>> turnOrderList;
+    public PlayerStats controlledPlayer;
 
     private void Awake()
     {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
+        controlledPlayer = FindControlledPlayer();
     }
 
     private void Start()
@@ -123,19 +125,8 @@ public class GameManager : MonoBehaviour
         if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
         {
             combatantStats.Turn = true;
-            combatantStats.CurrentAP = combatantStats.MaxAP;
         }
-        // if (activeCombatant.TryGetComponent(out PlayerStats playerStats))
-        // {
-        //     playerStats.Turn = true;
-        //     playerStats.CurrentAP = playerStats.MaxAP;
-        // }
-        // else if (activeCombatant.TryGetComponent(out EnemyStats enemyStats))
-        // {
-        //     enemyStats.Turn = true;
-        //     enemyStats.CurrentAP = enemyStats.MaxAP;
-        // }
-
+       
         UpdateTurnOrderText(turnOrder);
 
         NextTurn = false;
@@ -157,7 +148,7 @@ public class GameManager : MonoBehaviour
 
         turnOrder.Add(turnOrder[0]);
         turnOrder.Remove(turnOrder[0]);
-        
+
         turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrder));
     }
 
@@ -226,12 +217,15 @@ public class GameManager : MonoBehaviour
         Debug.LogError("FindControlledPlayer() couldn't find a controlled player!");
         return null;
     }
-    
+
     public void ForceNextTurn()
     {
-        if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
+        if (state == GameState.CombatStart)
         {
-            combatantStats.Turn = false;
+            if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
+            {
+                combatantStats.Turn = false;
+            }
         }
     }
 }

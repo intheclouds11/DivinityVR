@@ -11,6 +11,8 @@ namespace intheclouds
         public int damage; // set when magic spawns surface. scales on player xp level and respective skill level
         public AudioClip damageClip;
         public BaseStats caster;
+        public int cooldown = 5;
+        public int cooldownTimer;
 
         private void OnTriggerEnter(Collider other)
         {
