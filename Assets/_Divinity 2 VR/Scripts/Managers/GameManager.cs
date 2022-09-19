@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> GameStateChanged;
     public List<PlayerStats> players;
     public bool NextTurn;
+    public bool NewRound;
     private BaseStats activeCombatant;
+    private BaseStats firstCombatant;
     public int enemiesAlive;
     public int playersAlive;
     public TextMeshProUGUI turnOrderText;
@@ -120,8 +122,16 @@ public class GameManager : MonoBehaviour
     private IEnumerator TurnOrderCoroutine(List<KeyValuePair<BaseStats, int>> turnOrder)
     {
         activeCombatant = turnOrder[0].Key;
-        Debug.Log("--------------------------------");
-        Debug.Log($"Active combatant: {activeCombatant.Name}");
+        Debug.Log($"---Active combatant: {activeCombatant.Name}---");
+        if (!firstCombatant)
+        {
+            firstCombatant = activeCombatant;
+        }
+        else if (activeCombatant == firstCombatant)
+        {
+            NewRound = true;
+            SurfaceEffectsContainer.Instance.Cooldown();
+        }
         if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
         {
             combatantStats.Turn = true;
@@ -159,6 +169,7 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(combatEndClip);
         BGMAudiosource.Stop();
         turnOrderText.text = "";
+        firstCombatant = null;
         foreach (var playerEndCombat in players)
         {
             playerEndCombat.CurrentAP = playerEndCombat.MaxAP;

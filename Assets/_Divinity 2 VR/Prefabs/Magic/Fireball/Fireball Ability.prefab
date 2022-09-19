@@ -14856,16 +14856,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f899610f7c111c84fbcbad22c76f434c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDescription: {fileID: 3853822207974808523, guid: dbb9576747b99a348bb9122308ab47c6, type: 3}
   cooldown: 3
   cooldownTimer: 0
-  magicSystem: {fileID: 0}
-  magicSlot: {fileID: 0}
-  baseDamage: 4
+  amount: 7
   requiredAP: 2
+  abilityDescription: {fileID: 3853822207974808523, guid: dbb9576747b99a348bb9122308ab47c6, type: 3}
+  surfaceEffect: {fileID: 3197582652376853650, guid: b6b814dee69edbb41b8a49ab75f47503, type: 3}
+  statusEffect: {fileID: 0}
+  elementalType: 0
   impactVFX: {fileID: 132858, guid: dcbbdee2152660b41822b2eb0ccb8767, type: 3}
   noDamageAudioClip: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
-  surfaceEffect: {fileID: 3197582652376853650, guid: b6b814dee69edbb41b8a49ab75f47503, type: 3}
+  magicSystem: {fileID: 0}
+  magicSlot: {fileID: 0}
   caster: {fileID: 0}
 --- !u!114 &7859904153508057978
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using System;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
@@ -20,8 +21,7 @@ namespace intheclouds
 
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (caster.LocalUserObjects.spiritWander.activated || !caster.Turn && !caster.ExplorationMode
-                                                                   || caster.CurrentAP < requiredAP)
+                if (caster.LocalUserObjects.spiritWander.activated || !caster.Turn && !caster.ExplorationMode || caster.CurrentAP < requiredAP)
                 {
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(noDamageAudioClip, caster.LocalUserObjects.Camera.transform, 1f, 1.05f, 0.7f, 20);
                     Destroy(gameObject);
@@ -34,8 +34,7 @@ namespace intheclouds
                     return;
                 }
 
-                var actualDamage = Random.Range(baseDamage - (int) (baseDamage * 0.1f), baseDamage + (int) (baseDamage * 0.1f));
-                enemy.TakeDamage(caster, actualDamage, DamageType.Magic, ElementalType.Fire, statusEffect);
+                enemy.TakeDamage(caster, Helpers.CalculateDamageRange(amount, caster), DamageType.Magic, ElementalType.Fire, statusEffect);
 
                 enabled = false;
             }
@@ -64,7 +63,7 @@ namespace intheclouds
         private void SpawnFireGround()
         {
             float length = 2;
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, length))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, length, 1 << LayerMask.NameToLayer("Ground")))
             {
                 Debug.Log($"SpawnFireGround hit {hit.collider}");
                 if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
@@ -76,8 +75,12 @@ namespace intheclouds
                 GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
                 var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
                 spawnedSurface.caster = caster;
-                spawnedSurface.damage *= caster.level * (1 + caster.Pyrokinetic);
+                spawnedSurface.cooldownTimer = spawnedSurface.cooldown;
                 SurfaceEffectsContainer.Instance.surfaceEffectsList.Add(spawnedSurface);
+            }
+            else
+            {
+                Debug.LogError("Raycast failed to find ground");
             }
         }
     }

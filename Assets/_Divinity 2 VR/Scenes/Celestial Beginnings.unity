@@ -27395,9 +27395,11 @@ MonoBehaviour:
   players:
   - {fileID: 7451352276370404558}
   NextTurn: 0
+  NewRound: 0
   enemiesAlive: 0
   playersAlive: 0
   turnOrderText: {fileID: 1412813474}
+  controlledPlayer: {fileID: 0}
 --- !u!82 &1266414751
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47410,7 +47412,7 @@ GameObject:
   - component: {fileID: 2124506103}
   - component: {fileID: 2124506105}
   - component: {fileID: 2124506104}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48490,10 +48492,6 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 980525852}
-    - target: {fileID: 982680898164545770, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
-      propertyPath: holdTimeRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1723692174987967304, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -48598,7 +48596,8 @@ PrefabInstance:
       propertyPath: Released.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 920882663}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3238681364563060511, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
 --- !u!1001 &4818466714594911851
 PrefabInstance:

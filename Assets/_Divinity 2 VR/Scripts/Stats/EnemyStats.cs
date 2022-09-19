@@ -174,6 +174,8 @@ namespace intheclouds
         {
             if (!isAlive) return;
 
+            // Debug.Log($"hit by: {attacker}");
+
             this.attacker = attacker;
 
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);

@@ -50,17 +50,18 @@ namespace intheclouds
 
                 for (int i = 0; i < statusEffectList.Count; i++)
                 {
-                    if (statusEffectList[i].cooldownTimer > 0)
+                    var statusEffect = statusEffectList[i];
+                    if (statusEffect.cooldownTimer > 0)
                     {
-                        statusEffectList[i].cooldownTimer -= 1;
-                        if (statusEffectList[i].effectApplication == StatusEffect.StatusEffectApplication.Damage)
+                        statusEffect.cooldownTimer -= 1;
+                        if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Damage)
                         {
-                            RemoveFromTextUI(statusEffectList[i].effectApplication);
-                            AddToTextUI(statusEffectList[i]);
+                            RemoveFromTextUI(statusEffect.effectApplication);
+                            AddToTextUI(statusEffect);
                         }
                     }
 
-                    if (statusEffectList[i].cooldownTimer == 0)
+                    if (statusEffect.cooldownTimer == 0)
                     {
                         RemoveStatusEffect(i);
                         i--;

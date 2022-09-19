@@ -38,7 +38,7 @@ namespace intheclouds
 
         void Update()
         {
-            CheckTouchPadPressed();
+            SelectorUpdate();
 
             if (selectedMagic)
             {
@@ -51,16 +51,48 @@ namespace intheclouds
             }
         }
 
-        private void CooldownExploration()
+        private void SelectorUpdate()
         {
-            if (cooldownTimerNoCombat < 2)
+            if (playerLUOs.HVRPlayerInputs.LeftController.TrackpadButtonState.JustActivated)
             {
-                cooldownTimerNoCombat += Time.deltaTime;
+                ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform);
             }
-            else if (cooldownTimerNoCombat >= 2)
+
+            else if (playerLUOs.HVRPlayerInputs.LeftController.TrackpadButtonState.JustDeactivated)
             {
-                Cooldown();
-                cooldownTimerNoCombat = 0;
+                HideSelector();
+            }
+        }
+
+        public void ShowSelector(Transform spawnPoint)
+        {
+            transform.position = spawnPoint.position;
+            var newEulerAngles = spawnPoint.eulerAngles;
+            newEulerAngles = new Vector3(30, newEulerAngles.y, 0);
+            transform.eulerAngles = newEulerAngles;
+
+            magicSlots.SetActive(true);
+            if (description.transform.childCount > 0)
+            {
+                description.SetActive(true);
+            }
+
+            playerLUOs.handAugmentHighlight.highlighted = true;
+        }
+
+        public void HideSelector()
+        {
+            if (!selectedMagic)
+            {
+                playerLUOs.handAugmentHighlight.overlayColor = playerLUOs.PlayerStats.statsSO.baseHandAugmentColor;
+                playerLUOs.handAugmentHighlight.SetGlowColor(playerLUOs.PlayerStats.statsSO.baseHandAugmentColor);
+                playerLUOs.handAugmentHighlight.highlighted = false;
+            }
+
+            magicSlots.SetActive(false);
+            if (description.transform.childCount == 1)
+            {
+                description.SetActive(false);
             }
         }
 
@@ -102,61 +134,36 @@ namespace intheclouds
 
         public void DequipMagic()
         {
-            selectedMagic.gameObject.SetActive(false);
+            foreach (Transform child in description.transform)
+            {
+                if (child.name == selectedMagic.abilityDescription.name + "(Clone)")
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+
             selectedMagic.magicSlot.readyArt.GetComponent<HighlightEffect>().highlighted = false;
             selectedMagic = null;
-            if (description.transform.childCount > 0)
-            {
-                Destroy(description.transform.GetChild(0).gameObject);
-            }
+            // if (description.transform.childCount > 0)
+            // {
+            //     Destroy(description.transform.GetChild(0).gameObject);
+            // }
 
             var augmentHighlight = playerLUOs.handAugmentHighlight;
             augmentHighlight.overlayColor = playerLUOs.PlayerStats.statsSO.baseHandAugmentColor;
             augmentHighlight.SetGlowColor(playerLUOs.PlayerStats.statsSO.baseHandAugmentColor);
         }
 
-        private void CheckTouchPadPressed()
+        private void CooldownExploration()
         {
-            if (playerLUOs.HVRPlayerInputs.LeftController.TrackpadButtonState.JustActivated)
+            if (cooldownTimerNoCombat < 2)
             {
-                ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform);
+                cooldownTimerNoCombat += Time.deltaTime;
             }
-
-            else if (playerLUOs.HVRPlayerInputs.LeftController.TrackpadButtonState.JustDeactivated)
+            else if (cooldownTimerNoCombat >= 2)
             {
-                HideSelector();
-            }
-        }
-
-        public void ShowSelector(Transform spawnPoint)
-        {
-            transform.position = spawnPoint.position;
-            var newEulerAngles = spawnPoint.eulerAngles;
-            newEulerAngles = new Vector3(30, newEulerAngles.y, 0);
-            transform.eulerAngles = newEulerAngles;
-
-            magicSlots.SetActive(true);
-            if (description.transform.childCount == 1)
-            {
-                description.SetActive(true);
-            }
-
-            playerLUOs.handAugmentHighlight.highlighted = true;
-        }
-
-        public void HideSelector()
-        {
-            if (!selectedMagic)
-            {
-                playerLUOs.handAugmentHighlight.overlayColor = playerLUOs.PlayerStats.statsSO.baseHandAugmentColor;
-                playerLUOs.handAugmentHighlight.SetGlowColor(playerLUOs.PlayerStats.statsSO.baseHandAugmentColor);
-                playerLUOs.handAugmentHighlight.highlighted = false;
-            }
-
-            magicSlots.SetActive(false);
-            if (description.transform.childCount == 1)
-            {
-                description.SetActive(false);
+                Cooldown();
+                cooldownTimerNoCombat = 0;
             }
         }
 
