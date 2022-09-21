@@ -345,9 +345,34 @@ namespace intheclouds
             PlayerDamaged?.Invoke();
         }
 
-        public override void Heal(BaseStats healer, int healAmount, ElementalType elementalType, StatusEffect statusEffect)
+        public override void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
         {
-            base.Heal(healer, healAmount, elementalType, statusEffect);
+            if (_currentHealth < _maxHealth)
+            {
+                var prevHealth = _currentHealth;
+                CurrentHealth = Math.Clamp(CurrentHealth + healAmount, 0, _maxHealth);
+                Debug.Log($"Healed {Name} for {_currentHealth - prevHealth}");
+            }
+        }
+
+        public void RestoreMagicArmor(int amount)
+        {
+            if (_currentMagicArmor < _maxMagicArmor)
+            {
+                var prevMA = _currentMagicArmor;
+                CurrentMagicArmor = Math.Clamp(CurrentMagicArmor + amount, 0, _maxMagicArmor);
+                Debug.Log($"Restored {_currentMagicArmor - prevMA} magic armor");
+            }
+        }
+        
+        public void RestorePhysicalArmor(int amount)
+        {
+            if (_currentPoise < _maxPoise)
+            {
+                var prevPA = _currentPoise;
+                CurrentPoise = Math.Clamp(_currentPoise + amount, 0, _maxPoise);
+                Debug.Log($"Restored {_currentPoise - prevPA} physical armor");
+            }
         }
 
         public void Died()

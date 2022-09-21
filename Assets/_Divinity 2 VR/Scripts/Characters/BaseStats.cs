@@ -102,7 +102,7 @@ namespace intheclouds
         {
         }
 
-        public virtual void Heal(BaseStats healer, int healAmount, ElementalType elementalType, StatusEffect statusEffect)
+        public virtual void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
         {
         }
     }

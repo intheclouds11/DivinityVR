@@ -1,3 +1,4 @@
+using System;
 using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
@@ -21,6 +22,8 @@ namespace intheclouds
         public HVRGrabbable Grabbable;
         private HVRHandGrabber leftHandGrabber;
         private HVRHandGrabber rightHandGrabber;
+        private HVRController leftController;
+        private HVRController rightController;
         private float cooldownTimerNoCombat;
 
 
@@ -36,29 +39,35 @@ namespace intheclouds
             }
         }
 
+        private void Start()
+        {
+            leftController = playerLUOs.HVRPlayerInputs.LeftController;
+            rightController = playerLUOs.HVRPlayerInputs.RightController;
+        }
+
         void Update()
         {
             SelectorUpdate();
-
-            if (selectedMagic)
-            {
-                CheckMagicActivation();
-            }
 
             if (!playerLUOs.PlayerStats.InCombat)
             {
                 CooldownExploration();
             }
+
+            if (selectedMagic)
+            {
+                CheckMagicActivation();
+            }
         }
 
         private void SelectorUpdate()
         {
-            if (playerLUOs.HVRPlayerInputs.LeftController.TrackpadButtonState.JustActivated)
+            if (leftController.TrackpadButtonState.JustActivated)
             {
                 ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform);
             }
 
-            else if (playerLUOs.HVRPlayerInputs.LeftController.TrackpadButtonState.JustDeactivated)
+            else if (leftController.TrackpadButtonState.JustDeactivated)
             {
                 HideSelector();
             }
@@ -100,13 +109,13 @@ namespace intheclouds
         {
             if (!spawnedMagic && selectedMagic.cooldownTimer == 0)
             {
-                if (playerLUOs.HVRPlayerInputs.LeftController.TriggerButtonState.JustActivated
-                    && playerLUOs.HVRPlayerInputs.LeftController.GripButtonState.Active && !leftHandGrabber.TriggerHoverTarget)
+                if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
+                    !leftHandGrabber.TriggerHoverTarget)
                 {
                     SpawnMagic(playerLUOs.HVRPlayerInputs.LeftController);
                 }
-                else if (playerLUOs.HVRPlayerInputs.RightController.TriggerButtonState.JustActivated
-                         && playerLUOs.HVRPlayerInputs.RightController.GripButtonState.Active && !rightHandGrabber.TriggerHoverTarget)
+                else if (rightController.TriggerButtonState.JustActivated && rightController.GripButtonState.Active &&
+                         !rightHandGrabber.TriggerHoverTarget)
                 {
                     SpawnMagic(playerLUOs.HVRPlayerInputs.RightController);
                 }
@@ -115,7 +124,7 @@ namespace intheclouds
 
         private void SpawnMagic(HVRController controller)
         {
-            if (controller == playerLUOs.HVRPlayerInputs.LeftController)
+            if (controller == leftController)
             {
                 spawnedMagic = Instantiate(selectedMagic.gameObject, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
                 Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
@@ -134,20 +143,21 @@ namespace intheclouds
 
         public void DequipMagic()
         {
-            foreach (Transform child in description.transform)
-            {
-                if (child.name == selectedMagic.abilityDescription.name + "(Clone)")
-                {
-                    child.gameObject.SetActive(false);
-                }
-            }
+            // Potentially more performant, but more annoying to keep descriptions accurate
+            // foreach (Transform child in description.transform)
+            // {
+            //     if (child.name == selectedMagic.abilityDescription.name + "(Clone)")
+            //     {
+            //         child.gameObject.SetActive(false);
+            //     }
+            // }
 
             selectedMagic.magicSlot.readyArt.GetComponent<HighlightEffect>().highlighted = false;
             selectedMagic = null;
-            // if (description.transform.childCount > 0)
-            // {
-            //     Destroy(description.transform.GetChild(0).gameObject);
-            // }
+            foreach (Transform child in description.transform)
+            {
+                Destroy(child.gameObject);
+            }
 
             var augmentHighlight = playerLUOs.handAugmentHighlight;
             augmentHighlight.overlayColor = playerLUOs.PlayerStats.statsSO.baseHandAugmentColor;
@@ -182,6 +192,7 @@ namespace intheclouds
                     slot.magic.cooldownTimer -= 1;
                     slot.cooldownArt.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Cooldown: {slot.magic.cooldownTimer}";
                 }
+
                 if (slot.magic.cooldownTimer == 0 && !slot.readyArt.activeSelf)
                 {
                     slot.magic.OnMagicReady();

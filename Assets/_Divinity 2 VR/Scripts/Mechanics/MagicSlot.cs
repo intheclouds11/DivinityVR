@@ -62,18 +62,19 @@ namespace intheclouds
 
         private void SpawnDescription()
         {
-            if (magicSystem.description.transform.childCount > 0)
-            {
-                foreach (Transform child in magicSystem.description.transform)
-                {
-                    if (child.name == magic.GetComponent<Magic>().abilityDescription.name + "(Clone)")
-                    {
-                        child.gameObject.SetActive(true);
-                        // todo: check if selected magic damage is same as damage text. if not, then replace old description with a new one
-                        return;
-                    }
-                }
-            }
+            // More performant than destroying, but annoying to keep up with
+            // if (magicSystem.description.transform.childCount > 0)
+            // {
+            //     foreach (Transform child in magicSystem.description.transform)
+            //     {
+            //         if (child.name == magic.GetComponent<Magic>().abilityDescription.name + "(Clone)")
+            //         {
+            //             child.gameObject.SetActive(true);
+            //             // need to check if selected magic damage is same as damage text. if not, then replace old description with a new one
+            //             return;
+            //         }
+            //     }
+            // }
 
             var description = Instantiate(magic.GetComponent<Magic>().abilityDescription, magicSystem.description.transform);
             if (magicSystem.description.transform.childCount == 1)

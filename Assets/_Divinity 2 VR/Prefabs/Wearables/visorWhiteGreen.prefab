@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c75c5c18c01eee4ab0ab9c8cd3c3000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentGrabbable: {fileID: 0}
+  ParentGrabbable: {fileID: 9193240619908404831}
 --- !u!1 &9201416344396933992
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +260,8 @@ MonoBehaviour:
   impactSpeedRequired: 0.1
   impactClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
   volume: 0.1
+  maxPitch: 1
+  minPitch: 1
 --- !u!114 &9193240619908404831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +282,7 @@ MonoBehaviour:
   OverrideGrabTrigger: 0
   GrabTrigger: 0
   RequireLineOfSight: 1
-  PoseImmediately: 0
+  PoseImmediately: 1
   ParentHandModel: 0
   BreakDistance: 1
   BreakDistanceSource: 0
@@ -374,6 +376,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 196642057673658848}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   UnSocketed:
     m_PersistentCalls:
       m_Calls:
@@ -388,6 +402,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 196642057673658848}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   GrabPointsMeta: []
   Grabbers: []
@@ -407,12 +433,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poses:
-  - SocketTag: BackpackSmallSocket
-    Position: {x: -0.00000047333097, y: 0.00000008765389, z: -0.000000053410524}
-    EulerAngles: {x: -0.00000044548, y: 272.73538, z: 0.0000093240305}
   - SocketTag: VisorSocket
     Position: {x: 0, y: 0.00000011920929, z: 0}
     EulerAngles: {x: 0, y: 182.73537, z: 0}
+  - SocketTag: BackpackSmallSocket
+    Position: {x: 0.00000016654238, y: 0.00000010518466, z: 0.000000035061554}
+    EulerAngles: {x: 347, y: 272.73538, z: 0.000008762314}
   CounterScale: {x: 1, y: 1, z: 1}
   UseRendererBounds: 1
   ScaleSize: 1

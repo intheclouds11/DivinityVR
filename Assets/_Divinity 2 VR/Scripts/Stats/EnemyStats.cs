@@ -233,10 +233,7 @@ namespace intheclouds
             }
         }
 
-        public override void Heal(BaseStats healer, int healAmount, ElementalType elementalType, StatusEffect statusEffect)
-        {
-            base.Heal(healer, healAmount, elementalType, statusEffect);
-        }
+        
 
         private void Died()
         {

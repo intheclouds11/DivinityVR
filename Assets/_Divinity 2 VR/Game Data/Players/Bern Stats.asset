@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bern Stats
   m_EditorClassIdentifier: 
   Name: Bern
-  level: 5
+  level: 1
   maxHealth: 90
   currentHealth: 90
   maxPoise: 10

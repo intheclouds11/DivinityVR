@@ -16,6 +16,7 @@ TagManager:
   - Headwear
   - Visor
   - EngageTrigger
+  - Potion
   layers:
   - Default
   - TransparentFX
