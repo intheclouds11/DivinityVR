@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private AudioSource audioSource;
-    public AudioSource BGMAudiosource;
+    public AudioSource MusicAudioSource;
     public AudioClip combatStartClip;
     public AudioClip combatEndClip;
     public AudioClip gameOverClip;
@@ -45,9 +45,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!audioSource.isPlaying && BGMAudiosource.gameObject.activeInHierarchy && !BGMAudiosource.isPlaying)
+        // Resume music after other audiosource finished
+        if (!audioSource.isPlaying && MusicAudioSource.gameObject.activeInHierarchy && !MusicAudioSource.isPlaying)
         {
-            BGMAudiosource.Play();
+            MusicAudioSource.Play();
         }
     }
 
@@ -167,7 +168,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"ENEMIES FELLED. EXITING COMBAT");
         StopCoroutine(turnOrderCoroutine);
         audioSource.PlayOneShot(combatEndClip);
-        BGMAudiosource.Stop();
+        MusicAudioSource.Stop();
         turnOrderText.text = "";
         firstCombatant = null;
         foreach (var playerEndCombat in players)
@@ -182,7 +183,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"PLAYERS FELLED. RESTART FROM LAST SAVE");
         StopCoroutine(turnOrderCoroutine);
         audioSource.PlayOneShot(gameOverClip);
-        BGMAudiosource.Stop();
+        MusicAudioSource.Stop();
         turnOrderText.text = "";
 
         foreach (var enemy in EnemyManager.Instance.enemyList)

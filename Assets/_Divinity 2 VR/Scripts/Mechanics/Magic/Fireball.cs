@@ -14,6 +14,12 @@ namespace intheclouds
             {
                 return;
             }
+
+            Activate(collision);
+        }
+
+        private void Activate(Collision collision)
+        {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
             {
                 return;
@@ -53,9 +59,9 @@ namespace intheclouds
                 }
             }
 
-            impactVFX.transform.parent = null;
-            impactVFX.SetActive(true);
-            impactVFX.AddComponent<HVRDestroyTimer>().StartTimer(2);
+            activatedVFX.transform.parent = null;
+            activatedVFX.SetActive(true);
+            activatedVFX.AddComponent<HVRDestroyTimer>().StartTimer(2);
             enabled = false;
             Destroy(gameObject);
         }

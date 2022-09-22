@@ -41,5 +41,14 @@ namespace intheclouds
                 SFXPlayer.Instance.PlaySFXAttach(damageAudioClip, transform, 1, 1);
             }
         }
+
+        private void OnParticleCollision(GameObject other)
+        {
+            Debug.Log(other);
+            Debug.Log(other.name);
+            Debug.Log(other.gameObject);
+            Debug.Log(other.gameObject.name);
+            SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(this);
+        }
     }
 }

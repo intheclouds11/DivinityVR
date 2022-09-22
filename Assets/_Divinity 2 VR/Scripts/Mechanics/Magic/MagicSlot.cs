@@ -24,7 +24,7 @@ namespace intheclouds
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Left Hand") && !magicSystem.spawnedMagic)
+            if (!magicSystem.spawnedMagic && (other.CompareTag("Left Hand") || other.CompareTag("Right Hand")))
             {
                 if (dequipMagic && magicSystem.selectedMagic)
                 {
@@ -77,7 +77,7 @@ namespace intheclouds
             // }
 
             var description = Instantiate(magic.GetComponent<Magic>().abilityDescription, magicSystem.description.transform);
-            if (magicSystem.description.transform.childCount == 1)
+            if (magicSystem.description)
             {
                 magicSystem.description.SetActive(true);
                 foreach (Transform child in description.transform)

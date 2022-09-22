@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HurricaneVR.Framework.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,7 +18,7 @@ namespace intheclouds
         public GameObject surfaceEffect;
         public StatusEffect statusEffect;
         public ElementalType elementalType;
-        public GameObject impactVFX;
+        public GameObject activatedVFX;
         public AudioClip noDamageAudioClip;
         [Header("Debug")]
         public MagicSystem magicSystem;
@@ -26,7 +27,10 @@ namespace intheclouds
 
         private void OnEnable()
         {
-            ApplyScaling();
+            if (amount != 0)
+            {
+                ApplyScaling();
+            }
         }
 
         private void ApplyScaling()

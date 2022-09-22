@@ -15,7 +15,6 @@ namespace intheclouds
         public GameObject magicSlots;
         public Magic selectedMagic;
         public GameObject spawnedMagic;
-
         public GameObject description;
         public LocalUserObjects playerLUOs;
         public HVRHandGrabber Grabber { get; set; }
@@ -24,6 +23,7 @@ namespace intheclouds
         private HVRHandGrabber rightHandGrabber;
         private HVRController leftController;
         private HVRController rightController;
+        private HVRController selectorHand;
         private float cooldownTimerNoCombat;
 
 
@@ -62,19 +62,33 @@ namespace intheclouds
 
         private void SelectorUpdate()
         {
-            if (leftController.TrackpadButtonState.JustActivated)
+            if (leftController.TrackpadButtonState.JustActivated && !magicSlots.activeSelf)
             {
-                ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform);
+                ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform, leftController);
+            }
+            else if (rightController.TrackpadButtonState.JustActivated && !magicSlots.activeSelf)
+            {
+                ShowSelector(playerLUOs.rightHandMagicSelectorSpawn.transform, rightController);
             }
 
-            else if (leftController.TrackpadButtonState.JustDeactivated)
+            if (!magicSlots.activeSelf)
+            {
+                return;
+            }
+
+            if (selectorHand == leftController && leftController.TrackpadButtonState.JustDeactivated)
+            {
+                HideSelector();
+            }
+            else if (selectorHand == rightController && rightController.TrackpadButtonState.JustDeactivated)
             {
                 HideSelector();
             }
         }
 
-        public void ShowSelector(Transform spawnPoint)
+        public void ShowSelector(Transform spawnPoint, HVRController hand)
         {
+            selectorHand = hand;
             transform.position = spawnPoint.position;
             var newEulerAngles = spawnPoint.eulerAngles;
             newEulerAngles = new Vector3(30, newEulerAngles.y, 0);
@@ -110,12 +124,12 @@ namespace intheclouds
             if (!spawnedMagic && selectedMagic.cooldownTimer == 0)
             {
                 if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
-                    !leftHandGrabber.TriggerHoverTarget)
+                    !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
                 {
                     SpawnMagic(playerLUOs.HVRPlayerInputs.LeftController);
                 }
                 else if (rightController.TriggerButtonState.JustActivated && rightController.GripButtonState.Active &&
-                         !rightHandGrabber.TriggerHoverTarget)
+                         !rightHandGrabber.TriggerHoverTarget && !rightHandGrabber.IsGrabbing)
                 {
                     SpawnMagic(playerLUOs.HVRPlayerInputs.RightController);
                 }
