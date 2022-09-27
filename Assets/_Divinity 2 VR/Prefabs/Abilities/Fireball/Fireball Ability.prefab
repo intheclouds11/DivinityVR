@@ -14834,7 +14834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6921882747449717690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12.750866, y: 5.357128, z: -6.0744133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -14866,9 +14866,12 @@ MonoBehaviour:
   elementalType: 0
   activatedVFX: {fileID: 5241147154415566929}
   noDamageAudioClip: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
-  magicSystem: {fileID: 0}
-  magicSlot: {fileID: 0}
+  abilitySystem: {fileID: 0}
+  abilitySlot: {fileID: 0}
   caster: {fileID: 0}
+  castingHand: 0
+  explosionRadius: 2
+  explosionForce: 3
 --- !u!114 &7859904153508057978
 MonoBehaviour:
   m_ObjectHideFlags: 0

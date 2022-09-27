@@ -9,76 +9,72 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: outlineColor.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: outlineColor.g
-      value: 1
+      value: 0.8564266
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: outlineColor.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[0].color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[0].color.g
-      value: 1
+      value: 0.9333334
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[0].color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[1].color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[1].color.g
-      value: 1
+      value: 0.9333334
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[1].color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[2].color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[2].color.g
-      value: 1
+      value: 0.9333334
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[2].color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[3].color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[3].color.g
-      value: 1
+      value: 0.9333334
       objectReference: {fileID: 0}
     - target: {fileID: 979835120492472744, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: glowPasses.Array.data[3].color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4108133546386217914, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: m_text
-      value: Dequip
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108133546386217914, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
-      propertyPath: m_lineSpacing
-      value: -39.36
+      value: Fortify
       objectReference: {fileID: 0}
     - target: {fileID: 5248138930992804592, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 91f94dde36829074a8246e38f0c3cd55, type: 2}
+      objectReference: {fileID: 2100000, guid: 57eb4c059e0b3467cac0a46a3b859a2d, type: 2}
     - target: {fileID: 6199252838987832301, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -125,35 +121,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824107913513631389, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Dequip
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
-      propertyPath: readyArt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
-      propertyPath: cooldownArt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
-      propertyPath: dequipMagic
-      value: 1
+      value: AbilitySlot - Fortify
       objectReference: {fileID: 0}
     - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: handAugmentColor.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: handAugmentColor.g
-      value: 1
+      value: 0.6509804
       objectReference: {fileID: 0}
     - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: handAugmentColor.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
-      propertyPath: onSelectedAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ba2b2d91f00fc2d4f8b2ccb813c5287a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}

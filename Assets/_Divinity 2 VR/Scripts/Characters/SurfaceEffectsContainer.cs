@@ -77,7 +77,6 @@ namespace intheclouds
             {
                 return;
             }
-            // var surface = surfaceEffectsList.Find(effect => surfaceEffect).gameObject;
             
             Debug.Log($"Removing {surfaceEffect.name} surface effect");
             

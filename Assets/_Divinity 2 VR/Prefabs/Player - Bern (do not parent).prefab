@@ -9085,20 +9085,19 @@ MonoBehaviour:
   leftHandPhysics: {fileID: 9168554445541954158}
   leftHandModel: {fileID: 4368939615877592202}
   leftHandPalm: {fileID: 4281608116503067107}
-  leftHandMagicSelectorSpawn: {fileID: 2873439596367413255}
+  leftHandAbilitySelectorSpawn: {fileID: 2873439596367413255}
   rightController: {fileID: 2736853845475387489}
   rightHandPhysics: {fileID: 8464464505032256071}
   rightHandModel: {fileID: 4178597554380390061}
   rightHandPalm: {fileID: 5066214549937447672}
-  rightHandMagicSelectorSpawn: {fileID: 5568592960715254359}
+  rightHandAbilitySelectorSpawn: {fileID: 5568592960715254359}
   waist: {fileID: 9097514730571483222}
   userMenuSpawnPoint: {fileID: 3878385632280904934}
   visorSocket: {fileID: 4377966246488482606}
   turnOrderUI: {fileID: 0}
   spiritWander: {fileID: 1076969965540467364}
   handAugmentHighlight: {fileID: 224099360708309784}
-  magicSystem: {fileID: 5786721376910532819}
-  magicAttachPoint: {fileID: 4771761372525068254}
+  abilitySystem: {fileID: 5786721376910532819}
   abilities: {fileID: 2809638642550408542}
 --- !u!114 &7745661769541824838
 MonoBehaviour:
@@ -10231,7 +10230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8175202860091608249}
   m_Layer: 8
-  m_Name: MagicSelector spawnpoint
+  m_Name: AbilitySelector spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12016,9 +12015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8043c259e1872a74790d290ca0902ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicSlots: {fileID: 4765502966400354369}
-  selectedMagic: {fileID: 0}
-  spawnedMagic: {fileID: 0}
+  abilitySlots: {fileID: 4765502966400354369}
+  selectedAbility: {fileID: 0}
+  spawnedAbility: {fileID: 0}
   description: {fileID: 7972700963345841424}
   playerLUOs: {fileID: 0}
   Grabbable: {fileID: 0}
@@ -21310,7 +21309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2637125934652740480}
   m_Layer: 8
-  m_Name: MagicSelector spawnpoint
+  m_Name: AbilitySelector spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32726,12 +32725,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594774323216984207, guid: 4a0fbcd45ffa4eb49959e7a5200ef6d9, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Rain
+      value: AbilitySlot - Rain
       objectReference: {fileID: 0}
     - target: {fileID: 6172248518871106051, guid: 4a0fbcd45ffa4eb49959e7a5200ef6d9, type: 3}
       propertyPath: magic
       value: 
       objectReference: {fileID: 6722623711241730551}
+    - target: {fileID: 6172248518871106051, guid: 4a0fbcd45ffa4eb49959e7a5200ef6d9, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: -3307289435183082286, guid: 39df1c84ce00f3c4c8646501b395df68, type: 3}
     - target: {fileID: 8590716035197160959, guid: 4a0fbcd45ffa4eb49959e7a5200ef6d9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -32792,7 +32795,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594774323216984207, guid: 19a7fc293610cdb4e8b8a8103e13497d, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Empty (1)
+      value: AbilitySlot - Empty (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8590716035197160959, guid: 19a7fc293610cdb4e8b8a8103e13497d, type: 3}
       propertyPath: m_RootOrder
@@ -32854,7 +32857,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594774323216984207, guid: 19a7fc293610cdb4e8b8a8103e13497d, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Empty
+      value: AbilitySlot - Empty
       objectReference: {fileID: 0}
     - target: {fileID: 8590716035197160959, guid: 19a7fc293610cdb4e8b8a8103e13497d, type: 3}
       propertyPath: m_RootOrder
@@ -32924,7 +32927,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5594774323216984207, guid: c0824eda3cb3d304cbe9c5cb4f84b0c6, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Dequip
+      value: AbilitySlot - Dequip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172248518871106051, guid: c0824eda3cb3d304cbe9c5cb4f84b0c6, type: 3}
+      propertyPath: dequipAbility
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8590716035197160959, guid: c0824eda3cb3d304cbe9c5cb4f84b0c6, type: 3}
       propertyPath: m_RootOrder
@@ -32986,7 +32993,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594774323216984207, guid: 9c29f50ca3a42414180dcae07d1de072, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Fortify
+      value: AbilitySlot - Fortify
       objectReference: {fileID: 0}
     - target: {fileID: 6172248518871106051, guid: 9c29f50ca3a42414180dcae07d1de072, type: 3}
       propertyPath: magic
@@ -33052,12 +33059,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594774323216984207, guid: 4e352776d3b971945ba2705977ac683a, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Fireball
+      value: AbilitySlot - Fireball
       objectReference: {fileID: 0}
     - target: {fileID: 6172248518871106051, guid: 4e352776d3b971945ba2705977ac683a, type: 3}
       propertyPath: magic
       value: 
       objectReference: {fileID: 626517036459474056}
+    - target: {fileID: 6172248518871106051, guid: 4e352776d3b971945ba2705977ac683a, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 9117159051334093164, guid: dcb9d570fb1ee9f41b9e34b5fdfcdfc2, type: 3}
     - target: {fileID: 8590716035197160959, guid: 4e352776d3b971945ba2705977ac683a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -33288,7 +33299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594774323216984207, guid: b17df381dc95bdf46a199f759e531470, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Soothing Cold
+      value: AbilitySlot - Soothing Cold
       objectReference: {fileID: 0}
     - target: {fileID: 8590716035197160959, guid: b17df381dc95bdf46a199f759e531470, type: 3}
       propertyPath: m_RootOrder

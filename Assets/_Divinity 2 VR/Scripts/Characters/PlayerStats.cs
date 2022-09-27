@@ -153,7 +153,7 @@ namespace intheclouds
                 if (_turn)
                 {
                     statusEffectsContainer.Cooldown();
-                    LocalUserObjects.magicSystem.Cooldown();
+                    LocalUserObjects.abilitySystem.Cooldown();
                     playerMovementAP.StartTurn();
                 }
                 else

@@ -17,6 +17,11 @@ namespace intheclouds
             InvokeRepeating(nameof(SpawnWaterGround), 0.5f, 0.5f);
         }
 
+        private void OnDisable()
+        {
+            spawnedCount = 0;
+        }
+
         private void SpawnWaterGround()
         {
             if (!enabled)

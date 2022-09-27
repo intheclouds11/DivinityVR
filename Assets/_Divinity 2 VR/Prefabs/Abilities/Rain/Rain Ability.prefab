@@ -370,11 +370,13 @@ MonoBehaviour:
   elementalType: 1
   activatedVFX: {fileID: 861856225080449213}
   noDamageAudioClip: {fileID: 0}
-  magicSystem: {fileID: 0}
-  magicSlot: {fileID: 0}
+  abilitySystem: {fileID: 0}
+  abilitySlot: {fileID: 0}
   caster: {fileID: 0}
+  castingHand: 0
   rb: {fileID: 1200108098533851707}
-  activatedClip: {fileID: 8300000, guid: 0d7d443244dc9e447951d9e47a55c1d4, type: 3}
+  activatedClip: {fileID: 8300000, guid: 436f3284126ff1e4b97f3a82237ec964, type: 3}
+  rainSurfaceMaker: {fileID: 4147727301802800236}
 --- !u!114 &7859904153508057978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +665,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6042714933037023803, guid: b737a24c783d075478cebdec6bf3b95c, type: 3}
   m_PrefabInstance: {fileID: 6352860111706249862}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4147727301802800236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7036404504200933098, guid: b737a24c783d075478cebdec6bf3b95c, type: 3}
+  m_PrefabInstance: {fileID: 6352860111706249862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861856225080449213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e58542a9e2b5124d8d07e4fa5048591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6037140814035123011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 856210635374764485, guid: b737a24c783d075478cebdec6bf3b95c, type: 3}

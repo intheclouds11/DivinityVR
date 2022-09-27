@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824107913513631389, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: m_Name
-      value: MagicSlot - Empty
+      value: AbilitySlot - Empty
       objectReference: {fileID: 0}
     - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: readyArt

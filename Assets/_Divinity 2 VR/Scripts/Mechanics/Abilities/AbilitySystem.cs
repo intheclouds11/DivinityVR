@@ -2,7 +2,6 @@ using System;
 using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
-using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using TMPro;
 using UnityEngine;
@@ -13,18 +12,18 @@ namespace intheclouds
     public class AbilitySystem : MonoBehaviour
     {
         public GameObject abilitySlots;
-        public AbilityBase selectedMagic;
-        public GameObject spawnedMagic;
+        public AbilityBase selectedAbility;
         public GameObject description;
-        public LocalUserObjects playerLUOs;
-        public HVRHandGrabber Grabber { get; set; }
-        public HVRGrabbable Grabbable;
         private HVRHandGrabber leftHandGrabber;
         private HVRHandGrabber rightHandGrabber;
         private HVRController leftController;
         private HVRController rightController;
         private HVRController selectorHand;
         private float cooldownTimerNoCombat;
+        [Header("Debug")]
+        public LocalUserObjects playerLUOs;
+        public HVRHandGrabber Grabber { get; set; }
+        public HVRGrabbable Grabbable;
 
 
         private void Awake()
@@ -54,21 +53,24 @@ namespace intheclouds
                 CooldownExploration();
             }
 
-            if (selectedMagic)
+            if (selectedAbility && !selectedAbility.gameObject.activeInHierarchy)
             {
-                CheckMagicActivation();
+                CheckAbilityActivation();
             }
         }
 
         private void SelectorUpdate()
         {
-            if (!spawnedMagic && leftController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
+            if (!selectedAbility || selectedAbility && !selectedAbility.gameObject.activeInHierarchy)
             {
-                ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform, leftController);
-            }
-            else if (!spawnedMagic && rightController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
-            {
-                ShowSelector(playerLUOs.rightHandMagicSelectorSpawn.transform, rightController);
+                if (leftController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
+                {
+                    ShowSelector(playerLUOs.leftHandAbilitySelectorSpawn.transform, leftController);
+                }
+                else if (rightController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
+                {
+                    ShowSelector(playerLUOs.rightHandAbilitySelectorSpawn.transform, rightController);
+                }
             }
 
             if (!abilitySlots.activeSelf)
@@ -105,7 +107,7 @@ namespace intheclouds
 
         public void HideSelector()
         {
-            if (!selectedMagic)
+            if (!selectedAbility)
             {
                 playerLUOs.handAugmentHighlight.overlayColor = playerLUOs.PlayerStats.statsSO.baseHandAugmentColor;
                 playerLUOs.handAugmentHighlight.SetGlowColor(playerLUOs.PlayerStats.statsSO.baseHandAugmentColor);
@@ -119,56 +121,57 @@ namespace intheclouds
             }
         }
 
-        private void CheckMagicActivation()
+        private void CheckAbilityActivation()
         {
-            if (!spawnedMagic && selectedMagic.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP > selectedMagic.requiredAP && !playerLUOs.spiritWander.isActivated)
+            if (selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP > selectedAbility.requiredAP && !playerLUOs.spiritWander.isActivated)
             {
                 if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
                 {
-                    SpawnMagic(playerLUOs.HVRPlayerInputs.LeftController);
+                    SpawnAbility(playerLUOs.HVRPlayerInputs.LeftController);
                 }
                 else if (rightController.TriggerButtonState.JustActivated && rightController.GripButtonState.Active &&
                          !rightHandGrabber.TriggerHoverTarget && !rightHandGrabber.IsGrabbing)
                 {
-                    SpawnMagic(playerLUOs.HVRPlayerInputs.RightController);
+                    SpawnAbility(playerLUOs.HVRPlayerInputs.RightController);
                 }
             }
         }
 
-        private void SpawnMagic(HVRController controller)
+        private void SpawnAbility(HVRController controller)
         {
             if (controller == leftController)
             {
-                spawnedMagic = Instantiate(selectedMagic.gameObject, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
+                // spawnedAbility = Instantiate(selectedAbility.gameObject, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
+                selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
                 Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
             }
             else
             {
-                spawnedMagic = Instantiate(selectedMagic.gameObject, playerLUOs.rightHandPalm.transform.position, Quaternion.identity);
+                // spawnedAbility = Instantiate(selectedAbility.gameObject, playerLUOs.rightHandPalm.transform.position, Quaternion.identity);
+                selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
                 Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
             }
 
-            playerLUOs.PlayerStats.CurrentAP -= selectedMagic.requiredAP;
-            spawnedMagic.SetActive(true);
-            spawnedMagic.GetComponent<AbilityBase>().caster = playerLUOs.PlayerStats;
-            Grabbable = spawnedMagic.GetComponent<HVRGrabbable>();
+            if (!playerLUOs.PlayerStats.ExplorationMode)
+            {
+                playerLUOs.PlayerStats.CurrentAP -= selectedAbility.requiredAP;
+            }
+
+            // spawnedAbility.SetActive(true);
+            // spawnedAbility.GetComponent<AbilityBase>().caster = playerLUOs.PlayerStats;
+            // Grabbable = spawnedAbility.GetComponent<HVRGrabbable>();
+            selectedAbility.gameObject.SetActive(true);
+            selectedAbility.caster = playerLUOs.PlayerStats;
+            selectedAbility.castingHand = controller.Side;
+            Grabbable = selectedAbility.GetComponent<HVRGrabbable>();
             Grabber.TryGrab(Grabbable);
         }
 
-        public void DequipMagic()
+        public void DequipAbility()
         {
-            // Potentially more performant, but more annoying to keep descriptions accurate
-            // foreach (Transform child in description.transform)
-            // {
-            //     if (child.name == selectedMagic.abilityDescription.name + "(Clone)")
-            //     {
-            //         child.gameObject.SetActive(false);
-            //     }
-            // }
-
-            selectedMagic.magicSlot.readyArt.GetComponent<HighlightEffect>().highlighted = false;
-            selectedMagic = null;
+            selectedAbility.abilitySlot.readyArt.GetComponent<HighlightEffect>().highlighted = false;
+            selectedAbility = null;
             foreach (Transform child in description.transform)
             {
                 Destroy(child.gameObject);
@@ -197,20 +200,20 @@ namespace intheclouds
             foreach (Transform slotGO in abilitySlots.transform)
             {
                 var slot = slotGO.GetComponent<AbilitySlot>();
-                if (slot.magic == null)
+                if (slot.ability == null)
                 {
                     continue;
                 }
 
-                if (slot.magic.cooldownTimer > 0)
+                if (slot.ability.cooldownTimer > 0)
                 {
-                    slot.magic.cooldownTimer -= 1;
-                    slot.cooldownArt.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Cooldown: {slot.magic.cooldownTimer}";
+                    slot.ability.cooldownTimer -= 1;
+                    slot.cooldownArt.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Cooldown: {slot.ability.cooldownTimer}";
                 }
 
-                if (slot.magic.cooldownTimer == 0 && !slot.readyArt.activeSelf)
+                if (slot.ability.cooldownTimer == 0 && !slot.readyArt.activeSelf)
                 {
-                    slot.magic.OnMagicReady();
+                    slot.ability.OnAbilityReady();
                 }
             }
         }

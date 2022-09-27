@@ -9,8 +9,8 @@ namespace intheclouds
 {
     public class AbilitySlot : MonoBehaviour
     {
-        public bool dequipMagic;
-        public AbilityBase magic;
+        public bool dequipAbility;
+        public AbilityBase ability;
         public AudioClip onSelectedAudioClip;
         public Color handAugmentColor;
         private AbilitySystem abilitySystem;
@@ -24,25 +24,25 @@ namespace intheclouds
         
         private void OnTriggerEnter(Collider other)
         {
-            if (!abilitySystem.spawnedMagic && other.gameObject.CompareTag("PointerFingerTip"))
+            if (other.gameObject.CompareTag("PointerFingerTip") && (!abilitySystem.selectedAbility || !abilitySystem.selectedAbility.gameObject.activeInHierarchy))
             {
-                if (dequipMagic && abilitySystem.selectedMagic)
+                if (dequipAbility && abilitySystem.selectedAbility)
                 {
-                    abilitySystem.DequipMagic();
+                    abilitySystem.DequipAbility();
                     SFXPlayer.Instance.PlaySFX(onSelectedAudioClip, other.transform.position, 1, 0.3f);
                     return;
                 }
 
-                if (magic && abilitySystem.selectedMagic != magic)
+                if (ability && abilitySystem.selectedAbility != ability)
                 {
-                    if (abilitySystem.selectedMagic) // dequip current ability if selected different ability
+                    if (abilitySystem.selectedAbility) // dequip current ability if selected different ability
                     {
-                        abilitySystem.DequipMagic();
+                        abilitySystem.DequipAbility();
                     }
 
-                    abilitySystem.selectedMagic = magic;
-                    abilitySystem.selectedMagic.magicSystem = abilitySystem;
-                    abilitySystem.selectedMagic.magicSlot = this;
+                    abilitySystem.selectedAbility = ability;
+                    abilitySystem.selectedAbility.abilitySystem = abilitySystem;
+                    abilitySystem.selectedAbility.abilitySlot = this;
                     abilitySystem.playerLUOs.handAugmentHighlight.overlayColor = handAugmentColor;
                     abilitySystem.playerLUOs.handAugmentHighlight.SetGlowColor(handAugmentColor);
                     if (onSelectedAudioClip)
@@ -53,7 +53,7 @@ namespace intheclouds
                     SpawnDescription();
                 }
 
-                if (readyArt && readyArt.activeSelf && magic)
+                if (readyArt && readyArt.activeSelf && ability)
                 {
                     readyArt.GetComponent<HighlightEffect>().highlighted = true;
                 }
@@ -62,21 +62,7 @@ namespace intheclouds
 
         private void SpawnDescription()
         {
-            // More performant than destroying, but annoying to keep up with
-            // if (magicSystem.description.transform.childCount > 0)
-            // {
-            //     foreach (Transform child in magicSystem.description.transform)
-            //     {
-            //         if (child.name == magic.GetComponent<Magic>().abilityDescription.name + "(Clone)")
-            //         {
-            //             child.gameObject.SetActive(true);
-            //             // need to check if selected magic damage is same as damage text. if not, then replace old description with a new one
-            //             return;
-            //         }
-            //     }
-            // }
-
-            var description = Instantiate(magic.GetComponent<AbilityBase>().abilityDescription, abilitySystem.description.transform);
+            var description = Instantiate(ability.GetComponent<AbilityBase>().abilityDescription, abilitySystem.description.transform);
             if (abilitySystem.description)
             {
                 abilitySystem.description.SetActive(true);
@@ -84,12 +70,12 @@ namespace intheclouds
                 {
                     if (child.name == "Damage text")
                     {
-                        int scaledDamageUI = abilitySystem.selectedMagic.amount;
-                        if (abilitySystem.selectedMagic.elementalType == ElementalType.Fire)
+                        int scaledDamageUI = abilitySystem.selectedAbility.amount;
+                        if (abilitySystem.selectedAbility.elementalType == ElementalType.Fire)
                         {
                             scaledDamageUI *=  abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Pyrokinetic);
                         }
-                        else if (abilitySystem.selectedMagic.elementalType == ElementalType.Water)
+                        else if (abilitySystem.selectedAbility.elementalType == ElementalType.Water)
                         {
                             scaledDamageUI *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
                         }

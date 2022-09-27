@@ -8,6 +8,9 @@ namespace intheclouds
 {
     public class Fireball : AbilityBase
     {
+        public float explosionRadius;
+        public float explosionForce;
+
         private void OnCollisionEnter(Collision collision)
         {
             if (!enabled)
@@ -45,20 +48,32 @@ namespace intheclouds
                 enabled = false;
             }
 
+            Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius);
+            foreach (var col in cols)
+            {
+                var rb = col.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    if (col.transform.parent != null)
+                    {
+                        rb = col.transform.parent.GetComponent<Rigidbody>();
+                    }
+                }
+
+                if (rb != null)
+                {
+                    rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+                }
+            }
+
             if (!caster.LocalUserObjects.spiritWander.isActivated)
             {
                 if (caster.Turn || !caster.InCombat)
                 {
-                    OnMagicUsed();
                     SpawnFireGround();
+                    OnAbilityUsed();
                 }
             }
-
-            activatedVFX.transform.parent = null;
-            activatedVFX.SetActive(true);
-            activatedVFX.AddComponent<HVRDestroyTimer>().StartTimer(2);
-            enabled = false;
-            Destroy(gameObject);
         }
 
         private void SpawnFireGround()

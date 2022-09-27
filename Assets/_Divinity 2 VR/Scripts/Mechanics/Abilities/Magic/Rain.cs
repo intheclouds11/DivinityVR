@@ -7,6 +7,7 @@ namespace intheclouds
     {
         public Rigidbody rb;
         public AudioClip activatedClip;
+        public RainSurfaceMaker rainSurfaceMaker;
 
         private void Update()
         {
@@ -18,13 +19,10 @@ namespace intheclouds
 
         public void Activate()
         {
-            activatedVFX.transform.parent = null;
+            rainSurfaceMaker.enabled = true;
             activatedVFX.transform.eulerAngles = new Vector3(-90, 0, 0);
-            activatedVFX.SetActive(true);
             SFXPlayer.Instance.PlaySFX(activatedClip, transform.position);
-            OnMagicUsed();
-            enabled = false;
-            Destroy(gameObject);
+            OnAbilityUsed();
         }
     }
 }

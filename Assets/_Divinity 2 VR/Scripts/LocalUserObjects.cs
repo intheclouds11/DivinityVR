@@ -21,20 +21,19 @@ namespace intheclouds
         public GameObject leftHandPhysics;
         public GameObject leftHandModel;
         public GameObject leftHandPalm;
-        public GameObject leftHandMagicSelectorSpawn;
+        public GameObject leftHandAbilitySelectorSpawn;
         public GameObject rightController;
         public GameObject rightHandPhysics;
         public GameObject rightHandModel;
         public GameObject rightHandPalm;
-        public GameObject rightHandMagicSelectorSpawn;
+        public GameObject rightHandAbilitySelectorSpawn;
         public GameObject waist;
         public GameObject userMenuSpawnPoint;
         public GameObject visorSocket;
         public GameObject turnOrderUI;
         public SpiritWander spiritWander;
         public HighlightEffect handAugmentHighlight;
-        public AbilitySystem magicSystem;
-        public Transform magicAttachPoint;
+        public AbilitySystem abilitySystem;
         public GameObject abilities;
         
         private void Start()
@@ -45,19 +44,6 @@ namespace intheclouds
                 turnOrderUI.transform.localPosition = Vector3.zero;
                 turnOrderUI.transform.localRotation = Quaternion.identity;
             }
-        }
-
-        private void Update()
-        {
-            // if (magicSelector.selectedMagic && magicSelector.selectedMagic.activeInHierarchy)
-            // {
-            //     magicSelector.selectedMagic.transform.parent = leftHandPalm.transform;
-            //     if (magicSelector.selectedMagic.transform.localPosition != magicAttachPoint.localPosition)
-            //     {
-            //         magicSelector.selectedMagic.transform.localPosition = magicAttachPoint.localPosition;
-            //         magicSelector.selectedMagic.transform.localRotation = magicAttachPoint.localRotation;
-            //     }
-            // }
         }
     }
     

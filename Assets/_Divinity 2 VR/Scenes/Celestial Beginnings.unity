@@ -18895,6 +18895,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012479766}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1014474804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6722623711241730551, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+  m_PrefabInstance: {fileID: 4797397349471828740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80733867f12f62746af05d2a0f5b2e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1029221531
 GameObject:
   m_ObjectHideFlags: 0
@@ -19671,6 +19682,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072489835}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1081693346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3953627677114095945, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+  m_PrefabInstance: {fileID: 4797397349471828740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e58542a9e2b5124d8d07e4fa5048591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1085171425
 GameObject:
   m_ObjectHideFlags: 0
@@ -31869,6 +31891,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1457850578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 626517036459474056, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+  m_PrefabInstance: {fileID: 4797397349471828740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f899610f7c111c84fbcbad22c76f434c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1458460649
 GameObject:
   m_ObjectHideFlags: 0
@@ -45140,7 +45173,7 @@ GameObject:
   - component: {fileID: 1878474647}
   - component: {fileID: 1878474646}
   - component: {fileID: 1878474645}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Table - floating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48541,6 +48574,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 626517036459474056, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: explosionForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 626517036459474056, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: explosionRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 982680898164545770, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: menu
       value: 
@@ -48553,6 +48594,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2149117200229318541, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 1457850578}
     - target: {fileID: 2480289687594673436, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -48621,6 +48666,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3953627677114095945, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512461529781513145, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 1014474804}
     - target: {fileID: 5545396644606883155, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -48629,6 +48682,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6722623711241730551, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: rainSurfaceMaker
+      value: 
+      objectReference: {fileID: 1081693346}
     - target: {fileID: 7013281215769277997, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
