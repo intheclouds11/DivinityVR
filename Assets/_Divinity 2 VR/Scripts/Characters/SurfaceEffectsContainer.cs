@@ -61,7 +61,7 @@ namespace intheclouds
         private void RemoveSurfaceEffect(SurfaceEffect surfaceEffect, int i)
         {
             Debug.Log($"Removing {surfaceEffect.name} surface effect");
-            SFXPlayer.Instance.PlaySFX(surfaceEffect.removeAudioClip, surfaceEffect.transform.position, 20);
+            SFXPlayer.Instance.PlaySFX(surfaceEffect.removedAudioClip, surfaceEffect.transform.position, 20);
             if (surfaceEffect.removeVFX)
             {
                 Instantiate(surfaceEffect.removeVFX, surfaceEffect.transform.position, Quaternion.identity);
@@ -70,17 +70,28 @@ namespace intheclouds
             Destroy(surfaceEffectsList[i].gameObject);
             surfaceEffectsList.RemoveAt(i--);
         }
-        
+
         public void RemoveSurfaceEffect(SurfaceEffect surfaceEffect)
         {
-            Debug.Log($"Something removed {surfaceEffect.name}");
-            SFXPlayer.Instance.PlaySFX(surfaceEffect.removeAudioClip, surfaceEffect.transform.position, 20);
+            if (!surfaceEffect)
+            {
+                return;
+            }
+            // var surface = surfaceEffectsList.Find(effect => surfaceEffect).gameObject;
+            
+            Debug.Log($"Removing {surfaceEffect.name} surface effect");
+            
+            if (surfaceEffect.removedAudioClip)
+            {
+                SFXPlayer.Instance.PlaySFX(surfaceEffect.removedAudioClip, surfaceEffect.transform.position, 20);
+            }
+
             if (surfaceEffect.removeVFX)
             {
                 Instantiate(surfaceEffect.removeVFX, surfaceEffect.transform.position, Quaternion.identity);
             }
 
-            Destroy(surfaceEffectsList.Find(effect => surfaceEffect).gameObject);
+            Destroy(surfaceEffect.gameObject);
             surfaceEffectsList.Remove(surfaceEffect);
         }
     }

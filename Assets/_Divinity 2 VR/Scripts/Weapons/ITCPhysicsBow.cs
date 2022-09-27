@@ -9,25 +9,26 @@ namespace intheclouds
     public class ITCPhysicsBow : HVRPhysicsBow
     {
         private PlayerStats wieldingUser;
+        public int requiredAP;
 
         protected override void UpdateBow()
         {
             if (wieldingUser == null) return;
 
-            // if (wieldingUser.ExplorationMode || (wieldingUser.Turn && wieldingUser.CurrentAP >= requiredAP))
-            // {
-            //     NockGrabbable.enabled = true;
-            // }
-            // else
-            // {
-            //     NockGrabbable.enabled = false;
-            // }
+            if (wieldingUser.Turn && wieldingUser.CurrentAP >= requiredAP && !wieldingUser.LocalUserObjects.spiritWander.isActivated)
+            {
+                NockGrabbable.enabled = true;
+            }
+            else if (!wieldingUser.ExplorationMode || wieldingUser.LocalUserObjects.spiritWander.isActivated)
+            {
+                NockGrabbable.enabled = false;
+            }
         }
 
         protected override void OnArrowNocked(HVRArrow arrow)
         {
             base.OnArrowNocked(arrow);
-            arrow.GetComponent<ITCArrow>().combatant = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
+            arrow.GetComponent<ITCArrow>().player = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
         }
 
         public void UpdateWielder()

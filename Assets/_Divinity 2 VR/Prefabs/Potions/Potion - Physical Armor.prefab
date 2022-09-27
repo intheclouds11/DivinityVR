@@ -249,6 +249,7 @@ MonoBehaviour:
   type: 2
   amount: 25
   col: {fileID: 2058290515726172971}
+  requiredAP: 1
 --- !u!114 &1295398786153030582
 MonoBehaviour:
   m_ObjectHideFlags: 0

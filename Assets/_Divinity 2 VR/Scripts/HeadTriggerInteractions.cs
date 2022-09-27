@@ -23,15 +23,26 @@ namespace intheclouds
         {
             if (other.CompareTag("Potion"))
             {
-                SFXPlayer.Instance.PlaySFXAttach(drinkClip, transform, 1, 1);
-                other.tag = "Untagged";
                 potion = other.transform.parent.GetComponent<Potion>();
+
+                if (playerStats.Turn && playerStats.CurrentAP > potion.requiredAP)
+                {
+                    playerStats.CurrentAP -= potion.requiredAP;
+                }
+                else if (!playerStats.ExplorationMode)
+                {
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.errorSFX, transform.position, 1, 1);
+                    return;
+                }
+
+                SFXPlayer.Instance.PlaySFX(drinkClip, transform.position, 1, 1);
+                other.tag = "Untagged";
                 Destroy(potion.GetComponent<HVRTagSocketable>());
-                StartCoroutine(Drink(other));
+                StartCoroutine(Drink());
             }
         }
 
-        private IEnumerator Drink(Collider other)
+        private IEnumerator Drink()
         {
             yield return new WaitForSeconds(0.65f);
 
@@ -48,7 +59,7 @@ namespace intheclouds
                 playerStats.RestorePhysicalArmor(potion.amount);
             }
 
-            Destroy(other.transform.parent.gameObject);
+            Destroy(potion.gameObject);
         }
     }
 }

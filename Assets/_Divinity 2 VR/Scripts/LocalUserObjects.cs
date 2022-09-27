@@ -33,7 +33,7 @@ namespace intheclouds
         public GameObject turnOrderUI;
         public SpiritWander spiritWander;
         public HighlightEffect handAugmentHighlight;
-        public MagicSystem magicSystem;
+        public AbilitySystem magicSystem;
         public Transform magicAttachPoint;
         public GameObject abilities;
         

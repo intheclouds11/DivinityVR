@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: glowPasses.Array.data[3].color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3848798808834779404, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848798808834779404, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108133546386217914, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: m_text
       value: Fireball

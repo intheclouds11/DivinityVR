@@ -4146,7 +4146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6340982279841870088
 Transform:
   m_ObjectHideFlags: 0
@@ -5506,6 +5506,7 @@ MonoBehaviour:
   _currentMagicArmor: 0
   _maxMagicArmor: 0
   _currentAP: 0
+  _startingAP: 0
   _maxAP: 0
   _turn: 0
   _inCombat: 0

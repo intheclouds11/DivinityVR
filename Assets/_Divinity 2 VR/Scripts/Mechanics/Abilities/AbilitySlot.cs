@@ -7,47 +7,47 @@ using UnityEngine.Serialization;
 
 namespace intheclouds
 {
-    public class MagicSlot : MonoBehaviour
+    public class AbilitySlot : MonoBehaviour
     {
         public bool dequipMagic;
-        public Magic magic;
+        public AbilityBase magic;
         public AudioClip onSelectedAudioClip;
         public Color handAugmentColor;
-        private MagicSystem magicSystem;
+        private AbilitySystem abilitySystem;
         public GameObject readyArt;
         public GameObject cooldownArt;
 
         private void Awake()
         {
-            magicSystem = transform.parent.parent.GetComponent<MagicSystem>();
+            abilitySystem = transform.parent.parent.GetComponent<AbilitySystem>();
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
-            if (!magicSystem.spawnedMagic && (other.CompareTag("Left Hand") || other.CompareTag("Right Hand")))
+            if (!abilitySystem.spawnedMagic && other.gameObject.CompareTag("PointerFingerTip"))
             {
-                if (dequipMagic && magicSystem.selectedMagic)
+                if (dequipMagic && abilitySystem.selectedMagic)
                 {
-                    magicSystem.DequipMagic();
-                    SFXPlayer.Instance.PlaySFXAttach(onSelectedAudioClip, other.transform, 1, 0.3f);
+                    abilitySystem.DequipMagic();
+                    SFXPlayer.Instance.PlaySFX(onSelectedAudioClip, other.transform.position, 1, 0.3f);
                     return;
                 }
 
-                if (magic && magicSystem.selectedMagic != magic)
+                if (magic && abilitySystem.selectedMagic != magic)
                 {
-                    if (magicSystem.selectedMagic) // dequip current ability if selected different ability
+                    if (abilitySystem.selectedMagic) // dequip current ability if selected different ability
                     {
-                        magicSystem.DequipMagic();
+                        abilitySystem.DequipMagic();
                     }
 
-                    magicSystem.selectedMagic = magic;
-                    magicSystem.selectedMagic.magicSystem = magicSystem;
-                    magicSystem.selectedMagic.magicSlot = this;
-                    magicSystem.playerLUOs.handAugmentHighlight.overlayColor = handAugmentColor;
-                    magicSystem.playerLUOs.handAugmentHighlight.SetGlowColor(handAugmentColor);
+                    abilitySystem.selectedMagic = magic;
+                    abilitySystem.selectedMagic.magicSystem = abilitySystem;
+                    abilitySystem.selectedMagic.magicSlot = this;
+                    abilitySystem.playerLUOs.handAugmentHighlight.overlayColor = handAugmentColor;
+                    abilitySystem.playerLUOs.handAugmentHighlight.SetGlowColor(handAugmentColor);
                     if (onSelectedAudioClip)
                     {
-                        SFXPlayer.Instance.PlaySFXAttach(onSelectedAudioClip, other.transform, 1, 1);
+                        SFXPlayer.Instance.PlaySFX(onSelectedAudioClip, other.transform.position, 1, 1);
                     }
 
                     SpawnDescription();
@@ -76,23 +76,22 @@ namespace intheclouds
             //     }
             // }
 
-            var description = Instantiate(magic.GetComponent<Magic>().abilityDescription, magicSystem.description.transform);
-            if (magicSystem.description)
+            var description = Instantiate(magic.GetComponent<AbilityBase>().abilityDescription, abilitySystem.description.transform);
+            if (abilitySystem.description)
             {
-                magicSystem.description.SetActive(true);
+                abilitySystem.description.SetActive(true);
                 foreach (Transform child in description.transform)
                 {
                     if (child.name == "Damage text")
                     {
-                        Debug.Log("updating damage text");
-                        int scaledDamageUI = magicSystem.selectedMagic.amount;
-                        if (magicSystem.selectedMagic.elementalType == ElementalType.Fire)
+                        int scaledDamageUI = abilitySystem.selectedMagic.amount;
+                        if (abilitySystem.selectedMagic.elementalType == ElementalType.Fire)
                         {
-                            scaledDamageUI *=  magicSystem.playerLUOs.PlayerStats.level * (1 + magicSystem.playerLUOs.PlayerStats.Pyrokinetic);
+                            scaledDamageUI *=  abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Pyrokinetic);
                         }
-                        else if (magicSystem.selectedMagic.elementalType == ElementalType.Water)
+                        else if (abilitySystem.selectedMagic.elementalType == ElementalType.Water)
                         {
-                            scaledDamageUI *= magicSystem.playerLUOs.PlayerStats.level * (1 + magicSystem.playerLUOs.PlayerStats.Hydrosophist);
+                            scaledDamageUI *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
                         }
                         var damageText = child.GetComponent<TextMeshProUGUI>();
                         var low = (int) Math.Floor(scaledDamageUI * 0.15f);

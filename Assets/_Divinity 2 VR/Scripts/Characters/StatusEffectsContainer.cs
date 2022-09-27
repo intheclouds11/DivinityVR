@@ -12,8 +12,11 @@ namespace intheclouds
         private float cooldownTimerNoCombat;
         private BaseStats combatant;
         private TextMeshProUGUI textUI;
-        private string damageString;
-        private string healingString;
+        private string burningText;
+        private string regeneratingText;
+        private string wetText;
+        private string slowText;
+        private string magicShellText;
 
         private void Start()
         {
@@ -54,17 +57,13 @@ namespace intheclouds
                     if (statusEffect.cooldownTimer > 0)
                     {
                         statusEffect.cooldownTimer -= 1;
-                        if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Damage)
-                        {
-                            RemoveFromTextUI(statusEffect.effectApplication);
-                            AddToTextUI(statusEffect);
-                        }
+                        RemoveFromTextUI(statusEffect);
+                        AddToTextUI(statusEffect);
                     }
 
                     if (statusEffect.cooldownTimer == 0)
                     {
-                        RemoveStatusEffect(i);
-                        i--;
+                        RemoveStatusEffect(i--);
                     }
                 }
             }
@@ -73,7 +72,7 @@ namespace intheclouds
         public void RemoveStatusEffect(int i)
         {
             Debug.Log($"Removing {statusEffectList[i].name} status effect");
-            RemoveFromTextUI(statusEffectList[i].effectApplication);
+            RemoveFromTextUI(statusEffectList[i]);
             Destroy(statusEffectList[i]);
             statusEffectList.RemoveAt(i);
         }
@@ -82,7 +81,7 @@ namespace intheclouds
         {
             Debug.Log($"Removing {effect.name} status effect");
             Destroy(effect);
-            RemoveFromTextUI(effect.effectApplication);
+            RemoveFromTextUI(effect);
             statusEffectList.Remove(effect);
         }
 
@@ -90,7 +89,7 @@ namespace intheclouds
         {
             foreach (var statusEffect in statusEffectList)
             {
-                statusEffect.ActivateEffect();
+                statusEffect.ActivateStatusEffect();
             }
         }
 
@@ -98,13 +97,14 @@ namespace intheclouds
         {
             if (!statusEffect || statusEffect.type == StatusEffect.StatusEffectType.None)
             {
+                // Debug.LogWarning("no status effect assigned!");
                 return;
             }
 
-            if (TryGetComponent(out StatusEffect preExistingEffect))
+            if (TryGetComponent(out StatusEffect preExistingEffect) && statusEffect.type == preExistingEffect.type)
             {
                 preExistingEffect.SetEffectVars(statusEffect);
-                RemoveFromTextUI(statusEffect.effectApplication);
+                RemoveFromTextUI(statusEffect);
                 AddToTextUI(statusEffect);
                 Debug.Log("status effect reapplied");
             }
@@ -116,6 +116,32 @@ namespace intheclouds
                 AddToTextUI(statusEffect);
                 Debug.Log("status effect applied (first time)");
             }
+
+            CheckEffectInteraction(statusEffect);
+        }
+
+        private void CheckEffectInteraction(StatusEffect statusEffect)
+        {
+            if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
+            {
+                for (int i = 0; i < statusEffectList.Count; i++)
+                {
+                    if (statusEffectList[i].type == StatusEffect.StatusEffectType.Burning)
+                    {
+                        RemoveStatusEffect(i--);
+                    }
+                }
+            }
+            else if (statusEffect.type == StatusEffect.StatusEffectType.Burning)
+            {
+                for (int i = 0; i < statusEffectList.Count; i++)
+                {
+                    if (statusEffectList[i].type == StatusEffect.StatusEffectType.Wet)
+                    {
+                        RemoveStatusEffect(i--);
+                    }
+                }
+            }
         }
 
         private void AddToTextUI(StatusEffect statusEffect)
@@ -125,23 +151,34 @@ namespace intheclouds
                 textUI.text += $"\n";
             }
 
-            if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Damage)
+            if (statusEffect.type == StatusEffect.StatusEffectType.Burning)
             {
-                damageString = $"{statusEffect.type.ToString()} damages {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
-                textUI.text += damageString;
+                burningText = $"{statusEffect.type.ToString()} damages {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
+                textUI.text += burningText;
             }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Healing)
+            else if (statusEffect.type == StatusEffect.StatusEffectType.Regenerating)
             {
-                healingString = $"{statusEffect.type.ToString()} heals {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
-                textUI.text += healingString;
+                regeneratingText = $"{statusEffect.type.ToString()} heals {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
+                textUI.text += regeneratingText;
             }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.RestoreMagicArmor)
+            else if (statusEffect.type == StatusEffect.StatusEffectType.MagicShell)
             {
-                textUI.text += $"{statusEffect.type.ToString()} restores {statusEffect.effectAmount} magic armor for {statusEffect.cooldownTimer} more turn(s)";
+                magicShellText = $"{statusEffect.type.ToString()} heals {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
+                textUI.text += magicShellText;
+            }
+            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Wet)
+            {
+                wetText = $"{statusEffect.type.ToString()}! for {statusEffect.cooldownTimer} more turn(s)";
+                textUI.text += wetText;
+            }
+            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Slow)
+            {
+                slowText = $"{statusEffect.type.ToString()}! for {statusEffect.cooldownTimer} more turn(s)";
+                textUI.text += slowText;
             }
             else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.RestorePhysicalArmor)
             {
-                textUI.text += $"{statusEffect.type.ToString()} restores {statusEffect.effectAmount} physical armor for {statusEffect.cooldownTimer} more turn(s)";
+                textUI.text += $"{statusEffect.type.ToString()} increases magic armor by {statusEffect.effectAmount} for {statusEffect.cooldownTimer} more turn(s)";
             }
             else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.IncreaseMagicArmor)
             {
@@ -153,12 +190,22 @@ namespace intheclouds
             }
         }
 
-        private void RemoveFromTextUI(StatusEffect.StatusEffectApplication effectApplication)
+        private void RemoveFromTextUI(StatusEffect effect)
         {
-            if (effectApplication == StatusEffect.StatusEffectApplication.Damage)
+            if (effect.effectApplication == StatusEffect.StatusEffectApplication.Damage)
             {
-                textUI.text = textUI.text.Replace(damageString, string.Empty);
+                textUI.text = textUI.text.Replace(burningText, string.Empty);
             }
+            else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Wet)
+            {
+                textUI.text = textUI.text.Replace(wetText, string.Empty);
+            }
+            else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Slow)
+            {
+                textUI.text = textUI.text.Replace(slowText, string.Empty);
+            }
+
+            textUI.text = textUI.text.Replace(Environment.NewLine, "");
         }
     }
 }

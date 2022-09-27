@@ -10,10 +10,10 @@ using UnityEngine.Serialization;
 
 namespace intheclouds
 {
-    public class MagicSystem : MonoBehaviour
+    public class AbilitySystem : MonoBehaviour
     {
-        public GameObject magicSlots;
-        public Magic selectedMagic;
+        public GameObject abilitySlots;
+        public AbilityBase selectedMagic;
         public GameObject spawnedMagic;
         public GameObject description;
         public LocalUserObjects playerLUOs;
@@ -33,9 +33,9 @@ namespace intheclouds
             leftHandGrabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
             rightHandGrabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
 
-            if (magicSlots.activeInHierarchy)
+            if (abilitySlots.activeInHierarchy)
             {
-                magicSlots.SetActive(false);
+                abilitySlots.SetActive(false);
             }
         }
 
@@ -62,16 +62,16 @@ namespace intheclouds
 
         private void SelectorUpdate()
         {
-            if (leftController.TrackpadButtonState.JustActivated && !magicSlots.activeSelf)
+            if (!spawnedMagic && leftController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
             {
                 ShowSelector(playerLUOs.leftHandMagicSelectorSpawn.transform, leftController);
             }
-            else if (rightController.TrackpadButtonState.JustActivated && !magicSlots.activeSelf)
+            else if (!spawnedMagic && rightController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
             {
                 ShowSelector(playerLUOs.rightHandMagicSelectorSpawn.transform, rightController);
             }
 
-            if (!magicSlots.activeSelf)
+            if (!abilitySlots.activeSelf)
             {
                 return;
             }
@@ -94,7 +94,7 @@ namespace intheclouds
             newEulerAngles = new Vector3(30, newEulerAngles.y, 0);
             transform.eulerAngles = newEulerAngles;
 
-            magicSlots.SetActive(true);
+            abilitySlots.SetActive(true);
             if (description.transform.childCount > 0)
             {
                 description.SetActive(true);
@@ -112,7 +112,7 @@ namespace intheclouds
                 playerLUOs.handAugmentHighlight.highlighted = false;
             }
 
-            magicSlots.SetActive(false);
+            abilitySlots.SetActive(false);
             if (description.transform.childCount == 1)
             {
                 description.SetActive(false);
@@ -121,7 +121,7 @@ namespace intheclouds
 
         private void CheckMagicActivation()
         {
-            if (!spawnedMagic && selectedMagic.cooldownTimer == 0)
+            if (!spawnedMagic && selectedMagic.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP > selectedMagic.requiredAP && !playerLUOs.spiritWander.isActivated)
             {
                 if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
@@ -149,8 +149,9 @@ namespace intheclouds
                 Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
             }
 
+            playerLUOs.PlayerStats.CurrentAP -= selectedMagic.requiredAP;
             spawnedMagic.SetActive(true);
-            spawnedMagic.GetComponent<Magic>().caster = playerLUOs.PlayerStats;
+            spawnedMagic.GetComponent<AbilityBase>().caster = playerLUOs.PlayerStats;
             Grabbable = spawnedMagic.GetComponent<HVRGrabbable>();
             Grabber.TryGrab(Grabbable);
         }
@@ -193,12 +194,12 @@ namespace intheclouds
 
         public void Cooldown()
         {
-            foreach (Transform slotGO in magicSlots.transform)
+            foreach (Transform slotGO in abilitySlots.transform)
             {
-                var slot = slotGO.GetComponent<MagicSlot>();
+                var slot = slotGO.GetComponent<AbilitySlot>();
                 if (slot.magic == null)
                 {
-                    return;
+                    continue;
                 }
 
                 if (slot.magic.cooldownTimer > 0)

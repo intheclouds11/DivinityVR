@@ -33,7 +33,7 @@ namespace intheclouds
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (combatant == null || combatant.LocalUserObjects.spiritWander.activated || !combatant.Turn && !combatant.ExplorationMode)
+                if (combatant == null || combatant.LocalUserObjects.spiritWander.isActivated || !combatant.Turn && !combatant.ExplorationMode)
                 {
                     return;
                 }

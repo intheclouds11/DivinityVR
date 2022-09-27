@@ -31,7 +31,7 @@ namespace intheclouds
 
         private void Update()
         {
-            if (!playerStats.Turn || playerStats.LocalUserObjects.spiritWander.activated) return;
+            if (!playerStats.Turn || playerStats.LocalUserObjects.spiritWander.isActivated) return;
             if (transform.position != previousPosition)
             {
                 TrackMovementApUsage();

@@ -1,18 +1,16 @@
 using System;
 using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
-using HurricaneVR.Framework.Core.Grabbers;
-using HurricaneVR.Framework.Core.Player;
-using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
     public class SpiritWander : MonoBehaviour
     {
-        public bool activated;
+        public bool isActivated;
         public SpiritMovement spiritMovement;
-        public Transform repositionTransform;
+        public Transform repositionTransformInitial;
         public GameObject[] objectsToDeparent;
         public Transform spawnParent;
         public float timeInTriggerRequired = 1;
@@ -24,16 +22,18 @@ namespace intheclouds
         private Transform[] originalParents;
         private Vector3[] originalLocalPositions;
         private Quaternion[] originalLocalRotations;
-        private Vector3 initialCharacterPosition;
-        private Quaternion initialCharacterRotation;
-        private HVRPlayerController hvrPlayerController;
+        private Vector3 savedPhysicalPosition;
+        private Quaternion savedPhysicalRotation;
+        private Vector3 savedSpiritPosition;
+        private Quaternion savedSpiritRotation;
+        private LocalUserObjects playerLUOs;
         private AudioSource audioSource;
 
-        public event Action SpiritFormToggled; 
-        
+        public event Action SpiritFormToggled;
+
         private void Start()
         {
-            hvrPlayerController = transform.root.GetComponent<LocalUserObjects>().HVRPlayerController;
+            playerLUOs = transform.root.GetComponent<LocalUserObjects>();
             SaveOriginalTransforms();
             audioSource = GetComponent<AudioSource>();
         }
@@ -70,28 +70,51 @@ namespace intheclouds
             }
         }
 
-        // toggle spirit form and SpiritMovement.cs
         public void ToggleSpiritForm()
         {
-            if (!transform.root.GetComponent<PlayerStats>().InCombat)
+            if (!playerLUOs.PlayerStats.InCombat)
             {
                 return;
             }
+
             audioSource.Play();
-            if (!activated)
+            if (!isActivated)
             {
                 Separate();
-                hvrPlayerController.transform.position = repositionTransform.position;
+                Reposition();
                 spiritMovement.enabled = true;
             }
             else
             {
                 Reunite();
+                Reposition();
                 spiritMovement.enabled = false;
             }
-            
-            activated = !activated;
+
+            isActivated = !isActivated;
             SpiritFormToggled?.Invoke();
+        }
+
+        private void Reposition()
+        {
+            if (!isActivated)
+            {
+                if (savedSpiritPosition != Vector3.zero && savedSpiritRotation != Quaternion.identity)
+                {
+                    playerLUOs.HVRPlayerController.transform.position = savedSpiritPosition;
+                    playerLUOs.HVRPlayerController.transform.rotation = savedSpiritRotation;
+                }
+                else
+                {
+                    playerLUOs.HVRPlayerController.transform.position = repositionTransformInitial.position;
+                }
+            }
+
+            else
+            {
+                playerLUOs.HVRPlayerController.transform.position = savedPhysicalPosition;
+                playerLUOs.HVRPlayerController.transform.rotation = savedPhysicalRotation;
+            }
         }
 
         // save original transform, spawn another instance of the player and remove any unnecessary components
@@ -109,6 +132,7 @@ namespace intheclouds
                 {
                     physicalFormObject.layer = LayerMask.NameToLayer("Default");
                 }
+
                 foreach (var component in components)
                 {
                     if (component is not (Transform or SkinnedMeshRenderer or MeshRenderer or MeshFilter))
@@ -139,14 +163,14 @@ namespace intheclouds
         // Return to position and destroy spawnedObjs
         private void Reunite()
         {
-            hvrPlayerController.transform.position = initialCharacterPosition;
-            hvrPlayerController.transform.rotation = initialCharacterRotation;
+            savedSpiritPosition = playerLUOs.HVRPlayerController.transform.position;
+            savedSpiritRotation = playerLUOs.HVRPlayerController.transform.rotation;
 
             foreach (var spawnedGO in spawnedGOs)
             {
                 Destroy(spawnedGO);
             }
-            
+
             spawnedGOs = null;
         }
 
@@ -154,8 +178,8 @@ namespace intheclouds
         {
             if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
             if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
-            initialCharacterPosition = hvrPlayerController.transform.position;
-            initialCharacterRotation = hvrPlayerController.transform.rotation;
+            savedPhysicalPosition = playerLUOs.HVRPlayerController.transform.position;
+            savedPhysicalRotation = playerLUOs.HVRPlayerController.transform.rotation;
 
             for (int i = 0; i < objectsToDeparent.Length; i++)
             {

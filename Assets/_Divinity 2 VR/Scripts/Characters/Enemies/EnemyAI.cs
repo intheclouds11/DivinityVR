@@ -109,7 +109,7 @@ namespace intheclouds
             }
 
             targetedPlayerSW = aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
-            if (targetedPlayerSW.activated)
+            if (targetedPlayerSW.isActivated)
             {
                 aiDestinationSetter.target = targetedPlayerSW.spawnedGOs[0].transform;
             }
@@ -121,7 +121,7 @@ namespace intheclouds
 
         private void TargetSpiritFormToggled()
         {
-            if (targetedPlayerSW.activated)
+            if (targetedPlayerSW.isActivated)
             {
                 aiDestinationSetter.target = targetedPlayerSW.spawnedGOs[0].transform;
             }
@@ -133,7 +133,7 @@ namespace intheclouds
 
         public void EndTurn()
         {
-            animator.SetBool(_isAttacking, false);
+            AttackAnimFinished();
             animator.SetBool(_isWalking, false);
             ai.canMove = false;
             targetedPlayerSW.SpiritFormToggled -= TargetSpiritFormToggled;
@@ -241,7 +241,7 @@ namespace intheclouds
             Debug.Log("DAMAGE PLAYER");
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackHitAudioClip, transform, 0.9f, 1.1f, 0.5f, 20);
             PlayerStats player;
-            if (targetedPlayerSW.activated)
+            if (targetedPlayerSW.isActivated)
             {
                 player = targetedPlayerSW.transform.root.GetComponent<PlayerStats>();
             }

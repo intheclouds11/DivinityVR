@@ -17,6 +17,7 @@ namespace intheclouds
         public PotionType type;
         public int amount;
         public Collider col;
+        public int requiredAP;
 
         public void ToggleTagOnSocketed()
         {

@@ -14,6 +14,7 @@ namespace intheclouds
         public int cooldown;
         public int cooldownTimer;
         public StatusEffectApplication effectApplication;
+        public AudioClip activatedClip;
 
         private void Start()
         {
@@ -29,12 +30,7 @@ namespace intheclouds
             effectApplication = effect.effectApplication;
         }
 
-        public void ActivateEffect()
-        {
-            TryBurning();
-        }
-
-        private void TryBurning()
+        public void ActivateStatusEffect()
         {
             if (type == StatusEffectType.Burning)
             {
@@ -42,13 +38,24 @@ namespace intheclouds
                 {
                     int damage = (int) (4 * (1 + player.level * 0.5f));
                     player.TakeDamage(null, damage, DamageType.Magic, ElementalType.Fire, null);
-                    SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.fireDamageSFX, player.LocalUserObjects.HVRPlayerController.gameObject.transform, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 0.5f);
                 }
                 else if (TryGetComponent(out EnemyStats enemy))
                 {
                     int damage = (int) (4 * (1 + enemy.level * 0.5f));
                     enemy.TakeDamage(null, damage, DamageType.Magic, ElementalType.Fire, null);
-                    SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.fireDamageSFX, enemy.gameObject.transform, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 0.5f);
+                }
+            }
+            else if (type == StatusEffectType.Wet)
+            {
+                if (TryGetComponent(out PlayerStats player))
+                {
+                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 0.5f);
+                }
+                else if (TryGetComponent(out EnemyStats enemy))
+                {
+                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 0.5f);
                 }
             }
         }
@@ -68,6 +75,9 @@ namespace intheclouds
             Stunned, // cured by Armour of Frost
             Silenced, // cured by First Aid
             Slowed, // cured by Haste
+            Regenerating,
+            MagicShell,
+            FavorableWind,
             None
         }
 
@@ -79,6 +89,9 @@ namespace intheclouds
             IncreaseMagicArmor,
             RestorePhysicalArmor,
             IncreasePhysicalArmor,
+            Wet,
+            Slow,
+            None,
         }
     }
 }

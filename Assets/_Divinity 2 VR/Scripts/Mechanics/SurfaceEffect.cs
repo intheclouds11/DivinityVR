@@ -12,43 +12,98 @@ namespace intheclouds
         public int damage;
         public int cooldown = 5;
         public int cooldownTimer;
-        public AudioClip damageAudioClip;
-        public AudioClip removeAudioClip;
+        public AudioClip activatedAudioClip;
+        public AudioClip removedAudioClip;
         public GameObject removeVFX;
         public BaseStats caster;
-        
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                Debug.Log($"{other.gameObject.name} stepped on burning surface!");
-                if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
-                {
-                    damage *= caster.level * (1 + caster.Pyrokinetic);
-                    combatantDamaged.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, elementalType, statusEffect);
-                }
-
-                SFXPlayer.Instance.PlaySFXAttach(damageAudioClip, transform, 1, 1);
-            }
-            else if (other.CompareTag("Enemy"))
-            {
-                if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
-                {
-                    damage *= caster.level * (1 + caster.Pyrokinetic);
-                    combatantDamaged.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, elementalType, statusEffect);
-                }
-
-                SFXPlayer.Instance.PlaySFXAttach(damageAudioClip, transform, 1, 1);
-            }
+            ActivateSurfaceEffect(other);
         }
 
-        private void OnParticleCollision(GameObject other)
+        private void ActivateSurfaceEffect(Collider other)
         {
-            Debug.Log(other);
-            Debug.Log(other.name);
-            Debug.Log(other.gameObject);
-            Debug.Log(other.gameObject.name);
-            SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(this);
+            if (elementalType == ElementalType.Fire)
+            {
+                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    FireSurfaceDamagePlayer(other);
+                }
+                else if (other.CompareTag("Enemy"))
+                {
+                    FireSurfaceDamageEnemy(other);
+                }
+            }
+            else if (elementalType == ElementalType.Water)
+            {
+                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    MakePlayerWet(other);
+                }
+                else if (other.CompareTag("Enemy"))
+                {
+                    MakeEnemyWet(other);
+                }
+            }
         }
+
+        private void MakePlayerWet(Collider other)
+        {
+            if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            {
+                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
+            }
+
+            PlayActivationSound();
+        }
+
+        private void MakeEnemyWet(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            {
+                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
+            }
+
+            PlayActivationSound();
+        }
+
+        private void FireSurfaceDamageEnemy(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            {
+                damage *= caster.level * (1 + caster.Pyrokinetic);
+                combatantDamaged.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, elementalType, statusEffect);
+            }
+
+            PlayActivationSound();
+        }
+
+        private void FireSurfaceDamagePlayer(Collider other)
+        {
+            if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            {
+                damage *= caster.level * (1 + caster.Pyrokinetic);
+                combatantDamaged.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, elementalType, statusEffect);
+            }
+
+            PlayActivationSound();
+        }
+
+
+        private void PlayActivationSound()
+        {
+            SFXPlayer.Instance.PlaySFX(activatedAudioClip, transform.position, 1, 1);
+        }
+        
+        // Deleted since should only remove surface if a new surface spawns on it
+        // private void OnParticleCollision(GameObject other)
+        // {
+        //     if (this.statusEffect.type == StatusEffect.StatusEffectType.Wet)
+        //     {
+        //         return;
+        //     }
+        //     SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(this);
+        // }
     }
 }

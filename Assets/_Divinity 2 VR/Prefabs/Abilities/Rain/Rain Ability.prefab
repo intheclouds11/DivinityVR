@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain Ability - particles (UniStorm)
       objectReference: {fileID: 0}
+    - target: {fileID: 7036404504200933098, guid: b737a24c783d075478cebdec6bf3b95c, type: 3}
+      propertyPath: surfaceEffect
+      value: 
+      objectReference: {fileID: 3197582652376567645, guid: eff9ee8bef528be4b9a6214f3933cb91, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b737a24c783d075478cebdec6bf3b95c, type: 3}
 --- !u!1 &861856225080449213 stripped

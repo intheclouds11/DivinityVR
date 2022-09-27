@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
-    public class Fireball : Magic
+    public class Fireball : AbilityBase
     {
         private void OnCollisionEnter(Collision collision)
         {
@@ -27,7 +27,7 @@ namespace intheclouds
 
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (caster.LocalUserObjects.spiritWander.activated || !caster.Turn && !caster.ExplorationMode || caster.CurrentAP < requiredAP)
+                if (caster.LocalUserObjects.spiritWander.isActivated || !caster.Turn && !caster.ExplorationMode || caster.CurrentAP < requiredAP)
                 {
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(noDamageAudioClip, caster.LocalUserObjects.Camera.transform, 1f, 1.05f, 0.7f, 20);
                     Destroy(gameObject);
@@ -45,13 +45,8 @@ namespace intheclouds
                 enabled = false;
             }
 
-            if (!caster.LocalUserObjects.spiritWander.activated)
+            if (!caster.LocalUserObjects.spiritWander.isActivated)
             {
-                if (caster.Turn)
-                {
-                    caster.UseAP(requiredAP);
-                }
-
                 if (caster.Turn || !caster.InCombat)
                 {
                     OnMagicUsed();
@@ -69,20 +64,26 @@ namespace intheclouds
         private void SpawnFireGround()
         {
             float length = 2;
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, length, 1 << LayerMask.NameToLayer("Ground")))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, length))
             {
-                Debug.Log($"SpawnFireGround hit {hit.collider}");
-                if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || hit.transform.gameObject.layer == LayerMask.NameToLayer("SurfaceElement"))
                 {
-                    SurfaceEffectsContainer.Instance.surfaceEffectsList.Remove(preexistingEffect);
-                    Destroy(preexistingEffect.gameObject);
+                    Debug.Log($"SpawnFireGround hit {hit.collider}");
+                    if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
+                    {
+                        Debug.Log("HIT PREEXISTING FIRE SURFACE");
+                        SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(preexistingEffect);
+                        // SurfaceEffectsContainer.Instance.surfaceEffectsList.Remove(preexistingEffect);
+                        // Destroy(preexistingEffect.gameObject);
+                    }
+
+                    Vector3 targetLocation = hit.point;
+                    GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
+                    var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
+                    spawnedSurface.caster = caster;
+                    spawnedSurface.cooldownTimer = spawnedSurface.cooldown;
+                    SurfaceEffectsContainer.Instance.surfaceEffectsList.Add(spawnedSurface);
                 }
-                Vector3 targetLocation = hit.point;
-                GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
-                var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
-                spawnedSurface.caster = caster;
-                spawnedSurface.cooldownTimer = spawnedSurface.cooldown;
-                SurfaceEffectsContainer.Instance.surfaceEffectsList.Add(spawnedSurface);
             }
             else
             {

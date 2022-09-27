@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
-    public class Fortify : Magic
+    public class Fortify : AbilityBase
     {
         
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace HurricaneVR.Framework.Core.Utils
@@ -13,7 +14,9 @@ namespace HurricaneVR.Framework.Core.Utils
         }
 
         public AudioClip fireDamageSFX;
-        public AudioClip noDamageSFX;
+        public AudioClip wetSFX;
+        [FormerlySerializedAs("noDamageSFX")]
+        public AudioClip errorSFX;
         public AudioClip clickSFX;
 
         static SFXPlayer s_Instance;

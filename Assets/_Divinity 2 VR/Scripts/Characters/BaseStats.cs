@@ -95,7 +95,7 @@ namespace intheclouds
         [SerializeField]
         protected GameObject floatingStatsCanvas;
         [SerializeField]
-        protected StatusEffectsContainer statusEffectsContainer;
+        public StatusEffectsContainer statusEffectsContainer;
         public TextMeshProUGUI statusEffectsText;
 
         public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)

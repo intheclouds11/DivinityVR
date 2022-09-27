@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 namespace intheclouds
 {
-    public class Magic : MonoBehaviour
+    public class AbilityBase : MonoBehaviour
     {
         public int cooldown;
         public int cooldownTimer;
@@ -21,8 +21,8 @@ namespace intheclouds
         public GameObject activatedVFX;
         public AudioClip noDamageAudioClip;
         [Header("Debug")]
-        public MagicSystem magicSystem;
-        public MagicSlot magicSlot;
+        public AbilitySystem magicSystem;
+        public AbilitySlot magicSlot;
         public PlayerStats caster;
 
         private void OnEnable()
@@ -49,7 +49,7 @@ namespace intheclouds
 
         protected void OnMagicUsed()
         {
-            var selectedMagic = magicSystem.selectedMagic.GetComponent<Magic>();
+            var selectedMagic = magicSystem.selectedMagic.GetComponent<AbilityBase>();
             selectedMagic.magicSystem.DequipMagic();
             selectedMagic.cooldownTimer = cooldown;
             magicSlot.readyArt.SetActive(false);

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3197582652376499122}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,13 +45,13 @@ GameObject:
   - component: {fileID: 3197582652376554220}
   - component: {fileID: 3197582652370120190}
   - component: {fileID: 3197582652369731744}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3197582652376554220
 Transform:
   m_ObjectHideFlags: 0
@@ -190,13 +190,13 @@ GameObject:
   - component: {fileID: 3197582652376484220}
   - component: {fileID: 3197582652394915822}
   - component: {fileID: 3197582652394888080}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3197582652376484220
 Transform:
   m_ObjectHideFlags: 0
@@ -4869,11 +4869,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3197582652376567644}
   - component: {fileID: 3197582652376567645}
-  - component: {fileID: 3311579263053088346}
+  - component: {fileID: 1126619215864972833}
   - component: {fileID: 8230718625336173758}
   - component: {fileID: 678691658454706369}
-  m_Layer: 0
-  m_Name: BurningSurfaceVFX
+  m_Layer: 30
+  m_Name: WaterSurface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4908,15 +4908,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed92b5252516c94bae7bd989c85bb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEffect: {fileID: 4555541019295191222, guid: 6c17be75040e1bd418a9a503e12ddab9, type: 3}
-  elementalType: 0
+  statusEffect: {fileID: 4555541019295191222, guid: d9f90081f736e4e498badc3cb0dea3f1, type: 3}
+  elementalType: 1
   damage: 4
-  damageAudioClip: {fileID: 8300000, guid: fe3b797ec81f61d4daf3032fd0980b1e, type: 3}
-  removeAudioClip: {fileID: 8300000, guid: 8b621253f894b2e40b9266e9e279c9e2, type: 3}
-  caster: {fileID: 0}
-  cooldown: 5
+  cooldown: 15
   cooldownTimer: 0
---- !u!114 &3311579263053088346
+  activatedAudioClip: {fileID: 0}
+  removedAudioClip: {fileID: 0}
+  removeVFX: {fileID: 0}
+  caster: {fileID: 0}
+--- !u!114 &1126619215864972833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4979,13 +4980,13 @@ GameObject:
   - component: {fileID: 3197582652376577530}
   - component: {fileID: 3197582652372703530}
   - component: {fileID: 3197582652364343048}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3197582652376577530
 Transform:
   m_ObjectHideFlags: 0
@@ -5125,7 +5126,7 @@ GameObject:
   - component: {fileID: 3184697563756217792}
   - component: {fileID: 3311631549850334580}
   - component: {fileID: 3312463126389326422}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5141,8 +5142,8 @@ Transform:
   m_GameObject: {fileID: 3198632116782804386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.1, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 0.15, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3197582652376499122}
   m_RootOrder: 2
@@ -5175,7 +5176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e413242fca68c74083ccc376328bc62, type: 2}
+  - {fileID: 2100000, guid: eea0d6374374c01479485992ff9aa389, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5236,8 +5237,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.19416717
-      value: 0.49194476
+      time: 0.18177703
+      value: 0.4266295
       inSlope: 0.045469437
       outSlope: 0.045469437
       tangentMode: 0
@@ -5245,8 +5246,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5331898
-      value: 0.4701688
+      time: 0.5042591
+      value: 0.4016492
       inSlope: -0.13836016
       outSlope: -0.13836016
       tangentMode: 0
@@ -5265,6 +5266,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  GraphTimeMultiplier: 3.5
+  GraphTimeMultiplier: 2
   GraphIntensityMultiplier: 1
   IsLoop: 1

@@ -309,7 +309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49520705065137971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0262, y: -0.0415, z: -0.0354}
+  m_LocalPosition: {x: -0.0262, y: -0.0415, z: -0.0227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 379996656594710145}
   m_Layer: 21
   m_Name: coll_LIndexFinger3
-  m_TagString: Untagged
+  m_TagString: PointerFingerTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3951,7 +3951,7 @@ GameObject:
   - component: {fileID: 247038492871108306}
   m_Layer: 21
   m_Name: RHand
-  m_TagString: Untagged
+  m_TagString: Right Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9711,7 +9711,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3686207
+    m_Bits: 1077428031
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -11981,7 +11981,7 @@ GameObject:
   - component: {fileID: 8904392043067858227}
   - component: {fileID: 5786721376910532819}
   m_Layer: 0
-  m_Name: MagicSystem
+  m_Name: AbilitySystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13479,7 +13479,7 @@ GameObject:
   - component: {fileID: 3878385632690597869}
   - component: {fileID: 3878385632690597868}
   m_Layer: 8
-  m_Name: Spirit Wander Offset
+  m_Name: Spirit Wander Offset - Initial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17035,7 +17035,7 @@ GameObject:
   - component: {fileID: 8560951928827905346}
   m_Layer: 21
   m_Name: RightHandModel
-  m_TagString: Untagged
+  m_TagString: Right Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18772,7 +18772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103673736456359647}
   m_Layer: 0
-  m_Name: MagicSlots
+  m_Name: AbilitySlots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25661,7 +25661,7 @@ GameObject:
   - component: {fileID: 7431296391060014723}
   m_Layer: 21
   m_Name: LHand
-  m_TagString: Untagged
+  m_TagString: Left Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28154,7 +28154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7917643086448588941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0248, y: -0.0409, z: -0.0141}
+  m_LocalPosition: {x: -0.0248, y: -0.0409, z: -0.0215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29135,7 +29135,7 @@ GameObject:
   - component: {fileID: 8084468306333583266}
   m_Layer: 21
   m_Name: coll_RIndexFinger3
-  m_TagString: Untagged
+  m_TagString: PointerFingerTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32635,6 +32635,18 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.732
       objectReference: {fileID: 0}
+    - target: {fileID: 4147727301802800236, guid: 39df1c84ce00f3c4c8646501b395df68, type: 3}
+      propertyPath: maxSpawn
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423496986419453056, guid: 39df1c84ce00f3c4c8646501b395df68, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423496986419453056, guid: 39df1c84ce00f3c4c8646501b395df68, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6921882747449717690, guid: 39df1c84ce00f3c4c8646501b395df68, type: 3}
       propertyPath: m_Name
       value: Rain Ability
@@ -33196,6 +33208,10 @@ PrefabInstance:
       propertyPath: timeInTriggerRequired
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5844585398895304143, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
+      propertyPath: repositionTransformInitial
+      value: 
+      objectReference: {fileID: 3878385632690597869}
     - target: {fileID: 5844585398895304143, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
       propertyPath: objectsToDeparent.Array.data[0]
       value: 

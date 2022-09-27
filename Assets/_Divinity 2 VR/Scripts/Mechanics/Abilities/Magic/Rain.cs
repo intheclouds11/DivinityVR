@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace intheclouds
 {
-    public class Rain : Magic
+    public class Rain : AbilityBase
     {
         public Rigidbody rb;
         public AudioClip activatedClip;

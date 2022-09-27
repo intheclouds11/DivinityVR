@@ -54,6 +54,7 @@ MonoBehaviour:
   type: 0
   amount: 25
   col: {fileID: 7059603523623461341}
+  requiredAP: 1
 --- !u!114 &5066610884980448230
 MonoBehaviour:
   m_ObjectHideFlags: 0

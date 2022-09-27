@@ -1287,6 +1287,7 @@ MonoBehaviour:
   StringSpring: 1000
   StringHeldSpring: 100
   CanNockRotate: 0
+  requiredAP: 2
 --- !u!114 &1937837834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,6 +1519,8 @@ MonoBehaviour:
   impactSpeedRequired: 0.1
   impactClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
   volume: 0.1
+  maxPitch: 1
+  minPitch: 1
 --- !u!1 &5770237466304340991
 GameObject:
   m_ObjectHideFlags: 0
