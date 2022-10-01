@@ -37,11 +37,6 @@ namespace intheclouds
                 ProcessHitPlayer(collision);
             }
 
-            if (player != null && !player.ExplorationMode)
-            {
-                player.UseAP(requiredAP);
-            }
-
             base.OnCollisionEnter(collision);
             enabled = false;
         }

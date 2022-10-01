@@ -8446,8 +8446,8 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 1
-    collidesWithDynamic: 1
+    collisionMessages: 0
+    collidesWithDynamic: 0
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
@@ -9488,7 +9488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surfaceEffect: {fileID: 3197582652376567645, guid: eff9ee8bef528be4b9a6214f3933cb91, type: 3}
-  maxSpawn: 4
+  maxSpawn: 5
 --- !u!1 &6351114389315404108
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,11 +16,6 @@ namespace intheclouds
         public StatusEffectApplication effectApplication;
         public AudioClip activatedClip;
 
-        private void Start()
-        {
-            cooldownTimer = cooldown;
-        }
-
         public void SetEffectVars(StatusEffect effect)
         {
             type = effect.type;

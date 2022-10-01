@@ -137,9 +137,9 @@ namespace intheclouds
                 _explorationMode = value;
                 if (_explorationMode)
                 {
-                    _turn = false;
-                    playerMovementAP.EndTurn();
-                    InCombat = false;
+                    // _turn = false;
+                    // playerMovementAP.EndTurn();
+                    // InCombat = false;
                 }
             }
         }
@@ -181,6 +181,7 @@ namespace intheclouds
                 else
                 {
                     playerMovementAP.enabled = false;
+                    _turn = false;
                 }
             }
         }

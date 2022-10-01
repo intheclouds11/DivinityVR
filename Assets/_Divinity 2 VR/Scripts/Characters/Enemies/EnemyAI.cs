@@ -45,9 +45,9 @@ namespace intheclouds
         {
             if (other.CompareTag("Player"))
             {
-                if (attackOnSight && !enemyStats.InCombat)
+                if (!enemyStats.InCombat && attackOnSight)
                 {
-                    GameManager.Instance.UpdateGameState(GameState.CombatStart, enemyStats);
+                    GameManager.Instance.UpdateGameState(GameState.CombatStart);
                 }
             }
         }

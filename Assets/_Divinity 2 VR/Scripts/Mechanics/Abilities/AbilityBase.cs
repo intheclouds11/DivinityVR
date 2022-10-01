@@ -1,3 +1,4 @@
+using System;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Shared;
@@ -18,14 +19,14 @@ namespace intheclouds
         public StatusEffect statusEffect;
         public ElementalType elementalType;
         public GameObject activatedVFX;
-        public AudioClip noDamageAudioClip;
+        public AudioClip activatedAudioClip;
         [Header("Debug")]
         public AbilitySystem abilitySystem;
         public AbilitySlot abilitySlot;
         public PlayerStats caster;
         public HVRHandSide castingHand;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (amount != 0)
             {
@@ -33,7 +34,11 @@ namespace intheclouds
             }
         }
 
-        private void ApplyScaling()
+        protected virtual void OnDisable()
+        {
+        }
+
+        protected virtual void ApplyScaling()
         {
             if (elementalType == ElementalType.Fire)
             {
@@ -43,14 +48,21 @@ namespace intheclouds
             {
                 amount *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
             }
+            else if (elementalType == ElementalType.Earth)
+            {
+                amount *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Geomancer);
+            }
 
             Debug.Log($"updated {name} amount based on player stats");
         }
 
-        public void OnAbilityUsed()
+        protected virtual void OnAbilityUsed()
         {
-            activatedVFX.transform.parent = null;
-            activatedVFX.SetActive(true);
+            if (activatedVFX != null)
+            {
+                activatedVFX.transform.parent = null;
+                activatedVFX.SetActive(true);
+            }
 
             if (castingHand == HVRHandSide.Left)
             {
@@ -68,6 +80,11 @@ namespace intheclouds
             abilitySlot.cooldownArt.SetActive(true);
             abilitySlot.cooldownArt.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Cooldown: {cooldown}";
 
+            ResetAbilityTransform();
+        }
+
+        protected void ResetAbilityTransform()
+        {
             gameObject.SetActive(false);
             transform.parent = caster.LocalUserObjects.abilities.transform;
             transform.position = caster.LocalUserObjects.abilities.transform.position;

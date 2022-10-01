@@ -32,8 +32,7 @@ namespace intheclouds
             {
                 if (caster.LocalUserObjects.spiritWander.isActivated || !caster.Turn && !caster.ExplorationMode || caster.CurrentAP < requiredAP)
                 {
-                    SFXPlayer.Instance.PlaySFXRandomPitchAttach(noDamageAudioClip, caster.LocalUserObjects.Camera.transform, 1f, 1.05f, 0.7f, 20);
-                    Destroy(gameObject);
+                    ResetAbilityTransform();
                     return;
                 }
 
@@ -92,8 +91,7 @@ namespace intheclouds
                         // Destroy(preexistingEffect.gameObject);
                     }
 
-                    Vector3 targetLocation = hit.point;
-                    GameObject fireSurface = Instantiate(surfaceEffect, targetLocation, Quaternion.identity);
+                    GameObject fireSurface = Instantiate(surfaceEffect, hit.point, Quaternion.identity);
                     var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
                     spawnedSurface.caster = caster;
                     spawnedSurface.cooldownTimer = spawnedSurface.cooldown;

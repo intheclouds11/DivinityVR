@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.Exploration, null);
+        UpdateGameState(GameState.Exploration);
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateGameState(GameState newState, EnemyStats enemyEngaged)
+    public void UpdateGameState(GameState newState)
     {
         state = newState;
 
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
                 HandleExploration();
                 break;
             case GameState.CombatStart:
-                HandleCombatStart(enemyEngaged);
+                HandleCombatStart();
                 break;
             case GameState.PlayerTurn:
                 HandlePlayerTurn();
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         // disable AP scripts?
     }
 
-    private void HandleCombatStart(EnemyStats enemyEngaged)
+    private void HandleCombatStart()
     {
         Debug.Log("COMBAT START");
         Dictionary<BaseStats, int> witsList = new Dictionary<BaseStats, int>();
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         foreach (var player in players)
         {
             playersAlive += 1;
-            player.ExplorationMode = false;
+            player.InCombat = true;
             player.GetComponent<LocalUserObjects>().PlayerMovementAP.enabled = true;
             if (player.PlayerControlled)
             {
@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
         foreach (var playerEndCombat in players)
         {
             playerEndCombat.CurrentAP = playerEndCombat.MaxAP;
-            playerEndCombat.ExplorationMode = true;
+            playerEndCombat.InCombat = false;
         }
     }
 

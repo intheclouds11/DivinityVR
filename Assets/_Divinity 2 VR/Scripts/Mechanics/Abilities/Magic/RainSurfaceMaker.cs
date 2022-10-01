@@ -10,18 +10,56 @@ namespace intheclouds
     {
         public SurfaceEffect surfaceEffect;
         public int maxSpawn;
+        public float hitDistance = 15;
         private int spawnedCount;
 
         private void Start()
         {
             InvokeRepeating(nameof(SpawnWaterGround), 0.5f, 0.5f);
+            InvokeRepeating(nameof(CheckCombatantHitRange), 0.5f, 0.5f);
         }
 
         private void OnDisable()
         {
             spawnedCount = 0;
+            CancelInvoke();
         }
+        
+        private void CheckCombatantHitRange()
+        {
+            foreach (PlayerStats player in GameManager.Instance.players)
+            {
+                foreach (var statusEffect in player.statusEffectsContainer.statusEffectList)
+                {
+                    if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
+                    {
+                        return;
+                    }
+                }
+                var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
+                if (dist < hitDistance)
+                {
+                    Helpers.MakePlayerWet(player, surfaceEffect.statusEffect);
+                }
+            }
 
+            foreach (EnemyStats enemy in EnemyManager.Instance.enemyList)
+            {
+                foreach (var statusEffect in enemy.statusEffectsContainer.statusEffectList)
+                {
+                    if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
+                    {
+                        return;
+                    }
+                }
+                var dist = Vector3.Distance(enemy.transform.position, transform.position);
+                if (dist < hitDistance)
+                {
+                    Helpers.MakeEnemyWet(enemy, surfaceEffect.statusEffect);
+                }
+            }
+        }
+        
         private void SpawnWaterGround()
         {
             if (!enabled)

@@ -139,7 +139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Explodes, dealing <color=red> [damage] fire damage.</color>
+  m_text: Provides [#] additional <color=green> Physical Armor</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -243,7 +243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -103, y: -15.8}
+  m_AnchoredPosition: {x: -103, y: -16.6}
   m_SizeDelta: {x: 335, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5272416503647205852
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scales with your level and Intelligence.
+  m_text: Scales with your level and Geomancer.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 3953212158766142780}
   - component: {fileID: 294041555555806034}
   m_Layer: 5
-  m_Name: Fireball Description
+  m_Name: Fortify Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PYROKINETIC
+  m_text: GEOMANCER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -676,8 +676,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286348543
-  m_fontColor: {r: 1, g: 0.48584908, b: 0.48584908, a: 1}
+    rgba: 4278235648
+  m_fontColor: {r: 0, g: 0.6981132, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8917a052c28fc3e46a4a347f18be3378, type: 3}
+  m_Texture: {fileID: 2800000, guid: f468f3a106b5a454b98c04fd3b71d135, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fireball
+  m_text: Fortify
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -980,7 +980,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 157, y: 109.59975}
-  m_SizeDelta: {x: 37, y: 19}
+  m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8211789587312228485
 CanvasRenderer:
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6382f1d5bab2f4b469037189f55889e2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 07836eab15e83424e81896ddaeee8730, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Set <color=red>Burning</color> for 2 turn(s).
+  m_text: Set <color=green>Fortified</color> for 2 turn(s).
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}

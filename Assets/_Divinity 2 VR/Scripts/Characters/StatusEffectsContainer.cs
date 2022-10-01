@@ -9,6 +9,7 @@ namespace intheclouds
     public class StatusEffectsContainer : MonoBehaviour
     {
         public List<StatusEffect> statusEffectList;
+        public int explorationCooldownSpeed = 4;
         private float cooldownTimerNoCombat;
         private BaseStats combatant;
         private TextMeshProUGUI textUI;
@@ -34,11 +35,11 @@ namespace intheclouds
 
         public void CooldownExploration()
         {
-            if (cooldownTimerNoCombat < 2)
+            if (cooldownTimerNoCombat < explorationCooldownSpeed)
             {
                 cooldownTimerNoCombat += Time.deltaTime;
             }
-            else if (cooldownTimerNoCombat >= 2)
+            else if (cooldownTimerNoCombat >= explorationCooldownSpeed)
             {
                 Cooldown();
                 cooldownTimerNoCombat = 0;

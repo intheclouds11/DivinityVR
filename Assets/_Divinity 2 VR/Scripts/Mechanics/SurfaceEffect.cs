@@ -29,45 +29,29 @@ namespace intheclouds
                 if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     FireSurfaceDamagePlayer(other);
+                    PlayActivationSound();
                 }
                 else if (other.CompareTag("Enemy"))
                 {
                     FireSurfaceDamageEnemy(other);
+                    PlayActivationSound();
                 }
             }
             else if (elementalType == ElementalType.Water)
             {
                 if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
-                    MakePlayerWet(other);
+                    Helpers.MakePlayerWet(other, statusEffect);
+                    PlayActivationSound();
                 }
                 else if (other.CompareTag("Enemy"))
                 {
-                    MakeEnemyWet(other);
+                    Helpers.MakeEnemyWet(other, statusEffect);
+                    PlayActivationSound();
                 }
             }
         }
-
-        private void MakePlayerWet(Collider other)
-        {
-            if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
-            {
-                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
-            }
-
-            PlayActivationSound();
-        }
-
-        private void MakeEnemyWet(Collider other)
-        {
-            if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
-            {
-                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
-            }
-
-            PlayActivationSound();
-        }
-
+        
         private void FireSurfaceDamageEnemy(Collider other)
         {
             if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
@@ -95,15 +79,5 @@ namespace intheclouds
         {
             SFXPlayer.Instance.PlaySFX(activatedAudioClip, transform.position, 1, 1);
         }
-        
-        // Deleted since should only remove surface if a new surface spawns on it
-        // private void OnParticleCollision(GameObject other)
-        // {
-        //     if (this.statusEffect.type == StatusEffect.StatusEffectType.Wet)
-        //     {
-        //         return;
-        //     }
-        //     SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(this);
-        // }
     }
 }

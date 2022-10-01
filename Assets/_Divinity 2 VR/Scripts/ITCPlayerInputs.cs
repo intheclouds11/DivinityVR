@@ -13,7 +13,7 @@ namespace intheclouds
     public class ITCPlayerInputs : MonoBehaviour
     {
         public UserMenu menu;
-        public int holdTimeRequired = 1;
+        public float holdTimeRequired = 1;
         private float holdTimeLeftPrimaryButton;
         private bool primaryButtonTriggered;
         private GameManager gameManager;

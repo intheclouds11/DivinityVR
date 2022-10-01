@@ -225,7 +225,7 @@ namespace intheclouds
 
             if (!InCombat)
             {
-                GameManager.Instance.UpdateGameState(GameState.CombatStart, this);
+                GameManager.Instance.UpdateGameState(GameState.CombatStart);
             }
             else if (CurrentHealth <= 0)
             {

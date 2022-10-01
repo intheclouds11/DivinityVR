@@ -15,11 +15,11 @@ namespace intheclouds
         {
             if (wieldingUser == null) return;
 
-            if (wieldingUser.Turn && wieldingUser.CurrentAP >= requiredAP && !wieldingUser.LocalUserObjects.spiritWander.isActivated)
+            if ((wieldingUser.Turn || !wieldingUser.InCombat) && wieldingUser.CurrentAP >= requiredAP && !wieldingUser.LocalUserObjects.spiritWander.isActivated)
             {
                 NockGrabbable.enabled = true;
             }
-            else if (!wieldingUser.ExplorationMode || wieldingUser.LocalUserObjects.spiritWander.isActivated)
+            else
             {
                 NockGrabbable.enabled = false;
             }
@@ -28,7 +28,17 @@ namespace intheclouds
         protected override void OnArrowNocked(HVRArrow arrow)
         {
             base.OnArrowNocked(arrow);
-            arrow.GetComponent<ITCArrow>().player = Grabbable.PrimaryGrabber.transform.root.GetComponentInChildren<PlayerStats>();
+            arrow.GetComponent<ITCArrow>().player = wieldingUser;
+        }
+
+        protected override void OnArrowShot()
+        {
+            if (wieldingUser.InCombat)
+            {
+                wieldingUser.CurrentAP -= requiredAP;
+            }
+
+            base.OnArrowShot();
         }
 
         public void UpdateWielder()

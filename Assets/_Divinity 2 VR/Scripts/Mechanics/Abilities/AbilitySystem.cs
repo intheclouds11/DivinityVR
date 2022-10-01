@@ -53,10 +53,7 @@ namespace intheclouds
                 CooldownExploration();
             }
 
-            if (selectedAbility && !selectedAbility.gameObject.activeInHierarchy)
-            {
-                CheckAbilityActivation();
-            }
+            CheckAbilityEnable();
         }
 
         private void SelectorUpdate()
@@ -121,34 +118,33 @@ namespace intheclouds
             }
         }
 
-        private void CheckAbilityActivation()
+        private void CheckAbilityEnable()
         {
-            if (selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP > selectedAbility.requiredAP && !playerLUOs.spiritWander.isActivated)
+            if ((playerLUOs.PlayerStats.Turn || playerLUOs.PlayerStats.ExplorationMode) && selectedAbility != null && !selectedAbility.gameObject.activeInHierarchy &&
+                selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP > selectedAbility.requiredAP && !playerLUOs.spiritWander.isActivated)
             {
                 if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
                 {
-                    SpawnAbility(playerLUOs.HVRPlayerInputs.LeftController);
+                    EnableAbility(playerLUOs.HVRPlayerInputs.LeftController);
                 }
                 else if (rightController.TriggerButtonState.JustActivated && rightController.GripButtonState.Active &&
                          !rightHandGrabber.TriggerHoverTarget && !rightHandGrabber.IsGrabbing)
                 {
-                    SpawnAbility(playerLUOs.HVRPlayerInputs.RightController);
+                    EnableAbility(playerLUOs.HVRPlayerInputs.RightController);
                 }
             }
         }
 
-        private void SpawnAbility(HVRController controller)
+        private void EnableAbility(HVRController controller)
         {
             if (controller == leftController)
             {
-                // spawnedAbility = Instantiate(selectedAbility.gameObject, playerLUOs.leftHandPalm.transform.position, Quaternion.identity);
                 selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
                 Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
             }
             else
             {
-                // spawnedAbility = Instantiate(selectedAbility.gameObject, playerLUOs.rightHandPalm.transform.position, Quaternion.identity);
                 selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
                 Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
             }
@@ -158,9 +154,6 @@ namespace intheclouds
                 playerLUOs.PlayerStats.CurrentAP -= selectedAbility.requiredAP;
             }
 
-            // spawnedAbility.SetActive(true);
-            // spawnedAbility.GetComponent<AbilityBase>().caster = playerLUOs.PlayerStats;
-            // Grabbable = spawnedAbility.GetComponent<HVRGrabbable>();
             selectedAbility.gameObject.SetActive(true);
             selectedAbility.caster = playerLUOs.PlayerStats;
             selectedAbility.castingHand = controller.Side;

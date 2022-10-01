@@ -1,4 +1,5 @@
 using System;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -30,13 +31,39 @@ namespace intheclouds
                     return (int) Math.Ceiling(Random.Range(inputDamage - low, inputDamage + high) * criticalMultiplier);
                 }
             }
-            
+
             return Random.Range(inputDamage - low, inputDamage + high);
         }
 
         public static float CalculateCriticalChance(BaseStats combatant)
         {
             return combatant.Wits - 10;
+        }
+
+        public static void MakePlayerWet(Collider other, StatusEffect statusEffect)
+        {
+            if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            {
+                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
+            }
+        }
+
+        public static void MakePlayerWet(PlayerStats player, StatusEffect statusEffect)
+        {
+            player.statusEffectsContainer.TryAddStatusEffect(statusEffect);
+        }
+
+        public static void MakeEnemyWet(Collider other, StatusEffect statusEffect)
+        {
+            if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            {
+                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
+            }
+        }
+
+        public static void MakeEnemyWet(EnemyStats enemy, StatusEffect statusEffect)
+        {
+            enemy.statusEffectsContainer.TryAddStatusEffect(statusEffect);
         }
     }
 }
