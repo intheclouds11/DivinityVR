@@ -30,12 +30,6 @@ namespace intheclouds
 
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (caster.LocalUserObjects.spiritWander.isActivated || !caster.Turn && !caster.ExplorationMode || caster.CurrentAP < requiredAP)
-                {
-                    ResetAbilityTransform();
-                    return;
-                }
-
                 var enemy = collision.gameObject.GetComponentInParent<EnemyStats>();
                 if (!enemy.isAlive)
                 {

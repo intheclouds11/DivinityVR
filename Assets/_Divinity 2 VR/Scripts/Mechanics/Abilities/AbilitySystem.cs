@@ -120,8 +120,8 @@ namespace intheclouds
 
         private void CheckAbilityEnable()
         {
-            if ((playerLUOs.PlayerStats.Turn || playerLUOs.PlayerStats.ExplorationMode) && selectedAbility != null && !selectedAbility.gameObject.activeInHierarchy &&
-                selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP > selectedAbility.requiredAP && !playerLUOs.spiritWander.isActivated)
+            if ((playerLUOs.PlayerStats.Turn || !playerLUOs.PlayerStats.InCombat) && selectedAbility != null && !selectedAbility.gameObject.activeInHierarchy &&
+                selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP >= selectedAbility.requiredAP && !playerLUOs.spiritWander.isActivated)
             {
                 if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
@@ -149,9 +149,9 @@ namespace intheclouds
                 Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
             }
 
-            if (!playerLUOs.PlayerStats.ExplorationMode)
+            if (playerLUOs.PlayerStats.InCombat)
             {
-                playerLUOs.PlayerStats.CurrentAP -= selectedAbility.requiredAP;
+                playerLUOs.PlayerStats.UseAP(selectedAbility.requiredAP);
             }
 
             selectedAbility.gameObject.SetActive(true);

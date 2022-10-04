@@ -33,7 +33,7 @@ namespace intheclouds
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (combatant == null || combatant.LocalUserObjects.spiritWander.isActivated || !combatant.Turn && !combatant.ExplorationMode)
+                if (combatant == null || combatant.LocalUserObjects.spiritWander.isActivated || !combatant.Turn && combatant.InCombat)
                 {
                     return;
                 }
@@ -52,7 +52,7 @@ namespace intheclouds
                     currentEnemyStats.TakeDamage(combatant, Helpers.CalculateDamageRange(totalDamage, combatant, criticalDamageMultiplier),
                         DamageType.Physical, ElementalType.None, null);
 
-                    if (!combatant.ExplorationMode)
+                    if (combatant.InCombat)
                     {
                         combatant.UseAP(requiredAP);
                     }

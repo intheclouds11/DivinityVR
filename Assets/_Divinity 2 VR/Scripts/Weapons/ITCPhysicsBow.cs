@@ -35,7 +35,7 @@ namespace intheclouds
         {
             if (wieldingUser.InCombat)
             {
-                wieldingUser.CurrentAP -= requiredAP;
+                wieldingUser.UseAP(requiredAP);
             }
 
             base.OnArrowShot();

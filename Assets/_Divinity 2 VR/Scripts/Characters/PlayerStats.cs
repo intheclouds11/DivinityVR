@@ -129,21 +129,6 @@ namespace intheclouds
             }
         }
         private int _XPToNextLevel;
-        public bool ExplorationMode
-        {
-            get => _explorationMode;
-            set
-            {
-                _explorationMode = value;
-                if (_explorationMode)
-                {
-                    // _turn = false;
-                    // playerMovementAP.EndTurn();
-                    // InCombat = false;
-                }
-            }
-        }
-        private bool _explorationMode = true;
         public override bool Turn
         {
             get { return _turn; }
@@ -388,7 +373,6 @@ namespace intheclouds
         public void UseAP(int apConsumed)
         {
             CurrentAP -= apConsumed;
-            apSlider.value = CurrentAP;
         }
 
         public void ObtainXP(int xp)

@@ -27,9 +27,9 @@ namespace intheclouds
 
                 if (playerStats.Turn && playerStats.CurrentAP > potion.requiredAP)
                 {
-                    playerStats.CurrentAP -= potion.requiredAP;
+                    playerStats.UseAP(potion.requiredAP);
                 }
-                else if (!playerStats.ExplorationMode)
+                else if (playerStats.InCombat)
                 {
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.errorSFX, transform.position, 1, 1);
                     return;

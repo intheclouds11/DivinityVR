@@ -48629,6 +48629,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3960747803573023257, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: LineSegments
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960747803573023257, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
+      propertyPath: DisableMarkerWhenInvalid
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5545396644606883155, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -48636,10 +48644,6 @@ PrefabInstance:
     - target: {fileID: 5545396644606883155, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6722623711241730551, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
-      propertyPath: hitDistance
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7013281215769277997, guid: 3e7524b8cca202349a7604b9ca8bd092, type: 3}
       propertyPath: m_AnchorMax.x

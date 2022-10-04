@@ -73,7 +73,6 @@ namespace intheclouds
                 caster.LocalUserObjects.rightHandPhysics.GetComponent<HVRHandGrabber>().ForceRelease();
             }
 
-            // var selectedAbility = abilitySystem.selectedAbility.GetComponent<AbilityBase>();
             abilitySystem.DequipAbility();
             cooldownTimer = cooldown;
             abilitySlot.readyArt.SetActive(false);

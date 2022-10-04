@@ -178,7 +178,6 @@ namespace intheclouds
             Debug.Log("Starting Exploration Mode...");
             Button_ResetStats();
             currentUserObjects.PlayerMovementAP.enabled = false;
-            currentUserObjects.PlayerStats.ExplorationMode = true;
             currentUserObjects.HVRPlayerController.MovementEnabled = true;
         }
 
@@ -187,7 +186,6 @@ namespace intheclouds
             Debug.Log("Starting Player Turn... (not fully implemented yet)");
             Button_ResetStats();
             FindObjectOfType<PlayerStats>().Turn = true;
-            FindObjectOfType<PlayerStats>().ExplorationMode = false;
             currentUserObjects.PlayerMovementAP.enabled = true;
             currentUserObjects.PlayerMovementAP.StartTurn();
         }
