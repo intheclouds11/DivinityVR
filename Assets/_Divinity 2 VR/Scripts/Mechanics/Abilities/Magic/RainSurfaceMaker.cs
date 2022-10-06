@@ -10,66 +10,78 @@ namespace intheclouds
     {
         public SurfaceEffect surfaceEffect;
         public int maxSpawn;
-        public float hitDistance = 15;
+        public float hitDistance = 10;
         private int spawnedCount;
+        private WaitForSeconds delay = new(0.5f);
+        private bool alreadyWet;
 
         private void Start()
         {
-            InvokeRepeating(nameof(SpawnWaterGround), 0.5f, 0.5f);
-            InvokeRepeating(nameof(CheckCombatantHitRange), 0.5f, 0.5f);
+            StartCoroutine(SpawnWaterGround());
+            StartCoroutine(CheckCombatantHitRange());
         }
 
         private void OnDisable()
         {
             spawnedCount = 0;
-            CancelInvoke();
+            StopAllCoroutines();
         }
-        
-        private void CheckCombatantHitRange()
+
+        private IEnumerator CheckCombatantHitRange()
         {
             foreach (PlayerStats player in GameManager.Instance.players)
             {
+                alreadyWet = false;
                 foreach (var statusEffect in player.statusEffectsContainer.statusEffectList)
                 {
                     if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
                     {
-                        return;
+                        alreadyWet = true;
+                        break;
                     }
                 }
-                var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
-                if (dist < hitDistance)
+
+                if (!alreadyWet)
                 {
-                    Helpers.MakePlayerWet(player, surfaceEffect.statusEffect);
+                    var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
+                    if (dist < hitDistance)
+                    {
+                        Helpers.MakePlayerWet(player, surfaceEffect.statusEffect);
+                    }
                 }
             }
 
             foreach (EnemyStats enemy in EnemyManager.Instance.enemyList)
             {
+                alreadyWet = false;
                 foreach (var statusEffect in enemy.statusEffectsContainer.statusEffectList)
                 {
                     if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
                     {
-                        return;
+                        alreadyWet = true;
+                        break;
                     }
                 }
-                var dist = Vector3.Distance(enemy.transform.position, transform.position);
-                if (dist < hitDistance)
+
+                if (!alreadyWet)
                 {
-                    Helpers.MakeEnemyWet(enemy, surfaceEffect.statusEffect);
+                    var dist = Vector3.Distance(enemy.transform.position, transform.position);
+                    if (dist < hitDistance)
+                    {
+                        Helpers.MakeEnemyWet(enemy, surfaceEffect.statusEffect);
+                    }
                 }
             }
-        }
-        
-        private void SpawnWaterGround()
-        {
-            if (!enabled)
-            {
-                return;
-            }
 
+            yield return delay;
+            StartCoroutine(CheckCombatantHitRange());
+        }
+
+        private IEnumerator SpawnWaterGround()
+        {
             if (spawnedCount >= maxSpawn)
             {
-                enabled = false;
+                yield break;
             }
 
             float length = 3;
@@ -94,6 +106,9 @@ namespace intheclouds
             {
                 // Debug.LogError("Raycast failed to find ground");
             }
+
+            yield return delay;
+            StartCoroutine(SpawnWaterGround());
         }
     }
 }

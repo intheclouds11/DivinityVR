@@ -14860,6 +14860,7 @@ MonoBehaviour:
   cooldownTimer: 0
   amount: 0
   requiredAP: 2
+  selectable: 1
   abilityDescription: {fileID: 0}
   surfaceEffect: {fileID: 0}
   statusEffect: {fileID: 0}

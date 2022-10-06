@@ -6,19 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Resources/HVR_ControllerOffsets.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Resources/HVR_ControllerOffsets.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Ability.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability - particles (UniStorm).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability - particles (UniStorm).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/HeadTriggerInteractions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/HeadTriggerInteractions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fireball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fireball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/UserMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/UserMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/ITCPhysicsBow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/ITCPhysicsBow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/Sword.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/Sword.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Rain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Rain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SelectionPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SelectionPointer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +23,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0e1d1467ef4b4b0a99fbb82c1a6eb90024800/49/23fbce48/ParticlePhysicsExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/00/1958427f/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/1f/1a1fe1ef/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/43/d5af977f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/78/a584b269/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/d5/36ea6322/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/e2/bf235d3d/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2eb755104f804d58b43afc31fbdea6cb3a00/2c/c5f462cf/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/314912d7bb3f4010b8da97a8e9d1b80b3a00/c9/6121f45a/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0c/b86bb2b8/Action.cs" root0="SKIP_HIGHLIGHTING" />
@@ -201,10 +204,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12880">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="12880" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -298,6 +301,7 @@
       <workItem from="1664383150886" duration="7889000" />
       <workItem from="1664581534676" duration="7473000" />
       <workItem from="1664839060686" duration="7769000" />
+      <workItem from="1665017336065" duration="7377000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

@@ -10,43 +10,31 @@ namespace intheclouds
         public Rigidbody rb;
         public AudioClip activatedClip;
         public float maxDistance = 2;
-        private Vector3 targetLocation;
-        private int layerMask;
-        public GameObject markerObj;
-
-        protected override void OnEnable()
-        {
-            markerObj.SetActive(true);
-            markerObj.transform.parent = null;
-            markerObj.transform.rotation = Quaternion.identity;
-            base.OnEnable();
-        }
+        // private Vector3 targetLocation;
+        // private int layerMask;
 
         private void Start()
         {
-            layerMask = ~LayerMask.NameToLayer("Ignore Raycast");
+            // layerMask = ~LayerMask.NameToLayer("Ignore Raycast");
         }
 
         private void Update()
         {
-            if (Physics.Raycast(caster.LocalUserObjects.Camera.transform.position, caster.LocalUserObjects.Camera.transform.forward, out RaycastHit hit, maxDistance,
-                    layerMask, QueryTriggerInteraction.Ignore))
-            {
-                targetLocation = hit.point;
-                markerObj.transform.position = targetLocation;
-            }
+            // if (Physics.Raycast(caster.LocalUserObjects.Camera.transform.position, caster.LocalUserObjects.Camera.transform.forward, out RaycastHit hit, maxDistance,
+            //         layerMask, QueryTriggerInteraction.Ignore))
+            // {
+            //     targetLocation = hit.point;
+            // }
 
-            if (rb.velocity.y < -2f)
+            if (rb.velocity.y < -2f && SelectionPointer.Instance.IsSelectionValid)
             {
-                Activate();
+                Activate(SelectionPointer.Instance.SelectionLocation);
             }
         }
 
-        public void Activate()
+        public void Activate(Vector3 location)
         {
-            markerObj.SetActive(false);
-            markerObj.transform.parent = transform;
-            activatedVFX.transform.position = targetLocation;
+            activatedVFX.transform.position = location;
             activatedVFX.transform.eulerAngles = new Vector3(-90, 0, 0);
             SFXPlayer.Instance.PlaySFX(activatedClip, transform.position);
             OnAbilityUsed();

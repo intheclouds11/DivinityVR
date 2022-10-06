@@ -5579,7 +5579,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 15
+      value: 10
       mode: 0
       spread: 0
       speed:
@@ -9489,6 +9489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfaceEffect: {fileID: 3197582652376567645, guid: eff9ee8bef528be4b9a6214f3933cb91, type: 3}
   maxSpawn: 5
+  hitDistance: 10
 --- !u!1 &6351114389315404108
 GameObject:
   m_ObjectHideFlags: 0

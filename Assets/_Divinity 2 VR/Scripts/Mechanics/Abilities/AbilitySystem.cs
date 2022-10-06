@@ -154,9 +154,10 @@ namespace intheclouds
                 playerLUOs.PlayerStats.UseAP(selectedAbility.requiredAP);
             }
 
-            selectedAbility.gameObject.SetActive(true);
-            selectedAbility.caster = playerLUOs.PlayerStats;
             selectedAbility.castingHand = controller.Side;
+            selectedAbility.caster = playerLUOs.PlayerStats;
+            selectedAbility.gameObject.SetActive(true);
+            selectedAbility.enabled = true;
             Grabbable = selectedAbility.GetComponent<HVRGrabbable>();
             Grabber.TryGrab(Grabbable);
         }

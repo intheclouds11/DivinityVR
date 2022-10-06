@@ -14,9 +14,9 @@ namespace intheclouds
 {
     public class SelectionPointer : MonoBehaviour
     {
-        public bool PointerActive;
-        [Header("Position Selection")]
-        public bool PositionSelection;
+        public static SelectionPointer Instance;
+        public bool LocationSelection;
+        public bool Selected;
         [Header("Transforms / Components")]
         public Transform Camera;
         [FormerlySerializedAs("TeleportLineSourceLeft")]
@@ -47,7 +47,7 @@ namespace intheclouds
         public Color InvalidColor = new Color(221, 37, 37);
         public LineRenderer LineRenderer;
         public LineRenderer DownRenderer;
-        public GameObject FloorMarker;
+        public GameObject LocationMarker;
         public float DownLineMinLength = .2f;
         public float DownLineMaxLength = .2f;
         public bool DisableMarkerWhenInvalid;
@@ -144,8 +144,6 @@ namespace intheclouds
         public bool IsOriginInLineOfSight;
         public bool IsJumpDistanceValid;
         public bool DoesPlayerFit;
-        public SelectionType SelectionType = SelectionType.None;
-
 
         /// <summary>
         /// The last collider hit by the forward raycast
@@ -158,13 +156,11 @@ namespace intheclouds
         protected Collider DownHitCollider { get; set; }
 
         protected Vector3[] LineRendererPoints { get; set; }
-
-        public HVRHandSide SelectingHand = HVRHandSide.Left;
-
+        
         /// <summary>
-        /// The world position of the valid teleport destination
+        /// The world position of the valid selection destination
         /// </summary>
-        public Vector3 SelectionPosition { get; protected set; }
+        public Vector3 SelectionLocation { get; protected set; }
 
         public Color Color => IsSelectionValid ? ValidColor : InvalidColor;
 
@@ -206,7 +202,7 @@ namespace intheclouds
         /// </summary>
         public int LastIndex { get; protected set; }
 
-        public virtual Transform SelectionLineSource => SelectingHand == HVRHandSide.Left ? SelectionLineSourceLeft : SelectionLineSourceRight;
+        public Transform SelectionLineSource;
 
         /// <summary>
         /// Did the forward raycast find a valid teleportable location
@@ -245,9 +241,19 @@ namespace intheclouds
         protected float _timeSinceLastRotation;
         protected Quaternion _previousPlayerRotation;
 
+        private void OnEnable()
+        {
+            OnSelectorActivated();
+        }
+
+        private void OnDisable()
+        {
+            OnSelectorDeactivated();
+        }
 
         protected virtual void Awake()
         {
+            Instance = this;
             CharacterController = GetComponent<CharacterController>();
             CanSelect = true;
             if (!Camera)
@@ -267,16 +273,6 @@ namespace intheclouds
 
         protected virtual void Start()
         {
-            if (!LeftHand)
-            {
-                LeftHand = transform.root.GetComponentsInChildren<HVRHandGrabber>().FirstOrDefault(e => e.HandSide == HVRHandSide.Left);
-            }
-
-            if (!RightHand)
-            {
-                RightHand = transform.root.GetComponentsInChildren<HVRHandGrabber>().FirstOrDefault(e => e.HandSide == HVRHandSide.Right);
-            }
-
             if (LeftHand)
             {
                 LeftHand.Grabbed.AddListener(LeftHandGrabbed);
@@ -303,10 +299,9 @@ namespace intheclouds
             IsSelectionValid = false;
             ToggleGraphics(false);
         }
-
+        
         protected virtual void Update()
         {
-            CheckActive();
             EnabledCheck();
             if (IsAiming)
             {
@@ -320,8 +315,8 @@ namespace intheclouds
                 }
 
                 SurfaceAngle = Vector3.Angle(Vector3.up, SurfaceNormal);
-                CheckValidTeleportChanged(IsSelectionPreviouslyValid);
-                UpdateTeleportMarker(IsSelectionValid);
+                CheckValidSelectionChanged(IsSelectionPreviouslyValid);
+                UpdateSelectionMarker(IsSelectionValid);
             }
 
             CheckPlayerRotation();
@@ -366,23 +361,6 @@ namespace intheclouds
             Enable();
         }
         
-        protected virtual void CheckActive()
-        {
-            if (!CanSelect || IsAiming)
-            {
-                return;
-            }
-
-            if (!IsAiming && PointerActive)
-            {
-                OnSelectorActivated();
-            }
-            else
-            {
-                OnSelectorDeactivated();
-            }
-        }
-
         protected virtual void BeforeRaycast()
         {
             IsSelectionValid = false;
@@ -420,7 +398,7 @@ namespace intheclouds
                     {
                         IsSelectionValid = true;
                         LastValidIndex = i;
-                        SelectionPosition = destination;
+                        SelectionLocation = destination;
                         IsRaycastValid = true;
                         SurfaceNormal = forwardHit.normal;
                     }
@@ -449,7 +427,7 @@ namespace intheclouds
 
                 LastValidDownwardPoint = LastDownwardPoint;
                 IsSelectionValid = true;
-                SelectionPosition = destination;
+                SelectionLocation = destination;
                 LastValidIndex = i;
                 SurfaceNormal = downwardHit.normal;
             }
@@ -461,10 +439,10 @@ namespace intheclouds
         protected virtual void AfterRaycast()
         {
             var downOrigin = LastValidPoint;
-            var downTarget = SelectionPosition;
+            var downTarget = SelectionLocation;
             var lastValidIndex = LastValidIndex;
 
-            var fallDistanceValid = CheckFallDistance(SelectionPosition);
+            var fallDistanceValid = CheckFallDistance(SelectionLocation);
             var originValid = CheckOriginLineOfSight();
             if (IsSelectionValid && (!fallDistanceValid || !originValid))
             {
@@ -484,11 +462,11 @@ namespace intheclouds
             UpdateDownRenderer(downOrigin, downTarget, IsRaycastValid);
         }
 
-        protected virtual void CheckValidTeleportChanged(bool previousValid)
+        protected virtual void CheckValidSelectionChanged(bool previousValid)
         {
             if (previousValid != IsSelectionValid || !PreviousAiming && IsAiming)
             {
-                OnValidTeleportChanged(IsSelectionValid);
+                OnValidSelectionChanged(IsSelectionValid);
             }
         }
         
@@ -515,15 +493,15 @@ namespace intheclouds
 
         protected virtual void ToggleGraphics(bool toggle)
         {
-            if (FloorMarker)
+            if (LocationMarker)
             {
                 if (toggle)
                 {
-                    FloorMarker.SetActive(true);
+                    LocationMarker.SetActive(true);
                 }
                 else
                 {
-                    FloorMarker.SetActive(false);
+                    LocationMarker.SetActive(false);
                 }
             }
 
@@ -675,7 +653,7 @@ namespace intheclouds
             return point;
         }
 
-        protected virtual Vector3 GetTeleportDirection(out float angle)
+        protected virtual Vector3 GetSelectionDirection(out float angle)
         {
             angle = Vector3.Angle(Vector3.down, Forward);
 
@@ -701,35 +679,35 @@ namespace intheclouds
 
         protected virtual void OnValidSelection()
         {
-            if (PositionSelection)
-            {
-                SelectionType = SelectionType.Position;
-            }
-            else
-            {
-                SelectionType = SelectionType.Combatant;
-            }
+            // if (LocationSelection)
+            // {
+            //     SelectionType = SelectionType.Position;
+            // }
+            // else
+            // {
+            //     SelectionType = SelectionType.Combatant;
+            // }
             // IsSelecting = true;
         }
 
         protected virtual void UpdateMarkerPosition()
         {
-            if (!FloorMarker)
+            if (!LocationMarker)
                 return;
 
             if (IsSelectionValid)
             {
-                FloorMarker.transform.position = SelectionPosition;
+                LocationMarker.transform.position = SelectionLocation;
             }
             else
             {
                 if (DownHitCollider)
                 {
-                    FloorMarker.transform.position = LastDownwardPoint;
+                    LocationMarker.transform.position = LastDownwardPoint;
                 }
                 else
                 {
-                    FloorMarker.transform.position = LastPoint;
+                    LocationMarker.transform.position = LastPoint;
                 }
             }
         }
@@ -763,25 +741,25 @@ namespace intheclouds
         }
 
 
-        protected virtual void UpdateTeleportMarker(bool isTeleportValid)
+        protected virtual void UpdateSelectionMarker(bool isSelectionValid)
         {
-            if (FloorMarker)
+            if (LocationMarker)
             {
                 var target = transform.position + 20f * Forward;
-                target.y = FloorMarker.transform.position.y;
-                FloorMarker.transform.LookAt(target);
+                target.y = LocationMarker.transform.position.y;
+                LocationMarker.transform.LookAt(target);
 
                 // FloorMarker.UpdateState(isTeleportValid);
 
                 if (DisableMarkerWhenInvalid)
                 {
-                    if (isTeleportValid)
+                    if (isSelectionValid)
                     {
-                        FloorMarker.SetActive(true);
+                        LocationMarker.SetActive(true);
                     }
                     else
                     {
-                        FloorMarker.SetActive(false);
+                        LocationMarker.SetActive(false);
                     }
                 }
             }
@@ -801,7 +779,7 @@ namespace intheclouds
 
         protected virtual void GenerateBezierCurve(Vector3[] points)
         {
-            var direction = GetTeleportDirection(out var angle);
+            var direction = GetSelectionDirection(out var angle);
             var p2 = GetHorizontalPoint(direction);
 
             p2.y = Mathf.Clamp(p2.y, p2.y, Origin.y);
@@ -833,7 +811,7 @@ namespace intheclouds
 
         protected virtual void GenerateBallisticCurve(Vector3[] points)
         {
-            var direction = GetTeleportDirection(out _);
+            var direction = GetSelectionDirection(out _);
 
             points[0] = Origin;
 
@@ -846,7 +824,7 @@ namespace intheclouds
             }
         }
 
-        public virtual void OnValidTeleportChanged(bool isTeleportValid)
+        public virtual void OnValidSelectionChanged(bool isSelectionValid)
         {
             if (LineRenderer)
             {
@@ -865,7 +843,7 @@ namespace intheclouds
         
         protected virtual void OnAfterTeleport()
         {
-            SelectionType = SelectionType.None;
+            // SelectionType = SelectionType.None;
             if (CharacterController)
                 CharacterController.enabled = true;
 
@@ -911,13 +889,5 @@ namespace intheclouds
     {
         Ballistic,
         Bezier
-    }
-
-    public enum SelectionType
-    {
-        None,
-        Position,
-        Combatant,
-        AwaitingNextFrame
     }
 }

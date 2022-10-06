@@ -14,6 +14,8 @@ namespace intheclouds
         public int cooldownTimer;
         public int amount;
         public int requiredAP;
+        public bool selectable;
+        public bool locationSelection;
         public GameObject abilityDescription;
         public GameObject surfaceEffect;
         public StatusEffect statusEffect;
@@ -32,10 +34,28 @@ namespace intheclouds
             {
                 ApplyScaling();
             }
+
+            if (selectable)
+            {
+                SelectionPointer.Instance.enabled = true;
+                SelectionPointer.Instance.LocationSelection = locationSelection;
+                if (castingHand == HVRHandSide.Left)
+                {
+                    SelectionPointer.Instance.SelectionLineSource = SelectionPointer.Instance.SelectionLineSourceRight;
+                }
+                else
+                {
+                    SelectionPointer.Instance.SelectionLineSource = SelectionPointer.Instance.SelectionLineSourceLeft;
+                }
+            }
         }
 
         protected virtual void OnDisable()
         {
+            if (selectable)
+            {
+                SelectionPointer.Instance.enabled = false;
+            }
         }
 
         protected virtual void ApplyScaling()
