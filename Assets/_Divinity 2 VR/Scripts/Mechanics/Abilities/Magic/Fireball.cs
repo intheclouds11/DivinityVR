@@ -31,23 +31,17 @@ namespace intheclouds
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 var enemy = collision.gameObject.GetComponentInParent<EnemyStats>();
-                if (!enemy.isAlive)
-                {
-                    return;
-                }
-
-                enemy.TakeDamage(caster, Helpers.CalculateDamageRange(amount, caster), DamageType.Magic, ElementalType.Fire, statusEffect);
-
-                enabled = false;
+                enemy.TakeDamage(caster, Helpers.CalculateDamageRange(scaledAmount, caster), DamageType.Magic, ElementalType.Fire, statusEffect);
             }
 
+            // EXPLOSIVE FORCE
             Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (var col in cols)
             {
                 var rb = col.GetComponent<Rigidbody>();
                 if (rb == null)
                 {
-                    if (col.transform.parent != null)
+                    if (col.transform.parent)
                     {
                         rb = col.transform.parent.GetComponent<Rigidbody>();
                     }
@@ -58,15 +52,12 @@ namespace intheclouds
                     rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
                 }
             }
-
-            if (!caster.LocalUserObjects.spiritWander.isActivated)
-            {
-                if (caster.Turn || !caster.InCombat)
-                {
-                    SpawnFireGround();
-                    OnAbilityUsed();
-                }
-            }
+            //
+            
+            SpawnFireGround();
+            OnAbilityUsed();
+            ResetAbilityTransform();
+            enabled = false;
         }
 
         private void SpawnFireGround()
@@ -76,13 +67,11 @@ namespace intheclouds
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || hit.transform.gameObject.layer == LayerMask.NameToLayer("SurfaceElement"))
                 {
-                    Debug.Log($"SpawnFireGround hit {hit.collider}");
+                    // Debug.Log($"SpawnFireGround hit {hit.collider}");
                     if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
                     {
-                        Debug.Log("HIT PREEXISTING FIRE SURFACE");
+                        // Debug.Log("HIT PREEXISTING FIRE SURFACE");
                         SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(preexistingEffect);
-                        // SurfaceEffectsContainer.Instance.surfaceEffectsList.Remove(preexistingEffect);
-                        // Destroy(preexistingEffect.gameObject);
                     }
 
                     GameObject fireSurface = Instantiate(surfaceEffect, hit.point, Quaternion.identity);
@@ -94,7 +83,7 @@ namespace intheclouds
             }
             else
             {
-                Debug.LogError("Raycast failed to find ground");
+                // Debug.LogError("Raycast failed to find ground");
             }
         }
     }

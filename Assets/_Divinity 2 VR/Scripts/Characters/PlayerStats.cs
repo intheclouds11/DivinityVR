@@ -331,8 +331,13 @@ namespace intheclouds
             PlayerDamaged?.Invoke();
         }
 
+        // add particle effect?
         public override void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
         {
+            var newInfoPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
+            newInfoPopup.GetComponent<TextMeshProUGUI>().text = healAmount.ToString();
+            newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
+            
             if (_currentHealth < _maxHealth)
             {
                 var prevHealth = _currentHealth;

@@ -10,6 +10,7 @@ namespace intheclouds
     // NOTE: do not child Player to anything.
     public class LocalUserObjects : MonoBehaviour
     {
+        public static LocalUserObjects instance;
         public PlayerStats PlayerStats;
         public HVRPlayerController HVRPlayerController;
         public HVRPlayerInputs HVRPlayerInputs;
@@ -35,7 +36,14 @@ namespace intheclouds
         public HighlightEffect handAugmentHighlight;
         public AbilitySystem abilitySystem;
         public GameObject abilities;
-        
+        public AbilityPointer leftAbilityPointer;
+        public AbilityPointer rightAbilityPointer;
+
+        private void Awake()
+        {
+            instance = this;
+        }
+
         private void Start()
         {
             if (PlayerStats.PlayerControlled)

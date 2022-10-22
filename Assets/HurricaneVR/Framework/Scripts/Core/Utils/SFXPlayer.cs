@@ -15,8 +15,8 @@ namespace HurricaneVR.Framework.Core.Utils
 
         public AudioClip fireDamageSFX;
         public AudioClip wetSFX;
-        [FormerlySerializedAs("noDamageSFX")]
         public AudioClip errorSFX;
+        public AudioClip sparkleSFX;
         public AudioClip clickSFX;
 
         static SFXPlayer s_Instance;

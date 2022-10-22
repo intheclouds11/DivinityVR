@@ -8,36 +8,32 @@ namespace intheclouds
     public class Rain : AbilityBase
     {
         public Rigidbody rb;
-        public AudioClip activatedClip;
-        public float maxDistance = 2;
-        // private Vector3 targetLocation;
-        // private int layerMask;
-
-        private void Start()
-        {
-            // layerMask = ~LayerMask.NameToLayer("Ignore Raycast");
-        }
-
+        
         private void Update()
         {
-            // if (Physics.Raycast(caster.LocalUserObjects.Camera.transform.position, caster.LocalUserObjects.Camera.transform.forward, out RaycastHit hit, maxDistance,
-            //         layerMask, QueryTriggerInteraction.Ignore))
-            // {
-            //     targetLocation = hit.point;
-            // }
-
-            if (rb.velocity.y < -2f && SelectionPointer.Instance.IsSelectionValid)
+            if (rb.velocity.y < -2f && AbilitySpawnLocator.Instance.IsSelectionValid)
             {
-                Activate(SelectionPointer.Instance.SelectionLocation);
+                Activate(AbilitySpawnLocator.Instance.SelectionLocation, new Vector3(-90, 0, 0));
             }
         }
-
-        public void Activate(Vector3 location)
+        
+        private void Activate(Vector3 position, Vector3 rotation)
         {
-            activatedVFX.transform.position = location;
-            activatedVFX.transform.eulerAngles = new Vector3(-90, 0, 0);
-            SFXPlayer.Instance.PlaySFX(activatedClip, transform.position);
+            if (activatedVFX != null)
+            {
+                activatedVFX.transform.parent = null;
+                activatedVFX.transform.position = position;
+                activatedVFX.transform.eulerAngles = rotation;
+                activatedVFX.SetActive(true);
+            }
+
+            if (casterVFX != null)
+            {
+                casterVFX.SetActive(true);
+            }
+
             OnAbilityUsed();
+            ResetAbilityTransform();
         }
     }
 }

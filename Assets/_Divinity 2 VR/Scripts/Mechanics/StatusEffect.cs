@@ -23,6 +23,7 @@ namespace intheclouds
             cooldown = effect.cooldown;
             cooldownTimer = effect.cooldown;
             effectApplication = effect.effectApplication;
+            activatedClip = effect.activatedClip;
         }
 
         public void ActivateStatusEffect()
@@ -33,24 +34,37 @@ namespace intheclouds
                 {
                     int damage = (int) (4 * (1 + player.level * 0.5f));
                     player.TakeDamage(null, damage, DamageType.Magic, ElementalType.Fire, null);
-                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 10);
                 }
                 else if (TryGetComponent(out EnemyStats enemy))
                 {
                     int damage = (int) (4 * (1 + enemy.level * 0.5f));
                     enemy.TakeDamage(null, damage, DamageType.Magic, ElementalType.Fire, null);
-                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 10);
                 }
             }
             else if (type == StatusEffectType.Wet)
             {
                 if (TryGetComponent(out PlayerStats player))
                 {
-                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 10);
                 }
                 else if (TryGetComponent(out EnemyStats enemy))
                 {
-                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 10);
+                }
+            }
+            else if (type == StatusEffectType.Regenerating)
+            {
+                if (TryGetComponent(out PlayerStats player))
+                {
+                    player.Heal(effectAmount);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, player.LocalUserObjects.HVRPlayerController.gameObject.transform.position, 1, 10);
+                }
+                else if (TryGetComponent(out EnemyStats enemy))
+                {
+                    enemy.Heal(effectAmount);
+                    SFXPlayer.Instance.PlaySFX(activatedClip, enemy.gameObject.transform.position, 1, 10);
                 }
             }
         }

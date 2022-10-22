@@ -6,16 +6,60 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Ability.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability - particles (UniStorm).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability - particles (UniStorm).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/SFXPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/SFXPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fireball.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fireball/Fireball Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fireball/Fireball Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fireball/Fireball Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fireball/Fireball Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Fortify/Fortify Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Dequip.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Dequip.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Fireball.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Fireball.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Fortify.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Fortify.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Rain.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Rain.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Soothing Cold.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - Soothing Cold.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - base.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic Slot/AbilitySlot - base.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability - particles (UniStorm).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability - particles (UniStorm).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Rain/Rain Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Soothing Cold.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - Knight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - Knight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - base.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/BaseStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/BaseStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/EnemyStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/EnemyStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/StatusEffectsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/StatusEffectsContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LocalUserObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LocalUserObjects.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySlot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fireball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fireball.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Rain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Rain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SelectionPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SelectionPointer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SelectionPointer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SelectionPointer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/StatusEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/StatusEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,14 +67,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0e1d1467ef4b4b0a99fbb82c1a6eb90024800/49/23fbce48/ParticlePhysicsExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17d8bfdbaf914ff7abe765bbf8d788574d000/1c/2c804155/XRHelpURLConstants.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/00/1958427f/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/1f/1a1fe1ef/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/43/d5af977f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/63/f827c1a1/LineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/78/a584b269/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/d5/36ea6322/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/e2/bf235d3d/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
@@ -49,8 +91,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c6b52566f59b49fc861a7812a1ea2f6b157a00/78/797d1a7e/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaee23183de34a0d83c6df596a7b70d81a000/4c/49431297/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fe147f9096064691b6fff590596d3c64fc00/ec/8b9b9a67/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/AbilityPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/StatusEffectsContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/SurfaceEffectsContainer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Restoration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SurfaceEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Potion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/UserMenu.cs" root0="FORCE_HIGHLIGHTING" />
@@ -146,12 +190,18 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/EventSystem/SelectableTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/InputField/InputFieldTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/InputField/TouchInputFieldTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Layout/HorizonalLayoutGroupTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/ScrollRect/ScrollRectClamp.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/ScrollRect/ScrollRectStableLayout.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/ScrollRect/ScrollRectTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/TextEditor/TextEditorTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Util/ExceptionUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Util/ImageHook.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/SQLite/SQLite.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@2.0.3/Runtime/Interaction/Interactors/XRRayInteractor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@2.0.3/Runtime/Interaction/XRInteractionManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@2.0.3/Runtime/Interaction/XRInteractionUpdateOrder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@2.0.3/Runtime/UI/TrackedDeviceModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10/Runtime/TrackedPoseDriver/TrackedPoseDriver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Tests/StandaloneSubsystem/StandaloneSubsystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.4.2/ConformanceAutomation/ConformanceAutomationFeature.cs" root0="SKIP_HIGHLIGHTING" />
@@ -204,10 +254,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="25548">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="25548" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -302,6 +352,13 @@
       <workItem from="1664581534676" duration="7473000" />
       <workItem from="1664839060686" duration="7769000" />
       <workItem from="1665017336065" duration="7377000" />
+      <workItem from="1665025422929" duration="110000" />
+      <workItem from="1665268121982" duration="1392000" />
+      <workItem from="1665793150792" duration="7099000" />
+      <workItem from="1666057472885" duration="603000" />
+      <workItem from="1666231166039" duration="1016000" />
+      <workItem from="1666314391748" duration="8365000" />
+      <workItem from="1666462364399" duration="10305000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -325,6 +382,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/StatusEffect.cs</url>
+          <line>59</line>
+          <properties documentPath="C:\Users\patri\Documents\Unity\UnityVR\Divinity VR\Assets\_Divinity 2 VR\Scripts\Mechanics\StatusEffect.cs" initialLine="59" containingFunctionPresentation="method 'ActivateStatusEffect'">
+            <startOffsets>
+              <option value="2372" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2398" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

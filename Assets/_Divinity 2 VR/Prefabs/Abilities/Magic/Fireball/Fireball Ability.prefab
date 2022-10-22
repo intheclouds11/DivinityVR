@@ -14860,16 +14860,19 @@ MonoBehaviour:
   cooldownTimer: 0
   amount: 7
   requiredAP: 2
+  selectionType: 2
+  isOffensive: 0
   abilityDescription: {fileID: 3853822207974808523, guid: dbb9576747b99a348bb9122308ab47c6, type: 3}
   surfaceEffect: {fileID: 3197582652376853650, guid: b6b814dee69edbb41b8a49ab75f47503, type: 3}
-  statusEffect: {fileID: 0}
+  statusEffect: {fileID: 4555541019295191222, guid: 6c17be75040e1bd418a9a503e12ddab9, type: 3}
   elementalType: 0
   activatedVFX: {fileID: 5241147154415566929}
-  noDamageAudioClip: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
+  casterVFX: {fileID: 0}
+  activatedSFX: {fileID: 8300000, guid: 0f21ac54ede2fb1488c5719b33f0122d, type: 3}
   abilitySystem: {fileID: 0}
   abilitySlot: {fileID: 0}
   caster: {fileID: 0}
-  castingHand: 0
+  castingHand: {fileID: 0}
   explosionRadius: 2
   explosionForce: 3
 --- !u!114 &7859904153508057978

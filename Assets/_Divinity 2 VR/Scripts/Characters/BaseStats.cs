@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using HighlightPlus;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -97,6 +98,7 @@ namespace intheclouds
         [SerializeField]
         public StatusEffectsContainer statusEffectsContainer;
         public TextMeshProUGUI statusEffectsText;
+        public HighlightEffect modelHighlightEffect;
 
         public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
         {

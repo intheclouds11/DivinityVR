@@ -5,18 +5,14 @@ using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.Utils;
-using HurricaneVR.Framework.Shared;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace intheclouds
 {
-    public class SelectionPointer : MonoBehaviour
+    public class AbilitySpawnLocator : MonoBehaviour
     {
-        public static SelectionPointer Instance;
-        public bool LocationSelection;
-        public bool Selected;
+        public static AbilitySpawnLocator Instance;
         [Header("Transforms / Components")]
         public Transform Camera;
         [FormerlySerializedAs("TeleportLineSourceLeft")]
@@ -59,7 +55,7 @@ namespace intheclouds
         [Range(90f, 179f)]
         public float MaxAngle = 179f;
 
-        public int LineSegments = 20;
+        public int LineSegments = 200;
 
         [Tooltip("The hit point is backed from the point of collision by this distance to provide a visual buffer")]
         public float CollisionBuffer = .05f;
@@ -107,24 +103,16 @@ namespace intheclouds
         public int DestinationIntervals = 15;
 
         public LayerMask DestinationIgnoreLayerMask;
-
-
+        
         [Header("Destination Validation")]
         [Tooltip("If true the fall distance from the bottom of the capsule cannot exceed MaxDropDistance")]
         public bool CheckDropDistance;
 
         [Tooltip("Max fall distance that is calculated from the bottom of the provided Capsule Collider or CharacterController")]
         public float MaxDropDistance = 3f;
-
-
-        public bool CheckJumpDistance;
-        public float MaxJumpDistance = 1.5f;
-
-        [Tooltip("Ignored layers when checking if the player fits in the target destination")]
-        public LayerMask PlayerFitIgnoreLayerMask = HVRConstants.PlayerHandGrabbableMask;
-
-        [Tooltip("Layers of the ray hit object that the player can stand on")]
-        public LayerMask TeleportableLayers = ~(HVRConstants.DefaultHandMask | HVRConstants.DefaultPlayerMask);
+        
+        [Tooltip("Layers of the ray hit object that the player can select")]
+        public LayerMask SelectableLayers;
 
         [Tooltip("Max angle allowed to teleport onto")]
         [Range(0f, 90f)]
@@ -482,7 +470,6 @@ namespace intheclouds
             {
                 if (IsSelectionValid)
                 {
-                    OnValidSelection();
                     IsSelectionValid = false;
                 }
             }
@@ -603,7 +590,7 @@ namespace intheclouds
             if (hitObject.TryGetComponent(out _dummyInvalid))
                 return false;
 
-            return (TeleportableLayers & (1 << hitObject.layer)) != 0;
+            return (SelectableLayers & (1 << hitObject.layer)) != 0;
         }
         
 
@@ -665,31 +652,7 @@ namespace intheclouds
 
             return Forward;
         }
-
-        // protected virtual bool IsSelectingDeactivated()
-        // {
-        //     return PlayerInputs.IsTeleportDeactivated;
-        // }
-        //
-        // protected virtual bool IsSelectingActivated()
-        // {
-        //     return PlayerInputs.IsTeleportActivated;
-        // }
-
-
-        protected virtual void OnValidSelection()
-        {
-            // if (LocationSelection)
-            // {
-            //     SelectionType = SelectionType.Position;
-            // }
-            // else
-            // {
-            //     SelectionType = SelectionType.Combatant;
-            // }
-            // IsSelecting = true;
-        }
-
+        
         protected virtual void UpdateMarkerPosition()
         {
             if (!LocationMarker)
@@ -837,21 +800,6 @@ namespace intheclouds
             }
         }
         
-        protected virtual void OnAfterDashTeleport()
-        {
-        }
-        
-        protected virtual void OnAfterTeleport()
-        {
-            // SelectionType = SelectionType.None;
-            if (CharacterController)
-                CharacterController.enabled = true;
-
-            if (LeftHand) LeftHand.BreakDistanceCooldown();
-            if (RightHand) RightHand.BreakDistanceCooldown();
-        }
-        
-
         protected virtual void RightHandReleased(HVRGrabberBase arg0, HVRGrabbable grabbable)
         {
             RightHandPrevents = false;

@@ -1,6 +1,7 @@
 using System;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.Grabbers;
+using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using TMPro;
 using UnityEngine;
@@ -10,81 +11,78 @@ namespace intheclouds
 {
     public class AbilityBase : MonoBehaviour
     {
+        public enum SelectionType
+        {
+            Location,
+            Combatant,
+            None
+        }
+
         public int cooldown;
         public int cooldownTimer;
-        public int amount;
+        [FormerlySerializedAs("amount")]
+        public int baseAmount;
+        public int scaledAmount;
         public int requiredAP;
-        public bool selectable;
-        public bool locationSelection;
+        public SelectionType selectionType;
+        public bool isOffensiveSelector;
         public GameObject abilityDescription;
         public GameObject surfaceEffect;
         public StatusEffect statusEffect;
         public ElementalType elementalType;
         public GameObject activatedVFX;
-        public AudioClip activatedAudioClip;
-        [Header("Debug")]
+        public GameObject casterVFX;
+        public AudioClip activatedSFX;
+        [HideInInspector]
         public AbilitySystem abilitySystem;
+        [HideInInspector]
         public AbilitySlot abilitySlot;
+        [HideInInspector]
         public PlayerStats caster;
-        public HVRHandSide castingHand;
+        [HideInInspector]
+        public HVRHandGrabber castingHand;
+        protected AbilityPointer abilityPointer;
 
         protected virtual void OnEnable()
         {
-            if (amount != 0)
+            SelectorConfig();
+        }
+
+        protected void OnDisable()
+        {
+            SelectorDeconfig();
+        }
+
+        private void Start()
+        {
+            if (baseAmount != 0)
             {
                 ApplyScaling();
             }
-
-            if (selectable)
-            {
-                SelectionPointer.Instance.enabled = true;
-                SelectionPointer.Instance.LocationSelection = locationSelection;
-                if (castingHand == HVRHandSide.Left)
-                {
-                    SelectionPointer.Instance.SelectionLineSource = SelectionPointer.Instance.SelectionLineSourceRight;
-                }
-                else
-                {
-                    SelectionPointer.Instance.SelectionLineSource = SelectionPointer.Instance.SelectionLineSourceLeft;
-                }
-            }
         }
 
-        protected virtual void OnDisable()
+        public void OnAbilityReady()
         {
-            if (selectable)
-            {
-                SelectionPointer.Instance.enabled = false;
-            }
+            abilitySlot.readyArt.SetActive(true);
+            abilitySlot.cooldownArt.SetActive(false);
         }
 
-        protected virtual void ApplyScaling()
+        protected void OnAbilityUsed()
         {
-            if (elementalType == ElementalType.Fire)
+            if (activatedSFX)
             {
-                amount *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Pyrokinetic);
+                SFXPlayer.Instance.PlaySFX(activatedSFX, transform.position);
             }
-            else if (elementalType == ElementalType.Water)
-            {
-                amount *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
-            }
-            else if (elementalType == ElementalType.Earth)
-            {
-                amount *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Geomancer);
-            }
-
-            Debug.Log($"updated {name} amount based on player stats");
-        }
-
-        protected virtual void OnAbilityUsed()
-        {
+            
             if (activatedVFX != null)
             {
-                activatedVFX.transform.parent = null;
-                activatedVFX.SetActive(true);
+                activatedVFX.transform.parent = transform;
+                activatedVFX.transform.position = transform.position;
+                activatedVFX.transform.rotation = transform.rotation;
+                activatedVFX.SetActive(false);
             }
 
-            if (castingHand == HVRHandSide.Left)
+            if (castingHand.Controller.Side == HVRHandSide.Left)
             {
                 caster.LocalUserObjects.leftHandPhysics.GetComponent<HVRHandGrabber>().ForceRelease();
             }
@@ -98,8 +96,6 @@ namespace intheclouds
             abilitySlot.readyArt.SetActive(false);
             abilitySlot.cooldownArt.SetActive(true);
             abilitySlot.cooldownArt.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Cooldown: {cooldown}";
-
-            ResetAbilityTransform();
         }
 
         protected void ResetAbilityTransform()
@@ -110,15 +106,70 @@ namespace intheclouds
             transform.rotation = caster.LocalUserObjects.abilities.transform.rotation;
         }
 
-        public void OnAbilityReady()
+        public void ApplyScaling()
         {
-            activatedVFX.transform.parent = transform;
-            activatedVFX.transform.position = transform.position;
-            activatedVFX.transform.rotation = transform.rotation;
-            activatedVFX.SetActive(false);
+            if (elementalType == ElementalType.Fire)
+            {
+                scaledAmount = baseAmount * abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Pyrokinetic);
+            }
+            else if (elementalType == ElementalType.Water)
+            {
+                scaledAmount = baseAmount * abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
+            }
+            else if (elementalType == ElementalType.Earth)
+            {
+                scaledAmount = baseAmount * abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Geomancer);
+            }
 
-            abilitySlot.readyArt.SetActive(true);
-            abilitySlot.cooldownArt.SetActive(false);
+            Debug.Log($"updated {name} amount based on player stats");
+        }
+
+        private void SelectorConfig()
+        {
+            if (selectionType == SelectionType.Location)
+            {
+                if (castingHand.Controller.Side == HVRHandSide.Left)
+                {
+                    AbilitySpawnLocator.Instance.SelectionLineSource = AbilitySpawnLocator.Instance.SelectionLineSourceRight;
+                }
+                else
+                {
+                    AbilitySpawnLocator.Instance.SelectionLineSource = AbilitySpawnLocator.Instance.SelectionLineSourceLeft;
+                }
+
+                AbilitySpawnLocator.Instance.enabled = true;
+            }
+            else if (selectionType == SelectionType.Combatant)
+            {
+                if (castingHand.Controller.Side == HVRHandSide.Left)
+                {
+                    abilityPointer = LocalUserObjects.instance.rightAbilityPointer;
+                }
+                else
+                {
+                    abilityPointer = LocalUserObjects.instance.leftAbilityPointer;
+                }
+
+                abilityPointer.isOffensiveHighlight = isOffensiveSelector;
+                abilityPointer.gameObject.SetActive(true);
+            }
+        }
+
+        private void SelectorDeconfig()
+        {
+            if (selectionType == SelectionType.Location)
+            {
+                AbilitySpawnLocator.Instance.enabled = false;
+            }
+            else if (selectionType == SelectionType.Combatant)
+            {
+                if (abilityPointer.combatantSelected)
+                {
+                    abilityPointer.combatantSelected.modelHighlightEffect.highlighted = false;
+                }
+
+                abilityPointer.gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -233,7 +233,18 @@ namespace intheclouds
             }
         }
 
-        
+        public override void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
+        {
+            var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
+            newHitPopup.GetComponent<TextMeshProUGUI>().text = healAmount.ToString();
+            
+            if (_currentHealth < _maxHealth)
+            {
+                var prevHealth = _currentHealth;
+                CurrentHealth = Math.Clamp(CurrentHealth + healAmount, 0, _maxHealth);
+                Debug.Log($"Healed {Name} for {_currentHealth - prevHealth}");
+            }
+        }
 
         private void Died()
         {

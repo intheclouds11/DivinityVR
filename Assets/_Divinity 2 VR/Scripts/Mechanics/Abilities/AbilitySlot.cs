@@ -21,7 +21,7 @@ namespace intheclouds
         {
             abilitySystem = transform.parent.parent.GetComponent<AbilitySystem>();
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("PointerFingerTip") && (!abilitySystem.selectedAbility || !abilitySystem.selectedAbility.gameObject.activeInHierarchy))
@@ -70,29 +70,21 @@ namespace intheclouds
                 {
                     if (child.name == "Damage text")
                     {
-                        int scaledDamageUI = abilitySystem.selectedAbility.amount;
-                        if (abilitySystem.selectedAbility.elementalType == ElementalType.Fire)
-                        {
-                            scaledDamageUI *=  abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Pyrokinetic);
-                        }
-                        else if (abilitySystem.selectedAbility.elementalType == ElementalType.Water)
-                        {
-                            scaledDamageUI *= abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
-                        }
                         var damageText = child.GetComponent<TextMeshProUGUI>();
-                        var low = (int) Math.Floor(scaledDamageUI * 0.15f);
+                        var low = (int) Math.Floor(abilitySystem.selectedAbility.scaledAmount * 0.15f);
                         if (low == 0)
                         {
                             low = 1;
                         }
 
-                        var high = (int) Math.Ceiling(scaledDamageUI * 0.15f);
+                        var high = (int) Math.Ceiling(abilitySystem.selectedAbility.scaledAmount * 0.15f);
                         if (high == 0)
                         {
                             high = 1;
                         }
 
-                        damageText.text = damageText.text.Replace("[damage]", $"{scaledDamageUI - low} - {scaledDamageUI + high}");
+                        damageText.text = damageText.text.Replace("[damage]",
+                            $"{abilitySystem.selectedAbility.scaledAmount - low} - {abilitySystem.selectedAbility.scaledAmount + high}");
                         break;
                     }
 

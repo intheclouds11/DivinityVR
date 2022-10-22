@@ -123,7 +123,7 @@ namespace intheclouds
 
         private void CheckEffectInteraction(StatusEffect statusEffect)
         {
-            if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
+            if (statusEffect.type is StatusEffect.StatusEffectType.Wet or StatusEffect.StatusEffectType.Regenerating)
             {
                 for (int i = 0; i < statusEffectList.Count; i++)
                 {
@@ -204,6 +204,10 @@ namespace intheclouds
             else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Slow)
             {
                 textUI.text = textUI.text.Replace(slowText, string.Empty);
+            }
+            else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Healing)
+            {
+                textUI.text = textUI.text.Replace(regeneratingText, string.Empty);
             }
 
             textUI.text = textUI.text.Replace(Environment.NewLine, "");

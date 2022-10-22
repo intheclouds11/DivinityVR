@@ -126,19 +126,19 @@ namespace intheclouds
                 if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
                 {
-                    EnableAbility(playerLUOs.HVRPlayerInputs.LeftController);
+                    EnableAbility(leftHandGrabber);
                 }
                 else if (rightController.TriggerButtonState.JustActivated && rightController.GripButtonState.Active &&
                          !rightHandGrabber.TriggerHoverTarget && !rightHandGrabber.IsGrabbing)
                 {
-                    EnableAbility(playerLUOs.HVRPlayerInputs.RightController);
+                    EnableAbility(rightHandGrabber);
                 }
             }
         }
 
-        private void EnableAbility(HVRController controller)
+        private void EnableAbility(HVRHandGrabber hand)
         {
-            if (controller == leftController)
+            if (hand.Controller == leftController)
             {
                 selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
                 Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
@@ -154,12 +154,14 @@ namespace intheclouds
                 playerLUOs.PlayerStats.UseAP(selectedAbility.requiredAP);
             }
 
-            selectedAbility.castingHand = controller.Side;
+            selectedAbility.castingHand = hand;
             selectedAbility.caster = playerLUOs.PlayerStats;
             selectedAbility.gameObject.SetActive(true);
             selectedAbility.enabled = true;
-            Grabbable = selectedAbility.GetComponent<HVRGrabbable>();
-            Grabber.TryGrab(Grabbable);
+            if (selectedAbility.TryGetComponent(out HVRGrabbable grabbable))
+            {
+                Grabber.TryGrab(grabbable);
+            }
         }
 
         public void DequipAbility()
