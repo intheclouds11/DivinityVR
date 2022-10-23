@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Sockets;
-using UnityEngine;
 
 namespace HurricaneVR.TechDemo.Scripts
 {

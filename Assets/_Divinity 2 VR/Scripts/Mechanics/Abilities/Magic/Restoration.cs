@@ -1,6 +1,4 @@
 using System.Collections;
-using HurricaneVR.Framework.Core.Utils;
-using HurricaneVR.Framework.Shared;
 using UnityEngine;
 
 namespace intheclouds

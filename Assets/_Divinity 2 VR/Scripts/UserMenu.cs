@@ -3,7 +3,6 @@ using HurricaneVR.Framework.Core.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace intheclouds

@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace intheclouds

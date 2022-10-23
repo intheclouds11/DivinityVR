@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {

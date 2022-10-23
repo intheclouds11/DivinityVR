@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using HighlightPlus;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace intheclouds

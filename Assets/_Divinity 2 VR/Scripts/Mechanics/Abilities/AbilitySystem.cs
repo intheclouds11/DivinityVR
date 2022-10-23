@@ -1,11 +1,9 @@
-using System;
 using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Shared;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -14,8 +12,8 @@ namespace intheclouds
         public GameObject abilitySlots;
         public AbilityBase selectedAbility;
         public GameObject description;
-        private HVRHandGrabber leftHandGrabber;
-        private HVRHandGrabber rightHandGrabber;
+        public HVRHandGrabber leftHandGrabber;
+        public HVRHandGrabber rightHandGrabber;
         private HVRController leftController;
         private HVRController rightController;
         private HVRController selectorHand;

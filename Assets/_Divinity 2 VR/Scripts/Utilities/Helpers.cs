@@ -1,7 +1,5 @@
 using System;
-using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace intheclouds

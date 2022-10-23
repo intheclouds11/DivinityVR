@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using HurricaneVR.Framework.Core;
+﻿using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.HandPoser;
 using HurricaneVR.Framework.Shared;

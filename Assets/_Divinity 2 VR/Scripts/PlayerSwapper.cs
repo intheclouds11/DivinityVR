@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.HandPoser;
 using HurricaneVR.Framework.Core.Player;

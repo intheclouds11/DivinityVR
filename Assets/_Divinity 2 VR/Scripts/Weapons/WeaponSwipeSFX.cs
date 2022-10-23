@@ -1,8 +1,6 @@
 using HurricaneVR.Framework.Core;
-using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {

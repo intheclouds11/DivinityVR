@@ -6,8 +6,6 @@ using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {

@@ -1,5 +1,3 @@
-using System;
-using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
@@ -48,7 +46,7 @@ namespace intheclouds
             SelectorConfig();
         }
 
-        protected void OnDisable()
+        protected virtual void OnDisable()
         {
             SelectorDeconfig();
         }

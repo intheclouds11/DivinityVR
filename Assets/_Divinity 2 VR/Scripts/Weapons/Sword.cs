@@ -1,10 +1,6 @@
-using System;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Utils;
-using intheclouds;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 namespace intheclouds
 {
@@ -56,7 +52,7 @@ namespace intheclouds
                     {
                         combatant.UseAP(requiredAP);
                     }
-
+                    
                     hitEnemyCollider.gameObject.SetActive(false);
                     Invoke(nameof(ResetCollision), hitCooldown);
                 }

@@ -1,9 +1,7 @@
-using System;
 using HighlightPlus;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {

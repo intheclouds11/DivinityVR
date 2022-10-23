@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
-using intheclouds;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SpiritMovement : MonoBehaviour
 {

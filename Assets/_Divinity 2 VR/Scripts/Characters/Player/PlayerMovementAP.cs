@@ -1,7 +1,4 @@
-using System;
-using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
-using TMPro;
 using UnityEngine;
 
 namespace intheclouds

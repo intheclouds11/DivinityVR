@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Weapons.Bow;
-using UnityEngine;
 
 namespace intheclouds
 {

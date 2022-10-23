@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;

@@ -1,6 +1,5 @@
 ﻿using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.Utils;
-using HurricaneVR.Framework.Shared;
 using UnityEngine;
 
 namespace HurricaneVR.TechDemo.Scripts

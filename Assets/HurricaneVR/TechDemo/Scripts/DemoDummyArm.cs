@@ -1,6 +1,4 @@
-﻿using HurricaneVR.Framework.Core.ScriptableObjects;
-using HurricaneVR.Framework.Core.Utils;
-using HurricaneVR.Framework.Shared;
+﻿using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 
 namespace HurricaneVR.TechDemo.Scripts

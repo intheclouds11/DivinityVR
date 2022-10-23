@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Utils;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 namespace intheclouds
 {

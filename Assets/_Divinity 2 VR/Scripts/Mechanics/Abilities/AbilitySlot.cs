@@ -3,7 +3,6 @@ using HighlightPlus;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
