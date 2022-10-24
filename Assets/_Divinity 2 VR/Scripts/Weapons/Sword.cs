@@ -1,3 +1,4 @@
+using System;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
@@ -13,12 +14,13 @@ namespace intheclouds
         public float medSpeedHitEnemy = 10f;
         public float fastSpeedHitEnemy = 15f;
         public int requiredAP = 2;
-        public int baseDamage = 1;
+        public int baseDamage = 10;
         public float criticalDamageMultiplier = 1.8f;
-        public PlayerStats combatant;
+        private PlayerStats wieldingUser;
         private HVRGrabbable grabbable;
         private bool inEnemyCollider;
         private EnemyStats currentEnemyStats;
+        public event Action SwordAppliedDamage;
 
         private void Start()
         {
@@ -29,12 +31,12 @@ namespace intheclouds
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (combatant == null || combatant.LocalUserObjects.spiritWander.isActivated || !combatant.Turn && combatant.InCombat)
+                if (wieldingUser == null || wieldingUser.LocalUserObjects.spiritWander.isActivated || !wieldingUser.Turn && wieldingUser.InCombat)
                 {
                     return;
                 }
 
-                if (combatant.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
+                if (wieldingUser.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
                 {
                     currentEnemyStats = collision.gameObject.GetComponentInParent<EnemyStats>();
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(enemyHitClip, transform, 0.9f, 1.1f, 0.5f, 20);
@@ -44,16 +46,18 @@ namespace intheclouds
                         return;
                     }
 
-                    var totalDamage = (int) (baseDamage * (combatant.Strength * 1.05f));
-                    currentEnemyStats.TakeDamage(combatant, Helpers.CalculateDamageRange(totalDamage, combatant, criticalDamageMultiplier),
+                    var totalDamage = (int) Math.Ceiling(baseDamage * (wieldingUser.Strength * 0.105f)); 
+                    // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
+                    currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(totalDamage, wieldingUser, criticalDamageMultiplier),
                         DamageType.Physical, ElementalType.None, null);
 
-                    if (combatant.InCombat)
+                    if (wieldingUser.InCombat)
                     {
-                        combatant.UseAP(requiredAP);
+                        wieldingUser.UseAP(requiredAP);
                     }
                     
                     hitEnemyCollider.gameObject.SetActive(false);
+                    SwordAppliedDamage?.Invoke();
                     Invoke(nameof(ResetCollision), hitCooldown);
                 }
             }
@@ -66,9 +70,9 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            combatant = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
+            wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
             GetComponent<WeaponSwipeSFX>().wielderCharacterController =
-                combatant.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
+                wieldingUser.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
         }
     }
 }

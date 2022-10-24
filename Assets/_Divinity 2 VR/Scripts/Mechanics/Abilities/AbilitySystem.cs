@@ -136,17 +136,6 @@ namespace intheclouds
 
         private void EnableAbility(HVRHandGrabber hand)
         {
-            if (hand.Controller == leftController)
-            {
-                selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
-                Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
-            }
-            else
-            {
-                selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
-                Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
-            }
-
             if (playerLUOs.PlayerStats.InCombat)
             {
                 playerLUOs.PlayerStats.UseAP(selectedAbility.requiredAP);
@@ -154,11 +143,37 @@ namespace intheclouds
 
             selectedAbility.castingHand = hand;
             selectedAbility.caster = playerLUOs.PlayerStats;
-            selectedAbility.gameObject.SetActive(true);
             selectedAbility.enabled = true;
+            selectedAbility.gameObject.SetActive(true);
+            
             if (selectedAbility.TryGetComponent(out HVRGrabbable grabbable))
             {
-                Grabber.TryGrab(grabbable);
+                if (hand.Controller == leftController)
+                {
+                    // selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
+                    Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
+                }
+                else if (hand.Controller == rightController)
+                {
+                    // selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
+                    Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
+                }
+
+                Grabber.Grab(grabbable, grabbable.GrabTrigger);
+            }
+            else
+            {
+                if (hand.Controller == leftController)
+                {
+                    selectedAbility.transform.parent = playerLUOs.leftHandPalm.transform;
+                }
+                else if (hand.Controller == rightController)
+                {
+                    selectedAbility.transform.parent = playerLUOs.rightHandPalm.transform;
+                }
+
+                selectedAbility.transform.localPosition = Vector3.zero;
+                selectedAbility.transform.localRotation = Quaternion.identity;
             }
         }
 

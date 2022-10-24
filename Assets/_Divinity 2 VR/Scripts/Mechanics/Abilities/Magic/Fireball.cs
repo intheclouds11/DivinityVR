@@ -50,6 +50,12 @@ namespace intheclouds
             }
             //
             
+            if (activatedVFX != null)
+            {
+                activatedVFX.transform.parent = null;
+                activatedVFX.SetActive(true);
+            }
+            
             SpawnFireGround();
             OnAbilityUsed();
             ResetAbilityTransform();

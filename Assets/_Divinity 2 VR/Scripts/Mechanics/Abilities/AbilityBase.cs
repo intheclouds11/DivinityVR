@@ -61,6 +61,14 @@ namespace intheclouds
 
         public void OnAbilityReady()
         {
+            if (activatedVFX != null)
+            {
+                activatedVFX.transform.parent = transform;
+                activatedVFX.transform.localPosition = Vector3.zero;
+                activatedVFX.transform.localRotation = Quaternion.identity;
+                activatedVFX.SetActive(false);
+            }
+            
             abilitySlot.readyArt.SetActive(true);
             abilitySlot.cooldownArt.SetActive(false);
         }
@@ -72,14 +80,6 @@ namespace intheclouds
                 SFXPlayer.Instance.PlaySFX(activatedSFX, transform.position);
             }
             
-            if (activatedVFX != null)
-            {
-                activatedVFX.transform.parent = transform;
-                activatedVFX.transform.position = transform.position;
-                activatedVFX.transform.rotation = transform.rotation;
-                activatedVFX.SetActive(false);
-            }
-
             if (castingHand.Controller.Side == HVRHandSide.Left)
             {
                 caster.LocalUserObjects.leftHandPhysics.GetComponent<HVRHandGrabber>().ForceRelease();

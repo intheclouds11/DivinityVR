@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: ability
       value: 
-      objectReference: {fileID: 6855306110861726278, guid: 2164400b2bef72f4ba6a45b2db61baff, type: 3}
+      objectReference: {fileID: 1198319694570208358, guid: 2164400b2bef72f4ba6a45b2db61baff, type: 3}
     - target: {fileID: 8401546984923599889, guid: c94ef6e2c87309e4cad8bc65809f2708, type: 3}
       propertyPath: handAugmentColor.b
       value: 1
