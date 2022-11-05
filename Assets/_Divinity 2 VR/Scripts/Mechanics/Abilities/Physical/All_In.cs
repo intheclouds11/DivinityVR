@@ -45,6 +45,7 @@ namespace intheclouds
             weapon.SwordAppliedDamage -= OnSwordAppliedDamage;
             HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
             grabber.GrabTrigger = HVRGrabTrigger.Active;
+            weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = true;
             weapon.baseDamage = (int) Math.Floor(weapon.baseDamage * 0.8f);
             weapon.GetComponent<HighlightEffect>().enabled = false;
             weapon = null;
@@ -59,6 +60,7 @@ namespace intheclouds
             GetComponent<BoxCollider>().enabled = false;
             
             HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
+            weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = false;
             grabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
             weapon.baseDamage = (int) Math.Ceiling(weapon.baseDamage * 1.25f);
             weapon.GetComponent<HighlightEffect>().enabled = true;

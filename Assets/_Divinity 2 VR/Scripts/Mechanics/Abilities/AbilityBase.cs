@@ -141,11 +141,11 @@ namespace intheclouds
             {
                 if (castingHand.Controller.Side == HVRHandSide.Left)
                 {
-                    abilityPointer = LocalUserObjects.instance.rightAbilityPointer;
+                    abilityPointer = caster.LocalUserObjects.rightAbilityPointer;
                 }
                 else
                 {
-                    abilityPointer = LocalUserObjects.instance.leftAbilityPointer;
+                    abilityPointer = caster.LocalUserObjects.leftAbilityPointer;
                 }
 
                 abilityPointer.isOffensiveHighlight = isOffensiveSelector;
