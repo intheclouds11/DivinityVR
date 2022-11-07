@@ -10,10 +10,7 @@ namespace intheclouds
         void Start()
         {
             // Add canvas to HVRInputModule
-            Debug.Log(GetComponent<Canvas>());
-            Debug.Log(FindObjectOfType<LocalUserObjects>());
-            Debug.Log(FindObjectOfType<LocalUserObjects>().userMenu);
-            // FindObjectOfType<LocalUserObjects>().userMenu.GetComponentInChildren<HVRInputModule>().AddCanvas(GetComponent<Canvas>());
+            FindObjectOfType<HVRInputModule>().AddCanvas(GetComponent<Canvas>());
         }
     }
 }

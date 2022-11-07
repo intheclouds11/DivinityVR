@@ -21,14 +21,12 @@ namespace intheclouds
             // load settings json
         }
         
-        public void Button_Exit()
+        public void ExitLeverTest(int i)
         {
-            Application.Quit();
-        }
-
-        public void ExitLeverTest()
-        {
-            Debug.Log("exit lever activated!");
+            if (i == 2)
+            {
+                Application.Quit();
+            }
         }
     }
 }
