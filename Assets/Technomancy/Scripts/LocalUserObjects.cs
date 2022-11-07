@@ -26,6 +26,7 @@ namespace intheclouds
         public GameObject rightHandPalm;
         public GameObject rightHandAbilitySelectorSpawn;
         public GameObject waist;
+        public GameObject userMenu;
         public GameObject userMenuSpawnPoint;
         public GameObject visorSocket;
         public GameObject turnOrderUI;

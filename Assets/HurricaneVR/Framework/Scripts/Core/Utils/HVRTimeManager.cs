@@ -56,7 +56,6 @@ namespace HurricaneVR.Framework.Core.Utils
             if (!Instance)
             {
                 Instance = this;
-                DontDestroyOnLoad(this.gameObject);
             }
             else
             {

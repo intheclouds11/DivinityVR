@@ -6,13 +6,332 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/ITC Socketables.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/ITC Socketables.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LocalUserObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LocalUserObjects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Physical/All_In.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Physical/All_In.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/PlayerSwapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/PlayerSwapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRControllerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRControllerEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRGlobalInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRGlobalInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/HVRManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/HVRManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/HVRTimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/HVRTimeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Art Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/CharacterStatsSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/CharacterStatsSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Enemies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Enemies/Knight stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Enemies/Knight stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Enemies/Mage stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Enemies/Mage stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/EnemyStatsSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/EnemyStatsSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Highlight Plus - Hand Augment.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Highlight Plus - Hand Augment.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Players.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Players/Bern Stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Players/Bern Stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Players/Paatri Stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Players/Paatri Stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Poses.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Poses/abilitygrabbable_pose.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Game Data/Poses/abilitygrabbable_pose.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/CombatKnife.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/CombatKnife.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/HVR_pistol (2).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/HVR_pistol (2).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/ITCArrow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/ITCArrow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/SmallSocket.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/SmallSocket.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/stabbable head.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/stabbable head.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/swinging_door.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Prefabs/swinging_door.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Socketables.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/HurricaneVR intheclouds/Socketables.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/ITC Socketables.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/ITC Socketables.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/AbilitySlot - Dequip.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/AbilitySlot - Dequip.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/AbilitySlot - Empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/AbilitySlot - Empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/AbilitySlot - base.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/AbilitySlot - base.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball/AbilitySlot - Fireball.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball/AbilitySlot - Fireball.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball/Fireball Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball/Fireball Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball/Fireball Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Fireball/Fireball Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/AbilitySlot - Rain.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/AbilitySlot - Rain.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/Rain Ability - particles (UniStorm).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/Rain Ability - particles (UniStorm).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/Rain Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/Rain Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/Rain Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Rain/Rain Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration/AbilitySlot - Restoration.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration/AbilitySlot - Restoration.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration/Restoration Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration/Restoration Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration/Restoration Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Restoration/Restoration Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Soothing Cold.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Soothing Cold/AbilitySlot - Soothing Cold.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Magic/Soothing Cold/AbilitySlot - Soothing Cold.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In/AbilitySlot - All in.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In/AbilitySlot - All in.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In/All In Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In/All In Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In/All In Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/All In/All In Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify/AbilitySlot - Fortify.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify/AbilitySlot - Fortify.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify/Fortify Ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify/Fortify Ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify/Fortify Description.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Abilities/Physical/Fortify/Fortify Description.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/AudioSources.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/AudioSources.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Bow_AutoLoad.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Bow_AutoLoad.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/BroadSword.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/BroadSword.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Canvas - Stats.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Canvas - Stats.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - Knight.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - Knight.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - Pyromancer.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - Pyromancer.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - base.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Enemy - base.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/First Aid Kit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/First Aid Kit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/HitPopup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/HitPopup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/InfoPopup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/InfoPopup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Managers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Managers/Game Manager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Managers/Game Manager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Managers/Menu Manager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Managers/Menu Manager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles/Ammo Pickup VFX and SFX.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles/Ammo Pickup VFX and SFX.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles/Hit VFX.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles/Hit VFX.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles/Particle Cylinder.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Particles/Particle Cylinder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Bern (do not parent).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Paatri Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player - Paatri Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player Select Button.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player Select Button.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions/Potion - Health.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions/Potion - Health.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions/Potion - Magic Armor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions/Potion - Magic Armor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions/Potion - Physical Armor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Potions/Potion - Physical Armor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Spawn At Runtime.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Spawn At Runtime.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Spirit Wander ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Spirit Wander ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects/Burning.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects/Burning.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects/RegenHealth.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects/RegenHealth.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects/Wet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Status Effects/Wet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Surface Effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Surface Effects/BurningSurface.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Surface Effects/BurningSurface.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Surface Effects/WaterSurface.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Surface Effects/WaterSurface.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Sword - enemy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Sword - enemy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Sword - player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Sword - player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/TurnOrderUI.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/TurnOrderUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/UserMenu.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/UserMenu.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorElite (to be fixed).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorElite (to be fixed).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorPattern (to be fixed).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorPattern (to be fixed).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorSciFi (to be fixed).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorSciFi (to be fixed).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorWhiteBlue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorWhiteBlue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorWhiteGreen.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/Wearables/visorWhiteGreen.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/floating crystals.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/floating crystals.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/lightbridge.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Prefabs/lightbridge.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings_Profiles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings_Profiles/Post Process Profile NO VISOR.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings_Profiles/Post Process Profile NO VISOR.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings_Profiles/Post Process Profile VISOR.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Celestial Beginnings_Profiles/Post Process Profile VISOR.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/High Quality.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/High Quality.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Low Quality.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Low Quality.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Title Screen.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scenes/Title Screen.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/AbilityPointer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/AbilityPointer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/BaseStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/BaseStats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Enemies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Enemies/EnemyAI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Enemies/EnemyAI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Enemies/EnemyManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Enemies/EnemyManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/EnemyStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/EnemyStats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Player.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Player/PlayerMovementAP.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/Player/PlayerMovementAP.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/PlayerStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/PlayerStats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/StatusEffectsContainer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/StatusEffectsContainer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/SurfaceEffectsContainer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/SurfaceEffectsContainer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/CompositeInteraction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/CompositeInteraction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor/CompositeInteractionEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor/CompositeInteractionEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor/SpiritWanderEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor/SpiritWanderEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor/UserMenuEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Editor/UserMenuEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/FadeObjectOnLoad.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/FadeObjectOnLoad.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/FloatAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/FloatAnimation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/FollowTargetITC.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/FollowTargetITC.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/HeadTriggerInteractions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/HeadTriggerInteractions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/HitDestroy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/HitDestroy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ITCPlayerInputs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ITCPlayerInputs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ITCPopup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ITCPopup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ImpactSFX.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ImpactSFX.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Interfaces.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Interfaces/IInteractable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Interfaces/IInteractable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/KillFloor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/KillFloor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LocalUserObjects.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LocalUserObjects.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LookAt.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/LookAt.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Managers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Managers/ExampleGameManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Managers/ExampleGameManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Managers/GameManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Managers/GameManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilityBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySlot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySlot.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/AbilitySystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fireball.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fireball.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fortify.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Fortify.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Rain.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Rain.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Restoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Restoration.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Physical.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Physical/All_In.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Physical/All_In.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/AbilitySpawnLocator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/AbilitySpawnLocator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SpiritWander.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SpiritWander.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/StatusEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/StatusEffect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SurfaceEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SurfaceEffect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/MovementUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/MovementUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/PlayerSwapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/PlayerSwapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Potion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Potion.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ShowWhenLooking.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ShowWhenLooking.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/SpiritMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/SpiritMovement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ToggleMovementUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ToggleMovementUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ToggleVisorVisibility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/ToggleVisorVisibility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/TreasureChest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/TreasureChest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/UserMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/UserMenu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities/Helpers.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities/Helpers.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities/SelfDestruct.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities/SelfDestruct.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities/StaticInstance.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Utilities/StaticInstance.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/DamageType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/DamageType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/ITCArrow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/ITCArrow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/ITCPhysicsBow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/ITCPhysicsBow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/Sword.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/Sword.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/WeaponSwipeSFX.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/WeaponSwipeSFX.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/WeaponType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Weapons/WeaponType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +346,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/43/d5af977f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/63/f827c1a1/LineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/78/a584b269/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/a4/d802b3ff/Resources.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/d5/36ea6322/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/e2/bf235d3d/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2eb755104f804d58b43afc31fbdea6cb3a00/2c/c5f462cf/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -44,13 +364,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c6b52566f59b49fc861a7812a1ea2f6b157a00/78/797d1a7e/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaee23183de34a0d83c6df596a7b70d81a000/4c/49431297/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fe147f9096064691b6fff590596d3c64fc00/ec/8b9b9a67/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/AbilityPointer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/StatusEffectsContainer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Characters/SurfaceEffectsContainer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/Abilities/Magic/Restoration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Mechanics/SurfaceEffect.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/Potion.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Divinity 2 VR/Scripts/UserMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/CanvasSetup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.gemserk.selectionhistory@1.1.7/Favorites.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.gemserk.selectionhistory@1.1.7/SelectionHistory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.2/Editor/PlasticSCM/UI/Images.cs" root0="SKIP_HIGHLIGHTING" />
@@ -103,6 +417,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsPerTrack.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Manipulators/Sequence/RectangleTool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Recording/TrackAssetRecordingExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Shortcuts.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/State/WindowState.cs" root0="SKIP_HIGHLIGHTING" />
@@ -177,24 +492,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;Open Files&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49085367&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "Open Files",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.49085367",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Unity.exe" />
@@ -214,10 +529,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="532">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="532" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -324,6 +639,7 @@
       <workItem from="1666660077567" duration="5082000" />
       <workItem from="1667348735270" duration="1471000" />
       <workItem from="1667355280678" duration="2544000" />
+      <workItem from="1667782385163" duration="4150000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

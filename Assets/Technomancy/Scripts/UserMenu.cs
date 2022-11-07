@@ -32,7 +32,6 @@ namespace intheclouds
             menuIsOpen = canvasGO.activeInHierarchy;
             SmoothTurnToggle.onValueChanged.AddListener(OnSmoothTurnChanged);
             FollowToggle.onValueChanged.AddListener(OnFollowPlayerChanged);
-            ListPlayers(); // todo: call this anytime a player is added/removed from GameManager
 
             foreach (var player in GameManager.Instance.players)
             {
@@ -58,7 +57,7 @@ namespace intheclouds
 
         public void UserSetup(PlayerStats player)
         {
-            currentUserObjects = player.transform.root.GetComponent<LocalUserObjects>();
+            currentUserObjects = player.LocalUserObjects;
             spawnPoint = currentUserObjects.userMenuSpawnPoint;
             followThis = currentUserObjects.Camera.gameObject;
             CameraRigs.Add(currentUserObjects.HVRCameraRig);
@@ -77,17 +76,6 @@ namespace intheclouds
             }
 
             menuIsOpen = !menuIsOpen;
-        }
-
-        // need to call this when player joins/leaves party
-        public void ListPlayers()
-        {
-            foreach (var playerStats in GameManager.Instance.players)
-            {
-                var playerButton = Instantiate(playerSelectPrefab, playerSelectButtonGroup.transform);
-                playerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerStats.Name;
-                currentPlayerSelectButtons.Add(playerButton);
-            }
         }
         
         public void OnSmoothTurnChanged(bool smooth)

@@ -321,7 +321,6 @@ namespace HurricaneVR.Framework.ControllerInput
             if (!Instance)
             {
                 Instance = this;
-                DontDestroyOnLoad(this.gameObject);
             }
             else
             {
