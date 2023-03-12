@@ -35,7 +35,7 @@ namespace intheclouds
 
             foreach (var player in GameManager.Instance.players)
             {
-                localUserObjectsList.Add(player.transform.root.GetComponent<LocalUserObjects>());
+                localUserObjectsList.Add(player.transform.GetComponent<LocalUserObjects>());
                 if (player.PlayerControlled)
                 {
                     UserSetup(player);

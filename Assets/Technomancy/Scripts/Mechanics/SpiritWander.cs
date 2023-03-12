@@ -32,7 +32,7 @@ namespace intheclouds
 
         private void Start()
         {
-            playerLUOs = transform.root.GetComponent<LocalUserObjects>();
+            playerLUOs = transform.GetComponentInParent<LocalUserObjects>();
             SaveOriginalTransforms();
             audioSource = GetComponent<AudioSource>();
         }
@@ -150,7 +150,7 @@ namespace intheclouds
             }
 
             // spawn new visor (without socket)
-            var visorSocketGO = transform.root.GetComponent<LocalUserObjects>().visorSocket;
+            var visorSocketGO = transform.GetComponentInParent<LocalUserObjects>().visorSocket;
             if (visorSocketGO.transform.childCount > 0) // if socket not empty
             {
                 GameObject visorOriginal = visorSocketGO.transform.GetChild(0).gameObject;

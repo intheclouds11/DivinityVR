@@ -13,7 +13,7 @@ namespace intheclouds
 
         private void Awake()
         {
-            playerStats = transform.root.GetComponent<PlayerStats>();
+            playerStats = transform.GetComponentInParent<PlayerStats>();
         }
 
         private void OnTriggerEnter(Collider other)

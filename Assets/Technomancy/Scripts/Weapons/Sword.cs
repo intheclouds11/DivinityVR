@@ -70,7 +70,7 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            wieldingUser = grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
+            wieldingUser = grabbable.PrimaryGrabber.transform.GetComponentInParent<LocalUserObjects>().PlayerStats;
             GetComponent<WeaponSwipeSFX>().wielderCharacterController =
                 wieldingUser.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
         }

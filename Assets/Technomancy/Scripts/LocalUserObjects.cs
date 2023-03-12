@@ -1,3 +1,4 @@
+using System;
 using HighlightPlus;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
@@ -8,6 +9,7 @@ namespace intheclouds
     // NOTE: do not child Player to anything.
     public class LocalUserObjects : MonoBehaviour
     {
+        public static LocalUserObjects Instance;
         public PlayerStats PlayerStats;
         public HVRPlayerController HVRPlayerController;
         public HVRPlayerInputs HVRPlayerInputs;
@@ -36,6 +38,11 @@ namespace intheclouds
         public GameObject abilities;
         public AbilityPointer leftAbilityPointer;
         public AbilityPointer rightAbilityPointer;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {

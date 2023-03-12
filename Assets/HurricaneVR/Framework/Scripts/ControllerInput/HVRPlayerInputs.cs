@@ -15,6 +15,8 @@ namespace HurricaneVR.Framework.ControllerInput
     /// </summary>
     public class HVRPlayerInputs : MonoBehaviour
     {
+        public bool AllowTeleportInput = false;
+        
         [Header("Grab Settings")]
         public bool CanDistanceGrab = true;
         public bool CanTriggerGrab;
@@ -402,7 +404,14 @@ namespace HurricaneVR.Framework.ControllerInput
                 return HVRController.GetButtonState(HVRHandSide.Right, HVRButtons.Menu).Active;
             }
 
-            return TeleportController.JoystickAxis.y < -.5f && Mathf.Abs(TeleportController.JoystickAxis.x) < .30;
+            if (AllowTeleportInput)
+            {
+                return TeleportController.JoystickAxis.y < -.5f && Mathf.Abs(TeleportController.JoystickAxis.x) < .30;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         protected virtual bool GetSprinting()

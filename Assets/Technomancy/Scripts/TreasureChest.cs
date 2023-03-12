@@ -18,7 +18,7 @@ namespace intheclouds
                 {
                     opened = true;
                     SFXPlayer.Instance.PlaySFXAttach(openSFX, transform, 1, 1);
-                    collision.gameObject.transform.root.GetComponent<PlayerStats>().Gold += gold;
+                    collision.gameObject.transform.GetComponentInParent<PlayerStats>().Gold += gold;
                 }
             }
         }

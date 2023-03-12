@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using HurricaneVR.Framework.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace intheclouds
 {
@@ -8,7 +11,7 @@ namespace intheclouds
     {
         public void Button_NewGame()
         {
-            
+            SceneLoader.Instance.GoToSceneAsync(1);
         }
 
         public void Button_LoadGame()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5602131206054449681}
   - component: {fileID: 5602131206054449680}
   - component: {fileID: 5602131206054449683}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 6.52e-43, y: 3.748e-42, z: NaN, w: -6.3822824e+18}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4887,7 +4887,7 @@ GameObject:
   - component: {fileID: 5602131207041517930}
   - component: {fileID: 5602131207041517933}
   - component: {fileID: 5602131207041517932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4903,7 +4903,7 @@ Transform:
   m_GameObject: {fileID: 5602131207041517935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.313, y: 4.1421885, z: 5.406}
-  m_LocalScale: {x: 0.1, y: 0.2, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5602131206054449682}

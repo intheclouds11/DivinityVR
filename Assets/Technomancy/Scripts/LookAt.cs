@@ -6,7 +6,7 @@ namespace intheclouds
     {
         public Transform target;
 
-        private void Awake()
+        private void Start()
         {
             if (target == null)
             {

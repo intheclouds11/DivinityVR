@@ -241,7 +241,7 @@ namespace intheclouds
             PlayerStats player;
             if (targetedPlayerSW.isActivated)
             {
-                player = targetedPlayerSW.transform.root.GetComponent<PlayerStats>();
+                player = targetedPlayerSW.transform.GetComponentInParent<PlayerStats>();
             }
             else
             {

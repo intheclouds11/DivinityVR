@@ -4768,7 +4768,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -5541,7 +5541,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!114 &1764152200384767231
 MonoBehaviour:
@@ -10846,7 +10846,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -21083,7 +21083,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!114 &6453355618873359728
 MonoBehaviour:
@@ -24614,6 +24614,7 @@ MonoBehaviour:
   rightHandPalm: {fileID: 1371730030941719}
   rightHandAbilitySelectorSpawn: {fileID: 796447830716407480}
   waist: {fileID: 4038266154967366841}
+  userMenu: {fileID: 0}
   userMenuSpawnPoint: {fileID: 8329649340561895433}
   visorSocket: {fileID: 8830355751580964801}
   turnOrderUI: {fileID: 0}

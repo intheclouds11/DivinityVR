@@ -39,7 +39,7 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            wieldingUser = Grabbable.PrimaryGrabber.transform.root.GetComponent<LocalUserObjects>().PlayerStats;
+            wieldingUser = Grabbable.PrimaryGrabber.transform.GetComponentInParent<LocalUserObjects>().PlayerStats;
         }
     }
 }

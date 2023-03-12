@@ -9882,7 +9882,7 @@ GameObject:
   - component: {fileID: 7745661769541824838}
   - component: {fileID: 7451352276370404562}
   m_Layer: 0
-  m_Name: Player - Bern (do not parent)
+  m_Name: Player - Bern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10014,6 +10014,7 @@ MonoBehaviour:
   rightHandPalm: {fileID: 5066214549937447672}
   rightHandAbilitySelectorSpawn: {fileID: 5568592960715254359}
   waist: {fileID: 9097514730571483222}
+  userMenu: {fileID: 0}
   userMenuSpawnPoint: {fileID: 3878385632280904934}
   visorSocket: {fileID: 4377966246488482606}
   turnOrderUI: {fileID: 0}

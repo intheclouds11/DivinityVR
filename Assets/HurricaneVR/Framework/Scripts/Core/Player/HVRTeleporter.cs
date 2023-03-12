@@ -11,6 +11,8 @@ namespace HurricaneVR.Framework.Core.Player
 {
     public class HVRTeleporter : MonoBehaviour
     {
+        public static HVRTeleporter Instance;
+        
         [Header("Transforms / Components")]
         public Transform Camera;
         public Transform TeleportLineSourceLeft;
@@ -257,6 +259,8 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected virtual void Awake()
         {
+            Instance = this;
+            
             CharacterController = GetComponent<CharacterController>();
             CanTeleport = true;
             if (!Camera)

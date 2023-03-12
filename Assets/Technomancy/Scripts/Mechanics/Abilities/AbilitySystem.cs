@@ -26,7 +26,7 @@ namespace intheclouds
 
         private void Awake()
         {
-            playerLUOs = transform.root.GetComponent<LocalUserObjects>();
+            playerLUOs = transform.GetComponentInParent<LocalUserObjects>();
             leftHandGrabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
             rightHandGrabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
 

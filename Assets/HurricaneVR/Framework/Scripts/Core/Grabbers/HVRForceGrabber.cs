@@ -123,6 +123,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             if (!_anchor)
             {
                 var go = new GameObject("ForceAnchor");
+                go.transform.parent = transform;
                 _anchor = go.transform;
                 _forceRB = _anchor.gameObject.AddComponent<Rigidbody>();
                 _forceRB.isKinematic = true;
