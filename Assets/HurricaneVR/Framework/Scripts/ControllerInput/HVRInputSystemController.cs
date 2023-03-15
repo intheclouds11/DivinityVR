@@ -63,7 +63,7 @@ namespace HurricaneVR.Framework.ControllerInput
 
         protected override void UpdateInput()
         {
-            if (_inputDevice != null)
+            if (!isDesktopMode)
             {
                 if (Side == HVRHandSide.Left)
                 {

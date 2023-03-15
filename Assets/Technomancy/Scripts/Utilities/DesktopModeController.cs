@@ -21,6 +21,8 @@ namespace intheclouds
                 enabled = false;
             }
 
+            HVRInputManager.Instance.GetController(HVRHandSide.Left).isDesktopMode = true;
+            HVRInputManager.Instance.GetController(HVRHandSide.Right).isDesktopMode = true;
             inputSettings.GripUseAnalog = false;
             inputSettings.TriggerUseAnalog = false;
         }
