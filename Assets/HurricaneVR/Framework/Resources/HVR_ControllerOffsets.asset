@@ -52,5 +52,5 @@ MonoBehaviour:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
   KnucklesOpenXR:
-    Position: {x: 0.01, y: -0.02, z: -0.06}
-    Rotation: {x: 45, y: 0, z: 0}
+    Position: {x: 0, y: 0, z: 0.06}
+    Rotation: {x: 60, y: 0, z: 0}

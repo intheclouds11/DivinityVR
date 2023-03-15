@@ -629,8 +629,8 @@ namespace HurricaneVR.Framework.ControllerInput
                     deadZone = CosmosDeadzone;
                     break;
                 default:
-                    inputMap = OculusInputMap;
-                    deadZone = OculusDeadzone;
+                    inputMap = KnucklesInputMap;
+                    deadZone = KnucklesDeadzone;
                     break;
             }
 
@@ -847,7 +847,7 @@ namespace HurricaneVR.Framework.ControllerInput
         {
             if (!IsVRInitialized)
             {
-                CurrentSDK = InputSDK.None;
+                CurrentSDK = InputSDK.InputSystem;
                 return;
             }
 

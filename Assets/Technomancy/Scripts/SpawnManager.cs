@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
@@ -11,17 +10,22 @@ namespace intheclouds
     {
         public static List<PlayerSpawnPoint> PlayerSpawnPoints { get; private set; } = new List<PlayerSpawnPoint>();
 
-        private void Awake()
+        private void OnEnable()
         {
-            SceneManager.sceneLoaded += MovePlayerToStartingSpawnPoint;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        private void MovePlayerToStartingSpawnPoint(Scene arg0, LoadSceneMode arg1)
+        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             MovePlayerToStartingSpawnPoint();
         }
 
-        private void MovePlayerToStartingSpawnPoint()
+        private void Start()
+        {
+            MovePlayerToStartingSpawnPoint();
+        }
+
+        public static void MovePlayerToStartingSpawnPoint()
         {
             var spawnPoint = GetStartingPlayerSpawnPoint().transform;
             LocalUserObjects.Instance.HVRPlayerController.GetComponent<HVRTeleporter>().Teleport(spawnPoint.position, spawnPoint.forward);
@@ -46,9 +50,7 @@ namespace intheclouds
                     return playerSpawnPoint;
                 }
             }
-
-            Debug.LogError("No starting spawn point found!");
-
+            
             return null;
         }
     }

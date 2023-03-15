@@ -10,7 +10,6 @@ namespace intheclouds
         public UserMenu menu;
         public float holdTimeRequired = 1;
         private float holdTimeLeftPrimaryButton;
-        private bool primaryButtonTriggered;
         private GameManager gameManager;
 
         private void Awake()
@@ -34,12 +33,12 @@ namespace intheclouds
 
         private void CheckEndTurnButton()
         {
-            if (Keyboard.current.nKey.wasPressedThisFrame)
+            if (Startup.Instance.isDesktopMode && HVRInputManager.Instance.LeftController.PrimaryTouchButtonState.JustActivated)
             {
                 gameManager.ForceNextTurn();
                 SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 1, 1);
             }
-            else if (!primaryButtonTriggered && HVRInputManager.Instance.LeftController.PrimaryButtonState.Active)
+            else if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active)
             {
                 if (holdTimeLeftPrimaryButton == 0)
                 {
@@ -56,7 +55,6 @@ namespace intheclouds
             }
             else if (HVRInputManager.Instance.LeftController.PrimaryButtonState.JustDeactivated)
             {
-                primaryButtonTriggered = false;
                 holdTimeLeftPrimaryButton = 0;
             }
         }

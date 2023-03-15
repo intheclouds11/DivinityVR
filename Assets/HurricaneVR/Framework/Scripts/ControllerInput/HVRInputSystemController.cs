@@ -63,65 +63,128 @@ namespace HurricaneVR.Framework.ControllerInput
 
         protected override void UpdateInput()
         {
-            if (Side == HVRHandSide.Left)
+            if (_inputDevice != null)
             {
-                JoystickAxis = InputActions.LeftHand.Primary2DAxis.ReadValue<Vector2>();
+                if (Side == HVRHandSide.Left)
+                {
+                    JoystickAxis = InputActions.LeftHand.Primary2DAxis.ReadValue<Vector2>();
 
-                SetBool(out JoystickClicked, InputActions.LeftHand.Primary2DAxisClick);
-                SetBool(out TrackPadClicked, InputActions.LeftHand.Secondary2DAxisClick);
+                    SetBool(out JoystickClicked, InputActions.LeftHand.Primary2DAxisClick);
+                    SetBool(out TrackPadClicked, InputActions.LeftHand.Secondary2DAxisClick);
 
-                TrackpadAxis = InputActions.LeftHand.Secondary2DAxis.ReadValue<Vector2>();
+                    TrackpadAxis = InputActions.LeftHand.Secondary2DAxis.ReadValue<Vector2>();
 
-                Grip = InputActions.LeftHand.Grip.ReadValue<float>();
-                GripForce = InputActions.LeftHand.GripForce.ReadValue<float>();
-                Trigger = InputActions.LeftHand.Trigger.ReadValue<float>();
+                    Grip = InputActions.LeftHand.Grip.ReadValue<float>();
+                    GripForce = InputActions.LeftHand.GripForce.ReadValue<float>();
+                    Trigger = InputActions.LeftHand.Trigger.ReadValue<float>();
 
-                SetBool(out PrimaryButton, InputActions.LeftHand.PrimaryButton);
-                SetBool(out SecondaryButton, InputActions.LeftHand.SecondaryButton);
+                    SetBool(out PrimaryButton, InputActions.LeftHand.PrimaryButton);
+                    SetBool(out SecondaryButton, InputActions.LeftHand.SecondaryButton);
 
-                SetBool(out PrimaryTouch, InputActions.LeftHand.PrimaryTouch);
-                SetBool(out SecondaryTouch, InputActions.LeftHand.SecondaryTouch);
+                    SetBool(out PrimaryTouch, InputActions.LeftHand.PrimaryTouch);
+                    SetBool(out SecondaryTouch, InputActions.LeftHand.SecondaryTouch);
 
-                SetBool(out JoystickTouch, InputActions.LeftHand.Primary2DAxisTouch);
-                SetBool(out TrackPadTouch, InputActions.LeftHand.Secondary2DAxisTouch);
+                    SetBool(out JoystickTouch, InputActions.LeftHand.Primary2DAxisTouch);
+                    SetBool(out TrackPadTouch, InputActions.LeftHand.Secondary2DAxisTouch);
 
-                SetBool(out TriggerTouch, InputActions.LeftHand.TriggerTouch);
+                    SetBool(out TriggerTouch, InputActions.LeftHand.TriggerTouch);
 
-                SetBool(out MenuButton, InputActions.LeftHand.Menu);
+                    SetBool(out MenuButton, InputActions.LeftHand.Menu);
 
-                SetBool(out GripButton, InputActions.LeftHand.GripPress);
-                SetBool(out TriggerButton, InputActions.LeftHand.TriggerPress);
+                    SetBool(out GripButton, InputActions.LeftHand.GripPress);
+                    SetBool(out TriggerButton, InputActions.LeftHand.TriggerPress);
+                }
+                else
+                {
+                    JoystickAxis = InputActions.RightHand.Primary2DAxis.ReadValue<Vector2>();
+
+                    SetBool(out JoystickClicked, InputActions.RightHand.Primary2DAxisClick);
+                    SetBool(out TrackPadClicked, InputActions.RightHand.Secondary2DAxisClick);
+
+                    TrackpadAxis = InputActions.RightHand.Secondary2DAxis.ReadValue<Vector2>();
+
+                    Grip = InputActions.RightHand.Grip.ReadValue<float>();
+                    GripForce = InputActions.RightHand.GripForce.ReadValue<float>();
+                    Trigger = InputActions.RightHand.Trigger.ReadValue<float>();
+
+                    SetBool(out PrimaryButton, InputActions.RightHand.PrimaryButton);
+                    SetBool(out SecondaryButton, InputActions.RightHand.SecondaryButton);
+
+                    SetBool(out PrimaryTouch, InputActions.RightHand.PrimaryTouch);
+                    SetBool(out SecondaryTouch, InputActions.RightHand.SecondaryTouch);
+
+                    SetBool(out JoystickTouch, InputActions.RightHand.Primary2DAxisTouch);
+                    SetBool(out TrackPadTouch, InputActions.RightHand.Secondary2DAxisTouch);
+
+                    SetBool(out TriggerTouch, InputActions.RightHand.TriggerTouch);
+
+                    SetBool(out MenuButton, InputActions.RightHand.Menu);
+
+                    SetBool(out GripButton, InputActions.RightHand.GripPress);
+                    SetBool(out TriggerButton, InputActions.RightHand.TriggerPress);
+                }
             }
-            else
+            else // DesktopMode
             {
-                JoystickAxis = InputActions.RightHand.Primary2DAxis.ReadValue<Vector2>();
+                if (Side == HVRHandSide.Left)
+                {
+                    JoystickAxis = InputActions.LeftHandDesktop.Primary2DAxis.ReadValue<Vector2>();
 
-                SetBool(out JoystickClicked, InputActions.RightHand.Primary2DAxisClick);
-                SetBool(out TrackPadClicked, InputActions.RightHand.Secondary2DAxisClick);
+                    SetBool(out JoystickClicked, InputActions.LeftHandDesktop.Primary2DAxisClick);
+                    SetBool(out TrackPadClicked, InputActions.LeftHandDesktop.Secondary2DAxisClick);
 
-                TrackpadAxis = InputActions.RightHand.Secondary2DAxis.ReadValue<Vector2>();
+                    TrackpadAxis = InputActions.LeftHandDesktop.Secondary2DAxis.ReadValue<Vector2>();
 
-                Grip = InputActions.RightHand.Grip.ReadValue<float>();
-                GripForce = InputActions.RightHand.GripForce.ReadValue<float>();
-                Trigger = InputActions.RightHand.Trigger.ReadValue<float>();
+                    Grip = InputActions.LeftHandDesktop.Grip.ReadValue<float>();
+                    GripForce = InputActions.LeftHandDesktop.GripForce.ReadValue<float>();
+                    Trigger = InputActions.LeftHandDesktop.Trigger.ReadValue<float>();
 
-                SetBool(out PrimaryButton, InputActions.RightHand.PrimaryButton);
-                SetBool(out SecondaryButton, InputActions.RightHand.SecondaryButton);
+                    SetBool(out PrimaryButton, InputActions.LeftHandDesktop.PrimaryButton);
+                    SetBool(out SecondaryButton, InputActions.LeftHandDesktop.SecondaryButton);
 
-                SetBool(out PrimaryTouch, InputActions.RightHand.PrimaryTouch);
-                SetBool(out SecondaryTouch, InputActions.RightHand.SecondaryTouch);
+                    SetBool(out PrimaryTouch, InputActions.LeftHandDesktop.PrimaryTouch);
+                    SetBool(out SecondaryTouch, InputActions.LeftHandDesktop.SecondaryTouch);
 
-                SetBool(out JoystickTouch, InputActions.RightHand.Primary2DAxisTouch);
-                SetBool(out TrackPadTouch, InputActions.RightHand.Secondary2DAxisTouch);
+                    SetBool(out JoystickTouch, InputActions.LeftHandDesktop.Primary2DAxisTouch);
+                    SetBool(out TrackPadTouch, InputActions.LeftHandDesktop.Secondary2DAxisTouch);
 
-                SetBool(out TriggerTouch, InputActions.RightHand.TriggerTouch);
+                    SetBool(out TriggerTouch, InputActions.LeftHandDesktop.TriggerTouch);
 
-                SetBool(out MenuButton, InputActions.RightHand.Menu);
+                    SetBool(out MenuButton, InputActions.LeftHandDesktop.Menu);
 
-                SetBool(out GripButton, InputActions.RightHand.GripPress);
-                SetBool(out TriggerButton, InputActions.RightHand.TriggerPress);
+                    SetBool(out GripButton, InputActions.LeftHandDesktop.GripPress);
+                    SetBool(out TriggerButton, InputActions.LeftHandDesktop.TriggerPress);
+                }
+                else
+                {
+                    JoystickAxis = InputActions.RightHandDesktop.Primary2DAxis.ReadValue<Vector2>();
+
+                    SetBool(out JoystickClicked, InputActions.RightHandDesktop.Primary2DAxisClick);
+                    SetBool(out TrackPadClicked, InputActions.RightHandDesktop.Secondary2DAxisClick);
+
+                    TrackpadAxis = InputActions.RightHandDesktop.Secondary2DAxis.ReadValue<Vector2>();
+
+                    Grip = InputActions.RightHandDesktop.Grip.ReadValue<float>();
+                    GripForce = InputActions.RightHandDesktop.GripForce.ReadValue<float>();
+                    Trigger = InputActions.RightHandDesktop.Trigger.ReadValue<float>();
+
+                    SetBool(out PrimaryButton, InputActions.RightHandDesktop.PrimaryButton);
+                    SetBool(out SecondaryButton, InputActions.RightHandDesktop.SecondaryButton);
+
+                    SetBool(out PrimaryTouch, InputActions.RightHandDesktop.PrimaryTouch);
+                    SetBool(out SecondaryTouch, InputActions.RightHandDesktop.SecondaryTouch);
+
+                    SetBool(out JoystickTouch, InputActions.RightHandDesktop.Primary2DAxisTouch);
+                    SetBool(out TrackPadTouch, InputActions.RightHandDesktop.Secondary2DAxisTouch);
+
+                    SetBool(out TriggerTouch, InputActions.RightHandDesktop.TriggerTouch);
+
+                    SetBool(out MenuButton, InputActions.RightHandDesktop.Menu);
+
+                    SetBool(out GripButton, InputActions.RightHandDesktop.GripPress);
+                    SetBool(out TriggerButton, InputActions.RightHandDesktop.TriggerPress);
+                }
             }
-
         }
 
         private void SetBool(out bool val, InputAction action)

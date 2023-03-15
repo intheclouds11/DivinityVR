@@ -17,12 +17,12 @@ namespace intheclouds
         public PlayerMovementAP PlayerMovementAP;
         public HVRCameraRig HVRCameraRig;
         public Camera Camera;
-        public GameObject leftController;
+        public Transform leftController;
         public GameObject leftHandPhysics;
         public GameObject leftHandModel;
         public GameObject leftHandPalm;
         public GameObject leftHandAbilitySelectorSpawn;
-        public GameObject rightController;
+        public Transform rightController;
         public GameObject rightHandPhysics;
         public GameObject rightHandModel;
         public GameObject rightHandPalm;
