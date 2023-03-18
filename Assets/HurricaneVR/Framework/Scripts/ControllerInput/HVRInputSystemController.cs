@@ -77,6 +77,7 @@ namespace HurricaneVR.Framework.ControllerInput
                     Grip = InputActions.LeftHand.Grip.ReadValue<float>();
                     GripForce = InputActions.LeftHand.GripForce.ReadValue<float>();
                     Trigger = InputActions.LeftHand.Trigger.ReadValue<float>();
+                    IndexTrackpadForce = InputActions.LeftHand.Secondary2DAxisForce.ReadValue<float>();
 
                     SetBool(out PrimaryButton, InputActions.LeftHand.PrimaryButton);
                     SetBool(out SecondaryButton, InputActions.LeftHand.SecondaryButton);
@@ -106,6 +107,7 @@ namespace HurricaneVR.Framework.ControllerInput
                     Grip = InputActions.RightHand.Grip.ReadValue<float>();
                     GripForce = InputActions.RightHand.GripForce.ReadValue<float>();
                     Trigger = InputActions.RightHand.Trigger.ReadValue<float>();
+                    IndexTrackpadForce = InputActions.RightHand.Secondary2DAxisForce.ReadValue<float>();
 
                     SetBool(out PrimaryButton, InputActions.RightHand.PrimaryButton);
                     SetBool(out SecondaryButton, InputActions.RightHand.SecondaryButton);
@@ -138,6 +140,7 @@ namespace HurricaneVR.Framework.ControllerInput
                     Grip = InputActions.LeftHandDesktop.Grip.ReadValue<float>();
                     GripForce = InputActions.LeftHandDesktop.GripForce.ReadValue<float>();
                     Trigger = InputActions.LeftHandDesktop.Trigger.ReadValue<float>();
+                    IndexTrackpadForce = InputActions.LeftHandDesktop.Secondary2DAxisForce.ReadValue<float>();
 
                     SetBool(out PrimaryButton, InputActions.LeftHandDesktop.PrimaryButton);
                     SetBool(out SecondaryButton, InputActions.LeftHandDesktop.SecondaryButton);
@@ -167,6 +170,7 @@ namespace HurricaneVR.Framework.ControllerInput
                     Grip = InputActions.RightHandDesktop.Grip.ReadValue<float>();
                     GripForce = InputActions.RightHandDesktop.GripForce.ReadValue<float>();
                     Trigger = InputActions.RightHandDesktop.Trigger.ReadValue<float>();
+                    IndexTrackpadForce = InputActions.RightHandDesktop.Secondary2DAxisForce.ReadValue<float>();
 
                     SetBool(out PrimaryButton, InputActions.RightHandDesktop.PrimaryButton);
                     SetBool(out SecondaryButton, InputActions.RightHandDesktop.SecondaryButton);

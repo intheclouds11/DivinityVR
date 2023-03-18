@@ -65,6 +65,10 @@ namespace HurricaneVR.Framework.Shared
         public float Axis2DDownThreshold = .7f;
         public float Axis2DLeftThreshold = .7f;
         public float Axis2DRighThreshold = .7f;
+        
+        [Header("Index Track Pad Pressed Threshold")]
+
+        public float TrackPadPressedThreshold = 0.2f;
     }
 
     [Serializable]

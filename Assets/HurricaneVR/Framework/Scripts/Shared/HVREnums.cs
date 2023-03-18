@@ -74,7 +74,8 @@ namespace HurricaneVR.Framework.Shared
         TrackPadRight,
         TrackPadUp,
         TrackPadDown,
-        TrackPadTouch
+        TrackPadTouch,
+        IndexTrackpad
     }
 
     [Serializable]

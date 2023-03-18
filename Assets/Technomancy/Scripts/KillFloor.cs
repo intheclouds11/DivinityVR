@@ -9,7 +9,7 @@ namespace intheclouds
         {
             if (other.CompareTag("Player"))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SpawnManager.MovePlayerToStartingSpawnPoint();
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Grabbable") || other.gameObject.layer == LayerMask.NameToLayer("HitEnemy"))
             {

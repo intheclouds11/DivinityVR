@@ -96,6 +96,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Secondary2DAxisForce",
+                    "type": "Button",
+                    "id": "96430a39-75fe-4790-bd89-84cb3df4482e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Secondary2DAxisTouch",
                     "type": "Button",
                     "id": "28bf5850-459e-4b46-af7a-24a5a64fdf99",
@@ -322,7 +331,7 @@
                 {
                     "name": "",
                     "id": "366ac51f-3093-4ead-8dba-662fe2cbb81f",
-                    "path": "<ViveController>{LeftHand}/trackpadClicked",
+                    "path": "<XRController>{LeftHand}/trackpadPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR Usage",
@@ -461,6 +470,39 @@
                     "action": "Haptics",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "229a9244-ace6-4ebf-b601-e818c9cb4af3",
+                    "path": "<ValveIndexController>{LeftHand}/trackpadForce",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxisClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87119f34-9383-442f-831d-6ab78f0122d3",
+                    "path": "<ValveIndexController>{LeftHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8d6e334-0d1c-4777-a070-b114001ca724",
+                    "path": "<ValveIndexController>{LeftHand}/trackpadForce",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxisForce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -553,6 +595,15 @@
                     "name": "Secondary2DAxisClick",
                     "type": "Button",
                     "id": "83227e26-e8f1-416e-a4a6-b70394fe5ea5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary2DAxisForce",
+                    "type": "Button",
+                    "id": "53ff46d3-f520-47bf-86d2-806e68003320",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -773,7 +824,7 @@
                 },
                 {
                     "name": "",
-                    "id": "d094a06a-f8ca-4c85-b478-a5276f7da3e4",
+                    "id": "391278c9-d02f-4c4f-8eeb-a857f4056a04",
                     "path": "<XRController>{RightHand}/{secondary2DAxisClick}",
                     "interactions": "",
                     "processors": "",
@@ -784,11 +835,22 @@
                 },
                 {
                     "name": "",
-                    "id": "c33bf2de-0080-4d75-b40b-0d3593ac31d8",
-                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "id": "011b1ed1-c56e-4c83-92bf-69090e5ea4f8",
+                    "path": "<XRController>{RightHand}/trackpadPressed",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XR Usage",
+                    "groups": "",
+                    "action": "Secondary2DAxisClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8500211c-687a-441d-8317-90d953877830",
+                    "path": "<ValveIndexController>{RightHand}/trackpadForce",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Secondary2DAxisClick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -911,6 +973,28 @@
                     "processors": "",
                     "groups": "XR Usage",
                     "action": "Haptics",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9db0e545-2a2d-4777-b49a-8c6da6f48052",
+                    "path": "<ValveIndexController>{RightHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b77cb6e9-aaa4-4a71-975a-550b308acba7",
+                    "path": "<ValveIndexController>{RightHand}/trackpadForce",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxisForce",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1127,6 +1211,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Secondary2DAxisForce",
+                    "type": "Button",
+                    "id": "f9353602-6514-47ae-9b20-16dd6d9b690b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Secondary2DAxisTouch",
                     "type": "Button",
                     "id": "79646e94-2acc-407b-a394-ad36050d569f",
@@ -1307,6 +1400,17 @@
                     "action": "SecondaryButton",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e463508-1edd-490b-95af-683f5c959011",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxisForce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1399,6 +1503,15 @@
                     "name": "Secondary2DAxisClick",
                     "type": "Button",
                     "id": "cb19d750-2174-4ba3-b5c7-a962416fc73b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary2DAxisForce",
+                    "type": "Button",
+                    "id": "5b8fe5a2-8034-4ca1-9f8d-99d2fa911802",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1528,6 +1641,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SecondaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73ccd3f2-76f8-4e4f-962b-03f1cd633190",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary2DAxisForce",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

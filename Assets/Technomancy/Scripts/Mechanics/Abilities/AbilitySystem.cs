@@ -58,11 +58,11 @@ namespace intheclouds
         {
             if (!selectedAbility || selectedAbility && !selectedAbility.gameObject.activeInHierarchy)
             {
-                if (leftController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
+                if (playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActive && !abilitySlots.activeSelf)
                 {
                     ShowSelector(playerLUOs.leftHandAbilitySelectorSpawn.transform, leftController);
                 }
-                else if (rightController.TrackpadButtonState.JustActivated && !abilitySlots.activeSelf)
+                else if (playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActive && !abilitySlots.activeSelf)
                 {
                     ShowSelector(playerLUOs.rightHandAbilitySelectorSpawn.transform, rightController);
                 }
@@ -73,11 +73,11 @@ namespace intheclouds
                 return;
             }
 
-            if (selectorHand == leftController && leftController.TrackpadButtonState.JustDeactivated)
+            if (selectorHand == leftController && !playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActive)
             {
                 HideSelector();
             }
-            else if (selectorHand == rightController && rightController.TrackpadButtonState.JustDeactivated)
+            else if (selectorHand == rightController && !playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActive)
             {
                 HideSelector();
             }

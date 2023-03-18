@@ -3,6 +3,7 @@ using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Shared.Utilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.XR;
 
 namespace HurricaneVR.Framework.Shared
@@ -23,6 +24,7 @@ namespace HurricaneVR.Framework.Shared
         public HVRButtonState SecondaryTouchButtonState;
         public HVRButtonState JoystickButtonState;
         public HVRButtonState TrackpadButtonState;
+        public HVRButtonState IndexTrackpadButtonState;
 
         public HVRButtonState JoystickTouchState;
         public HVRButtonState TrackPadTouchState;
@@ -51,6 +53,7 @@ namespace HurricaneVR.Framework.Shared
         public float Grip;
         public float GripForce;
         public float Trigger;
+        public float IndexTrackpadForce;
 
         public bool ThumbTouch;
         public bool TriggerTouch;
@@ -140,6 +143,7 @@ namespace HurricaneVR.Framework.Shared
             CheckButtonState(HVRButtons.Trigger, ref TriggerButtonState);
             CheckButtonState(HVRButtons.JoystickButton, ref JoystickButtonState);
             CheckButtonState(HVRButtons.TrackPadButton, ref TrackpadButtonState);
+            CheckButtonState(HVRButtons.IndexTrackpad, ref IndexTrackpadButtonState);
             CheckButtonState(HVRButtons.Primary, ref PrimaryButtonState);
             CheckButtonState(HVRButtons.Secondary, ref SecondaryButtonState);
             CheckButtonState(HVRButtons.Menu, ref MenuButtonState);
@@ -276,6 +280,9 @@ namespace HurricaneVR.Framework.Shared
                 case HVRButtons.TrackPadTouch:
                     SetButtonState(button, ref buttonState, TrackPadTouch);
                     break;
+                case HVRButtons.IndexTrackpad:
+                    SetButtonState(button, ref buttonState, GetIsTrackPadForcePressed());
+                    break;
                 case HVRButtons.TriggerTouch:
                     SetButtonState(button, ref buttonState, TriggerTouch);
                     break;
@@ -308,6 +315,11 @@ namespace HurricaneVR.Framework.Shared
 
         private bool _gripLowerReset;
         private bool _gripUpperReset;
+
+        protected virtual bool GetIsTrackPadForcePressed()
+        {
+            return IndexTrackpadForce >= InputMap.TrackPadPressedThreshold;
+        }
 
         protected virtual bool GetIsTriggerPressed()
         {

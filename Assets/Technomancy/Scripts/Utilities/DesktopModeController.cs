@@ -19,6 +19,7 @@ namespace intheclouds
                 inputSettings.GripUseAnalog = true;
                 inputSettings.TriggerUseAnalog = true;
                 enabled = false;
+                return;
             }
 
             HVRInputManager.Instance.GetController(HVRHandSide.Left).isDesktopMode = true;

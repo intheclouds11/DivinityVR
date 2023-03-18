@@ -118,6 +118,15 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Secondary2DAxisForce"",
+                    ""type"": ""Button"",
+                    ""id"": ""96430a39-75fe-4790-bd89-84cb3df4482e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Secondary2DAxisTouch"",
                     ""type"": ""Button"",
                     ""id"": ""28bf5850-459e-4b46-af7a-24a5a64fdf99"",
@@ -344,7 +353,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""366ac51f-3093-4ead-8dba-662fe2cbb81f"",
-                    ""path"": ""<ViveController>{LeftHand}/trackpadClicked"",
+                    ""path"": ""<XRController>{LeftHand}/trackpadPressed"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR Usage"",
@@ -483,6 +492,39 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Haptics"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""229a9244-ace6-4ebf-b601-e818c9cb4af3"",
+                    ""path"": ""<ValveIndexController>{LeftHand}/trackpadForce"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxisClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87119f34-9383-442f-831d-6ab78f0122d3"",
+                    ""path"": ""<ValveIndexController>{LeftHand}/trackpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8d6e334-0d1c-4777-a070-b114001ca724"",
+                    ""path"": ""<ValveIndexController>{LeftHand}/trackpadForce"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxisForce"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -575,6 +617,15 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Secondary2DAxisClick"",
                     ""type"": ""Button"",
                     ""id"": ""83227e26-e8f1-416e-a4a6-b70394fe5ea5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Secondary2DAxisForce"",
+                    ""type"": ""Button"",
+                    ""id"": ""53ff46d3-f520-47bf-86d2-806e68003320"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -795,7 +846,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d094a06a-f8ca-4c85-b478-a5276f7da3e4"",
+                    ""id"": ""391278c9-d02f-4c4f-8eeb-a857f4056a04"",
                     ""path"": ""<XRController>{RightHand}/{secondary2DAxisClick}"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -806,11 +857,22 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c33bf2de-0080-4d75-b40b-0d3593ac31d8"",
-                    ""path"": ""<ViveController>{RightHand}/trackpadClicked"",
+                    ""id"": ""011b1ed1-c56e-4c83-92bf-69090e5ea4f8"",
+                    ""path"": ""<XRController>{RightHand}/trackpadPressed"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XR Usage"",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxisClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8500211c-687a-441d-8317-90d953877830"",
+                    ""path"": ""<ValveIndexController>{RightHand}/trackpadForce"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Secondary2DAxisClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -933,6 +995,28 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR Usage"",
                     ""action"": ""Haptics"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9db0e545-2a2d-4777-b49a-8c6da6f48052"",
+                    ""path"": ""<ValveIndexController>{RightHand}/trackpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b77cb6e9-aaa4-4a71-975a-550b308acba7"",
+                    ""path"": ""<ValveIndexController>{RightHand}/trackpadForce"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxisForce"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1149,6 +1233,15 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Secondary2DAxisForce"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9353602-6514-47ae-9b20-16dd6d9b690b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Secondary2DAxisTouch"",
                     ""type"": ""Button"",
                     ""id"": ""79646e94-2acc-407b-a394-ad36050d569f"",
@@ -1329,6 +1422,17 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SecondaryButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e463508-1edd-490b-95af-683f5c959011"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxisForce"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1421,6 +1525,15 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Secondary2DAxisClick"",
                     ""type"": ""Button"",
                     ""id"": ""cb19d750-2174-4ba3-b5c7-a962416fc73b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Secondary2DAxisForce"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b8fe5a2-8034-4ca1-9f8d-99d2fa911802"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1552,6 +1665,17 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SecondaryButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73ccd3f2-76f8-4e4f-962b-03f1cd633190"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary2DAxisForce"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1582,6 +1706,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         m_LeftHand_Primary2DAxisTouch = m_LeftHand.FindAction("Primary2DAxisTouch", throwIfNotFound: true);
         m_LeftHand_Secondary2DAxis = m_LeftHand.FindAction("Secondary2DAxis", throwIfNotFound: true);
         m_LeftHand_Secondary2DAxisClick = m_LeftHand.FindAction("Secondary2DAxisClick", throwIfNotFound: true);
+        m_LeftHand_Secondary2DAxisForce = m_LeftHand.FindAction("Secondary2DAxisForce", throwIfNotFound: true);
         m_LeftHand_Secondary2DAxisTouch = m_LeftHand.FindAction("Secondary2DAxisTouch", throwIfNotFound: true);
         m_LeftHand_Grip = m_LeftHand.FindAction("Grip", throwIfNotFound: true);
         m_LeftHand_GripPress = m_LeftHand.FindAction("GripPress", throwIfNotFound: true);
@@ -1604,6 +1729,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         m_RightHand_Primary2DAxisTouch = m_RightHand.FindAction("Primary2DAxisTouch", throwIfNotFound: true);
         m_RightHand_Secondary2DAxis = m_RightHand.FindAction("Secondary2DAxis", throwIfNotFound: true);
         m_RightHand_Secondary2DAxisClick = m_RightHand.FindAction("Secondary2DAxisClick", throwIfNotFound: true);
+        m_RightHand_Secondary2DAxisForce = m_RightHand.FindAction("Secondary2DAxisForce", throwIfNotFound: true);
         m_RightHand_Secondary2DAxisTouch = m_RightHand.FindAction("Secondary2DAxisTouch", throwIfNotFound: true);
         m_RightHand_Grip = m_RightHand.FindAction("Grip", throwIfNotFound: true);
         m_RightHand_GripPress = m_RightHand.FindAction("GripPress", throwIfNotFound: true);
@@ -1635,6 +1761,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         m_LeftHandDesktop_Primary2DAxisTouch = m_LeftHandDesktop.FindAction("Primary2DAxisTouch", throwIfNotFound: true);
         m_LeftHandDesktop_Secondary2DAxis = m_LeftHandDesktop.FindAction("Secondary2DAxis", throwIfNotFound: true);
         m_LeftHandDesktop_Secondary2DAxisClick = m_LeftHandDesktop.FindAction("Secondary2DAxisClick", throwIfNotFound: true);
+        m_LeftHandDesktop_Secondary2DAxisForce = m_LeftHandDesktop.FindAction("Secondary2DAxisForce", throwIfNotFound: true);
         m_LeftHandDesktop_Secondary2DAxisTouch = m_LeftHandDesktop.FindAction("Secondary2DAxisTouch", throwIfNotFound: true);
         m_LeftHandDesktop_Grip = m_LeftHandDesktop.FindAction("Grip", throwIfNotFound: true);
         m_LeftHandDesktop_GripPress = m_LeftHandDesktop.FindAction("GripPress", throwIfNotFound: true);
@@ -1656,6 +1783,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         m_RightHandDesktop_Primary2DAxisTouch = m_RightHandDesktop.FindAction("Primary2DAxisTouch", throwIfNotFound: true);
         m_RightHandDesktop_Secondary2DAxis = m_RightHandDesktop.FindAction("Secondary2DAxis", throwIfNotFound: true);
         m_RightHandDesktop_Secondary2DAxisClick = m_RightHandDesktop.FindAction("Secondary2DAxisClick", throwIfNotFound: true);
+        m_RightHandDesktop_Secondary2DAxisForce = m_RightHandDesktop.FindAction("Secondary2DAxisForce", throwIfNotFound: true);
         m_RightHandDesktop_Secondary2DAxisTouch = m_RightHandDesktop.FindAction("Secondary2DAxisTouch", throwIfNotFound: true);
         m_RightHandDesktop_Grip = m_RightHandDesktop.FindAction("Grip", throwIfNotFound: true);
         m_RightHandDesktop_GripPress = m_RightHandDesktop.FindAction("GripPress", throwIfNotFound: true);
@@ -1736,6 +1864,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_LeftHand_Primary2DAxisTouch;
     private readonly InputAction m_LeftHand_Secondary2DAxis;
     private readonly InputAction m_LeftHand_Secondary2DAxisClick;
+    private readonly InputAction m_LeftHand_Secondary2DAxisForce;
     private readonly InputAction m_LeftHand_Secondary2DAxisTouch;
     private readonly InputAction m_LeftHand_Grip;
     private readonly InputAction m_LeftHand_GripPress;
@@ -1760,6 +1889,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         public InputAction @Primary2DAxisTouch => m_Wrapper.m_LeftHand_Primary2DAxisTouch;
         public InputAction @Secondary2DAxis => m_Wrapper.m_LeftHand_Secondary2DAxis;
         public InputAction @Secondary2DAxisClick => m_Wrapper.m_LeftHand_Secondary2DAxisClick;
+        public InputAction @Secondary2DAxisForce => m_Wrapper.m_LeftHand_Secondary2DAxisForce;
         public InputAction @Secondary2DAxisTouch => m_Wrapper.m_LeftHand_Secondary2DAxisTouch;
         public InputAction @Grip => m_Wrapper.m_LeftHand_Grip;
         public InputAction @GripPress => m_Wrapper.m_LeftHand_GripPress;
@@ -1809,6 +1939,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled += instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled += instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled += instance.OnSecondary2DAxisTouch;
@@ -1873,6 +2006,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled -= instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled -= instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled -= instance.OnSecondary2DAxisTouch;
@@ -1934,6 +2070,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_RightHand_Primary2DAxisTouch;
     private readonly InputAction m_RightHand_Secondary2DAxis;
     private readonly InputAction m_RightHand_Secondary2DAxisClick;
+    private readonly InputAction m_RightHand_Secondary2DAxisForce;
     private readonly InputAction m_RightHand_Secondary2DAxisTouch;
     private readonly InputAction m_RightHand_Grip;
     private readonly InputAction m_RightHand_GripPress;
@@ -1958,6 +2095,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         public InputAction @Primary2DAxisTouch => m_Wrapper.m_RightHand_Primary2DAxisTouch;
         public InputAction @Secondary2DAxis => m_Wrapper.m_RightHand_Secondary2DAxis;
         public InputAction @Secondary2DAxisClick => m_Wrapper.m_RightHand_Secondary2DAxisClick;
+        public InputAction @Secondary2DAxisForce => m_Wrapper.m_RightHand_Secondary2DAxisForce;
         public InputAction @Secondary2DAxisTouch => m_Wrapper.m_RightHand_Secondary2DAxisTouch;
         public InputAction @Grip => m_Wrapper.m_RightHand_Grip;
         public InputAction @GripPress => m_Wrapper.m_RightHand_GripPress;
@@ -2007,6 +2145,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled += instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled += instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled += instance.OnSecondary2DAxisTouch;
@@ -2071,6 +2212,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled -= instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled -= instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled -= instance.OnSecondary2DAxisTouch;
@@ -2248,6 +2392,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_LeftHandDesktop_Primary2DAxisTouch;
     private readonly InputAction m_LeftHandDesktop_Secondary2DAxis;
     private readonly InputAction m_LeftHandDesktop_Secondary2DAxisClick;
+    private readonly InputAction m_LeftHandDesktop_Secondary2DAxisForce;
     private readonly InputAction m_LeftHandDesktop_Secondary2DAxisTouch;
     private readonly InputAction m_LeftHandDesktop_Grip;
     private readonly InputAction m_LeftHandDesktop_GripPress;
@@ -2271,6 +2416,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         public InputAction @Primary2DAxisTouch => m_Wrapper.m_LeftHandDesktop_Primary2DAxisTouch;
         public InputAction @Secondary2DAxis => m_Wrapper.m_LeftHandDesktop_Secondary2DAxis;
         public InputAction @Secondary2DAxisClick => m_Wrapper.m_LeftHandDesktop_Secondary2DAxisClick;
+        public InputAction @Secondary2DAxisForce => m_Wrapper.m_LeftHandDesktop_Secondary2DAxisForce;
         public InputAction @Secondary2DAxisTouch => m_Wrapper.m_LeftHandDesktop_Secondary2DAxisTouch;
         public InputAction @Grip => m_Wrapper.m_LeftHandDesktop_Grip;
         public InputAction @GripPress => m_Wrapper.m_LeftHandDesktop_GripPress;
@@ -2319,6 +2465,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled += instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled += instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled += instance.OnSecondary2DAxisTouch;
@@ -2380,6 +2529,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled -= instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled -= instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled -= instance.OnSecondary2DAxisTouch;
@@ -2438,6 +2590,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_RightHandDesktop_Primary2DAxisTouch;
     private readonly InputAction m_RightHandDesktop_Secondary2DAxis;
     private readonly InputAction m_RightHandDesktop_Secondary2DAxisClick;
+    private readonly InputAction m_RightHandDesktop_Secondary2DAxisForce;
     private readonly InputAction m_RightHandDesktop_Secondary2DAxisTouch;
     private readonly InputAction m_RightHandDesktop_Grip;
     private readonly InputAction m_RightHandDesktop_GripPress;
@@ -2461,6 +2614,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         public InputAction @Primary2DAxisTouch => m_Wrapper.m_RightHandDesktop_Primary2DAxisTouch;
         public InputAction @Secondary2DAxis => m_Wrapper.m_RightHandDesktop_Secondary2DAxis;
         public InputAction @Secondary2DAxisClick => m_Wrapper.m_RightHandDesktop_Secondary2DAxisClick;
+        public InputAction @Secondary2DAxisForce => m_Wrapper.m_RightHandDesktop_Secondary2DAxisForce;
         public InputAction @Secondary2DAxisTouch => m_Wrapper.m_RightHandDesktop_Secondary2DAxisTouch;
         public InputAction @Grip => m_Wrapper.m_RightHandDesktop_Grip;
         public InputAction @GripPress => m_Wrapper.m_RightHandDesktop_GripPress;
@@ -2509,6 +2663,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed += instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled += instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed += instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled += instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed += instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled += instance.OnSecondary2DAxisTouch;
@@ -2570,6 +2727,9 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
             @Secondary2DAxisClick.started -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.performed -= instance.OnSecondary2DAxisClick;
             @Secondary2DAxisClick.canceled -= instance.OnSecondary2DAxisClick;
+            @Secondary2DAxisForce.started -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.performed -= instance.OnSecondary2DAxisForce;
+            @Secondary2DAxisForce.canceled -= instance.OnSecondary2DAxisForce;
             @Secondary2DAxisTouch.started -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.performed -= instance.OnSecondary2DAxisTouch;
             @Secondary2DAxisTouch.canceled -= instance.OnSecondary2DAxisTouch;
@@ -2635,6 +2795,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         void OnPrimary2DAxisTouch(InputAction.CallbackContext context);
         void OnSecondary2DAxis(InputAction.CallbackContext context);
         void OnSecondary2DAxisClick(InputAction.CallbackContext context);
+        void OnSecondary2DAxisForce(InputAction.CallbackContext context);
         void OnSecondary2DAxisTouch(InputAction.CallbackContext context);
         void OnGrip(InputAction.CallbackContext context);
         void OnGripPress(InputAction.CallbackContext context);
@@ -2658,6 +2819,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         void OnPrimary2DAxisTouch(InputAction.CallbackContext context);
         void OnSecondary2DAxis(InputAction.CallbackContext context);
         void OnSecondary2DAxisClick(InputAction.CallbackContext context);
+        void OnSecondary2DAxisForce(InputAction.CallbackContext context);
         void OnSecondary2DAxisTouch(InputAction.CallbackContext context);
         void OnGrip(InputAction.CallbackContext context);
         void OnGripPress(InputAction.CallbackContext context);
@@ -2692,6 +2854,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         void OnPrimary2DAxisTouch(InputAction.CallbackContext context);
         void OnSecondary2DAxis(InputAction.CallbackContext context);
         void OnSecondary2DAxisClick(InputAction.CallbackContext context);
+        void OnSecondary2DAxisForce(InputAction.CallbackContext context);
         void OnSecondary2DAxisTouch(InputAction.CallbackContext context);
         void OnGrip(InputAction.CallbackContext context);
         void OnGripPress(InputAction.CallbackContext context);
@@ -2714,6 +2877,7 @@ public partial class @HVRInputActions: IInputActionCollection2, IDisposable
         void OnPrimary2DAxisTouch(InputAction.CallbackContext context);
         void OnSecondary2DAxis(InputAction.CallbackContext context);
         void OnSecondary2DAxisClick(InputAction.CallbackContext context);
+        void OnSecondary2DAxisForce(InputAction.CallbackContext context);
         void OnSecondary2DAxisTouch(InputAction.CallbackContext context);
         void OnGrip(InputAction.CallbackContext context);
         void OnGripPress(InputAction.CallbackContext context);

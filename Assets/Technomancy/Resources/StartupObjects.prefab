@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac17b0fdd7165f45af5a7d9bcfb54ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDesktopMode: 1
+  isDesktopMode: 0
   desktopModeInputModule: {fileID: 6836125643614620541}
   vrInputModule: {fileID: 7240527878106013430}
 --- !u!114 &4992408320839420399
@@ -1476,14 +1476,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1165267127974901318, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1919863751550362023, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2818759436134236866, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1491,18 +1483,6 @@ PrefabInstance:
     - target: {fileID: 2818759436134236866, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3185686789316769154, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: UseWASD
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5240002643086177588, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: antialiasingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5240002643086177588, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: fastApproximateAntialiasing.fastMode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: menu
@@ -1515,26 +1495,6 @@ PrefabInstance:
     - target: {fileID: 5882220326935334823, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6975657012554894807, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183613917027510685, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: MouseTurning
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183613917027510686, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183613917114605120, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_AllowMSAA
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183613917114605120, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: far clip plane
-      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7183613918389418790, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: userMenu
@@ -1600,10 +1560,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7800311387955488015, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8329649340610427034, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1633,22 +1589,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5584fce40b1934145af4e81ca947a701, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &6753762766037916845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7183613917114605123, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-  m_PrefabInstance: {fileID: 4470805318478594798}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4101754131874500860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6753762766037916845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb2547b15e62bf44ab46d2a50fa9ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

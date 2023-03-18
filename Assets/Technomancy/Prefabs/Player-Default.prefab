@@ -716,6 +716,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0
+  overlayMode: 0
   overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   overlayAnimationSpeed: 1
   overlayMinIntensity: 0.5
@@ -729,7 +730,6 @@ MonoBehaviour:
   outlineDownsampling: 2
   outlineVisibility: 0
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 1.19
@@ -742,7 +742,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 1
   glowVisibility: 0
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:
@@ -1265,7 +1264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6592092004201265712
 Transform:
   m_ObjectHideFlags: 0
@@ -4200,7 +4199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1882367371478042940
 Transform:
   m_ObjectHideFlags: 0
@@ -6119,7 +6118,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6802,7 +6801,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fe39944e8344f441907fc69484263c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7014,7 +7013,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &5026680901085682659
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7031,7 +7030,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2098847988899694263
 GameObject:
   m_ObjectHideFlags: 0
@@ -7557,7 +7557,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9116,7 +9116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7576600059062381261
 Transform:
   m_ObjectHideFlags: 0
@@ -11683,6 +11683,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0
+  overlayMode: 0
   overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   overlayAnimationSpeed: 1
   overlayMinIntensity: 0.5
@@ -11696,7 +11697,6 @@ MonoBehaviour:
   outlineDownsampling: 1
   outlineVisibility: 0
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 0
@@ -11709,7 +11709,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 1
   glowVisibility: 0
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:
@@ -12191,7 +12190,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fe39944e8344f441907fc69484263c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14217,6 +14216,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0
+  overlayMode: 0
   overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   overlayAnimationSpeed: 1
   overlayMinIntensity: 0.5
@@ -14230,7 +14230,6 @@ MonoBehaviour:
   outlineDownsampling: 1
   outlineVisibility: 0
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 0
@@ -14243,7 +14242,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 1
   glowVisibility: 0
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:
@@ -15326,6 +15324,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0
+  overlayMode: 0
   overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   overlayAnimationSpeed: 1
   overlayMinIntensity: 0.5
@@ -15339,7 +15338,6 @@ MonoBehaviour:
   outlineDownsampling: 2
   outlineVisibility: 1
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 5
@@ -15352,7 +15350,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 2
   glowVisibility: 1
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:
@@ -15449,7 +15446,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20096,7 +20093,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21353,7 +21350,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &6987116012539525706
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -21370,7 +21367,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6649550951367221523
 GameObject:
   m_ObjectHideFlags: 0
@@ -22729,7 +22727,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22792,7 +22790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5506118877111729816
 Transform:
   m_ObjectHideFlags: 0
@@ -23760,7 +23758,7 @@ MonoBehaviour:
   LimitHeadDistance: 1
   MaxLean: 0.4
   FadeFromLean: 1
-  MouseTurning: 1
+  MouseTurning: 0
   MouseSensitivityX: 1
   IsGrounded: 0
   _actualVelocity: 0
@@ -23776,6 +23774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f258b67bcfea4b9782cfcdcd54058670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllowTeleportInput: 0
   CanDistanceGrab: 1
   CanTriggerGrab: 1
   ForceGrabActivation: 0
@@ -23828,7 +23827,7 @@ MonoBehaviour:
   IsJumpActivated: 0
   TeleportHandSide: 1
   SwapMovementAxis: 0
-  UseWASD: 1
+  UseWASD: 0
   IsMouseDown: 0
   MouseAxis: {x: 0, y: 0}
 --- !u!114 &5469973368956513285
@@ -23921,7 +23920,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7183613917027510657}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddcc26ecb5c24116a2b1c03eaeeef771, type: 3}
   m_Name: 
@@ -24016,7 +24015,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7183613917027510657}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f69bcc72f4218bf44a4a7bb55f1efd7d, type: 3}
   m_Name: 
@@ -24132,8 +24131,9 @@ GameObject:
   - component: {fileID: 6975657013540925021}
   - component: {fileID: 6410340425921713401}
   - component: {fileID: 3367765950401617769}
-  - component: {fileID: 5240002643086177588}
   - component: {fileID: 8329649339143639691}
+  - component: {fileID: 3434299429977383766}
+  - component: {fileID: 4101754131874500860}
   m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
@@ -24205,7 +24205,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 3000
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -24218,7 +24218,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -24266,66 +24266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c9568b7cab450d9687b8b607c93867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5240002643086177588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7183613917114605123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 7183613917114605122}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 2
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!114 &8329649339143639691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24339,6 +24279,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToShowAndHide: {fileID: 950600321853843572}
+--- !u!114 &3434299429977383766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183613917114605123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!114 &4101754131874500860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183613917114605123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb2547b15e62bf44ab46d2a50fa9ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7183613917203841414
 GameObject:
   m_ObjectHideFlags: 0
@@ -26591,7 +26576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4456542440929159644
 Transform:
   m_ObjectHideFlags: 0
@@ -27796,7 +27781,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fe39944e8344f441907fc69484263c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27873,6 +27858,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0.602
+  overlayMode: 0
   overlayColor: {r: 1, g: 1, b: 1, a: 1}
   overlayAnimationSpeed: 0
   overlayMinIntensity: 0
@@ -27886,7 +27872,6 @@ MonoBehaviour:
   outlineDownsampling: 2
   outlineVisibility: 0
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 2
@@ -27899,7 +27884,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 2.1
   glowVisibility: 0
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:
@@ -29291,7 +29275,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32679,7 +32663,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4550806628389926573
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -32696,7 +32680,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9121541062460435394
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,48 +6,550 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gemserk.Favorites.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gemserk.Favorites.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Resources/HVR_ControllerOffsets.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Resources/HVR_ControllerOffsets.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/BuiltIn/GrabbableHighlight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/BuiltIn/GrabbableHighlight.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/Hand.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/Hand.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/OculusTouchForQuestAndRiftS_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/OculusTouchForQuestAndRiftS_Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/TeleportMarker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/TeleportMarker.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/InputSystem/HVRInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/InputSystem/HVRInputActions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/InputSystem/HVRInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/InputSystem/HVRInputActions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Loaders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Loaders/Open VR Loader.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Loaders/Open VR Loader.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Loaders/Open XR Loader.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Loaders/Open XR Loader.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/Open VR Settings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/Open VR Settings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/OpenXR Editor Settings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/OpenXR Editor Settings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/Settings/OpenXR Package Settings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/XRGeneralSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/XR/XRGeneralSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVRController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVRController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVREnums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVREnums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVRInputSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVRInputSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/BulletTrail.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/BulletTrail.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Charcoal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Charcoal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_DarkBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_DarkBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grey.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grey.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grid_DarkBlue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grid_DarkBlue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grid_LightPurple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grid_LightPurple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grid_Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Grid_Wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Orange.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Orange.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_White.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_BlackPanel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_BlackPanel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_Floor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_Floor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_GreyPanel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_GreyPanel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_OrangePanel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_OrangePanel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_PinkLamp.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_PinkLamp.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_RedPanel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_RedPanel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_SMG.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_SMG.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_WhitePanel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_WhitePanel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_backpack.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_backpack.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_chest.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_chest.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_environment.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_environment.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_glass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_green_battery_light.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_green_battery_light.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_hands.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_hands.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_interior.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_interior.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_orangelight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_orangelight.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_pistol.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_pistol.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_props.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_props.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_red_battery_light.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_red_battery_light.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_rope.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_rope.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_safe.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_safe.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_shotgun.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_shotgun.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_spear_shaft.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_spear_shaft.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_spear_tip.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_spear_tip.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Scenes/scene_examples.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Scenes/scene_examples.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/HighlightPlus.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HighlightPlus.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/NatureManufacture Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Extras.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Icon.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_BooleanEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_BooleanEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_PoseEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_PoseEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Pose_ConnectedChangedEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Pose_ConnectedChangedEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Pose_DeviceIndexChangedEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Pose_DeviceIndexChangedEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Pose_TrackingChangedEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Pose_TrackingChangedEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_SingleEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_SingleEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_SkeletonEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_SkeletonEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Skeleton_ConnectedChangedEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Skeleton_ConnectedChangedEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Skeleton_TrackingChangedEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Skeleton_TrackingChangedEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Vector2Event.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Vector2Event.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Vector3Event.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/BehaviourUnityEvents/SteamVR_Behaviour_Vector3Event.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/InputSkin.guiskin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/InputSkin.guiskin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/Resources/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_CopyExampleInputFiles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_CopyExampleInputFiles.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_ActionManifest_Manager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_ActionManifest_Manager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_ActionSetPropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_ActionSetPropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Boolean_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Boolean_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_GenericPropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_GenericPropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_In_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_In_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Out_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Out_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Pose_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Pose_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Single_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Single_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Skeleton_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Skeleton_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Vector2_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Vector2_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Vector3_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Vector3_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Vibration_PropertyEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Action_Vibration_PropertyEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_EditorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_EditorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Generator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_Generator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_LiveWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_LiveWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_PostProcessBuild.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Input_PostProcessBuild.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Skeleton_PoserEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Editor/SteamVR_Skeleton_PoserEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/actions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/actions.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_holographic_hmd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_holographic_hmd.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_index_hmd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_index_hmd.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_rift.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_rift.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive_cosmos.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive_cosmos.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive_pro.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive_pro.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive_tracker_camera.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/binding_vive_tracker_camera.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_holographic_controller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_holographic_controller.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_knuckles.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_knuckles.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_logitech_stylus.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_logitech_stylus.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_oculus_touch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_oculus_touch.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_vive_controller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_vive_controller.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_vive_cosmos_controller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/ExampleJSON/bindings_vive_cosmos_controller.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/LICENSE_James_Newton-King" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/LICENSE_James_Newton-King.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/LICENSE_SaladLab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/LICENSE_SaladLab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActionDirections.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActionDirections.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActionSet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActionSet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActionSet_Manager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActionSet_Manager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Boolean.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Boolean.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_In.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_In.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Out.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Out.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Pose.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Pose.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Single.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Single.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Skeleton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Skeleton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Vector2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Vector2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Vector3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Vector3.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Vibration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Action_Vibration.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActivateActionSetOnLoad.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_ActivateActionSetOnLoad.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Boolean.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Boolean.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Pose.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Pose.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Single.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Single.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Skeleton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Skeleton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_SkeletonCustom.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_SkeletonCustom.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Vector2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Vector2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Vector3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Behaviour_Vector3.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_DefaultAction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_DefaultAction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_DefaultActionSet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_DefaultActionSet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_ActionFile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_ActionFile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_ActionScopes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_ActionScopes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_ActionSetUsages.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_ActionSetUsages.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_BindingFile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_BindingFile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_Generator_Names.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_Generator_Names.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_References.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_References.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_Source.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_Source.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_Sources.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Input_Sources.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Skeleton_Pose.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Skeleton_Pose.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Skeleton_Poser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_Skeleton_Poser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_UpdateModes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Input/SteamVR_UpdateModes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/HandColliderLeft.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/HandColliderLeft.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/HandColliderRight.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/HandColliderRight.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModel Alien.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModel Alien.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModel Slim.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModel Slim.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModelFloppy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/LeftRenderModelFloppy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModel Alien.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModel Alien.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModel Slim.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModel Slim.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModelFloppy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Prefabs/RightRenderModelFloppy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/BodyCollider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/BodyCollider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/CircularDrive.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/CircularDrive.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ComplexThrowable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ComplexThrowable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ControllerHoverHighlight.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ControllerHoverHighlight.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/CustomEvents.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/CustomEvents.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DebugUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DebugUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DestroyOnDetachedFromHand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DestroyOnDetachedFromHand.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DestroyOnParticleSystemDeath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DestroyOnParticleSystemDeath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DestroyOnTriggerEnter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DestroyOnTriggerEnter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DistanceHaptics.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DistanceHaptics.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DontDestroyOnLoad.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/DontDestroyOnLoad.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/EnumFlags.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/EnumFlags.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Equippable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Equippable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/FallbackCameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/FallbackCameraController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/GrabTypes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/GrabTypes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Hand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Hand.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HandCollider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HandCollider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HandPhysics.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HandPhysics.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HapticRack.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HapticRack.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HideOnHandFocusLost.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HideOnHandFocusLost.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HoverButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/HoverButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/IgnoreHovering.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/IgnoreHovering.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/InputModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/InputModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Interactable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Interactable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/InteractableDebug.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/InteractableDebug.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/InteractableHoverEvents.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/InteractableHoverEvents.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ItemPackage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ItemPackage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ItemPackageReference.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ItemPackageReference.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ItemPackageSpawner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ItemPackageSpawner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearAnimation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearAnimator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearAnimator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearAudioPitch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearAudioPitch.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearBlendshape.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearBlendshape.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearDisplacement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearDisplacement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearDrive.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearDrive.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearMapping.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/LinearMapping.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ModalThrowable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/ModalThrowable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/PlaySound.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/PlaySound.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Player.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/RenderModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/RenderModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SeeThru.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SeeThru.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SleepOnAwake.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SleepOnAwake.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SoundDeparent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SoundDeparent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SoundPlayOneshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SoundPlayOneshot.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SpawnAndAttachAfterControllerIsTracking.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SpawnAndAttachAfterControllerIsTracking.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SpawnAndAttachToHand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/SpawnAndAttachToHand.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Throwable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Throwable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/UIElement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/UIElement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Unparent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Unparent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Util.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/Util.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/VelocityEstimator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Scripts/VelocityEstimator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Core/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Hints.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Longbow.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Poses.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/Materials/snapTurnArrow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/Materials/snapTurnArrow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/SnapTurn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/SnapTurn.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/snapTurnArrow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/snapTurnArrow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/snapturnFX.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/SnapTurn/snapturnFX.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/InteractionSystem/Teleport.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Materials/def.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Materials/def.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Materials/workshop.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Materials/workshop.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/Abyss.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/Abyss.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/AlienHand.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/AlienHand.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/No Name.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/No Name.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/floppyHand.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/floppyHand.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/knuckles_right.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/knuckles_right.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/models_hands_vr_glove.vmat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/models_hands_vr_glove.vmat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color_red.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color_red.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color_red.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/Materials/vr_glove_color_red.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/handFingers.mask" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/handFingers.mask.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/vr_glove_graspPoses.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Models/vr_glove_graspPoses.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/OpenVRUnityXRPackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Plugins/openvr_api.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Plugins/openvr_api.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/[CameraRig].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/[CameraRig].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/[Status].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/[Status].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/[SteamVR].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/[SteamVR].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/controller.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/controller.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_left.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_left.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_left_model_slim.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_left_model_slim.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_right.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_right.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_right_model_slim.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_glove_right_model_slim.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_alien_left.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_alien_left.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_alien_right.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_alien_right.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_floppy_left.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_floppy_left.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_floppy_right.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Prefabs/vr_hand_floppy_right.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Behaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Behaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Camera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Camera.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_CameraFlip.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_CameraFlip.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_CameraMask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_CameraMask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Ears.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Ears.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_EnumEqualityComparer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_EnumEqualityComparer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Events.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Events.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_ExternalCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_ExternalCamera.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_ExternalCamera_LegacyManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_ExternalCamera_LegacyManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Fade.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Fade.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Frustum.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Frustum.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_IK.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_IK.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_LoadLevel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_LoadLevel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Menu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Menu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Overlay.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Overlay.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_PlayArea.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_PlayArea.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Render.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Render.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_RenderModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_RenderModel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_RingBuffer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_RingBuffer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Settings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Settings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Skybox.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Skybox.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_SphericalProjection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_SphericalProjection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_TrackedCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_TrackedCamera.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_TrackedObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_TrackedObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_TrackingReferenceManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_TrackingReferenceManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Utils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Scripts/SteamVR_Utils.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Simple Sample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Simple Sample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR Unity Plugin - Input System.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR Unity Plugin - Input System.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR Unity Plugin.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR Unity Plugin.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/ActionSetClasses.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/ActionSetClasses/SteamVR_Input_ActionSet_HVR.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/ActionSetClasses/SteamVR_Input_ActionSet_HVR.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Actions.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Actions.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Input_ActionSets.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Input_ActionSets.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Input_Actions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Input_Actions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Input_Initialization.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Input/SteamVR_Input_Initialization.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Resources/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Resources/Resources/SteamVR_Settings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/SteamVR_Resources/Resources/SteamVR_Settings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Textures/overlay.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/Textures/overlay.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/WindowsHelper.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/WindowsHelper/SteamVR_Windows_EditorHelper.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/WindowsHelper/SteamVR_Windows_EditorHelper.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/WindowsHelper/SteamVR_Windows_Editor_Helper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/WindowsHelper/SteamVR_Windows_Editor_Helper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/link.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/link.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/SteamVR/readme.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Particles/Particle Cylinder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Particles/Particle Cylinder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/Celestial Beginnings_Profiles/Post Process Profile NO VISOR.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/Celestial Beginnings_Profiles/Post Process Profile NO VISOR.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/Celestial Beginnings.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/Celestial Beginnings.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/High Quality.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/High Quality.lighting" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/TitleScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/TitleScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/KillFloor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/KillFloor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/AbilitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/AbilitySystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSpawnPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSpawnPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/SceneLoader.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/SceneLoader.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings/Resources/InteractionLayerSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings/Resources/InteractionLayerSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings/XRInteractionEditorSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings/XRInteractionEditorSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/DesktopModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/DesktopModeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain Splash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain Splash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,22 +558,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41ec717a143148d3ab9583cdd7f4dce9f000/4d/810f14b8/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759e14def7c40b68c657c638e8a043412b800/9e/7298f8fd/VisualTreeUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/CanvasSetup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.0/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Containers/BlockList.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Containers/DynamicBlockArray.cs" root0="SKIP_HIGHLIGHTING" />
@@ -132,6 +623,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SelectableEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SliderEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SpriteDrawUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/Raycasters/BaseRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
@@ -174,6 +666,8 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Runtime/XRLoader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Runtime/XRManagerSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Tests/StandaloneSubsystem/StandaloneSubsystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/MicrosoftMotionControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/ValveIndexControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -246,10 +740,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24848">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="24848" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -367,7 +861,10 @@
       <workItem from="1674258482128" duration="23000" />
       <workItem from="1678576073436" duration="4766000" />
       <workItem from="1678580917633" duration="3848000" />
-      <workItem from="1678841425948" duration="7157000" />
+      <workItem from="1678841425948" duration="8624000" />
+      <workItem from="1679086396778" duration="1417000" />
+      <workItem from="1679090240610" duration="2255000" />
+      <workItem from="1679150691228" duration="8581000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -391,25 +888,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputManager.cs</url>
-          <line>847</line>
-          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\ControllerInput\HVRInputManager.cs" initialLine="847" containingFunctionPresentation="method 'GetSDK'">
-            <startOffsets>
-              <option value="28021" />
-            </startOffsets>
-            <endOffsets>
-              <option value="28042" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

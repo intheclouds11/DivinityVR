@@ -182,7 +182,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7557540490364101082, guid: ee626ca3d981dc6449faba73d97205bb, type: 3}
+  - {fileID: 2100000, guid: e1e64696df7da9048bb7ac1df8ee93cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2324,6 +2324,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0
+  overlayMode: 0
   overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   overlayAnimationSpeed: 1
   overlayMinIntensity: 0.5
@@ -2332,12 +2333,11 @@ MonoBehaviour:
   overlayTextureScale: 1
   outline: 1
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 0.51
-  outlineQuality: 2
+  outlineWidth: 0.98
+  outlineQuality: 1
   outlineDownsampling: 1
   outlineVisibility: 0
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 0
@@ -2350,7 +2350,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 1
   glowVisibility: 0
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:
@@ -5806,7 +5805,7 @@ MonoBehaviour:
     value: -1
 --- !u!95 &7790177046847791651
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5823,7 +5822,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &161828206534726632
 Rigidbody:
   m_ObjectHideFlags: 0

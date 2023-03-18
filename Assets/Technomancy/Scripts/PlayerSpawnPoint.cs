@@ -9,6 +9,7 @@ namespace intheclouds
         private void OnEnable()
         {
             SpawnManager.RegisterUserSpawnPoint(this);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         private void OnDisable()

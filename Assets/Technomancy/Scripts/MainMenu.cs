@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using HurricaneVR.Framework.Core;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,14 @@ namespace intheclouds
 {
     public class MainMenu : MonoBehaviour
     {
+        public AudioClip newGameButtonClip;
+        public AudioClip loadGameButtonClip;
+        public AudioClip settingsButtonClip;
+        
         public void Button_NewGame()
         {
             SceneLoader.Instance.GoToSceneAsync(1);
+            SFXPlayer.Instance.PlaySFXAttach(newGameButtonClip, SFXPlayer.Instance.transform, 1, 0.8f);
         }
 
         public void Button_LoadGame()
