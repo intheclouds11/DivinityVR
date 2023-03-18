@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Knuckles
   m_EditorClassIdentifier: 
   JoystickAxis: 1
-  TrackPadAxis: 0
+  TrackPadAxis: 2
   Primary: 6
   Secondary: 8
   Menu: 0
   PrimaryTouch: 0
   SecondaryTouch: 0
   JoystickButton: 11
-  TrackPadButton: 0
+  TrackPadButton: 13
   JoystickTouch: 10
   TrackPadTouch: 12
   GripUseAnalog: 1
@@ -37,3 +37,4 @@ MonoBehaviour:
   Axis2DDownThreshold: 0.7
   Axis2DLeftThreshold: 0.7
   Axis2DRighThreshold: 0.7
+  TrackPadPressedThreshold: 0.2
