@@ -13,7 +13,6 @@ namespace HurricaneVR.Framework.Shared
     public abstract class HVRController : MonoBehaviour
     {
         public HVRHandSide Side { get; set; }
-        public bool isDesktopMode;
 
         public HVRButtonState GripButtonState;
         public HVRButtonState TriggerButtonState;

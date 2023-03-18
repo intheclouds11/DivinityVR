@@ -9,6 +9,8 @@ namespace HurricaneVR.Framework.Core
     {
         public static HVRManager Instance { get; private set; }
 
+        public bool isDesktopMode;
+
         public HVRGrabberManager GrabberManager;
         public HVRPlayerController PlayerController;
         public Transform Camera;

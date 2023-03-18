@@ -1,7 +1,6 @@
 using HurricaneVR.Framework.ControllerInput;
-using HurricaneVR.Framework.Shared;
+using HurricaneVR.Framework.Core;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
 
 namespace intheclouds
 {
@@ -22,8 +21,7 @@ namespace intheclouds
                 return;
             }
 
-            HVRInputManager.Instance.GetController(HVRHandSide.Left).isDesktopMode = true;
-            HVRInputManager.Instance.GetController(HVRHandSide.Right).isDesktopMode = true;
+            HVRManager.Instance.isDesktopMode = true;
             inputSettings.GripUseAnalog = false;
             inputSettings.TriggerUseAnalog = false;
         }
