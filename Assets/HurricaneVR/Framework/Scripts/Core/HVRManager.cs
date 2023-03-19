@@ -8,13 +8,16 @@ namespace HurricaneVR.Framework.Core
     public class HVRManager : MonoBehaviour
     {
         public static HVRManager Instance { get; private set; }
-
-        public bool isDesktopMode;
-
+        
+        [Header("Setup")]
         public HVRGrabberManager GrabberManager;
         public HVRPlayerController PlayerController;
         public Transform Camera;
         public HVRScreenFade ScreenFader { get; private set; }
+        
+        [Header("Debug")]
+        public bool isDesktopMode;
+        public bool debugMode;
 
         private void Awake()
         {

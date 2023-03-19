@@ -670,7 +670,7 @@ MonoBehaviour:
   playerSelectButtonGroup: {fileID: 1066368805461638978}
   SmoothTurnToggle: {fileID: 1558061623354437700}
   FollowToggle: {fileID: 8998210614521522903}
-  DebugEndAnyTurn: {fileID: 6988085189292229486}
+  DebugModeToggle: {fileID: 6988085189292229486}
 --- !u!82 &8998210615233756745
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2352,7 +2352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.86, y: 0.1}
+  m_AnchoredPosition: {x: 36.9, y: 0.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4668957586035031481
@@ -2383,7 +2383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: End turn for enemies with input
+  m_text: Debug Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -2417,7 +2417,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2446,7 +2446,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 67.86914, y: 17.609789, z: 10.159885, w: 17.839632}
+  m_margin: {x: 80.30935, y: 17.609789, z: 46.762928, w: 17.839632}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3236,7 +3236,7 @@ GameObject:
   - component: {fileID: 2552554225311763227}
   - component: {fileID: 6988085189292229486}
   m_Layer: 5
-  m_Name: End Turn Debug toggle
+  m_Name: Debug Mode toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3325,7 +3325,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4107588257984366002}
         m_TargetAssemblyTypeName: intheclouds.UserMenu, Assembly-CSharp
-        m_MethodName: Toggle_EndAnyTurn
+        m_MethodName: Toggle_DebugMode
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3335,7 +3335,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &7276932493670769845
 GameObject:
   m_ObjectHideFlags: 0

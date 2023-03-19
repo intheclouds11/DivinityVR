@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
 using TMPro;
 using UnityEngine;
@@ -12,19 +13,18 @@ namespace intheclouds
         public static UserMenu Instance;
         public Button[] Tabs;
         public GameObject[] Pages;
-        public GameObject[] controllerHints = new GameObject[2];
+        public GameObject[] controllerHints;
         public bool followPlayer;
         public bool menuIsOpen;
         public GameObject playerSelectPrefab;
         public LayoutGroup playerSelectButtonGroup;
         public Toggle SmoothTurnToggle;
         public Toggle FollowToggle;
-        public Toggle DebugEndAnyTurn;
-        private List<HVRCameraRig> CameraRigs = new List<HVRCameraRig>();
+        public Toggle DebugModeToggle;
         private GameObject spawnPoint;
         private GameObject followThis;
         private LocalUserObjects currentUserObjects;
-        private List<LocalUserObjects> localUserObjectsList = new List<LocalUserObjects>();
+        // private List<LocalUserObjects> localUserObjectsList = new List<LocalUserObjects>();
         private List<GameObject> currentPlayerSelectButtons = new List<GameObject>();
         private GameObject canvasGO;
 
@@ -33,18 +33,12 @@ namespace intheclouds
             Instance = this;
             canvasGO = transform.GetChild(0).gameObject;
             menuIsOpen = canvasGO.activeInHierarchy;
-            DebugEndAnyTurn.isOn = Startup.Instance.debug_endAnyTurn;
-            SmoothTurnToggle.isOn = LocalUserObjects.Instance.HVRPlayerController.RotationType == RotationType.Smooth;
-            FollowToggle.isOn = followPlayer;
-
-            foreach (var player in GameManager.Instance.players)
-            {
-                localUserObjectsList.Add(player.transform.GetComponent<LocalUserObjects>());
-                if (player.PlayerControlled)
-                {
-                    UserSetup(player);
-                }
-            }
+            
+            UserSetup(LocalUserObjects.Instance.PlayerStats);
+            
+            SmoothTurnToggle.SetIsOnWithoutNotify(LocalUserObjects.Instance.HVRPlayerController.RotationType == RotationType.Smooth);
+            FollowToggle.SetIsOnWithoutNotify(followPlayer);
+            DebugModeToggle.SetIsOnWithoutNotify(Startup.Instance.debugMode);
 
             transform.position = spawnPoint.transform.position;
         }
@@ -56,7 +50,10 @@ namespace intheclouds
                 transform.position = Vector3.Lerp(transform.position, spawnPoint.transform.position, 5 * Time.deltaTime);
             }
 
-            transform.LookAt(2 * transform.position - followThis.transform.position);
+            if (menuIsOpen)
+            {
+                transform.LookAt(2 * transform.position - followThis.transform.position);
+            }
         }
 
         public void UserSetup(PlayerStats player)
@@ -64,7 +61,6 @@ namespace intheclouds
             currentUserObjects = player.LocalUserObjects;
             spawnPoint = currentUserObjects.userMenuSpawnPoint;
             followThis = currentUserObjects.Camera.gameObject;
-            CameraRigs.Add(currentUserObjects.HVRCameraRig);
         }
 
         public void ToggleMenu(bool forceShow = false)
@@ -81,18 +77,17 @@ namespace intheclouds
 
             menuIsOpen = !menuIsOpen;
         }
-        
+
         public void Toggle_SmoothTurn(bool smooth)
         {
-            foreach (var userObjects in localUserObjectsList)
-            {
-                userObjects.HVRPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
-            }
+            currentUserObjects.HVRPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
+            Startup.SaveUserTurnSetting(smooth ? 1 : 0);
         }
 
-        public void Toggle_EndAnyTurn(bool toggle)
+        public void Toggle_DebugMode(bool toggle)
         {
-            Startup.Instance.debug_endAnyTurn = toggle;
+            Startup.Instance.debugMode = toggle;
+            Startup.SaveDebugSetting(toggle ? 1 : 0);
         }
 
         public void ChangeTab(int tabIndex)
@@ -106,36 +101,24 @@ namespace intheclouds
 
         public void Button_CalibrateHeight()
         {
-            foreach (var cameraRig in CameraRigs)
-            {
-                if (cameraRig)
-                {
-                    cameraRig.Calibrate();
-                }
-            }
+            currentUserObjects.HVRCameraRig.Calibrate();
         }
 
         public void Button_Standing()
         {
-            foreach (var cameraRig in CameraRigs)
+            var sitStandSetting = currentUserObjects.HVRCameraRig.SitStanding;
+            if (sitStandSetting == HVRSitStand.Sitting)
             {
-                var sitStandSetting = cameraRig.SitStanding;
-                if (sitStandSetting == HVRSitStand.Sitting)
-                {
-                    cameraRig.SetSitStandMode(HVRSitStand.PlayerHeight);
-                }
+                currentUserObjects.HVRCameraRig.SetSitStandMode(HVRSitStand.PlayerHeight);
             }
         }
-        
+
         public void Button_Seated()
         {
-            foreach (var cameraRig in CameraRigs)
+            var sitStandSetting = currentUserObjects.HVRCameraRig.SitStanding;
+            if (sitStandSetting == HVRSitStand.PlayerHeight)
             {
-                var sitStandSetting = cameraRig.SitStanding;
-                if (sitStandSetting == HVRSitStand.PlayerHeight)
-                {
-                    cameraRig.SetSitStandMode(HVRSitStand.Sitting);
-                }
+                currentUserObjects.HVRCameraRig.SetSitStandMode(HVRSitStand.Sitting);
             }
         }
 
@@ -143,7 +126,7 @@ namespace intheclouds
         {
             if (GameManager.Instance.state == GameState.CombatStart)
             {
-                GameManager.Instance.NextTurn = true;
+                GameManager.Instance.ForceNextTurn();
             }
         }
 
@@ -174,10 +157,10 @@ namespace intheclouds
                 playerStats.CurrentPoise = playerStats.statsSO.maxPoise;
                 playerStats.CurrentMagicArmor = playerStats.statsSO.maxMagicArmor;
                 playerStats.CurrentAP = playerStats.statsSO.startingAP;
-                if (playerStats.InCombat)
-                {
-                    playerStats.Turn = true;
-                }
+                // if (playerStats.InCombat)
+                // {
+                //     playerStats.Turn = true;
+                // }
             }
 
             Debug.Log("RESET STATS");

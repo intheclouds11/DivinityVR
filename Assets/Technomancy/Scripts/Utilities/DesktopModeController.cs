@@ -1,41 +1,56 @@
-using HurricaneVR.Framework.ControllerInput;
-using HurricaneVR.Framework.Core;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SpatialTracking;
 
 namespace intheclouds
 {
     public class DesktopModeController : MonoBehaviour
     {
+        public static DesktopModeController Instance;
         private Transform head;
         private Transform leftController;
         private Transform rightController;
-        
+
         private void Awake()
         {
-            var inputSettings = HVRInputManager.Instance.KnucklesInputMap;
+            Instance = this;
+
             if (!Startup.Instance.isDesktopMode)
             {
-                inputSettings.GripUseAnalog = true;
-                inputSettings.TriggerUseAnalog = true;
                 enabled = false;
                 return;
             }
 
-            HVRManager.Instance.isDesktopMode = true;
-            inputSettings.GripUseAnalog = false;
-            inputSettings.TriggerUseAnalog = false;
+            EnableDesktopControls();
         }
 
         private void Start()
         {
-            head = LocalUserObjects.Instance.Camera.transform;
-            leftController = LocalUserObjects.Instance.leftController;
-            rightController = LocalUserObjects.Instance.rightController;
         }
 
         private void Update()
         {
-        
+            if (Mouse.current.rightButton.isPressed)
+            {
+            }
+        }
+
+        public void EnableDesktopControls()
+        {
+            head = LocalUserObjects.Instance.Camera.transform;
+            leftController = LocalUserObjects.Instance.leftController;
+            rightController = LocalUserObjects.Instance.rightController;
+
+            head.GetComponent<TrackedPoseDriver>().enabled = false;
+            leftController.GetComponent<TrackedPoseDriver>().enabled = false;
+            rightController.GetComponent<TrackedPoseDriver>().enabled = false;
+        }
+
+        public void DisableDesktopControls()
+        {
+            leftController.GetComponent<TrackedPoseDriver>().enabled = true;
+            rightController.GetComponent<TrackedPoseDriver>().enabled = true;
+            head.GetComponent<TrackedPoseDriver>().enabled = true;
         }
     }
 }

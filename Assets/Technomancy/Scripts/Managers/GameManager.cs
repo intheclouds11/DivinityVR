@@ -237,14 +237,11 @@ public class GameManager : MonoBehaviour
 
     public void ForceNextTurn()
     {
-        if (playerTurn || Startup.Instance.debug_endAnyTurn)
+        if (state == GameState.CombatStart)
         {
-            if (state == GameState.CombatStart)
+            if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
             {
-                if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
-                {
-                    combatantStats.Turn = false;
-                }
+                combatantStats.Turn = false;
             }
         }
     }

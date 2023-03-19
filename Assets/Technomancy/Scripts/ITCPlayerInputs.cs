@@ -33,6 +33,8 @@ namespace intheclouds
 
         private void CheckEndTurnButton()
         {
+            if (!gameManager.playerTurn && !Startup.Instance.debugMode) return;
+            
             if (Startup.Instance.isDesktopMode && HVRInputManager.Instance.LeftController.PrimaryButtonState.JustActivated)
             {
                 gameManager.ForceNextTurn();

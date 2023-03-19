@@ -71,7 +71,7 @@ namespace intheclouds
 
         public void ToggleSpiritForm()
         {
-            if (!playerLUOs.PlayerStats.InCombat)
+            if (!playerLUOs.PlayerStats.InCombat && !Startup.Instance.debugMode)
             {
                 return;
             }

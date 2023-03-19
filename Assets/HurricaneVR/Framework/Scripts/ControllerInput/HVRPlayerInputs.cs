@@ -1,5 +1,6 @@
 ﻿using System;
 using HurricaneVR.Framework.ControllerInput;
+using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
 
@@ -90,6 +91,7 @@ namespace HurricaneVR.Framework.ControllerInput
 
         public void Update()
         {
+            UseWASD = HVRManager.Instance.debugMode && !HVRManager.Instance.isDesktopMode;
             UpdateInput();
             AfterInputUpdate();
         }

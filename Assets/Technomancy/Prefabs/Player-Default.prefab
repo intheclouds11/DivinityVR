@@ -24590,12 +24590,12 @@ MonoBehaviour:
   PlayerMovementAP: {fileID: 8329649340373793153}
   HVRCameraRig: {fileID: 6975657012902920461}
   Camera: {fileID: 7183613917114605120}
-  leftController: {fileID: 7183613918764917898}
+  leftController: {fileID: 7183613918764917897}
   leftHandPhysics: {fileID: 4140830534761473665}
   leftHandModel: {fileID: 8857322284761006181}
   leftHandPalm: {fileID: 9016561853518515468}
   leftHandAbilitySelectorSpawn: {fileID: 7037598759652603112}
-  rightController: {fileID: 7183613917437877390}
+  rightController: {fileID: 7183613917437877389}
   rightHandPhysics: {fileID: 3692319752846220968}
   rightHandModel: {fileID: 9202908512399624770}
   rightHandPalm: {fileID: 1371730030941719}

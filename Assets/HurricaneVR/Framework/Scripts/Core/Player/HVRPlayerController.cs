@@ -244,6 +244,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected virtual void Update()
         {
+            MouseTurning = HVRManager.Instance.debugMode && !HVRManager.Instance.isDesktopMode;
             CheckCameraCorrection();
             CheckSprinting();
             UpdateHeight();
