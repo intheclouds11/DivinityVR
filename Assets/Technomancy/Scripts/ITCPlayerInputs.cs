@@ -33,7 +33,7 @@ namespace intheclouds
 
         private void CheckEndTurnButton()
         {
-            if (Startup.Instance.isDesktopMode && HVRInputManager.Instance.LeftController.PrimaryTouchButtonState.JustActivated)
+            if (Startup.Instance.isDesktopMode && HVRInputManager.Instance.LeftController.PrimaryButtonState.JustActivated)
             {
                 gameManager.ForceNextTurn();
                 SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 1, 1);

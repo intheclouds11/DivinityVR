@@ -6,6 +6,7 @@ using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerStats> players;
     public bool NextTurn;
     public bool NewRound;
-    private BaseStats activeCombatant;
+    public BaseStats activeCombatant;
     private BaseStats firstCombatant;
     public int enemiesAlive;
     public int playersAlive;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     private Coroutine turnOrderCoroutine;
     public List<KeyValuePair<BaseStats, int>> turnOrderList;
     public PlayerStats controlledPlayer;
+    public bool playerTurn;
 
     private void Awake()
     {
@@ -83,6 +85,9 @@ public class GameManager : MonoBehaviour
     private void HandleCombatStart()
     {
         Debug.Log("COMBAT START");
+        enemiesAlive = 0;
+        playersAlive = 0;
+        
         Dictionary<BaseStats, int> witsList = new Dictionary<BaseStats, int>();
         foreach (var enemy in EnemyManager.Instance.enemyList)
         {
@@ -109,10 +114,11 @@ public class GameManager : MonoBehaviour
 
         foreach (var character in turnOrderList)
         {
-            if (character.Key.TryGetComponent(out PlayerStats playerStats))
-            {
-                playerStats.InCombat = true;
-            }
+            character.Key.InCombat = true;
+            // if (character.Key.TryGetComponent(out PlayerStats playerStats))
+            // {
+            //     playerStats.InCombat = true;
+            // }
         }
 
         turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrderList));
@@ -134,6 +140,7 @@ public class GameManager : MonoBehaviour
         if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
         {
             combatantStats.Turn = true;
+            playerTurn = activeCombatant as PlayerStats;
         }
        
         UpdateTurnOrderText(turnOrder);
@@ -189,9 +196,9 @@ public class GameManager : MonoBehaviour
             enemy.InCombat = false;
         }
 
-        if (UserMenu.Instance.menuIsOpen)
+        if (!UserMenu.Instance.menuIsOpen)
         {
-            UserMenu.Instance.ToggleMenu();
+            UserMenu.Instance.ToggleMenu(true);
         }
     }
 
@@ -230,11 +237,14 @@ public class GameManager : MonoBehaviour
 
     public void ForceNextTurn()
     {
-        if (state == GameState.CombatStart)
+        if (playerTurn || Startup.Instance.debug_endAnyTurn)
         {
-            if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
+            if (state == GameState.CombatStart)
             {
-                combatantStats.Turn = false;
+                if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
+                {
+                    combatantStats.Turn = false;
+                }
             }
         }
     }

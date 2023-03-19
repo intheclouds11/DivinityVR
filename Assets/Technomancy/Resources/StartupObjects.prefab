@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923ec526580e484ca0d4716c43ccccc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDesktopMode: 0
   GrabberManager: {fileID: 0}
   PlayerController: {fileID: 0}
   Camera: {fileID: 0}
@@ -949,10 +950,12 @@ MonoBehaviour:
   - {fileID: 6753762764629424587}
   NextTurn: 0
   NewRound: 0
+  activeCombatant: {fileID: 0}
   enemiesAlive: 0
   playersAlive: 0
   turnOrderText: {fileID: 8675208179097946489}
   controlledPlayer: {fileID: 0}
+  playerTurn: 0
 --- !u!114 &4238637224748382629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDesktopMode: 0
+  debug_endAnyTurn: 0
   desktopModeInputModule: {fileID: 6836125643614620541}
   vrInputModule: {fileID: 7240527878106013430}
 --- !u!114 &4992408320839420399
@@ -1299,6 +1303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UserMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1558061623354437700, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2686057929713334427, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1343,10 +1351,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4107588257984366002, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
-      propertyPath: controllerHints.Array.data[0]
-      value: 
-      objectReference: {fileID: 482519494739362436}
     - target: {fileID: 8998210615526483567, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1468,6 +1472,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4238637224506910440}
     m_Modifications:
+    - target: {fileID: 79592173016312461, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 774377244720660924, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1482,6 +1490,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818759436134236866, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709665201362856942, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
@@ -1495,6 +1507,10 @@ PrefabInstance:
     - target: {fileID: 5882220326935334823, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975657012902920461, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: SittingOffset
+      value: 0.629975
       objectReference: {fileID: 0}
     - target: {fileID: 7183613918389418790, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: userMenu
@@ -1570,11 +1586,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
---- !u!1 &482519494739362436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4087365565570351210, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-  m_PrefabInstance: {fileID: 4470805318478594798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6753762764629424585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7183613918389418791, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using HurricaneVR.Framework.Core.UI;
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Management;
 
 namespace intheclouds
@@ -12,6 +13,7 @@ namespace intheclouds
     {
         public static Startup Instance;
         public bool isDesktopMode;
+        public bool debug_endAnyTurn;
         public InputSystemUIInputModule desktopModeInputModule;
         public HVRInputModule vrInputModule;
 

@@ -287,7 +287,6 @@ namespace HurricaneVR.Framework.Core.Player
         /// </summary>
         public void SetSitStandMode(HVRSitStand sitStand)
         {
-            Calibrate(); // MOVED THIS FROM BOTTOM TO TOP (ok to do?)
             if (sitStand == HVRSitStand.Standing && !CameraScale)
             {
                 Debug.LogWarning($"Standing mode cannot be set without the CameraScale transform assigned and setup properly.");
@@ -295,6 +294,7 @@ namespace HurricaneVR.Framework.Core.Player
             }
 
             SitStanding = sitStand;
+            Calibrate();
         }
     }
 

@@ -10,6 +10,8 @@ namespace intheclouds
     public class UserMenu : MonoBehaviour
     {
         public static UserMenu Instance;
+        public Button[] Tabs;
+        public GameObject[] Pages;
         public GameObject[] controllerHints = new GameObject[2];
         public bool followPlayer;
         public bool menuIsOpen;
@@ -17,6 +19,7 @@ namespace intheclouds
         public LayoutGroup playerSelectButtonGroup;
         public Toggle SmoothTurnToggle;
         public Toggle FollowToggle;
+        public Toggle DebugEndAnyTurn;
         private List<HVRCameraRig> CameraRigs = new List<HVRCameraRig>();
         private GameObject spawnPoint;
         private GameObject followThis;
@@ -30,8 +33,9 @@ namespace intheclouds
             Instance = this;
             canvasGO = transform.GetChild(0).gameObject;
             menuIsOpen = canvasGO.activeInHierarchy;
-            SmoothTurnToggle.onValueChanged.AddListener(OnSmoothTurnChanged);
-            FollowToggle.onValueChanged.AddListener(OnFollowPlayerChanged);
+            DebugEndAnyTurn.isOn = Startup.Instance.debug_endAnyTurn;
+            SmoothTurnToggle.isOn = LocalUserObjects.Instance.HVRPlayerController.RotationType == RotationType.Smooth;
+            FollowToggle.isOn = followPlayer;
 
             foreach (var player in GameManager.Instance.players)
             {
@@ -63,9 +67,9 @@ namespace intheclouds
             CameraRigs.Add(currentUserObjects.HVRCameraRig);
         }
 
-        public void ToggleMenu()
+        public void ToggleMenu(bool forceShow = false)
         {
-            if (!menuIsOpen)
+            if (!menuIsOpen || forceShow)
             {
                 transform.position = spawnPoint.transform.position;
                 canvasGO.SetActive(true);
@@ -78,11 +82,25 @@ namespace intheclouds
             menuIsOpen = !menuIsOpen;
         }
         
-        public void OnSmoothTurnChanged(bool smooth)
+        public void Toggle_SmoothTurn(bool smooth)
         {
             foreach (var userObjects in localUserObjectsList)
             {
                 userObjects.HVRPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
+            }
+        }
+
+        public void Toggle_EndAnyTurn(bool toggle)
+        {
+            Startup.Instance.debug_endAnyTurn = toggle;
+        }
+
+        public void ChangeTab(int tabIndex)
+        {
+            for (var i = 0; i < Tabs.Length; i++)
+            {
+                Tabs[i].interactable = i != tabIndex;
+                Pages[i].SetActive(i == tabIndex);
             }
         }
 
@@ -97,22 +115,27 @@ namespace intheclouds
             }
         }
 
-        public void Button_OnSitStandClicked()
+        public void Button_Standing()
         {
             foreach (var cameraRig in CameraRigs)
             {
-                // Swap between Sitting and PlayerHeight (Standing scales camera eh...)
-                var index = (int) cameraRig.SitStanding;
-                if (index == 0)
+                var sitStandSetting = cameraRig.SitStanding;
+                if (sitStandSetting == HVRSitStand.Sitting)
                 {
-                    index = 2;
+                    cameraRig.SetSitStandMode(HVRSitStand.PlayerHeight);
                 }
-                else
+            }
+        }
+        
+        public void Button_Seated()
+        {
+            foreach (var cameraRig in CameraRigs)
+            {
+                var sitStandSetting = cameraRig.SitStanding;
+                if (sitStandSetting == HVRSitStand.PlayerHeight)
                 {
-                    index = 0;
+                    cameraRig.SetSitStandMode(HVRSitStand.Sitting);
                 }
-
-                cameraRig.SetSitStandMode((HVRSitStand) index);
             }
         }
 
@@ -132,7 +155,7 @@ namespace intheclouds
             }
         }
 
-        public void OnFollowPlayerChanged(bool toggle)
+        public void Toggle_FollowPlayer(bool toggle)
         {
             followPlayer = toggle;
         }

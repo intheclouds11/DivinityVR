@@ -23824,6 +23824,8 @@ MonoBehaviour:
   IsRightForceGrabActive: 0
   IsLeftForceGrabActivated: 0
   IsRightForceGrabActivated: 0
+  isLeftAbilitySelectorActive: 0
+  isRightAbilitySelectorActive: 0
   IsJumpActivated: 0
   TeleportHandSide: 1
   SwapMovementAxis: 0
@@ -24378,7 +24380,7 @@ MonoBehaviour:
   DebugKeyboardOffset: 1
   DebugKeyboardIncrement: 0.25
   SaveCalibrationHeight: 1
-  DebugCalibMode: 0
+  DebugCalibMode: 2
   DebugCalibMovedThreshold: 0.05
   DebugKeyboardRecalibrate: 0
   RecalibrateKey: 114
