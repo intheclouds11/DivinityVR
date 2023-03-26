@@ -81,7 +81,7 @@ namespace intheclouds
         public void Toggle_SmoothTurn(bool smooth)
         {
             currentUserObjects.HVRPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
-            Startup.SaveUserTurnSetting(smooth ? 1 : 0);
+            Startup.SaveUserTurnSetting(smooth ? 0 : 1);
         }
 
         public void Toggle_DebugMode(bool toggle)

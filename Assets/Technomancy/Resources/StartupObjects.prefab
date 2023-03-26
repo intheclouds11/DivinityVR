@@ -186,7 +186,7 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   Camera: {fileID: 0}
   isDesktopMode: 0
-  kbmAllowedInVR: 0
+  debugMode: 0
 --- !u!114 &4238637223850722012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1214,6 +1214,7 @@ MonoBehaviour:
   vrInputModule: {fileID: 7240527878106013430}
   isDesktopMode: 0
   debugMode: 0
+  loadPlayerSettings: 1
 --- !u!114 &4992408320839420399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,10 +1482,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4238637224506910440}
     m_Modifications:
-    - target: {fileID: 79592173016312461, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 774377244720660924, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1499,10 +1496,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818759436134236866, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709665201362856942, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
@@ -1517,12 +1510,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6975657012902920461, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: SittingOffset
-      value: 0.629975
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183613917027510685, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: MouseTurning
+    - target: {fileID: 6725323938581966214, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183613918389418790, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}

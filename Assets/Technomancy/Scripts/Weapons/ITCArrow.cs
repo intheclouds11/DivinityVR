@@ -27,14 +27,15 @@ namespace intheclouds
         {
             if (!enabled) return;
 
-            if (Rigidbody.velocity.magnitude > 1)
+            if (collision.impulse.magnitude > 2)
             {
                 ProcessHitEnemy(collision);
+                if (player)
+                {
+                    return; // if player owned, don't get disabled or hit player
+                }
                 ProcessHitPlayer(collision);
             }
-
-            base.OnCollisionEnter(collision);
-            enabled = false;
         }
 
         private void ProcessHitEnemy(Collision collision)
@@ -55,6 +56,8 @@ namespace intheclouds
             if (collision.gameObject.CompareTag("EnemyBody") || collision.gameObject.CompareTag("EnemyHead"))
             {
                 SFXPlayer.Instance.PlaySFXRandomPitchAttach(damageAudioClip, transform, 1f, 1.1f, 0.5f, 20);
+                base.OnCollisionEnter(collision);
+                enabled = false;
             }
         }
 
@@ -63,6 +66,8 @@ namespace intheclouds
             if (collision.gameObject.CompareTag("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 // damage player
+                base.OnCollisionEnter(collision);
+                enabled = false;
             }
         }
 

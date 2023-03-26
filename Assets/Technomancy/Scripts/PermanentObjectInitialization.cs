@@ -9,6 +9,11 @@ namespace intheclouds
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void PermObjectInitialization()
         {
+            var cams = FindObjectsOfType<Camera>();
+            foreach (var cam in cams)
+            {
+                cam.enabled = false;
+            }
             var startup = Instantiate(Resources.Load("StartupObjects")) as GameObject;
             DontDestroyOnLoad(startup);
         }

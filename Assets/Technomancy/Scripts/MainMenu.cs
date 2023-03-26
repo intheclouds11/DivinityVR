@@ -17,7 +17,7 @@ namespace intheclouds
         public void Button_NewGame()
         {
             SceneLoader.Instance.GoToSceneAsync(1);
-            SFXPlayer.Instance.PlaySFXAttach(newGameButtonClip, SFXPlayer.Instance.transform, 1, 0.8f);
+            SFXPlayer.Instance.PlaySFXAttach(newGameButtonClip, SFXPlayer.Instance.transform, 1, 1f);
         }
 
         public void Button_LoadGame()

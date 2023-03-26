@@ -78,7 +78,7 @@ public class SpiritMovement : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
-        previousTurnAmount = playerInputs.RightController.JoystickAxis.x;
+        previousTurnAmount = playerInputs.TurnAxis.x;
     }
 
     void HandleMovement()
@@ -144,10 +144,11 @@ public class SpiritMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        var input = playerInputs.RightController.JoystickAxis.x;
-        if (hvrPlayerController.RotationType == RotationType.Snap && Math.Abs(input) < hvrPlayerController.SnapThreshold)
+        var input = playerInputs.TurnAxis.x;
+        
+        if (hvrPlayerController.RotationType == RotationType.Snap)
         {
-            if (Mathf.Abs(previousTurnAmount) > hvrPlayerController.SnapThreshold) return;
+            if (Math.Abs(input) < hvrPlayerController.SnapThreshold || Mathf.Abs(previousTurnAmount) > hvrPlayerController.SnapThreshold) return;
 
             var rotation = Quaternion.Euler(0, Mathf.Sign(input) * hvrPlayerController.SnapAmount, 0);
             transform.rotation *= rotation;

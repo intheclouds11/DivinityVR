@@ -535,11 +535,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Notch: {fileID: 0}
   requiredAP: 2
-  damage: 20
-  criticalMultiplier: 2
-  wieldingUser: {fileID: 0}
+  baseDamage: 1
+  criticalDamageMultiplier: 1.5
+  elementalType: 5
+  damageType: 0
+  statusEffect: {fileID: 0}
+  player: {fileID: 0}
   damageAudioClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
-  noDamageAudioClip: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
 --- !u!114 &7249371662223983648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,6 +771,8 @@ MonoBehaviour:
   impactSpeedRequired: 0.1
   impactClip: {fileID: 8300000, guid: ac438d93e9d938a44a71e6cf03b8327a, type: 3}
   volume: 0.1
+  maxPitch: 1
+  minPitch: 1
 --- !u!1 &7421629758791923788
 GameObject:
   m_ObjectHideFlags: 0
