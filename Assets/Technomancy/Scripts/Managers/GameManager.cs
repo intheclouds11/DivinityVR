@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using HighlightPlus;
 using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
 using TMPro;
@@ -23,9 +24,11 @@ public class GameManager : MonoBehaviour
     public bool NewRound;
     public BaseStats activeCombatant;
     private BaseStats firstCombatant;
+    private BaseStats previousCombatant;
     public int enemiesAlive;
     public int playersAlive;
     public TextMeshProUGUI turnOrderText;
+    public GameObject turnOrderUI;
     private Coroutine turnOrderCoroutine;
     public List<KeyValuePair<BaseStats, int>> turnOrderList;
     public PlayerStats controlledPlayer;
@@ -103,7 +106,7 @@ public class GameManager : MonoBehaviour
             player.GetComponent<LocalUserObjects>().PlayerMovementAP.enabled = true;
             if (player.PlayerControlled)
             {
-                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.transform, 1f, 0.5f);
+                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.LocalUserObjects.Camera.transform, 1f, 0.5f);
             }
 
             witsList.Add(player, player.Wits);
@@ -121,6 +124,7 @@ public class GameManager : MonoBehaviour
             // }
         }
 
+        turnOrderUI.SetActive(true);
         turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrderList));
     }
 
@@ -164,6 +168,7 @@ public class GameManager : MonoBehaviour
 
         turnOrder.Add(turnOrder[0]);
         turnOrder.Remove(turnOrder[0]);
+        previousCombatant = activeCombatant;
 
         turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrder));
     }
@@ -174,6 +179,7 @@ public class GameManager : MonoBehaviour
         StopCoroutine(turnOrderCoroutine);
         audioSource.PlayOneShot(combatEndClip);
         MusicAudioSource.Stop();
+        turnOrderUI.SetActive(false);
         turnOrderText.text = "";
         firstCombatant = null;
         foreach (var playerEndCombat in players)
@@ -204,10 +210,25 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTurnOrderText(List<KeyValuePair<BaseStats, int>> turnOrder)
     {
-        turnOrderText.text = null;
+        var highlight = activeCombatant.GetComponentInChildren<HighlightEffect>();
+        if (highlight)
+        {
+            highlight.highlighted = true;
+        }
+        
+        if (previousCombatant)
+        {
+            var highlightPrev = previousCombatant.GetComponentInChildren<HighlightEffect>();
+            if (highlightPrev)
+            {
+                highlightPrev.highlighted = false;
+            }
+        }
+        
+        turnOrderText.text = "Turn Order: <br>";
         for (int i = 0; i < turnOrder.Count; i++)
         {
-            turnOrderText.text += $"{i}. {turnOrder[i].Key.Name}, ";
+            turnOrderText.text += $"{i + 1}. {turnOrder[i].Key.Name}<br>";
         }
     }
 

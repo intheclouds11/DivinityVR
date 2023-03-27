@@ -40,6 +40,8 @@ namespace intheclouds
         public virtual bool InCombat { get; set; }
         public int baseDamage = 10;
         public BaseStats attacker;
+        public bool pointedAtByHead;
+        public bool pointedAtByHand;
 
         [Header("Attributes")]
         public int Strength; //+5% to all melee damage, can lift heavier objects
@@ -49,6 +51,8 @@ namespace intheclouds
         public int Memory; //1 extra magic slot (can't change these during combat)
         public int Wits; //+1% critical damage, +1 Initiative
 
+        // todo: v move into PlayerStats
+        [Header("Combat Abilities")]
         [Header("Skills")]
         public int Warfare; //+5% to ~all~ physical damage
         public int Huntsman; //+5% to ~all~ high ground damage (applies after other bonuses)
@@ -56,10 +60,12 @@ namespace intheclouds
         public int Hydrosophist; //+5% to all water damage, +5% heal amount to all heal abilities, +5% magic armour from skills and potions
         public int Aerotheurge; //+5% to all air damage
         public int Geomancer; //+5% to all earth and poison damage, +5% more physical armour from skills and potions
-
         [Header("Defense")]
         public int Retribution; //+5% damage reflected
         public int Leadership; //+2% Dodging and +3% to all resistances - Granted to all allies in a 8m radius
+        // Civil Abilities: https://divinityoriginalsin2.wiki.fextralife.com/Civil+Abilities
+        // Persuasion (needed for first encounter)
+        // todo: ^ move into PlayerStats
 
         [Header("Setup")]
         [SerializeField]

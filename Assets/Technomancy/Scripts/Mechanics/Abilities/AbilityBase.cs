@@ -82,11 +82,11 @@ namespace intheclouds
             
             if (castingHand.Controller.Side == HVRHandSide.Left)
             {
-                caster.LocalUserObjects.leftHandPhysics.GetComponent<HVRHandGrabber>().ForceRelease();
+                caster.LocalUserObjects.leftHandGrabber.ForceRelease();
             }
             else
             {
-                caster.LocalUserObjects.rightHandPhysics.GetComponent<HVRHandGrabber>().ForceRelease();
+                caster.LocalUserObjects.rightHandGrabber.ForceRelease();
             }
 
             abilitySystem.DequipAbility();

@@ -20,15 +20,14 @@ namespace intheclouds
         private float cooldownTimerNoCombat;
         [Header("Debug")]
         public LocalUserObjects playerLUOs;
-        public HVRHandGrabber Grabber { get; set; }
         public HVRGrabbable Grabbable;
 
 
         private void Awake()
         {
             playerLUOs = transform.GetComponentInParent<LocalUserObjects>();
-            leftHandGrabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
-            rightHandGrabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
+            leftHandGrabber = playerLUOs.leftHandGrabber;
+            rightHandGrabber = playerLUOs.rightHandGrabber;
 
             if (abilitySlots.activeInHierarchy)
             {
@@ -56,20 +55,17 @@ namespace intheclouds
 
         private void SelectorUpdate()
         {
-            if (!selectedAbility || selectedAbility && !selectedAbility.gameObject.activeInHierarchy)
+            if (!abilitySlots.activeSelf && (!selectedAbility || selectedAbility && !selectedAbility.gameObject.activeInHierarchy))
             {
-                if (playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActive && !abilitySlots.activeSelf)
+                if (!playerLUOs.leftHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActive)
                 {
                     ShowSelector(playerLUOs.leftHandAbilitySelectorSpawn.transform, leftController);
                 }
-                else if (playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActive && !abilitySlots.activeSelf)
+                else if (!playerLUOs.rightHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActive)
                 {
                     ShowSelector(playerLUOs.rightHandAbilitySelectorSpawn.transform, rightController);
                 }
-            }
 
-            if (!abilitySlots.activeSelf)
-            {
                 return;
             }
 
@@ -150,16 +146,12 @@ namespace intheclouds
             {
                 if (hand.Controller == leftController)
                 {
-                    // selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
-                    Grabber = playerLUOs.leftHandPhysics.GetComponent<HVRHandGrabber>();
+                    leftHandGrabber.Grab(grabbable, grabbable.GrabTrigger);
                 }
                 else if (hand.Controller == rightController)
                 {
-                    // selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
-                    Grabber = playerLUOs.rightHandPhysics.GetComponent<HVRHandGrabber>();
+                    rightHandGrabber.Grab(grabbable, grabbable.GrabTrigger);
                 }
-
-                Grabber.Grab(grabbable, grabbable.GrabTrigger);
             }
             else
             {

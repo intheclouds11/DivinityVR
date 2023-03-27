@@ -1,6 +1,7 @@
 using System;
 using HighlightPlus;
 using HurricaneVR.Framework.ControllerInput;
+using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
 
@@ -12,18 +13,20 @@ namespace intheclouds
         public static LocalUserObjects Instance;
         public PlayerStats PlayerStats;
         public HVRPlayerController HVRPlayerController;
+        public ITCTeleporter ITCTeleporter;
         public HVRPlayerInputs HVRPlayerInputs;
         public ITCPlayerInputs ITCPlayerInputs;
         public PlayerMovementAP PlayerMovementAP;
         public HVRCameraRig HVRCameraRig;
         public Camera Camera;
+        public PlayerHUDController HUDController;
         public Transform leftController;
-        public GameObject leftHandPhysics;
+        public HVRHandGrabber leftHandGrabber;
         public GameObject leftHandModel;
         public GameObject leftHandPalm;
         public GameObject leftHandAbilitySelectorSpawn;
         public Transform rightController;
-        public GameObject rightHandPhysics;
+        public HVRHandGrabber rightHandGrabber;
         public GameObject rightHandModel;
         public GameObject rightHandPalm;
         public GameObject rightHandAbilitySelectorSpawn;
@@ -38,22 +41,12 @@ namespace intheclouds
         public GameObject abilities;
         public AbilityPointer leftAbilityPointer;
         public AbilityPointer rightAbilityPointer;
+        public HeadPointer headPointer;
+        public GenericPointerInfo genericPointerInfo;
 
         private void Awake()
         {
             Instance = this;
         }
-
-        private void Start()
-        {
-            if (PlayerStats.PlayerControlled)
-            {
-                turnOrderUI.transform.SetParent(Camera.transform, false);
-                turnOrderUI.transform.localPosition = Vector3.zero;
-                turnOrderUI.transform.localRotation = Quaternion.identity;
-            }
-        }
     }
-    
-    
 }

@@ -63,7 +63,7 @@ namespace intheclouds
 
         public static void SaveUserTurnSetting(int rotationEnumIndex)
         {
-            // For reference. rotation == 1 ? smooth : snap
+            // For reference. rotation == 0 ? smooth : snap
             PlayerPrefs.SetInt(SmoothRotationSettingKey, rotationEnumIndex);
             PlayerPrefs.Save();
         }

@@ -5611,7 +5611,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh155080
+  m_Name: pb_Mesh31440
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6265,7 +6265,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh156592
+  m_Name: pb_Mesh32988
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7099,7 +7099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1582356482}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &327705859
 MonoBehaviour:
@@ -16262,7 +16262,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh157010
+  m_Name: pb_Mesh33412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17383,6 +17383,10 @@ PrefabInstance:
       propertyPath: StartingSocket
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 747239356774909847, guid: 6d0efcc1244cef841b5110be4fd59995, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3901681597923893651, guid: 6d0efcc1244cef841b5110be4fd59995, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -18440,7 +18444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975777868}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Fence + mush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18453,8 +18457,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975777867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24, y: 3.5430052, z: -1.19}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.691294, y: -18.043661, z: 7.8846726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18483,8 +18487,8 @@ Transform:
   - {fileID: 713939852}
   - {fileID: 1337229987}
   - {fileID: 833321201}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1582356482}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980067551
 GameObject:
@@ -31314,7 +31318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh155662
+  m_Name: pb_Mesh32032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -40773,6 +40777,7 @@ Transform:
   - {fileID: 2124506103}
   - {fileID: 557327968}
   - {fileID: 1264774970}
+  - {fileID: 975777868}
   - {fileID: 1592052409}
   - {fileID: 327705858}
   m_Father: {fileID: 0}
@@ -41069,7 +41074,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1582356482}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!167 &1592052410
 AudioReverbZone:
@@ -41080,7 +41085,7 @@ AudioReverbZone:
   m_GameObject: {fileID: 1592052408}
   m_Enabled: 1
   m_MinDistance: 50
-  m_MaxDistance: 50
+  m_MaxDistance: 55
   m_ReverbPreset: 16
   m_Room: -1000
   m_RoomHF: -3300
@@ -41772,7 +41777,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh156650
+  m_Name: pb_Mesh33046
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42033,7 +42038,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh156636
+  m_Name: pb_Mesh33032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -48769,7 +48774,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh155546
+  m_Name: pb_Mesh31916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -49313,6 +49318,10 @@ PrefabInstance:
       propertyPath: StartingSocket
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 178927438733307788, guid: bc818bd4bfbc3e949a5393f6194590ad, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc818bd4bfbc3e949a5393f6194590ad, type: 3}
 --- !u!1001 &196642056276761895
@@ -49369,6 +49378,10 @@ PrefabInstance:
     - target: {fileID: 9193240619908404831, guid: 29efc4ce44b6b6d4ea0ffd255e3bf8e1, type: 3}
       propertyPath: StartingSocket
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193240619908404831, guid: 29efc4ce44b6b6d4ea0ffd255e3bf8e1, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9201416344396933992, guid: 29efc4ce44b6b6d4ea0ffd255e3bf8e1, type: 3}
       propertyPath: m_Name
@@ -49456,24 +49469,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9070178213312472418, guid: b17040ae7b937584f886d00910d2a327, type: 3}
-      propertyPath: glow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9070178213312472418, guid: b17040ae7b937584f886d00910d2a327, type: 3}
-      propertyPath: outline
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9070178213312472418, guid: b17040ae7b937584f886d00910d2a327, type: 3}
       propertyPath: innerGlow
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9070178213312472418, guid: b17040ae7b937584f886d00910d2a327, type: 3}
       propertyPath: _highlighted
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9070178213312472418, guid: b17040ae7b937584f886d00910d2a327, type: 3}
-      propertyPath: outlineWidth
-      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 9070178213312472418, guid: b17040ae7b937584f886d00910d2a327, type: 3}
       propertyPath: outlineQuality
@@ -49508,6 +49509,10 @@ PrefabInstance:
     - target: {fileID: 5066610884980448225, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: StartingSocket
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066610884980448225, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5066610884980448226, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: m_RootOrder
@@ -49760,6 +49765,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948936462}
     m_Modifications:
+    - target: {fileID: 4818466715763557621, guid: 0fe80b588d5a7534b9225f04b69a6259, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4818466715763557630, guid: 0fe80b588d5a7534b9225f04b69a6259, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -50000,6 +50009,10 @@ PrefabInstance:
       propertyPath: StartingSocket
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1108140391066582097, guid: 1d69498dcbac35b48984e0cdefa13f38, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9046685629156859862, guid: 1d69498dcbac35b48984e0cdefa13f38, type: 3}
       propertyPath: baseDamage
       value: 10
@@ -50057,9 +50070,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 89.97
       objectReference: {fileID: 0}
+    - target: {fileID: 5185757251671855761, guid: 1fb5e7aacc1309847add6fece31fc3d0, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5185757252078971367, guid: 1fb5e7aacc1309847add6fece31fc3d0, type: 3}
       propertyPath: StartingSocket
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185757252078971367, guid: 1fb5e7aacc1309847add6fece31fc3d0, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5419778064393409677, guid: 1fb5e7aacc1309847add6fece31fc3d0, type: 3}
       propertyPath: m_Name
@@ -50125,6 +50146,10 @@ PrefabInstance:
     - target: {fileID: 1295398786153030583, guid: c913d9f4a6a42294eb806d3cc77513c0, type: 3}
       propertyPath: StartingSocket
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1295398786153030583, guid: c913d9f4a6a42294eb806d3cc77513c0, type: 3}
+      propertyPath: DisableBodyCollision
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c913d9f4a6a42294eb806d3cc77513c0, type: 3}

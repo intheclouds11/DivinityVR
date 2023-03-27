@@ -429,17 +429,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0a25f7f9-be46-4a4a-b346-a0d2c02c2817",
-                    "path": "<ValveIndexController>{LeftHand}/gripForce",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR Usage",
-                    "action": "GripForce",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cfa3aaa8-78b6-48e7-8002-beb9903fe613",
                     "path": "<XRController>{LeftHand}/pointerPosition",
                     "interactions": "",
@@ -501,6 +490,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Secondary2DAxisForce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee571d98-fc48-45e6-81b5-1c2bf58243b8",
+                    "path": "<ValveIndexController>{LeftHand}/gripForce",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripForce",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -934,17 +934,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e4192ed0-d0cf-4e23-9667-c97de50aa066",
-                    "path": "<ValveIndexController>{RightHand}/gripForce",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR Usage",
-                    "action": "GripForce",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4b8dde4f-389e-4c1c-b991-1dd5ab5a4191",
                     "path": "<XRController>{RightHand}/pointerPosition",
                     "interactions": "",
@@ -995,6 +984,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Secondary2DAxisForce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee3e2b04-d3b9-4366-b075-8478203458bc",
+                    "path": "<ValveIndexController>{RightHand}/gripForce",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripForce",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -146,14 +146,14 @@ namespace intheclouds
             currentPlayerObjects.leftController.GetComponentInChildren<HVRGhostHand>().DisplayGhostHand = false;
             currentPlayerObjects.leftController.GetComponent<TrackedPoseDriver>().enabled = false;
             currentPlayerObjects.leftHandModel.GetComponent<HVRHandAnimator>().enabled = false;
-            currentPlayerObjects.leftHandPhysics.GetComponent<Rigidbody>().isKinematic = true;
-            currentPlayerObjects.leftHandPhysics.GetComponent<HVRJointHand>().Target = currentPlayerObjects.leftHandPhysics.transform;
+            currentPlayerObjects.leftHandGrabber.GetComponent<Rigidbody>().isKinematic = true;
+            currentPlayerObjects.leftHandGrabber.GetComponent<HVRJointHand>().Target = currentPlayerObjects.leftHandGrabber.transform;
 
             currentPlayerObjects.rightController.GetComponentInChildren<HVRGhostHand>().DisplayGhostHand = false;
             currentPlayerObjects.rightController.GetComponent<TrackedPoseDriver>().enabled = false;
             currentPlayerObjects.rightHandModel.GetComponent<HVRHandAnimator>().enabled = false;
-            currentPlayerObjects.rightHandPhysics.GetComponent<Rigidbody>().isKinematic = true;
-            currentPlayerObjects.rightHandPhysics.GetComponent<HVRJointHand>().Target = currentPlayerObjects.rightHandPhysics.transform;
+            currentPlayerObjects.rightHandGrabber.GetComponent<Rigidbody>().isKinematic = true;
+            currentPlayerObjects.rightHandGrabber.GetComponent<HVRJointHand>().Target = currentPlayerObjects.rightHandGrabber.transform;
 
             var cameraComponents = currentPlayerObjects.Camera.gameObject.GetComponents<Behaviour>();
             foreach (var cameraComponent in cameraComponents)
@@ -188,15 +188,15 @@ namespace intheclouds
             swappedPlayerObjects.leftController.GetComponentInChildren<HVRGhostHand>().DisplayGhostHand = true;
             swappedPlayerObjects.leftController.GetComponent<TrackedPoseDriver>().enabled = true;
             swappedPlayerObjects.leftHandModel.GetComponent<HVRHandAnimator>().enabled = true;
-            swappedPlayerObjects.leftHandPhysics.GetComponent<Rigidbody>().isKinematic = false;
-            swappedPlayerObjects.leftHandPhysics.GetComponent<HVRJointHand>().Target =
+            swappedPlayerObjects.leftHandGrabber.GetComponent<Rigidbody>().isKinematic = false;
+            swappedPlayerObjects.leftHandGrabber.GetComponent<HVRJointHand>().Target =
                 swappedPlayerObjects.leftController.GetComponentInChildren<HVRControllerOffset>().transform;
 
             swappedPlayerObjects.rightController.GetComponentInChildren<HVRGhostHand>().DisplayGhostHand = true;
             swappedPlayerObjects.rightController.GetComponent<TrackedPoseDriver>().enabled = true;
             swappedPlayerObjects.rightHandModel.GetComponent<HVRHandAnimator>().enabled = true;
-            swappedPlayerObjects.rightHandPhysics.GetComponent<Rigidbody>().isKinematic = false;
-            swappedPlayerObjects.rightHandPhysics.GetComponent<HVRJointHand>().Target =
+            swappedPlayerObjects.rightHandGrabber.GetComponent<Rigidbody>().isKinematic = false;
+            swappedPlayerObjects.rightHandGrabber.GetComponent<HVRJointHand>().Target =
                 swappedPlayerObjects.rightController.GetComponentInChildren<HVRControllerOffset>().transform;
 
             var cameraGOComponents = swappedPlayerObjects.Camera.gameObject.GetComponents<Behaviour>();

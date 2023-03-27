@@ -160,6 +160,7 @@ namespace HurricaneVR.Framework.Core.Player
         private Vector3 _previousVelocity;
         private float yVelocity;
         private Vector3 xzVelocity;
+        private float teleportCooldown;
 
         [SerializeField] private float _actualVelocity;
 
@@ -250,6 +251,14 @@ namespace HurricaneVR.Framework.Core.Player
             UpdateHeight();
             CheckCrouching();
             CameraRig.PlayerControllerYOffset = _crouchOffset;
+            if (teleportCooldown > 0)
+            {
+                teleportCooldown -= Time.deltaTime;
+            }
+            else
+            {
+                teleportCooldown = 0;
+            }
         }
 
         private void CheckCameraCorrection()
@@ -295,6 +304,7 @@ namespace HurricaneVR.Framework.Core.Player
 
             if (_hasTeleporter && Teleporter.IsAiming && !RotateWhileTeleportAiming)
             {
+                teleportCooldown = 0.5f;
                 return false;
             }
 
@@ -423,7 +433,7 @@ namespace HurricaneVR.Framework.Core.Player
         protected virtual void HandleSmoothRotation()
         {
             var input = GetTurnAxis().x;
-            if (Math.Abs(input) < SmoothTurnThreshold)
+            if (Math.Abs(input) < SmoothTurnThreshold || GetTurnAxis().y < -0.3f)
                 return;
 
             var rotation = input * SmoothTurnSpeed * Time.deltaTime;

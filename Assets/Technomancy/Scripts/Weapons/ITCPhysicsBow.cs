@@ -11,7 +11,7 @@ namespace intheclouds
         {
             if (wieldingUser == null) return;
 
-            if ((wieldingUser.Turn || !wieldingUser.InCombat) && wieldingUser.CurrentAP >= requiredAP && !wieldingUser.LocalUserObjects.spiritWander.isActivated)
+            if (wieldingUser.CheckCanPerformActions() && wieldingUser.CurrentAP >= requiredAP)
             {
                 NockGrabbable.enabled = true;
             }

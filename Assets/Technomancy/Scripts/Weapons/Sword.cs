@@ -29,9 +29,14 @@ namespace intheclouds
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (wieldingUser == null)
+            {
+                return;
+            }
+            
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (wieldingUser == null || wieldingUser.LocalUserObjects.spiritWander.isActivated || !wieldingUser.Turn && wieldingUser.InCombat)
+                if (!wieldingUser.CheckCanPerformActions())
                 {
                     return;
                 }

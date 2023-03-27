@@ -11,8 +11,6 @@ namespace HurricaneVR.Framework.Core.Player
 {
     public class HVRTeleporter : MonoBehaviour
     {
-        public static HVRTeleporter Instance;
-        
         [Header("Transforms / Components")]
         public Transform Camera;
         public Transform TeleportLineSourceLeft;
@@ -137,6 +135,7 @@ namespace HurricaneVR.Framework.Core.Player
         public CapsuleCollider Capsule;
 
 
+        public event Action BeforeTeleportAction; 
         public TeleportPositionUpdate BeforeTeleport = new TeleportPositionUpdate();
         public UnityEvent AfterTeleport = new UnityEvent();
         public TeleportPositionUpdate PositionUpdate = new TeleportPositionUpdate();
@@ -259,8 +258,6 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected virtual void Awake()
         {
-            Instance = this;
-            
             CharacterController = GetComponent<CharacterController>();
             CanTeleport = true;
             if (!Camera)
@@ -1008,6 +1005,7 @@ namespace HurricaneVR.Framework.Core.Player
         protected virtual void OnBeforeTeleport()
         {
             IsTeleporting = true;
+            BeforeTeleportAction?.Invoke();
             BeforeTeleport.Invoke(FeetPosition);
             if (CharacterController)
                 CharacterController.enabled = false;

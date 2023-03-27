@@ -12,6 +12,7 @@ namespace intheclouds
         public Color supportHighlightColor = new Color(0.8f, 0.5f, 1);
         public BaseStats combatantSelected;
         private LineRenderer lineRenderer;
+        private Color colorBeforePointedAt;
 
         private void Awake()
         {
@@ -27,6 +28,9 @@ namespace intheclouds
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
+                    var hudText = $"Heal {hit.transform.GetComponentInParent<BaseStats>().Name} for 10 vit todo actual Vit...";
+                    LocalUserObjects.Instance.genericPointerInfo.ShowInfo(ActionType.Heal, hudText);
+                    
                     combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
                     if (isOffensiveHighlight)
                     {
@@ -38,17 +42,9 @@ namespace intheclouds
                     }
 
                     combatantSelected.modelHighlightEffect.highlighted = true;
+                    colorBeforePointedAt = combatantSelected.modelHighlightEffect.outlineColor;
+                    combatantSelected.pointedAtByHand = true;
                     // Debug.Log($"abilitypointer hit valid target! {hit.transform.gameObject}", hit.transform);
-                }
-                else
-                {
-                    if (combatantSelected)
-                    {
-                        combatantSelected.modelHighlightEffect.highlighted = false;
-                        combatantSelected = null;
-                    }
-
-                    // Debug.Log($"abilitypointer hit INVALID target! {hit.transform.gameObject}", hit.transform);
                 }
 
                 lineRenderer.SetPosition(1, hit.point);
@@ -59,6 +55,9 @@ namespace intheclouds
                 pointerEndTransform.localPosition = maxDistanceVector;
                 if (combatantSelected)
                 {
+                    LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Heal);
+                    combatantSelected.pointedAtByHand = false;
+                    combatantSelected.modelHighlightEffect.outlineColor = colorBeforePointedAt;
                     combatantSelected.modelHighlightEffect.highlighted = false;
                     combatantSelected = null;
                 }

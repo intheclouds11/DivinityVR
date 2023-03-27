@@ -185,15 +185,32 @@ namespace intheclouds
 
         [SerializeField]
         private bool _playerControlled;
+        
+        public bool Leaning
+        {
+            get { return _Leaning; }
+            set
+            {
+                _Leaning = value;
+            }
+        }
+
+        [SerializeField]
+        private bool _Leaning;
 
         #endregion
 
         public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
 
+        public bool CheckCanPerformActions()
+        {
+            return !Leaning && (Turn || !InCombat) && !LocalUserObjects.spiritWander.isActivated;
+        }
 
         private void Awake()
         {
             InitializeStats();
+            _playerControlled = true;
         }
 
         private void InitializeStats()
