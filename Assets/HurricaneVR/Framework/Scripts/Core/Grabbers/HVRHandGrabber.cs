@@ -1858,9 +1858,10 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected override void OnGrabbed(HVRGrabArgs args)
         {
-            hasGripDeactivatedAfterGrab = false;
+            hasGripDeactivatedAfterGrab = !IsGripGrabActive;
             isGripGrabReleased = false;
             isTriggerGrabReleased = false;
+            
             base.OnGrabbed(args);
 
             if (HVRSettings.Instance.VerboseHandGrabberEvents)
