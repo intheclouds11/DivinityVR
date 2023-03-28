@@ -399,6 +399,10 @@ namespace HurricaneVR.Framework.Core.Grabbers
         private bool _swappingGrabPoint;
         private bool _finalJointCreated;
 
+        private bool hasGripDeactivatedAfterGrab;
+        private bool isGripGrabReleased;
+        private bool isTriggerGrabReleased;
+
         #endregion
 
 
@@ -867,15 +871,15 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         private void CheckUntoggleGrab()
         {
-            if (GrabToggleActive && !_checkingSwap)
+            if (GrabToggleActive && !_checkingSwap && !Inputs.IsAbilitySelectorActive(HandSide))
             {
                 if (_currentGrabControl == HVRGrabControls.GripOrTrigger)
                 {
-                    if (!IsLineGrab && (IsGripGrabActivated || (IsTriggerGrabActivated && Inputs.CanTriggerGrab)))
+                    if (!IsLineGrab && (isGripGrabReleased || (isTriggerGrabReleased && Inputs.CanTriggerRelease)))
                     {
                         GrabToggleActive = false;
                     }
-                    else if (IsLineGrab && IsGripGrabActivated && !IsTriggerGrabActive)
+                    else if (IsLineGrab && isGripGrabReleased && !IsTriggerGrabActive)
                     {
                         //if line grab and trigger is pressed - don't allow untoggle
                         GrabToggleActive = false;
@@ -1054,10 +1058,27 @@ namespace HurricaneVR.Framework.Core.Grabbers
         private void UpdateGrabInputs()
         {
             IsTriggerGrabActivated = Inputs.GetTriggerGrabState(HandSide).JustActivated;
-            IsGripGrabActivated = Inputs.GetGrabActivated(HandSide);
+            IsGripGrabActivated = Inputs.GetGripState(HandSide).JustActivated;
 
             IsTriggerGrabActive = Inputs.GetTriggerGrabState(HandSide).Active;
-            IsGripGrabActive = Inputs.GetGripHoldActive(HandSide);
+            IsGripGrabActive = Inputs.GetGripState(HandSide).Active;
+
+            // Required for better throwing with Toggle mode
+            CheckDropToggleRelease();
+        }
+
+        private void CheckDropToggleRelease()
+        {
+            if (!IsTriggerGrabActive && Inputs.GetGripState(HandSide).JustDeactivated)
+            {
+                if (!hasGripDeactivatedAfterGrab)
+                {
+                    hasGripDeactivatedAfterGrab = true;
+                    return;
+                }
+                
+                isGripGrabReleased = true;
+            }
         }
 
         private bool GrabActivated(HVRGrabControls grabControl)
@@ -1837,6 +1858,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected override void OnGrabbed(HVRGrabArgs args)
         {
+            hasGripDeactivatedAfterGrab = false;
+            isGripGrabReleased = false;
+            isTriggerGrabReleased = false;
             base.OnGrabbed(args);
 
             if (HVRSettings.Instance.VerboseHandGrabberEvents)
@@ -1879,6 +1903,11 @@ namespace HurricaneVR.Framework.Core.Grabbers
             if (grabbable.DisableHandCollision)
             {
                 Rigidbody.detectCollisions = false;
+            }
+
+            if (grabbable.DisableBodyCollision)
+            {
+                HVRManager.Instance.IgnorePlayerCollision(grabbable.Colliders);
             }
 
             DisableHandCollision(grabbable);
@@ -2451,7 +2480,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
             if (IsLineGrab)
             {
-                _tightlyHeld = Inputs.GetGripHoldActive(HandSide);
+                _tightlyHeld = Inputs.GetGripState(HandSide).Active;
 
                 if (!_tightlyHeld || PosableGrabPoint.LineFreeRotation)
                 {

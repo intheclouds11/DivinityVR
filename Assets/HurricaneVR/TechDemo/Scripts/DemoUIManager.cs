@@ -115,20 +115,20 @@ namespace HurricaneVR.TechDemo.Scripts
 
         public void OnForceGrabClicked()
         {
-            var index = (int)Inputs.ForceGrabActivation;
+            var index = (int)Inputs.NonFlickForceGrabActivation;
             index++;
             if (index > 1)
             {
                 index = 0;
             }
 
-            Inputs.ForceGrabActivation = (HVRForceGrabActivation)index;
+            Inputs.NonFlickForceGrabActivation = (HVRForceGrabActivation)index;
             UpdateForceGrabButton();
         }
 
         private void UpdateForceGrabButton()
         {
-            ForceGrabText.text = Inputs.ForceGrabActivation.ToString();
+            ForceGrabText.text = Inputs.NonFlickForceGrabActivation.ToString();
         }
 
         private void UpdateSitStandButton()

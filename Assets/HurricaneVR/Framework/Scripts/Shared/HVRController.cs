@@ -184,6 +184,7 @@ namespace HurricaneVR.Framework.Shared
             }
 
             AfterInputUpdate();
+            InputHaptics();
         }
 
         protected virtual void AfterInputUpdate()
@@ -315,6 +316,26 @@ namespace HurricaneVR.Framework.Shared
         private bool _gripLowerReset;
         private bool _gripUpperReset;
 
+        protected virtual void InputHaptics()
+        {
+            if (IndexTrackpadButtonState.JustActivated)
+            {
+                Vibrate(1, 0.01f, 150f);
+            }
+            else if (IndexTrackpadButtonState.JustDeactivated)
+            {
+                Vibrate(1, 0.05f, 50f);
+            }
+            else if (GripButtonState.JustActivated)
+            {
+                Vibrate(1, 0.01f, 300f);
+            }
+            else if (GripButtonState.JustDeactivated)
+            {
+                Vibrate(1, 0.05f, 100f);
+            }
+        }
+
         protected virtual bool GetIsTrackPadForcePressed()
         {
             return IndexTrackpadForce >= InputMap.TrackPadPressedThreshold;
@@ -374,6 +395,12 @@ namespace HurricaneVR.Framework.Shared
 
         protected virtual bool GetIsGripPressed()
         {
+            float gripVar = Grip;
+            if (ControllerType == HVRControllerType.Knuckles)
+            {
+                gripVar = GripForce;
+            }
+            
             if (InputMap.GripUseAnalog)
             {
                 if (InputMap.GripUseReleaseThreshold)
@@ -381,35 +408,35 @@ namespace HurricaneVR.Framework.Shared
                     if (InputMap.GripThreshold > InputMap.GripReleaseThreshold)
                     {
                         if (GripButtonState.Active)
-                            return Grip >= InputMap.GripReleaseThreshold;
-                        return Grip >= InputMap.GripThreshold;
+                            return gripVar >= InputMap.GripReleaseThreshold;
+                        return gripVar >= InputMap.GripThreshold;
                     }
 
 
-                    if (Grip < InputMap.GripThreshold)
+                    if (gripVar < InputMap.GripThreshold)
                         _gripLowerReset = true;
 
                     if (GripButtonState.Active)
                     {
-                        if (Grip > InputMap.GripReleaseThreshold)
+                        if (gripVar > InputMap.GripReleaseThreshold)
                             _gripUpperReset = true;
 
-                        if (Grip < InputMap.GripReleaseThreshold && _gripUpperReset)
+                        if (gripVar < InputMap.GripReleaseThreshold && _gripUpperReset)
                         {
                             _gripUpperReset = false;
                             return false;
                         }
 
-                        if (Grip < InputMap.GripThreshold)
+                        if (gripVar < InputMap.GripThreshold)
                             return false;
 
                         return true;
                     }
 
-                    if (Grip > InputMap.GripReleaseThreshold && !_gripUpperReset && !InputMap.GripRequireReset)
+                    if (gripVar > InputMap.GripReleaseThreshold && !_gripUpperReset && !InputMap.GripRequireReset)
                         return true;
 
-                    if (Grip > InputMap.GripThreshold && _gripLowerReset)
+                    if (gripVar > InputMap.GripThreshold && _gripLowerReset)
                     {
                         _gripLowerReset = false;
                         return true;
@@ -418,7 +445,7 @@ namespace HurricaneVR.Framework.Shared
                     return false;
                 }
 
-                return Grip >= InputMap.GripThreshold;
+                return gripVar >= InputMap.GripThreshold;
             }
 
             return GripButton;

@@ -3,6 +3,7 @@ using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -21,9 +22,10 @@ namespace HurricaneVR.Framework.ControllerInput
         [Header("Grab Settings")]
         public bool CanDistanceGrab = true;
         public bool CanTriggerGrab;
+        public bool CanTriggerRelease = false;
 
         [Tooltip("For non flick style force grabber")]
-        public HVRForceGrabActivation ForceGrabActivation = HVRForceGrabActivation.Grip;
+        public HVRForceGrabActivation NonFlickForceGrabActivation = HVRForceGrabActivation.Grip;
 
         [Range(0f, 1f)]
         public float TriggerGrabThreshold = .7f;
@@ -47,15 +49,11 @@ namespace HurricaneVR.Framework.ControllerInput
 
         public HVRButtonState LeftTriggerGrabState;
         public HVRButtonState RightTriggerGrabState;
-
-        public bool IsLeftGrabActivated;
+        
         public bool IsLeftHoldActive;
-        public bool IsLeftGripHoldActive;
         public bool IsLeftTriggerHoldActive;
-
-        public bool IsRightGrabActivated;
+        
         public bool IsRightHoldActive;
-        public bool IsRightGripHoldActive;
         public bool IsRightTriggerHoldActive;
 
         public bool IsLeftForceGrabActive;
@@ -113,11 +111,8 @@ namespace HurricaneVR.Framework.ControllerInput
             IsSprintingActivated = GetSprinting();
 
             IsCrouchActivated = GetCrouch();
-
-            IsLeftGrabActivated = GetIsLeftGrabActivated();
+            
             IsLeftHoldActive = GetIsLeftHoldActive();
-
-            IsRightGrabActivated = GetIsRightGrabActivated();
             IsRightHoldActive = GetIsRightHoldActive();
 
             isLeftAbilitySelectorActive = GetIsLeftAbilitySelectorInputActive();
@@ -202,7 +197,7 @@ namespace HurricaneVR.Framework.ControllerInput
                 return;
             }
 
-            if (ForceGrabActivation == HVRForceGrabActivation.Grip)
+            if (NonFlickForceGrabActivation == HVRForceGrabActivation.Grip)
             {
                 left = LeftController.GripButtonState.JustActivated;
                 right = RightController.GripButtonState.JustActivated;
@@ -227,6 +222,11 @@ namespace HurricaneVR.Framework.ControllerInput
             right = RightController.GripButtonState.Active;
         }
 
+        public bool IsAbilitySelectorActive(HVRHandSide side)
+        {
+            return side == HVRHandSide.Left ? isLeftAbilitySelectorActive : isRightAbilitySelectorActive;
+        }
+
         public bool GetForceGrabActivated(HVRHandSide side)
         {
             if (!CanDistanceGrab)
@@ -247,36 +247,24 @@ namespace HurricaneVR.Framework.ControllerInput
             return side == HVRHandSide.Left ? IsLeftForceGrabActive : IsRightForceGrabActive;
         }
 
-        public bool GetGrabActivated(HVRHandSide side)
-        {
-            return side == HVRHandSide.Left ? IsLeftGrabActivated : IsRightGrabActivated;
-        }
-
         public bool GetHoldActive(HVRHandSide side)
         {
             return side == HVRHandSide.Left ? IsLeftHoldActive : IsRightHoldActive;
-        }
-
-        public bool GetGripHoldActive(HVRHandSide side)
-        {
-            return side == HVRHandSide.Left ? IsLeftGripHoldActive : IsRightGripHoldActive;
         }
 
         public HVRButtonState GetTriggerGrabState(HVRHandSide side)
         {
             return side == HVRHandSide.Left ? LeftTriggerGrabState : RightTriggerGrabState;
         }
-
-        protected virtual bool GetIsLeftGrabActivated()
+        
+        public HVRButtonState GetGripState(HVRHandSide side)
         {
-            return LeftController.GripButtonState.JustActivated;
+            return side == HVRHandSide.Left ? LeftController.GripButtonState : RightController.GripButtonState;
         }
-
 
         protected virtual bool GetIsLeftHoldActive()
         {
             IsLeftTriggerHoldActive = LeftController.Trigger > TriggerGrabThreshold;
-            IsLeftGripHoldActive = LeftController.GripButtonState.Active;
             if (CanTriggerGrab && IsLeftTriggerHoldActive)
             {
                 return true;
@@ -284,16 +272,9 @@ namespace HurricaneVR.Framework.ControllerInput
             return LeftController.GripButtonState.Active;
         }
 
-        protected virtual bool GetIsRightGrabActivated()
-        {
-            return RightController.GripButtonState.JustActivated;
-        }
-
-
         protected virtual bool GetIsRightHoldActive()
         {
             IsRightTriggerHoldActive = RightController.Trigger > TriggerGrabThreshold;
-            IsRightGripHoldActive = RightController.GripButtonState.Active;
             if (CanTriggerGrab && IsRightTriggerHoldActive)
             {
                 return true;
@@ -427,19 +408,16 @@ namespace HurricaneVR.Framework.ControllerInput
 
         protected virtual bool GetTeleportActivated()
         {
+            if (!AllowTeleportInput)
+            {
+                return false;
+            }
             if (HVRInputManager.Instance.RightController.ControllerType == HVRControllerType.Vive)
             {
                 return HVRController.GetButtonState(HVRHandSide.Right, HVRButtons.Menu).Active;
             }
-
-            if (AllowTeleportInput)
-            {
-                return TeleportController.JoystickAxis.y < -.5f && Mathf.Abs(TeleportController.JoystickAxis.x) < .30;
-            }
-            else
-            {
-                return false;
-            }
+            
+            return TeleportController.JoystickAxis.y < -.5f && Mathf.Abs(TeleportController.JoystickAxis.x) < .75f;
         }
 
         protected virtual bool GetSprinting()

@@ -433,7 +433,7 @@ namespace HurricaneVR.Framework.Core.Player
         protected virtual void HandleSmoothRotation()
         {
             var input = GetTurnAxis().x;
-            if (Math.Abs(input) < SmoothTurnThreshold || GetTurnAxis().y < -0.3f)
+            if (Math.Abs(input) < SmoothTurnThreshold || teleportCooldown > 0 || GetTurnAxis().y < -0.3f)
                 return;
 
             var rotation = input * SmoothTurnSpeed * Time.deltaTime;
