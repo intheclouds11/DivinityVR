@@ -36,7 +36,7 @@ namespace intheclouds
             
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (!wieldingUser.CheckCanPerformActions())
+                if (!wieldingUser.CanPerformActions())
                 {
                     return;
                 }

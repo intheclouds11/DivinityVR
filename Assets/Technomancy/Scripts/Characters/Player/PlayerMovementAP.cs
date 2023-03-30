@@ -8,10 +8,8 @@ namespace intheclouds
         public float playerLeanThreshold = 1;
         public float APDistanceUnit = 3f;
         private HVRPlayerController playerController;
-        private Vector3 previousPosition;
         private PlayerStats playerStats;
         private float APNeededForTeleport;
-        private float distanceMoved;
         private ITCTeleporter teleporter;
         private Vector3 currentPosition;
 
@@ -46,7 +44,7 @@ namespace intheclouds
 
         private void CheckTeleport()
         {
-            if (!playerStats.Turn || playerStats.LocalUserObjects.spiritWander.isActivated) return;
+            if (!playerStats.CanPerformActions()) return;
 
             if (teleporter.IsAiming)
             {
@@ -74,30 +72,30 @@ namespace intheclouds
 
         private void CheckLean()
         {
-            var distance = playerController.transform.position - currentPosition;
+            var distance = Vector3.Distance(playerController.transform.position, currentPosition);
 
-            if (distance.magnitude > playerLeanThreshold)
+            if (distance > playerLeanThreshold)
             {
+                if (playerStats.Leaning) return;
                 LocalUserObjects.Instance.HUDController.ToggleLeanWarning(true);
+                LocalUserObjects.Instance.HVRPlayerInputs.InputsActive = false;
                 playerStats.Leaning = true;
             }
             else
             {
+                if (!playerStats.Leaning) return;
                 LocalUserObjects.Instance.HUDController.ToggleLeanWarning(false);
+                LocalUserObjects.Instance.HVRPlayerInputs.InputsActive = true;
                 playerStats.Leaning = false;
             }
         }
 
         public void StartTurn()
         {
-            previousPosition = playerController.transform.position;
-            distanceMoved = 0;
-            // playerController.MovementEnabled = true;
         }
 
         public void EndTurn()
         {
-            // playerController.MovementEnabled = false;
         }
     }
 }

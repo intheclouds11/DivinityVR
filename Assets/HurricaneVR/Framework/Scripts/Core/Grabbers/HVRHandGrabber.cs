@@ -1057,6 +1057,8 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         private void UpdateGrabInputs()
         {
+            if (!Inputs.InputsActive) return;
+            
             IsTriggerGrabActivated = Inputs.GetTriggerGrabState(HandSide).JustActivated;
             IsGripGrabActivated = Inputs.GetGripState(HandSide).JustActivated;
 
@@ -1069,7 +1071,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         private void CheckDropToggleRelease()
         {
-            if (!IsTriggerGrabActive && Inputs.GetGripState(HandSide).JustDeactivated)
+            if (!IsTriggerGrabActivated && Inputs.GetGripState(HandSide).JustDeactivated)
             {
                 if (!hasGripDeactivatedAfterGrab)
                 {

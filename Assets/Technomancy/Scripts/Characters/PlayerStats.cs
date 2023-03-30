@@ -202,9 +202,9 @@ namespace intheclouds
 
         public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
 
-        public bool CheckCanPerformActions()
+        public bool CanPerformActions()
         {
-            return !Leaning && (Turn || !InCombat) && !LocalUserObjects.spiritWander.isActivated;
+            return LocalUserObjects.HVRPlayerInputs.InputsActive && !Leaning && (Turn || !InCombat) && !LocalUserObjects.spiritWander.isActivated;
         }
 
         private void Awake()

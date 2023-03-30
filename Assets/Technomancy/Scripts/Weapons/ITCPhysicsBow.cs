@@ -11,7 +11,7 @@ namespace intheclouds
         {
             if (wieldingUser == null) return;
 
-            if (wieldingUser.CheckCanPerformActions() && wieldingUser.CurrentAP >= requiredAP)
+            if (wieldingUser.CanPerformActions() && wieldingUser.CurrentAP >= requiredAP)
             {
                 NockGrabbable.enabled = true;
             }
