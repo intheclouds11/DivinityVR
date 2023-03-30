@@ -20,6 +20,7 @@ namespace intheclouds
             playerController.MovementEnabled = false;
             teleporter = LocalUserObjects.Instance.ITCTeleporter;
             teleporter.BeforeTeleportAction += OnTeleport;
+            currentPosition = transform.position;
         }
 
         private void OnDisable()
@@ -34,11 +35,7 @@ namespace intheclouds
 
         private void Update()
         {
-            if (currentPosition != Vector3.zero)
-            {
-                CheckLean();
-            }
-            
+            CheckLean();
             CheckTeleport();
         }
 
@@ -78,14 +75,14 @@ namespace intheclouds
             {
                 if (playerStats.Leaning) return;
                 LocalUserObjects.Instance.HUDController.ToggleLeanWarning(true);
-                LocalUserObjects.Instance.HVRPlayerInputs.InputsActive = false;
+                LocalUserObjects.Instance.HVRPlayerInputs.UpdateInputs = false;
                 playerStats.Leaning = true;
             }
             else
             {
                 if (!playerStats.Leaning) return;
                 LocalUserObjects.Instance.HUDController.ToggleLeanWarning(false);
-                LocalUserObjects.Instance.HVRPlayerInputs.InputsActive = true;
+                LocalUserObjects.Instance.HVRPlayerInputs.UpdateInputs = true;
                 playerStats.Leaning = false;
             }
         }

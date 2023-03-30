@@ -204,7 +204,7 @@ namespace intheclouds
 
         public bool CanPerformActions()
         {
-            return LocalUserObjects.HVRPlayerInputs.InputsActive && !Leaning && (Turn || !InCombat) && !LocalUserObjects.spiritWander.isActivated;
+            return !Leaning && (Turn || !InCombat) && !LocalUserObjects.spiritWander.isActivated;
         }
 
         private void Awake()

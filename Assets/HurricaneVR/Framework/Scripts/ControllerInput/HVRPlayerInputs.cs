@@ -17,7 +17,6 @@ namespace HurricaneVR.Framework.ControllerInput
     /// </summary>
     public class HVRPlayerInputs : MonoBehaviour
     {
-        public bool InputsActive = true;
         public bool AllowTeleportInput = false;
         
         [Header("Grab Settings")]
