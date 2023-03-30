@@ -310,7 +310,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         public virtual void Enable()
         {
-            CanTeleport = true;
+            // CanTeleport = true;   Handled in ITCTeleporter since vertical canceling should control this variable
         }
 
         public virtual void Disable()
