@@ -6,31 +6,63 @@ namespace intheclouds
     {
         public bool playerHasEnoughAP;
 
-        protected override bool CheckCanTeleport()
+        protected override void EnabledCheck()
         {
-            return !IsVerticalCanceling() && CanTeleport && !IsTeleporting && LocalUserObjects.Instance.PlayerStats.CanPerformActions();
+            if (PlayerGroundedCheck && Player && !Player.IsGrounded)
+            {
+                Disable();
+                return;
+            }
+
+            if (PlayerRotateCheck && Player && _timeSinceLastRotation < RotationTeleportThreshold && !IsAiming)
+            {
+                Disable();
+                return;
+            }
+
+            if (PlayerClimbingCheck && Player && Player.IsClimbing)
+            {
+                Disable();
+                return;
+            }
+
+            if (LocalUserObjects.Instance.PlayerStats.Leaning)
+            {
+                Disable();
+                return;
+            }
+            
+            if (Forward.y >= VerticalCancelThreshold)
+            {
+                if (VerticalCancelUntilDeactivateTeleport)
+                {
+                    verticalCanceled = true;
+                }
+                Disable();
+                return;
+            }
+
+            if (LocalUserObjects.Instance.PlayerStats.CanPerformActions())
+            {
+                Enable();
+            }
         }
 
-        private bool IsVerticalCanceling()
+        public override void Disable()
         {
-            if (Forward.y >= 0.8f && CanTeleport)
-            {
-                CancelTeleport();
-                return true;
-            }
-
-            if (Forward.y <= 0.8f)
-            {
-                CanTeleport = true;
-            }
-
-            return false;
+            base.Disable();
+            LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Movement);
         }
 
         protected override bool IsTeleportDeactivated()
         {
             if (PlayerInputs.IsTeleportDeactivated)
             {
+                if (VerticalCancelUntilDeactivateTeleport && Forward.y <= VerticalCancelThreshold)
+                {
+                    verticalCanceled = false;
+                }
+                
                 LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Movement);
                 LocalUserObjects.Instance.HUDController.ToggleTeleportCancelReminder(false);
 
@@ -40,22 +72,12 @@ namespace intheclouds
                 }
                 else
                 {
-                    CancelTeleport();
+                    Disable();
                     return false;
                 }
             }
 
             return false;
-        }
-
-        public void CancelTeleport()
-        {
-            LocalUserObjects.Instance.genericPointerInfo.MovementIcon.SetActive(false);
-            LocalUserObjects.Instance.genericPointerInfo.gameObject.SetActive(false);
-
-            ToggleGraphics(false);
-            IsAiming = false;
-            CanTeleport = false;
         }
     }
 }

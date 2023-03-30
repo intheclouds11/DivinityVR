@@ -11,6 +11,11 @@ namespace HurricaneVR.Framework.Core.Player
 {
     public class HVRTeleporter : MonoBehaviour
     {
+        [Tooltip("How much teleport hand needs to point up to cancel teleport")]
+        [field: Range(0.5f, 1f)]
+        public float VerticalCancelThreshold = 0.8f;
+        [Tooltip("Prevents player from accidentally teleporting when they just wanted to cancel teleporting")]
+        public bool VerticalCancelUntilDeactivateTeleport = false;
         [Header("Transforms / Components")]
         public Transform Camera;
         public Transform TeleportLineSourceLeft;
@@ -254,6 +259,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected float _timeSinceLastRotation;
         protected Quaternion _previousPlayerRotation;
+        protected bool verticalCanceled;
 
 
         protected virtual void Awake()
@@ -310,7 +316,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         public virtual void Enable()
         {
-            // CanTeleport = true;   Handled in ITCTeleporter since vertical canceling should control this variable
+            CanTeleport = true;
         }
 
         public virtual void Disable()
@@ -822,7 +828,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected virtual bool IsTeleportActivated()
         {
-            return PlayerInputs.IsTeleportActivated;
+            return !verticalCanceled && PlayerInputs.IsTeleportActivated;
         }
 
 
