@@ -54,14 +54,14 @@ MonoBehaviour:
   RightAutoPose: 0
   SelectionIndex: 0
   PoseNames:
-  - Primary Not Set
+  - 'Primary: fireball pose'
   PrimaryPose:
-    Pose: {fileID: 0}
+    Pose: {fileID: 11400000, guid: 9398ff285070b0946a95c46e2408f989, type: 2}
     Weight: 1
     Mask: 0
     Type: 0
     Speed: 16
-    AnimationParameter: 
+    AnimationParameter: None
     ButtonParameter: 0
     Button: 0
     Disabled: 0
@@ -15025,10 +15025,10 @@ MonoBehaviour:
   TrackingType: 0
   HoldType: 1
   GrabControl: 0
-  OverrideGrabTrigger: 1
-  GrabTrigger: 0
+  OverrideGrabTrigger: 0
+  GrabTrigger: 1
   RequireLineOfSight: 1
-  PoseImmediately: 0
+  PoseImmediately: 1
   ParentHandModel: 0
   BreakDistance: 1
   BreakDistanceSource: 0
@@ -15064,6 +15064,7 @@ MonoBehaviour:
   ConsiderGrabPointAngle: 1
   UseColliderClosestPoint: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 1
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []

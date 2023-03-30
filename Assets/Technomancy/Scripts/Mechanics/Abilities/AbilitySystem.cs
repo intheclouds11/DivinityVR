@@ -1,3 +1,4 @@
+using System.Collections;
 using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
@@ -50,7 +51,10 @@ namespace intheclouds
                 CooldownExploration();
             }
 
-            CheckAbilityEnable();
+            if (selectedAbility)
+            {
+                CheckAbilityEnable();
+            }
         }
 
         private void SelectorUpdate()
@@ -114,23 +118,23 @@ namespace intheclouds
 
         private void CheckAbilityEnable()
         {
-            if ((playerLUOs.PlayerStats.Turn || !playerLUOs.PlayerStats.InCombat) && selectedAbility != null && !selectedAbility.gameObject.activeInHierarchy &&
-                selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP >= selectedAbility.requiredAP && !playerLUOs.spiritWander.isActivated)
+            if (playerLUOs.PlayerStats.CanPerformActions() && !selectedAbility.gameObject.activeInHierarchy &&
+                selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP >= selectedAbility.requiredAP)
             {
-                if (leftController.TriggerButtonState.JustActivated && leftController.GripButtonState.Active &&
+                if (leftController.TriggerButtonState.Active && leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
                 {
-                    EnableAbility(leftHandGrabber);
+                    StartCoroutine(EnableAbility(leftHandGrabber));
                 }
-                else if (rightController.TriggerButtonState.JustActivated && rightController.GripButtonState.Active &&
+                else if (rightController.TriggerButtonState.Active && rightController.GripButtonState.Active &&
                          !rightHandGrabber.TriggerHoverTarget && !rightHandGrabber.IsGrabbing)
                 {
-                    EnableAbility(rightHandGrabber);
+                    StartCoroutine(EnableAbility(rightHandGrabber));
                 }
             }
         }
 
-        private void EnableAbility(HVRHandGrabber hand)
+        private IEnumerator EnableAbility(HVRHandGrabber hand)
         {
             if (playerLUOs.PlayerStats.InCombat)
             {
@@ -141,16 +145,18 @@ namespace intheclouds
             selectedAbility.caster = playerLUOs.PlayerStats;
             selectedAbility.enabled = true;
             selectedAbility.gameObject.SetActive(true);
+
+            yield return null; // wait one frame so components can initialize
             
             if (selectedAbility.TryGetComponent(out HVRGrabbable grabbable))
             {
                 if (hand.Controller == leftController)
                 {
-                    leftHandGrabber.Grab(grabbable, grabbable.GrabTrigger);
+                    leftHandGrabber.Grab(grabbable, HVRGrabTrigger.Toggle);
                 }
                 else if (hand.Controller == rightController)
                 {
-                    rightHandGrabber.Grab(grabbable, grabbable.GrabTrigger);
+                    rightHandGrabber.Grab(grabbable, HVRGrabTrigger.Toggle);
                 }
             }
             else
