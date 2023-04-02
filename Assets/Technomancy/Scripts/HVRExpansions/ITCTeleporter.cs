@@ -51,7 +51,7 @@ namespace intheclouds
         public override void Disable()
         {
             base.Disable();
-            LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Movement);
+            LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Movement);
         }
 
         protected override bool IsTeleportDeactivated()
@@ -63,7 +63,7 @@ namespace intheclouds
                     verticalCanceled = false;
                 }
                 
-                LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Movement);
+                LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Movement);
                 LocalUserObjects.Instance.HUDController.ToggleTeleportCancelReminder(false);
 
                 if (!LocalUserObjects.Instance.PlayerStats.InCombat || playerHasEnoughAP && LocalUserObjects.Instance.PlayerStats.CanPerformActions())

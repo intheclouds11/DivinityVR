@@ -29,7 +29,7 @@ namespace intheclouds
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     var hudText = $"Heal {hit.transform.GetComponentInParent<BaseStats>().Name} for 10 vit todo actual Vit...";
-                    LocalUserObjects.Instance.genericPointerInfo.ShowInfo(ActionType.Heal, hudText);
+                    LocalUserObjects.Instance.HUDController.ShowPointerUI(ActionType.Heal, hudText);
                     
                     combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
                     if (isOffensiveHighlight)
@@ -55,7 +55,7 @@ namespace intheclouds
                 pointerEndTransform.localPosition = maxDistanceVector;
                 if (combatantSelected)
                 {
-                    LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Heal);
+                    LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Heal);
                     combatantSelected.pointedAtByHand = false;
                     combatantSelected.modelHighlightEffect.outlineColor = colorBeforePointedAt;
                     combatantSelected.modelHighlightEffect.highlighted = false;

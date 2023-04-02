@@ -86,6 +86,10 @@ namespace intheclouds
 
         public void Toggle_DebugMode(bool toggle)
         {
+            if (DebugModeToggle.isOn != toggle) // force update toggle UI in case toggled using keyboard
+            {
+                DebugModeToggle.SetIsOnWithoutNotify(toggle);
+            }
             Startup.Instance.debugMode = toggle;
             Startup.SaveDebugSetting(toggle ? 1 : 0);
         }

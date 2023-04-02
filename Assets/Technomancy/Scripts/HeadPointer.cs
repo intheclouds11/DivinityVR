@@ -19,11 +19,8 @@ namespace intheclouds
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     var hudText = $"{hit.transform.GetComponentInParent<BaseStats>().Name} 3AP todo actual AP...";
-                    LocalUserObjects.Instance.genericPointerInfo.ShowInfo(ActionType.Attack, hudText);
-                    // pointerInfo.gameObject.SetActive(true);
-                    // pointerInfo.AttackIcon.SetActive(true);
-                    // pointerInfo.InfoText.text = $"{hit.transform.GetComponentInParent<BaseStats>().Name} 3AP todo actual AP...";
-                    
+                    LocalUserObjects.Instance.HUDController.ShowPointerUI(ActionType.Attack, hudText);
+
                     combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
                     if (!combatantSelected.Turn && !combatantSelected.pointedAtByHand)
                     {
@@ -44,11 +41,9 @@ namespace intheclouds
             }
             else
             {
-                // pointerInfo.gameObject.SetActive(false);
-                // pointerInfo.AttackIcon.SetActive(false);
                 if (combatantSelected && !combatantSelected.Turn)
                 {
-                    LocalUserObjects.Instance.genericPointerInfo.HideInfo(ActionType.Attack);
+                    LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Attack);
                     combatantSelected.pointedAtByHead = false;
                     combatantSelected.modelHighlightEffect.highlighted = false;
                     combatantSelected = null;

@@ -1,5 +1,6 @@
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Utils;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,8 @@ namespace intheclouds
 {
     public class ITCPlayerInputs : MonoBehaviour
     {
-        public UserMenu menu;
+        public GameObject DebugUI;
+        public TextMeshProUGUI DebugStatusText;
         public float holdTimeRequired = 1;
         private float holdTimeLeftPrimaryButton;
         private GameManager gameManager;
@@ -16,32 +18,52 @@ namespace intheclouds
         private void Awake()
         {
             gameManager = GameManager.Instance;
+            DebugUI.SetActive(Debug.isDebugBuild);
         }
 
         private void Update()
         {
             CheckMenuButton();
             CheckEndTurnButton();
+            if (DebugUI.activeInHierarchy)
+            {
+                CheckDeveloperDebugInputs();
+                DebugStatusText.text = Startup.Instance.debugMode ? "Debug Mode On" : "Debug Mode Off";
+            }
+        }
+
+        private void CheckDeveloperDebugInputs()
+        {
+            if (Keyboard.current.nKey.wasPressedThisFrame)
+            {
+                gameManager.ForceNextTurn();
+                SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 1, 1);
+            }
+
+            if (Keyboard.current.tabKey.wasPressedThisFrame)
+            {
+                UserMenu.Instance.ToggleMenu();
+            }
+            
+            if (Keyboard.current.leftShiftKey.isPressed && Keyboard.current.backquoteKey.wasPressedThisFrame)
+            {
+                UserMenu.Instance.Toggle_DebugMode(!Startup.Instance.debugMode);
+            }
         }
 
         private void CheckMenuButton()
         {
             if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustActivated)
             {
-                menu.ToggleMenu();
+                UserMenu.Instance.ToggleMenu();
             }
         }
 
         private void CheckEndTurnButton()
         {
             if (!gameManager.activeCombatant || (!gameManager.playerTurn && !Startup.Instance.debugMode)) return;
-
-            if (Startup.Instance.isDesktopMode && HVRInputManager.Instance.LeftController.PrimaryButtonState.JustActivated)
-            {
-                gameManager.ForceNextTurn();
-                SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 1, 1);
-            }
-            else if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active && !triggered)
+            
+            if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active && !triggered)
             {
                 if (holdTimeLeftPrimaryButton == 0)
                 {

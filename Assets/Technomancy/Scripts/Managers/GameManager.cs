@@ -182,10 +182,11 @@ public class GameManager : MonoBehaviour
         turnOrderUI.SetActive(false);
         turnOrderText.text = "";
         firstCombatant = null;
-        foreach (var playerEndCombat in players)
+        foreach (var player in players)
         {
-            playerEndCombat.CurrentAP = playerEndCombat.MaxAP;
-            playerEndCombat.InCombat = false;
+            player.CurrentAP = player.MaxAP;
+            player.InCombat = false;
+            player.Leaning = false;
         }
     }
 

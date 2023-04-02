@@ -1519,6 +1519,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff0b4fcee9a83848b5c8e60c012dc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointerText: {fileID: 4871383688059502683}
+  AttackIcon: {fileID: 7321905796492025509}
+  MovementIcon: {fileID: 838322514283639076}
+  PointerUI: {fileID: 5516338658254070505}
+  PointerStatusEffects: {fileID: 0}
   LeanWarning: {fileID: 5118644929794609323}
   TeleportCancelReminder: {fileID: 2119896612637365509}
 --- !u!1 &349547558040669256
@@ -7425,8 +7430,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119896612637365509}
-  m_LocalRotation: {x: 0.16659108, y: -0, z: -0, w: 0.9860261}
-  m_LocalPosition: {x: 0, y: 0, z: 994}
+  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7434,10 +7439,10 @@ RectTransform:
   - {fileID: 3296618897356135847}
   m_Father: {fileID: 349547557215131704}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 19.179, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -185.2}
+  m_AnchoredPosition: {x: 0, y: 350}
   m_SizeDelta: {x: 460, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &612685200824412185
@@ -11066,7 +11071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0, b: 0, a: 0.5058824}
+  m_Color: {r: 0.764151, g: 0, b: 0, a: 0.6509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18250,8 +18255,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5118644929794609323}
-  m_LocalRotation: {x: -0.22622819, y: -0, z: -0, w: 0.97407436}
-  m_LocalPosition: {x: 0, y: 0, z: 994}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18259,10 +18264,10 @@ RectTransform:
   - {fileID: 3362405092440935166}
   m_Father: {fileID: 349547557215131704}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -26.15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 157}
+  m_AnchoredPosition: {x: 0, y: -400}
   m_SizeDelta: {x: 460, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3534877362475983097
@@ -19307,9 +19312,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4515352599726362143}
-  - component: {fileID: 4659520255398400344}
   m_Layer: 8
-  m_Name: GenericPointerInfo
+  m_Name: PointerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19339,21 +19343,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4659520255398400344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5516338658254070505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a9b3ee25cbf934ca3c493613361c86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InfoText: {fileID: 4871383688059502683}
-  AttackIcon: {fileID: 7321905796492025509}
-  MovementIcon: {fileID: 838322514283639076}
 --- !u!1 &5535942248646856104
 GameObject:
   m_ObjectHideFlags: 0
@@ -23193,7 +23182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0, b: 0, a: 0.5058824}
+  m_Color: {r: 0.764151, g: 0, b: 0, a: 0.59607846}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -24746,6 +24735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e691822469b0d43b264ef98c4e5e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VerticalCancelThreshold: 0.8
+  VerticalCancelUntilDeactivateTeleport: 0
   Camera: {fileID: 0}
   TeleportLineSourceLeft: {fileID: 2720674109989891023}
   TeleportLineSourceRight: {fileID: 541708766016894384}
@@ -24856,7 +24847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f258b67bcfea4b9782cfcdcd54058670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputsActive: 1
   AllowTeleportInput: 1
   CanDistanceGrab: 1
   CanTriggerGrab: 1
@@ -24924,7 +24914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fb40ef4925a6f4c8c639730a534de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
+  DebugUI: {fileID: 0}
+  DebugStatusText: {fileID: 0}
   holdTimeRequired: 0.5
 --- !u!114 &8329649340373793154
 MonoBehaviour:
@@ -25580,7 +25571,6 @@ MonoBehaviour:
   rightHandPalm: {fileID: 1371730030941719}
   rightHandAbilitySelectorSpawn: {fileID: 796447830716407480}
   waist: {fileID: 4038266154967366841}
-  userMenu: {fileID: 0}
   userMenuSpawnPoint: {fileID: 8329649340561895433}
   visorSocket: {fileID: 8830355751580964801}
   turnOrderUI: {fileID: 8882909764319459902}
@@ -25590,8 +25580,6 @@ MonoBehaviour:
   abilities: {fileID: 6969258489151140273}
   leftAbilityPointer: {fileID: 1918654965641198457}
   rightAbilityPointer: {fileID: 8000518399612363573}
-  headPointer: {fileID: 6225962359680699023}
-  genericPointerInfo: {fileID: 4659520255398400344}
 --- !u!114 &3257244412438775209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27842,7 +27830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0.33333334}
+  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0.7176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

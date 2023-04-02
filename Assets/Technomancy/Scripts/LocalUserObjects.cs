@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace intheclouds
 {
-    // NOTE: do not child Player to anything.
     public class LocalUserObjects : MonoBehaviour
     {
         public static LocalUserObjects Instance;
@@ -31,7 +30,6 @@ namespace intheclouds
         public GameObject rightHandPalm;
         public GameObject rightHandAbilitySelectorSpawn;
         public GameObject waist;
-        public GameObject userMenu;
         public GameObject userMenuSpawnPoint;
         public GameObject visorSocket;
         public GameObject turnOrderUI;
@@ -41,8 +39,6 @@ namespace intheclouds
         public GameObject abilities;
         public AbilityPointer leftAbilityPointer;
         public AbilityPointer rightAbilityPointer;
-        public HeadPointer headPointer;
-        public GenericPointerInfo genericPointerInfo;
 
         private void Awake()
         {
