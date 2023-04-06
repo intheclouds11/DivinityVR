@@ -81,6 +81,11 @@ namespace intheclouds
             {
                 GameManager.Instance.ForceNextTurn();
             }
+
+            if (ai.reachedDestination)
+            {
+                aiDestinationSetter.target = null;
+            }
         }
 
         public void StartCombat()
@@ -97,13 +102,13 @@ namespace intheclouds
             {
                 Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
                 targetedPlayer = FindNearestPlayer();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.waist.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.transform;
             }
             else
             {
                 Debug.Log($"targeting player with highest health: {FindPlayerWithHighestHealth().Name}");
                 targetedPlayer = FindPlayerWithHighestHealth();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.waist.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.transform;
             }
 
             targetedPlayerSW = aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
@@ -125,7 +130,7 @@ namespace intheclouds
             }
             else
             {
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.waist.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.transform;
             }
         }
 

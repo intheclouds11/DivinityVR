@@ -30,6 +30,7 @@ namespace intheclouds
 
         private void Update()
         {
+            // todo: reference FallbackCameraController.cs in other project
             if (Mouse.current.rightButton.isPressed)
             {
             }

@@ -164,7 +164,6 @@ GameObject:
   - component: {fileID: 1108140391066582097}
   - component: {fileID: 7265629273034658539}
   - component: {fileID: 7992635851608190493}
-  - component: {fileID: 2947518302948238590}
   - component: {fileID: 7124610102628875274}
   m_Layer: 20
   m_Name: BroadSword
@@ -227,11 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactSpeedRequired: 0.1
+  impactForceRequired: 0.01
   impactClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
-  volume: 0.15
+  maxVolume: 0.5
   maxPitch: 1
-  minPitch: 1
+  minPitch: 0.85
 --- !u!114 &8259103729760254356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +305,7 @@ MonoBehaviour:
   ConsiderGrabPointAngle: 1
   UseColliderClosestPoint: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 1
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -422,21 +422,6 @@ MonoBehaviour:
   Tags:
     Tags: {fileID: 11400000, guid: 93b162fb114a40d49bc7f23efb71dacd, type: 2}
     _data: 1
---- !u!114 &2947518302948238590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922060818375586516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77dbe74f0338a6c438b0af580dd1253e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Data: {fileID: 0}
-  Force: 0
-  Grabbable: {fileID: 0}
 --- !u!114 &7124610102628875274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +464,7 @@ MonoBehaviour:
   constantWidth: 1
   subMeshMask: -1
   overlay: 0
+  overlayMode: 0
   overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   overlayAnimationSpeed: 1
   overlayMinIntensity: 0.5
@@ -492,7 +478,6 @@ MonoBehaviour:
   outlineDownsampling: 2
   outlineVisibility: 0
   glowBlendMode: 0
-  outlineOptimalBlit: 1
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 1.49
@@ -505,7 +490,6 @@ MonoBehaviour:
   glowMagicNumber2: 0.5
   glowAnimationSpeed: 1
   glowVisibility: 0
-  glowOptimalBlit: 1
   glowBlitDebug: 0
   glowBlendPasses: 1
   glowPasses:

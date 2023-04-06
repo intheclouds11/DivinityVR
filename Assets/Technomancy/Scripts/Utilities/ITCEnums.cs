@@ -8,6 +8,7 @@ namespace intheclouds
     {
         Attack,
         Movement,
-        Heal
+        Heal,
+        Selection
     }
 }

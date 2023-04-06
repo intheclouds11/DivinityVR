@@ -46,8 +46,7 @@ namespace intheclouds
             if (teleporter.IsAiming)
             {
                 LocalUserObjects.Instance.HUDController.ToggleTeleportCancelReminder(true);
-                var teleportDistance = Vector3.Distance(teleporter.TeleportDestination, transform.position);
-                APNeededForTeleport = teleportDistance / APDistanceUnit;
+                APNeededForTeleport = teleporter.teleportPathLength / APDistanceUnit;
                 LocalUserObjects.Instance.HUDController.ShowPointerUI(ActionType.Movement, $"Teleport AP: {(int) Mathf.Ceil(APNeededForTeleport)}");
                 
                 if (playerStats.CurrentAP >= APNeededForTeleport)

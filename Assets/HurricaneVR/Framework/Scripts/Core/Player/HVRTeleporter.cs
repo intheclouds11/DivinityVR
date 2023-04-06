@@ -6,6 +6,7 @@ using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace HurricaneVR.Framework.Core.Player
 {
@@ -44,6 +45,7 @@ namespace HurricaneVR.Framework.Core.Player
         public Color InvalidColor = new Color(221, 37, 37);
         public LineRenderer LineRenderer;
         public LineRenderer DownRenderer;
+        public LineRenderer TeleportPath;
         public HVRTeleportMarkerBase TeleportMarker;
         public float DownLineMinLength = .2f;
         public float DownLineMaxLength = .2f;
@@ -179,6 +181,8 @@ namespace HurricaneVR.Framework.Core.Player
         /// The world position of the valid teleport destination
         /// </summary>
         public Vector3 TeleportDestination { get; protected set; }
+        public Vector3 PreviousTeleportDestination { get; protected set; }
+        public bool NewTeleportDestination { get; protected set; }
 
         public Color Color => IsTeleportValid ? ValidColor : InvalidColor;
 
@@ -525,6 +529,15 @@ namespace HurricaneVR.Framework.Core.Player
             UpdateLineRenderer(HitPosition, lastValidIndex, IsRaycastValid);
             UpdateMarkerPosition();
             UpdateDownRenderer(downOrigin, downTarget, IsRaycastValid);
+            // if (Vector3.Distance(PreviousTeleportDestination, TeleportDestination) > 0.1f)
+            // {
+            //     PreviousTeleportDestination = TeleportDestination;
+            //     NewTeleportDestination = true;
+            // }
+            // else
+            // {
+            //     NewTeleportDestination = false;
+            // }
         }
 
         protected virtual void CheckValidTeleportChanged(bool previousValid)
@@ -576,6 +589,7 @@ namespace HurricaneVR.Framework.Core.Player
             }
 
             LineRenderer.enabled = toggle;
+            TeleportPath.enabled = toggle;
             if (DownRenderer)
             {
                 DownRenderer.enabled = toggle;

@@ -49,7 +49,7 @@ namespace HurricaneVR.Framework.Components
         public float UnsignedAngle => Mathf.Abs(Angle);
 
         public Vector3 AxisOfRotation { get; private set; }
-
+        
         protected virtual void Start()
         {
             AxisOfRotation = Axis.GetVector();
@@ -68,6 +68,7 @@ namespace HurricaneVR.Framework.Components
             }
 
             _angleVector = _startVector;
+            Angle = transform.localEulerAngles.y;
         }
 
         protected virtual void Update()

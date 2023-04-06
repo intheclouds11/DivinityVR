@@ -1887,7 +1887,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             _moveGrab = false;
             _finalJointCreated = false;
 
-            GrabToggleActive = GrabTrigger == HVRGrabTrigger.Toggle || grabbable.OverrideGrabTrigger && grabbable.GrabTrigger == HVRGrabTrigger.Toggle;
+            GrabToggleActive = !grabbable.OverrideGrabTrigger && GrabTrigger == HVRGrabTrigger.Toggle || grabbable.OverrideGrabTrigger && grabbable.GrabTrigger == HVRGrabTrigger.Toggle;
 
             CanActivate = false;
 

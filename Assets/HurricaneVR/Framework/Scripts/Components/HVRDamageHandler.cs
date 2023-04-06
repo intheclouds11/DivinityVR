@@ -1,5 +1,6 @@
 ﻿using HurricaneVR.Framework.Weapons;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace HurricaneVR.Framework.Components
 {
@@ -11,13 +12,14 @@ namespace HurricaneVR.Framework.Components
 
         public Rigidbody Rigidbody { get; private set; }
 
-        public HVRDestructible Desctructible;
+        [FormerlySerializedAs("Desctructible")]
+        public HVRDestructible Destructible;
 
         void Start()
         {
             Rigidbody = GetComponent<Rigidbody>();
-            if (!Desctructible)
-                Desctructible = GetComponent<HVRDestructible>();
+            if (!Destructible)
+                Destructible = GetComponent<HVRDestructible>();
         }
 
         public override void TakeDamage(float damage)
@@ -29,9 +31,9 @@ namespace HurricaneVR.Framework.Components
 
             if (Life <= 0)
             {
-                if (Desctructible)
+                if (Destructible)
                 {
-                    Desctructible.Destroy();
+                    Destructible.Destroy();
                 }
             }
         }

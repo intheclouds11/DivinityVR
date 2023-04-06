@@ -7,8 +7,10 @@ namespace intheclouds
     public class PlayerHUDController : MonoBehaviour
     {
         public TextMeshProUGUI PointerText;
+        public GameObject PointerBackground;
         public GameObject AttackIcon;
         public GameObject MovementIcon;
+        public TextMeshProUGUI HeadSelectionText;
 
         [SerializeField]
         private GameObject PointerUI;
@@ -24,6 +26,11 @@ namespace intheclouds
             PointerUI.SetActive(false);
             LeanWarning.SetActive(false);
             TeleportCancelReminder.SetActive(false);
+            HeadSelectionText.gameObject.SetActive(false);
+            AttackIcon.SetActive(false);
+            MovementIcon.SetActive(false);
+            PointerText.text = "";
+            PointerBackground.SetActive(false);
         }
 
         public void ToggleLeanWarning(bool setActive)
@@ -44,33 +51,50 @@ namespace intheclouds
             {
                 AttackIcon.SetActive(true);
                 PointerText.text = text;
+                PointerBackground.SetActive(true);
+            }
+            else if (type == ActionType.Selection)
+            {
+                HeadSelectionText.text = text;
+                HeadSelectionText.gameObject.SetActive(true);
             }
             else if (type == ActionType.Movement)
             {
                 AttackIcon.SetActive(false);
                 MovementIcon.SetActive(true);
+                PointerBackground.SetActive(true);
                 PointerText.text = text;
             }
         
             PointerUI.SetActive(true);
         }
 
-        public void HidePointerUI(ActionType infoType)
+        public void HidePointerUI(ActionType type)
         {
             //todo: add heal type check. Highest activation priority
 
-            if (infoType == ActionType.Attack)
+            if (type == ActionType.Attack)
             {
                 AttackIcon.SetActive(false);
             }
-            else if (infoType == ActionType.Movement)
+            else if (type == ActionType.Selection)
+            {
+                HeadSelectionText.gameObject.SetActive(false);
+            }
+            else if (type == ActionType.Movement)
             {
                 MovementIcon.SetActive(false);
             }
 
             if (!AttackIcon.activeSelf && !MovementIcon.activeSelf)
             {
-                PointerUI.SetActive(false);
+                PointerBackground.SetActive(false);
+                PointerText.text = "";
+
+                if (!HeadSelectionText.gameObject.activeSelf)
+                {
+                    PointerUI.SetActive(false);
+                }
             }
         }
     }

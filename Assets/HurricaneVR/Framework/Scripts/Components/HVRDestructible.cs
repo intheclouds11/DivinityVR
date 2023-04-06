@@ -1,4 +1,5 @@
 ﻿using HurricaneVR.Framework.Core;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 
 namespace HurricaneVR.Framework.Components
@@ -11,6 +12,8 @@ namespace HurricaneVR.Framework.Components
     public class HVRDestructible : MonoBehaviour
     {
         public GameObject DestroyedVersion;
+        public AudioClip destroySFX;
+        public float destroyVolume;
 
         public float ExplosionRadius = .1f;
         public float ExplosionPower = 1;
@@ -28,6 +31,7 @@ namespace HurricaneVR.Framework.Components
         {
             if (Destroyed) return;
 
+            SFXPlayer.Instance.PlaySFXRandomPitch(destroySFX, transform.position, 0.9f, 1f, destroyVolume);
             if (DestroyedVersion)
             {
                 var destroyed = Instantiate(DestroyedVersion, transform.position, transform.rotation);

@@ -1,4 +1,5 @@
 ﻿using HurricaneVR.Framework.Components;
+using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,9 @@ namespace HurricaneVR.TechDemo.Scripts
         public UnityEvent Unlocked = new UnityEvent();
 
         public string Code;
+        public AudioClip UnlockSFX;
+        public AudioClip ErrorSFX;
+        public float SFXVolume;
         public TextMeshPro Display;
         public string Entry = "";
         public bool ForceUnlock;
@@ -94,6 +98,10 @@ namespace HurricaneVR.TechDemo.Scripts
                 {
                     Unlock();
                 }
+                else
+                {
+                    Error();
+                }
             }
             else if (Index >= 0 && Index < MaxLength)
             {
@@ -109,9 +117,17 @@ namespace HurricaneVR.TechDemo.Scripts
         protected virtual void Unlock()
         {
             if (!_unlocked)
+            {
                 Unlocked.Invoke();
+                SFXPlayer.Instance.PlaySFX(UnlockSFX, transform.position, 1, SFXVolume);
+            }
             _unlocked = true;
             Debug.Log($"unlocked!");
+        }
+
+        protected virtual void Error()
+        {
+            SFXPlayer.Instance.PlaySFX(ErrorSFX, transform.position, 1, SFXVolume);
         }
     }
 }

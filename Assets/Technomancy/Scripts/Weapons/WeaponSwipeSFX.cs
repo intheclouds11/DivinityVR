@@ -46,30 +46,30 @@ namespace intheclouds
         {
             if (hvrGrabbable.IsHandGrabbed)
             {
-                var wielderVelocityMag = wielderCharacterController.velocity.magnitude;
-                var swordVelocityMag = rb.velocity.magnitude;
-                var deltaVelocityMag = Mathf.Abs(wielderVelocityMag - swordVelocityMag);
+                var wielderVelocity = wielderCharacterController.velocity.magnitude;
+                var grabbableVelocity = rb.velocity.magnitude;
+                var relativeVelocity = Mathf.Abs(wielderVelocity - grabbableVelocity);
 
-                if (deltaVelocityMag > highVelSwingTriggerSpeed)
+                if (relativeVelocity > highVelSwingTriggerSpeed)
                 {
                     isPlayingSFX = true;
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(SwipeAudioClip, transform, 1.1f, 1.2f, 0.5f, 20);
                     Invoke(nameof(DelayNextSFX), 0.1f);
-                    Debug.Log("fast swipe!");
+                    // Debug.Log("fast swipe!");
                 }
-                else if (deltaVelocityMag > mediumVelSwingTriggerSpeed)
+                else if (relativeVelocity > mediumVelSwingTriggerSpeed)
                 {
                     isPlayingSFX = true;
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(SwipeAudioClip, transform, 1.0f, 1.1f, 0.4f, 20);
                     Invoke(nameof(DelayNextSFX), 0.1f);
-                    Debug.Log("med swipe!");
+                    // Debug.Log("med swipe!");
                 }
-                else if (deltaVelocityMag > lowVelSwingTriggerSpeed)
+                else if (relativeVelocity > lowVelSwingTriggerSpeed)
                 {
                     isPlayingSFX = true;
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(SwipeAudioClip, transform, 0.9f, 1.0f, 0.2f, 20);
                     Invoke(nameof(DelayNextSFX), 0.1f);
-                    Debug.Log("slow swipe!");
+                    // Debug.Log("slow swipe!");
                 }
             }
             else
@@ -79,21 +79,21 @@ namespace intheclouds
                     isPlayingSFX = true;
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(SwipeAudioClip, transform, 1.1f, 1.2f, 0.5f, 20);
                     Invoke(nameof(DelayNextSFX), 0.1f);
-                    Debug.Log("fast swipe!");
+                    // Debug.Log("fast swipe!");
                 }
                 else if (rb.velocity.magnitude > mediumVelSwingTriggerSpeed)
                 {
                     isPlayingSFX = true;
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(SwipeAudioClip, transform, 1.0f, 1.1f, 0.4f, 20);
                     Invoke(nameof(DelayNextSFX), 0.1f);
-                    Debug.Log("med swipe!");
+                    // Debug.Log("med swipe!");
                 }
                 else if (rb.velocity.magnitude > lowVelSwingTriggerSpeed)
                 {
                     isPlayingSFX = true;
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(SwipeAudioClip, transform, 0.9f, 1.0f, 0.2f, 20);
                     Invoke(nameof(DelayNextSFX), 0.1f);
-                    Debug.Log("slow swipe!");
+                    // Debug.Log("slow swipe!");
                 }
             }
         }

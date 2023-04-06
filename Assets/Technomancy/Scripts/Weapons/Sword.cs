@@ -1,4 +1,5 @@
 using System;
+using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
@@ -17,18 +18,19 @@ namespace intheclouds
         public int baseDamage = 10;
         public float criticalDamageMultiplier = 1.8f;
         private PlayerStats wieldingUser;
-        private HVRGrabbable grabbable;
         private bool inEnemyCollider;
         private EnemyStats currentEnemyStats;
         public event Action SwordAppliedDamage;
 
-        private void Start()
-        {
-            grabbable = GetComponent<HVRGrabbable>();
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
+            var relativeVelocity = collision.relativeVelocity.magnitude;
+            var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
+            if (objectDamageHandler)
+            {
+                objectDamageHandler.TakeDamage(Mathf.Clamp(relativeVelocity, 0, 10));
+            }
+            
             if (wieldingUser == null)
             {
                 return;
@@ -41,7 +43,7 @@ namespace intheclouds
                     return;
                 }
 
-                if (wieldingUser.CurrentAP >= requiredAP && collision.relativeVelocity.magnitude > lowSpeedHitEnemy)
+                if (wieldingUser.CurrentAP >= requiredAP && relativeVelocity > lowSpeedHitEnemy)
                 {
                     currentEnemyStats = collision.gameObject.GetComponentInParent<EnemyStats>();
                     SFXPlayer.Instance.PlaySFXRandomPitchAttach(enemyHitClip, transform, 0.9f, 1.1f, 0.5f, 20);
@@ -75,9 +77,8 @@ namespace intheclouds
 
         public void UpdateWielder()
         {
-            wieldingUser = grabbable.PrimaryGrabber.transform.GetComponentInParent<LocalUserObjects>().PlayerStats;
-            GetComponent<WeaponSwipeSFX>().wielderCharacterController =
-                wieldingUser.LocalUserObjects.HVRPlayerController.GetComponent<CharacterController>();
+            wieldingUser = LocalUserObjects.Instance.PlayerStats;
+            GetComponent<WeaponSwipeSFX>().wielderCharacterController = LocalUserObjects.Instance.HVRPlayerController.GetComponent<CharacterController>();
         }
     }
 }

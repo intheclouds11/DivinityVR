@@ -1,31 +1,49 @@
+using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
     public class ImpactSFX : MonoBehaviour
     {
-        public float impactSpeedRequired = 1f;
+        [FormerlySerializedAs("impactSpeedRequired")]
+        public float impactForceRequired = 0.1f;
         public AudioClip impactClip;
-        public float volume = 0.15f;
+        public float maxVolume = 0.5f;
         public float maxPitch = 1;
         public float minPitch = 1;
         private AudioSource audioSource;
+        private HVRCollisionEvents collisionEvents;
         
+
+        private void Start()
+        {
+            collisionEvents = GetComponent<HVRCollisionEvents>();
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Left Hand") || collision.gameObject.CompareTag("Right Hand")) return;
-            if (collision.relativeVelocity.magnitude > impactSpeedRequired)
+            var relativeVelocity = collision.relativeVelocity.magnitude;
+            if (collisionEvents && relativeVelocity >= collisionEvents.VelocityThreshold)
             {
+                return; // Prevent impact sfx playing same time as destroy sfx
+            }
+
+            // var force = Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity) * collision.rigidbody.mass;
+            if (relativeVelocity > impactForceRequired)
+            {
+                var pitch = Mathf.Clamp(relativeVelocity, minPitch, maxPitch);
+                var vol = Mathf.Clamp(relativeVelocity * 0.1f, 0, maxVolume);
                 if (!audioSource)
                 {
-                    audioSource = SFXPlayer.Instance.PlaySFXRandomPitch(impactClip, transform.position, minPitch, maxPitch, volume * (collision.relativeVelocity.magnitude * 0.5f), 20);
+                    audioSource = SFXPlayer.Instance.PlaySFX(impactClip, transform.position, pitch, vol, 20);
                 }
                 else
                 {
                     if (!audioSource.isPlaying)
                     {
-                        audioSource = SFXPlayer.Instance.PlaySFXRandomPitch(impactClip, transform.position, minPitch, maxPitch, volume * (collision.relativeVelocity.magnitude * 0.5f), 20);
+                        audioSource = SFXPlayer.Instance.PlaySFX(impactClip, transform.position, pitch, vol, 20);
                     }
                 }
             }

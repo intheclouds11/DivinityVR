@@ -98,7 +98,6 @@ namespace HurricaneVR.Framework.Components
         public bool DoorLatched;
         public bool DoorClosed;
         public bool Opened;
-        public bool Closed;
         public bool PreviousDoorLatched;
         public bool PreviousClosed;
         public bool VerboseLogging;
@@ -146,14 +145,15 @@ namespace HurricaneVR.Framework.Components
 
                 DoorLatched = true;
             }
-
-            DoorClosed = true;
+            
+            DoorLatched = Tracker.UnsignedAngle <= CloseAngle;
+            DoorClosed = Tracker.UnsignedAngle <= CloseAngle;
             PreviousDoorLatched = DoorLatched;
             PreviousClosed = DoorClosed;
 
             SetupJoint();
 
-            _startRotation = transform.localRotation;
+            _startRotation = Quaternion.identity;
 
             if (DoorLatched)
             {
@@ -166,14 +166,7 @@ namespace HurricaneVR.Framework.Components
             }
 
             //set initial values to prevent sfx on start
-            if (Tracker.UnsignedAngle < SFXThresholdAngle)
-            {
-                Closed = true;
-            }
-            else if (Tracker.UnsignedAngle > SFXThresholdAngle)
-            {
-                Opened = true;
-            }
+            Opened = Tracker.UnsignedAngle < SFXThresholdAngle;
         }
 
         protected virtual void Update()
@@ -224,19 +217,19 @@ namespace HurricaneVR.Framework.Components
                 Opened = true;
                 PlayOpenedSFX();
             }
-            else if (!Closed && Tracker.UnsignedAngle < SFXThresholdAngle && Time.time - _lastClosedSFXTime > SFXTimeout)
+            else if (Opened && Tracker.UnsignedAngle < SFXThresholdAngle && Time.time - _lastClosedSFXTime > SFXTimeout)
             {
                 _lastClosedSFXTime = Time.time;
-                Closed = true;
+                Opened = false;
                 PlayClosedSFX();
             }
             else if (Opened && Tracker.UnsignedAngle < SFXThresholdAngle - reset)
             {
                 Opened = false;
             }
-            else if (Closed && Tracker.UnsignedAngle > SFXThresholdAngle + reset)
+            else if (!Opened && Tracker.UnsignedAngle > SFXThresholdAngle + reset)
             {
-                Closed = false;
+                Opened = true;
             }
 
             if (HandleRequiresRotation)
@@ -391,7 +384,7 @@ namespace HurricaneVR.Framework.Components
         protected virtual void SetupJoint()
         {
             var currentRotation = transform.localRotation;
-            //transform.localRotation = JointStartRotation;
+            transform.localRotation = Quaternion.identity;
             Joint = gameObject.AddComponent<ConfigurableJoint>();
             Joint.connectedBody = ConnectedBody;
             Joint.LockLinearMotion();
