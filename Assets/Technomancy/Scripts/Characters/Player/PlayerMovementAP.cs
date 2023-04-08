@@ -20,6 +20,7 @@ namespace intheclouds
             playerController.MovementEnabled = false;
             teleporter = LocalUserObjects.Instance.ITCTeleporter;
             teleporter.BeforeTeleportAction += OnTeleport;
+            teleporter.Dash = true;
             currentPosition = transform.position;
         }
 
@@ -30,6 +31,7 @@ namespace intheclouds
                 playerController.MovementEnabled = true;
             }
             
+            teleporter.Dash = false;
             teleporter.BeforeTeleportAction -= OnTeleport;
         }
 

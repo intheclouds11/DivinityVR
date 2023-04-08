@@ -17,6 +17,7 @@ namespace HurricaneVR.Framework.Core.Player
         public float VerticalCancelThreshold = 0.8f;
         [Tooltip("Prevents player from accidentally teleporting when they just wanted to cancel teleporting")]
         public bool VerticalCancelUntilDeactivateTeleport = false;
+        public bool RotateTeleportDestination = false;
         [Header("Transforms / Components")]
         public Transform Camera;
         public Transform TeleportLineSourceLeft;
@@ -181,6 +182,7 @@ namespace HurricaneVR.Framework.Core.Player
         /// The world position of the valid teleport destination
         /// </summary>
         public Vector3 TeleportDestination { get; protected set; }
+        public float RotationModifier { get; protected set; }
         public Vector3 PreviousTeleportDestination { get; protected set; }
         public bool NewTeleportDestination { get; protected set; }
 
@@ -589,7 +591,10 @@ namespace HurricaneVR.Framework.Core.Player
             }
 
             LineRenderer.enabled = toggle;
-            TeleportPath.enabled = toggle;
+            if (Dash)
+            {
+                TeleportPath.enabled = toggle;
+            }
             if (DownRenderer)
             {
                 DownRenderer.enabled = toggle;
@@ -916,9 +921,12 @@ namespace HurricaneVR.Framework.Core.Player
         {
             if (TeleportMarker)
             {
-                var target = transform.position + 20f * Forward;
-                target.y = TeleportMarker.transform.position.y;
-                TeleportMarker.transform.LookAt(target);
+                if (!RotateTeleportDestination)
+                {
+                    var target = transform.position + 20f * Forward;
+                    target.y = TeleportMarker.transform.position.y;
+                    TeleportMarker.transform.LookAt(target);
+                }
 
                 TeleportMarker.UpdateState(isTeleportValid);
 
@@ -1009,9 +1017,11 @@ namespace HurricaneVR.Framework.Core.Player
         }
 
 
-        protected virtual void UpdatePlayerPosition(Vector3 position)
+        protected virtual void UpdatePlayerPositionAndRotation(Vector3 position, float rotation)
         {
             CharacterController.transform.position = position;
+            var newRot = new Vector3(0, CharacterController.transform.eulerAngles.y + rotation, 0);
+            CharacterController.transform.eulerAngles = newRot;
         }
 
         protected virtual void OnBeforeDashTeleport()
@@ -1114,12 +1124,12 @@ namespace HurricaneVR.Framework.Core.Player
         {
             if (Vector3.Distance(FeetPosition, TeleportDestination) > .01)
             {
-                UpdatePlayerPosition(Vector3.MoveTowards(FeetPosition, TeleportDestination, DashSpeed * Time.deltaTime));
+                UpdatePlayerPositionAndRotation(Vector3.MoveTowards(FeetPosition, TeleportDestination, DashSpeed * Time.deltaTime), 0);
                 PositionUpdate.Invoke(FeetPosition);
             }
             else
             {
-                UpdatePlayerPosition(TeleportDestination);
+                UpdatePlayerPositionAndRotation(TeleportDestination, 0);
                 PositionUpdate.Invoke(FeetPosition);
                 TeleportState = TeleportState.AwaitingNextFrame;
             }
@@ -1127,7 +1137,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected virtual void UpdateTeleport()
         {
-            UpdatePlayerPosition(TeleportDestination);
+            UpdatePlayerPositionAndRotation(TeleportDestination, RotationModifier);
             PositionUpdate.Invoke(FeetPosition);
             TeleportState = TeleportState.AwaitingNextFrame;
         }

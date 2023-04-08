@@ -196,6 +196,10 @@ namespace HurricaneVR.Framework.Core.Grabbers
             }
         }
 
+        protected override bool CheckHover()
+        {
+            return !Inputs.GetForceGrabActive(HandSide) && base.CheckHover();
+        }
 
         protected override void CheckUnHover()
         {

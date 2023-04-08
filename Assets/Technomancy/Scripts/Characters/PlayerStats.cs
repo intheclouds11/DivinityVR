@@ -202,9 +202,9 @@ namespace intheclouds
 
         public event Action PlayerDamaged; // use for other classes to know when player is damaged (shackles of pain?)
 
-        public bool CanPerformActions()
+        public bool CanPerformActions(int requiredAP = 0)
         {
-            return !Leaning && (Turn || !InCombat) && !LocalUserObjects.spiritWander.isActivated;
+            return !Leaning && (!InCombat || Turn && CurrentAP >= requiredAP) && !LocalUserObjects.spiritWander.isActivated;
         }
 
         private void Awake()
@@ -393,7 +393,10 @@ namespace intheclouds
 
         public void UseAP(int apConsumed)
         {
-            CurrentAP -= apConsumed;
+            if (!Startup.Instance.debugMode)
+            {
+                CurrentAP -= apConsumed;
+            }
         }
 
         public void ObtainXP(int xp)

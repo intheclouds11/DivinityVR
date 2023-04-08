@@ -11,6 +11,7 @@ namespace HurricaneVR.Framework.Components
     /// </summary>
     public class HVRDestructible : MonoBehaviour
     {
+        public GameObject ObjectToDestroy;
         public GameObject DestroyedVersion;
         public AudioClip destroySFX;
         public float destroyVolume;
@@ -73,7 +74,14 @@ namespace HurricaneVR.Framework.Components
             }
 
             Destroyed = true;
-            Destroy(gameObject);
+            if (ObjectToDestroy)
+            {
+                Destroy(ObjectToDestroy);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

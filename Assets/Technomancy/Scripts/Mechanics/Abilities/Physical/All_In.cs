@@ -12,7 +12,7 @@ namespace intheclouds
     public class All_In : AbilityBase
     {
         public AudioClip appliedSFX;
-        private Sword weapon;
+        private ImpactHandler weapon;
         private HighlightEffect handHighlight;
 
         protected override void OnEnable()
@@ -26,12 +26,12 @@ namespace intheclouds
         {
             if (other.CompareTag("Sword"))
             {
-                weapon = other.gameObject.GetComponentInParent<Sword>();
+                weapon = other.gameObject.GetComponentInParent<ImpactHandler>();
 
                 if (weapon != null)
                 {
                     ApplyToHeldWeapon();
-                    weapon.SwordAppliedDamage += OnSwordAppliedDamage;
+                    weapon.AppliedDamage += OnSwordAppliedDamage;
                 }
                 else
                 {
@@ -42,11 +42,11 @@ namespace intheclouds
         
         private void OnSwordAppliedDamage()
         {
-            weapon.SwordAppliedDamage -= OnSwordAppliedDamage;
+            weapon.AppliedDamage -= OnSwordAppliedDamage;
             HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
             grabber.GrabTrigger = HVRGrabTrigger.Active;
             weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = true;
-            weapon.baseDamage = (int) Math.Floor(weapon.baseDamage * 0.8f);
+            weapon.BaseDamage = (int) Math.Floor(weapon.BaseDamage * 0.8f);
             weapon.GetComponent<HighlightEffect>().enabled = false;
             weapon = null;
             GetComponent<BoxCollider>().enabled = true;
@@ -62,7 +62,7 @@ namespace intheclouds
             HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
             weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = false;
             grabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
-            weapon.baseDamage = (int) Math.Ceiling(weapon.baseDamage * 1.25f);
+            weapon.BaseDamage = (int) Math.Ceiling(weapon.BaseDamage * 1.25f);
             weapon.GetComponent<HighlightEffect>().enabled = true;
             
             handHighlight.enabled = false;

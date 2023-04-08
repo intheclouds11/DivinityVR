@@ -1,0 +1,226 @@
+using System;
+using HurricaneVR.Framework.Components;
+using HurricaneVR.Framework.Core;
+using HurricaneVR.Framework.Core.Grabbers;
+using HurricaneVR.Framework.Core.Utils;
+using NaughtyAttributes;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+namespace intheclouds
+{
+    public class ImpactHandler : MonoBehaviour
+    {
+        #region Variables
+
+        [Header("Damage Handling")]
+        public bool DisableCollisionsOnHitEnemy;
+        public int RequiredAP = 1;
+        public int BaseDamage = 1;
+        public float CriticalDamageMultiplier = 1.8f;
+        public float DamageThreshold = 5;
+        public float HitCooldown = 0.25f;
+        public DamageType DamageType = DamageType.Physical;
+        public ElementalType ElementalType = ElementalType.None;
+        public StatusEffect StatusEffect;
+
+        [Header("SFX Handling")]
+        public AudioClip HitEnemyClip;
+        public AudioClip GenericHitClip;
+        public float ImpactThreshold = 0.01f;
+        public float MaxVolume = 0.5f;
+        public float MaxPitch = 1;
+        public float MinPitch = 1;
+        public AudioClip SwipeClip;
+        [ShowIf("showSwipe")]
+        public float SwipeThreshold = 3f;
+        [ShowIf("showSwipe")]
+        public float SwipeCooldownThreshold = 1f;
+
+        public event Action AppliedDamage;
+
+        private AudioSource impactAudioSource;
+        private AudioSource swipeAudioSource;
+        private HVRCollisionEvents collisionEvents;
+        private bool justHit;
+        private PlayerStats wieldingUser;
+        private Rigidbody rb;
+        private HVRGrabbable grabbable;
+        private bool isPlayingSFX;
+        private float pitch;
+        private float volume;
+        
+        private bool showSwipe => SwipeClip;
+
+        #endregion
+
+
+        private void Start()
+        {
+            collisionEvents = GetComponent<HVRCollisionEvents>();
+            rb = GetComponent<Rigidbody>();
+            grabbable = GetComponent<HVRGrabbable>();
+            GetComponent<HVRGrabbable>().Grabbed.AddListener(AssignWielder);
+        }
+
+        private void AssignWielder(HVRGrabberBase arg0, HVRGrabbable arg1)
+        {
+            wieldingUser = arg0.GetComponentInParent<PlayerStats>();
+        }
+
+        private void Update()
+        {
+            HandleSwipeSFX();
+        }
+
+        private void HandleSwipeSFX()
+        {
+            if (grabbable.IsSocketed || !SwipeClip)
+            {
+                return;
+            }
+
+            if (isPlayingSFX)
+            {
+                if (rb.velocity.magnitude <= SwipeCooldownThreshold)
+                {
+                    isPlayingSFX = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (grabbable.IsHandGrabbed && wieldingUser)
+            {
+                var wielderVelocity = wieldingUser.LocalUserObjects.HVRPlayerController.CharacterController.velocity.magnitude;
+                var velocityRelativeToWielder = Mathf.Abs(wielderVelocity - rb.velocity.magnitude);
+
+                if (velocityRelativeToWielder > SwipeThreshold)
+                {
+                    isPlayingSFX = true;
+                    if (!swipeAudioSource || !swipeAudioSource.isPlaying)
+                    {
+                        swipeAudioSource = PlayVelocityBasedSFX(velocityRelativeToWielder, SwipeClip);
+                    }
+                }
+            }
+        }
+
+        // Handles impact sfx and damage caused by prop
+        private void OnCollisionEnter(Collision collision)
+        {
+            var relativeVelocity = collision.relativeVelocity.magnitude;
+
+            // Prevent impact sfx playing same time as destroy sfx
+            if (relativeVelocity > ImpactThreshold && (!collisionEvents || relativeVelocity <= collisionEvents.VelocityThreshold))
+            {
+                HandleImpactSFX(relativeVelocity);
+            }
+
+            if (!justHit && wieldingUser && wieldingUser.CanPerformActions(RequiredAP))
+            {
+                var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
+                if (objectDamageHandler && relativeVelocity >= DamageThreshold)
+                {
+                    DamageDestructible(objectDamageHandler, relativeVelocity);
+                }
+
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                {
+                    if (relativeVelocity > DamageThreshold)
+                    {
+                        DamageEnemy(collision.collider, relativeVelocity);
+                    }
+                }
+            }
+        }
+
+        // Handles damage caused by weapon. Disables collisions after valid hit
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!DisableCollisionsOnHitEnemy || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
+            {
+                return;
+            }
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                if (rb.velocity.magnitude > DamageThreshold || rb.angularVelocity.magnitude > DamageThreshold * 5)
+                {
+                    DamageEnemy(other, rb.velocity.magnitude);
+                    rb.detectCollisions = false;
+                }
+            }
+        }
+
+        private void DamageDestructible(HVRDamageHandlerBase objectDamageHandler, float relativeVelocity)
+        {
+            var totalDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
+            objectDamageHandler.TakeDamage(totalDamage);
+            if (wieldingUser.InCombat)
+            {
+                wieldingUser.UseAP(RequiredAP);
+            }
+
+            PlayVelocityBasedSFX(relativeVelocity, GenericHitClip);
+            justHit = true;
+            AppliedDamage?.Invoke();
+            Invoke(nameof(ResetCollision), HitCooldown);
+        }
+
+
+        private void DamageEnemy(Collider hitCollider, float relativeVelocity)
+        {
+            var currentEnemyStats = hitCollider.gameObject.GetComponentInParent<EnemyStats>();
+
+            if (!currentEnemyStats.isAlive)
+            {
+                return;
+            }
+
+            var totalDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
+            // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
+            currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(totalDamage, wieldingUser, CriticalDamageMultiplier),
+                DamageType, ElementalType, StatusEffect);
+
+            if (wieldingUser.InCombat)
+            {
+                wieldingUser.UseAP(RequiredAP);
+            }
+
+            PlayVelocityBasedSFX(relativeVelocity, HitEnemyClip);
+            justHit = true;
+            AppliedDamage?.Invoke();
+            Invoke(nameof(ResetCollision), HitCooldown);
+        }
+
+        private void HandleImpactSFX(float relativeVelocity)
+        {
+            if (!impactAudioSource || !impactAudioSource.isPlaying)
+            {
+                impactAudioSource = PlayVelocityBasedSFX(relativeVelocity, GenericHitClip);
+            }
+        }
+
+        private void ResetCollision()
+        {
+            justHit = false;
+            rb.detectCollisions = true;
+        }
+
+        private AudioSource PlayVelocityBasedSFX(float relativeVelocity, AudioClip clip)
+        {
+            if (clip)
+            {
+                pitch = Mathf.Clamp(relativeVelocity * 0.3f, MinPitch, MaxPitch);
+                volume = Mathf.Clamp(relativeVelocity * 0.25f, 0, MaxVolume);
+                return SFXPlayer.Instance.PlaySFX(clip, transform.position, pitch, volume, 20);
+            }
+
+            return null;
+        }
+    }
+}

@@ -156,15 +156,15 @@ namespace HurricaneVR.Framework.Core.Utils
             return audioSource;
         }
         
-        public void PlaySFXAttach(AudioClip clip, Transform transformForSFX, float pitch, float volume, int maxDistance = 10)
+        public AudioSource PlaySFXAttach(AudioClip clip, Transform transformForSFX, float pitch, float volume, int maxDistance = 10)
         {
             if (clip == null)
-                return;
+                return null;
 
             var audioSource = m_SFXSourcePool[m_UsedSource];
 
             if (!audioSource)
-                return;
+                return null;
 
             m_PlayingSources.Add(m_UsedSource);
 
@@ -185,6 +185,7 @@ namespace HurricaneVR.Framework.Core.Utils
             audioSource.volume = volume;
             audioSource.pitch = pitch;
             audioSource.Play();
+            return audioSource;
         }
     }
 }

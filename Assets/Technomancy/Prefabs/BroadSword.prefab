@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194080132616145645}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.25580025, z: 0.004000187}
+  m_LocalPosition: {x: 0, y: 0.25580025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768797506890916667}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.82123804, z: -0.08240223}
+  m_LocalPosition: {x: 0, y: 0.82123804, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,9 +158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 540433885035849838}
-  - component: {fileID: 9046685629156859862}
   - component: {fileID: 194645467715318664}
-  - component: {fileID: 8259103729760254356}
   - component: {fileID: 1108140391066582097}
   - component: {fileID: 7265629273034658539}
   - component: {fileID: 7992635851608190493}
@@ -193,27 +191,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9046685629156859862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922060818375586516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b033438ffa50c44488bad3529ea1b3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEnemyCollider: {fileID: 4695466996583223983}
-  enemyHitClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
-  hitCooldown: 0.5
-  lowSpeedHitEnemy: 5
-  medSpeedHitEnemy: 10
-  fastSpeedHitEnemy: 15
-  requiredAP: 2
-  baseDamage: 1
-  criticalDamageMultiplier: 1.8
 --- !u!114 &194645467715318664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,29 +203,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactForceRequired: 0.01
-  impactClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
-  maxVolume: 0.5
-  maxPitch: 1
-  minPitch: 0.85
---- !u!114 &8259103729760254356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922060818375586516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f1a886ed712e1429ae864cd2d2a3fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SwipeAudioClip: {fileID: 8300000, guid: 5a898b17904ca98409c9b38df9b1a07d, type: 3}
-  lowVelSwingTriggerSpeed: 8
-  mediumVelSwingTriggerSpeed: 8.6
-  highVelSwingTriggerSpeed: 9
-  cooldownVelocity: 2
-  wielderCharacterController: {fileID: 0}
+  DisableCollisionsOnHitEnemy: 1
+  RequiredAP: 2
+  BaseEnemyDamage: 10
+  CriticalDamageMultiplier: 1.8
+  DamageThreshold: 5
+  HitCooldown: 0.25
+  DamageType: 0
+  ElementalType: 5
+  StatusEffect: {fileID: 0}
+  HitEnemyClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
+  GenericHitClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
+  ImpactThreshold: 0.01
+  MaxVolume: 1
+  MaxPitch: 1.1
+  MinPitch: 0.9
+  SwipeClip: {fileID: 8300000, guid: 5a898b17904ca98409c9b38df9b1a07d, type: 3}
+  SwipeThreshold: 3
+  SwipeCooldownThreshold: 1
 --- !u!114 &1108140391066582097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +267,7 @@ MonoBehaviour:
   SocketGrabPoints: []
   Rigidbody: {fileID: 0}
   AutoApplyLayer: 0
-  RequireOverlapClearance: 0
+  RequireOverlapClearance: 1
   OverlapTimeout: 0.1
   FinalJointMaxAngle: 15
   FinalJointTimeout: 0.25
@@ -343,7 +315,7 @@ MonoBehaviour:
   HandGrabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9046685629156859862}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: intheclouds.Sword, Assembly-CSharp
         m_MethodName: UpdateWielder
         m_Mode: 1
@@ -623,7 +595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224656911837456673}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.25580025, z: 0.004000187}
+  m_LocalPosition: {x: 0, y: 0.25580025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -714,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765548696767205660}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.13223696, z: 0.022881985}
+  m_LocalPosition: {x: 0, y: 0.13223696, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -837,11 +809,11 @@ MonoBehaviour:
     MiddleType: 1
     RingType: 1
     PinkyType: 1
-    ThumbStart: 0.75
-    IndexStart: 0
-    MiddleStart: 0
-    RingStart: 0
-    PinkyStart: 0
+    ThumbStart: 1
+    IndexStart: 1
+    MiddleStart: 1
+    RingStart: 1
+    PinkyStart: 1
   Blends: []
   MirrorAxis: 0
 --- !u!114 &5168329155836457613
@@ -910,7 +882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5239746374574969129}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.2558, z: 0.004}
+  m_LocalPosition: {x: 0, y: 0.2558, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1037,11 +1009,11 @@ MonoBehaviour:
     MiddleType: 1
     RingType: 1
     PinkyType: 1
-    ThumbStart: 0.75
-    IndexStart: 0
-    MiddleStart: 0
-    RingStart: 0
-    PinkyStart: 0
+    ThumbStart: 1
+    IndexStart: 1
+    MiddleStart: 1
+    RingStart: 1
+    PinkyStart: 1
   Blends: []
   MirrorAxis: 0
 --- !u!114 &1690610384904123288
@@ -1247,7 +1219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8502529740676173563}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.428792, z: -0.022432804}
+  m_LocalPosition: {x: 0, y: 0.428792, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1262,7 +1234,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8502529740676173563}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.05, z: 0.9}

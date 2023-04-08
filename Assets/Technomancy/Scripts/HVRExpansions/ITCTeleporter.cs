@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HurricaneVR.Framework.Core.Player;
 using Pathfinding;
+using SolClovser.VRDebugGizmos;
 using UnityEngine;
 
 namespace intheclouds
@@ -17,6 +18,8 @@ namespace intheclouds
         private LocalUserObjects localUserObjects;
         private List<Vector3> teleportVectorPath;
         private Coroutine dashCoroutine;
+        private Vector3 controllerUpOnActivated;
+        private Vector3 controllerForwardOnActivated;
 
         protected override void Awake()
         {
@@ -80,6 +83,14 @@ namespace intheclouds
             LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Movement);
         }
 
+        protected override void OnTeleportActivated()
+        {
+            base.OnTeleportActivated();
+
+            controllerUpOnActivated = localUserObjects.rightController.up;
+            controllerForwardOnActivated = localUserObjects.rightController.forward;
+        }
+
         protected override bool IsTeleportDeactivated()
         {
             if (PlayerInputs.IsTeleportDeactivated)
@@ -123,9 +134,14 @@ namespace intheclouds
             if (!CheckVerticalDistance(destination))
                 return false;
 
-            if (localUserObjects.PlayerStats.CanPerformActions() && seeker.IsDone())
+            if (Dash && localUserObjects.PlayerStats.CanPerformActions() && seeker.IsDone())
             {
                 var path = seeker.StartPath(transform.position, TeleportDestination);
+            }
+
+            if (RotateTeleportDestination)
+            {
+                CheckDestinationRotation();
             }
 
             return true;
@@ -158,24 +174,39 @@ namespace intheclouds
             }
         }
         
+        // BUGGY when turning in play space. Need to find a way to get controller rotation relative to player direction
+        private void CheckDestinationRotation()
+        {
+            var upProjectedForward = Vector3.ProjectOnPlane(localUserObjects.rightController.up, controllerForwardOnActivated);
+
+            RotationModifier = Vector3.SignedAngle(upProjectedForward.normalized, controllerUpOnActivated, controllerForwardOnActivated) * 4;
+            TeleportMarker.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + RotationModifier, 0);
+            // Debug.Log(RotationModifier);
+
+            // VRDebugGizmos.DrawLine(this, "line1", localUserObjects.rightController.position, localUserObjects.rightController.position + controllerUpOnActivated, 0.02f, Color.white);
+            // VRDebugGizmos.DrawLine(this, "line2", localUserObjects.rightController.position, localUserObjects.rightController.position + controllerForwardOnActivated, 0.02f, Color.white);
+            // VRDebugGizmos.DrawLine(this, "line3", localUserObjects.rightController.position, localUserObjects.rightController.position + upProjectedForward, 0.02f, Color.green);
+        }
+        
         protected override void UpdateDashTeleport()
         {
             if (teleportVectorPath.Count > 0)
             {
                 if (Vector3.Distance(FeetPosition, teleportVectorPath[0]) > .01)
                 {
-                    UpdatePlayerPosition(Vector3.MoveTowards(FeetPosition, teleportVectorPath[0], DashSpeed * Time.deltaTime));
+                    UpdatePlayerPositionAndRotation(Vector3.MoveTowards(FeetPosition, teleportVectorPath[0], DashSpeed * Time.deltaTime), 0);
                     PositionUpdate.Invoke(FeetPosition);
                 }
                 else
                 {
-                    UpdatePlayerPosition(teleportVectorPath[0]);
+                    UpdatePlayerPositionAndRotation(teleportVectorPath[0], 0);
                     PositionUpdate.Invoke(FeetPosition);
                     teleportVectorPath.RemoveAt(0);
                 }
             }
             else
             {
+                UpdatePlayerPositionAndRotation(TeleportDestination, RotationModifier);
                 TeleportState = TeleportState.AwaitingNextFrame;
             }
         }

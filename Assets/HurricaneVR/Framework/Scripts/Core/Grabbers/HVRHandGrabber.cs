@@ -811,24 +811,28 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected override bool CheckHover()
         {
-            if (IsHovering || !AllowHovering)
+            if (!IsGripGrabActive)
             {
-                if (IsHovering && !HoverTarget)
+                if (IsHovering || !AllowHovering)
                 {
-                    HoverTarget = null;
+                    if (IsHovering && !HoverTarget)
+                    {
+                        HoverTarget = null;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
-                else
-                {
-                    return true;
-                }
+
+                var closestValid = ClosestValidHover(false);
+                if (closestValid == null)
+                    return false;
+                HoverGrabbable(this, closestValid);
+                return true;
             }
-
-            var closestValid = ClosestValidHover(false);
-            if (closestValid == null)
-                return false;
-
-            HoverGrabbable(this, closestValid);
-            return true;
+            
+            return false;
         }
 
         protected virtual void CheckTriggerUnHover()

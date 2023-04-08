@@ -44,6 +44,8 @@ namespace HurricaneVR.Framework.Components
         public float SFXResetThreshold = 1f;
         public AudioClip SFXOpened;
         public AudioClip SFXClosed;
+        public AudioClip SFXUnlatched;
+        public AudioClip SFXLatched;
 
         [Tooltip("Delay before the open / close sfx can be played again")]
         public float SFXTimeout = 1f;
@@ -283,6 +285,16 @@ namespace HurricaneVR.Framework.Components
         protected virtual void PlayOpenedSFX()
         {
             if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXOpened, GetSFXPosition());
+        }
+        
+        protected virtual void PlayUnlatchedSFX()
+        {
+            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXUnlatched, GetSFXPosition());
+        }
+
+        protected virtual void PlayLatchedSFX()
+        {
+            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition());
         }
 
         public virtual void OnDoorUnLatched()
