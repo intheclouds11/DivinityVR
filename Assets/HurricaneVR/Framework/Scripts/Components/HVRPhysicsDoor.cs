@@ -334,12 +334,12 @@ namespace HurricaneVR.Framework.Components
             
             if (!handleSFXCooldown && handleAccelerationRelativeToDoor >= 0.01f)
             {
-                pitch = Mathf.Clamp(handleAccelerationRelativeToDoor * 100f, MinPitchHandle, MaxPitchHandle);
-                volume = Mathf.Clamp(handleAccelerationRelativeToDoor * 100f, MinVolumeHandle, MaxVolumeHandle * 0.5f);
+                pitch = Mathf.Clamp(handleAccelerationRelativeToDoor * 70f, MinPitchHandle, MaxPitchHandle);
+                volume = Mathf.Clamp(handleAccelerationRelativeToDoor, MinVolumeHandle, MaxVolumeHandle * 0.5f);
                 SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
                 handleSFXCooldown = true;
             }
-            else if (handleAccelerationRelativeToDoor <= 0.00175f)
+            else if (handleAccelerationRelativeToDoor <= 0.0017f)
             {
                 handleSFXCooldown = false;
             }

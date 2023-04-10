@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Editor/HVRPhysicsDrawerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Editor/HVRPhysicsDrawerEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRRotationTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRRotationTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NaughtyAttributes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SolClovser.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/fireball pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/fireball pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Wardrobe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Wardrobe.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,7 +369,7 @@
       <workItem from="1680962273527" duration="20972000" />
       <workItem from="1681064039766" duration="16486000" />
       <workItem from="1681090805962" duration="13425000" />
-      <workItem from="1681105630242" duration="723000" />
+      <workItem from="1681105630242" duration="1275000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -400,6 +393,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs</url>
+          <line>336</line>
+          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\Components\HVRPhysicsDoor.cs" initialLine="336" containingFunctionPresentation="method 'CheckForHandleSFX'">
+            <startOffsets>
+              <option value="12155" />
+            </startOffsets>
+            <endOffsets>
+              <option value="12247" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

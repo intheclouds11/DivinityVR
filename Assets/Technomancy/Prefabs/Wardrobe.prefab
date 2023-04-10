@@ -4627,7 +4627,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5767
+  m_VersionIndex: 5770
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4751,7 +4751,7 @@ MonoBehaviour:
   MaxVolume: 1
   MinPitchHandle: 0.95
   MaxPitchHandle: 1
-  MinVolumeHandle: 0.05
+  MinVolumeHandle: 0.01
   MaxVolumeHandle: 0.3
   SFXOpened: {fileID: 8300000, guid: 042fccf986a9cc14a896f92627d9b5b0, type: 3}
   SFXClosed: {fileID: 8300000, guid: 2099be1310a34864c813cef56f9c0729, type: 3}
