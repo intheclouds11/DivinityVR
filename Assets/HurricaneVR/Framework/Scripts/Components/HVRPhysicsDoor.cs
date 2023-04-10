@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using HurricaneVR.Framework.Core;
+using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.ScriptableObjects;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace HurricaneVR.Framework.Components
 {
@@ -16,10 +18,15 @@ namespace HurricaneVR.Framework.Components
     [RequireComponent(typeof(Rigidbody))]
     public class HVRPhysicsDoor : MonoBehaviour
     {
-        [Header("Settings")] [Tooltip("Local axis of rotation")]
+        public Quaternion StartRotation;
+        public Quaternion EndRotation;
+
+        [Header("Settings")]
+        [Tooltip("Local axis of rotation")]
         public HVRAxis Axis;
 
-        [Tooltip("Door's rigidbody mass.")] public float Mass = 10f;
+        [Tooltip("Door's rigidbody mass.")]
+        public float Mass = 10f;
 
         public bool DisableGravity = true;
 
@@ -29,7 +36,8 @@ namespace HurricaneVR.Framework.Components
         [Tooltip("Rigidbody to connect the joint to")]
         public Rigidbody ConnectedBody;
 
-        [Header("Door Closing Settings")] [Tooltip("Angle threshold to determine if the door is closed or not.")]
+        [Header("Door Closing Settings")]
+        [Tooltip("Angle threshold to determine if the door is closed or not.")]
         public float CloseAngle = 5f;
 
         [Tooltip("The door will automatically shut over this amount of time once it's close enough to be closed.")]
@@ -38,13 +46,21 @@ namespace HurricaneVR.Framework.Components
         [Tooltip("How long the door angle must be below 'CloseAngle' to become closed.")]
         public float CloseDetectionTime = .5f;
 
-        [Header("SFX")] [Tooltip("Angle threshold to play opening and closing sound effects.")]
+        [Header("SFX")]
+        [Tooltip("Angle threshold to play opening and closing sound effects.")]
         public float SFXThresholdAngle = 2.5f;
 
         public float SFXResetThreshold = 1f;
+        public float MinPitch = 0.9f;
+        public float MaxPitch = 1;
+        public float MinVolume = 1;
+        public float MaxVolume = 1;
+        public float MinPitchHandle = 1;
+        public float MaxPitchHandle = 1;
+        public float MinVolumeHandle = 0;
+        public float MaxVolumeHandle = 0.5f;
         public AudioClip SFXOpened;
         public AudioClip SFXClosed;
-        public AudioClip SFXUnlatched;
         public AudioClip SFXLatched;
 
         [Tooltip("Delay before the open / close sfx can be played again")]
@@ -53,7 +69,8 @@ namespace HurricaneVR.Framework.Components
         [Tooltip("Optional transform to define the position of the open / close sound fx.")]
         public Transform SFXPosition;
 
-        [Header("Handle")] [Tooltip("If true the handle must rotate beyond 'HandThreshold' amount of degrees before it will unlatch, if false the door will not latch automatically.")]
+        [Header("Handle")]
+        [Tooltip("If true the handle must rotate beyond 'HandThreshold' amount of degrees before it will unlatch, if false the door will not latch automatically.")]
         public bool HandleRequiresRotation;
 
         [Tooltip("Required handle rotation to unlatch the door.")]
@@ -64,6 +81,8 @@ namespace HurricaneVR.Framework.Components
 
         [Tooltip("If provided (and held) the door will not automatically shut when it is below 'CloseAngle' in degrees.")]
         public HVRGrabbable HandleGrabbable;
+        private Rigidbody handleRigidbody;
+        private Vector3 lastHandleVelocity;
 
         [Tooltip("Rotational physics component that let's this door component lock the door handle's rotation when the door locks.")]
         public HVRPhysicsDial DoorKnob;
@@ -74,19 +93,23 @@ namespace HurricaneVR.Framework.Components
 
         [Tooltip("If provided (and held) the door will not automatically shut when it is below 'CloseAngle' in degrees.")]
         public HVRGrabbable SecondHandleGrabbable;
+        private Rigidbody secondHandleRigidbody;
+        private Vector3 lastSecondHandleVelocity;
 
         [Tooltip("Rotational physics component that let's this door component lock the door handle's rotation when the door locks.")]
         public HVRPhysicsDial SecondDoorKnob;
 
-        [Header("Joint Limits")] public bool LimitRotation = true;
+        [Header("Joint Limits")]
+        public bool LimitRotation = true;
 
         [Tooltip("Minimum Angle about the axis of rotation")]
-        public float MinAngle;
+        public float MinAngle => StartRotation.eulerAngles.y;
 
         [Tooltip("Maximum rotation about the axis of rotation")]
-        public float MaxAngle;
+        public float MaxAngle => EndRotation.eulerAngles.y;
 
-        [Header("Joint Settings")] [Tooltip("Angular Damper of the door hinge.")]
+        [Header("Joint Settings")]
+        [Tooltip("Angular Damper of the door hinge.")]
         public float Damper = 10;
 
         [Tooltip("Angular Spring that will return the door to it's starting rotation")]
@@ -96,7 +119,8 @@ namespace HurricaneVR.Framework.Components
         //[SerializeField]
         //protected Quaternion JointStartRotation;
 
-        [Header("Debugging")] public float TargetAngularVelocity = 0f;
+        [Header("Debugging")]
+        public float TargetAngularVelocity = 0f;
         public bool DoorLatched;
         public bool DoorClosed;
         public bool Opened;
@@ -116,6 +140,11 @@ namespace HurricaneVR.Framework.Components
         private float _detectionTimer;
         private float _lastClosedSFXTime;
         private float _lastOpenedSFXTime;
+        private float pitch;
+        private float volume;
+        private bool handleSFXCooldown;
+        private bool secondaryHandleSFXCooldown;
+        private Vector3 lastDoorVelocity;
 
         public virtual void Start()
         {
@@ -124,19 +153,21 @@ namespace HurricaneVR.Framework.Components
             Rigidbody.useGravity = !DisableGravity;
 
             Tracker = GetComponent<HVRRotationTracker>();
+            handleRigidbody = HandleGrabbable.GetComponent<Rigidbody>();
+            if (SecondHandleGrabbable != null) secondHandleRigidbody = SecondHandleGrabbable.GetComponent<Rigidbody>();
 
-            if (MinAngle > 0)
-            {
-                MinAngle *= -1;
-            }
-
-            if (MaxAngle < 0)
-            {
-                MaxAngle *= -1;
-            }
-
-            MinAngle = Mathf.Clamp(MinAngle, MinAngle, 0);
-            MaxAngle = Mathf.Clamp(MaxAngle, 0, MaxAngle);
+            // if (MinAngle > 0)
+            // {
+            //     MinAngle *= -1;
+            // }
+            //
+            // if (MaxAngle < 0)
+            // {
+            //     MaxAngle *= -1;
+            // }
+            //
+            // MinAngle = Mathf.Clamp(MinAngle, MinAngle, 0);
+            // MaxAngle = Mathf.Clamp(MaxAngle, 0, MaxAngle);
 
             if (HandleRequiresRotation)
             {
@@ -147,7 +178,7 @@ namespace HurricaneVR.Framework.Components
 
                 DoorLatched = true;
             }
-            
+
             DoorLatched = Tracker.UnsignedAngle <= CloseAngle;
             DoorClosed = Tracker.UnsignedAngle <= CloseAngle;
             PreviousDoorLatched = DoorLatched;
@@ -174,6 +205,8 @@ namespace HurricaneVR.Framework.Components
         protected virtual void Update()
         {
             Joint.targetAngularVelocity = new Vector3(TargetAngularVelocity, 0f, 0f);
+
+            CheckForHandleSFX();
 
             if (_doorClosing)
                 return;
@@ -278,23 +311,59 @@ namespace HurricaneVR.Framework.Components
 
         protected virtual void PlayClosedSFX()
         {
-            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXClosed, GetSFXPosition());
+            pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.7f, MinPitch, MaxPitch);
+            volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.45f, MinVolume, MaxVolume);
+            SFXPlayer.Instance.PlaySFX(SFXClosed, GetSFXPosition(), pitch, volume, 20);
         }
 
 
         protected virtual void PlayOpenedSFX()
         {
-            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXOpened, GetSFXPosition());
-        }
-        
-        protected virtual void PlayUnlatchedSFX()
-        {
-            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXUnlatched, GetSFXPosition());
+            pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.7f, MinPitch, MaxPitch);
+            volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.45f, MinVolume, MaxVolume);
+            SFXPlayer.Instance.PlaySFX(SFXOpened, GetSFXPosition(), pitch, volume, 20);
         }
 
-        protected virtual void PlayLatchedSFX()
+        protected virtual void CheckForHandleSFX()
         {
-            if (SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition());
+            var doorAcceleration = (Rigidbody.angularVelocity - lastDoorVelocity) * Time.fixedDeltaTime;
+            lastDoorVelocity = Rigidbody.angularVelocity;
+            var handleAcceleration = (handleRigidbody.angularVelocity - lastHandleVelocity) * Time.fixedDeltaTime;
+            lastHandleVelocity = handleRigidbody.angularVelocity;
+            float handleAccelerationRelativeToDoor = Mathf.Abs(handleAcceleration.magnitude - doorAcceleration.magnitude);
+            
+            if (!handleSFXCooldown && handleAccelerationRelativeToDoor >= 0.01f)
+            {
+                pitch = Mathf.Clamp(handleAccelerationRelativeToDoor * 100f, MinPitchHandle, MaxPitchHandle);
+                volume = Mathf.Clamp(handleAccelerationRelativeToDoor * 100f, MinVolumeHandle, MaxVolumeHandle * 0.5f);
+                SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
+                handleSFXCooldown = true;
+            }
+            else if (handleAccelerationRelativeToDoor <= 0.00175f)
+            {
+                handleSFXCooldown = false;
+            }
+            
+
+            if (secondHandleRigidbody)
+            {
+                var secondHandleAcceleration = (secondHandleRigidbody.velocity - lastSecondHandleVelocity) / Time.fixedDeltaTime;
+                lastSecondHandleVelocity = secondHandleRigidbody.velocity;
+                float secondaryHandleVelocityRelativeToDoor = Mathf.Abs(secondHandleAcceleration.magnitude - doorAcceleration.magnitude);
+
+                if (!secondaryHandleSFXCooldown && SecondHandleGrabbable && secondaryHandleVelocityRelativeToDoor >= 0.5f)
+                {
+                    pitch = Mathf.Clamp(secondaryHandleVelocityRelativeToDoor * 0.9f, MinPitchHandle, MaxPitchHandle);
+                    volume = Mathf.Clamp(secondaryHandleVelocityRelativeToDoor * 0.7f, MinVolumeHandle, MaxVolumeHandle * 0.5f);
+                    SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
+                    secondaryHandleSFXCooldown = true;
+                }
+                else if (secondaryHandleVelocityRelativeToDoor <= 0.01f)
+                {
+                    secondaryHandleSFXCooldown = false;
+                }
+                
+            }
         }
 
         public virtual void OnDoorUnLatched()
@@ -396,7 +465,7 @@ namespace HurricaneVR.Framework.Components
         protected virtual void SetupJoint()
         {
             var currentRotation = transform.localRotation;
-            transform.localRotation = Quaternion.identity;
+            transform.localRotation = StartRotation;
             Joint = gameObject.AddComponent<ConfigurableJoint>();
             Joint.connectedBody = ConnectedBody;
             Joint.LockLinearMotion();
@@ -410,6 +479,8 @@ namespace HurricaneVR.Framework.Components
                 Joint.LimitAngularXMotion();
                 Joint.SetAngularXHighLimit(-MinAngle);
                 Joint.SetAngularXLowLimit(-MaxAngle);
+                // Joint.SetAngularXHighLimit(-StartRotation.eulerAngles.y);
+                // Joint.SetAngularXLowLimit(-EndRotation.eulerAngles.y);
             }
             else
             {

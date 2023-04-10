@@ -28,6 +28,9 @@ namespace HurricaneVR.Framework.Components
 
         [Header("SFX")]
         public float SFXResetThreshold = .02f;
+        public float MinPitch = 0.9f;
+        public float MaxPitch = 1;
+        public float MaxVolume = 1;
         public AudioClip SFXOpened;
         public AudioClip SFXClosed;
 
@@ -53,7 +56,8 @@ namespace HurricaneVR.Framework.Components
         private Vector3 _axis;
         private ConfigurableJoint _joint;
         private ConfigurableJoint _limitJoint;
-
+        private float pitch;
+        private float volume;
 
         protected virtual void Awake()
         {
@@ -135,7 +139,6 @@ namespace HurricaneVR.Framework.Components
         }
 
 
-
         private void Update()
         {
             GetValues(out var distance, out var openedDistance, out var resetThreshold);
@@ -146,12 +149,16 @@ namespace HurricaneVR.Framework.Components
             if (!Opened && distance > openedDistance)
             {
                 Opened = true;
-                if(SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXOpened, transform.position);
+                pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.7f, MinPitch, MaxPitch);
+                volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.45f, 0, MaxVolume);
+                SFXPlayer.Instance.PlaySFX(SFXOpened, transform.position, pitch, volume, 20);
             }
             else if (!Closed && distance < openedDistance)
             {
                 Closed = true;
-                if(SFXPlayer.Instance) SFXPlayer.Instance.PlaySFX(SFXClosed, transform.position);
+                pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.3f, MinPitch, MaxPitch);
+                volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.25f, 0, MaxVolume);
+                SFXPlayer.Instance.PlaySFX(SFXClosed, transform.position, pitch, volume, 20);
             }
             else if (Opened && distance < openReset)
             {
@@ -213,5 +220,4 @@ namespace HurricaneVR.Framework.Components
             Gizmos.DrawWireSphere(transform.parent.TransformPoint(OpenPosition), .005f);
         }
     }
-
 }

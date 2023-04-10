@@ -68,7 +68,7 @@ namespace HurricaneVR.Framework.Components
             }
 
             _angleVector = _startVector;
-            Angle = transform.localEulerAngles.y;
+            // Angle = transform.localEulerAngles.y;
         }
 
         protected virtual void Update()
