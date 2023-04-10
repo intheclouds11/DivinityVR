@@ -65,7 +65,7 @@ namespace HurricaneVR.Framework.Components
 
         protected virtual void Awake()
         {
-            transform.localPosition = StartPosition;
+            StartPosition = transform.localPosition;
             Rigidbody = GetComponent<Rigidbody>();
             _axis = Axis.GetVector();
             Rigidbody.useGravity = false;

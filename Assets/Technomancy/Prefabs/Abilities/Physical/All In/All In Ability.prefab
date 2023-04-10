@@ -62,7 +62,7 @@ MonoBehaviour:
   elementalType: 5
   activatedVFX: {fileID: 7874719249638937916}
   casterVFX: {fileID: 0}
-  activatedSFX: {fileID: 0}
+  activatedSFX: {fileID: 8300000, guid: a80a20331fe6c5b49936c516a2631c05, type: 3}
   abilitySystem: {fileID: 0}
   abilitySlot: {fileID: 0}
   caster: {fileID: 0}

@@ -46,7 +46,7 @@ namespace intheclouds
             HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
             grabber.GrabTrigger = HVRGrabTrigger.Active;
             weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = true;
-            weapon.BaseDamage = (int) Math.Floor(weapon.BaseDamage * 0.8f);
+            weapon.BaseDamage -= (int) Math.Floor(weapon.BaseDamage * 0.25f);
             weapon.GetComponent<HighlightEffect>().enabled = false;
             weapon = null;
             GetComponent<BoxCollider>().enabled = true;
@@ -56,13 +56,13 @@ namespace intheclouds
 
         private void ApplyToHeldWeapon()
         {
-            SFXPlayer.Instance.PlaySFX(appliedSFX, weapon.transform.position, 0.8f, 20);
+            SFXPlayer.Instance.PlaySFX(appliedSFX, weapon.transform.position, 1f, 1f);
             GetComponent<BoxCollider>().enabled = false;
             
             HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
             weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = false;
             grabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
-            weapon.BaseDamage = (int) Math.Ceiling(weapon.BaseDamage * 1.25f);
+            weapon.BaseDamage += (int) Math.Ceiling(weapon.BaseDamage * 0.25f);
             weapon.GetComponent<HighlightEffect>().enabled = true;
             
             handHighlight.enabled = false;

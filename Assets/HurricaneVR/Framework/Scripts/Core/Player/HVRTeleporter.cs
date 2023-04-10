@@ -18,6 +18,7 @@ namespace HurricaneVR.Framework.Core.Player
         [Tooltip("Prevents player from accidentally teleporting when they just wanted to cancel teleporting")]
         public bool VerticalCancelUntilDeactivateTeleport = false;
         public bool RotateTeleportDestination = false;
+        public float RotateTeleportAmount = 180;
         [Header("Transforms / Components")]
         public Transform Camera;
         public Transform TeleportLineSourceLeft;
@@ -63,6 +64,7 @@ namespace HurricaneVR.Framework.Core.Player
 
         [Tooltip("The hit point is backed from the point of collision by this distance to provide a visual buffer")]
         public float CollisionBuffer = .05f;
+        public float CollisionBufferFromWall = 0.3f;
 
         [Tooltip("Teleport curve layer mask")]
         public LayerMask LayerMask = 1 << 0;
@@ -237,6 +239,7 @@ namespace HurricaneVR.Framework.Core.Player
         /// Normal of the plane hit by the valid raycast.
         /// </summary>
         public Vector3 SurfaceNormal { get; protected set; }
+        private Vector3 lastHitForwardNormal;
 
         public Vector3 Origin => TeleportLineSource.position;
         public Vector3 Forward => TeleportLineSource.forward;
@@ -342,7 +345,7 @@ namespace HurricaneVR.Framework.Core.Player
                 IsTeleportPreviouslyValid = IsTeleportValid;
                 BeforeRaycast();
                 Raycast();
-                AfterRaycast();
+                // AfterRaycast();   ITC commented out, unnecessary?
                 if (HandPrevents)
                 {
                     IsTeleportValid = false;
@@ -449,7 +452,7 @@ namespace HurricaneVR.Framework.Core.Player
             HitPosition = LineRendererPoints[LineRendererPoints.Length - 1];
 
             IsRaycastValid = false;
-
+            
             for (var i = 0; i < LineRendererPoints.Length - 1; i++)
             {
                 var origin = LineRendererPoints[i];
@@ -462,7 +465,7 @@ namespace HurricaneVR.Framework.Core.Player
                     var direction = forwardHit.point - origin;
                     HitPosition = forwardHit.point - direction.normalized * CollisionBuffer;
                     HitCollider = forwardHit.collider;
-
+                    lastHitForwardNormal = new Vector3(forwardHit.normal.x, 0, forwardHit.normal.z);
                     destination = forwardHit.point;// + VerticalBuffer;
 
                     if (CheckValidDestination(HitCollider.gameObject, destination, forwardHit.normal))
@@ -483,19 +486,18 @@ namespace HurricaneVR.Framework.Core.Player
                 {
                     continue;
                 }
-
-
+                
                 DownHitCollider = downwardHit.collider;
                 LastDownwardPoint = downwardHit.point;
                 DownHitNormal = downwardHit.normal;
-
-                destination = downwardHit.point;// + VerticalBuffer;
+                destination = downwardHit.point;
 
                 if (!CheckValidDestination(downwardHit.collider.gameObject, destination, downwardHit.normal))
                 {
                     continue;
                 }
-
+                
+                destination = downwardHit.point + lastHitForwardNormal * CollisionBufferFromWall;
                 LastValidDownwardPoint = LastDownwardPoint;
                 IsTeleportValid = true;
                 TeleportDestination = destination;

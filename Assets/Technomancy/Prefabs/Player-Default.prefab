@@ -4637,7 +4637,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -24950,7 +24950,7 @@ MonoBehaviour:
   InitialHMDAdjustment: 1
   GroundedLayerMask:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 1074793473
   GroundedDistance: 0.02
   MinHeight: 0.3
   InstantAcceleration: 1
@@ -25010,7 +25010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VerticalCancelThreshold: 0.8
   VerticalCancelUntilDeactivateTeleport: 0
-  RotateTeleportDestination: 0
+  RotateTeleportDestination: 1
+  RotateTeleportSpeed: 5
   Camera: {fileID: 0}
   TeleportLineSourceLeft: {fileID: 2720674109989891023}
   TeleportLineSourceRight: {fileID: 541708766016894384}
@@ -25033,10 +25034,11 @@ MonoBehaviour:
   CurveType: 0
   MaxAngle: 135
   LineSegments: 200
-  CollisionBuffer: 0.05
+  CollisionBuffer: 0.1
+  CollisionBufferFromWall: 0.5
   LayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 3222281983
   LayerMaskTriggerInteraction: 1
   Speed: 9
   TimeStep: 0.01
@@ -25051,26 +25053,26 @@ MonoBehaviour:
   DownRayLength: 5
   DownRayIgnoreMask:
     serializedVersion: 2
-    m_Bits: 3145984
+    m_Bits: 2097408
   Dash: 0
   DashSpeed: 5
   RequireOriginLineOfSight: 0
   OriginIgnoreLayerMask:
     serializedVersion: 2
-    m_Bits: 3145984
+    m_Bits: 2097408
   RequireDestinationLineOfSight: 0
   DestinationHeight: 1
   DestinationIntervals: 15
   DestinationIgnoreLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2097408
   CheckDropDistance: 0
   MaxDropDistance: 3
   CheckJumpDistance: 0
   MaxJumpDistance: 1.5
   PlayerFitIgnoreLayerMask:
     serializedVersion: 2
-    m_Bits: 3145984
+    m_Bits: 2097408
   TeleportableLayers:
     serializedVersion: 2
     m_Bits: 2144330752

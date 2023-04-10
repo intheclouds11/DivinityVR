@@ -6,32 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/TeleportMarker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Materials/TeleportMarker.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRDestructible.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRDestructible.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRForceGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRForceGrabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/HVRGrabbable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/HVRGrabbable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRPlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleporter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/SFXPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/SFXPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Scripts/DemoSlidingDoor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Scripts/DemoSlidingDoor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Orange.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/HVR_Orange.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_Floor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_Floor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_green_battery_light.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_green_battery_light.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_shotgun.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/TechDemo/Materials/mat_shotgun.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Physical/All In/All In Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Physical/All In/All In Ability.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Big Table.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Big Table.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/BroadSword.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/BroadSword.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Chair.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Chair.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Health.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Health.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/SceneStartSpawnPosition.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/SceneStartSpawnPosition.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerMovementAP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerMovementAP.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Sliding Door.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Sliding Door.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/High Quality.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/High Quality.lighting" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactSFX.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactSFX.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Physical/All_In.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Physical/All_In.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Weapons/Sword.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Weapons/Sword.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Weapons/WeaponSwipeSFX.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Weapons/WeaponSwipeSFX.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +36,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41ec717a143148d3ab9583cdd7f4dce9f000/4d/810f14b8/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
@@ -96,6 +105,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Samples~/Runtime/Runtime Editing/Scripts/Utility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/UniversalRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/XR/XRSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/Samples~/Tutorial/Asteroids/Tests/WeaponTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMPro_Private.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/Unity.TextMeshPro.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Actions/IAction.cs" root0="SKIP_HIGHLIGHTING" />
@@ -242,10 +252,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6208">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="26288">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6208" />
+      <option name="pid" value="26288" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -390,7 +400,8 @@
       <workItem from="1680803798793" duration="16241000" />
       <workItem from="1680871952983" duration="1731000" />
       <workItem from="1680910760383" duration="7991000" />
-      <workItem from="1680962273527" duration="20741000" />
+      <workItem from="1680962273527" duration="20972000" />
+      <workItem from="1681064039766" duration="15888000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -419,17 +430,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRGrabberBase.cs</url>
-          <line>478</line>
-          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\Core\Grabbers\HVRGrabberBase.cs" initialLine="478" containingFunctionPresentation="method 'HoverGrabbable'">
+          <url>file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs</url>
+          <line>114</line>
+          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\Technomancy\Scripts\HVRExpansions\ITCTeleporter.cs" initialLine="121" containingFunctionPresentation="method 'CheckValidDestination'">
             <startOffsets>
-              <option value="13933" />
+              <option value="3363" />
             </startOffsets>
             <endOffsets>
-              <option value="13958" />
+              <option value="3416" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleporter.cs</url>
+          <line>341</line>
+          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\Core\Player\HVRTeleporter.cs" initialLine="340" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="11964" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11979" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

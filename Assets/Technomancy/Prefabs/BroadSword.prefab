@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisableCollisionsOnHitEnemy: 1
   RequiredAP: 2
-  BaseEnemyDamage: 10
+  BaseDamage: 1
   CriticalDamageMultiplier: 1.8
   DamageThreshold: 5
   HitCooldown: 0.25
@@ -276,8 +276,8 @@ MonoBehaviour:
   GrabColliders: []
   ConsiderGrabPointAngle: 1
   UseColliderClosestPoint: 1
-  DisableHandCollision: 0
-  DisableBodyCollision: 1
+  DisableHandCollision: 1
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []

@@ -120,7 +120,7 @@ namespace intheclouds
                 HandleImpactSFX(relativeVelocity);
             }
 
-            if (!justHit && wieldingUser && wieldingUser.CanPerformActions(RequiredAP))
+            if (BaseDamage != 0 || !justHit && wieldingUser && wieldingUser.CanPerformActions(RequiredAP))
             {
                 var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
                 if (objectDamageHandler && relativeVelocity >= DamageThreshold)
@@ -141,7 +141,7 @@ namespace intheclouds
         // Handles damage caused by weapon. Disables collisions after valid hit
         private void OnTriggerEnter(Collider other)
         {
-            if (!DisableCollisionsOnHitEnemy || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
+            if (BaseDamage == 0 || !DisableCollisionsOnHitEnemy || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
             {
                 return;
             }
@@ -158,8 +158,8 @@ namespace intheclouds
 
         private void DamageDestructible(HVRDamageHandlerBase objectDamageHandler, float relativeVelocity)
         {
-            var totalDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
-            objectDamageHandler.TakeDamage(totalDamage);
+            var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
+            objectDamageHandler.TakeDamage(scaledDamage);
             if (wieldingUser.InCombat)
             {
                 wieldingUser.UseAP(RequiredAP);
@@ -181,9 +181,9 @@ namespace intheclouds
                 return;
             }
 
-            var totalDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
+            var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
             // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
-            currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(totalDamage, wieldingUser, CriticalDamageMultiplier),
+            currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(scaledDamage, wieldingUser, CriticalDamageMultiplier),
                 DamageType, ElementalType, StatusEffect);
 
             if (wieldingUser.InCombat)

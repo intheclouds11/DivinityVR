@@ -304,7 +304,7 @@ namespace HurricaneVR.Framework.Core.Player
 
             if (_hasTeleporter && Teleporter.IsAiming && !RotateWhileTeleportAiming)
             {
-                teleportCooldown = 0.5f;
+                teleportCooldown = 0.2f;
                 return false;
             }
 
@@ -433,7 +433,7 @@ namespace HurricaneVR.Framework.Core.Player
         protected virtual void HandleSmoothRotation()
         {
             var input = GetTurnAxis().x;
-            if (Math.Abs(input) < SmoothTurnThreshold || teleportCooldown > 0 || GetTurnAxis().y < -0.3f)
+            if (Math.Abs(input) < SmoothTurnThreshold || teleportCooldown > 0)
                 return;
 
             var rotation = input * SmoothTurnSpeed * Time.deltaTime;

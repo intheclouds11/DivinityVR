@@ -689,7 +689,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ce31a26afa05d8844943448a3c15212c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
   ConsiderGrabPointAngle: 1
   UseColliderClosestPoint: 1
   DisableHandCollision: 1
-  DisableBodyCollision: 1
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
