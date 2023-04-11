@@ -262,11 +262,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactSpeedRequired: 0.1
-  impactClip: {fileID: 8300000, guid: 7a15c0d8bcc45424abbbce85a52cd25f, type: 3}
-  volume: 0.2
-  maxPitch: 1.2
-  minPitch: 1.15
+  DisableCollisionsOnHitEnemy: 0
+  RequiredAP: 1
+  BaseDamage: 1
+  CriticalDamageMultiplier: 1.8
+  DamageThreshold: 5
+  HitCooldown: 0.25
+  DamageType: 0
+  ElementalType: 5
+  StatusEffect: {fileID: 0}
+  HitEnemyClip: {fileID: 0}
+  GenericHitClip: {fileID: 8300000, guid: 7a15c0d8bcc45424abbbce85a52cd25f, type: 3}
+  ImpactThreshold: 0.01
+  MaxVolume: 0.5
+  MaxPitch: 1
+  MinPitch: 0.95
+  SwipeClip: {fileID: 0}
+  SwipeThreshold: 3
+  SwipeCooldownThreshold: 1
 --- !u!114 &1295398786153030583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +336,7 @@ MonoBehaviour:
   ConsiderGrabPointAngle: 1
   UseColliderClosestPoint: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []

@@ -69,21 +69,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisableCollisionsOnHitEnemy: 0
   RequiredAP: 1
-  BaseEnemyDamage: 1
+  BaseDamage: 1
   CriticalDamageMultiplier: 1.8
-  DamageEnemyThreshold: 5
+  DamageThreshold: 5
   HitCooldown: 0.25
   DamageType: 0
   ElementalType: 5
   StatusEffect: {fileID: 0}
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: 7a15c0d8bcc45424abbbce85a52cd25f, type: 3}
-  ImpactSpeedThreshold: 0.01
+  ImpactThreshold: 0.01
   MaxVolume: 1
   MaxPitch: 1
-  MinPitch: 1
+  MinPitch: 0.95
   SwipeClip: {fileID: 0}
-  SwipeSpeedThreshold: 4
+  SwipeThreshold: 3
   SwipeCooldownThreshold: 2
 --- !u!114 &5066610884980448225
 MonoBehaviour:

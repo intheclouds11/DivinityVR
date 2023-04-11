@@ -29,14 +29,22 @@ namespace intheclouds
         public AudioClip HitEnemyClip;
         public AudioClip GenericHitClip;
         public float ImpactThreshold = 0.01f;
-        public float MaxVolume = 0.5f;
+        public float MinPitch = 0.95f;
         public float MaxPitch = 1;
-        public float MinPitch = 1;
+        public float MaxVolume = 0.5f;
         public AudioClip SwipeClip;
         [ShowIf("showSwipe")]
         public float SwipeThreshold = 3f;
         [ShowIf("showSwipe")]
         public float SwipeCooldownThreshold = 1f;
+        [ShowIf("showSwipe")]
+        public float MinPitchSwipe = 1f;
+        [ShowIf("showSwipe")]
+        public float MaxPitchSwipe = 1;
+        [ShowIf("showSwipe")]
+        public float MaxVolumeSwipe = 1f;
+        [ShowIf("showSwipe")]
+        public float VolumeModifierSwipe = 2f;
 
         public event Action AppliedDamage;
 
@@ -50,7 +58,8 @@ namespace intheclouds
         private bool isPlayingSFX;
         private float pitch;
         private float volume;
-        
+        private Vector3 lastAngularVelocity;
+
         private bool showSwipe => SwipeClip;
 
         #endregion
@@ -81,30 +90,22 @@ namespace intheclouds
                 return;
             }
 
-            if (isPlayingSFX)
-            {
-                if (rb.velocity.magnitude <= SwipeCooldownThreshold)
-                {
-                    isPlayingSFX = false;
-                }
-                else
-                {
-                    return;
-                }
-            }
-
             if (grabbable.IsHandGrabbed && wieldingUser)
             {
-                var wielderVelocity = wieldingUser.LocalUserObjects.HVRPlayerController.CharacterController.velocity.magnitude;
-                var velocityRelativeToWielder = Mathf.Abs(wielderVelocity - rb.velocity.magnitude);
+                var acceleration = Mathf.Abs(rb.angularVelocity.magnitude - lastAngularVelocity.magnitude) * Time.fixedDeltaTime;
+                lastAngularVelocity = rb.angularVelocity;
 
-                if (velocityRelativeToWielder > SwipeThreshold)
+                // var wielderVelocity = wieldingUser.LocalUserObjects.HVRPlayerController.CharacterController.velocity.magnitude;
+                // var velocityRelativeToWielder = Mathf.Abs(wielderVelocity - rb.velocity.magnitude);
+
+                if ((!swipeAudioSource || !swipeAudioSource.isPlaying) && acceleration > SwipeThreshold)
                 {
-                    isPlayingSFX = true;
-                    if (!swipeAudioSource || !swipeAudioSource.isPlaying)
-                    {
-                        swipeAudioSource = PlayVelocityBasedSFX(velocityRelativeToWielder, SwipeClip);
-                    }
+                    // todo use HVRUtilities.Remap() to make volume scale better
+                    swipeAudioSource = PlayVelocityBasedSFX(acceleration, SwipeClip, MinPitchSwipe, MaxPitchSwipe, MaxVolumeSwipe, 10, VolumeModifierSwipe);
+                }
+                else if (swipeAudioSource && acceleration < SwipeCooldownThreshold)
+                {
+                    StartCoroutine(HVRUtilities.FadeOut(swipeAudioSource, 0.2f));
                 }
             }
         }
@@ -120,7 +121,7 @@ namespace intheclouds
                 HandleImpactSFX(relativeVelocity);
             }
 
-            if (BaseDamage != 0 || !justHit && wieldingUser && wieldingUser.CanPerformActions(RequiredAP))
+            if ((BaseDamage != 0 || !justHit) && wieldingUser && wieldingUser.CanPerformActions(RequiredAP))
             {
                 var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
                 if (objectDamageHandler && relativeVelocity >= DamageThreshold)
@@ -165,7 +166,7 @@ namespace intheclouds
                 wieldingUser.UseAP(RequiredAP);
             }
 
-            PlayVelocityBasedSFX(relativeVelocity, GenericHitClip);
+            PlayVelocityBasedSFX(relativeVelocity, GenericHitClip, MinPitch, MaxPitch, MaxVolume);
             justHit = true;
             AppliedDamage?.Invoke();
             Invoke(nameof(ResetCollision), HitCooldown);
@@ -191,7 +192,7 @@ namespace intheclouds
                 wieldingUser.UseAP(RequiredAP);
             }
 
-            PlayVelocityBasedSFX(relativeVelocity, HitEnemyClip);
+            PlayVelocityBasedSFX(relativeVelocity, HitEnemyClip, MinPitch, MaxPitch, MaxVolume);
             justHit = true;
             AppliedDamage?.Invoke();
             Invoke(nameof(ResetCollision), HitCooldown);
@@ -201,7 +202,7 @@ namespace intheclouds
         {
             if (!impactAudioSource || !impactAudioSource.isPlaying)
             {
-                impactAudioSource = PlayVelocityBasedSFX(relativeVelocity, GenericHitClip);
+                impactAudioSource = PlayVelocityBasedSFX(relativeVelocity, GenericHitClip, MinPitch, MaxPitch, MaxVolume);
             }
         }
 
@@ -211,12 +212,12 @@ namespace intheclouds
             rb.detectCollisions = true;
         }
 
-        private AudioSource PlayVelocityBasedSFX(float relativeVelocity, AudioClip clip)
+        private AudioSource PlayVelocityBasedSFX(float relativeVelocity, AudioClip clip, float minP, float maxP, float maxVol, float pitchModifier = 0.3f, float volumeModifier = 0.25f)
         {
             if (clip)
             {
-                pitch = Mathf.Clamp(relativeVelocity * 0.3f, MinPitch, MaxPitch);
-                volume = Mathf.Clamp(relativeVelocity * 0.25f, 0, MaxVolume);
+                pitch = Mathf.Clamp(relativeVelocity * pitchModifier, minP, maxP);
+                volume = Mathf.Clamp(relativeVelocity * volumeModifier, 0, maxVol);
                 return SFXPlayer.Instance.PlaySFX(clip, transform.position, pitch, volume, 20);
             }
 

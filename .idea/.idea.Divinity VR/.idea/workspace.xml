@@ -7,7 +7,15 @@
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/HVRUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/HVRUtilities.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/BroadSword.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/BroadSword.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Health.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Health.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Magic Armor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Magic Armor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Physical Armor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Physical Armor.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Wardrobe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Wardrobe.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +26,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41ec717a143148d3ab9583cdd7f4dce9f000/4d/810f14b8/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6e08e61cfda04255b3972ba7f0515fae81e000/21/ee2b436e/AssemblyReloadEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759e14def7c40b68c657c638e8a043412b800/9e/7298f8fd/VisualTreeUpdater.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a4719b50f41b29409612f3478c8db1a000/2b/1e411f82/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a4719b50f41b29409612f3478c8db1a000/60/62249a9d/Physics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a4719b50f41b29409612f3478c8db1a000/76/0aef20c4/QueryTriggerInteraction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a4719b50f41b29409612f3478c8db1a000/8a/5e3b9336/Collider.cs" root0="SKIP_HIGHLIGHTING" />
@@ -218,10 +227,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="27112">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="27112" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -370,6 +379,9 @@
       <workItem from="1681064039766" duration="16486000" />
       <workItem from="1681090805962" duration="13425000" />
       <workItem from="1681105630242" duration="1275000" />
+      <workItem from="1681131435520" duration="6034000" />
+      <workItem from="1681140145161" duration="3905000" />
+      <workItem from="1681216598682" duration="3486000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -398,17 +410,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs</url>
-          <line>336</line>
-          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\Components\HVRPhysicsDoor.cs" initialLine="336" containingFunctionPresentation="method 'CheckForHandleSFX'">
+          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs</url>
+          <line>2034</line>
+          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\Core\Grabbers\HVRHandGrabber.cs" initialLine="2034" containingFunctionPresentation="method 'SetupLineGrab'">
             <startOffsets>
-              <option value="12155" />
+              <option value="71131" />
             </startOffsets>
             <endOffsets>
-              <option value="12247" />
+              <option value="71195" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="76" />
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Components/HVRPhysicsDoor.cs</url>
+          <line>359</line>
+          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\HurricaneVR\Framework\Scripts\Components\HVRPhysicsDoor.cs" initialLine="356" containingFunctionPresentation="method 'CheckDynamicSFX'">
+            <startOffsets>
+              <option value="13371" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13463" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

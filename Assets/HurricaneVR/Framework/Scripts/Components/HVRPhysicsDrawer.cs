@@ -30,9 +30,18 @@ namespace HurricaneVR.Framework.Components
         public float SFXResetThreshold = .02f;
         public float MinPitch = 0.9f;
         public float MaxPitch = 1;
+        public float MinVolume = 1;
         public float MaxVolume = 1;
+        public float MinPitchSlide = 0.9f;
+        public float MaxPitchSlide = 1;
+        public float MinVolumeSlide = 0;
+        public float MaxVolumeSlide = 1;
+        public float VolumeModifierSlide = 170f;
+        public float VolumeModifierClose = 0.25f;
+        public float VolumeModifierOpen = 0.45f;
         public AudioClip SFXOpened;
         public AudioClip SFXClosed;
+        public AudioClip SFXSlide;
 
         [Header("Editor Fields")]
         [Tooltip("The resting position of the button")]
@@ -58,12 +67,14 @@ namespace HurricaneVR.Framework.Components
         private ConfigurableJoint _limitJoint;
         private float pitch;
         private float volume;
+        private Vector3 lastVelocity;
+        private AudioSource slideAudioSource;
 
         protected virtual void Awake()
         {
             transform.localPosition = StartPosition;
             Rigidbody = GetComponent<Rigidbody>();
-            _axis = Axis.GetVector();
+            _axis = Axis.GetVector(transform);
             Rigidbody.useGravity = false;
             SetupJoint();
 
@@ -146,18 +157,20 @@ namespace HurricaneVR.Framework.Components
             var closeReset = openedDistance + resetThreshold;
             var openReset = openedDistance - resetThreshold;
 
+            CheckDynamicSFX();
+
             if (!Opened && distance > openedDistance)
             {
                 Opened = true;
                 pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.7f, MinPitch, MaxPitch);
-                volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.45f, 0, MaxVolume);
+                volume = Mathf.Clamp(Rigidbody.velocity.magnitude * VolumeModifierOpen, MinVolume, MaxVolume);
                 SFXPlayer.Instance.PlaySFX(SFXOpened, transform.position, pitch, volume, 20);
             }
             else if (!Closed && distance < openedDistance)
             {
                 Closed = true;
                 pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.3f, MinPitch, MaxPitch);
-                volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.25f, 0, MaxVolume);
+                volume = Mathf.Clamp(Rigidbody.velocity.magnitude * VolumeModifierClose, MinVolume, MaxVolume);
                 SFXPlayer.Instance.PlaySFX(SFXClosed, transform.position, pitch, volume, 20);
             }
             else if (Opened && distance < openReset)
@@ -171,6 +184,24 @@ namespace HurricaneVR.Framework.Components
 
             PreviousClosed = Closed;
             PreviousOpened = Opened;
+        }
+
+        // Play sfx if exceed threshold, stop sfx if below threshold
+        private void CheckDynamicSFX()
+        {
+            var accelerationMagnitude = Mathf.Abs(Rigidbody.velocity.magnitude - lastVelocity.magnitude) * Time.fixedDeltaTime;
+            lastVelocity = Rigidbody.velocity;
+
+            if ((!slideAudioSource || !slideAudioSource.isPlaying) && accelerationMagnitude >= 0.001f)
+            {
+                pitch = Mathf.Clamp(accelerationMagnitude * 350f, MinPitchSlide, MaxPitchSlide);
+                volume = Mathf.Clamp(accelerationMagnitude * VolumeModifierSlide, MinVolumeSlide, MaxVolumeSlide);
+                slideAudioSource = SFXPlayer.Instance.PlaySFX(SFXSlide, transform.position, pitch, volume, 20);
+            }
+            else if (slideAudioSource && accelerationMagnitude <= 0.0001f)
+            {
+                StartCoroutine(HVRUtilities.FadeOut(slideAudioSource, 0.2f));
+            }
         }
 
         private void GetValues(out float distance, out float openDistance, out float resetDelta)

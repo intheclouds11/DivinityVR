@@ -53,14 +53,22 @@ namespace HurricaneVR.Framework.Components
         public float SFXResetThreshold = 1f;
         public float MinPitch = 0.9f;
         public float MaxPitch = 1;
-        public float MinVolume = 1;
+        public float MinVolume = 0;
         public float MaxVolume = 1;
+        public float VolumeModifierOpenClose = 0.45f;
+        public float MinPitchSwing = 0.9f;
+        public float MaxPitchSwing = 1;
+        public float MinVolumeSwing = 0;
+        public float MaxVolumeSwing = 1;
+        public float VolumeModifierSwing = 150f;
         public float MinPitchHandle = 1;
         public float MaxPitchHandle = 1;
         public float MinVolumeHandle = 0;
         public float MaxVolumeHandle = 0.5f;
+        public float VolumeModifierHandle = 10f;
         public AudioClip SFXOpened;
         public AudioClip SFXClosed;
+        public AudioClip SFXSwing;
         public AudioClip SFXLatched;
 
         [Tooltip("Delay before the open / close sfx can be played again")]
@@ -142,9 +150,10 @@ namespace HurricaneVR.Framework.Components
         private float _lastOpenedSFXTime;
         private float pitch;
         private float volume;
-        private bool handleSFXCooldown;
-        private bool secondaryHandleSFXCooldown;
         private Vector3 lastDoorVelocity;
+        private AudioSource swingAudioSource;
+        private AudioSource handleAudioSource;
+        private AudioSource secondHandleAudioSource;
 
         public virtual void Start()
         {
@@ -206,7 +215,7 @@ namespace HurricaneVR.Framework.Components
         {
             Joint.targetAngularVelocity = new Vector3(TargetAngularVelocity, 0f, 0f);
 
-            CheckForHandleSFX();
+            CheckDynamicSFX();
 
             if (_doorClosing)
                 return;
@@ -312,7 +321,7 @@ namespace HurricaneVR.Framework.Components
         protected virtual void PlayClosedSFX()
         {
             pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.7f, MinPitch, MaxPitch);
-            volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.45f, MinVolume, MaxVolume);
+            volume = Mathf.Clamp(Rigidbody.velocity.magnitude * VolumeModifierOpenClose, MinVolume, MaxVolume);
             SFXPlayer.Instance.PlaySFX(SFXClosed, GetSFXPosition(), pitch, volume, 20);
         }
 
@@ -320,30 +329,42 @@ namespace HurricaneVR.Framework.Components
         protected virtual void PlayOpenedSFX()
         {
             pitch = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.7f, MinPitch, MaxPitch);
-            volume = Mathf.Clamp(Rigidbody.velocity.magnitude * 0.45f, MinVolume, MaxVolume);
+            volume = Mathf.Clamp(Rigidbody.velocity.magnitude * VolumeModifierOpenClose, MinVolume, MaxVolume);
             SFXPlayer.Instance.PlaySFX(SFXOpened, GetSFXPosition(), pitch, volume, 20);
         }
 
-        protected virtual void CheckForHandleSFX()
+        // Play sfx if exceed threshold, stop sfx if below threshold
+        protected virtual void CheckDynamicSFX()
         {
             var doorAcceleration = (Rigidbody.angularVelocity - lastDoorVelocity) * Time.fixedDeltaTime;
             lastDoorVelocity = Rigidbody.angularVelocity;
+
+            if ((!swingAudioSource || !swingAudioSource.isPlaying) && doorAcceleration.magnitude >= 0.001f)
+            {
+                pitch = Mathf.Clamp(doorAcceleration.magnitude * 300f, MinPitchSwing, MaxPitchSwing);
+                volume = Mathf.Clamp(doorAcceleration.magnitude * VolumeModifierSwing, MinVolumeSwing, MaxVolumeSwing);
+                swingAudioSource = SFXPlayer.Instance.PlaySFX(SFXSwing, transform.position, pitch, volume, 20);
+            }
+            else if (swingAudioSource && doorAcceleration.magnitude <= 0.0005f)
+            {
+                StartCoroutine(HVRUtilities.FadeOut(swingAudioSource, 0.2f));
+            }
+
+            // Handle SFX
             var handleAcceleration = (handleRigidbody.angularVelocity - lastHandleVelocity) * Time.fixedDeltaTime;
             lastHandleVelocity = handleRigidbody.angularVelocity;
             float handleAccelerationRelativeToDoor = Mathf.Abs(handleAcceleration.magnitude - doorAcceleration.magnitude);
-            
-            if (!handleSFXCooldown && handleAccelerationRelativeToDoor >= 0.01f)
+
+            if ((!handleAudioSource || !handleAudioSource.isPlaying) && handleAccelerationRelativeToDoor >= 0.01f)
             {
                 pitch = Mathf.Clamp(handleAccelerationRelativeToDoor * 70f, MinPitchHandle, MaxPitchHandle);
-                volume = Mathf.Clamp(handleAccelerationRelativeToDoor, MinVolumeHandle, MaxVolumeHandle * 0.5f);
-                SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
-                handleSFXCooldown = true;
+                volume = Mathf.Clamp(handleAccelerationRelativeToDoor * VolumeModifierHandle, MinVolumeHandle, MaxVolumeHandle);
+                handleAudioSource = SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
             }
-            else if (handleAccelerationRelativeToDoor <= 0.0017f)
+            else if (handleAudioSource && handleAccelerationRelativeToDoor <= 0.001f)
             {
-                handleSFXCooldown = false;
+                StartCoroutine(HVRUtilities.FadeOut(handleAudioSource, 0.2f));
             }
-            
 
             if (secondHandleRigidbody)
             {
@@ -351,18 +372,16 @@ namespace HurricaneVR.Framework.Components
                 lastSecondHandleVelocity = secondHandleRigidbody.velocity;
                 float secondaryHandleVelocityRelativeToDoor = Mathf.Abs(secondHandleAcceleration.magnitude - doorAcceleration.magnitude);
 
-                if (!secondaryHandleSFXCooldown && SecondHandleGrabbable && secondaryHandleVelocityRelativeToDoor >= 0.5f)
+                if ((!secondHandleAudioSource || !secondHandleAudioSource.isPlaying) && SecondHandleGrabbable && secondaryHandleVelocityRelativeToDoor >= 0.01f)
                 {
-                    pitch = Mathf.Clamp(secondaryHandleVelocityRelativeToDoor * 0.9f, MinPitchHandle, MaxPitchHandle);
-                    volume = Mathf.Clamp(secondaryHandleVelocityRelativeToDoor * 0.7f, MinVolumeHandle, MaxVolumeHandle * 0.5f);
-                    SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
-                    secondaryHandleSFXCooldown = true;
+                    pitch = Mathf.Clamp(secondaryHandleVelocityRelativeToDoor * 70f, MinPitchHandle, MaxPitchHandle);
+                    volume = Mathf.Clamp(secondaryHandleVelocityRelativeToDoor * 10f, MinVolumeHandle, MaxVolumeHandle);
+                    secondHandleAudioSource = SFXPlayer.Instance.PlaySFX(SFXLatched, GetSFXPosition(), pitch, volume, 20);
                 }
-                else if (secondaryHandleVelocityRelativeToDoor <= 0.01f)
+                else if (secondHandleAudioSource && secondaryHandleVelocityRelativeToDoor <= 0.001f)
                 {
-                    secondaryHandleSFXCooldown = false;
+                    StartCoroutine(HVRUtilities.FadeOut(secondHandleAudioSource, 0.2f));
                 }
-                
             }
         }
 

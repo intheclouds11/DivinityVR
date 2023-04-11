@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
@@ -7,6 +8,20 @@ namespace HurricaneVR.Framework.Core.Utils
 {
     public static class HVRUtilities
     {
+        
+        public static IEnumerator FadeOut (AudioSource audioSource, float FadeTime) {
+            float startVolume = audioSource.volume;
+ 
+            while (audioSource.volume > 0) {
+                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+ 
+                yield return null;
+            }
+ 
+            audioSource.Stop ();
+            audioSource.volume = startVolume;
+        }
+        
         public static Vector3 FindNearestPointOnLine(Vector3 origin, Vector3 end, Vector3 point)
         {
             //Get heading
@@ -257,6 +272,37 @@ namespace HurricaneVR.Framework.Core.Utils
             }
 
             return -Vector3.forward;
+        }
+        
+        public static Vector3 GetVector(this HVRAxis axis, Transform transform)
+        {
+            if (axis == HVRAxis.X)
+            {
+                return transform.right;
+            }
+
+            if (axis == HVRAxis.Y)
+            {
+                return transform.up;
+            }
+
+            if (axis == HVRAxis.Z)
+            {
+                return transform.forward;
+            }
+
+
+            if (axis == HVRAxis.NegX)
+            {
+                return -transform.right;
+            }
+
+            if (axis == HVRAxis.NegY)
+            {
+                return -transform.up;
+            }
+
+            return -transform.forward;
         }
 
         public static T EnsureComponent<T>(this GameObject obj) where T : UnityEngine.Component

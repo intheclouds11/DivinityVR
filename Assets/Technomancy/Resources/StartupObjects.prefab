@@ -1929,6 +1929,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2944818813735484916, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: RaycastLayermask.m_Bits
+      value: 5242881
+      objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: DebugUI
       value: 
@@ -1944,6 +1948,14 @@ PrefabInstance:
     - target: {fileID: 5882220326935334823, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649550952121271354, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: RaycastLayermask.m_Bits
+      value: 9961473
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183613917027510685, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: CanCrouch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7183613918389418791, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_RootOrder

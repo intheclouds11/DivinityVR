@@ -72,7 +72,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194080132616145645}
-  m_Material: {fileID: 13400000, guid: a891406783c72e14d8b881608788cf5f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -85,7 +85,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194080132616145645}
-  m_Material: {fileID: 13400000, guid: a891406783c72e14d8b881608788cf5f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -98,7 +98,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194080132616145645}
-  m_Material: {fileID: 13400000, guid: a891406783c72e14d8b881608788cf5f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -111,7 +111,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194080132616145645}
-  m_Material: {fileID: 13400000, guid: a891406783c72e14d8b881608788cf5f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.017688693
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisableCollisionsOnHitEnemy: 1
   RequiredAP: 2
-  BaseDamage: 1
+  BaseDamage: 10
   CriticalDamageMultiplier: 1.8
   DamageThreshold: 5
   HitCooldown: 0.25
@@ -215,12 +215,16 @@ MonoBehaviour:
   HitEnemyClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
   GenericHitClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
   ImpactThreshold: 0.01
-  MaxVolume: 1
-  MaxPitch: 1.1
   MinPitch: 0.9
-  SwipeClip: {fileID: 8300000, guid: 5a898b17904ca98409c9b38df9b1a07d, type: 3}
-  SwipeThreshold: 3
-  SwipeCooldownThreshold: 1
+  MaxPitch: 1.1
+  MaxVolume: 1
+  SwipeClip: {fileID: 8300000, guid: 67f1f41d4d76dc445bc72a301237979f, type: 3}
+  SwipeThreshold: 0.06
+  SwipeCooldownThreshold: 0.005
+  MinPitchSwipe: 1
+  MaxPitchSwipe: 1
+  MaxVolumeSwipe: 1
+  VolumeModifierSwipe: 4
 --- !u!114 &1108140391066582097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +261,7 @@ MonoBehaviour:
   ForceGrabbable: 1
   ForcePullOverride: {fileID: 0}
   JointOverride: {fileID: 0}
-  OneHandJointSettings: {fileID: 11400000, guid: 21c9e00c129c98847801f8987104eadc, type: 2}
+  OneHandJointSettings: {fileID: 0}
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
