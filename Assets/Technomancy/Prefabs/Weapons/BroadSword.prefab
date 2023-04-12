@@ -210,7 +210,7 @@ MonoBehaviour:
   DamageThreshold: 5
   HitCooldown: 0.25
   DamageType: 0
-  ElementalType: 5
+  ElementalType: 0
   StatusEffect: {fileID: 0}
   HitEnemyClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
   GenericHitClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
@@ -1208,8 +1208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8049204224714260457}
   - component: {fileID: 4695466996583223983}
-  m_Layer: 7
-  m_Name: EnemyCollision
+  m_Layer: 0
+  m_Name: EnemyDamageTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

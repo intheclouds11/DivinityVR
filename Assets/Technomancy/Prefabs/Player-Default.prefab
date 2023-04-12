@@ -12039,7 +12039,7 @@ MonoBehaviour:
   PullingSettings: {fileID: 11400000, guid: 3acf0379557212e4ba63a5a8341627b8, type: 2}
   RaycastLayermask:
     serializedVersion: 2
-    m_Bits: 9961537
+    m_Bits: 9961473
   PushoutTime: 0.1
   PullLerpTime: 0.06
   MoveThreshold: 10
@@ -14690,7 +14690,7 @@ MonoBehaviour:
   PullingSettings: {fileID: 11400000, guid: 3acf0379557212e4ba63a5a8341627b8, type: 2}
   RaycastLayermask:
     serializedVersion: 2
-    m_Bits: 5242945
+    m_Bits: 5242881
   PushoutTime: 0.1
   PullLerpTime: 0.06
   MoveThreshold: 10
@@ -22363,7 +22363,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb2dae209c9d51545892976c3ab2425b, type: 2}
+  - {fileID: 2100000, guid: ce31a26afa05d8844943448a3c15212c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24945,7 +24945,7 @@ MonoBehaviour:
   CanJump: 0
   CanSteerWhileJumping: 0
   CanSprint: 1
-  CanCrouch: 0
+  CanCrouch: 1
   DirectionStyle: 0
   InitialHMDAdjustment: 1
   GroundedLayerMask:
@@ -25011,7 +25011,7 @@ MonoBehaviour:
   VerticalCancelThreshold: 0.8
   VerticalCancelUntilDeactivateTeleport: 0
   RotateTeleportDestination: 1
-  RotateTeleportSpeed: 5
+  RotateTeleportAmount: 180
   Camera: {fileID: 0}
   TeleportLineSourceLeft: {fileID: 2720674109989891023}
   TeleportLineSourceRight: {fileID: 541708766016894384}

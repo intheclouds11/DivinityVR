@@ -1447,6 +1447,7 @@ MonoBehaviour:
   errorSFX: {fileID: 8300000, guid: 2b6afb9fa03873648a744ca4bbf9f154, type: 3}
   sparkleSFX: {fileID: 8300000, guid: 436f3284126ff1e4b97f3a82237ec964, type: 3}
   clickSFX: {fileID: 8300000, guid: 7d853d9961e50434097fe1047f38c444, type: 3}
+  creditPickupSFX: {fileID: 8300000, guid: 0d7d443244dc9e447951d9e47a55c1d4, type: 3}
   SFXReferenceSource: {fileID: 4238637224150318761}
   SFXSourceCount: 100
   SetClipName: 0
@@ -1929,10 +1930,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2944818813735484916, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: RaycastLayermask.m_Bits
-      value: 5242881
-      objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: DebugUI
       value: 
@@ -1948,14 +1945,6 @@ PrefabInstance:
     - target: {fileID: 5882220326935334823, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6649550952121271354, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: RaycastLayermask.m_Bits
-      value: 9961473
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183613917027510685, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: CanCrouch
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7183613918389418791, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_RootOrder

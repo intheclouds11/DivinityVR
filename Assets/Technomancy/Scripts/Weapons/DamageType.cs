@@ -8,11 +8,11 @@ namespace intheclouds
 
     public enum ElementalType
     {
+        None,
         Fire,
         Water,
         Air,
         Earth,
         Poison,
-        None
     }
 }

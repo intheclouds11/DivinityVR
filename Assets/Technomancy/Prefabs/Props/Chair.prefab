@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7423265299933688715}
-  - component: {fileID: 7423265299933688716}
+  - component: {fileID: 7789296404974404714}
   - component: {fileID: 7423265299933688717}
+  - component: {fileID: 7423265299933688716}
   m_Layer: 0
   m_Name: Chair
   m_TagString: Untagged
@@ -34,6 +35,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7789296404974404714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423265299933688718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisableCollisionsOnHitEnemy: 0
+  RequiredAP: 1
+  BaseDamage: 1
+  CriticalDamageMultiplier: 1.8
+  DamageThreshold: 5
+  HitCooldown: 0.25
+  DamageType: 0
+  ElementalType: 0
+  ElementalChance: 0
+  StatusEffect: {fileID: 0}
+  HitEnemyClip: {fileID: 0}
+  GenericHitClip: {fileID: 8300000, guid: d3d64966339bfeb4dafc7588004338e6, type: 3}
+  ImpactThreshold: 0.01
+  MinPitch: 0.8
+  MaxPitch: 0.85
+  MaxVolume: 0.5
+  SwipeClip: {fileID: 0}
+  SwipeThreshold: 3
+  SwipeCooldownThreshold: 1
+  MinPitchSwipe: 1
+  MaxPitchSwipe: 1
+  MaxVolumeSwipe: 1
+  VolumeModifierSwipe: 2
+--- !u!54 &7423265299933688717
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423265299933688718}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0.1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &7423265299933688716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,22 +197,6 @@ MonoBehaviour:
   HandGrabbers: []
   Stabbers: []
   Stabbable: {fileID: 0}
---- !u!54 &7423265299933688717
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7423265299933688718}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 0.1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &7423265300751055575
 GameObject:
   m_ObjectHideFlags: 0

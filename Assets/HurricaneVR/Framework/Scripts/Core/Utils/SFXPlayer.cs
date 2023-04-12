@@ -18,6 +18,7 @@ namespace HurricaneVR.Framework.Core.Utils
         public AudioClip errorSFX;
         public AudioClip sparkleSFX;
         public AudioClip clickSFX;
+        public AudioClip creditPickupSFX;
 
         static SFXPlayer s_Instance;
         public static SFXPlayer Instance => s_Instance;
@@ -148,6 +149,7 @@ namespace HurricaneVR.Framework.Core.Utils
             audioSource.gameObject.SetActive(true);
             audioSource.transform.position = position;
             audioSource.clip = clip;
+            audioSource.minDistance = 0.1f;
             audioSource.maxDistance = maxDistance;
 
             audioSource.volume = volume;

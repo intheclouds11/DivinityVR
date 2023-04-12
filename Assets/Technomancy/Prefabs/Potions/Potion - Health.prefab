@@ -74,17 +74,22 @@ MonoBehaviour:
   DamageThreshold: 5
   HitCooldown: 0.25
   DamageType: 0
-  ElementalType: 5
+  ElementalType: 0
+  ElementalChance: 0
   StatusEffect: {fileID: 0}
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: 7a15c0d8bcc45424abbbce85a52cd25f, type: 3}
   ImpactThreshold: 0.01
-  MaxVolume: 1
-  MaxPitch: 1
   MinPitch: 0.95
+  MaxPitch: 1
+  MaxVolume: 1
   SwipeClip: {fileID: 0}
   SwipeThreshold: 3
   SwipeCooldownThreshold: 2
+  MinPitchSwipe: 1
+  MaxPitchSwipe: 1
+  MaxVolumeSwipe: 1
+  VolumeModifierSwipe: 2
 --- !u!114 &5066610884980448225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +498,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b55bac407ea0e546bda27b3aa00d105, type: 2}
+  - {fileID: 2100000, guid: c2e05d8ed3c72c4458cca75290d0bdb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
