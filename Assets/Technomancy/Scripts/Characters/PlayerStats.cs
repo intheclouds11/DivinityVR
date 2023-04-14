@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace intheclouds
@@ -14,11 +15,10 @@ namespace intheclouds
         public LocalUserObjects LocalUserObjects;
         private PlayerMovementAP playerMovementAP;
         [SerializeField]
-        private TextMeshProUGUI goldText;
+        private TextMeshProUGUI creditsText;
         [SerializeField]
         private AudioClip levelUpAudioClip;
-        public GameObject infoPopupParent;
-        public GameObject infoPopupPrefab;
+        
 
         #region Player Stats
 
@@ -98,16 +98,7 @@ namespace intheclouds
                 UpdateAPInfo();
             }
         }
-        public int Gold
-        {
-            get { return _gold; }
-            set
-            {
-                _gold = value;
-                UpdateGoldInfo();
-            }
-        }
-        private int _gold;
+        private int credits;
         public int XP
         {
             get { return _XP; }
@@ -235,7 +226,7 @@ namespace intheclouds
             level = statsSO.level;
             XP = statsSO.XP;
             XPToNextLevel = statsSO.XPToNextLevel;
-            Gold = statsSO.gold;
+            credits = statsSO.gold;
 
             Strength = statsSO.Strength;
             Finesse = statsSO.Finesse;
@@ -243,11 +234,6 @@ namespace intheclouds
             Vitality = statsSO.Vitality;
             Memory = statsSO.Memory;
             Wits = statsSO.Wits;
-        }
-
-        private void UpdateGoldInfo()
-        {
-            goldText.text = $"Gold: {Gold}";
         }
 
         private void UpdateXPInfo()
@@ -290,27 +276,24 @@ namespace intheclouds
 
             // todo: reduce damage based on character resistance to elemental type
 
-            var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
-            newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
-
-            var newInfoPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
-            newInfoPopup.GetComponent<TextMeshProUGUI>().text = $"{damage}";
+            var hitPopupWorld = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
+            hitPopupWorld.GetComponent<TextMeshProUGUI>().text = damage.ToString();
 
             if (damageType == DamageType.Physical)
             {
                 if (CurrentPoise - damage >= 0)
                 {
                     CurrentPoise -= damage;
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.gray;
-                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.gray;
+                    hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.gray;
+                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.gray);
                 }
                 else
                 {
-                    CurrentPoise = 0;
                     CurrentHealth -= damage - CurrentPoise;
+                    CurrentPoise = 0;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
-                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
+                    hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.red;
+                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.red);
                 }
             }
             else if (damageType == DamageType.Magic)
@@ -318,16 +301,16 @@ namespace intheclouds
                 if (CurrentMagicArmor - damage >= 0)
                 {
                     CurrentMagicArmor -= damage;
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
-                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.blue;
+                    hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.blue;
+                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.blue);
                 }
                 else
                 {
-                    CurrentMagicArmor = 0;
                     CurrentHealth -= damage - CurrentMagicArmor;
+                    CurrentMagicArmor = 0;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
-                    newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
-                    newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
+                    hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.red;
+                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.red);
                 }
             }
 
@@ -350,10 +333,8 @@ namespace intheclouds
         // add particle effect?
         public override void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
         {
-            var newInfoPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
-            newInfoPopup.GetComponent<TextMeshProUGUI>().text = healAmount.ToString();
-            newInfoPopup.GetComponent<TextMeshProUGUI>().color = Color.white;
-            
+            LocalUserObjects.HUDController.NewInfoPopup($"{healAmount}", Color.white);
+
             if (_currentHealth < _maxHealth)
             {
                 var prevHealth = _currentHealth;
@@ -399,13 +380,27 @@ namespace intheclouds
             }
         }
 
+        public void UpdateCredits(int amount)
+        {
+            var delta = amount - credits;
+            var newAmount = amount + credits;
+            if (delta > 0)
+            {
+                LocalUserObjects.HUDController.NewInfoPopup($"+{newAmount} credits", Color.green);
+            }
+            else
+            {
+                LocalUserObjects.HUDController.NewInfoPopup($"-{newAmount} credits", Color.green);
+            }
+            
+            creditsText.text = $"Credits: {newAmount}";
+        }
+
         public void ObtainXP(int xp)
         {
             Debug.Log($"get xp {Name}", this);
 
-            var newPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false);
-            newPopup.GetComponent<TextMeshProUGUI>().text = $"+{xp} XP";
-
+            LocalUserObjects.HUDController.NewInfoPopup($"+{xp} XP", Color.white);
             XP += xp;
 
             if (XP > XPToNextLevel)
@@ -468,7 +463,7 @@ namespace intheclouds
             statsSO.maxAP = MaxAP;
             statsSO.currentAP = CurrentAP;
             statsSO.XP = XP;
-            statsSO.gold = Gold;
+            statsSO.gold = credits;
         }
     }
 }

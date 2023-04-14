@@ -33,8 +33,10 @@ MonoBehaviour:
   TriggerUseReleaseThreshold: 0
   TriggerReleaseThreshold: 0.7
   TriggerRequireReset: 0
+  TrackPadPressedThreshold: 0.25
+  TrackpadUseReleaseThreshold: 1
+  TrackpadReleaseThreshold: 0.05
   Axis2DUpThreshold: 0.7
   Axis2DDownThreshold: 0.7
   Axis2DLeftThreshold: 0.7
   Axis2DRighThreshold: 0.7
-  TrackPadPressedThreshold: 0.25

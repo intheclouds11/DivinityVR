@@ -1381,7 +1381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349547556655045713}
   m_Layer: 0
-  m_Name: Player Popups
+  m_Name: Info Popups Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,10 +1520,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PointerText: {fileID: 4871383688059502683}
+  HeadSelectionText: {fileID: 7366766248745133970}
   PointerBackground: {fileID: 7601394693853717946}
   AttackIcon: {fileID: 7321905796492025509}
   MovementIcon: {fileID: 838322514283639076}
-  HeadSelectionText: {fileID: 7366766248745133970}
+  infoPopupParent: {fileID: 349547556655045714}
+  infoPopupPrefab: {fileID: 5426677873261681927, guid: c19cdb3ac83ced84d98bc3fa31cee4b4, type: 3}
   PointerUI: {fileID: 5516338658254070505}
   PointerStatusEffects: {fileID: 0}
   LeanWarning: {fileID: 5118644929794609323}
@@ -3206,7 +3208,7 @@ MonoBehaviour:
   ShowGrabIndicator: 1
   ShowTriggerGrabIndicator: 1
   ShowForceGrabIndicator: 1
-  ForceGrabbable: 1
+  ForceGrabbable: 0
   ForcePullOverride: {fileID: 0}
   JointOverride: {fileID: 0}
   OneHandJointSettings: {fileID: 0}
@@ -3215,7 +3217,7 @@ MonoBehaviour:
   PalmCenterOfMass: 0
   HandGrabbedClip: {fileID: 0}
   StartingSocket: {fileID: 7320727769216372954}
-  LinkStartingSocket: 1
+  LinkStartingSocket: 0
   SocketGrabPoints: []
   Rigidbody: {fileID: 0}
   AutoApplyLayer: 1
@@ -3267,10 +3269,34 @@ MonoBehaviour:
       m_Calls: []
   HandGrabbed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276758845269269208}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_isKinematic
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HandReleased:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276758845269269208}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_isKinematic
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   HandFullReleased:
     m_PersistentCalls:
       m_Calls: []
@@ -14169,7 +14195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1934831191335310883
 Transform:
   m_ObjectHideFlags: 0
@@ -14214,7 +14240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb2dae209c9d51545892976c3ab2425b, type: 2}
+  - {fileID: 2100000, guid: b2827388c840b74439a2ca070adbfc95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25110,7 +25136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d020cdf583d40494e81eba54aa3c653b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLeanThreshold: 0.3
+  playerLeanThreshold: 1
   APDistanceUnit: 4
 --- !u!114 &3185686789316769154
 MonoBehaviour:
@@ -25766,8 +25792,8 @@ GameObject:
   - component: {fileID: 7183613918389418791}
   - component: {fileID: 7183613918389418789}
   - component: {fileID: 7183613918389418790}
-  - component: {fileID: 3257244412438775209}
   - component: {fileID: 2387635356486598717}
+  - component: {fileID: 6762740966811883710}
   m_Layer: 0
   m_Name: Player-Default
   m_TagString: Untagged
@@ -25865,12 +25891,10 @@ MonoBehaviour:
   floatingStatsCanvas: {fileID: 810994533948731070}
   statusEffectsContainer: {fileID: 2387635356486598717}
   statusEffectsText: {fileID: 5244920718326548997}
-  modelHighlightEffect: {fileID: 0}
+  modelHighlightEffect: {fileID: 6762740966811883710}
   LocalUserObjects: {fileID: 7183613918389418790}
-  goldText: {fileID: 8329649339071305925}
+  creditsText: {fileID: 8329649339071305925}
   levelUpAudioClip: {fileID: 8300000, guid: 726a3af401f0ba64b827897f6d327c4b, type: 3}
-  infoPopupParent: {fileID: 349547556655045714}
-  infoPopupPrefab: {fileID: 5426677873261681927, guid: c19cdb3ac83ced84d98bc3fa31cee4b4, type: 3}
   _playerControlled: 1
   _Leaning: 0
 --- !u!114 &7183613918389418790
@@ -25914,25 +25938,6 @@ MonoBehaviour:
   abilities: {fileID: 6969258489151140273}
   leftAbilityPointer: {fileID: 1918654965641198457}
   rightAbilityPointer: {fileID: 8000518399612363573}
---- !u!114 &3257244412438775209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7183613918389418792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430a01d59cd69d442a7e3a4b2a8165f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TriggersOnly: 0
-  IncludeTriggers: 0
-  Transforms:
-  - {fileID: 71336167334597443}
-  - {fileID: 4140830534761473666}
-  - {fileID: 3692319752846220971}
-  - {fileID: 0}
 --- !u!114 &2387635356486598717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25947,6 +25952,136 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusEffectList: []
   explorationCooldownSpeed: 4
+--- !u!114 &6762740966811883710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183613918389418792}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888380afc233049ce9e618f9f36c8ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 0}
+  profileSync: 0
+  previewInEditor: 1
+  camerasLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  effectGroup: 0
+  effectGroupLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  effectNameFilter: 
+  combineMeshes: 0
+  alphaCutOff: 0
+  cullBackFaces: 1
+  ignoreObjectVisibility: 0
+  reflectionProbes: 0
+  GPUInstancing: 1
+  depthClip: 0
+  cameraDistanceFade: 0
+  cameraDistanceFadeNear: 0
+  cameraDistanceFadeFar: 1000
+  normalsOption: 0
+  ignore: 0
+  _highlighted: 0
+  fadeInDuration: 0
+  fadeOutDuration: 0
+  flipY: 0
+  constantWidth: 0
+  subMeshMask: -1
+  overlay: 0
+  overlayMode: 0
+  overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  overlayAnimationSpeed: 1
+  overlayMinIntensity: 0.5
+  overlayBlending: 1
+  overlayTexture: {fileID: 0}
+  overlayTextureScale: 1
+  outline: 0.79
+  outlineColor: {r: 0, g: 0.36835432, b: 1, a: 1}
+  outlineWidth: 0.72
+  outlineQuality: 1
+  outlineDownsampling: 1
+  outlineVisibility: 0
+  glowBlendMode: 0
+  outlineBlitDebug: 0
+  outlineIndependent: 0
+  glow: 1.46
+  glowWidth: 0.12
+  glowQuality: 1
+  glowDownsampling: 2
+  glowHQColor: {r: 0.64, g: 1, b: 0, a: 1}
+  glowDithering: 1
+  glowMagicNumber1: 0.75
+  glowMagicNumber2: 0.5
+  glowAnimationSpeed: 1
+  glowVisibility: 0
+  glowBlitDebug: 0
+  glowBlendPasses: 1
+  glowPasses:
+  - offset: 4
+    alpha: 0.1
+    color: {r: 0, g: 0.6392157, b: 1, a: 1}
+  - offset: 3
+    alpha: 0.2
+    color: {r: 0, g: 0.6392157, b: 1, a: 1}
+  - offset: 2
+    alpha: 0.3
+    color: {r: 0, g: 0.6392157, b: 1, a: 1}
+  - offset: 1
+    alpha: 0.4
+    color: {r: 0, g: 0.6392157, b: 1, a: 1}
+  glowIgnoreMask: 0
+  innerGlow: 0
+  innerGlowWidth: 1
+  innerGlowColor: {r: 1, g: 1, b: 1, a: 1}
+  innerGlowVisibility: 0
+  targetFX: 0
+  targetFXTexture: {fileID: 0}
+  targetFXColor: {r: 1, g: 1, b: 1, a: 1}
+  targetFXCenter: {fileID: 0}
+  targetFXRotationSpeed: 50
+  targetFXInitialScale: 4
+  targetFXEndScale: 1.5
+  targetFXScaleToRenderBounds: 1
+  targetFXAlignToGround: 0
+  targetFXFadePower: 32
+  targetFXGroundMaxDistance: 10
+  targetFXGroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  targetFXTransitionDuration: 0.5
+  targetFXStayDuration: 1.5
+  targetFXVisibility: 1
+  seeThrough: 2
+  seeThroughOccluderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  seeThroughOccluderThreshold: 0.3
+  seeThroughOccluderMaskAccurate: 0
+  seeThroughOccluderCheckInterval: 1
+  seeThroughOccluderCheckIndividualObjects: 0
+  seeThroughDepthOffset: 0
+  seeThroughMaxDepth: 0
+  seeThroughIntensity: 0.8
+  seeThroughTintAlpha: 0.5
+  seeThroughTintColor: {r: 1, g: 0, b: 0, a: 1}
+  seeThroughNoise: 1
+  seeThroughBorder: 0
+  seeThroughBorderColor: {r: 0, g: 0, b: 0, a: 1}
+  seeThroughBorderOnly: 0
+  seeThroughBorderWidth: 0.45
+  seeThroughOrdered: 0
+  rmsCount: 38
+  hitFxInitialIntensity: 0
+  hitFxMode: 0
+  hitFxFadeOutDuration: 0.25
+  hitFxColor: {r: 1, g: 1, b: 1, a: 1}
+  hitFxRadius: 0.5
 --- !u!1 &7183613918607685702
 GameObject:
   m_ObjectHideFlags: 0
@@ -30224,7 +30359,7 @@ GameObject:
   - component: {fileID: 8329649339071305926}
   - component: {fileID: 8329649339071305925}
   m_Layer: 0
-  m_Name: Gold Amount Text
+  m_Name: Credits Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30278,7 +30413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gold: 0'
+  m_text: 'Credits: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37129,6 +37264,10 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5844585398895304129, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2827388c840b74439a2ca070adbfc95, type: 2}
     - target: {fileID: 5844585398895304140, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -37192,6 +37331,10 @@ PrefabInstance:
     - target: {fileID: 5844585398895304141, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
       propertyPath: m_Name
       value: Spirit Wander ability
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844585398895304141, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5844585398895304143, guid: 8aa6ad0b406b7184b857f5326400f4f5, type: 3}
       propertyPath: spiritMovement

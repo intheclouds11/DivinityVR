@@ -19,12 +19,20 @@ namespace HurricaneVR.Framework.Shared
             HandRelease = new HapticData(.025f, .2f, 45f);
         }
 
+        [Header("Hand Grabber")]
         public HapticData HandGrab;
         public HapticData HandRelease;
         public HapticData HandHover;
 
+        [Header("Force Grabber")]
         public HapticData ForceGrab;
         public HapticData ForceHover;
+        
+        [Header("Inputs")]
+        public HapticData GripPress;
+        public HapticData GripRelease;
+        public HapticData TouchpadPress;
+        public HapticData TouchpadRelease;
     }
 
     [Serializable]

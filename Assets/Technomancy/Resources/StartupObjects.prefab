@@ -530,7 +530,7 @@ MonoBehaviour:
   TrackingSpace: 2
   FingerSettings: {fileID: 11400000, guid: 09c84620c15a89048b2784a87bec8194, type: 2}
   ControllerOffsets: {fileID: 11400000, guid: 59fc82dc1cb718745ac93844b67b3644, type: 2}
-  GrabHaptics: {fileID: 11400000, guid: 4253c613ebc69fa439e509571ef54d42, type: 2}
+  HandInputHaptics: {fileID: 11400000, guid: 4253c613ebc69fa439e509571ef54d42, type: 2}
   WMRInputMap: {fileID: 11400000, guid: 124009afce8494b46b50a7b8e468ed5b, type: 2}
   ReverbG2InputMap: {fileID: 11400000, guid: 5b2559fbaa8c2904186757782b3c8fce, type: 2}
   OculusInputMap: {fileID: 11400000, guid: dcf21fbd7ffd7f947b782b608806c6c4, type: 2}
@@ -1930,6 +1930,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3769265564287825803, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: LinkStartingSocket
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: DebugUI
       value: 
@@ -1945,6 +1949,18 @@ PrefabInstance:
     - target: {fileID: 5882220326935334823, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095611402999277834, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: ForceTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095611402999277834, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: AutoGrabDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095611402999277834, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: FlickStartThreshold
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7183613918389418791, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_RootOrder
@@ -2010,7 +2026,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8945923155227419795, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: ForceTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945923155227419795, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: AutoGrabDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7928494478952537792, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
 --- !u!1 &968306249731172608 stripped
 GameObject:

@@ -188,8 +188,8 @@ namespace intheclouds
                 }
                 else
                 {
-                    CurrentPoise = 0;
                     CurrentHealth -= damage - CurrentPoise;
+                    CurrentPoise = 0;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
                     newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
                 }
@@ -203,8 +203,8 @@ namespace intheclouds
                 }
                 else
                 {
-                    CurrentMagicArmor = 0;
                     CurrentHealth -= damage - CurrentMagicArmor;
+                    CurrentMagicArmor = 0;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
                     newHitPopup.GetComponent<TextMeshProUGUI>().color = Color.red;
                 }

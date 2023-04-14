@@ -7,10 +7,12 @@ namespace intheclouds
     public class PlayerHUDController : MonoBehaviour
     {
         public TextMeshProUGUI PointerText;
+        public TextMeshProUGUI HeadSelectionText;
         public GameObject PointerBackground;
         public GameObject AttackIcon;
         public GameObject MovementIcon;
-        public TextMeshProUGUI HeadSelectionText;
+        public GameObject infoPopupParent;
+        public GameObject infoPopupPrefab;
 
         [SerializeField]
         private GameObject PointerUI;
@@ -31,6 +33,15 @@ namespace intheclouds
             MovementIcon.SetActive(false);
             PointerText.text = "";
             PointerBackground.SetActive(false);
+        }
+
+        public void NewInfoPopup(string infoText, Color color)
+        {
+            var infoPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false).GetComponent<ITCPopup>();
+            infoPopup.TextMeshProUGUI.text = infoText;
+            infoPopup.TextMeshProUGUI.color = color;
+            
+
         }
 
         public void ToggleLeanWarning(bool setActive)

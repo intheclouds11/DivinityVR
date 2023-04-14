@@ -244,9 +244,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void OnGrabbedHaptics()
         {
-            if (IsMine && HVRInputManager.Instance.GrabHaptics)
+            if (IsMine && HVRInputManager.Instance.HandInputHaptics)
             {
-                HandGrabber.Controller.Vibrate(HVRInputManager.Instance.GrabHaptics.ForceGrab);
+                HandGrabber.Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.ForceGrab);
             }
         }
 
@@ -325,9 +325,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void OnHoverHaptics()
         {
-            if (IsMine && HVRInputManager.Instance.GrabHaptics)
+            if (IsMine && HVRInputManager.Instance.HandInputHaptics)
             {
-                HandGrabber.Controller.Vibrate(HVRInputManager.Instance.GrabHaptics.ForceHover);
+                HandGrabber.Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.ForceHover);
             }
         }
 
@@ -603,6 +603,8 @@ namespace HurricaneVR.Framework.Core.Grabbers
                 var rotating = false;
                 var rotateSpeed = 0f;
                 var needsRotating = posableGrabPoint;
+                
+                if (SlowMo) Time.timeScale = TimeScale;
 
                 while (GrabbedTarget)
                 {
@@ -682,6 +684,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
                     yield return new WaitForFixedUpdate();
                 }
 
+                if (SlowMo) Time.timeScale = 1f;
                 joint.connectedBody = null;
                 Destroy(joint);
 

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ITCPopup : MonoBehaviour
@@ -8,6 +9,7 @@ public class ITCPopup : MonoBehaviour
     public float growingSpeed = 0.001f;
     public float translateSpeed;
     public float secondsToDestroy = 2;
+    public TextMeshProUGUI TextMeshProUGUI;
 
     private void Awake()
     {

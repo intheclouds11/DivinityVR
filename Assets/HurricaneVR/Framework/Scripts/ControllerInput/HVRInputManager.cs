@@ -101,7 +101,7 @@ namespace HurricaneVR.Framework.ControllerInput
         public HVRControllerOffsets ControllerOffsets;
 
         [Tooltip("Haptics Settings")]
-        public HVRGrabHaptics GrabHaptics;
+        public HVRGrabHaptics HandInputHaptics;
 
         [Header("Device Specific Settings")]
         public HVRInputSettings WMRInputMap;
@@ -340,7 +340,7 @@ namespace HurricaneVR.Framework.ControllerInput
                 FingerSettings.Reset();
             }
 
-            if (!GrabHaptics)
+            if (!HandInputHaptics)
             {
                 Debug.LogWarning($"HVRInputManager.GrabHaptics not assigned.");
                 //GrabHaptics = ScriptableObject.CreateInstance<HVRGrabHaptics>();

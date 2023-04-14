@@ -1,4 +1,5 @@
 ﻿using System;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 
 namespace HurricaneVR.Framework.Shared
@@ -31,12 +32,11 @@ namespace HurricaneVR.Framework.Shared
         [Header("Grip Analog Activation")]
         
         public float GripThreshold = .7f;
-
-        [Tooltip("If false the Threshold only will be used to determine Trigger activation / deactivation")]
         public bool GripUseReleaseThreshold;
 
         [Tooltip("If lower than the Threshold, the value must fall below this value to activate. " +
                  "When larger than the Threshold, the value must go above and then back below this value to deactivate.")]
+        [DrawIf("GripUseReleaseThreshold", true)]
         public float GripReleaseThreshold = .7f;
 
 
@@ -47,17 +47,26 @@ namespace HurricaneVR.Framework.Shared
         [Header("Trigger Analog Activation")]
 
         public float TriggerThreshold = .7f;
-
-        [Tooltip("If false the Threshold only will be used to determine Trigger activation / deactivation")]
         public bool TriggerUseReleaseThreshold;
 
         [Tooltip("If lower than the Threshold, the value must fall below this value to activate. " +
                  "When larger than the Threshold, the value must go above and then back below this value to deactivate.")]
+        [DrawIf("TriggerUseReleaseThreshold", true)]
         public float TriggerReleaseThreshold = .7f;
 
         [Tooltip("Only used when the release threshold is greater than the threshold, if true the value must drop below the Threshold before it can be considered active again" +
                  "Otherwise going back over the Release Threshold will activate the button.")]
         public bool TriggerRequireReset;
+        
+        [Header("Index Track Pad Analog Activation")]
+
+        public float TrackPadPressedThreshold = 0.2f;
+        public bool TrackpadUseReleaseThreshold;
+
+        [Tooltip("If lower than the Threshold, the value must fall below this value to activate. " +
+                 "When larger than the Threshold, the value must go above and then back below this value to deactivate.")]
+        [DrawIf("TrackpadUseReleaseThreshold", true)]
+        public float TrackpadReleaseThreshold = 0.1f;
 
         [Header("Track Pad Click Thresholds")]
 
@@ -65,10 +74,6 @@ namespace HurricaneVR.Framework.Shared
         public float Axis2DDownThreshold = .7f;
         public float Axis2DLeftThreshold = .7f;
         public float Axis2DRighThreshold = .7f;
-        
-        [Header("Index Track Pad Pressed Threshold")]
-
-        public float TrackPadPressedThreshold = 0.2f;
     }
 
     [Serializable]

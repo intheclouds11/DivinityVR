@@ -8,8 +8,6 @@ using UnityEngine.XR;
 
 namespace HurricaneVR.Framework.Shared
 {
-
-
     public abstract class HVRController : MonoBehaviour
     {
         public HVRHandSide Side { get; set; }
@@ -121,6 +119,7 @@ namespace HurricaneVR.Framework.Shared
 
         public readonly CircularBuffer<float> RecentVelocities = new CircularBuffer<float>(200);
 
+        protected float remainingVibrateDuration;
 
         protected virtual void Awake()
         {
@@ -161,7 +160,6 @@ namespace HurricaneVR.Framework.Shared
             CheckButtonState(HVRButtons.TrackPadDown, ref TrackPadDown);
 
 
-
             RecentVelocities.Enqueue(Velocity.magnitude);
 
             Device.TryGetFeatureValue(CommonUsages.deviceVelocity, out Velocity);
@@ -185,11 +183,18 @@ namespace HurricaneVR.Framework.Shared
 
             AfterInputUpdate();
             InputHaptics();
+            if (remainingVibrateDuration > 0)
+            {
+                remainingVibrateDuration -= Time.deltaTime;
+            }
+            else
+            {
+                remainingVibrateDuration = 0;
+            }
         }
 
         protected virtual void AfterInputUpdate()
         {
-
         }
 
         protected virtual void UpdateFingerCurls()
@@ -315,30 +320,76 @@ namespace HurricaneVR.Framework.Shared
 
         private bool _gripLowerReset;
         private bool _gripUpperReset;
+        
+        private bool _trackpadLowerReset;
+        private bool _trackpadUpperReset;
 
         protected virtual void InputHaptics()
         {
             if (IndexTrackpadButtonState.JustActivated)
             {
-                Vibrate(1, 0.01f, 150f);
+                Vibrate(HVRInputManager.Instance.HandInputHaptics.TouchpadPress);
             }
             else if (IndexTrackpadButtonState.JustDeactivated)
             {
-                Vibrate(1, 0.05f, 50f);
+                Vibrate(HVRInputManager.Instance.HandInputHaptics.TouchpadRelease);
             }
             else if (GripButtonState.JustActivated)
             {
-                Vibrate(1, 0.01f, 300f);
+                Vibrate(HVRInputManager.Instance.HandInputHaptics.GripPress);
             }
             else if (GripButtonState.JustDeactivated)
             {
-                Vibrate(1, 0.05f, 100f);
+                Vibrate(HVRInputManager.Instance.HandInputHaptics.GripRelease);
             }
         }
 
         protected virtual bool GetIsTrackPadForcePressed()
         {
-            return IndexTrackpadForce >= InputMap.TrackPadPressedThreshold;
+            float forceVar = IndexTrackpadForce;
+            
+            if (InputMap.TrackpadUseReleaseThreshold)
+            {
+                if (InputMap.TrackPadPressedThreshold > InputMap.TrackpadReleaseThreshold)
+                {
+                    if (IndexTrackpadButtonState.Active)
+                        return forceVar >= InputMap.TrackpadReleaseThreshold;
+                    return forceVar >= InputMap.TrackPadPressedThreshold;
+                }
+
+                if (forceVar < InputMap.TrackPadPressedThreshold)
+                    _trackpadLowerReset = true;
+
+                if (IndexTrackpadButtonState.Active)
+                {
+                    if (forceVar > InputMap.TrackpadReleaseThreshold)
+                        _trackpadUpperReset = true;
+
+                    if (forceVar < InputMap.TrackpadReleaseThreshold && _trackpadUpperReset)
+                    {
+                        _trackpadUpperReset = false;
+                        return false;
+                    }
+
+                    if (forceVar < InputMap.TrackPadPressedThreshold)
+                        return false;
+
+                    return true;
+                }
+
+                if (forceVar > InputMap.TrackpadReleaseThreshold && !_trackpadUpperReset)
+                    return true;
+
+                if (forceVar > InputMap.TrackPadPressedThreshold && _trackpadLowerReset)
+                {
+                    _trackpadLowerReset = false;
+                    return true;
+                }
+
+                return false;
+            }
+
+            return forceVar >= InputMap.TrackPadPressedThreshold;
         }
 
         protected virtual bool GetIsTriggerPressed()
@@ -400,7 +451,7 @@ namespace HurricaneVR.Framework.Shared
             {
                 gripVar = GripForce;
             }
-            
+
             if (InputMap.GripUseAnalog)
             {
                 if (InputMap.GripUseReleaseThreshold)

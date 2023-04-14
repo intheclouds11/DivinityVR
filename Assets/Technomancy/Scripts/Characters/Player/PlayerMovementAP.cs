@@ -21,7 +21,7 @@ namespace intheclouds
             teleporter = LocalUserObjects.Instance.ITCTeleporter;
             teleporter.BeforeTeleportAction += OnTeleport;
             teleporter.Dash = true;
-            currentPosition = transform.position;
+            currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         private void OnDisable()
@@ -65,7 +65,7 @@ namespace intheclouds
         private void OnTeleport()
         {
             playerStats.UseAP((int) Mathf.Ceil(APNeededForTeleport));
-            currentPosition = teleporter.TeleportDestination;
+            currentPosition = new Vector3(teleporter.TeleportDestination.x, 0, teleporter.TeleportDestination.z);
         }
 
         private void CheckLean()

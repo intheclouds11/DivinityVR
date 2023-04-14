@@ -1255,9 +1255,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void OnHoverHaptics()
         {
-            if (IsMine && HVRInputManager.Instance.GrabHaptics)
+            if (IsMine && HVRInputManager.Instance.HandInputHaptics)
             {
-                Controller.Vibrate(HVRInputManager.Instance.GrabHaptics.HandHover);
+                Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.HandHover);
             }
         }
 
@@ -2512,9 +2512,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void OnGrabbedHaptics()
         {
-            if (IsMine && HVRInputManager.Instance.GrabHaptics)
+            if (IsMine && HVRInputManager.Instance.HandInputHaptics)
             {
-                Controller.Vibrate(HVRInputManager.Instance.GrabHaptics.HandGrab);
+                Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.HandGrab);
             }
         }
 
@@ -2709,9 +2709,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void OnReleasedHaptics()
         {
-            if (IsMine && HVRInputManager.Instance.GrabHaptics)
+            if (IsMine && HVRInputManager.Instance.HandInputHaptics)
             {
-                Controller.Vibrate(HVRInputManager.Instance.GrabHaptics.HandRelease);
+                Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.HandRelease);
             }
         }
 

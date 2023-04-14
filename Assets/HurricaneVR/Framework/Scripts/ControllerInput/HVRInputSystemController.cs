@@ -210,7 +210,7 @@ namespace HurricaneVR.Framework.ControllerInput
 
         public override void Vibrate(float amplitude, float duration = 1, float frequency = 1)
         {
-            if (HVRSettings.Instance.DisableHaptics) return;
+            if (HVRSettings.Instance.DisableHaptics || remainingVibrateDuration > 0) return;
 
 #if USING_OPENXR
 
@@ -221,6 +221,7 @@ namespace HurricaneVR.Framework.ControllerInput
                 if (action != null && _inputDevice != null)
                 {
                     OpenXRInput.SendHapticImpulse(action, amplitude, frequency, duration, _inputDevice);
+                    remainingVibrateDuration = duration;
                     return;
                 }
             }

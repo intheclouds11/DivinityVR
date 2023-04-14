@@ -1,3 +1,4 @@
+using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
@@ -24,8 +25,9 @@ namespace intheclouds
 
                 if (value > 0.5f)
                 {
-                    LocalUserObjects.Instance.PlayerStats.Gold += credits;
+                    LocalUserObjects.Instance.PlayerStats.UpdateCredits(credits);
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.creditPickupSFX, transform.position);
+                    hand.Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.ForceGrab);
                     Destroy(gameObject);
                 }
             }

@@ -23,6 +23,7 @@ namespace intheclouds
         public float HitCooldown = 0.25f;
         public DamageType DamageType = DamageType.Physical;
         public ElementalType ElementalType = ElementalType.None;
+        public float ElementalChance;
         public StatusEffect StatusEffect;
 
         [Header("SFX Handling")]
@@ -121,20 +122,22 @@ namespace intheclouds
                 HandleImpactSFX(relativeVelocity);
             }
 
-            if ((BaseDamage != 0 || !justHit) && wieldingUser && wieldingUser.CanPerformActions(RequiredAP))
+            if (BaseDamage == 0 || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
             {
-                var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
-                if (objectDamageHandler && relativeVelocity >= DamageThreshold)
-                {
-                    DamageDestructible(objectDamageHandler, relativeVelocity);
-                }
+                return;
+            }
+            
+            var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
+            if (objectDamageHandler && relativeVelocity >= DamageThreshold)
+            {
+                DamageDestructible(objectDamageHandler, relativeVelocity);
+            }
 
-                if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (!DisableCollisionsOnHitEnemy && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                if (relativeVelocity > DamageThreshold)
                 {
-                    if (relativeVelocity > DamageThreshold)
-                    {
-                        DamageEnemy(collision.collider, relativeVelocity);
-                    }
+                    DamageEnemy(collision.collider, relativeVelocity, false);
                 }
             }
         }
@@ -142,7 +145,7 @@ namespace intheclouds
         // Handles damage caused by weapon. Disables collisions after valid hit
         private void OnTriggerEnter(Collider other)
         {
-            if (BaseDamage == 0 || !DisableCollisionsOnHitEnemy || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
+            if (!DisableCollisionsOnHitEnemy || BaseDamage == 0 || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
             {
                 return;
             }
@@ -151,8 +154,7 @@ namespace intheclouds
             {
                 if (rb.velocity.magnitude > DamageThreshold || rb.angularVelocity.magnitude > DamageThreshold * 5)
                 {
-                    DamageEnemy(other, rb.velocity.magnitude);
-                    rb.detectCollisions = false;
+                    DamageEnemy(other, rb.velocity.magnitude, true);
                 }
             }
         }
@@ -173,14 +175,10 @@ namespace intheclouds
         }
 
 
-        private void DamageEnemy(Collider hitCollider, float relativeVelocity)
+        private void DamageEnemy(Collider hitCollider, float relativeVelocity, bool disableRbCollision)
         {
             var currentEnemyStats = hitCollider.gameObject.GetComponentInParent<EnemyStats>();
-
-            if (!currentEnemyStats.isAlive)
-            {
-                return;
-            }
+            if (!currentEnemyStats.isAlive) return;
 
             var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
             // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
@@ -194,6 +192,10 @@ namespace intheclouds
 
             PlayVelocityBasedSFX(relativeVelocity, HitEnemyClip, MinPitch, MaxPitch, MaxVolume);
             justHit = true;
+            if (disableRbCollision)
+            {
+                rb.detectCollisions = false;
+            }
             AppliedDamage?.Invoke();
             Invoke(nameof(ResetCollision), HitCooldown);
         }
