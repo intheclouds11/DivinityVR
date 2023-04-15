@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 839538090582118621}
   - component: {fileID: 4555541019295191222}
   m_Layer: 0
-  m_Name: Wet
+  m_Name: Stunned
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fe81447a4cbff4097118848a048870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
+  ProcessOnEnabled: 1
+  ChanceToApply: 25
+  type: 11
   effectAmount: 0
   cooldown: 1
   cooldownTimer: 1
-  activatedClip: {fileID: 8300000, guid: bcbc7a7dff3ea8b49a8d5db2d47f83ff, type: 3}
+  activatedClip: {fileID: 8300000, guid: fac67c5519ce01b48b7217e806fdd99e, type: 3}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -11,10 +12,14 @@ namespace intheclouds
             PhysicalArmor
         }
 
-        public PotionType type;
-        public int amount;
+        public PotionType Type;
+        public int Amount = 25;
         public Collider col;
-        public int requiredAP;
+        public int RequiredAP = 1;
+        [field: SerializeField]
+        public bool Used { get; set; }
+        [field: SerializeField]
+        public bool Usable { get; set; }
 
         public void ToggleTagOnSocketed()
         {

@@ -10,7 +10,7 @@ namespace HurricaneVR.Framework.Components
 {
 
     [CustomEditor(typeof(HVRPhysicsDoor))]
-    public class HVRPhysicsDrawerEditor : Editor
+    public class HVRPhysicsDrawerEditor : UnityEditor.Editor
     {
         private SerializedProperty SP_StartRotation;
         private SerializedProperty SP_EndRotation;

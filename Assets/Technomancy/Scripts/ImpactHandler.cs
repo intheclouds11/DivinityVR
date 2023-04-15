@@ -22,8 +22,7 @@ namespace intheclouds
         public float DamageThreshold = 5;
         public float HitCooldown = 0.25f;
         public DamageType DamageType = DamageType.Physical;
-        public ElementalType ElementalType = ElementalType.None;
-        public float ElementalChance;
+        public ScalingType ScalingType = ScalingType.None;
         public StatusEffect StatusEffect;
 
         [Header("SFX Handling")]
@@ -177,13 +176,17 @@ namespace intheclouds
 
         private void DamageEnemy(Collider hitCollider, float relativeVelocity, bool disableRbCollision)
         {
+            if (hitCollider.isTrigger)
+            {
+                return;
+            }
             var currentEnemyStats = hitCollider.gameObject.GetComponentInParent<EnemyStats>();
             if (!currentEnemyStats.isAlive) return;
 
             var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
             // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
             currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(scaledDamage, wieldingUser, CriticalDamageMultiplier),
-                DamageType, ElementalType, StatusEffect);
+                DamageType, ScalingType, StatusEffect);
 
             if (wieldingUser.InCombat)
             {

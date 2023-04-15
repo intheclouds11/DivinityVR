@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioSource MusicAudioSource;
     public AudioClip combatStartClip;
+    public AudioClip nextTurnClip;
     public AudioClip combatEndClip;
     public AudioClip gameOverClip;
     public GameState state;
@@ -141,12 +142,10 @@ public class GameManager : MonoBehaviour
             NewRound = true;
             SurfaceEffectsContainer.Instance.Cooldown();
         }
-        if (activeCombatant.TryGetComponent(out BaseStats combatantStats))
-        {
-            combatantStats.Turn = true;
-            playerTurn = activeCombatant as PlayerStats;
-        }
-       
+        
+        activeCombatant.Turn = true;
+        playerTurn = activeCombatant is PlayerStats;
+
         UpdateTurnOrderText(turnOrder);
 
         NextTurn = false;
@@ -169,6 +168,7 @@ public class GameManager : MonoBehaviour
         turnOrder.Add(turnOrder[0]);
         turnOrder.Remove(turnOrder[0]);
         previousCombatant = activeCombatant;
+        SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.Instance.HVRPlayerController.transform.position);
 
         turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrder));
     }

@@ -168,7 +168,7 @@ namespace intheclouds
             CurrentAP = _startingAP;
         }
 
-        public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
+        public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {
             if (!isAlive) return;
 
@@ -241,6 +241,16 @@ namespace intheclouds
                 var prevHealth = _currentHealth;
                 CurrentHealth = Math.Clamp(CurrentHealth + healAmount, 0, _maxHealth);
                 Debug.Log($"Healed {Name} for {_currentHealth - prevHealth}");
+            }
+        }
+        
+        public override void Stun(bool stunned)
+        {
+            Stunned = stunned;
+            
+            if (Stunned)
+            {
+                // animator
             }
         }
 

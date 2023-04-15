@@ -270,7 +270,7 @@ namespace intheclouds
             healthText.text = $"{CurrentHealth}/{MaxHealth}";
         }
 
-        public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
+        public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {
             this.attacker = attacker;
 
@@ -333,7 +333,7 @@ namespace intheclouds
         // add particle effect?
         public override void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
         {
-            LocalUserObjects.HUDController.NewInfoPopup($"{healAmount}", Color.white);
+            LocalUserObjects.HUDController.NewInfoPopup($"{healAmount}", Color.red);
 
             if (_currentHealth < _maxHealth)
             {
@@ -345,6 +345,8 @@ namespace intheclouds
 
         public void RestoreMagicArmor(int amount)
         {
+            LocalUserObjects.HUDController.NewInfoPopup($"{amount}", Color.blue);
+
             if (_currentMagicArmor < _maxMagicArmor)
             {
                 var prevMA = _currentMagicArmor;
@@ -355,6 +357,8 @@ namespace intheclouds
         
         public void RestorePhysicalArmor(int amount)
         {
+            LocalUserObjects.HUDController.NewInfoPopup($"{amount}", Color.green);
+
             if (_currentPoise < _maxPoise)
             {
                 var prevPA = _currentPoise;
@@ -386,11 +390,11 @@ namespace intheclouds
             var newAmount = amount + credits;
             if (delta > 0)
             {
-                LocalUserObjects.HUDController.NewInfoPopup($"+{newAmount} credits", Color.green);
+                LocalUserObjects.HUDController.NewInfoPopup($"+{newAmount} credits", Color.yellow);
             }
             else
             {
-                LocalUserObjects.HUDController.NewInfoPopup($"-{newAmount} credits", Color.green);
+                LocalUserObjects.HUDController.NewInfoPopup($"-{newAmount} credits", Color.yellow);
             }
             
             creditsText.text = $"Credits: {newAmount}";

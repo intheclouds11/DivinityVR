@@ -41,7 +41,10 @@ namespace HurricaneVR.Framework.Core.Bags
                 }
                 else
                 {
-                    grabbable = other.transform.parent.GetComponent<HVRGrabbable>();
+                    if (other.transform.parent)
+                    {
+                        grabbable = other.transform.parent.GetComponent<HVRGrabbable>();
+                    }
                 }
             }
 
@@ -88,7 +91,10 @@ namespace HurricaneVR.Framework.Core.Bags
                 }
                 else
                 {
-                    grabbable = other.transform.parent.GetComponent<HVRGrabbable>();
+                    if (other.transform.parent)
+                    {
+                        grabbable = other.transform.parent.GetComponent<HVRGrabbable>();
+                    }                
                 }
             }
 

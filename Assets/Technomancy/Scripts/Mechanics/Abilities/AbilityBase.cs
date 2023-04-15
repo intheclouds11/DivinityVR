@@ -11,9 +11,9 @@ namespace intheclouds
     {
         public enum SelectionType
         {
+            None,
             Location,
             Combatant,
-            None
         }
 
         public int cooldown;
@@ -22,12 +22,12 @@ namespace intheclouds
         public int baseAmount;
         public int scaledAmount;
         public int requiredAP;
+        public ScalingType ScalingType;
         public SelectionType selectionType;
         public bool isOffensiveSelector;
         public GameObject abilityDescription;
         public GameObject surfaceEffect;
         public StatusEffect statusEffect;
-        public ElementalType elementalType;
         public GameObject activatedVFX;
         public GameObject casterVFX;
         public AudioClip activatedSFX;
@@ -106,15 +106,15 @@ namespace intheclouds
 
         public void ApplyScaling()
         {
-            if (elementalType == ElementalType.Fire)
+            if (ScalingType == ScalingType.Pyrokinetic)
             {
                 scaledAmount = baseAmount * abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Pyrokinetic);
             }
-            else if (elementalType == ElementalType.Water)
+            else if (ScalingType == ScalingType.Hydrosophist)
             {
                 scaledAmount = baseAmount * abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Hydrosophist);
             }
-            else if (elementalType == ElementalType.Earth)
+            else if (ScalingType == ScalingType.Geomancer)
             {
                 scaledAmount = baseAmount * abilitySystem.playerLUOs.PlayerStats.level * (1 + abilitySystem.playerLUOs.PlayerStats.Geomancer);
             }

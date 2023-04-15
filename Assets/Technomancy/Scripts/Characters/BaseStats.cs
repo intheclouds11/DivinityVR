@@ -1,3 +1,4 @@
+using System.Collections;
 using HighlightPlus;
 using TMPro;
 using UnityEngine;
@@ -38,6 +39,7 @@ namespace intheclouds
         [SerializeField]
         protected bool _inCombat;
         public virtual bool InCombat { get; set; }
+        public bool Stunned;
         public int baseDamage = 10;
         public BaseStats attacker;
         public bool pointedAtByHead;
@@ -51,7 +53,6 @@ namespace intheclouds
         public int Memory; //1 extra magic slot (can't change these during combat)
         public int Wits; //+1% critical damage, +1 Initiative
 
-        // todo: v move into PlayerStats
         [Header("Combat Abilities")]
         [Header("Skills")]
         public int Warfare; //+5% to ~all~ physical damage
@@ -65,7 +66,6 @@ namespace intheclouds
         public int Leadership; //+2% Dodging and +3% to all resistances - Granted to all allies in a 8m radius
         // Civil Abilities: https://divinityoriginalsin2.wiki.fextralife.com/Civil+Abilities
         // Persuasion (needed for first encounter)
-        // todo: ^ move into PlayerStats
 
         [Header("Setup")]
         [SerializeField]
@@ -103,12 +103,23 @@ namespace intheclouds
         public TextMeshProUGUI statusEffectsText;
         public HighlightEffect modelHighlightEffect;
 
-        public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ElementalType elementalType, StatusEffect statusEffect)
+        public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {
         }
 
         public virtual void Heal(int healAmount, BaseStats healer = null, StatusEffect statusEffect = null)
         {
+        }
+
+        public virtual void Stun(bool stunned)
+        {
+            
+        }
+
+        public virtual IEnumerator SkipTurn()
+        {
+            yield return new WaitForSeconds(1);
+            GameManager.Instance.ForceNextTurn();
         }
     }
 }

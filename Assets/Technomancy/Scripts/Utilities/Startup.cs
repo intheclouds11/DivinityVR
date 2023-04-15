@@ -38,7 +38,10 @@ namespace intheclouds
             if (!isDesktopMode)
             {
                 vrInputModule.enabled = true;
-                StartCoroutine(LoadVRMode());
+                if (!XRGeneralSettings.Instance.InitManagerOnStart)
+                {
+                    StartCoroutine(LoadVRMode());
+                }
             }
             else
             {
@@ -97,8 +100,17 @@ namespace intheclouds
 
         private IEnumerator LoadVRMode()
         {
+            Debug.Log("Initializing XR...");
             yield return StartCoroutine(XRGeneralSettings.Instance.Manager.InitializeLoader());
-            XRGeneralSettings.Instance.Manager.StartSubsystems();
+            if (!XRGeneralSettings.Instance.Manager.activeLoader)
+            {
+                Debug.LogError("Initializing XR Failed. Check Editor or Player log for details.");
+            }
+            else
+            {
+                Debug.Log("Starting XR...");
+                XRGeneralSettings.Instance.Manager.StartSubsystems();
+            }
         }
     }
 }

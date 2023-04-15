@@ -31,11 +31,11 @@ namespace HurricaneVR.Framework.Core.HandPoser
         public HVRFingerType RingType = HVRFingerType.Static;
         public HVRFingerType PinkyType = HVRFingerType.Static;
 
-        public float ThumbStart = .75f;
-        public float IndexStart = 1f;
-        public float MiddleStart;
-        public float RingStart;
-        public float PinkyStart;
+        public float ThumbStart = 1;
+        public float IndexStart = 1;
+        public float MiddleStart = 1;
+        public float RingStart = 1;
+        public float PinkyStart = 1;
 
         [NonSerialized]
         public float Value;

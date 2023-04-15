@@ -11,7 +11,6 @@ namespace intheclouds
         public float hitDistance = 10;
         private int spawnedCount;
         private WaitForSeconds delay = new(0.5f);
-        private bool alreadyWet;
 
         private void Start()
         {
@@ -27,12 +26,14 @@ namespace intheclouds
 
         private IEnumerator CheckCombatantHitRange()
         {
+            bool alreadyWet;
+
             foreach (PlayerStats player in GameManager.Instance.players)
             {
                 alreadyWet = false;
                 foreach (var statusEffect in player.statusEffectsContainer.statusEffectList)
                 {
-                    if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
+                    if (statusEffect.type == StatusEffectType.Wet)
                     {
                         alreadyWet = true;
                         break;
@@ -44,7 +45,7 @@ namespace intheclouds
                     var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
                     if (dist < hitDistance)
                     {
-                        Helpers.MakePlayerWet(player, surfaceEffect.statusEffect);
+                        Helpers.AddWetStatus(player, surfaceEffect.statusEffect);
                     }
                 }
             }
@@ -54,7 +55,7 @@ namespace intheclouds
                 alreadyWet = false;
                 foreach (var statusEffect in enemy.statusEffectsContainer.statusEffectList)
                 {
-                    if (statusEffect.type == StatusEffect.StatusEffectType.Wet)
+                    if (statusEffect.type == StatusEffectType.Wet)
                     {
                         alreadyWet = true;
                         break;
@@ -66,7 +67,7 @@ namespace intheclouds
                     var dist = Vector3.Distance(enemy.transform.position, transform.position);
                     if (dist < hitDistance)
                     {
-                        Helpers.MakeEnemyWet(enemy, surfaceEffect.statusEffect);
+                        Helpers.AddWetStatus(enemy, surfaceEffect.statusEffect);
                     }
                 }
             }

@@ -98,6 +98,16 @@ namespace intheclouds
 
         public void StartTurn()
         {
+            if (enemyStats.Stunned)
+            {
+                enabled = false;
+                StartCoroutine(enemyStats.SkipTurn());
+                return;
+            }
+            else
+            {
+                enabled = true;
+            }
             if (targetNearestPlayer)
             {
                 Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
@@ -139,7 +149,10 @@ namespace intheclouds
             AttackAnimFinished();
             animator.SetBool(_isWalking, false);
             ai.canMove = false;
-            targetedPlayerSW.SpiritFormToggled -= TargetSpiritFormToggled;
+            if (targetedPlayerSW)
+            {
+                targetedPlayerSW.SpiritFormToggled -= TargetSpiritFormToggled;
+            }
         }
 
         public void EndCombat()
@@ -253,7 +266,7 @@ namespace intheclouds
                 player = targetedPlayer;
             }
 
-            player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ElementalType.None, null);
+            player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ScalingType.None, null);
             if (player.CurrentHealth == 0)
             {
                 if (targetNearestPlayer)

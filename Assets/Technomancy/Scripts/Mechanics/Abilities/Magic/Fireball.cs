@@ -9,7 +9,7 @@ namespace intheclouds
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (!enabled)
+            if (castingHand && castingHand.IsGrabbing || cooldownTimer > 0)
             {
                 return;
             }
@@ -27,7 +27,7 @@ namespace intheclouds
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 var enemy = collision.gameObject.GetComponentInParent<EnemyStats>();
-                enemy.TakeDamage(caster, Helpers.CalculateDamageRange(scaledAmount, caster), DamageType.Magic, ElementalType.Fire, statusEffect);
+                enemy.TakeDamage(caster, Helpers.CalculateDamageRange(scaledAmount, caster), DamageType.Magic, ScalingType.Pyrokinetic, statusEffect);
             }
 
             // EXPLOSIVE FORCE
@@ -37,10 +37,7 @@ namespace intheclouds
                 var rb = col.GetComponent<Rigidbody>();
                 if (rb == null)
                 {
-                    if (col.transform.parent)
-                    {
-                        rb = col.transform.parent.GetComponent<Rigidbody>();
-                    }
+                    rb = col.GetComponentInParent<Rigidbody>();
                 }
 
                 if (rb != null)
@@ -59,7 +56,6 @@ namespace intheclouds
             SpawnFireGround();
             OnAbilityUsed();
             ResetAbilityTransform();
-            enabled = false;
         }
 
         private void SpawnFireGround()

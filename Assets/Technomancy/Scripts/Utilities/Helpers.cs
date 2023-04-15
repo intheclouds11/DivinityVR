@@ -38,30 +38,12 @@ namespace intheclouds
             return combatant.Wits - 10;
         }
 
-        public static void MakePlayerWet(Collider other, StatusEffect statusEffect)
+        public static void AddWetStatus(BaseStats combatant, StatusEffect statusEffect)
         {
-            if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            if (combatant)
             {
-                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
+                combatant.statusEffectsContainer.TryAddStatusEffect(statusEffect);
             }
-        }
-
-        public static void MakePlayerWet(PlayerStats player, StatusEffect statusEffect)
-        {
-            player.statusEffectsContainer.TryAddStatusEffect(statusEffect);
-        }
-
-        public static void MakeEnemyWet(Collider other, StatusEffect statusEffect)
-        {
-            if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
-            {
-                combatantDamaged.statusEffectsContainer.TryAddStatusEffect(statusEffect);
-            }
-        }
-
-        public static void MakeEnemyWet(EnemyStats enemy, StatusEffect statusEffect)
-        {
-            enemy.statusEffectsContainer.TryAddStatusEffect(statusEffect);
         }
     }
 }

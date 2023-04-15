@@ -1538,12 +1538,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -1580,8 +1581,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -2795,12 +2797,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -2837,8 +2840,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -3202,12 +3206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -3244,8 +3249,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -3658,12 +3664,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -3700,8 +3707,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -4455,12 +4463,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -4497,8 +4506,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -4611,12 +4621,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -4653,8 +4664,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -9606,12 +9618,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -9648,8 +9661,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -10593,12 +10607,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
   HoldType: 2
   GrabControl: 0
-  OverrideGrabTrigger: 0
+  OverrideGrabTrigger: 1
   GrabTrigger: 0
   RequireLineOfSight: 1
   PoseImmediately: 0
@@ -10635,8 +10650,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []
@@ -13867,6 +13883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -13909,8 +13926,9 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
+  DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
   LinkedGrabbables: []

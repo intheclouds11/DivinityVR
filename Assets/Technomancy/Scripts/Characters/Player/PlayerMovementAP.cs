@@ -19,7 +19,8 @@ namespace intheclouds
             playerController = LocalUserObjects.Instance.HVRPlayerController;
             playerController.MovementEnabled = false;
             teleporter = LocalUserObjects.Instance.ITCTeleporter;
-            teleporter.BeforeTeleportAction += OnTeleport;
+            teleporter.BeforeTeleport.AddListener(BeforeTeleport);
+            teleporter.AfterTeleport.AddListener(AfterTeleport);
             teleporter.Dash = true;
             currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
         }
@@ -32,7 +33,8 @@ namespace intheclouds
             }
             
             teleporter.Dash = false;
-            teleporter.BeforeTeleportAction -= OnTeleport;
+            teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
+            teleporter.AfterTeleport.RemoveListener(AfterTeleport);
         }
 
         private void Update()
@@ -62,10 +64,16 @@ namespace intheclouds
             }
         }
 
-        private void OnTeleport()
+        private void BeforeTeleport(Vector3 arg0)
         {
             playerStats.UseAP((int) Mathf.Ceil(APNeededForTeleport));
             currentPosition = new Vector3(teleporter.TeleportDestination.x, 0, teleporter.TeleportDestination.z);
+            playerController.SurfaceEffectTrigger.gameObject.SetActive(true);
+        }
+        
+        private void AfterTeleport()
+        {
+            playerController.SurfaceEffectTrigger.gameObject.SetActive(false);
         }
 
         private void CheckLean()

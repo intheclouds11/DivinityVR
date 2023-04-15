@@ -16,11 +16,12 @@ namespace intheclouds
         private string regeneratingText;
         private string wetText;
         private string slowText;
+        private string stunnedText;
         private string magicShellText;
 
         private void Start()
         {
-            combatant = GetComponent<BaseStats>();
+            combatant = GetComponentInParent<BaseStats>();
             textUI = combatant.statusEffectsText;
         }
 
@@ -93,50 +94,58 @@ namespace intheclouds
             }
         }
 
-        public void TryAddStatusEffect(StatusEffect statusEffect)
+        public void TryAddStatusEffect(StatusEffect effect)
         {
-            if (!statusEffect || statusEffect.type == StatusEffect.StatusEffectType.None)
+            if (!effect || effect.type == StatusEffectType.None)
             {
                 // Debug.LogWarning("no status effect assigned!");
                 return;
             }
 
-            if (TryGetComponent(out StatusEffect preExistingEffect) && statusEffect.type == preExistingEffect.type)
+
+            int applyChanceRange = new System.Random().Next(1, 101);
+            if (effect.ChanceToApply > 0 && effect.ChanceToApply < applyChanceRange)
             {
-                preExistingEffect.SetEffectVars(statusEffect);
-                RemoveFromTextUI(statusEffect);
-                AddToTextUI(statusEffect);
+                Debug.Log($"effect.ChanceToApply {effect.ChanceToApply} < applyChanceRange {applyChanceRange}");
+                return;
+            }
+
+            if (TryGetComponent(out StatusEffect preExistingEffect) && effect.type == preExistingEffect.type)
+            {
+                preExistingEffect.StatusEffectConstructor(effect);
+                RemoveFromTextUI(effect);
+                AddToTextUI(effect);
                 Debug.Log("status effect reapplied");
             }
             else
             {
                 var appliedEffect = gameObject.AddComponent<StatusEffect>();
-                appliedEffect.SetEffectVars(statusEffect);
+                appliedEffect.StatusEffectConstructor(effect);
                 statusEffectList.Add(appliedEffect);
-                AddToTextUI(statusEffect);
+                AddToTextUI(effect);
                 Debug.Log("status effect applied (first time)");
             }
 
-            CheckEffectInteraction(statusEffect);
+            CheckEffectInteraction(effect);
         }
 
         private void CheckEffectInteraction(StatusEffect statusEffect)
         {
-            if (statusEffect.type is StatusEffect.StatusEffectType.Wet or StatusEffect.StatusEffectType.Regenerating)
+            if (statusEffect.type is StatusEffectType.Wet or StatusEffectType.Regenerating)
             {
                 for (int i = 0; i < statusEffectList.Count; i++)
                 {
-                    if (statusEffectList[i].type == StatusEffect.StatusEffectType.Burning)
+                    if (statusEffectList[i].type == StatusEffectType.Burning)
                     {
                         RemoveStatusEffect(i--);
                     }
                 }
             }
-            else if (statusEffect.type == StatusEffect.StatusEffectType.Burning)
+            else if (statusEffect.type == StatusEffectType.Burning)
             {
                 for (int i = 0; i < statusEffectList.Count; i++)
                 {
-                    if (statusEffectList[i].type == StatusEffect.StatusEffectType.Wet)
+                    if (statusEffectList[i].type == StatusEffectType.Wet)
                     {
                         RemoveStatusEffect(i--);
                     }
@@ -144,69 +153,66 @@ namespace intheclouds
             }
         }
 
-        private void AddToTextUI(StatusEffect statusEffect)
+        private void AddToTextUI(StatusEffect effect)
         {
             if (textUI.text != "")
             {
                 textUI.text += $"\n";
             }
 
-            if (statusEffect.type == StatusEffect.StatusEffectType.Burning)
+            if (effect.type == StatusEffectType.Burning)
             {
-                burningText = $"{statusEffect.type.ToString()} damages {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
+                burningText = $"{effect.type.ToString()} damages {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
                 textUI.text += burningText;
             }
-            else if (statusEffect.type == StatusEffect.StatusEffectType.Regenerating)
+            else if (effect.type == StatusEffectType.Regenerating)
             {
-                regeneratingText = $"{statusEffect.type.ToString()} heals {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
+                regeneratingText = $"{effect.type.ToString()} heals {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
                 textUI.text += regeneratingText;
             }
-            else if (statusEffect.type == StatusEffect.StatusEffectType.MagicShell)
+            else if (effect.type == StatusEffectType.MagicShell)
             {
-                magicShellText = $"{statusEffect.type.ToString()} heals {statusEffect.effectAmount} vitality for {statusEffect.cooldownTimer} more turn(s)";
+                magicShellText = $"{effect.type.ToString()} restores {effect.effectAmount} magic armor for {effect.cooldownTimer} more turn(s)";
                 textUI.text += magicShellText;
             }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Wet)
+            else if (effect.type == StatusEffectType.Wet)
             {
-                wetText = $"{statusEffect.type.ToString()}! for {statusEffect.cooldownTimer} more turn(s)";
+                wetText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
                 textUI.text += wetText;
             }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.Slow)
+            else if (effect.type == StatusEffectType.Slowed)
             {
-                slowText = $"{statusEffect.type.ToString()}! for {statusEffect.cooldownTimer} more turn(s)";
+                slowText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
                 textUI.text += slowText;
             }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.RestorePhysicalArmor)
+            else if (effect.type == StatusEffectType.Stunned)
             {
-                textUI.text += $"{statusEffect.type.ToString()} increases magic armor by {statusEffect.effectAmount} for {statusEffect.cooldownTimer} more turn(s)";
-            }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.IncreaseMagicArmor)
-            {
-                textUI.text += $"{statusEffect.type.ToString()} boosts magic armor by {statusEffect.effectAmount} for {statusEffect.cooldownTimer} more turn(s)";
-            }
-            else if (statusEffect.effectApplication == StatusEffect.StatusEffectApplication.IncreasePhysicalArmor)
-            {
-                textUI.text += $"{statusEffect.type.ToString()} boosts physical armor by {statusEffect.effectAmount} for {statusEffect.cooldownTimer} more turn(s)";
+                stunnedText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+                textUI.text += stunnedText;
             }
         }
 
         private void RemoveFromTextUI(StatusEffect effect)
         {
-            if (effect.effectApplication == StatusEffect.StatusEffectApplication.Damage)
+            if (effect.type == StatusEffectType.Burning)
             {
                 textUI.text = textUI.text.Replace(burningText, string.Empty);
             }
-            else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Wet)
+            else if (effect.type == StatusEffectType.Wet)
             {
                 textUI.text = textUI.text.Replace(wetText, string.Empty);
             }
-            else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Slow)
+            else if (effect.type == StatusEffectType.Slowed)
             {
                 textUI.text = textUI.text.Replace(slowText, string.Empty);
             }
-            else if (effect.effectApplication == StatusEffect.StatusEffectApplication.Healing)
+            else if (effect.type == StatusEffectType.Regenerating)
             {
                 textUI.text = textUI.text.Replace(regeneratingText, string.Empty);
+            }
+            else if (effect.type == StatusEffectType.Stunned)
+            {
+                textUI.text = textUI.text.Replace(stunnedText, string.Empty);
             }
 
             textUI.text = textUI.text.Replace(Environment.NewLine, "");

@@ -22,6 +22,9 @@ namespace HurricaneVR.Framework.Core
         #region Fields
 
         internal const int TrackedVelocityCount = 10;
+        
+        [field: SerializeField]
+        public bool CanBeGrabbed { get; set; } = true;
 
         [Header("Grab Settings")] [Tooltip("Define grab behaviour, HandGrabber Default, Pull object to hand, Hand goes to the object.")]
         public GrabBehaviour GrabBehaviour = GrabBehaviour.Default;
@@ -146,7 +149,8 @@ namespace HurricaneVR.Framework.Core
         public bool ConsiderGrabPointAngle = true;
 
         [Tooltip("Let the grab system know if it can use collider closest point for line of sight and distance checking for grab detection")]
-        public bool UseColliderClosestPoint = true;
+        [field: SerializeField]
+        public bool UseColliderClosestPoint { get; set; } = true;
 
         [Tooltip("If true, grabbing this object will disable hand collision while held")]
         public bool DisableHandCollision = true;
@@ -215,8 +219,6 @@ namespace HurricaneVR.Framework.Core
         public bool IsBeingForcedGrabbed { get; internal set; }
 
         public bool IsClimbable { get; private set; }
-
-        public bool CanBeGrabbed { get; set; } = true;
 
         /// <summary>
         /// Used to line of sight checks when grabbing, as well as disabling collision between the hand

@@ -1,12 +1,15 @@
+using System;
+using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
     public class SurfaceEffect : MonoBehaviour
     {
         public StatusEffect statusEffect;
-        public ElementalType elementalType;
+        public ScalingType ScalingType;
         public int damage;
         public int cooldown = 5;
         public int cooldownTimer;
@@ -14,64 +17,57 @@ namespace intheclouds
         public AudioClip removedAudioClip;
         public GameObject removeVFX;
         public BaseStats caster;
+        private List<BaseStats> combatantsInTrigger = new List<BaseStats>();
 
         private void OnTriggerEnter(Collider other)
         {
             ActivateSurfaceEffect(other);
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+            {
+                var combatant = other.gameObject.GetComponentInParent<BaseStats>();
+                combatantsInTrigger.Remove(combatant);
+            }
+        }
+
         private void ActivateSurfaceEffect(Collider other)
         {
-            if (elementalType == ElementalType.Fire)
+            if (other.CompareTag("Player") || other.CompareTag("Enemy"))
             {
-                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                var combatant = other.gameObject.GetComponentInParent<BaseStats>();
+                foreach (var combatantInTrigger in combatantsInTrigger)
                 {
-                    FireSurfaceDamagePlayer(other);
-                    PlayActivationSound();
+                    if (combatant == combatantInTrigger)
+                    {
+                        return;
+                    }
                 }
-                else if (other.CompareTag("Enemy"))
+                combatantsInTrigger.Add(combatant);
+                if (ScalingType == ScalingType.Pyrokinetic)
                 {
-                    FireSurfaceDamageEnemy(other);
-                    PlayActivationSound();
+                    FireSurfaceDamage(combatant);
                 }
-            }
-            else if (elementalType == ElementalType.Water)
-            {
-                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                else if (ScalingType == ScalingType.Hydrosophist)
                 {
-                    Helpers.MakePlayerWet(other, statusEffect);
-                    PlayActivationSound();
-                }
-                else if (other.CompareTag("Enemy"))
-                {
-                    Helpers.MakeEnemyWet(other, statusEffect);
+                    Helpers.AddWetStatus(combatant, statusEffect);
                     PlayActivationSound();
                 }
             }
         }
-        
-        private void FireSurfaceDamageEnemy(Collider other)
+
+        private void FireSurfaceDamage(BaseStats combatant)
         {
-            if (other.gameObject.TryGetComponent(out BaseStats combatantDamaged))
+            if (combatant)
             {
                 damage *= caster.level * (1 + caster.Pyrokinetic);
-                combatantDamaged.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, elementalType, statusEffect);
+                combatant.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, ScalingType, statusEffect);
             }
 
             PlayActivationSound();
         }
-
-        private void FireSurfaceDamagePlayer(Collider other)
-        {
-            if (other.transform.parent.gameObject.TryGetComponent(out BaseStats combatantDamaged))
-            {
-                damage *= caster.level * (1 + caster.Pyrokinetic);
-                combatantDamaged.TakeDamage(caster, Helpers.CalculateDamageRange(damage, caster), DamageType.Magic, elementalType, statusEffect);
-            }
-
-            PlayActivationSound();
-        }
-
 
         private void PlayActivationSound()
         {

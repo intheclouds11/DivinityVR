@@ -2998,6 +2998,52 @@ Transform:
   m_Father: {fileID: 8201370914419257996}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -35.29819, y: -21.056353, z: -145.46758}
+--- !u!1 &3761632591016876361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7947306856933323746}
+  - component: {fileID: 4912884389607003663}
+  m_Layer: 12
+  m_Name: Status Effects Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7947306856933323746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761632591016876361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8820317064804764899}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4912884389607003663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761632591016876361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8dcb1fb0b035c459bb35c1e9f04872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffectList: []
+  explorationCooldownSpeed: 4
 --- !u!1 &3864406225856772060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5579,7 +5625,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8820317064804764899}
   - component: {fileID: 2937351252263892795}
-  - component: {fileID: 7587023483045610804}
   - component: {fileID: 3974518753999274071}
   - component: {fileID: 7790177046847791708}
   - component: {fileID: 4749682852661480987}
@@ -5612,6 +5657,7 @@ Transform:
   - {fileID: 5735504444926024871}
   - {fileID: 8201370914419257996}
   - {fileID: 1813598617085634889}
+  - {fileID: 7947306856933323746}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -3.37, z: 0}
@@ -5643,6 +5689,8 @@ MonoBehaviour:
   _inCombat: 0
   baseDamage: 10
   attacker: {fileID: 0}
+  pointedAtByHead: 0
+  pointedAtByHand: 0
   Strength: 0
   Finesse: 0
   Intelligence: 0
@@ -5676,7 +5724,7 @@ MonoBehaviour:
   hitPopupPrefab: {fileID: 5426677873261681927, guid: 6395bca85e7663b4e8001aa70cf26d39, type: 3}
   hitPopupsParent: {fileID: 7867295928413828377}
   floatingStatsCanvas: {fileID: 635166593694425220}
-  statusEffectsContainer: {fileID: 7587023483045610804}
+  statusEffectsContainer: {fileID: 4912884389607003663}
   statusEffectsText: {fileID: 3845219657697488977}
   modelHighlightEffect: {fileID: 2477534153581047596}
   weaponSheathed: 1
@@ -5684,20 +5732,6 @@ MonoBehaviour:
   weaponUnsheatheParent: {fileID: 5096530506661261595}
   weaponSheatheParent: {fileID: 7557223635649728427}
   isAlive: 1
---- !u!114 &7587023483045610804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8820317064804764892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e8dcb1fb0b035c459bb35c1e9f04872, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusEffectList: []
-  explorationCooldownSpeed: 4
 --- !u!114 &3974518753999274071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5747,9 +5781,9 @@ MonoBehaviour:
   enableRotation: 1
   autoRepath:
     mode: 2
-    interval: 0.5
+    period: 0.5
     sensitivity: 10
-    maximumInterval: 2
+    maximumPeriod: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   acceleration: 5

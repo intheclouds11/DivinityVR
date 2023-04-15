@@ -4909,7 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusEffect: {fileID: 4555541019295191222, guid: d9f90081f736e4e498badc3cb0dea3f1, type: 3}
-  elementalType: 1
+  ScalingType: 2
   damage: 4
   cooldown: 15
   cooldownTimer: 0

@@ -80,6 +80,7 @@ namespace HurricaneVR.Framework.Core.Player
         public Transform FloorOffset;
         public Transform LeftControllerTransform;
         public Transform RightControllerTransform;
+        public Transform SurfaceEffectTrigger;
 
         [Header("Components")]
         public HVRCameraRig CameraRig;

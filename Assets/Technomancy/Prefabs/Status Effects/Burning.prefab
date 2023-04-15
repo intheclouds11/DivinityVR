@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fe81447a4cbff4097118848a048870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   effectAmount: 4
   cooldown: 3
   cooldownTimer: 3
-  effectApplication: 0
   activatedClip: {fileID: 8300000, guid: db17846edcf32574bbb48f75a618154f, type: 3}

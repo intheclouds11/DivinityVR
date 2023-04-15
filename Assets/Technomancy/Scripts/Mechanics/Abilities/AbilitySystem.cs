@@ -143,19 +143,21 @@ namespace intheclouds
 
             selectedAbility.castingHand = hand;
             selectedAbility.caster = playerLUOs.PlayerStats;
-            selectedAbility.enabled = true;
             selectedAbility.gameObject.SetActive(true);
 
-            yield return null; // wait one frame so components can initialize
             
             if (selectedAbility.TryGetComponent(out HVRGrabbable grabbable))
             {
                 if (hand.Controller == leftController)
                 {
+                    selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
+                    yield return null; // wait one frame so components can initialize
                     leftHandGrabber.Grab(grabbable, HVRGrabTrigger.Toggle);
                 }
                 else if (hand.Controller == rightController)
                 {
+                    selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
+                    yield return null; // wait one frame so components can initialize
                     rightHandGrabber.Grab(grabbable, HVRGrabTrigger.Toggle);
                 }
             }

@@ -3,6 +3,7 @@ using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Weapons.Bow;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -11,7 +12,7 @@ namespace intheclouds
         public int requiredAP = 2;
         public int baseDamage = 1;
         public float criticalDamageMultiplier = 1.5f;
-        public ElementalType elementalType = ElementalType.None;
+        public ScalingType ScalingType = ScalingType.None;
         public DamageType damageType = DamageType.Physical;
         public StatusEffect statusEffect;
         public PlayerStats player;
@@ -44,13 +45,13 @@ namespace intheclouds
             {
                 var totalDamage = (int) (baseDamage * criticalDamageMultiplier * (player.Finesse * 1.05));
                 collision.gameObject.GetComponentInParent<EnemyStats>()?.TakeDamage(player,
-                    Helpers.CalculateDamageRange(totalDamage, player), damageType, elementalType, statusEffect);
+                    Helpers.CalculateDamageRange(totalDamage, player), damageType, ScalingType, statusEffect);
             }
             else if (collision.gameObject.CompareTag("EnemyBody"))
             {
                 var totalDamage = (int) (baseDamage * (player.Finesse * 1.05));
                 collision.gameObject.GetComponentInParent<EnemyStats>()?.TakeDamage(player,
-                    Helpers.CalculateDamageRange(totalDamage, player, criticalDamageMultiplier), damageType, elementalType, statusEffect);
+                    Helpers.CalculateDamageRange(totalDamage, player, criticalDamageMultiplier), damageType, ScalingType, statusEffect);
             }
 
             if (collision.gameObject.CompareTag("EnemyBody") || collision.gameObject.CompareTag("EnemyHead"))
