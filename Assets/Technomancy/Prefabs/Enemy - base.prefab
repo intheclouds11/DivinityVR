@@ -576,6 +576,51 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: -9.999983, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &746523639646950609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4373197993412096032}
+  - component: {fileID: 5335135139373191336}
+  m_Layer: 30
+  m_Name: 'Surface Effect Trigger '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4373197993412096032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746523639646950609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8820317064804764899}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5335135139373191336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746523639646950609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.78, z: 1}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!1 &748091975268302425
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,7 +5677,6 @@ GameObject:
   - component: {fileID: 7790177046847791651}
   - component: {fileID: 161828206534726632}
   - component: {fileID: 7472768690898770843}
-  - component: {fileID: 7790177046847791711}
   m_Layer: 12
   m_Name: Enemy - base
   m_TagString: Enemy
@@ -5658,6 +5702,7 @@ Transform:
   - {fileID: 8201370914419257996}
   - {fileID: 1813598617085634889}
   - {fileID: 7947306856933323746}
+  - {fileID: 4373197993412096032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -3.37, z: 0}
@@ -5687,6 +5732,7 @@ MonoBehaviour:
   _maxAP: 0
   _turn: 0
   _inCombat: 0
+  Stunned: 0
   baseDamage: 10
   attacker: {fileID: 0}
   pointedAtByHead: 0
@@ -5789,7 +5835,7 @@ MonoBehaviour:
   acceleration: 5
   rotationSpeed: 360
   slowdownTime: 0.5
-  endReachedDistance: 2.5
+  endReachedDistance: 1.5
   wallForce: 3
   wallDist: 1
   funnelSimplification: 0
@@ -5901,19 +5947,6 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 0.5
   debug: 0
---- !u!65 &7790177046847791711
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8820317064804764892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.78, z: 1}
-  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!1 &8851259996825600379
 GameObject:
   m_ObjectHideFlags: 0

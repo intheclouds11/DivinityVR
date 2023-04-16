@@ -704,16 +704,16 @@ namespace HurricaneVR.Framework.Core.Player
 
             if (!_crouchInProgress && CameraHeight >= CrouchMinHeight)
             {
-                if (Inputs.IsCrouchActivated)
+                if (!_isCrouchingToggled && Inputs.CrouchState.JustActivated)
                 {
                     Crouch();
                 }
-                else if (_isCrouchingToggled)
+                else if (_isCrouchingToggled && Inputs.CrouchState.JustActivated)
                 {
                     StopCrouching();
                 }
             }
-            else if (_isCrouchingToggled && Inputs.IsCrouchActivated)
+            else if (_isCrouchingToggled && Inputs.CrouchState.JustActivated)
             {
                 StopCrouching();
             }
@@ -776,14 +776,29 @@ namespace HurricaneVR.Framework.Core.Player
                 max = 0f;
             }
 
-            while (total < delta)
+            if (crouching)
             {
-                _crouchOffset += sign * Time.deltaTime * CrouchSpeed;
-                total += Time.deltaTime * CrouchSpeed;
+                while (total < delta && Inputs.CrouchState.Active)
+                {
+                    _crouchOffset += sign * Time.deltaTime * CrouchSpeed;
+                    total += Time.deltaTime * CrouchSpeed;
 
-                _crouchOffset = Mathf.Clamp(_crouchOffset, min, max);
+                    _crouchOffset = Mathf.Clamp(_crouchOffset, min, max);
 
-                yield return new WaitForEndOfFrame();
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+            else
+            {
+                while (total < delta)
+                {
+                    _crouchOffset += sign * Time.deltaTime * CrouchSpeed;
+                    total += Time.deltaTime * CrouchSpeed;
+
+                    _crouchOffset = Mathf.Clamp(_crouchOffset, min, max);
+
+                    yield return new WaitForEndOfFrame();
+                }
             }
 
             _crouchInProgress = false;

@@ -40,7 +40,7 @@ namespace HurricaneVR.Framework.ControllerInput
         public bool IsSprintingActivated;
         public bool SprintRequiresDoubleClick;
 
-        public bool IsCrouchActivated;
+        public bool IsCrouchActive;
         public bool IsStandActivated;
 
         public HVRButtonState JumpState;
@@ -110,7 +110,7 @@ namespace HurricaneVR.Framework.ControllerInput
             IsTeleportDeactivated = GetTeleportDeactivated();
             IsSprintingActivated = GetSprinting();
 
-            IsCrouchActivated = GetCrouch();
+            IsCrouchActive = GetCrouch();
             
             IsLeftHoldActive = GetIsLeftHoldActive();
             IsRightHoldActive = GetIsRightHoldActive();
@@ -129,7 +129,7 @@ namespace HurricaneVR.Framework.ControllerInput
             ResetState(ref StandState);
             ResetState(ref JumpState);
 
-            SetState(ref CrouchState, IsCrouchActivated);
+            SetState(ref CrouchState, IsCrouchActive);
             SetState(ref StandState, IsStandActivated);
             SetState(ref JumpState, IsJumpActivated);
         }
@@ -442,15 +442,15 @@ namespace HurricaneVR.Framework.ControllerInput
         {
             if (RightController.ControllerType == HVRControllerType.Vive)
             {
-                return RightController.TrackPadUp.JustActivated;
+                return RightController.TrackPadUp.Active;
             }
 
             if (RightController.ControllerType == HVRControllerType.WMR)
             {
-                return RightController.TrackPadDown.JustActivated;
+                return RightController.TrackPadDown.Active;
             }
 
-            return RightController.SecondaryButtonState.JustActivated;
+            return RightController.SecondaryButtonState.Active;
         }
 
         protected virtual Vector2 GetMouse(out bool mouseDown)

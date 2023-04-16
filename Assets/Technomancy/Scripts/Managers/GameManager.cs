@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
             player.GetComponent<LocalUserObjects>().PlayerMovementAP.enabled = true;
             if (player.PlayerControlled)
             {
-                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.LocalUserObjects.Camera.transform, 1f, 0.5f);
+                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.LocalUserObjects.Camera.transform, 1f, 0.5f, 10, false);
             }
 
             witsList.Add(player, player.Wits);
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"ENEMIES FELLED. EXITING COMBAT");
         StopCoroutine(turnOrderCoroutine);
         audioSource.PlayOneShot(combatEndClip);
-        MusicAudioSource.Stop();
+        MusicAudioSource.Pause();
         turnOrderUI.SetActive(false);
         turnOrderText.text = "";
         firstCombatant = null;

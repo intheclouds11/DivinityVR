@@ -502,6 +502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrabberManager: {fileID: 0}
   PlayerController: {fileID: 0}
+  LeftHandGrabber: {fileID: 1645331895137812250}
+  RightHandGrabber: {fileID: 7083193422824376020}
   Camera: {fileID: 0}
   isDesktopMode: 0
   debugMode: 0
@@ -1697,7 +1699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6273076188375066669, guid: d72e20fc8cae31247a72984701b4b4e2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6273076188483548155, guid: d72e20fc8cae31247a72984701b4b4e2, type: 3}
       propertyPath: m_RootOrder
@@ -1956,6 +1958,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183613917027510685, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: CrouchSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183613917027510685, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: GroundedLayerMask.m_Bits
       value: 1074797569
       objectReference: {fileID: 0}
@@ -2049,6 +2055,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1645331895137812250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2944818813735484916, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+  m_PrefabInstance: {fileID: 4470805318478594798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce026d01d1f538044a048be125f5a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4544617008172492899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 79592173016312461, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
@@ -2107,6 +2124,17 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 0.5
   debug: 0
+--- !u!114 &7083193422824376020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6649550952121271354, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+  m_PrefabInstance: {fileID: 4470805318478594798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce026d01d1f538044a048be125f5a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8279182431916103444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5543628988177159674, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}

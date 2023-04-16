@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core;
+using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Shared.Utilities;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -326,6 +328,20 @@ namespace HurricaneVR.Framework.Shared
 
         protected virtual void InputHaptics()
         {
+            if (Side == HVRHandSide.Left)
+            {
+                if (HVRManager.Instance.LeftHandGrabber.IsGrabbing)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (HVRManager.Instance.RightHandGrabber.IsGrabbing)
+                {
+                    return;
+                }
+            }
             if (IndexTrackpadButtonState.JustActivated)
             {
                 Vibrate(HVRInputManager.Instance.HandInputHaptics.TouchpadPress);
@@ -545,13 +561,13 @@ namespace HurricaneVR.Framework.Shared
             return state;
         }
 
-        public virtual void Vibrate(HapticData haptics)
+        public virtual void Vibrate(HapticData haptics, float delayBetween = 0f)
         {
             if (HVRSettings.Instance.DisableHaptics) return;
 
             if (haptics != null && haptics.Valid)
             {
-                Vibrate(haptics.Amplitude, haptics.Duration, haptics.Frequency);
+                Vibrate(haptics.Amplitude, delayBetween, haptics.Duration, haptics.Frequency);
             }
         }
 
@@ -560,7 +576,7 @@ namespace HurricaneVR.Framework.Shared
         /// </summary>
         /// <param name="amplitude">The normalized (0.0 to 1.0) amplitude value of the haptic impulse to play on the device.</param>
         /// <param name="duration">The duration in seconds that the haptic impulse will play. Only supported on Oculus.</param>
-        public virtual void Vibrate(float amplitude, float duration = 1f, float frequency = 1f)
+        public virtual void Vibrate(float amplitude, float delayBetween = 0f, float duration = 1f, float frequency = 1f)
         {
             if (HVRSettings.Instance.DisableHaptics) return;
 
@@ -570,7 +586,18 @@ namespace HurricaneVR.Framework.Shared
                 Device.SendHapticImpulse(0, amplitude, duration);
             }
         }
+        
+        public virtual IEnumerator VibrateMultipleTimes(int times, float delayBetween, HapticData data)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                Vibrate(data, delayBetween);
+                yield return new WaitForSeconds(data.Duration + delayBetween);
+            }
+        }
     }
+    
+    
 
     public enum InputSDK
     {

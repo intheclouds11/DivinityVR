@@ -12029,6 +12029,8 @@ MonoBehaviour:
       m_Calls: []
   _grabBag: {fileID: 91758761997990082}
   GrabBags: []
+  ReleaseAfterDelay: 0
+  TimeToHoldGripForRelease: 1
   SocketBag: {fileID: 6652253607280103917}
   InverseKinematics: 0
   ApplyHandLayer: 1
@@ -14681,6 +14683,8 @@ MonoBehaviour:
       m_Calls: []
   _grabBag: {fileID: 1508076839109582712}
   GrabBags: []
+  ReleaseAfterDelay: 0
+  TimeToHoldGripForRelease: 1
   SocketBag: {fileID: 1006970318667924337}
   InverseKinematics: 0
   ApplyHandLayer: 1
@@ -25147,7 +25151,7 @@ MonoBehaviour:
   IsTeleportDeactivated: 0
   IsSprintingActivated: 0
   SprintRequiresDoubleClick: 0
-  IsCrouchActivated: 0
+  IsCrouchActive: 0
   IsStandActivated: 0
   JumpState:
     Active: 0
@@ -25838,6 +25842,7 @@ MonoBehaviour:
   _maxAP: 0
   _turn: 0
   _inCombat: 0
+  Stunned: 0
   baseDamage: 10
   attacker: {fileID: 0}
   pointedAtByHead: 0
@@ -28598,7 +28603,7 @@ GameObject:
   - component: {fileID: 1117704803382736868}
   - component: {fileID: 2129498946296219350}
   - component: {fileID: 5404521989737511310}
-  m_Layer: 20
+  m_Layer: 30
   m_Name: SurfaceEffectTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}

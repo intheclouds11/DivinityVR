@@ -18,6 +18,7 @@ namespace intheclouds
             playerStats = LocalUserObjects.Instance.PlayerStats;
             playerController = LocalUserObjects.Instance.HVRPlayerController;
             playerController.MovementEnabled = false;
+            playerController.CanCrouch = false;
             teleporter = LocalUserObjects.Instance.ITCTeleporter;
             teleporter.BeforeTeleport.AddListener(BeforeTeleport);
             teleporter.AfterTeleport.AddListener(AfterTeleport);
@@ -27,11 +28,10 @@ namespace intheclouds
 
         private void OnDisable()
         {
-            if (playerController)
-            {
-                playerController.MovementEnabled = true;
-            }
-            
+            playerController.MovementEnabled = true;
+            playerController.CanCrouch = true;
+
+
             teleporter.Dash = false;
             teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
             teleporter.AfterTeleport.RemoveListener(AfterTeleport);
@@ -52,7 +52,7 @@ namespace intheclouds
                 LocalUserObjects.Instance.HUDController.ToggleTeleportCancelReminder(true);
                 APNeededForTeleport = teleporter.teleportPathLength / APDistanceUnit;
                 LocalUserObjects.Instance.HUDController.ShowPointerUI(ActionType.Movement, $"Teleport AP: {(int) Mathf.Ceil(APNeededForTeleport)}");
-                
+
                 if (playerStats.CurrentAP >= APNeededForTeleport)
                 {
                     teleporter.playerHasEnoughAP = true;
@@ -70,7 +70,7 @@ namespace intheclouds
             currentPosition = new Vector3(teleporter.TeleportDestination.x, 0, teleporter.TeleportDestination.z);
             playerController.SurfaceEffectTrigger.gameObject.SetActive(true);
         }
-        
+
         private void AfterTeleport()
         {
             playerController.SurfaceEffectTrigger.gameObject.SetActive(false);

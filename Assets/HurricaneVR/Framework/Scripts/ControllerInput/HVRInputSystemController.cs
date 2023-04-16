@@ -208,7 +208,16 @@ namespace HurricaneVR.Framework.ControllerInput
             }
         }
 
-        public override void Vibrate(float amplitude, float duration = 1, float frequency = 1)
+        public override IEnumerator VibrateMultipleTimes(int times, float delayBetween, HapticData data)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                Vibrate(data);
+                yield return new WaitForSeconds(data.Duration + delayBetween);
+            }
+        }
+
+        public override void Vibrate(float amplitude, float delayBetween = 0f, float duration = 1, float frequency = 1)
         {
             if (HVRSettings.Instance.DisableHaptics || remainingVibrateDuration > 0) return;
 
@@ -221,7 +230,7 @@ namespace HurricaneVR.Framework.ControllerInput
                 if (action != null && _inputDevice != null)
                 {
                     OpenXRInput.SendHapticImpulse(action, amplitude, frequency, duration, _inputDevice);
-                    remainingVibrateDuration = duration;
+                    remainingVibrateDuration = duration + delayBetween;
                     return;
                 }
             }

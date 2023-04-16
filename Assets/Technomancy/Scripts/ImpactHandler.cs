@@ -176,10 +176,6 @@ namespace intheclouds
 
         private void DamageEnemy(Collider hitCollider, float relativeVelocity, bool disableRbCollision)
         {
-            if (hitCollider.isTrigger)
-            {
-                return;
-            }
             var currentEnemyStats = hitCollider.gameObject.GetComponentInParent<EnemyStats>();
             if (!currentEnemyStats.isAlive) return;
 

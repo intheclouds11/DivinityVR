@@ -126,7 +126,7 @@ namespace HurricaneVR.Framework.Core.Utils
             PlaySFXAttach(clip, transformForSFX, 1f, 1f, maxDistance);
         }
 
-        public AudioSource PlaySFX(AudioClip clip, Vector3 position, float pitch, float volume, int maxDistance = 10)
+        public AudioSource PlaySFX(AudioClip clip, Vector3 position, float pitch, float volume, int maxDistance = 10, bool spatial = true)
         {
             if (clip == null)
                 return null;
@@ -151,6 +151,7 @@ namespace HurricaneVR.Framework.Core.Utils
             audioSource.clip = clip;
             audioSource.minDistance = 0.1f;
             audioSource.maxDistance = maxDistance;
+            audioSource.spatialBlend = spatial ? 1 : 0;
 
             audioSource.volume = volume;
             audioSource.pitch = pitch;
@@ -158,7 +159,7 @@ namespace HurricaneVR.Framework.Core.Utils
             return audioSource;
         }
         
-        public AudioSource PlaySFXAttach(AudioClip clip, Transform transformForSFX, float pitch, float volume, int maxDistance = 10)
+        public AudioSource PlaySFXAttach(AudioClip clip, Transform transformForSFX, float pitch, float volume, int maxDistance = 10, bool spatial = true)
         {
             if (clip == null)
                 return null;
@@ -183,6 +184,7 @@ namespace HurricaneVR.Framework.Core.Utils
             audioSource.transform.position = transformForSFX.position;
             audioSource.clip = clip;
             audioSource.maxDistance = maxDistance;
+            audioSource.spatialBlend = spatial ? 1 : 0;
 
             audioSource.volume = volume;
             audioSource.pitch = pitch;

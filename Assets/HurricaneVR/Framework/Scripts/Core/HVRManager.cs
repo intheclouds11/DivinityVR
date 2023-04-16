@@ -12,6 +12,8 @@ namespace HurricaneVR.Framework.Core
         [Header("Setup")]
         public HVRGrabberManager GrabberManager;
         public HVRPlayerController PlayerController;
+        public HVRHandGrabber LeftHandGrabber;
+        public HVRHandGrabber RightHandGrabber;
         public Transform Camera;
         public HVRScreenFade ScreenFader { get; private set; }
         

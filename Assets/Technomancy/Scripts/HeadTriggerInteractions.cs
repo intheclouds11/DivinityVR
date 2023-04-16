@@ -33,11 +33,11 @@ namespace intheclouds
                 }
                 else if (playerStats.InCombat)
                 {
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.errorSFX, transform.position, 1, 0.5f);
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.errorSFX, transform.position, 1, 0.5f, 10, false);
                     return;
                 }
 
-                SFXPlayer.Instance.PlaySFX(drinkClip, transform.position, 1, 0.5f);
+                SFXPlayer.Instance.PlaySFX(drinkClip, transform.position, 1, 0.5f, 10, false);
                 potion.Used = true;
                 Destroy(potion.GetComponent<HVRTagSocketable>());
                 StartCoroutine(Drink());

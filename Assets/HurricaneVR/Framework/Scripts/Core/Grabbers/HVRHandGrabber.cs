@@ -22,6 +22,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
     {
         internal const int TrackedVelocityCount = 10;
 
+        public bool ReleaseAfterDelay;
+        [DrawIf("ReleaseAfterDelay", true)]
+        public float TimeToHoldGripForRelease = 1f;
 
         [Tooltip("HVRSocketBag used for placing and removing from sockets")]
         public HVRSocketBag SocketBag;
@@ -402,6 +405,8 @@ namespace HurricaneVR.Framework.Core.Grabbers
         private bool hasGripDeactivatedAfterGrab;
         private bool isGripGrabReleased;
         private bool isTriggerGrabReleased;
+        private float gripHoldTime;
+        private bool readyToRelease;
 
         #endregion
 
@@ -1070,9 +1075,13 @@ namespace HurricaneVR.Framework.Core.Grabbers
             // Required for better throwing with Toggle mode
             CheckDropToggleRelease();
         }
-
+        
         private void CheckDropToggleRelease()
         {
+            if (!IsGrabbing)
+            {
+                return;
+            }
             if (!IsTriggerGrabActivated && Inputs.GetGripState(HandSide).JustDeactivated)
             {
                 if (!hasGripDeactivatedAfterGrab)
@@ -1081,7 +1090,51 @@ namespace HurricaneVR.Framework.Core.Grabbers
                     return;
                 }
                 
-                isGripGrabReleased = true;
+                if (!ReleaseAfterDelay)
+                {
+                    isGripGrabReleased = true;
+                }
+            }
+
+            if (hasGripDeactivatedAfterGrab && Inputs.GetGripState(HandSide).JustActivated)
+            {
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position, 1.2f, 0.5f);
+                StartCoroutine(Controller.VibrateMultipleTimes(2, 0.05f, HVRInputManager.Instance.HandInputHaptics.GripPress));
+            }
+
+            
+            if (ReleaseAfterDelay)
+            {
+                if (!IsTriggerGrabActivated && Inputs.GetGripState(HandSide).Active)
+                {
+                    gripHoldTime += Time.deltaTime;
+                }
+                else
+                {
+                    if (gripHoldTime > 0)
+                    {
+                        gripHoldTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        gripHoldTime = 0;
+                    }
+                }
+
+                if (!isGripGrabReleased && gripHoldTime > TimeToHoldGripForRelease)
+                {
+                    if (!readyToRelease)
+                    {
+                        readyToRelease = true;
+                        SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position);
+                        StartCoroutine(Controller.VibrateMultipleTimes(2, 0.05f, HVRInputManager.Instance.HandInputHaptics.GripPress));
+                    }
+                    if (Inputs.GetGripState(HandSide).JustDeactivated)
+                    {
+                        isGripGrabReleased = true;
+                        readyToRelease = false;
+                    }
+                }
             }
         }
 

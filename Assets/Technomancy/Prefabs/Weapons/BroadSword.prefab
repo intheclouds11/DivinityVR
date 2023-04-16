@@ -210,7 +210,7 @@ MonoBehaviour:
   DamageThreshold: 5
   HitCooldown: 0.25
   DamageType: 0
-  ElementalType: 0
+  ScalingType: 0
   StatusEffect: {fileID: 0}
   HitEnemyClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
   GenericHitClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -279,7 +280,7 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 1
   DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
@@ -1224,7 +1225,7 @@ Transform:
   m_GameObject: {fileID: 8502529740676173563}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.428792, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0619, y: 1.0619, z: 1.24}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 540433885035849838}
