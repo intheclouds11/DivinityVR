@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Grabbers;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 //using UnityEngine.SpatialTracking;
 
 #if ENABLE_INPUT_SYSTEM
@@ -16,6 +18,9 @@ namespace HurricaneVR.Framework.Core.Player
     public class HVRPlayerController : MonoBehaviour
     {
         [Header("Settings")]
+        public bool TunnelTurningInput;
+        public bool TunnelMovementInput;
+        public bool TunnelTeleport;
         public bool CanJump = false;
         public bool CanSteerWhileJumping = true;
         public bool CanSprint = true;
@@ -52,8 +57,10 @@ namespace HurricaneVR.Framework.Core.Player
 
         [Header("Turning")]
         public RotationType RotationType;
+        public bool SmoothInputForSmoothTurn = true;
         public float SmoothTurnSpeed = 90f;
-        public float SmoothTurnThreshold = .1f;
+        public float SmoothTurnThreshold = .5f;
+        public float SmoothTurnThresholdSmoothed = .05f;
         public float SnapAmount = 45f;
 
         [Tooltip("Axis threshold to be considered valid for snap turning.")]
@@ -161,7 +168,7 @@ namespace HurricaneVR.Framework.Core.Player
         private Vector3 _previousVelocity;
         private float yVelocity;
         private Vector3 xzVelocity;
-        private float teleportCooldown;
+        protected float teleportCooldown;
 
         [SerializeField] private float _actualVelocity;
 
@@ -650,10 +657,17 @@ namespace HurricaneVR.Framework.Core.Player
         {
             return Inputs.MovementAxis;
         }
+        
+        
 
         protected virtual Vector2 GetTurnAxis()
         {
             return Inputs.TurnAxis;
+        }
+        
+        protected virtual Vector2 GetSmoothedTurnAxis()
+        {
+            return Inputs.SmoothedTurnAxis;
         }
 
         protected virtual void CheckSprinting()

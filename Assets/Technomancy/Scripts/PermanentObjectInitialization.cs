@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Management;
 
 namespace intheclouds
 {
@@ -9,6 +11,10 @@ namespace intheclouds
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void PermObjectInitialization()
         {
+            if (!XRGeneralSettings.Instance.InitManagerOnStart)
+            {
+                return;
+            }
             var cams = FindObjectsOfType<Camera>();
             foreach (var cam in cams)
             {

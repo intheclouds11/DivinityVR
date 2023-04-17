@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
         turnOrder.Add(turnOrder[0]);
         turnOrder.Remove(turnOrder[0]);
         previousCombatant = activeCombatant;
-        SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.Instance.HVRPlayerController.transform.position);
+        SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.Instance.ITCPlayerController.transform.position);
 
         turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrder));
     }

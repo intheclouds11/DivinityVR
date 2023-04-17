@@ -36,7 +36,7 @@ namespace intheclouds
             
             UserSetup(LocalUserObjects.Instance.PlayerStats);
             
-            SmoothTurnToggle.SetIsOnWithoutNotify(LocalUserObjects.Instance.HVRPlayerController.RotationType == RotationType.Smooth);
+            SmoothTurnToggle.SetIsOnWithoutNotify(LocalUserObjects.Instance.ITCPlayerController.RotationType == RotationType.Smooth);
             FollowToggle.SetIsOnWithoutNotify(followPlayer);
             DebugModeToggle.SetIsOnWithoutNotify(Startup.Instance.debugMode);
 
@@ -80,7 +80,7 @@ namespace intheclouds
 
         public void Toggle_SmoothTurn(bool smooth)
         {
-            currentUserObjects.HVRPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
+            currentUserObjects.ITCPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
             Startup.SaveUserTurnSetting(smooth ? 0 : 1);
         }
 
@@ -175,7 +175,7 @@ namespace intheclouds
             Debug.Log("Starting Exploration Mode...");
             Button_ResetStats();
             currentUserObjects.PlayerMovementAP.enabled = false;
-            currentUserObjects.HVRPlayerController.MovementEnabled = true;
+            currentUserObjects.ITCPlayerController.MovementEnabled = true;
         }
 
         public void Button_StartPlayerTurn()

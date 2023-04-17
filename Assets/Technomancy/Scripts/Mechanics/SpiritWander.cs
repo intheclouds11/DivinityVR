@@ -100,19 +100,19 @@ namespace intheclouds
             {
                 if (savedSpiritPosition != Vector3.zero && savedSpiritRotation != Quaternion.identity)
                 {
-                    playerLUOs.HVRPlayerController.transform.position = savedSpiritPosition;
-                    playerLUOs.HVRPlayerController.transform.rotation = savedSpiritRotation;
+                    playerLUOs.ITCPlayerController.transform.position = savedSpiritPosition;
+                    playerLUOs.ITCPlayerController.transform.rotation = savedSpiritRotation;
                 }
                 else
                 {
-                    playerLUOs.HVRPlayerController.transform.position = repositionTransformInitial.position;
+                    playerLUOs.ITCPlayerController.transform.position = repositionTransformInitial.position;
                 }
             }
 
             else
             {
-                playerLUOs.HVRPlayerController.transform.position = savedPhysicalPosition;
-                playerLUOs.HVRPlayerController.transform.rotation = savedPhysicalRotation;
+                playerLUOs.ITCPlayerController.transform.position = savedPhysicalPosition;
+                playerLUOs.ITCPlayerController.transform.rotation = savedPhysicalRotation;
             }
         }
 
@@ -162,8 +162,8 @@ namespace intheclouds
         // Return to position and destroy spawnedObjs
         private void Reunite()
         {
-            savedSpiritPosition = playerLUOs.HVRPlayerController.transform.position;
-            savedSpiritRotation = playerLUOs.HVRPlayerController.transform.rotation;
+            savedSpiritPosition = playerLUOs.ITCPlayerController.transform.position;
+            savedSpiritRotation = playerLUOs.ITCPlayerController.transform.rotation;
 
             foreach (var spawnedGO in spawnedGOs)
             {
@@ -177,8 +177,8 @@ namespace intheclouds
         {
             if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
             if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
-            savedPhysicalPosition = playerLUOs.HVRPlayerController.transform.position;
-            savedPhysicalRotation = playerLUOs.HVRPlayerController.transform.rotation;
+            savedPhysicalPosition = playerLUOs.ITCPlayerController.transform.position;
+            savedPhysicalRotation = playerLUOs.ITCPlayerController.transform.rotation;
 
             for (int i = 0; i < objectsToDeparent.Length; i++)
             {

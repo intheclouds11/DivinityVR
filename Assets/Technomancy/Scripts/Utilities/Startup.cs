@@ -82,7 +82,7 @@ namespace intheclouds
         {
             if (PlayerPrefs.HasKey(SmoothRotationSettingKey))
             {
-                LocalUserObjects.Instance.HVRPlayerController.RotationType = (RotationType)PlayerPrefs.GetInt(SmoothRotationSettingKey);
+                LocalUserObjects.Instance.ITCPlayerController.RotationType = (RotationType)PlayerPrefs.GetInt(SmoothRotationSettingKey);
             }
             if (PlayerPrefs.HasKey(DebugSettingKey))
             {

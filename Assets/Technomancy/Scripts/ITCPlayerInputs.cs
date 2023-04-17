@@ -8,12 +8,16 @@ namespace intheclouds
 {
     public class ITCPlayerInputs : MonoBehaviour
     {
+        public AudioClip MenuClip;
+        public GameObject MenuIcon;
         public GameObject DebugUI;
         public TextMeshProUGUI DebugStatusText;
         public float holdTimeRequired = 1;
         private float holdTimeLeftPrimaryButton;
+        private float holdTimeLeftSecondaryButton;
         private GameManager gameManager;
-        private bool triggered;
+        private bool triggeredPrimaryInput;
+        private bool triggeredSecondaryInput;
 
         private void Awake()
         {
@@ -37,7 +41,7 @@ namespace intheclouds
             if (Keyboard.current.nKey.wasPressedThisFrame)
             {
                 gameManager.ForceNextTurn();
-                SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 1, 1);
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 1, 1, 10, false, false);
             }
 
             if (Keyboard.current.tabKey.wasPressedThisFrame)
@@ -53,9 +57,38 @@ namespace intheclouds
 
         private void CheckMenuButton()
         {
-            if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustActivated)
+            if (!UserMenu.Instance.menuIsOpen)
+            {
+                if (HVRInputManager.Instance.LeftController.SecondaryButtonState.Active && !triggeredSecondaryInput)
+                {
+                    if (holdTimeLeftSecondaryButton == 0)
+                    {
+                        MenuIcon.SetActive(true);
+                        SFXPlayer.Instance.PlaySFX(MenuClip, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 1f, 0.5f, 10, false, false);
+                    }
+                    if (holdTimeLeftSecondaryButton > holdTimeRequired)
+                    {
+                        UserMenu.Instance.ToggleMenu();
+                        MenuIcon.SetActive(false);
+                        // SFXPlayer.Instance.PlaySFX(, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.7f, 0.5f, 10, false, false);
+                        holdTimeLeftSecondaryButton = 0;
+                        triggeredSecondaryInput = true;
+                    }
+
+                    holdTimeLeftSecondaryButton += Time.deltaTime;
+                }
+                else if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustDeactivated)
+                {
+                    MenuIcon.SetActive(false);
+                    holdTimeLeftSecondaryButton = 0;
+                    triggeredSecondaryInput = false;
+                }
+            }
+            else if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustActivated)
             {
                 UserMenu.Instance.ToggleMenu();
+                MenuIcon.SetActive(false);
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.8f, 0.5f, 10, false, false);
             }
         }
 
@@ -63,18 +96,18 @@ namespace intheclouds
         {
             if (!gameManager.activeCombatant || (!gameManager.playerTurn && !Startup.Instance.debugMode)) return;
             
-            if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active && !triggered)
+            if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active && !triggeredPrimaryInput)
             {
                 if (holdTimeLeftPrimaryButton == 0)
                 {
-                    SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 0.8f, 1);
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.8f, 0.5f, 10, false, false);
                 }
                 if (holdTimeLeftPrimaryButton > holdTimeRequired)
                 {
-                    SFXPlayer.Instance.PlaySFXAttach(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform, 1, 1);
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 1, 0.5f, 10, false, false);
                     gameManager.ForceNextTurn();
                     holdTimeLeftPrimaryButton = 0;
-                    triggered = true;
+                    triggeredPrimaryInput = true;
                 }
 
                 holdTimeLeftPrimaryButton += Time.deltaTime;
@@ -82,7 +115,7 @@ namespace intheclouds
             else if (HVRInputManager.Instance.LeftController.PrimaryButtonState.JustDeactivated)
             {
                 holdTimeLeftPrimaryButton = 0;
-                triggered = false;
+                triggeredPrimaryInput = false;
             }
         }
     }

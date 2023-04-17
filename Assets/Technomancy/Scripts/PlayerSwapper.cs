@@ -139,7 +139,7 @@ namespace intheclouds
         {
             var currentPlayerObjects = currentControlledPlayer.GetComponentInParent<LocalUserObjects>();
             currentPlayerObjects.PlayerStats.PlayerControlled = false;
-            currentPlayerObjects.HVRPlayerController.enabled = false;
+            currentPlayerObjects.ITCPlayerController.enabled = false;
             currentPlayerObjects.HVRPlayerInputs.enabled = false;
             currentPlayerObjects.ITCPlayerInputs.enabled = false;
 
@@ -181,7 +181,7 @@ namespace intheclouds
             turnOrderUI.transform.localRotation = Quaternion.identity;
 
             swappedPlayerObjects.PlayerStats.PlayerControlled = true;
-            swappedPlayerObjects.HVRPlayerController.enabled = true;
+            swappedPlayerObjects.ITCPlayerController.enabled = true;
             swappedPlayerObjects.HVRPlayerInputs.enabled = true;
             swappedPlayerObjects.ITCPlayerInputs.enabled = true;
 

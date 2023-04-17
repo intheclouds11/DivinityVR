@@ -4,6 +4,7 @@ using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -11,7 +12,7 @@ namespace intheclouds
     {
         public static LocalUserObjects Instance;
         public PlayerStats PlayerStats;
-        public HVRPlayerController HVRPlayerController;
+        public ITCPlayerController ITCPlayerController;
         public ITCTeleporter ITCTeleporter;
         public HVRPlayerInputs HVRPlayerInputs;
         public ITCPlayerInputs ITCPlayerInputs;

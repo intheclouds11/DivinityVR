@@ -25,6 +25,7 @@ namespace HurricaneVR.Framework.Core.Player
         public Transform TeleportLineSourceRight;
         public HVRHandGrabber LeftHand;
         public HVRHandGrabber RightHand;
+        public HVRForceGrabber RightHandForceGrabber;
         public HVRPlayerController Player;
 
         [Header("Teleport Disable Checks")]

@@ -6,24 +6,34 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/HVRManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/HVRManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRPlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleporter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/SFXPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Core/Utils/SFXPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVRController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HurricaneVR/Framework/Scripts/Shared/HVRController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Knight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Knight.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Status Effects/Stunned.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Status Effects/Stunned.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Stun Rod.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Stun Rod.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/EnemyStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/EnemyStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerMovementAP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerMovementAP.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadTriggerInteractions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadTriggerInteractions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/SpiritWander.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/SpiritWander.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/StatusEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/StatusEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PermanentObjectInitialization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PermanentObjectInitialization.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSwapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSwapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/UserMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/UserMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain Splash.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain Splash.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniStorm Weather System (volumetric clouds)/Materials/Weather/Rain.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +41,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41ec717a143148d3ab9583cdd7f4dce9f000/4d/810f14b8/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41ec717a143148d3ab9583cdd7f4dce9f000/ca/54be0ee5/InputDevices.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6e08e61cfda04255b3972ba7f0515fae81e000/21/ee2b436e/AssemblyReloadEvents.cs" root0="SKIP_HIGHLIGHTING" />
@@ -48,10 +52,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/16/4cbec55a/PlayerPrefs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/16/52ba47d3/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/19/fd1754e7/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/81/a8763d99/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/HurricaneVR/Framework/Editor/HVRPhysicsDoorEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/OneDrive/Documents/UnityVR/Divinity VR/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/patri/OneDrive/Documents/UnityVR/Divinity VR/Assets/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Packages/UniStorm Weather System/Scripts/System/UniStormSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Packages/VrTunnellingPro/Scripts/Tunnelling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/CanvasSetup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCPlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/CreditPickup.cs" root0="FORCE_HIGHLIGHTING" />
@@ -129,6 +135,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SpriteDrawUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/Raycasters/BaseRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -174,6 +181,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/MicrosoftMotionControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/ValveIndexControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/input/OpenXRInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../IMPORTS/Assets/SteamVR/Scripts/SteamVR_Menu.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -194,7 +202,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;TODO_SCOPE&quot;: &quot;Open Files&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49085367&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49019608&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -246,10 +254,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="13380">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="13380" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -417,7 +425,12 @@
       <workItem from="1681514213341" duration="10081000" />
       <workItem from="1681567692543" duration="17931000" />
       <workItem from="1681585979055" duration="1169000" />
-      <workItem from="1681607285814" duration="6502000" />
+      <workItem from="1681607285814" duration="13340000" />
+      <workItem from="1681647620782" duration="7894000" />
+      <workItem from="1681656339946" duration="10848000" />
+      <workItem from="1681699315474" duration="100000" />
+      <workItem from="1681699431915" duration="5088000" />
+      <workItem from="1681704665350" duration="557000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -446,17 +459,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs</url>
-          <line>153</line>
-          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\Technomancy\Scripts\ImpactHandler.cs" initialLine="153" containingFunctionPresentation="method 'OnTriggerEnter'">
+          <url>file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/StatusEffect.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR\Assets\Technomancy\Scripts\Mechanics\StatusEffect.cs" initialLine="30" containingFunctionPresentation="method 'OnDestroy'">
             <startOffsets>
-              <option value="5590" />
+              <option value="866" />
             </startOffsets>
             <endOffsets>
-              <option value="5688" />
+              <option value="887" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="25" />
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

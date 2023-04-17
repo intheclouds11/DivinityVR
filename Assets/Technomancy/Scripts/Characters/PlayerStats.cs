@@ -273,6 +273,11 @@ namespace intheclouds
         public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {
             this.attacker = attacker;
+            
+            if (statusEffect)
+            {
+                statusEffect.CombatantWhoApplied = attacker;
+            }
 
             // todo: reduce damage based on character resistance to elemental type
 
@@ -316,8 +321,8 @@ namespace intheclouds
 
             if (CurrentHealth > 0)
             {
-                SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)],
-                    LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 0.5f, 20);
+                SFXPlayer.Instance.PlaySFXRandomPitch(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)],
+                    LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
             }
             else
             {
@@ -369,8 +374,8 @@ namespace intheclouds
 
         public void Died()
         {
-            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)],
-                LocalUserObjects.HVRPlayerController.gameObject.transform, 0.9f, 1.1f, 1, 20);
+            SFXPlayer.Instance.PlaySFXRandomPitch(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)],
+                LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
             GameManager.Instance.playersAlive -= 1;
             GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, Wits));
             GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
@@ -422,7 +427,7 @@ namespace intheclouds
         public void LevelUp()
         {
             XPToNextLevel += (int) (XPToNextLevel * 0.5f);
-            SFXPlayer.Instance.PlaySFX(levelUpAudioClip, transform);
+            SFXPlayer.Instance.PlaySFX(levelUpAudioClip, transform.position);
             // award 1 Attribute Point, 1 Skill Point, 1 Talent
 
             // todo: make Coroutine for deciding what to put points into. Make it undoable

@@ -42,7 +42,7 @@ namespace intheclouds
 
                 if (!alreadyWet)
                 {
-                    var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
+                    var dist = Vector3.Distance(player.LocalUserObjects.ITCPlayerController.transform.position, transform.position);
                     if (dist < hitDistance)
                     {
                         Helpers.AddWetStatus(player, surfaceEffect.statusEffect);

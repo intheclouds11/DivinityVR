@@ -17,6 +17,7 @@ namespace HurricaneVR.Framework.ControllerInput
     /// </summary>
     public class HVRPlayerInputs : MonoBehaviour
     {
+        public float SmoothTurningFactor = 0.2f;
         public bool AllowTeleportInput = false;
         
         [Header("Grab Settings")]
@@ -33,6 +34,7 @@ namespace HurricaneVR.Framework.ControllerInput
         [Header("Inputs Debugging")]
         public Vector2 MovementAxis;
         public Vector2 TurnAxis;
+        public Vector2 SmoothedTurnAxis;
 
         public bool IsTeleportActivated;
         public bool IsTeleportDeactivated;
@@ -105,7 +107,8 @@ namespace HurricaneVR.Framework.ControllerInput
             SetState(ref RightTriggerGrabState, RightController.Trigger > TriggerGrabThreshold);
 
             MovementAxis = GetMovementAxis();
-            TurnAxis = GetTurnAxis();
+            TurnAxis = GetTurnAxis(false);
+            SmoothedTurnAxis = GetTurnAxis(true);
             IsTeleportActivated = GetTeleportActivated();
             IsTeleportDeactivated = GetTeleportDeactivated();
             IsSprintingActivated = GetSprinting();
@@ -360,8 +363,11 @@ namespace HurricaneVR.Framework.ControllerInput
 
             return new Vector2(x, y);
         }
+        
+        private Vector2 currentTurnInputVector;
+        private Vector2 smoothInputTurnVelocity;
 
-        protected virtual Vector2 GetTurnAxis()
+        protected virtual Vector2 GetTurnAxis(bool smoothed)
         {
             if (SwapMovementAxis)
             {
@@ -393,6 +399,20 @@ namespace HurricaneVR.Framework.ControllerInput
                 return Vector2.zero;
             }
 
+            if (smoothed)
+            {
+                if (Mathf.Abs(RightController.JoystickAxis.x) < 0.1f)
+                {
+                    currentTurnInputVector = Vector2.zero;
+                    smoothInputTurnVelocity = Vector2.zero;
+                }
+                else
+                {
+                    currentTurnInputVector = Vector2.SmoothDamp(currentTurnInputVector, RightController.JoystickAxis, ref smoothInputTurnVelocity, SmoothTurningFactor);
+                }
+                return currentTurnInputVector;    
+            }
+            
             return RightController.JoystickAxis;
         }
 
@@ -417,7 +437,7 @@ namespace HurricaneVR.Framework.ControllerInput
                 return HVRController.GetButtonState(HVRHandSide.Right, HVRButtons.Menu).Active;
             }
             
-            return TeleportController.JoystickAxis.y < -0.90f;
+            return TeleportController.JoystickAxis.y > 0.90f;
         }
 
         protected virtual bool GetSprinting()

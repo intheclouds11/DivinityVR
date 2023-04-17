@@ -28,7 +28,7 @@ namespace intheclouds
         public static void MovePlayerToStartingSpawnPoint()
         {
             var spawnPoint = GetStartingPlayerSpawnPoint().transform;
-            LocalUserObjects.Instance.HVRPlayerController.GetComponent<HVRTeleporter>().Teleport(spawnPoint.position, spawnPoint.forward);
+            LocalUserObjects.Instance.ITCTeleporter.Teleport(spawnPoint.position, spawnPoint.forward);
         }
 
         public static void RegisterUserSpawnPoint(PlayerSpawnPoint playerSpawnPoint)

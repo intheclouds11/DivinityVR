@@ -7,6 +7,7 @@ namespace intheclouds
     {
         public float playerLeanThreshold = 1;
         public float APDistanceUnit = 3f;
+        public GameObject LastValidPositionMarker;
         private HVRPlayerController playerController;
         private PlayerStats playerStats;
         private float APNeededForTeleport;
@@ -16,12 +17,11 @@ namespace intheclouds
         private void OnEnable()
         {
             playerStats = LocalUserObjects.Instance.PlayerStats;
-            playerController = LocalUserObjects.Instance.HVRPlayerController;
+            playerController = LocalUserObjects.Instance.ITCPlayerController;
             playerController.MovementEnabled = false;
             playerController.CanCrouch = false;
             teleporter = LocalUserObjects.Instance.ITCTeleporter;
             teleporter.BeforeTeleport.AddListener(BeforeTeleport);
-            teleporter.AfterTeleport.AddListener(AfterTeleport);
             teleporter.Dash = true;
             currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
         }
@@ -34,13 +34,17 @@ namespace intheclouds
 
             teleporter.Dash = false;
             teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
-            teleporter.AfterTeleport.RemoveListener(AfterTeleport);
         }
 
         private void Update()
         {
             CheckLean();
             CheckTeleport();
+
+            if (teleporter.TeleportState == TeleportState.Dashing)
+            {
+                currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
+            }
         }
 
         private void CheckTeleport()
@@ -67,13 +71,6 @@ namespace intheclouds
         private void BeforeTeleport(Vector3 arg0)
         {
             playerStats.UseAP((int) Mathf.Ceil(APNeededForTeleport));
-            currentPosition = new Vector3(teleporter.TeleportDestination.x, 0, teleporter.TeleportDestination.z);
-            playerController.SurfaceEffectTrigger.gameObject.SetActive(true);
-        }
-
-        private void AfterTeleport()
-        {
-            playerController.SurfaceEffectTrigger.gameObject.SetActive(false);
         }
 
         private void CheckLean()
@@ -86,6 +83,8 @@ namespace intheclouds
                 LocalUserObjects.Instance.HUDController.ToggleLeanWarning(true);
                 LocalUserObjects.Instance.HVRPlayerInputs.UpdateInputs = false;
                 playerStats.Leaning = true;
+                LastValidPositionMarker.SetActive(true);
+                LastValidPositionMarker.transform.position = currentPosition;
             }
             else
             {
@@ -93,6 +92,7 @@ namespace intheclouds
                 LocalUserObjects.Instance.HUDController.ToggleLeanWarning(false);
                 LocalUserObjects.Instance.HVRPlayerInputs.UpdateInputs = true;
                 playerStats.Leaning = false;
+                LastValidPositionMarker.SetActive(false);
             }
         }
 

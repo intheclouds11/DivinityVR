@@ -176,6 +176,11 @@ namespace intheclouds
 
             this.attacker = attacker;
 
+            if (statusEffect)
+            {
+                statusEffect.CombatantWhoApplied = attacker;
+            }
+
             var newHitPopup = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
             newHitPopup.GetComponent<TextMeshProUGUI>().text = damage.ToString();
 
@@ -212,7 +217,7 @@ namespace intheclouds
 
             if (CurrentHealth > 0)
             {
-                SFXPlayer.Instance.PlaySFXRandomPitchAttach(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], transform, 0.9f, 1.1f, 1, 20);
+                SFXPlayer.Instance.PlaySFXRandomPitch(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], transform.position, 0.9f, 1.1f, 1, 20);
                 if (!weaponSheathed)
                 {
                     animator.SetBool(_isHit, true);
@@ -259,7 +264,7 @@ namespace intheclouds
             isAlive = false;
             CurrentHealth = 0;
             enemyAI.DisableAIComponents();
-            SFXPlayer.Instance.PlaySFXRandomPitchAttach(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform, 0.9f, 1.1f, 0.4f, 20);
+            SFXPlayer.Instance.PlaySFXRandomPitch(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform.position, 0.9f, 1.1f, 0.4f, 20);
             animator.SetBool(_isDead, true);
             EnemyDied?.Invoke();
             foreach (var instancePlayer in GameManager.Instance.players)

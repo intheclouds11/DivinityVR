@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Player;
 using Pathfinding;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace intheclouds
         private LocalUserObjects localUserObjects;
         private List<Vector3> teleportVectorPath;
         private Coroutine dashCoroutine;
+        private float previousJoystickX;
+        private float previousJoystickY;
 
         protected override void Awake()
         {
@@ -32,6 +35,11 @@ namespace intheclouds
 
         protected override void EnabledCheck()
         {
+            if (RightHand.IsHovering || RightHand.IsHoveringSocket || RightHandForceGrabber.IsHovering)
+            {
+                Disable();
+                return;
+            }
             if (PlayerGroundedCheck && Player && !Player.IsGrounded)
             {
                 Disable();
@@ -55,13 +63,14 @@ namespace intheclouds
                 Disable();
                 return;
             }
-            
+
             if (Forward.y >= VerticalCancelThreshold)
             {
                 if (VerticalCancelUntilDeactivateTeleport)
                 {
                     verticalCanceled = true;
                 }
+
                 Disable();
                 return;
             }
@@ -92,7 +101,7 @@ namespace intheclouds
                 {
                     verticalCanceled = false;
                 }
-                
+
                 LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Movement);
                 LocalUserObjects.Instance.HUDController.ToggleTeleportCancelReminder(false);
 
@@ -157,7 +166,7 @@ namespace intheclouds
                     adjustedPoint.y += 0.25f;
                     visualPath.Add(adjustedPoint);
                 }
-                
+
                 TeleportPath.positionCount = visualPath.Count;
                 TeleportPath.SetPositions(visualPath.ToArray());
                 for (var i = 0; i < p.vectorPath.Count - 1; i++)
@@ -169,18 +178,14 @@ namespace intheclouds
         
         private void CheckDestinationRotation()
         {
-            // var stickXAxis = PlayerInputs.TurnAxis.x;
-            // if (Mathf.Abs(stickXAxis) > 0.5f && PlayerInputs.TurnAxis.magnitude >= 0.90f)
-            // {
-            //     RotationModifier += PlayerInputs.TurnAxis.x * Time.deltaTime * RotateTeleportSpeed;
-            // }
             if (PlayerInputs.TurnAxis.magnitude >= 0.95f)
             {
                 RotationModifier = PlayerInputs.TurnAxis.x * RotateTeleportAmount;
             }
+
             TeleportMarker.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + RotationModifier, 0);
         }
-        
+
         protected override void UpdateDashTeleport()
         {
             if (teleportVectorPath.Count > 0)
@@ -202,6 +207,42 @@ namespace intheclouds
                 UpdatePlayerPositionAndRotation(TeleportDestination, RotationModifier);
                 TeleportState = TeleportState.AwaitingNextFrame;
             }
+        }
+
+        protected override void OnBeforeDashTeleport()
+        {
+            if (localUserObjects.ITCPlayerController.TunnelTeleport)
+            {
+                localUserObjects.ITCPlayerController.TunnellingMobile.useVelocity = true;
+            }
+            base.OnBeforeDashTeleport();
+        }
+
+        protected override void OnAfterDashTeleport()
+        {
+            if (localUserObjects.ITCPlayerController.TunnelTeleport)
+            {
+                localUserObjects.ITCPlayerController.TunnellingMobile.useVelocity = false;
+            }
+            base.OnAfterDashTeleport();
+        }
+        
+        protected override void OnBeforeTeleport()
+        {
+            if (localUserObjects.ITCPlayerController.TunnelMovementInput)
+            {
+                localUserObjects.ITCPlayerController.TunnellingMobile.useVelocity = false;
+            }
+            base.OnBeforeTeleport();
+        }
+
+        protected override void OnAfterTeleport()
+        {
+            if (localUserObjects.ITCPlayerController.TunnelMovementInput)
+            {
+                localUserObjects.ITCPlayerController.TunnellingMobile.useVelocity = true;
+            }
+            base.OnAfterTeleport();
         }
     }
 }

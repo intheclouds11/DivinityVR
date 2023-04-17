@@ -112,13 +112,13 @@ namespace intheclouds
             {
                 Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
                 targetedPlayer = FindNearestPlayer();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
             else
             {
                 Debug.Log($"targeting player with highest health: {FindPlayerWithHighestHealth().Name}");
                 targetedPlayer = FindPlayerWithHighestHealth();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
 
             targetedPlayerSW = aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
@@ -140,7 +140,7 @@ namespace intheclouds
             }
             else
             {
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.HVRPlayerController.transform;
+                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
         }
 
@@ -216,7 +216,7 @@ namespace intheclouds
             PlayerStats nearestPlayer = null;
             foreach (PlayerStats player in GameManager.Instance.players)
             {
-                var dist = Vector3.Distance(player.LocalUserObjects.HVRPlayerController.transform.position, transform.position);
+                var dist = Vector3.Distance(player.LocalUserObjects.ITCPlayerController.transform.position, transform.position);
                 if (dist > shortestDistance)
                 {
                     shortestDistance = dist;

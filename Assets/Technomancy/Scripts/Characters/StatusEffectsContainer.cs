@@ -112,7 +112,7 @@ namespace intheclouds
 
             if (TryGetComponent(out StatusEffect preExistingEffect) && effect.type == preExistingEffect.type)
             {
-                preExistingEffect.StatusEffectConstructor(effect);
+                preExistingEffect.StatusEffectConstructor(effect, true);
                 RemoveFromTextUI(effect);
                 AddToTextUI(effect);
                 Debug.Log("status effect reapplied");

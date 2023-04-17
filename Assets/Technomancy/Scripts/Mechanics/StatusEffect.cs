@@ -14,8 +14,11 @@ namespace intheclouds
         public int cooldown;
         public int cooldownTimer;
         public AudioClip activatedClip;
+        public GameObject activeVFX;
+        public BaseStats CombatantWhoApplied;
         private BaseStats combatant;
-        private BaseStats combatantWhoApplied;
+        private Transform originalParent;
+        private GameObject spawnedActiveVFX;
 
         private void OnDestroy()
         {
@@ -24,29 +27,36 @@ namespace intheclouds
                 Debug.Log("Stun removed!");
                 combatant.Stun(false);
             }
+            
+            if (spawnedActiveVFX)
+            {
+                Destroy(spawnedActiveVFX);
+            }
         }
 
-        public void StatusEffectConstructor(StatusEffect effect)
+        public void StatusEffectConstructor(StatusEffect effect, bool preExisting = false)
         {
+            if (!combatant)
+            {
+                combatant = GetComponentInParent<BaseStats>();
+            }
+
             type = effect.type;
             effectAmount = effect.effectAmount;
             cooldown = effect.cooldown;
             cooldownTimer = effect.cooldown;
             activatedClip = effect.activatedClip;
             ProcessOnEnabled = effect.ProcessOnEnabled;
+            activeVFX = effect.activeVFX;
+            
             if (ProcessOnEnabled)
             {
-                ActivateStatusEffect();
+                ActivateStatusEffect(preExisting);
             }
         }
 
-        public void ActivateStatusEffect()
+        public void ActivateStatusEffect(bool preExisting = false)
         {
-            if (!combatant)
-            {
-                combatant = GetComponentInParent<BaseStats>();
-            }
-            
             if (type == StatusEffectType.Burning)
             {
                 int damage = (int) (4 * (1 + combatant.level * 0.5f));
@@ -68,7 +78,12 @@ namespace intheclouds
 
             if (activatedClip)
             {
-                SFXPlayer.Instance.PlaySFX(activatedClip, combatant.transform.GetChild(0).position, 1, 10);
+                SFXPlayer.Instance.PlaySFXRandomPitch(activatedClip, transform.parent.position, 0.9f, 1, 1);
+            }
+
+            if (activeVFX && !preExisting && !spawnedActiveVFX)
+            {
+                spawnedActiveVFX = Instantiate(activeVFX, transform.parent.position + Vector3.up, Quaternion.identity, transform.parent);
             }
         }
     }
