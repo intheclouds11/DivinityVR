@@ -23,6 +23,7 @@ namespace intheclouds
         {
             gameManager = GameManager.Instance;
             DebugUI.SetActive(Debug.isDebugBuild);
+            MenuIcon.SetActive(false);
         }
 
         private void Update()

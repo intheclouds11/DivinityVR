@@ -48,7 +48,7 @@ namespace intheclouds
 
             if (!playerLUOs.PlayerStats.InCombat)
             {
-                CooldownExploration();
+                AbilityCooldownExploration();
             }
 
             if (selectedAbility)
@@ -141,6 +141,7 @@ namespace intheclouds
                 playerLUOs.PlayerStats.UseAP(selectedAbility.requiredAP);
             }
 
+            selectedAbility.enabled = true;
             selectedAbility.castingHand = hand;
             selectedAbility.caster = playerLUOs.PlayerStats;
             selectedAbility.gameObject.SetActive(true);
@@ -191,7 +192,7 @@ namespace intheclouds
             augmentHighlight.SetGlowColor(playerLUOs.PlayerStats.statsSO.baseHandAugmentColor);
         }
 
-        private void CooldownExploration()
+        private void AbilityCooldownExploration()
         {
             if (cooldownTimerNoCombat < 2)
             {
@@ -199,12 +200,12 @@ namespace intheclouds
             }
             else if (cooldownTimerNoCombat >= 2)
             {
-                Cooldown();
+                AbilityCooldown();
                 cooldownTimerNoCombat = 0;
             }
         }
 
-        public void Cooldown()
+        public void AbilityCooldown()
         {
             foreach (Transform slotGO in abilitySlots.transform)
             {

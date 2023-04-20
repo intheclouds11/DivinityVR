@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   favoritesList:
   - reference: {fileID: 4238637224506910441, guid: a75bb1bca6d53eb47846c1198541deb6, type: 3}
+  - reference: {fileID: 1620636520166436, guid: 07757cf211bd45044a1f1917658b9e66, type: 3}
+  - reference: {fileID: 111372, guid: 87738b5a38cb9d34aaa6cbf49c05e518, type: 3}
+  - reference: {fileID: 111372, guid: e8b23e8d730a20c4b9d37a32e5fdec96, type: 3}

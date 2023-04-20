@@ -766,7 +766,7 @@ MonoBehaviour:
   RequiredAP: 2
   BaseDamage: 10
   CriticalDamageMultiplier: 1.8
-  DamageThreshold: 5
+  DamageThreshold: 7
   HitCooldown: 0.25
   DamageType: 1
   ScalingType: 0
@@ -840,7 +840,7 @@ MonoBehaviour:
   GrabColliders: []
   ConsiderGrabPointAngle: 1
   <UseColliderClosestPoint>k__BackingField: 1
-  DisableHandCollision: 1
+  DisableHandCollision: 0
   DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}

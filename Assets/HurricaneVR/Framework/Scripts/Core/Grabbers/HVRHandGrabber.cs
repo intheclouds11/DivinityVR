@@ -833,6 +833,14 @@ namespace HurricaneVR.Framework.Core.Grabbers
                 var closestValid = ClosestValidHover(false);
                 if (closestValid == null)
                     return false;
+                if (HandSide == HVRTeleporter.Instance.TeleportHand && HVRTeleporter.Instance.IsAiming)
+                {
+                    if (HoverTarget)
+                    {
+                        UnhoverGrabbable(this, HoverTarget);
+                    }
+                    return false;
+                }
                 HoverGrabbable(this, closestValid);
                 return true;
             }

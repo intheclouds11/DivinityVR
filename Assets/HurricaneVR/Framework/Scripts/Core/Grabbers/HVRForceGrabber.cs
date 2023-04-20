@@ -3,6 +3,7 @@ using System.Collections;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.HandPoser;
+using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.ScriptableObjects;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
@@ -198,6 +199,14 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected override bool CheckHover()
         {
+            if (HandSide == HVRTeleporter.Instance.TeleportHand && HVRTeleporter.Instance.IsAiming)
+            {
+                if (HoverTarget)
+                {
+                    UnhoverGrabbable(this, HoverTarget);
+                }
+                return false;
+            }
             return !Inputs.GetForceGrabActive(HandSide) && base.CheckHover();
         }
 

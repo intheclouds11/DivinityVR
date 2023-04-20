@@ -19,7 +19,7 @@ namespace intheclouds
         public int RequiredAP = 1;
         public int BaseDamage = 1;
         public float CriticalDamageMultiplier = 1.8f;
-        public float DamageThreshold = 5;
+        public float DamageThreshold = 7;
         public float HitCooldown = 0.25f;
         public DamageType DamageType = DamageType.Physical;
         public ScalingType ScalingType = ScalingType.None;
@@ -59,6 +59,7 @@ namespace intheclouds
         private float pitch;
         private float volume;
         private Vector3 lastAngularVelocity;
+        private Collider[] enemyColliders;
 
         private bool showSwipe => SwipeClip;
 
@@ -151,7 +152,7 @@ namespace intheclouds
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (rb.velocity.magnitude > DamageThreshold || rb.angularVelocity.magnitude > DamageThreshold * 5)
+                if (rb.velocity.magnitude > DamageThreshold || rb.angularVelocity.magnitude > DamageThreshold * 3)
                 {
                     DamageEnemy(other, rb.velocity.magnitude, true);
                 }
@@ -174,7 +175,7 @@ namespace intheclouds
         }
 
 
-        private void DamageEnemy(Collider hitCollider, float relativeVelocity, bool disableRbCollision)
+        private void DamageEnemy(Collider hitCollider, float relativeVelocity, bool ignoreCollisionsPostHit)
         {
             var currentEnemyStats = hitCollider.gameObject.GetComponentInParent<EnemyStats>();
             if (!currentEnemyStats.isAlive) return;
@@ -191,12 +192,26 @@ namespace intheclouds
 
             PlayVelocityBasedSFX(relativeVelocity, HitEnemyClip, MinPitch, MaxPitch, MaxVolume);
             justHit = true;
-            if (disableRbCollision)
+            if (ignoreCollisionsPostHit)
             {
-                rb.detectCollisions = false;
+                enemyColliders = currentEnemyStats.GetComponentsInChildren<Collider>();
+                IgnoreCollision(enemyColliders);
             }
             AppliedDamage?.Invoke();
             Invoke(nameof(ResetCollision), HitCooldown);
+        }
+        
+        public void IgnoreCollision(Collider[] other, bool ignore = true)
+        {
+            for (var i = 0; i < other.Length; i++)
+            {
+                var otherCollider = other[i];
+                for (var j = 0; j < grabbable.Colliders.Count; j++)
+                {
+                    var ourCollider = grabbable.Colliders[j];
+                    Physics.IgnoreCollision(otherCollider, ourCollider, ignore);
+                }
+            }
         }
 
         private void HandleImpactSFX(float relativeVelocity)
@@ -210,7 +225,8 @@ namespace intheclouds
         private void ResetCollision()
         {
             justHit = false;
-            rb.detectCollisions = true;
+            IgnoreCollision(enemyColliders, false);
+            enemyColliders = null;
         }
 
         private AudioSource PlayVelocityBasedSFX(float relativeVelocity, AudioClip clip, float minP, float maxP, float maxVol, float pitchModifier = 0.3f, float volumeModifier = 0.25f)

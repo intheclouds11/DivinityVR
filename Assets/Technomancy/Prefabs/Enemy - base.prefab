@@ -5773,6 +5773,7 @@ MonoBehaviour:
   statusEffectsContainer: {fileID: 4912884389607003663}
   statusEffectsText: {fileID: 3845219657697488977}
   modelHighlightEffect: {fileID: 2477534153581047596}
+  attachToCombatantTransform: {fileID: 8820317064804764899}
   weaponSheathed: 1
   weapon: {fileID: 6395415667681768155}
   weaponUnsheatheParent: {fileID: 5096530506661261595}

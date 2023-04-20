@@ -24,35 +24,20 @@ namespace intheclouds
 
         private void Activate(BaseStats combatant)
         {
-            combatant.Heal(baseAmount); // add particle effect in Heal?
             combatant.statusEffectsContainer.TryAddStatusEffect(statusEffect);
             
             if (activatedVFX != null)
             {
-                activatedVFX.transform.parent = null;
-                activatedVFX.transform.position = combatant.transform.position;
-                activatedVFX.transform.eulerAngles = combatant.transform.eulerAngles;
+                activatedVFX.transform.parent = combatant.transform.GetChild(0);
+                activatedVFX.transform.localPosition = Vector3.zero;
+                activatedVFX.transform.eulerAngles = Vector3.zero;
                 activatedVFX.SetActive(true);
-            }
-
-            if (casterVFX != null)
-            {
-                StartCoroutine(ScaleParticles());
-            }
-
-            enabled = false;
-        }
-
-        private IEnumerator ScaleParticles()
-        {
-            while (casterVFX.transform.localScale.x <= 3)
-            {
-                casterVFX.transform.localScale *= 1 + Time.deltaTime;
-                yield return null;
             }
 
             OnAbilityUsed();
             ResetAbilityTransform();
+
+            enabled = false;
         }
     }
 }

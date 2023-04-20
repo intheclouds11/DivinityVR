@@ -18,7 +18,6 @@ namespace HurricaneVR.Framework.ControllerInput
     public class HVRPlayerInputs : MonoBehaviour
     {
         public float SmoothTurningFactor = 0.2f;
-        public bool AllowTeleportInput = false;
         
         [Header("Grab Settings")]
         public bool CanDistanceGrab = true;
@@ -98,6 +97,10 @@ namespace HurricaneVR.Framework.ControllerInput
 
         protected virtual void UpdateInput()
         {
+            TurnAxis = GetTurnAxis(false);
+            SmoothedTurnAxis = GetTurnAxis(true);
+            MouseAxis = GetMouse(out IsMouseDown);
+
             if (!UpdateInputs)
                 return;
 
@@ -107,8 +110,6 @@ namespace HurricaneVR.Framework.ControllerInput
             SetState(ref RightTriggerGrabState, RightController.Trigger > TriggerGrabThreshold);
 
             MovementAxis = GetMovementAxis();
-            TurnAxis = GetTurnAxis(false);
-            SmoothedTurnAxis = GetTurnAxis(true);
             IsTeleportActivated = GetTeleportActivated();
             IsTeleportDeactivated = GetTeleportDeactivated();
             IsSprintingActivated = GetSprinting();
@@ -126,7 +127,6 @@ namespace HurricaneVR.Framework.ControllerInput
 
             IsJumpActivated = GetIsJumpActivated();
             IsStandActivated = GetStand();
-            MouseAxis = GetMouse(out IsMouseDown);
 
             ResetState(ref CrouchState);
             ResetState(ref StandState);
@@ -428,10 +428,6 @@ namespace HurricaneVR.Framework.ControllerInput
 
         protected virtual bool GetTeleportActivated()
         {
-            if (!AllowTeleportInput)
-            {
-                return false;
-            }
             if (HVRInputManager.Instance.RightController.ControllerType == HVRControllerType.Vive)
             {
                 return HVRController.GetButtonState(HVRHandSide.Right, HVRButtons.Menu).Active;

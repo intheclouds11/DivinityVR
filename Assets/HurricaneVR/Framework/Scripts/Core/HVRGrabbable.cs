@@ -153,8 +153,8 @@ namespace HurricaneVR.Framework.Core
         public bool UseColliderClosestPoint { get; set; } = true;
 
         [Tooltip("If true, grabbing this object will disable hand collision while held")]
-        public bool DisableHandCollision = true;
-        public bool DisableBodyCollision = false;
+        public bool DisableHandCollision;
+        public bool DisableBodyCollision;
 
         [Tooltip("If in a networked game, can someone take this object from your hand?")]
         public bool AllowMultiplayerSwap;

@@ -23,11 +23,11 @@ namespace intheclouds
 
         protected override void HandleSmoothRotation()
         {
-            var input = GetTurnAxis().x;
+            var input = GetTurnAxis();
             float newInput = GetSmoothedTurnAxis().x;
             float threshold = SmoothInputForSmoothTurn ? SmoothTurnThresholdSmoothed : SmoothTurnThreshold;
 
-            if (Math.Abs(input) < threshold || teleportCooldown > 0)
+            if (Math.Abs(input.x) < threshold || Mathf.Abs(input.y) > 0.5f || teleportCooldown > 0)
             {
                 if (TunnelTurningInput && TunnellingMobile.GetAngularVelocitySmoothed() <= 0.15f)
                 {
@@ -46,13 +46,13 @@ namespace intheclouds
 
             if (!SmoothInputForSmoothTurn)
             {
-                if (input > 0)
+                if (input.x > 0)
                 {
-                    newInput = input.Remap(SmoothTurnThreshold, 1, 0, 1);
+                    newInput = input.x.Remap(SmoothTurnThreshold, 1, 0, 1);
                 }
                 else
                 {
-                    newInput = input.Remap(-1, -SmoothTurnThreshold, -1, 0);
+                    newInput = input.x.Remap(-1, -SmoothTurnThreshold, -1, 0);
                 }
             }
 

@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 7992635851608190493}
   - component: {fileID: 7124610102628875274}
   m_Layer: 20
-  m_Name: BroadSword
+  m_Name: Broad Sword
   m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   GrabColliders: []
   ConsiderGrabPointAngle: 1
   <UseColliderClosestPoint>k__BackingField: 1
-  DisableHandCollision: 1
+  DisableHandCollision: 0
   DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}

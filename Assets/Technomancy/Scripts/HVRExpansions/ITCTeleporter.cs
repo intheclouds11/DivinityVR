@@ -35,11 +35,6 @@ namespace intheclouds
 
         protected override void EnabledCheck()
         {
-            if (RightHand.IsHovering || RightHand.IsHoveringSocket || RightHandForceGrabber.IsHovering)
-            {
-                Disable();
-                return;
-            }
             if (PlayerGroundedCheck && Player && !Player.IsGrounded)
             {
                 Disable();
@@ -64,7 +59,7 @@ namespace intheclouds
                 return;
             }
 
-            if (Forward.y >= VerticalCancelThreshold)
+            if (Forward.y * 90 >= VerticalCancelAngle)
             {
                 if (VerticalCancelUntilDeactivateTeleport)
                 {
@@ -97,7 +92,7 @@ namespace intheclouds
         {
             if (PlayerInputs.IsTeleportDeactivated)
             {
-                if (VerticalCancelUntilDeactivateTeleport && Forward.y <= VerticalCancelThreshold)
+                if (VerticalCancelUntilDeactivateTeleport && Forward.y * 90 <= VerticalCancelAngle)
                 {
                     verticalCanceled = false;
                 }

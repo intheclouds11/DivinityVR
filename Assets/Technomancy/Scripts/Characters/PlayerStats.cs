@@ -127,8 +127,8 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    statusEffectsContainer.Cooldown();
-                    LocalUserObjects.abilitySystem.Cooldown();
+                    statusEffectsContainer.StatusEffectCooldown();
+                    LocalUserObjects.abilitySystem.AbilityCooldown();
                     playerMovementAP.StartTurn();
                 }
                 else

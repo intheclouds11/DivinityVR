@@ -16,23 +16,19 @@ namespace intheclouds
         public GameObject[] controllerHints;
         public bool followPlayer;
         public bool menuIsOpen;
-        public GameObject playerSelectPrefab;
-        public LayoutGroup playerSelectButtonGroup;
         public Toggle SmoothTurnToggle;
         public Toggle FollowToggle;
         public Toggle DebugModeToggle;
         private GameObject spawnPoint;
         private GameObject followThis;
         private LocalUserObjects currentUserObjects;
-        // private List<LocalUserObjects> localUserObjectsList = new List<LocalUserObjects>();
-        private List<GameObject> currentPlayerSelectButtons = new List<GameObject>();
         private GameObject canvasGO;
 
         private void Start()
         {
             Instance = this;
             canvasGO = transform.GetChild(0).gameObject;
-            menuIsOpen = canvasGO.activeInHierarchy;
+            canvasGO.SetActive(false);
             
             UserSetup(LocalUserObjects.Instance.PlayerStats);
             
@@ -67,15 +63,37 @@ namespace intheclouds
         {
             if (!menuIsOpen || forceShow)
             {
-                transform.position = spawnPoint.transform.position;
-                canvasGO.SetActive(true);
+                ShowMenu();
             }
             else
             {
-                canvasGO.SetActive(false);
+                HideMenu();
             }
 
             menuIsOpen = !menuIsOpen;
+        }
+
+        private void ShowMenu()
+        {
+            currentUserObjects.ITCPlayerController.RotationEnabled = false;
+            currentUserObjects.ITCPlayerController.MovementEnabled = false;
+            currentUserObjects.ITCTeleporter.TeleportEnabled = false;
+            transform.position = spawnPoint.transform.position;
+            canvasGO.SetActive(true);
+        }
+
+        private void HideMenu()
+        {
+            currentUserObjects.ITCPlayerController.RotationEnabled = true;
+            if (!currentUserObjects.PlayerStats.InCombat)
+            {
+                currentUserObjects.ITCPlayerController.MovementEnabled = true;
+            }
+            if (currentUserObjects.ITCTeleporter.InitialTeleportEnabled)
+            {
+                currentUserObjects.ITCTeleporter.TeleportEnabled = true;
+            }
+            canvasGO.SetActive(false);
         }
 
         public void Toggle_SmoothTurn(bool smooth)
@@ -94,6 +112,7 @@ namespace intheclouds
             Startup.SaveDebugSetting(toggle ? 1 : 0);
         }
 
+        // Currently only used when selecting tabs in menu. Can be called if want to show player specific page
         public void ChangeTab(int tabIndex)
         {
             for (var i = 0; i < Tabs.Length; i++)

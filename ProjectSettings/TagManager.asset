@@ -18,6 +18,7 @@ TagManager:
   - EngageTrigger
   - Potion
   - PointerFingerTip
+  - HandTriggerCollider
   layers:
   - Default
   - TransparentFX

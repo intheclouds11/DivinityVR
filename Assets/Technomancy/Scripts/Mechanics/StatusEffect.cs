@@ -8,17 +8,19 @@ namespace intheclouds
     public class StatusEffect : MonoBehaviour
     {
         public bool ProcessOnEnabled;
-        public int ChanceToApply;
+        public int ChanceToApply = 100;
         public StatusEffectType type;
         public int effectAmount;
         public int cooldown;
         public int cooldownTimer;
         public AudioClip activatedClip;
         public GameObject activeVFX;
+        public GameObject activatedVFX;
         public BaseStats CombatantWhoApplied;
         private BaseStats combatant;
         private Transform originalParent;
         private GameObject spawnedActiveVFX;
+        private GameObject spawnedActivatedVFX;
 
         private void OnDestroy()
         {
@@ -27,10 +29,17 @@ namespace intheclouds
                 Debug.Log("Stun removed!");
                 combatant.Stun(false);
             }
-            
+
             if (spawnedActiveVFX)
             {
-                Destroy(spawnedActiveVFX);
+                var particles = spawnedActiveVFX.GetComponent<ParticleSystem>();
+                Destroy(spawnedActiveVFX, particles ? particles.main.duration - particles.time : 2f);
+            }
+
+            if (spawnedActivatedVFX)
+            {
+                var particles = spawnedActivatedVFX.GetComponent<ParticleSystem>();
+                Destroy(spawnedActivatedVFX, particles ? particles.main.duration - particles.time : 2f);
             }
         }
 
@@ -48,7 +57,8 @@ namespace intheclouds
             activatedClip = effect.activatedClip;
             ProcessOnEnabled = effect.ProcessOnEnabled;
             activeVFX = effect.activeVFX;
-            
+            activatedVFX = effect.activatedVFX;
+
             if (ProcessOnEnabled)
             {
                 ActivateStatusEffect(preExisting);
@@ -57,9 +67,10 @@ namespace intheclouds
 
         public void ActivateStatusEffect(bool preExisting = false)
         {
+            int damage = (int) (effectAmount * (1 + combatant.level * 0.5f));
+            
             if (type == StatusEffectType.Burning)
             {
-                int damage = (int) (4 * (1 + combatant.level * 0.5f));
                 combatant.TakeDamage(null, damage, DamageType.Magic, ScalingType.Pyrokinetic, null);
             }
             else if (type == StatusEffectType.Regenerating)
@@ -68,8 +79,11 @@ namespace intheclouds
             }
             else if (type == StatusEffectType.Stunned)
             {
-                Debug.Log("Stunned!");
                 combatant.Stun(true);
+            }
+            else if (type == StatusEffectType.Bleeding)
+            {
+                combatant.TakeDamage(null, damage, DamageType.Magic, ScalingType.None, null);
             }
             else
             {
@@ -78,12 +92,29 @@ namespace intheclouds
 
             if (activatedClip)
             {
-                SFXPlayer.Instance.PlaySFXRandomPitch(activatedClip, transform.parent.position, 0.9f, 1, 1);
+                SFXPlayer.Instance.PlaySFX(activatedClip, combatant.attachToCombatantTransform.position, 1, 1);
             }
 
-            if (activeVFX && !preExisting && !spawnedActiveVFX)
+            if (!preExisting)
             {
-                spawnedActiveVFX = Instantiate(activeVFX, transform.parent.position + Vector3.up, Quaternion.identity, transform.parent);
+                if (activeVFX && !spawnedActiveVFX)
+                {
+                    spawnedActiveVFX = Instantiate(activeVFX, combatant.attachToCombatantTransform.position, Quaternion.identity, combatant.attachToCombatantTransform);
+                }
+
+                if (activatedVFX)
+                {
+                    if (!spawnedActivatedVFX)
+                    {
+                        spawnedActivatedVFX = Instantiate(activatedVFX, combatant.attachToCombatantTransform.position, Quaternion.identity,
+                            combatant.attachToCombatantTransform);
+                    }
+                    else
+                    {
+                        spawnedActivatedVFX.SetActive(false);
+                        spawnedActivatedVFX.SetActive(true);
+                    }
+                }
             }
         }
     }

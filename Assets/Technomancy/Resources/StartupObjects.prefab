@@ -1694,12 +1694,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 5724755388713953685}
     m_Modifications:
     - target: {fileID: 6273076188375066667, guid: d72e20fc8cae31247a72984701b4b4e2, type: 3}
+      propertyPath: m_Volume
+      value: 0.047
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273076188375066667, guid: d72e20fc8cae31247a72984701b4b4e2, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6273076188375066669, guid: d72e20fc8cae31247a72984701b4b4e2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6273076188483548155, guid: d72e20fc8cae31247a72984701b4b4e2, type: 3}
       propertyPath: m_RootOrder
@@ -1772,10 +1776,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UserMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 1558061623354437700, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
-      propertyPath: m_IsOn
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2686057929713334427, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1828,10 +1828,6 @@ PrefabInstance:
       propertyPath: controllerHints.Array.data[1]
       value: 
       objectReference: {fileID: 968306249731172608}
-    - target: {fileID: 8998210615526483567, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2bd013417232c24b9cd34198ccded0c, type: 3}
 --- !u!4 &2275550834876863019 stripped
@@ -1933,10 +1929,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3005365430028561739, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: DebugUI
       value: 
@@ -1945,6 +1937,10 @@ PrefabInstance:
       propertyPath: DebugStatusText
       value: 
       objectReference: {fileID: 7384515885956731215}
+    - target: {fileID: 5469973368956513285, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+      propertyPath: holdTimeRequired
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5882220326935334823, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

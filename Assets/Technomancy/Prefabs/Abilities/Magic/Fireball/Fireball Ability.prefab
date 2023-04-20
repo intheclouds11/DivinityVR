@@ -15035,14 +15035,14 @@ MonoBehaviour:
   BreakDistanceSource: 0
   Stationary: 0
   ReleasedAngularConversionFactor: 0
-  ReleasedVelocityFactor: 1
+  ReleasedVelocityFactor: 2
   ReleasedAngularFactor: 1
   GrabIndicator: {fileID: 0}
   ForceGrabIndicator: {fileID: 0}
   ShowGrabIndicator: 1
   ShowTriggerGrabIndicator: 1
   ShowForceGrabIndicator: 1
-  ForceGrabbable: 1
+  ForceGrabbable: 0
   ForcePullOverride: {fileID: 0}
   JointOverride: {fileID: 0}
   OneHandJointSettings: {fileID: 0}
@@ -15128,9 +15128,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6921882747449717690}
   serializedVersion: 2
-  m_Mass: 0.1
+  m_Mass: 0.01
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

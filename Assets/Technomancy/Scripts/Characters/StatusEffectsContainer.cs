@@ -29,11 +29,11 @@ namespace intheclouds
         {
             if (!combatant.InCombat)
             {
-                CooldownExploration();
+                StatusEffectCooldownExploration();
             }
         }
 
-        public void CooldownExploration()
+        public void StatusEffectCooldownExploration()
         {
             if (cooldownTimerNoCombat < explorationCooldownSpeed)
             {
@@ -41,12 +41,12 @@ namespace intheclouds
             }
             else if (cooldownTimerNoCombat >= explorationCooldownSpeed)
             {
-                Cooldown();
+                StatusEffectCooldown();
                 cooldownTimerNoCombat = 0;
             }
         }
 
-        public void Cooldown()
+        public void StatusEffectCooldown()
         {
             if (statusEffectList.Count > 0)
             {
@@ -104,7 +104,7 @@ namespace intheclouds
 
 
             int applyChanceRange = new System.Random().Next(1, 101);
-            if (effect.ChanceToApply > 0 && effect.ChanceToApply < applyChanceRange)
+            if (effect.ChanceToApply > 0 && effect.ChanceToApply <= applyChanceRange)
             {
                 Debug.Log($"effect.ChanceToApply {effect.ChanceToApply} < applyChanceRange {applyChanceRange}");
                 return;
@@ -146,6 +146,16 @@ namespace intheclouds
                 for (int i = 0; i < statusEffectList.Count; i++)
                 {
                     if (statusEffectList[i].type == StatusEffectType.Wet)
+                    {
+                        RemoveStatusEffect(i--);
+                    }
+                }
+            }
+            else if (statusEffect.type == StatusEffectType.Fortify)
+            {
+                for (int i = 0; i < statusEffectList.Count; i++)
+                {
+                    if (statusEffectList[i].type == StatusEffectType.Burning)
                     {
                         RemoveStatusEffect(i--);
                     }

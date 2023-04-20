@@ -92,7 +92,7 @@ namespace intheclouds
                 _turn = value;
                 if (_turn)
                 {
-                    statusEffectsContainer.Cooldown();
+                    statusEffectsContainer.StatusEffectCooldown();
                     enemyAI.StartTurn();
                     // todo: apply status effect damage and cooldown decrement here!
                 }

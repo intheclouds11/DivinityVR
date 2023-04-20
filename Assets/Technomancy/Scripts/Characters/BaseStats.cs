@@ -61,6 +61,7 @@ namespace intheclouds
         public int Hydrosophist; //+5% to all water damage, +5% heal amount to all heal abilities, +5% magic armour from skills and potions
         public int Aerotheurge; //+5% to all air damage
         public int Geomancer; //+5% to all earth and poison damage, +5% more physical armour from skills and potions
+        public int Scoundrel; //+5% to all dagger damage, +50% damage to backstabs
         [Header("Defense")]
         public int Retribution; //+5% damage reflected
         public int Leadership; //+2% Dodging and +3% to all resistances - Granted to all allies in a 8m radius
@@ -102,6 +103,7 @@ namespace intheclouds
         public StatusEffectsContainer statusEffectsContainer;
         public TextMeshProUGUI statusEffectsText;
         public HighlightEffect modelHighlightEffect;
+        public Transform attachToCombatantTransform;
 
         public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {
