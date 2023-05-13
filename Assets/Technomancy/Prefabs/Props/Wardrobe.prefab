@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -132,7 +133,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 0}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
@@ -150,7 +151,7 @@ MonoBehaviour:
   - {fileID: 1401482253}
   - {fileID: 1401482252}
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
   DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
@@ -691,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -719,7 +721,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 0}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
@@ -737,7 +739,7 @@ MonoBehaviour:
   - {fileID: 2080229515}
   - {fileID: 2080229514}
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
   DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
@@ -1216,6 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -1244,7 +1247,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 0}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
@@ -1262,7 +1265,7 @@ MonoBehaviour:
   - {fileID: 2033801065}
   - {fileID: 2033801064}
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
   DisableBodyCollision: 0
   AllowMultiplayerSwap: 0
@@ -3441,6 +3444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -3469,7 +3473,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 8300000, guid: 880bdc05f377fd042b7f75849c67fc16, type: 3}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
@@ -3483,7 +3487,7 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
   DisableBodyCollision: 1
   AllowMultiplayerSwap: 0
@@ -5984,6 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 0
@@ -6012,7 +6017,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 8300000, guid: 880bdc05f377fd042b7f75849c67fc16, type: 3}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
@@ -6026,7 +6031,7 @@ MonoBehaviour:
   ExtraIgnoreCollisionParents: []
   GrabColliders: []
   ConsiderGrabPointAngle: 1
-  UseColliderClosestPoint: 1
+  <UseColliderClosestPoint>k__BackingField: 1
   DisableHandCollision: 0
   DisableBodyCollision: 1
   AllowMultiplayerSwap: 0

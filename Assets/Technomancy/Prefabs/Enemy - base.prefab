@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 5335135139373191336}
   m_Layer: 30
   m_Name: 'Surface Effect Trigger '
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5749,6 +5749,7 @@ MonoBehaviour:
   Hydrosophist: 0
   Aerotheurge: 0
   Geomancer: 0
+  Scoundrel: 0
   Retribution: 0
   Leadership: 0
   hurtAudioClips:

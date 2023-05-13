@@ -19,6 +19,8 @@ TagManager:
   - Potion
   - PointerFingerTip
   - HandTriggerCollider
+  - LeftHandInventory
+  - RightHandInventory
   layers:
   - Default
   - TransparentFX

@@ -11,16 +11,17 @@ namespace intheclouds
         public AudioClip ValidHoverClip;
         public AudioClip ValidHoverExitClip;
         public AudioClip InvalidHoverClip;
+        public float Volume = 0.7f;
 
         public override void OnHoverEnter(HVRSocket socket, HVRGrabbable grabbable, bool isValid)
         {
             if (isValid && ValidHoverClip)
             {
-                SFXPlayer.Instance.PlaySFX(ValidHoverClip, transform.position);
+                SFXPlayer.Instance.PlaySFX(ValidHoverClip, transform.position, 1, Volume);
             }
             else if (!isValid && InvalidHoverClip)
             {
-                SFXPlayer.Instance.PlaySFX(InvalidHoverClip, transform.position);
+                SFXPlayer.Instance.PlaySFX(InvalidHoverClip, transform.position, 1, Volume);
             }
         }
 
@@ -28,7 +29,7 @@ namespace intheclouds
         {
             if (isValid && ValidHoverExitClip)
             {
-                SFXPlayer.Instance.PlaySFX(ValidHoverExitClip, transform.position);
+                SFXPlayer.Instance.PlaySFX(ValidHoverExitClip, transform.position, 1, Volume);
             }
         }
     }

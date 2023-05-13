@@ -95,7 +95,16 @@ namespace intheclouds
 
         private void CheckEndTurnButton()
         {
-            if (!gameManager.activeCombatant || (!gameManager.playerTurn && !Startup.Instance.debugMode)) return;
+            if (HVRInputManager.Instance.LeftController.PrimaryButtonState.JustDeactivated)
+            {
+                holdTimeLeftPrimaryButton = 0;
+                triggeredPrimaryInput = false;
+            }
+            
+            if (!gameManager.activeCombatant || (!gameManager.playerTurn && !Startup.Instance.debugMode))
+            {
+                return;
+            }
             
             if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active && !triggeredPrimaryInput)
             {
@@ -112,11 +121,6 @@ namespace intheclouds
                 }
 
                 holdTimeLeftPrimaryButton += Time.deltaTime;
-            }
-            else if (HVRInputManager.Instance.LeftController.PrimaryButtonState.JustDeactivated)
-            {
-                holdTimeLeftPrimaryButton = 0;
-                triggeredPrimaryInput = false;
             }
         }
     }

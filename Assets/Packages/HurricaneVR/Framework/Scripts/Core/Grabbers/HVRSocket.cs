@@ -15,6 +15,8 @@ namespace HurricaneVR.Framework.Core.Grabbers
 {
     public class HVRSocket : HVRGrabberBase
     {
+        public bool HandHovering { get; protected set; }
+        
         [Header("Grab Settings")]
         public HVRGrabControls GrabControl = HVRGrabControls.GripOrTrigger;
 
@@ -329,6 +331,8 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         public void OnHandGrabberEntered()
         {
+            HandHovering = true;
+            
             if (HandGrabActions != null)
             {
                 foreach (var action in HandGrabActions)
@@ -349,6 +353,8 @@ namespace HurricaneVR.Framework.Core.Grabbers
                         action.OnHoverExit(this, GrabbedTarget, true);
                 }
             }
+
+            HandHovering = false;
         }
 
         protected virtual void OnHoverGrabbableReleased(HVRGrabberBase grabber, HVRGrabbable grabbable)

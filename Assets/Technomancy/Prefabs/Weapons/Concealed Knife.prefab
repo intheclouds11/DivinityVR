@@ -1032,7 +1032,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 8300000, guid: d0acbd03ae02cbb4ba9f358de8949749, type: 3}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   GrabColliders: []
   ConsiderGrabPointAngle: 1
   <UseColliderClosestPoint>k__BackingField: 1
-  DisableHandCollision: 1
+  DisableHandCollision: 0
   DisableBodyCollision: 1
   AllowMultiplayerSwap: 0
   MasterGrabbable: {fileID: 0}
@@ -1161,10 +1161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poses:
-  - SocketTag: BackpackLargeSocket
+  - SocketTag: LargeSocket
     Position: {x: 0.00000022658688, y: 0.00000019924005, z: 0.0000000502923}
     EulerAngles: {x: 0.0000034150946, y: 270.00006, z: 270}
-  - SocketTag: BackpackSmallSocket
+  - SocketTag: SmallSocket
     Position: {x: 0.0076133884, y: -0.02218739, z: 0.012403383}
     EulerAngles: {x: 352.08344, y: 280.5133, z: 299.73132}
   - SocketTag: Holster
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   ScaleSize: 0
   SocketScale: 1
   ScaleOverride: {fileID: 0}
-  SocketedClip: {fileID: 0}
+  SocketedClip: {fileID: 8300000, guid: 9b424bd470d64e34f81ec06f2463c847, type: 3}
   UnsocketedClip: {fileID: 0}
   LinkedGrabbables: []
   SocketOrientation: {fileID: 0}

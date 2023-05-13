@@ -368,7 +368,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -771,7 +771,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -949,7 +949,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -1482,7 +1482,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackLargeSocket
+  PoseTag: LargeSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -1826,7 +1826,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -2421,7 +2421,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackLargeSocket
+  PoseTag: LargeSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -3176,7 +3176,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackLargeSocket
+  PoseTag: LargeSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -3623,7 +3623,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -4100,7 +4100,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -4749,7 +4749,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -5107,7 +5107,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -5285,7 +5285,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -5644,7 +5644,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:
@@ -5822,7 +5822,7 @@ MonoBehaviour:
   SocketFilters: []
   FilterCondition: 0
   DistanceSource: {fileID: 0}
-  PoseTag: BackpackSmallSocket
+  PoseTag: SmallSocket
   DisableCollision: 1
   SpawnedPrefab:
     m_PersistentCalls:

@@ -54,8 +54,7 @@ MonoBehaviour:
   DamageThreshold: 5
   HitCooldown: 0.25
   DamageType: 0
-  ElementalType: 0
-  ElementalChance: 0
+  ScalingType: 0
   StatusEffect: {fileID: 0}
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: d3d64966339bfeb4dafc7588004338e6, type: 3}
@@ -127,7 +126,7 @@ MonoBehaviour:
   TwoHandJointSettings: {fileID: 0}
   PullingSettingsOverride: {fileID: 0}
   PalmCenterOfMass: 0
-  HandGrabbedClip: {fileID: 0}
+  HandGrabbedClip: {fileID: 8300000, guid: 5fbea8947d91be9468a5f99a237b5ba9, type: 3}
   StartingSocket: {fileID: 0}
   LinkStartingSocket: 0
   SocketGrabPoints: []
