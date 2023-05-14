@@ -212,8 +212,8 @@ namespace HurricaneVR.Framework.ControllerInput
         {
             for (int i = 0; i < times; i++)
             {
-                Vibrate(data);
-                yield return new WaitForSeconds(data.Duration + delayBetween);
+                Vibrate(data.Amplitude, delayBetween, data.Duration, data.Frequency);
+                yield return new WaitUntil(() => remainingVibrateDuration <= 0);
             }
         }
 

@@ -50,7 +50,7 @@ namespace intheclouds
                 }
             }
 
-            foreach (EnemyStats enemy in EnemyManager.Instance.enemyList)
+            foreach (EnemyStats enemy in EnemyManager.Instance.Enemies)
             {
                 alreadyWet = false;
                 foreach (var statusEffect in enemy.statusEffectsContainer.statusEffectList)

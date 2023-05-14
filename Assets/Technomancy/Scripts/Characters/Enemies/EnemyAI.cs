@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using HurricaneVR.Framework.Core.Utils;
 using Pathfinding;
 using Pathfinding.RVO;
@@ -8,35 +10,68 @@ namespace intheclouds
 {
     public class EnemyAI : MonoBehaviour
     {
+        public bool attackOnSight = true;
+        public bool targetNearestPlayer;
+        [Header("Setup")]
         public AudioClip baseAttackHitAudioClip;
         public AudioClip baseAttackSwingAudioClip;
         public AudioClip footstepAudioClip;
         public AudioClip sheatheAudioClip;
         public AudioClip unsheatheAudioClip;
-        public bool attackOnSight = true;
-        public bool targetNearestPlayer;
+        
         private EnemyStats enemyStats;
+        private AIDestinationSetter aiDestinationSetter;
+        private RichAI ai;
         private Animator animator;
         private float distanceToTarget;
         private float distanceMoved;
         private Vector3 previousPosition;
-        public AIDestinationSetter aiDestinationSetter;
-        public RichAI ai;
         private bool hasAttacked;
         private bool reachedTarget;
         private PlayerStats targetedPlayer;
         private SpiritWander targetedPlayerSW;
+        private bool wasMovingBeforeHit;
         private static readonly int _isWalking = Animator.StringToHash("isWalking");
         private static readonly int _isAttacking = Animator.StringToHash("isAttacking");
         private static readonly int _isSheathing = Animator.StringToHash("isSheathing");
         private static readonly int _isUnsheathing = Animator.StringToHash("isUnsheathing");
+        private static readonly int _isDead = Animator.StringToHash("isDead");
+        private static readonly int _isHit = Animator.StringToHash("isHit");
 
-        private void Start()
+
+        private void Awake()
         {
             enemyStats = GetComponent<EnemyStats>();
             animator = GetComponent<Animator>();
             aiDestinationSetter = GetComponent<AIDestinationSetter>();
             ai = GetComponent<RichAI>();
+        }
+
+        private void Start()
+        {
+            enemyStats.EnemyDamaged += OnEnemyDamaged;
+            enemyStats.EnemyDied += OnEnemyDied;
+        }
+
+        private void OnEnemyDamaged()
+        {
+            wasMovingBeforeHit = ai.canMove;
+            ai.canMove = false;
+            // animator.SetBool(_isAttacking, false);
+            // animator.SetBool(_isWalking, false);
+            animator.SetBool(_isUnsheathing, false);
+            animator.SetBool(_isSheathing, false);
+            animator.SetBool(_isHit, true);
+        }
+
+        private void OnEnemyDied()
+        {
+            animator.SetBool(_isAttacking, false);
+            animator.SetBool(_isWalking, false);
+            animator.SetBool(_isUnsheathing, false);
+            animator.SetBool(_isSheathing, false);
+            animator.SetBool(_isHit, false);
+            animator.SetBool(_isDead, true);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -45,7 +80,14 @@ namespace intheclouds
             {
                 if (!enemyStats.InCombat && attackOnSight)
                 {
-                    GameManager.Instance.UpdateGameState(GameState.CombatStart);
+                    if (!GameManager.Instance.activeCombatant)
+                    {
+                        GameManager.Instance.UpdateGameState(GameState.CombatStart);
+                    }
+                    else
+                    {
+                        GameManager.Instance.EnemyJoinedCombat(enemyStats);
+                    }
                 }
             }
         }
@@ -54,7 +96,7 @@ namespace intheclouds
         {
             if (!enemyStats.Turn || !enemyStats.isAlive) return;
 
-            if (GameManager.Instance.playersAlive == 0)
+            if (!GameManager.Instance.players.Any())
             {
                 EndCombat();
                 enabled = false;
@@ -63,7 +105,10 @@ namespace intheclouds
 
             // todo: add other attacks based on what skills enemy has
 
-            BaseAttack();
+            if (!animator.GetBool(_isHit))
+            {
+                BaseAttack();
+            }
         }
 
         private void BaseAttack()
@@ -84,7 +129,7 @@ namespace intheclouds
 
             if (ai.reachedDestination)
             {
-                aiDestinationSetter.target = null;
+                ai.canMove = false;
             }
         }
 
@@ -110,13 +155,11 @@ namespace intheclouds
             }
             if (targetNearestPlayer)
             {
-                Debug.Log($"targeting nearest player: {FindNearestPlayer().Name}");
                 targetedPlayer = FindNearestPlayer();
                 aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
             else
             {
-                Debug.Log($"targeting player with highest health: {FindPlayerWithHighestHealth().Name}");
                 targetedPlayer = FindPlayerWithHighestHealth();
                 aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
@@ -186,7 +229,6 @@ namespace intheclouds
 
         private void AttackTarget()
         {
-            Debug.Log("enemy attacked");
             enemyStats.CurrentAP -= 2;
             ai.canMove = false;
             hasAttacked = true;
@@ -254,7 +296,6 @@ namespace intheclouds
 
         public void DamagePlayer()
         {
-            Debug.Log("DAMAGE PLAYER");
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackHitAudioClip, transform, 0.9f, 1.1f, 0.5f, 20);
             PlayerStats player;
             if (targetedPlayerSW.isActivated)
@@ -271,11 +312,11 @@ namespace intheclouds
             {
                 if (targetNearestPlayer)
                 {
-                    aiDestinationSetter.target = FindNearestPlayer().LocalUserObjects.waist.transform;
+                    aiDestinationSetter.target = FindNearestPlayer()?.LocalUserObjects.waist.transform;
                 }
                 else
                 {
-                    aiDestinationSetter.target = FindPlayerWithHighestHealth().LocalUserObjects.waist.transform;
+                    aiDestinationSetter.target = FindPlayerWithHighestHealth()?.LocalUserObjects.waist.transform;
                 }
             }
         }
@@ -284,6 +325,16 @@ namespace intheclouds
         {
             hasAttacked = false;
             animator.SetBool(_isAttacking, false);
+        }
+        
+        public void EndHitAnimation()
+        {
+            animator.SetBool(_isHit, false);
+            if (wasMovingBeforeHit)
+            {
+                wasMovingBeforeHit = false;
+                ai.canMove = true;
+            }
         }
 
         public void AttachDetachWeapon()

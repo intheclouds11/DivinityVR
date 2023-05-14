@@ -12,28 +12,27 @@ using UnityEngine.Serialization;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private AudioSource audioSource;
+    public GameState state;
+    public List<KeyValuePair<BaseStats, int>> turnOrderList;
+    public List<PlayerStats> players;
+    public PlayerStats controlledPlayer;
+    [field: SerializeField] public BaseStats activeCombatant { get; private set; }
+    public bool NextTurn;
+    public static event Action<GameState> GameStateChanged;
+    [Header("Setup")]
     public AudioSource MusicAudioSource;
     public AudioClip combatStartClip;
+    public AudioClip enemyJoinedClip;
     public AudioClip nextTurnClip;
     public AudioClip combatEndClip;
     public AudioClip gameOverClip;
-    public GameState state;
-    public static event Action<GameState> GameStateChanged;
-    public List<PlayerStats> players;
-    public bool NextTurn;
-    public bool NewRound;
-    public BaseStats activeCombatant;
-    private BaseStats firstCombatant;
-    private BaseStats previousCombatant;
-    public int enemiesAlive;
-    public int playersAlive;
     public TextMeshProUGUI turnOrderText;
     public GameObject turnOrderUI;
+
+    private BaseStats firstCombatant;
+    private BaseStats previousCombatant;
     private Coroutine turnOrderCoroutine;
-    public List<KeyValuePair<BaseStats, int>> turnOrderList;
-    public PlayerStats controlledPlayer;
-    public bool playerTurn;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -88,29 +87,25 @@ public class GameManager : MonoBehaviour
 
     private void HandleCombatStart()
     {
-        Debug.Log("COMBAT START");
-        enemiesAlive = 0;
-        playersAlive = 0;
-        
-        Dictionary<BaseStats, int> witsList = new Dictionary<BaseStats, int>();
-        foreach (var enemy in EnemyManager.Instance.enemyList)
-        {
-            enemiesAlive += 1;
-            enemy.InCombat = true;
-            witsList.Add(enemy, enemy.wits);
-        }
+        var witsList = new Dictionary<BaseStats, int>();
 
         foreach (var player in players)
         {
-            playersAlive += 1;
             player.InCombat = true;
             player.GetComponent<LocalUserObjects>().PlayerMovementAP.enabled = true;
             if (player.PlayerControlled)
             {
-                SFXPlayer.Instance.PlaySFXAttach(combatStartClip, player.LocalUserObjects.Camera.transform, 1f, 0.5f, 10, false);
+                SFXPlayer.Instance.PlaySFX(combatStartClip, player.LocalUserObjects.Camera.transform.position, 1f, 0.5f, 10, false, false);
             }
 
             witsList.Add(player, player.Wits);
+        }
+
+        EnemyManager.Instance.PopulateEnemiesInCombatList();
+        foreach (var enemy in EnemyManager.Instance.EnemiesInCombat)
+        {
+            enemy.InCombat = true;
+            witsList.Add(enemy, enemy.wits);
         }
 
         var sortedTurnOrderEnumerable = from entry in witsList orderby entry.Value descending select entry;
@@ -119,93 +114,91 @@ public class GameManager : MonoBehaviour
         foreach (var character in turnOrderList)
         {
             character.Key.InCombat = true;
-            // if (character.Key.TryGetComponent(out PlayerStats playerStats))
-            // {
-            //     playerStats.InCombat = true;
-            // }
         }
 
         turnOrderUI.SetActive(true);
-        turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrderList));
+        turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine());
     }
 
-    private IEnumerator TurnOrderCoroutine(List<KeyValuePair<BaseStats, int>> turnOrder)
+    private IEnumerator TurnOrderCoroutine()
     {
-        activeCombatant = turnOrder[0].Key;
-        Debug.Log($"---Active combatant: {activeCombatant.Name}---");
-        if (!firstCombatant)
+        while (true)
         {
-            firstCombatant = activeCombatant;
-        }
-        else if (activeCombatant == firstCombatant)
-        {
-            NewRound = true;
-            SurfaceEffectsContainer.Instance.Cooldown();
-        }
-        
-        activeCombatant.Turn = true;
-        playerTurn = activeCombatant is PlayerStats;
+            activeCombatant = turnOrderList[0].Key;
+            UpdateTurnOrderText(turnOrderList);
+            activeCombatant.Turn = true;
+            NextTurn = false;
 
-        UpdateTurnOrderText(turnOrder);
-
-        NextTurn = false;
-
-        while (!NextTurn)
-        {
-            if (playersAlive == 0)
+            if (!firstCombatant)
             {
-                HandleGameOver();
+                firstCombatant = activeCombatant;
+            }
+            else if (activeCombatant == firstCombatant)
+            {
+                StartNewRound();
             }
 
-            if (enemiesAlive == 0)
+            while (!NextTurn)
             {
-                EndCombat();
+                if (!players.Any() || !EnemyManager.Instance.EnemiesInCombat.Any())
+                {
+                    EndCombat();
+                }
+
+                yield return null;
             }
 
-            yield return null;
+            // Move current combatant to end of turnOrderList
+            turnOrderList.Add(turnOrderList[0]);
+            turnOrderList.Remove(turnOrderList[0]);
+            
+            previousCombatant = activeCombatant;
+            SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.Instance.ITCPlayerController.transform.position, 1f, 1f, 10, false, false);
         }
+    }
 
-        turnOrder.Add(turnOrder[0]);
-        turnOrder.Remove(turnOrder[0]);
-        previousCombatant = activeCombatant;
-        SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.Instance.ITCPlayerController.transform.position);
-
-        turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine(turnOrder));
+    private static void StartNewRound()
+    {
+        SurfaceEffectsContainer.Instance.Cooldown();
     }
 
     private void EndCombat()
     {
-        Debug.Log($"ENEMIES FELLED. EXITING COMBAT");
+        if (!players.Any())
+        {
+            Debug.Log($"PLAYERS FELLED. RESTART FROM LAST SAVE");
+            audioSource.PlayOneShot(gameOverClip);
+            MusicAudioSource.Stop();
+            if (!UserMenu.Instance.menuIsOpen)
+            {
+                UserMenu.Instance.ToggleMenu(true);
+            }
+        }
+        else
+        {
+            Debug.Log($"ENEMIES FELLED. EXITING COMBAT");
+            audioSource.PlayOneShot(combatEndClip);
+            MusicAudioSource.Pause();
+        }
+
         StopCoroutine(turnOrderCoroutine);
-        audioSource.PlayOneShot(combatEndClip);
-        MusicAudioSource.Pause();
         turnOrderUI.SetActive(false);
         turnOrderText.text = "";
         firstCombatant = null;
+        activeCombatant = null;
+
         foreach (var player in players)
         {
             player.CurrentAP = player.MaxAP;
             player.InCombat = false;
             player.Leaning = false;
+            player.Turn = false;
         }
-    }
 
-    private void HandleGameOver()
-    {
-        Debug.Log($"PLAYERS FELLED. RESTART FROM LAST SAVE");
-        StopCoroutine(turnOrderCoroutine);
-        audioSource.PlayOneShot(gameOverClip);
-        MusicAudioSource.Stop();
-        turnOrderText.text = "";
-
-        foreach (var enemy in EnemyManager.Instance.enemyList)
+        foreach (var enemy in EnemyManager.Instance.EnemiesInCombat)
         {
             enemy.InCombat = false;
-        }
-
-        if (!UserMenu.Instance.menuIsOpen)
-        {
-            UserMenu.Instance.ToggleMenu(true);
+            enemy.Turn = false;
         }
     }
 
@@ -216,7 +209,7 @@ public class GameManager : MonoBehaviour
         {
             highlight.highlighted = true;
         }
-        
+
         if (previousCombatant)
         {
             var highlightPrev = previousCombatant.GetComponentInChildren<HighlightEffect>();
@@ -225,12 +218,20 @@ public class GameManager : MonoBehaviour
                 highlightPrev.highlighted = false;
             }
         }
-        
+
         turnOrderText.text = "Turn Order: <br>";
         for (int i = 0; i < turnOrder.Count; i++)
         {
             turnOrderText.text += $"{i + 1}. {turnOrder[i].Key.Name}<br>";
         }
+    }
+
+    public void EnemyJoinedCombat(EnemyStats enemyStats)
+    {
+        SFXPlayer.Instance.PlaySFX(enemyJoinedClip, enemyStats.transform.position, 1f, 1f, 10, false, false);
+        EnemyManager.Instance.EnemiesInCombat.Add(enemyStats);
+        turnOrderList.Add(new KeyValuePair<BaseStats, int>(enemyStats, enemyStats.wits));
+        enemyStats.InCombat = true;
     }
 
     private void HandleEnemyTurn()

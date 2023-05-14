@@ -101,7 +101,7 @@ namespace intheclouds
                 triggeredPrimaryInput = false;
             }
             
-            if (!gameManager.activeCombatant || (!gameManager.playerTurn && !Startup.Instance.debugMode))
+            if (!gameManager.activeCombatant || (!LocalUserObjects.Instance.PlayerStats.Turn && !Startup.Instance.debugMode))
             {
                 return;
             }

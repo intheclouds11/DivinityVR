@@ -376,7 +376,7 @@ namespace intheclouds
         {
             SFXPlayer.Instance.PlaySFXRandomPitch(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)],
                 LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
-            GameManager.Instance.playersAlive -= 1;
+            GameManager.Instance.players.Remove(this);
             GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, Wits));
             GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
         }

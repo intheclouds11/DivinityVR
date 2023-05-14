@@ -2378,7 +2378,7 @@ MonoBehaviour:
   overlayTextureScale: 1
   outline: 0.537
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 1
+  outlineWidth: 0.25
   outlineQuality: 1
   outlineDownsampling: 1
   outlineVisibility: 0
@@ -2386,7 +2386,7 @@ MonoBehaviour:
   outlineBlitDebug: 0
   outlineIndependent: 0
   glow: 1.85
-  glowWidth: 0.4
+  glowWidth: 0.25
   glowQuality: 1
   glowDownsampling: 2
   glowHQColor: {r: 0.64, g: 1, b: 0, a: 1}
@@ -2432,11 +2432,11 @@ MonoBehaviour:
   targetFXTransitionDuration: 0.5
   targetFXStayDuration: 1.5
   targetFXVisibility: 1
-  seeThrough: 2
+  seeThrough: 1
   seeThroughOccluderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  seeThroughOccluderThreshold: 0.3
+    m_Bits: 3072
+  seeThroughOccluderThreshold: 0.1
   seeThroughOccluderMaskAccurate: 0
   seeThroughOccluderCheckInterval: 1
   seeThroughOccluderCheckIndividualObjects: 0
@@ -5792,15 +5792,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5039a9781704247bd928a5d1489c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackOnSight: 1
+  targetNearestPlayer: 0
   baseAttackHitAudioClip: {fileID: 8300000, guid: 77da00755a639814a8186a65d6f8917e, type: 3}
   baseAttackSwingAudioClip: {fileID: 8300000, guid: 5a898b17904ca98409c9b38df9b1a07d, type: 3}
   footstepAudioClip: {fileID: 8300000, guid: 3bcdd11c6359ba54d9c04f28dd6b6ea1, type: 3}
   sheatheAudioClip: {fileID: 8300000, guid: 6cac37911f221da48b4af156fd3c5b70, type: 3}
   unsheatheAudioClip: {fileID: 8300000, guid: 8526f8b1c72d81a42be4603e2c001f76, type: 3}
-  attackOnSight: 1
-  targetNearestPlayer: 0
-  aiDestinationSetter: {fileID: 0}
-  ai: {fileID: 0}
 --- !u!114 &7790177046847791708
 MonoBehaviour:
   m_ObjectHideFlags: 0

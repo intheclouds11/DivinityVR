@@ -1086,7 +1086,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
         
         private void CheckDropToggleRelease()
         {
-            if (!IsGrabbing)
+            if (!IsGrabbing || GrabTrigger == HVRGrabTrigger.ManualRelease)
             {
                 return;
             }
@@ -1107,10 +1107,9 @@ namespace HurricaneVR.Framework.Core.Grabbers
             if (hasGripDeactivatedAfterGrab && Inputs.GetGripState(HandSide).JustActivated)
             {
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position, 1.2f, 0.5f);
-                StartCoroutine(Controller.VibrateMultipleTimes(2, 0.05f, HVRInputManager.Instance.HandInputHaptics.GripPress));
+                StartCoroutine(Controller.VibrateMultipleTimes(2, 0.1f, HVRInputManager.Instance.HandInputHaptics.GripPress));
             }
 
-            
             if (ReleaseAfterDelay)
             {
                 if (!IsTriggerGrabActivated && Inputs.GetGripState(HandSide).Active)
@@ -1135,7 +1134,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
                     {
                         readyToRelease = true;
                         SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position);
-                        StartCoroutine(Controller.VibrateMultipleTimes(2, 0.05f, HVRInputManager.Instance.HandInputHaptics.GripPress));
+                        StartCoroutine(Controller.VibrateMultipleTimes(2, 0.1f, HVRInputManager.Instance.HandInputHaptics.GripPress));
                     }
                     if (Inputs.GetGripState(HandSide).JustDeactivated)
                     {

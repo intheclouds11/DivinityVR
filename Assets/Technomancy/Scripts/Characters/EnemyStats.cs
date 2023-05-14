@@ -143,8 +143,7 @@ namespace intheclouds
         public event Action EnemyDied;
         private EnemyAI enemyAI;
         private Animator animator;
-        private static readonly int _isDead = Animator.StringToHash("isDead");
-        private static readonly int _isHit = Animator.StringToHash("isHit");
+        
 
         private void Awake()
         {
@@ -218,11 +217,6 @@ namespace intheclouds
             if (CurrentHealth > 0)
             {
                 SFXPlayer.Instance.PlaySFXRandomPitch(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)], transform.position, 0.9f, 1.1f, 1, 20);
-                if (!weaponSheathed)
-                {
-                    animator.SetBool(_isHit, true);
-                }
-
                 EnemyDamaged?.Invoke();
             }
 
@@ -265,31 +259,23 @@ namespace intheclouds
             CurrentHealth = 0;
             enemyAI.DisableAIComponents();
             SFXPlayer.Instance.PlaySFXRandomPitch(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform.position, 0.9f, 1.1f, 0.4f, 20);
-            animator.SetBool(_isDead, true);
             EnemyDied?.Invoke();
             foreach (var instancePlayer in GameManager.Instance.players)
             {
                 instancePlayer.ObtainXP(statsSO.XPDefeated);
             }
 
-            EnemyManager.Instance.enemyList.Remove(this);
-            GameManager.Instance.enemiesAlive -= 1;
+            EnemyManager.Instance.EnemiesInCombat.Remove(this);
             GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
             GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
         }
 
         #region Animation Events
 
-        public void EndHitAnimation()
-        {
-            animator.SetBool(_isHit, false);
-        }
-
         public void EndDeathAnimation()
         {
             floatingStatsCanvas.SetActive(false);
         }
-
         #endregion
 
         private void UpdateMagicArmorInfo()

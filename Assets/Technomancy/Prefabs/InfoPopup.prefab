@@ -153,5 +153,5 @@ MonoBehaviour:
   growingPopup: 0
   growingSpeed: 0.001
   translateSpeed: 0.05
-  secondsToDestroy: 2
+  secondsToDestroy: 3
   TextMeshProUGUI: {fileID: 8664262483216651131}
