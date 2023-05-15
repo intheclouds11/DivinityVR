@@ -919,8 +919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisableCollisionsOnHitEnemy: 1
   RequiredAP: 2
+  CanBackstab: 1
   BaseDamage: 7
   CriticalDamageMultiplier: 2
   DamageThreshold: 7
@@ -928,6 +928,7 @@ MonoBehaviour:
   DamageType: 0
   ScalingType: 7
   StatusEffect: {fileID: 4555541019295191222, guid: f3fcf21d38d627147bf1139edee82e7e, type: 3}
+  DisableCollisionsOnHitEnemy: 1
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
   ImpactThreshold: 0.01

@@ -1262,23 +1262,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf4976c41c033949a56c22e94b1ff10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicAudioSource: {fileID: 7916443688754514036}
-  combatStartClip: {fileID: 8300000, guid: 20d02795b8472fa46bab714918c1ff3f, type: 3}
-  nextTurnClip: {fileID: 8300000, guid: c7e0ab4462d42244291f794e8980b178, type: 3}
-  combatEndClip: {fileID: 8300000, guid: cf072ef4606057841970857bcb9ac513, type: 3}
-  gameOverClip: {fileID: 8300000, guid: 5aaff0f13f1b95049bf9bc64c0e57bb6, type: 3}
   state: 0
   players:
   - {fileID: 6753762764629424587}
+  controlledPlayer: {fileID: 0}
+  <activeCombatant>k__BackingField: {fileID: 0}
   NextTurn: 0
-  NewRound: 0
-  activeCombatant: {fileID: 0}
-  enemiesAlive: 0
-  playersAlive: 0
+  MusicAudioSource: {fileID: 7916443688754514036}
+  combatStartClip: {fileID: 8300000, guid: 20d02795b8472fa46bab714918c1ff3f, type: 3}
+  enemyJoinedClip: {fileID: 8300000, guid: ebccc776a8678ed48b3ad4b8be44aace, type: 3}
+  nextTurnClip: {fileID: 8300000, guid: c7e0ab4462d42244291f794e8980b178, type: 3}
+  combatEndClip: {fileID: 8300000, guid: cf072ef4606057841970857bcb9ac513, type: 3}
+  gameOverClip: {fileID: 8300000, guid: 5aaff0f13f1b95049bf9bc64c0e57bb6, type: 3}
   turnOrderText: {fileID: 1084217197779036308}
   turnOrderUI: {fileID: 4993668323725293776}
-  controlledPlayer: {fileID: 0}
-  playerTurn: 0
 --- !u!114 &4238637224748382629
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
         SFXPlayer.Instance.PlaySFX(enemyJoinedClip, enemyStats.transform.position, 1f, 1f, 10, false, false);
         EnemyManager.Instance.EnemiesInCombat.Add(enemyStats);
         turnOrderList.Add(new KeyValuePair<BaseStats, int>(enemyStats, enemyStats.wits));
+        UpdateTurnOrderText(turnOrderList);
         enemyStats.InCombat = true;
     }
 

@@ -12578,6 +12578,15 @@ MonoBehaviour:
   SphereCastRadius: 0.4
   TagToDetect: HandTriggerCollider
   RequiredTimeInTrigger: 0.1
+  HandExceededRequiredTime:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   ExceededRequiredTime:
     m_PersistentCalls:
       m_Calls: []
@@ -17793,6 +17802,15 @@ MonoBehaviour:
   SphereCastRadius: 0.15
   TagToDetect: HandTriggerCollider
   RequiredTimeInTrigger: 1.5
+  HandExceededRequiredTime:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   ExceededRequiredTime:
     m_PersistentCalls:
       m_Calls: []
@@ -21313,6 +21331,15 @@ MonoBehaviour:
   SphereCastRadius: 0.4
   TagToDetect: HandTriggerCollider
   RequiredTimeInTrigger: 0.1
+  HandExceededRequiredTime:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   ExceededRequiredTime:
     m_PersistentCalls:
       m_Calls: []
@@ -22739,6 +22766,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToShowAndHide: {fileID: 950600321853843572}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 2097152
 --- !u!114 &3434299429977383766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23039,6 +23069,8 @@ MonoBehaviour:
   _maxAP: 0
   _turn: 0
   _inCombat: 0
+  <CanBackstab>k__BackingField: 0
+  <BackstabTargets>k__BackingField: []
   Stunned: 0
   baseDamage: 10
   attacker: {fileID: 0}
@@ -25576,8 +25608,9 @@ GameObject:
   - component: {fileID: 5747577587052880045}
   - component: {fileID: 1117704803382736868}
   - component: {fileID: 5404521989737511310}
-  m_Layer: 30
-  m_Name: SurfaceEffectTrigger
+  - component: {fileID: 8369632705837501229}
+  m_Layer: 14
+  m_Name: PlayerTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25606,7 +25639,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7817023894631711105}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -25677,6 +25710,64 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8369632705837501229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817023894631711105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3d18cfe7000f345890912b88ca1606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requireUserLooking: 0
+  SphereCastRadius: 0.15
+  TagToDetect: Enemy
+  RequiredTimeInTrigger: 0.1
+  HandExceededRequiredTime:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ExceededRequiredTime:
+    m_PersistentCalls:
+      m_Calls: []
+  TriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7183613918389418789}
+        m_TargetAssemblyTypeName: intheclouds.PlayerStats, Assembly-CSharp
+        m_MethodName: OnPlayerTriggerEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7183613918389418789}
+        m_TargetAssemblyTypeName: intheclouds.PlayerStats, Assembly-CSharp
+        m_MethodName: OnPlayerTriggerExit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7844220972316641614
 GameObject:
   m_ObjectHideFlags: 0
@@ -26428,6 +26519,15 @@ MonoBehaviour:
   SphereCastRadius: 0.15
   TagToDetect: HandTriggerCollider
   RequiredTimeInTrigger: 1.5
+  HandExceededRequiredTime:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HandTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   ExceededRequiredTime:
     m_PersistentCalls:
       m_Calls: []

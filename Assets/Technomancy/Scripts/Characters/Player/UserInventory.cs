@@ -25,6 +25,8 @@ namespace intheclouds
         private HighlightEffect rightHandLockTriggerHighlight;
         private Coroutine hideLeftSocketsCoroutine;
         private Coroutine hideRightSocketsCoroutine;
+        private bool leftHandCanEquip;
+        private bool rightHandCanEquip;
 
         private void Awake()
         {
@@ -35,16 +37,16 @@ namespace intheclouds
             leftHandLockTriggerHighlight = LeftHandLockTrigger.GetComponent<HighlightEffect>();
             rightHandLockTriggerHighlight = RightHandLockTrigger.GetComponent<HighlightEffect>();
 
-            LeftHandSocketsTrigger.TriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
-            LeftHandSocketsTrigger.TriggerExitEvent.AddListener(HandInventoryTriggerExit);
-            RightHandSocketsTrigger.TriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
-            RightHandSocketsTrigger.TriggerExitEvent.AddListener(HandInventoryTriggerExit);
-            LeftHandLockTrigger.ExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
-            LeftHandLockTrigger.TriggerEnterEvent.AddListener(HandLockTriggerEnter);
-            LeftHandLockTrigger.TriggerExitEvent.AddListener(HandLockTriggerExit);
-            RightHandLockTrigger.ExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
-            RightHandLockTrigger.TriggerEnterEvent.AddListener(HandLockTriggerEnter);
-            RightHandLockTrigger.TriggerExitEvent.AddListener(HandLockTriggerExit);
+            LeftHandSocketsTrigger.HandTriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
+            LeftHandSocketsTrigger.HandTriggerExitEvent.AddListener(HandInventoryTriggerExit);
+            RightHandSocketsTrigger.HandTriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
+            RightHandSocketsTrigger.HandTriggerExitEvent.AddListener(HandInventoryTriggerExit);
+            LeftHandLockTrigger.HandExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
+            LeftHandLockTrigger.HandTriggerEnterEvent.AddListener(HandLockTriggerEnter);
+            LeftHandLockTrigger.HandTriggerExitEvent.AddListener(HandLockTriggerExit);
+            RightHandLockTrigger.HandExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
+            RightHandLockTrigger.HandTriggerEnterEvent.AddListener(HandLockTriggerEnter);
+            RightHandLockTrigger.HandTriggerExitEvent.AddListener(HandLockTriggerExit);
         }
 
         private void HandInventoryTriggerEnter(HVRHandSide handSide)
@@ -135,16 +137,20 @@ namespace intheclouds
 
         private void HandLockTriggerEnter(HVRHandSide handSide)
         {
-            if (handSide == HVRHandSide.Left && LeftHandGrabber.GrabbedTarget && LeftHandGrabber.GrabbedTarget.Socketable)
+            if (handSide == HVRHandSide.Left)
             {
+                leftHandCanEquip = LeftHandGrabber.GrabbedTarget && LeftHandGrabber.GrabbedTarget.Socketable;
+                if (!leftHandCanEquip) return;
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LeftHandLockTrigger.transform.position);
                 if (leftHandLockTriggerHighlight)
                 {
                     leftHandLockTriggerHighlight.highlighted = true;
                 }
             }
-            else if (handSide == HVRHandSide.Right && RightHandGrabber.GrabbedTarget && RightHandGrabber.GrabbedTarget.Socketable)
+            else if (handSide == HVRHandSide.Right)
             {
+                rightHandCanEquip = RightHandGrabber.GrabbedTarget && RightHandGrabber.GrabbedTarget.Socketable;
+                if (!rightHandCanEquip) return;
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, RightHandLockTrigger.transform.position);
                 if (rightHandLockTriggerHighlight)
                 {
@@ -157,7 +163,7 @@ namespace intheclouds
         {
             if (handSide == HVRHandSide.Left)
             {
-                if (LeftHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && LeftHandGrabber.GrabbedTarget.Socketable)
+                if (LeftHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && leftHandCanEquip)
                 {
                     LeftHandGrabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
                     LeftHandGrabber.GrabbedTarget.CanBeGrabbed = false;
@@ -168,13 +174,14 @@ namespace intheclouds
                 {
                     LeftHandGrabber.GrabTrigger = HVRGrabTrigger.Toggle;
                     LeftHandGrabber.GrabbedTarget.CanBeGrabbed = true;
+                    leftHandCanEquip = false;
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.Instance.Camera.transform.position, 0.8f, 1);
                     Debug.Log($"Dequipped: {LeftHandGrabber.GrabbedTarget}");
                 }
             }
             else
             {
-                if (RightHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && RightHandGrabber.GrabbedTarget.Socketable)
+                if (RightHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && rightHandCanEquip)
                 {
                     RightHandGrabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
                     RightHandGrabber.GrabbedTarget.CanBeGrabbed = false;
@@ -185,6 +192,7 @@ namespace intheclouds
                 {
                     RightHandGrabber.GrabTrigger = HVRGrabTrigger.Toggle;
                     RightHandGrabber.GrabbedTarget.CanBeGrabbed = true;
+                    rightHandCanEquip = false;
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.Instance.Camera.transform.position, 0.8f, 1);
                     Debug.Log($"Dequipped: {RightHandGrabber.GrabbedTarget}");
                 }

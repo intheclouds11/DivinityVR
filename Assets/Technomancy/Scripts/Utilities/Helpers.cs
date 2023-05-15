@@ -23,7 +23,7 @@ namespace intheclouds
             if (criticalMultiplier > 1)
             {
                 int critChanceRange = new System.Random().Next(1, 101);
-                if (critChanceRange <= CalculateCriticalChance(attacker))
+                if (critChanceRange <= attacker.Wits)
                 {
                     Debug.Log("CRITICAL HIT");
                     return (int) Math.Ceiling(Random.Range(inputDamage - low, inputDamage + high) * criticalMultiplier);
@@ -31,11 +31,6 @@ namespace intheclouds
             }
 
             return Random.Range(inputDamage - low, inputDamage + high);
-        }
-
-        public static float CalculateCriticalChance(BaseStats combatant)
-        {
-            return combatant.Wits - 10;
         }
 
         public static void AddWetStatus(BaseStats combatant, StatusEffect statusEffect)

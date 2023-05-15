@@ -5,6 +5,7 @@ namespace intheclouds
     public class ShowWhenLooking : MonoBehaviour
     {
         public GameObject objectToShowAndHide;
+        public LayerMask LayerMask;
         private Ray ray;
 
         private void Start()
@@ -14,8 +15,7 @@ namespace intheclouds
 
         private void FixedUpdate()
         {
-            ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 5, LayerMask, QueryTriggerInteraction.Collide))
             {
                 if (hitInfo.collider.gameObject.CompareTag("MakeVisibleWhenLookingAt"))
                 {

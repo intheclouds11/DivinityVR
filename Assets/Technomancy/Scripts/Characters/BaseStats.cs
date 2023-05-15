@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using HighlightPlus;
 using TMPro;
 using UnityEngine;
@@ -39,6 +40,10 @@ namespace intheclouds
         [SerializeField]
         protected bool _inCombat;
         public virtual bool InCombat { get; set; }
+        [field: SerializeField]
+        public bool CanBackstab { get; protected set; }
+        [field: SerializeField]
+        public List<BaseStats> BackstabTargets { get; protected set; }
         public bool Stunned;
         public int baseDamage = 10;
         public BaseStats attacker;

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace intheclouds
@@ -18,7 +18,6 @@ namespace intheclouds
         private TextMeshProUGUI creditsText;
         [SerializeField]
         private AudioClip levelUpAudioClip;
-        
 
         #region Player Stats
 
@@ -176,14 +175,10 @@ namespace intheclouds
 
         [SerializeField]
         private bool _playerControlled;
-        
         public bool Leaning
         {
             get { return _Leaning; }
-            set
-            {
-                _Leaning = value;
-            }
+            set { _Leaning = value; }
         }
 
         [SerializeField]
@@ -202,6 +197,20 @@ namespace intheclouds
         {
             InitializeStats();
             _playerControlled = true;
+        }
+
+        public void OnPlayerTriggerEnter(Collider col)
+        {
+            CanBackstab = true;
+            var target = col.transform.GetComponentInParent<BaseStats>() as EnemyStats;
+            BackstabTargets.Add(target);
+        }
+
+        public void OnPlayerTriggerExit(Collider col)
+        {
+            var target = col.transform.GetComponentInParent<BaseStats>() as EnemyStats;
+            BackstabTargets.Remove(target);
+            CanBackstab = BackstabTargets.Any();
         }
 
         private void InitializeStats()
@@ -273,7 +282,7 @@ namespace intheclouds
         public override void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {
             this.attacker = attacker;
-            
+
             if (statusEffect)
             {
                 statusEffect.CombatantWhoApplied = attacker;
@@ -359,7 +368,7 @@ namespace intheclouds
                 Debug.Log($"Restored {_currentMagicArmor - prevMA} magic armor");
             }
         }
-        
+
         public void RestorePhysicalArmor(int amount)
         {
             LocalUserObjects.HUDController.NewInfoPopup($"{amount}", Color.green);
@@ -401,7 +410,7 @@ namespace intheclouds
             {
                 LocalUserObjects.HUDController.NewInfoPopup($"-{newAmount} credits", Color.yellow);
             }
-            
+
             creditsText.text = $"Credits: {newAmount}";
         }
 
@@ -454,25 +463,6 @@ namespace intheclouds
             {
                 CurrentAP = _startingAP;
             }
-        }
-
-        public void SaveProgress()
-        {
-            statsSO.Name = Name;
-
-            statsSO.maxHealth = MaxHealth;
-            statsSO.currentHealth = CurrentHealth;
-
-            statsSO.maxPoise = MaxPoise;
-            statsSO.currentPoise = CurrentPoise;
-
-            statsSO.maxMagicArmor = MaxMagicArmor;
-            statsSO.currentMagicArmor = CurrentMagicArmor;
-
-            statsSO.maxAP = MaxAP;
-            statsSO.currentAP = CurrentAP;
-            statsSO.XP = XP;
-            statsSO.gold = credits;
         }
     }
 }

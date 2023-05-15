@@ -6,19 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/InfoPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/InfoPopup.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/EnemyStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/EnemyStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Status Effects/Bleeding.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Status Effects/Bleeding.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/UserInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/UserInventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/RainSurfaceMaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/Fireball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/Fireball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/Helpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +59,113 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/92/d3a6f6b8/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/9b/9b31643f/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/a7/9debc696/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/UniStorm Weather System/Scripts/System/UniStormSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/VrTunnellingPro/Scripts/Tunnelling.cs" root0="FORCE_HIGHLIGHTING" />
@@ -142,6 +252,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SliderEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/SpriteDrawUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventTrigger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInputModule.cs" root0="SKIP_HIGHLIGHTING" />
@@ -272,10 +383,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16952">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24784">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16952" />
+      <option name="pid" value="24784" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -466,7 +577,7 @@
       <workItem from="1683512553395" duration="51000" />
       <workItem from="1683845355522" duration="2318000" />
       <workItem from="1683991209396" duration="14790000" />
-      <workItem from="1684084210524" duration="12493000" />
+      <workItem from="1684084210524" duration="22121000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

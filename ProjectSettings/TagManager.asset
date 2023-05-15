@@ -35,8 +35,8 @@ TagManager:
   - Ground
   - Obstacle
   - Enemy
-  - 
-  - 
+  - BackstabTrigger
+  - PlayerTrigger
   - 
   - 
   - 

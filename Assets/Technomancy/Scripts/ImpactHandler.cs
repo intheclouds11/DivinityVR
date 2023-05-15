@@ -15,8 +15,8 @@ namespace intheclouds
         #region Variables
 
         [Header("Damage Handling")]
-        public bool DisableCollisionsOnHitEnemy;
         public int RequiredAP = 1;
+        public bool CanBackstab;
         public int BaseDamage = 1;
         public float CriticalDamageMultiplier = 1.8f;
         public float DamageThreshold = 7;
@@ -24,6 +24,8 @@ namespace intheclouds
         public DamageType DamageType = DamageType.Physical;
         public ScalingType ScalingType = ScalingType.None;
         public StatusEffect StatusEffect;
+        [Tooltip("Enable for weapons that should disable collision on successful hit so player can follow through with attack")]
+        public bool DisableCollisionsOnHitEnemy;
 
         [Header("SFX Handling")]
         public AudioClip HitEnemyClip;
@@ -41,9 +43,9 @@ namespace intheclouds
         public float MinPitchSwipe = 1f;
         [ShowIf("showSwipe")]
         public float MaxPitchSwipe = 1;
-        [ShowIf("showSwipe")]
+        [ShowIf(nameof(showSwipe))]
         public float MaxVolumeSwipe = 1f;
-        [ShowIf("showSwipe")]
+        [ShowIf(nameof(showSwipe))]
         public float VolumeModifierSwipe = 2f;
 
         public event Action AppliedDamage;
@@ -74,9 +76,9 @@ namespace intheclouds
             GetComponent<HVRGrabbable>().Grabbed.AddListener(AssignWielder);
         }
 
-        private void AssignWielder(HVRGrabberBase arg0, HVRGrabbable arg1)
+        private void AssignWielder(HVRGrabberBase grabber, HVRGrabbable grabbable)
         {
-            wieldingUser = arg0.GetComponentInParent<PlayerStats>();
+            wieldingUser = grabber.GetComponentInParent<PlayerStats>();
         }
 
         private void Update()
@@ -133,7 +135,7 @@ namespace intheclouds
                 DamageDestructible(objectDamageHandler, relativeVelocity);
             }
 
-            if (!DisableCollisionsOnHitEnemy && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (!DisableCollisionsOnHitEnemy && collision.gameObject.CompareTag("EnemyBody") || collision.gameObject.CompareTag("EnemyHead"))
             {
                 if (relativeVelocity > DamageThreshold)
                 {
@@ -150,7 +152,7 @@ namespace intheclouds
                 return;
             }
 
-            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (other.CompareTag("EnemyBody") || other.CompareTag("EnemyHead"))
             {
                 if (rb.velocity.magnitude > DamageThreshold || rb.angularVelocity.magnitude > DamageThreshold * 3)
                 {
@@ -180,8 +182,12 @@ namespace intheclouds
             var currentEnemyStats = hitCollider.gameObject.GetComponentInParent<EnemyStats>();
             if (!currentEnemyStats.isAlive) return;
 
-            var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
             // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
+            var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
+            if (CanBackstab && wieldingUser.CanBackstab && wieldingUser.BackstabTargets.Contains(currentEnemyStats))
+            {
+                scaledDamage *= 2;
+            }
             currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(scaledDamage, wieldingUser, CriticalDamageMultiplier),
                 DamageType, ScalingType, StatusEffect);
 

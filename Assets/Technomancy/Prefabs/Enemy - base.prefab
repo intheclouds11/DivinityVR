@@ -160,7 +160,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1054480149128935451
 SkinnedMeshRenderer:
@@ -426,7 +426,7 @@ RectTransform:
   - {fileID: 4279919011700122832}
   - {fileID: 4928267162932389240}
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -586,7 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4373197993412096032}
   - component: {fileID: 5335135139373191336}
-  m_Layer: 30
+  m_Layer: 12
   m_Name: 'Surface Effect Trigger '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5335135139373191336
 BoxCollider:
@@ -2174,7 +2174,7 @@ Transform:
   - {fileID: 5329618722680708454}
   - {fileID: 5557323494221604122}
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -83.01014, y: -72.44149, z: 53.83198}
 --- !u!1 &2956081480200419678
 GameObject:
@@ -2207,7 +2207,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7490425014166636284
 SkinnedMeshRenderer:
@@ -2659,7 +2659,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3591899524645873293
 BoxCollider:
@@ -3073,7 +3073,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8820317064804764899}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4912884389607003663
 MonoBehaviour:
@@ -3261,6 +3261,103 @@ Transform:
   m_Father: {fileID: 3745899374398438494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15.595943, y: 0.3943998, z: 1.2642287}
+--- !u!1 &4137529147738927816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1796588763210691173}
+  - component: {fileID: 8975314117801938440}
+  - component: {fileID: 7331171802285877665}
+  - component: {fileID: 9177997880157786076}
+  m_Layer: 13
+  m_Name: Backstab Zone
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1796588763210691173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137529147738927816}
+  m_LocalRotation: {x: -0, y: -0.13052596, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: 0.189, y: 0.955, z: -0.708}
+  m_LocalScale: {x: 1.7194, y: 1.3034, z: 1.2699}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8820317064804764899}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -15, z: 0}
+--- !u!33 &8975314117801938440
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137529147738927816}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7331171802285877665
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137529147738927816}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9177997880157786076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137529147738927816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.00000071525574}
 --- !u!1 &4327599777983335661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5696,13 +5793,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 7947306856933323746}
+  - {fileID: 1796588763210691173}
+  - {fileID: 1813598617085634889}
+  - {fileID: 4373197993412096032}
   - {fileID: 5829897242270507887}
   - {fileID: 1360263673569964884}
   - {fileID: 5735504444926024871}
   - {fileID: 8201370914419257996}
-  - {fileID: 1813598617085634889}
-  - {fileID: 7947306856933323746}
-  - {fileID: 4373197993412096032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -3.37, z: 0}
@@ -5732,6 +5830,8 @@ MonoBehaviour:
   _maxAP: 0
   _turn: 0
   _inCombat: 0
+  <CanBackstab>k__BackingField: 0
+  <BackstabTarget>k__BackingField: {fileID: 0}
   Stunned: 0
   baseDamage: 10
   attacker: {fileID: 0}

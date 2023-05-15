@@ -63,7 +63,7 @@ namespace intheclouds
             float length = 2;
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, length))
             {
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || hit.transform.gameObject.layer == LayerMask.NameToLayer("SurfaceElement"))
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || hit.transform.gameObject.layer == LayerMask.NameToLayer("SurfaceEffect"))
                 {
                     // Debug.Log($"SpawnFireGround hit {hit.collider}");
                     if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))

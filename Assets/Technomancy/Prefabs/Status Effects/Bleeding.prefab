@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProcessOnEnabled: 1
-  ChanceToApply: 100
+  ChanceToApply: 25
   type: 2
   effectAmount: 4
   cooldown: 3
