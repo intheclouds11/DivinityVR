@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Player;
+using Pathfinding.RVO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,13 @@ namespace intheclouds
         private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             MovePlayerToStartingSpawnPoint();
+
+            var playerRVOController = LocalUserObjects.Instance.ITCPlayerController.GetComponent<RVOController>();
+
+            if (FindFirstObjectByType<RVOSimulator>() && !playerRVOController.enabled)
+            {
+                playerRVOController.enabled = true;
+            }
         }
 
         private void Start()

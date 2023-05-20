@@ -36,6 +36,8 @@ namespace intheclouds
         protected int _maxAP;
         public virtual bool Turn { get; set; }
         [SerializeField]
+        protected int credits;
+        [SerializeField]
         protected bool _turn;
         [SerializeField]
         protected bool _inCombat;

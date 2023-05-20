@@ -6,23 +6,122 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Status Effects/Bleeding.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Status Effects/Bleeding.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/CharacterStatsSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/CharacterStatsSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Knight stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Knight stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Mage stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Mage stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/EnemyStatsSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/EnemyStatsSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Highlight Plus - Hand Augment.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Highlight Plus - Hand Augment.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Bern Stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Bern Stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Paatri Stats.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Paatri Stats.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Cork pose zone.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Cork pose zone.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Credit Grab pose.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Credit Grab pose.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Hilt Grab pose.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Hilt Grab pose.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/abilitygrabbable_pose.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/abilitygrabbable_pose.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/cork hold pose.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/cork hold pose.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ITC Socketables.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ITC Socketables.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/AudioSources.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/AudioSources.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Canvas - Stats.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Canvas - Stats.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Credit Pickup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Credit Pickup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Knight.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Knight.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Pyromancer.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Pyromancer.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/First Aid Kit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/First Aid Kit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/HitPopup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/HitPopup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/InfoPopup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/InfoPopup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Note.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Note.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Bern.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Bern.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Paatri Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Paatri Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Select Button.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Select Button.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/SceneStartSpawnPosition.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/SceneStartSpawnPosition.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spawn At Runtime.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spawn At Runtime.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spirit Wander ability.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spirit Wander ability.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Sword - enemy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Sword - enemy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/TurnOrderUI.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/TurnOrderUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/UserMenu.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/UserMenu.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/floating crystals.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/floating crystals.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/lightbridge.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/lightbridge.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/BackPack.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/BackPack.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/Holsters.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/Holsters.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/TitleScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/TitleScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/AbilityPointer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/AbilityPointer.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/UserInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/UserInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/Fireball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Magic/Fireball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/Helpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadPointer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadPointer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadTriggerInteractions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadTriggerInteractions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PermanentObjectInitialization.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PermanentObjectInitialization.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerHUDController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerHUDController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSpawnPoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSpawnPoint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Special Room post process.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Special Room post process.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Visor Post Process.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Visor Post Process.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/lobby post process.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/lobby post process.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,160 +132,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/92/d3a6f6b8/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/9b/9b31643f/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/a7/9debc696/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39284ffc1a024620800ee216902b908c136a18/61/b200a4cc/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/UniStorm Weather System/Scripts/System/UniStormSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/VrTunnellingPro/Scripts/Tunnelling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/HurricaneVR intheclouds/ITCSocketHoverAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/CanvasSetup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCPlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/CreditPickup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/ITCEnums.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Editor/BurstDisassembler.Core.ARM64.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Editor/BurstDisassembler.Core.x86.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Editor/BurstStringSearch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Editor/LabeledPopup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Runtime/Intrinsics/Common.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.2/Tests/Editor/SeparateAssembly/TypeHashWrapper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@2.0.1/Editor/PlasticSCM/AssetOverlays/Cache/LocalStatusCache.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.0/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/InputSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Containers/BlockList.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Containers/DynamicBlockArray.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Diagnostics/Diagnostics.cs" root0="SKIP_HIGHLIGHTING" />
@@ -212,37 +171,8 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Utilities/Range.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Editor/Utilities/StringExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.memoryprofiler@0.7.1-preview.1/Runtime/MetadataInjector.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Editor/EditorCore/AutoUVEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Editor/EditorCore/EditorMeshUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Editor/EditorCore/EntityEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Editor/MenuActions/Geometry/OffsetElements.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/External/CSG/Classes/VertexUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Runtime/MeshOperations/SurfaceTopology.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Samples~/Runtime/Icosphere FFT/Scripts/CameraControls.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@5.0.6/Samples~/Runtime/Runtime Editing/Scripts/Utility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/UniversalRenderer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/XR/XRSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/Samples~/Tutorial/Asteroids/Tests/WeaponTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMPro_Private.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/Unity.TextMeshPro.asmdef" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Actions/IAction.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Animation/AnimationTrackActions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Animation/CurvesProxy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsGroup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsPerTrack.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Items/ItemsUtils.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Manipulators/Sequence/RectangleTool.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Playables/ControlPlayableInspector.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Recording/TrackAssetRecordingExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Shortcuts.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/State/WindowState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/TimelineUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Utilities/Graphics.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Window/TimelineWindow_EditorCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Window/TimelineWindow_HeaderGui.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Window/TimelineWindow_PlayableLookup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/treeview/Snapping/SnapEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/treeview/TrackGui/TimelineGroupGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/ImageEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -292,14 +222,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Util/ExceptionUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Util/ImageHook.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.10/Runtime/TrackedPoseDriver/TrackedPoseDriver.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Runtime/XRGeneralSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Runtime/XRLoader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Runtime/XRManagerSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.2.1/Tests/StandaloneSubsystem/StandaloneSubsystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/HTCViveControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/MicrosoftMotionControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/Features/Interactions/ValveIndexControllerProfile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@1.6.0/Runtime/input/OpenXRInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../IMPORTS/Assets/SteamVR/Scripts/SteamVR_Menu.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -329,7 +251,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -340,6 +262,11 @@
     ]
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="project properties" />
+    </option>
+  </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Builds/Technomancy dev build\Divinity VR.exe" />
@@ -350,7 +277,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.20f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\patri\Documents\Unity\UnityVR\Divinity VR&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\patri\Documents\Unity\UnityVR\Divinity VR" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -358,7 +285,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.20f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\patri\OneDrive\Documents\UnityVR\Divinity VR" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -383,10 +310,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24784">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="24784" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -577,7 +504,13 @@
       <workItem from="1683512553395" duration="51000" />
       <workItem from="1683845355522" duration="2318000" />
       <workItem from="1683991209396" duration="14790000" />
-      <workItem from="1684084210524" duration="22121000" />
+      <workItem from="1684084210524" duration="22303000" />
+      <workItem from="1684598409042" duration="637000" />
+      <workItem from="1684600463970" duration="320000" />
+      <workItem from="1684600805946" duration="38000" />
+      <workItem from="1684600850714" duration="1052000" />
+      <workItem from="1684602963357" duration="2522000" />
+      <workItem from="1684616876765" duration="1537000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -601,6 +534,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs</url>
+          <line>54</line>
+          <properties documentPath="C:\Users\patri\Documents\UnityVR\Divinity VR\Assets\Packages\HurricaneVR\Framework\Scripts\ControllerInput\HVRInputSystemController.cs" initialLine="54" containingFunctionPresentation="Method 'OnDeviceChanged'">
+            <startOffsets>
+              <option value="1401" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1439" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs</url>
+          <line>58</line>
+          <properties documentPath="C:\Users\patri\Documents\UnityVR\Divinity VR\Assets\Packages\HurricaneVR\Framework\Scripts\ControllerInput\HVRInputSystemController.cs" initialLine="58" containingFunctionPresentation="Method 'OnDeviceChanged'">
+            <startOffsets>
+              <option value="1666" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1688" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
