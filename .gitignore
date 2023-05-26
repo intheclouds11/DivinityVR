@@ -159,7 +159,6 @@ Assets/Packages/SteamVR/Extras/
 Assets/Packages/HighlightPlus/
 Assets/Packages/AstarPathfindingProject/
 Assets/Packages/SteamVR/OpenVRUnityXRPackage/
-Assets/Technomancy/Art Assets/
 Assets/Technomancy/Scenes/TitleScreen/
 Assets/Technomancy/Scenes/Celestial Beginnings/
 ProjectSettings/BurstAotSettings_StandaloneWindows.json
@@ -182,3 +181,4 @@ Assets/Packages/HurricaneVR/TechDemo/Materials/
 Assets/Packages/HurricaneVR/TechDemo/
 Assets/Packages/HurricaneVR/Framework/Materials/
 Assets/Packages/HurricaneVR/Framework/Textures/
+

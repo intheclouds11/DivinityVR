@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ski Goggles
+* source:	https://sketchfab.com/3d-models/ski-goggles-1c44cdebc5d8478bab4b6c92f5d9b6ba
+* author:	marcinhojazz (https://sketchfab.com/marcinhojazz)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ski Goggles" (https://sketchfab.com/3d-models/ski-goggles-1c44cdebc5d8478bab4b6c92f5d9b6ba) by marcinhojazz (https://sketchfab.com/marcinhojazz) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
