@@ -22,7 +22,7 @@ namespace intheclouds
         [Header("Debug")]
         public LocalUserObjects playerLUOs;
         public HVRGrabbable Grabbable;
-
+        
 
         private void Awake()
         {
@@ -61,11 +61,11 @@ namespace intheclouds
         {
             if (!abilitySlots.activeSelf && (!selectedAbility || selectedAbility && !selectedAbility.gameObject.activeInHierarchy))
             {
-                if (!playerLUOs.leftHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActive)
+                if (!playerLUOs.leftHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActivated)
                 {
                     ShowSelector(playerLUOs.leftHandAbilitySelectorSpawn.transform, leftController);
                 }
-                else if (!playerLUOs.rightHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActive)
+                else if (!playerLUOs.rightHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActivated)
                 {
                     ShowSelector(playerLUOs.rightHandAbilitySelectorSpawn.transform, rightController);
                 }
@@ -73,11 +73,11 @@ namespace intheclouds
                 return;
             }
 
-            if (selectorHand == leftController && !playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActive)
+            if (selectorHand == leftController && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActivated)
             {
                 HideSelector();
             }
-            else if (selectorHand == rightController && !playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActive)
+            else if (selectorHand == rightController && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActivated)
             {
                 HideSelector();
             }

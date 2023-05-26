@@ -32,8 +32,16 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a4aebff252f20f4e8a947457fd46dbd, type: 2}
+    - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: _highlighted
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
+      propertyPath: outlineWidth
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: outlineColor.b
@@ -146,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 6325860287342930465, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: m_TranslationOffsets.Array.data[0].y
       value: 0.16429996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325860287342930465, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6590544276214826549, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: m_Materials.Array.data[0]

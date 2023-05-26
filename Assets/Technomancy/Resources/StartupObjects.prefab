@@ -1227,8 +1227,9 @@ GameObject:
   - component: {fileID: 4238637224748382629}
   - component: {fileID: 4238637224748382618}
   - component: {fileID: 713184928376086027}
+  - component: {fileID: 5791817395505092778}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,6 +1397,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ae0987b88381646999e0950de5e123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5791817395505092778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238637224748382617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dde8e71b61fb8943932595a767118ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SocketHoverProfile: {fileID: 11400000, guid: 077280dbfcc4e37449222f4f21b7eec8, type: 2}
+  WeaponHandHoverProfile: {fileID: 11400000, guid: 4d3acbd6680133a4bb1cd1de0001f653, type: 2}
+  HealingItemHandHoverProfile: {fileID: 11400000, guid: a14e60230aa8b8d4e8dc176d33e62230, type: 2}
+  MagicItemHandHoverProfile: {fileID: 11400000, guid: 0a4aebff252f20f4e8a947457fd46dbd, type: 2}
+  PoiseItemHandHoverProfile: {fileID: 11400000, guid: fc1fea936114c09418742d2ac1641c0f, type: 2}
+  PropHandHoverProfile: {fileID: 11400000, guid: e1c8b53ec4456f04b8a4577ef8d5f67e, type: 2}
 --- !u!1 &4238637224917125603
 GameObject:
   m_ObjectHideFlags: 0

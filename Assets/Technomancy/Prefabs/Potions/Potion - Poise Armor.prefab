@@ -36,8 +36,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: fc1fea936114c09418742d2ac1641c0f, type: 2}
+    - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: _highlighted
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
+      propertyPath: outlineWidth
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2945948066007982164, guid: aad5f097bd139e840b48aa2d7dbbacec, type: 3}
       propertyPath: outlineColor.b

@@ -667,8 +667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisableCollisionsOnHitEnemy: 0
   RequiredAP: 1
+  CanBackstab: 0
   BaseDamage: 1
   CriticalDamageMultiplier: 1.8
   DamageThreshold: 6
@@ -676,6 +676,7 @@ MonoBehaviour:
   DamageType: 0
   ScalingType: 0
   StatusEffect: {fileID: 0}
+  DisableCollisionsOnHitEnemy: 0
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: 7a15c0d8bcc45424abbbce85a52cd25f, type: 3}
   ImpactThreshold: 0.01
@@ -977,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888380afc233049ce9e618f9f36c8ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: a14e60230aa8b8d4e8dc176d33e62230, type: 2}
   profileSync: 0
   previewInEditor: 1
   camerasLayerMask:
@@ -1004,7 +1005,7 @@ MonoBehaviour:
   fadeInDuration: 0
   fadeOutDuration: 0
   flipY: 0
-  constantWidth: 1
+  constantWidth: 0
   subMeshMask: -1
   overlay: 0
   overlayMode: 0
@@ -1015,9 +1016,9 @@ MonoBehaviour:
   overlayTexture: {fileID: 0}
   overlayTextureScale: 1
   outline: 1
-  outlineColor: {r: 1, g: 0.11929676, b: 0.10849059, a: 1}
+  outlineColor: {r: 1, g: 0.14439784, b: 0.13679248, a: 1}
   outlineWidth: 0.1
-  outlineQuality: 1
+  outlineQuality: 0
   outlineDownsampling: 2
   outlineVisibility: 0
   glowBlendMode: 0
@@ -1140,7 +1141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4144156558728924810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:

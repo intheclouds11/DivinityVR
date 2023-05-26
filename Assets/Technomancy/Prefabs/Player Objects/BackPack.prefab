@@ -319,7 +319,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 443622690763473861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -421,6 +421,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &370804857536342487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,7 +723,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 747887435747101103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -824,6 +825,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &4675102613418188090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +902,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 848732198181085540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -1002,6 +1004,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &3631379082691147073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,7 +1116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154532082742195516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -1215,6 +1218,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &5794464216061031544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1433,7 +1437,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393304472909644722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -1535,6 +1539,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &6783077824674475630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,7 +1782,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625362877958392143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -1879,6 +1884,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &1875095035953780306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,7 +2378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2065687791366008502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -2474,6 +2480,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &5899322182660014954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3127,7 +3134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3954070028474915722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -3229,6 +3236,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &8911493240804816470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3574,7 +3582,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4245557572230458093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -3676,6 +3684,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &2532716895841088628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4051,7 +4060,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4928908196779687166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -4153,6 +4162,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &7368902065042132256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4700,7 +4710,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7556949385355826353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -4802,6 +4812,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &245490765501837185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,7 +5069,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8183103609258621850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -5160,6 +5171,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &6423369888501969865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,7 +5248,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8604162449431212004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -5338,6 +5350,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &2757994657590329100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5595,7 +5608,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9109867985844674938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -5697,6 +5710,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &6257924491346946345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5773,7 +5787,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9182531861536185740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27bb777100ada4459dda04ca3779632, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c806e3ffc9da2e44930ad3d7ef1b5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BeforeGrabbed:
@@ -5875,6 +5889,7 @@ MonoBehaviour:
   ValidHoverClip: {fileID: 8300000, guid: 9857efb1e90cdbc4f908590e8394ca8e, type: 3}
   ValidHoverExitClip: {fileID: 8300000, guid: c1c2bc16822fce843b4de69ec3dbfed7, type: 3}
   InvalidHoverClip: {fileID: 0}
+  Volume: 0.7
 --- !u!114 &6330571866211096031
 MonoBehaviour:
   m_ObjectHideFlags: 0

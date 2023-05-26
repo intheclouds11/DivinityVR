@@ -64,7 +64,11 @@ namespace HurricaneVR.Framework.ControllerInput
         public bool IsRightForceGrabActivated;
         
         public bool isLeftAbilitySelectorActive;
+        public bool isLeftAbilitySelectorActivated;
+        public bool isLeftAbilitySelectorDeactivated;
         public bool isRightAbilitySelectorActive;
+        public bool isRightAbilitySelectorActivated;
+        public bool isRightAbilitySelectorDeactivated;
 
         public bool IsJumpActivated;
 
@@ -120,7 +124,11 @@ namespace HurricaneVR.Framework.ControllerInput
             IsRightHoldActive = GetIsRightHoldActive();
 
             isLeftAbilitySelectorActive = GetIsLeftAbilitySelectorInputActive();
+            isLeftAbilitySelectorActivated = GetIsLeftAbilitySelectorInputActivated();
+            isLeftAbilitySelectorDeactivated = GetIsLeftAbilitySelectorInputDeactivated();
             isRightAbilitySelectorActive = GetIsRightAbilitySelectorInputActive();
+            isRightAbilitySelectorActivated = GetIsRightAbilitySelectorInputActivated();
+            isRightAbilitySelectorDeactivated = GetIsRightAbilitySelectorInputDeactivated();
 
             GetForceGrabActivated(out IsLeftForceGrabActivated, out IsRightForceGrabActivated);
             GetForceGrabActive(out IsLeftForceGrabActive, out IsRightForceGrabActive);
@@ -295,6 +303,26 @@ namespace HurricaneVR.Framework.ControllerInput
             return LeftController.PrimaryButtonState.Active && LeftController.SecondaryButtonState.Active;
         }
         
+        protected virtual bool GetIsLeftAbilitySelectorInputActivated()
+        {
+            if (LeftControllerType == HVRControllerType.Knuckles)
+            {
+                return LeftController.IndexTrackpadButtonState.JustActivated;
+            }
+
+            return LeftController.PrimaryButtonState.JustActivated && LeftController.SecondaryButtonState.JustActivated;
+        }
+        
+        protected virtual bool GetIsLeftAbilitySelectorInputDeactivated()
+        {
+            if (LeftControllerType == HVRControllerType.Knuckles)
+            {
+                return LeftController.IndexTrackpadButtonState.JustDeactivated;
+            }
+
+            return LeftController.PrimaryButtonState.JustDeactivated && LeftController.SecondaryButtonState.JustDeactivated;
+        }
+        
         protected virtual bool GetIsRightAbilitySelectorInputActive()
         {
             if (RightControllerType == HVRControllerType.Knuckles)
@@ -303,6 +331,26 @@ namespace HurricaneVR.Framework.ControllerInput
             }
 
             return RightController.PrimaryButtonState.Active && RightController.SecondaryButtonState.Active;
+        }
+        
+        protected virtual bool GetIsRightAbilitySelectorInputActivated()
+        {
+            if (RightControllerType == HVRControllerType.Knuckles)
+            {
+                return RightController.IndexTrackpadButtonState.JustActivated;
+            }
+
+            return RightController.PrimaryButtonState.JustActivated && RightController.SecondaryButtonState.JustActivated;
+        }
+        
+        protected virtual bool GetIsRightAbilitySelectorInputDeactivated()
+        {
+            if (RightControllerType == HVRControllerType.Knuckles)
+            {
+                return RightController.IndexTrackpadButtonState.JustDeactivated;
+            }
+
+            return RightController.PrimaryButtonState.JustDeactivated && RightController.SecondaryButtonState.JustDeactivated;
         }
 
         protected virtual Vector2 GetMovementAxis()

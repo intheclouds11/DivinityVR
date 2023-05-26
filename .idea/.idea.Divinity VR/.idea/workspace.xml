@@ -6,122 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/CharacterStatsSO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/CharacterStatsSO.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Knight stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Knight stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Mage stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Enemies/Mage stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/EnemyStatsSO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/EnemyStatsSO.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Highlight Plus - Hand Augment.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Highlight Plus - Hand Augment.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Bern Stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Bern Stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Paatri Stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Players/Paatri Stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Cork pose zone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Cork pose zone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Credit Grab pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Credit Grab pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Hilt Grab pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/Hilt Grab pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/abilitygrabbable_pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/abilitygrabbable_pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/cork hold pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Game Data/Poses/cork hold pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ITC Socketables.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ITC Socketables.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/AudioSources.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/AudioSources.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Canvas - Stats.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Canvas - Stats.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Credit Pickup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Credit Pickup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Knight.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Knight.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Pyromancer.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - Pyromancer.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Enemy - base.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/First Aid Kit.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/First Aid Kit.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/HitPopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/HitPopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/InfoPopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/InfoPopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Note.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Note.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Bern.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Bern.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Paatri Variant.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player - Paatri Variant.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Select Button.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Select Button.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player-Default.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/SceneStartSpawnPosition.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/SceneStartSpawnPosition.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spawn At Runtime.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spawn At Runtime.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spirit Wander ability.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Spirit Wander ability.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Sword - enemy.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Sword - enemy.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/TurnOrderUI.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/TurnOrderUI.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/UserMenu.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/UserMenu.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/floating crystals.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/floating crystals.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/lightbridge.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/lightbridge.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/BackPack.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/BackPack.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/Holsters.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/Holsters.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/BackPack.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/BackPack.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/Player-Default.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Health.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Health.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Magic Armor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Magic Armor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Poise Armor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Potions/Potion - Poise Armor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Props/Credit Pickup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Props/Credit Pickup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Props/Wardrobe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Props/Wardrobe.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Stun Rod.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Stun Rod.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Resources/StartupObjects.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scenes/TitleScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scenes/TitleScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/AbilityPointer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/AbilityPointer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/PlayerStats.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadPointer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadPointer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadTriggerInteractions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HeadTriggerInteractions.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ITCPlayerInputs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/LocalUserObjects.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PermanentObjectInitialization.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PermanentObjectInitialization.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerHUDController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerHUDController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSpawnPoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/PlayerSpawnPoint.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ShowWhenLooking.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Special Room post process.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Special Room post process.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Visor Post Process.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Visor Post Process.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/lobby post process.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/lobby post process.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/AbilitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/AbilitySystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,13 +28,24 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39284ffc1a024620800ee216902b908c136a18/61/b200a4cc/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/UniStorm Weather System/Scripts/System/UniStormSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/VrTunnellingPro/Scripts/Tunnelling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/HurricaneVR intheclouds/ITCSocketHoverAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/CanvasSetup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCForceGrabber.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCPlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCSocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Managers/HighlightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/CreditPickup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/ITCEnums.cs" root0="FORCE_HIGHLIGHTING" />
@@ -310,10 +217,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11572">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="11572" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -510,7 +417,9 @@
       <workItem from="1684600805946" duration="38000" />
       <workItem from="1684600850714" duration="1052000" />
       <workItem from="1684602963357" duration="2522000" />
-      <workItem from="1684616876765" duration="1537000" />
+      <workItem from="1684616876765" duration="1959000" />
+      <workItem from="1685125091415" duration="1620000" />
+      <workItem from="1685126733435" duration="3857000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -534,38 +443,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs</url>
-          <line>54</line>
-          <properties documentPath="C:\Users\patri\Documents\UnityVR\Divinity VR\Assets\Packages\HurricaneVR\Framework\Scripts\ControllerInput\HVRInputSystemController.cs" initialLine="54" containingFunctionPresentation="Method 'OnDeviceChanged'">
-            <startOffsets>
-              <option value="1401" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1439" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRInputSystemController.cs</url>
-          <line>58</line>
-          <properties documentPath="C:\Users\patri\Documents\UnityVR\Divinity VR\Assets\Packages\HurricaneVR\Framework\Scripts\ControllerInput\HVRInputSystemController.cs" initialLine="58" containingFunctionPresentation="Method 'OnDeviceChanged'">
-            <startOffsets>
-              <option value="1666" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1688" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
