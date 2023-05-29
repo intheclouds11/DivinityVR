@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Player;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +7,7 @@ namespace intheclouds
 {
     public class UserMenu : MonoBehaviour
     {
-        public static UserMenu Instance;
+        public static UserMenu instance;
         public Button[] Tabs;
         public GameObject[] Pages;
         public GameObject[] controllerHints;
@@ -19,44 +16,44 @@ namespace intheclouds
         public Toggle SmoothTurnToggle;
         public Toggle FollowToggle;
         public Toggle DebugModeToggle;
-        private GameObject spawnPoint;
-        private GameObject followThis;
-        private LocalUserObjects currentUserObjects;
-        private GameObject canvasGO;
+        private GameObject _spawnPoint;
+        private GameObject _followThis;
+        private LocalUserObjects _currentUserObjects;
+        private GameObject _canvasGO;
 
         private void Start()
         {
-            Instance = this;
-            canvasGO = transform.GetChild(0).gameObject;
-            canvasGO.SetActive(false);
+            instance = this;
+            _canvasGO = transform.GetChild(0).gameObject;
+            _canvasGO.SetActive(false);
             
-            UserSetup(LocalUserObjects.Instance.PlayerStats);
+            UserSetup(LocalUserObjects.instance.PlayerStats);
             
-            SmoothTurnToggle.SetIsOnWithoutNotify(LocalUserObjects.Instance.ITCPlayerController.RotationType == RotationType.Smooth);
+            SmoothTurnToggle.SetIsOnWithoutNotify(LocalUserObjects.instance.ITCPlayerController.RotationType == RotationType.Smooth);
             FollowToggle.SetIsOnWithoutNotify(followPlayer);
-            DebugModeToggle.SetIsOnWithoutNotify(Startup.Instance.debugMode);
+            DebugModeToggle.SetIsOnWithoutNotify(Startup.instance.debugMode);
 
-            transform.position = spawnPoint.transform.position;
+            transform.position = _spawnPoint.transform.position;
         }
 
         private void Update()
         {
             if (followPlayer)
             {
-                transform.position = Vector3.Lerp(transform.position, spawnPoint.transform.position, 5 * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, _spawnPoint.transform.position, 5 * Time.deltaTime);
             }
 
             if (menuIsOpen)
             {
-                transform.LookAt(2 * transform.position - followThis.transform.position);
+                transform.LookAt(2 * transform.position - _followThis.transform.position);
             }
         }
 
         public void UserSetup(PlayerStats player)
         {
-            currentUserObjects = player.LocalUserObjects;
-            spawnPoint = currentUserObjects.userMenuSpawnPoint;
-            followThis = currentUserObjects.Camera.gameObject;
+            _currentUserObjects = player.LocalUserObjects;
+            _spawnPoint = _currentUserObjects.userMenuSpawnPoint;
+            _followThis = _currentUserObjects.Camera.gameObject;
         }
 
         public void ToggleMenu(bool forceShow = false)
@@ -75,30 +72,30 @@ namespace intheclouds
 
         private void ShowMenu()
         {
-            currentUserObjects.ITCPlayerController.RotationEnabled = false;
-            currentUserObjects.ITCPlayerController.MovementEnabled = false;
-            currentUserObjects.ITCTeleporter.TeleportEnabled = false;
-            transform.position = spawnPoint.transform.position;
-            canvasGO.SetActive(true);
+            _currentUserObjects.ITCPlayerController.RotationEnabled = false;
+            _currentUserObjects.ITCPlayerController.MovementEnabled = false;
+            _currentUserObjects.ITCTeleporter.TeleportEnabled = false;
+            transform.position = _spawnPoint.transform.position;
+            _canvasGO.SetActive(true);
         }
 
         private void HideMenu()
         {
-            currentUserObjects.ITCPlayerController.RotationEnabled = true;
-            if (!currentUserObjects.PlayerStats.InCombat)
+            _currentUserObjects.ITCPlayerController.RotationEnabled = true;
+            if (!_currentUserObjects.PlayerStats.InCombat)
             {
-                currentUserObjects.ITCPlayerController.MovementEnabled = true;
+                _currentUserObjects.ITCPlayerController.MovementEnabled = true;
             }
-            if (currentUserObjects.ITCTeleporter.InitialTeleportEnabled)
+            if (_currentUserObjects.ITCTeleporter.InitialTeleportEnabled)
             {
-                currentUserObjects.ITCTeleporter.TeleportEnabled = true;
+                _currentUserObjects.ITCTeleporter.TeleportEnabled = true;
             }
-            canvasGO.SetActive(false);
+            _canvasGO.SetActive(false);
         }
 
         public void Toggle_SmoothTurn(bool smooth)
         {
-            currentUserObjects.ITCPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
+            _currentUserObjects.ITCPlayerController.RotationType = smooth ? RotationType.Smooth : RotationType.Snap;
             Startup.SaveUserTurnSetting(smooth ? 0 : 1);
         }
 
@@ -108,7 +105,7 @@ namespace intheclouds
             {
                 DebugModeToggle.SetIsOnWithoutNotify(toggle);
             }
-            Startup.Instance.debugMode = toggle;
+            Startup.instance.debugMode = toggle;
             Startup.SaveDebugSetting(toggle ? 1 : 0);
         }
 
@@ -124,32 +121,32 @@ namespace intheclouds
 
         public void Button_CalibrateHeight()
         {
-            currentUserObjects.HVRCameraRig.Calibrate();
+            _currentUserObjects.HVRCameraRig.Calibrate();
         }
 
         public void Button_Standing()
         {
-            var sitStandSetting = currentUserObjects.HVRCameraRig.SitStanding;
+            var sitStandSetting = _currentUserObjects.HVRCameraRig.SitStanding;
             if (sitStandSetting == HVRSitStand.Sitting)
             {
-                currentUserObjects.HVRCameraRig.SetSitStandMode(HVRSitStand.PlayerHeight);
+                _currentUserObjects.HVRCameraRig.SetSitStandMode(HVRSitStand.PlayerHeight);
             }
         }
 
         public void Button_Seated()
         {
-            var sitStandSetting = currentUserObjects.HVRCameraRig.SitStanding;
+            var sitStandSetting = _currentUserObjects.HVRCameraRig.SitStanding;
             if (sitStandSetting == HVRSitStand.PlayerHeight)
             {
-                currentUserObjects.HVRCameraRig.SetSitStandMode(HVRSitStand.Sitting);
+                _currentUserObjects.HVRCameraRig.SetSitStandMode(HVRSitStand.Sitting);
             }
         }
 
         public void Button_NextTurn()
         {
-            if (GameManager.Instance.state == GameState.CombatStart)
+            if (GameManager.instance.state == GameState.CombatStart)
             {
-                GameManager.Instance.ForceNextTurn();
+                GameManager.instance.ForceNextTurn();
             }
         }
 
@@ -193,8 +190,8 @@ namespace intheclouds
         {
             Debug.Log("Starting Exploration Mode...");
             Button_ResetStats();
-            currentUserObjects.PlayerMovementAP.enabled = false;
-            currentUserObjects.ITCPlayerController.MovementEnabled = true;
+            _currentUserObjects.PlayerMovementAP.enabled = false;
+            _currentUserObjects.ITCPlayerController.MovementEnabled = true;
         }
 
         public void Button_StartPlayerTurn()
@@ -202,8 +199,8 @@ namespace intheclouds
             Debug.Log("Starting Player Turn... (not fully implemented yet)");
             Button_ResetStats();
             FindObjectOfType<PlayerStats>().Turn = true;
-            currentUserObjects.PlayerMovementAP.enabled = true;
-            currentUserObjects.PlayerMovementAP.StartTurn();
+            _currentUserObjects.PlayerMovementAP.enabled = true;
+            _currentUserObjects.PlayerMovementAP.StartTurn();
         }
 
         public void Button_StartEnemyTurn()

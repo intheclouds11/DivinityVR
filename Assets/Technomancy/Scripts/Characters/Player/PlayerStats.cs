@@ -13,7 +13,7 @@ namespace intheclouds
     public sealed class PlayerStats : BaseStats
     {
         public LocalUserObjects LocalUserObjects;
-        private PlayerMovementAP playerMovementAP;
+        private PlayerMovementAP _playerMovementAP;
         [SerializeField]
         private TextMeshProUGUI creditsText;
         [SerializeField]
@@ -84,7 +84,7 @@ namespace intheclouds
                 UpdateAPInfo();
                 if (_currentAP == 0)
                 {
-                    playerMovementAP.EndTurn();
+                    _playerMovementAP.EndTurn();
                 }
             }
         }
@@ -97,24 +97,24 @@ namespace intheclouds
                 UpdateAPInfo();
             }
         }
-        public int XP
+        public int Xp
         {
             get { return _XP; }
             set
             {
                 _XP = value;
-                UpdateXPInfo();
+                UpdateXpInfo();
             }
         }
         [SerializeField]
         private int _XP;
-        public int XPToNextLevel
+        public int XpToNextLevel
         {
             get { return _XPToNextLevel; }
             set
             {
                 _XPToNextLevel = value;
-                UpdateXPInfo();
+                UpdateXpInfo();
             }
         }
         [SerializeField]
@@ -129,14 +129,14 @@ namespace intheclouds
                 {
                     statusEffectsContainer.StatusEffectCooldown();
                     LocalUserObjects.abilitySystem.AbilityCooldown();
-                    playerMovementAP.StartTurn();
+                    _playerMovementAP.StartTurn();
                 }
                 else
                 {
                     if (InCombat)
                     {
-                        playerMovementAP.EndTurn();
-                        GameManager.Instance.NextTurn = true;
+                        _playerMovementAP.EndTurn();
+                        GameManager.instance.NextTurn = true;
                         RefillAP();
                     }
                 }
@@ -151,11 +151,11 @@ namespace intheclouds
                 _inCombat = value;
                 if (_inCombat)
                 {
-                    playerMovementAP.enabled = true;
+                    _playerMovementAP.enabled = true;
                 }
                 else
                 {
-                    playerMovementAP.enabled = false;
+                    _playerMovementAP.enabled = false;
                     _turn = false;
                 }
             }
@@ -169,7 +169,7 @@ namespace intheclouds
                 _playerControlled = value;
                 if (_playerControlled)
                 {
-                    GameManager.Instance.controlledPlayer = this;
+                    GameManager.instance.controlledPlayer = this;
                 }
             }
         }
@@ -216,7 +216,7 @@ namespace intheclouds
 
         private void InitializeStats()
         {
-            playerMovementAP = LocalUserObjects.PlayerMovementAP;
+            _playerMovementAP = LocalUserObjects.PlayerMovementAP;
             Name = statsSO.Name;
             if (nameText)
             {
@@ -234,8 +234,8 @@ namespace intheclouds
             CurrentAP = _startingAP;
 
             level = statsSO.level;
-            XP = statsSO.XP;
-            XPToNextLevel = statsSO.XPToNextLevel;
+            Xp = statsSO.XP;
+            XpToNextLevel = statsSO.XPToNextLevel;
             credits = statsSO.credits;
 
             Strength = statsSO.Strength;
@@ -246,10 +246,10 @@ namespace intheclouds
             Wits = statsSO.Wits;
         }
 
-        private void UpdateXPInfo()
+        private void UpdateXpInfo()
         {
-            xpSlider.maxValue = XPToNextLevel;
-            xpSlider.value = XP;
+            xpSlider.maxValue = XpToNextLevel;
+            xpSlider.value = Xp;
         }
 
         private void UpdateAPInfo()
@@ -364,9 +364,9 @@ namespace intheclouds
 
             if (_currentMagicArmor < _maxMagicArmor)
             {
-                var prevMA = _currentMagicArmor;
+                var prevMa = _currentMagicArmor;
                 CurrentMagicArmor = Math.Clamp(CurrentMagicArmor + amount, 0, _maxMagicArmor);
-                Debug.Log($"Restored {_currentMagicArmor - prevMA} magic armor");
+                Debug.Log($"Restored {_currentMagicArmor - prevMa} magic armor");
             }
         }
 
@@ -376,9 +376,9 @@ namespace intheclouds
 
             if (_currentPoise < _maxPoise)
             {
-                var prevPA = _currentPoise;
+                var prevPa = _currentPoise;
                 CurrentPoise = Math.Clamp(_currentPoise + amount, 0, _maxPoise);
-                Debug.Log($"Restored {_currentPoise - prevPA} physical armor");
+                Debug.Log($"Restored {_currentPoise - prevPa} physical armor");
             }
         }
 
@@ -386,14 +386,14 @@ namespace intheclouds
         {
             SFXPlayer.Instance.PlaySFXRandomPitch(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)],
                 LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
-            GameManager.Instance.players.Remove(this);
-            GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, Wits));
-            GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
+            GameManager.instance.players.Remove(this);
+            GameManager.instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, Wits));
+            GameManager.instance.UpdateTurnOrderText(GameManager.instance.turnOrderList);
         }
 
         public void UseAP(int apConsumed)
         {
-            if (!Startup.Instance.debugMode)
+            if (!Startup.instance.debugMode)
             {
                 CurrentAP -= apConsumed;
             }
@@ -415,19 +415,19 @@ namespace intheclouds
             credits += amount;
         }
 
-        public void ObtainXP(int xp)
+        public void ObtainXp(int xp)
         {
             Debug.Log($"get xp {Name}", this);
 
             LocalUserObjects.HUDController.NewInfoPopup($"+{xp} XP", Color.white);
-            XP += xp;
+            Xp += xp;
 
-            if (XP > XPToNextLevel)
+            if (Xp > XpToNextLevel)
             {
                 LevelUp();
-                var xpGainDelta = XP - XPToNextLevel;
+                var xpGainDelta = Xp - XpToNextLevel;
 
-                if (xpGainDelta > XPToNextLevel)
+                if (xpGainDelta > XpToNextLevel)
                 {
                     LevelUp();
                 }
@@ -436,7 +436,7 @@ namespace intheclouds
 
         public void LevelUp()
         {
-            XPToNextLevel += (int) (XPToNextLevel * 0.5f);
+            XpToNextLevel += (int) (XpToNextLevel * 0.5f);
             SFXPlayer.Instance.PlaySFX(levelUpAudioClip, transform.position);
             // award 1 Attribute Point, 1 Skill Point, 1 Talent
 

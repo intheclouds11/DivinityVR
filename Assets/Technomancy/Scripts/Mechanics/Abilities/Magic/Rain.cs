@@ -8,9 +8,9 @@ namespace intheclouds
         
         private void Update()
         {
-            if (rb.velocity.y < -2f && AbilitySpawnLocator.Instance.IsSelectionValid)
+            if (rb.velocity.y < -2f && AbilitySpawnLocator.instance.IsSelectionValid)
             {
-                Activate(AbilitySpawnLocator.Instance.SelectionLocation, new Vector3(-90, 0, 0));
+                Activate(AbilitySpawnLocator.instance.SelectionLocation, new Vector3(-90, 0, 0));
             }
         }
         

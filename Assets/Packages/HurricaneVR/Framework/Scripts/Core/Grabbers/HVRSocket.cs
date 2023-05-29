@@ -329,7 +329,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             }
         }
 
-        public void OnHandGrabberEntered()
+        public virtual void OnHandGrabberEntered(HVRGrabberBase grabber)
         {
             HandHovering = true;
             
@@ -343,7 +343,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             }
         }
 
-        public void OnHandGrabberExited()
+        public virtual void OnHandGrabberExited(HVRGrabberBase grabber)
         {
             if (HandGrabActions != null)
             {

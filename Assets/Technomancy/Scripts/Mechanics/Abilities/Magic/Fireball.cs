@@ -69,14 +69,14 @@ namespace intheclouds
                     if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
                     {
                         // Debug.Log("HIT PREEXISTING FIRE SURFACE");
-                        SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(preexistingEffect);
+                        SurfaceEffectsContainer.instance.RemoveSurfaceEffect(preexistingEffect);
                     }
 
                     GameObject fireSurface = Instantiate(surfaceEffect, hit.point, Quaternion.identity);
                     var spawnedSurface = fireSurface.GetComponent<SurfaceEffect>();
                     spawnedSurface.caster = caster;
                     spawnedSurface.cooldownTimer = spawnedSurface.cooldown;
-                    SurfaceEffectsContainer.Instance.surfaceEffectsList.Add(spawnedSurface);
+                    SurfaceEffectsContainer.instance.surfaceEffectsList.Add(spawnedSurface);
                 }
             }
             else

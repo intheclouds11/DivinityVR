@@ -1,3 +1,5 @@
+using System.Collections;
+using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,35 +14,66 @@ namespace intheclouds
             PhysicalArmor
         }
 
-        public PotionType Type;
-        public int Amount = 25;
-        public Collider col;
-        public int RequiredAP = 1;
-        [field: SerializeField]
+        public PotionType type;
+        public int amount = 25;
+        public Collider grabbableCollider;
+        public int requiredAP = 1;
+        public AudioClip drinkClip;
+        public GameObject liquidGO;
+        
+        public ITCGrabbable grabbable { get; private set; }
         public bool Used { get; set; }
-        [field: SerializeField]
         public bool Usable { get; set; }
+        
+
+        private void Awake()
+        {
+            grabbable = GetComponent<ITCGrabbable>();
+        }
 
         public void ToggleTagOnSocketed()
         {
-            if (!enabled)
+            if (grabbableCollider.CompareTag("Potion"))
             {
-                return;
-            }
-
-            if (col.CompareTag("Potion"))
-            {
-                col.tag = "Untagged";
+                grabbableCollider.tag = "Untagged";
             }
             else
             {
-                col.tag = "Potion";
+                grabbableCollider.tag = "Potion";
             }
+        }
+
+        public void StartDrinkCoroutine(PlayerStats playerStats)
+        {
+            StartCoroutine(Drink(playerStats));
+        }
+        
+        public IEnumerator Drink(PlayerStats playerStats)
+        {
+            Used = true;
+            SFXPlayer.Instance.PlaySFX(drinkClip, transform.position, 1, 0.5f, 10, false);
+
+            yield return new WaitForSeconds(0.65f);
+
+            if (type == PotionType.Health)
+            {
+                playerStats.Heal(amount);
+            }
+            else if (type == PotionType.MagicArmor)
+            {
+                playerStats.RestoreMagicArmor(amount);
+            }
+            else if (type == PotionType.PhysicalArmor)
+            {
+                playerStats.RestorePhysicalArmor(amount);
+            }
+
+            liquidGO.SetActive(false);
         }
 
         public string GetHoverInfo()
         {
-            return $"{Type} Potion: +{Amount}";
+            return $"{type} Potion: +{amount}";
         }
     }
 }

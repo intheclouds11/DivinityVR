@@ -6,19 +6,19 @@ namespace intheclouds
 {
     public class SurfaceEffectsContainer : MonoBehaviour
     {
-        public static SurfaceEffectsContainer Instance;
+        public static SurfaceEffectsContainer instance;
         public List<SurfaceEffect> surfaceEffectsList = new List<SurfaceEffect>();
-        private float cooldownTimerNoCombat;
-        private BaseStats combatant;
+        private float _cooldownTimerNoCombat;
+        private BaseStats _combatant;
 
         void Start()
         {
-            Instance = this;
+            instance = this;
         }
 
         void Update()
         {
-            if (GameManager.Instance.state == GameState.Exploration)
+            if (GameManager.instance.state == GameState.Exploration)
             {
                 CooldownExploration();
             }
@@ -26,14 +26,14 @@ namespace intheclouds
 
         public void CooldownExploration()
         {
-            if (cooldownTimerNoCombat < 2)
+            if (_cooldownTimerNoCombat < 2)
             {
-                cooldownTimerNoCombat += Time.deltaTime;
+                _cooldownTimerNoCombat += Time.deltaTime;
             }
-            else if (cooldownTimerNoCombat >= 2)
+            else if (_cooldownTimerNoCombat >= 2)
             {
                 Cooldown();
-                cooldownTimerNoCombat = 0;
+                _cooldownTimerNoCombat = 0;
             }
         }
 

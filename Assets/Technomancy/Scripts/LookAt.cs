@@ -1,5 +1,4 @@
 using HurricaneVR.Framework.Core;
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace intheclouds
@@ -7,6 +6,7 @@ namespace intheclouds
     public class LookAt : MonoBehaviour
     {
         public Transform target;
+        public bool followTargetTransformUp;
 
         private void Start()
         {
@@ -20,7 +20,14 @@ namespace intheclouds
         {
             if (target)
             {
-                transform.rotation = Quaternion.LookRotation(transform.position - target.position);
+                if (followTargetTransformUp)
+                {
+                    transform.rotation = Quaternion.LookRotation(transform.position - target.position, target.up);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.LookRotation(transform.position - target.position);
+                }
             }
         }
     }

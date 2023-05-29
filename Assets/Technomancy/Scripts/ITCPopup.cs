@@ -22,18 +22,18 @@ public class ITCPopup : MonoBehaviour
     public float secondsToDestroy = 2;
     public Transform target;
 
-    private Transform cam;
-    private LookAt lookAt;
-    private float originalFontSize;
-    private Transform originalParent;
+    private Transform _cam;
+    private LookAt _lookAt;
+    private float _originalFontSize;
+    private Transform _originalParent;
 
 
     private void Awake()
     {
-        cam = HVRManager.Instance.Camera.transform;
-        lookAt = GetComponent<LookAt>();
-        originalFontSize = TextMeshProUGUI.fontSize;
-        originalParent = transform.parent;
+        _cam = HVRManager.Instance.Camera.transform;
+        _lookAt = GetComponent<LookAt>();
+        _originalFontSize = TextMeshProUGUI.fontSize;
+        _originalParent = transform.parent;
         if (secondsToDestroy > 0)
         {
             Destroy(gameObject, secondsToDestroy);
@@ -44,7 +44,7 @@ public class ITCPopup : MonoBehaviour
     {
         if (scaleWithDistance)
         {
-            TextMeshProUGUI.fontSize = originalFontSize * scaleFactor.Evaluate(Vector3.Distance(transform.position, cam.position));
+            TextMeshProUGUI.fontSize = _originalFontSize * scaleFactor.Evaluate(Vector3.Distance(transform.position, _cam.position));
         }
 
         if (movingPopup)
@@ -65,12 +65,12 @@ public class ITCPopup : MonoBehaviour
 
     public void UnParent(bool unParent)
     {
-        if (!originalParent)
+        if (!_originalParent)
         {
-            originalParent = transform.parent;
+            _originalParent = transform.parent;
         }
 
-        transform.parent = unParent ? null : originalParent;
+        transform.parent = unParent ? null : _originalParent;
     }
 
     public void HandHovered(ITCGrabbable grabbable)
@@ -78,7 +78,7 @@ public class ITCPopup : MonoBehaviour
         if (grabbable.TryGetComponent(out IHoverableItem hoverableItem))
         {
             // First disable canvas and enable it next frame
-            lookAt.enabled = true;
+            _lookAt.enabled = true;
             MainCanvas.enabled = false;
             this.ExecuteNextUpdate(() => MainCanvas.enabled = true);
             
@@ -95,7 +95,7 @@ public class ITCPopup : MonoBehaviour
         // If this popup is assigned to the grabbable, hide popup.
         if (force || target == grabbable.transform)
         {
-            lookAt.enabled = false;
+            _lookAt.enabled = false;
             MainCanvas.enabled = false;
             
             target = null;
@@ -104,7 +104,7 @@ public class ITCPopup : MonoBehaviour
         // Otherwise its the secondary hoverer so hide the primary hoverer popup
         else
         {
-            foreach (var itcPopup in LocalUserObjects.Instance.HUDController.HoverInfoList.Where(itcPopup => itcPopup != this))
+            foreach (var itcPopup in LocalUserObjects.instance.HUDController.HoverInfoList.Where(itcPopup => itcPopup != this))
             {
                 itcPopup.HandUnhovered(grabbable, true);
                 return;

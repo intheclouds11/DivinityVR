@@ -4,7 +4,6 @@ using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using NaughtyAttributes;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -15,17 +14,17 @@ namespace intheclouds
         #region Variables
 
         [Header("Damage Handling")]
-        public int RequiredAP = 1;
-        public bool CanBackstab;
-        public int BaseDamage = 1;
-        public float CriticalDamageMultiplier = 1.8f;
-        public float DamageThreshold = 7;
-        public float HitCooldown = 0.25f;
-        public DamageType DamageType = DamageType.Physical;
-        public ScalingType ScalingType = ScalingType.None;
-        public StatusEffect StatusEffect;
+        public int requiredAP = 2;
         [Tooltip("Enable for weapons that should disable collision on successful hit so player can follow through with attack")]
-        public bool DisableCollisionsOnHitEnemy;
+        public bool disableCollisionsOnHitEnemy;
+        public bool canBackstab;
+        public int baseDamage = 1;
+        public float criticalDamageMultiplier = 1.8f;
+        public float damageThreshold = 7;
+        public float hitCooldown = 0.25f;
+        public DamageType damageType = DamageType.Physical;
+        public ScalingType scalingType = ScalingType.None;
+        public StatusEffect statusEffect;
 
         [Header("SFX Handling")]
         public AudioClip HitEnemyClip;
@@ -50,18 +49,18 @@ namespace intheclouds
 
         public event Action AppliedDamage;
 
-        private AudioSource impactAudioSource;
-        private AudioSource swipeAudioSource;
-        private HVRCollisionEvents collisionEvents;
-        private bool justHit;
-        private PlayerStats wieldingUser;
-        private Rigidbody rb;
-        private HVRGrabbable grabbable;
-        private bool isPlayingSFX;
-        private float pitch;
-        private float volume;
-        private Vector3 lastAngularVelocity;
-        private Collider[] enemyColliders;
+        private AudioSource _impactAudioSource;
+        private AudioSource _swipeAudioSource;
+        private HVRCollisionEvents _collisionEvents;
+        private bool _justHit;
+        private PlayerStats _wieldingUser;
+        private Rigidbody _rb;
+        private HVRGrabbable _grabbable;
+        private bool _isPlayingSFX;
+        private float _pitch;
+        private float _volume;
+        private Vector3 _lastAngularVelocity;
+        private Collider[] _enemyColliders;
 
         private bool showSwipe => SwipeClip;
 
@@ -70,15 +69,15 @@ namespace intheclouds
 
         private void Start()
         {
-            collisionEvents = GetComponent<HVRCollisionEvents>();
-            rb = GetComponent<Rigidbody>();
-            grabbable = GetComponent<HVRGrabbable>();
+            _collisionEvents = GetComponent<HVRCollisionEvents>();
+            _rb = GetComponent<Rigidbody>();
+            _grabbable = GetComponent<HVRGrabbable>();
             GetComponent<HVRGrabbable>().Grabbed.AddListener(AssignWielder);
         }
 
         private void AssignWielder(HVRGrabberBase grabber, HVRGrabbable grabbable)
         {
-            wieldingUser = grabber.GetComponentInParent<PlayerStats>();
+            _wieldingUser = grabber.GetComponentInParent<PlayerStats>();
         }
 
         private void Update()
@@ -88,27 +87,27 @@ namespace intheclouds
 
         private void HandleSwipeSFX()
         {
-            if (grabbable.IsSocketed || !SwipeClip)
+            if (_grabbable.IsSocketed || !SwipeClip)
             {
                 return;
             }
 
-            if (grabbable.IsHandGrabbed && wieldingUser)
+            if (_grabbable.IsHandGrabbed && _wieldingUser)
             {
-                var acceleration = Mathf.Abs(rb.angularVelocity.magnitude - lastAngularVelocity.magnitude) * Time.fixedDeltaTime;
-                lastAngularVelocity = rb.angularVelocity;
+                var acceleration = Mathf.Abs(_rb.angularVelocity.magnitude - _lastAngularVelocity.magnitude) * Time.fixedDeltaTime;
+                _lastAngularVelocity = _rb.angularVelocity;
 
                 // var wielderVelocity = wieldingUser.LocalUserObjects.HVRPlayerController.CharacterController.velocity.magnitude;
                 // var velocityRelativeToWielder = Mathf.Abs(wielderVelocity - rb.velocity.magnitude);
 
-                if ((!swipeAudioSource || !swipeAudioSource.isPlaying) && acceleration > SwipeThreshold)
+                if ((!_swipeAudioSource || !_swipeAudioSource.isPlaying) && acceleration > SwipeThreshold)
                 {
                     // todo use HVRUtilities.Remap() to make volume scale better
-                    swipeAudioSource = PlayVelocityBasedSFX(acceleration, SwipeClip, MinPitchSwipe, MaxPitchSwipe, MaxVolumeSwipe, 10, VolumeModifierSwipe);
+                    _swipeAudioSource = PlayVelocityBasedSFX(acceleration, SwipeClip, MinPitchSwipe, MaxPitchSwipe, MaxVolumeSwipe, 10, VolumeModifierSwipe);
                 }
-                else if (swipeAudioSource && acceleration < SwipeCooldownThreshold)
+                else if (_swipeAudioSource && acceleration < SwipeCooldownThreshold)
                 {
-                    StartCoroutine(HVRUtilities.FadeOut(swipeAudioSource, 0.2f));
+                    StartCoroutine(HVRUtilities.FadeOut(_swipeAudioSource, 0.2f));
                 }
             }
         }
@@ -119,25 +118,25 @@ namespace intheclouds
             var relativeVelocity = collision.relativeVelocity.magnitude;
 
             // Prevent impact sfx playing same time as destroy sfx
-            if (relativeVelocity > ImpactThreshold && (!collisionEvents || relativeVelocity <= collisionEvents.VelocityThreshold))
+            if (relativeVelocity > ImpactThreshold && (!_collisionEvents || relativeVelocity <= _collisionEvents.VelocityThreshold))
             {
                 HandleImpactSFX(relativeVelocity);
             }
 
-            if (BaseDamage == 0 || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
+            if (baseDamage == 0 || _justHit || !_wieldingUser || !_wieldingUser.CanPerformActions(requiredAP))
             {
                 return;
             }
-            
+
             var objectDamageHandler = collision.collider.GetComponent<HVRDamageHandlerBase>();
-            if (objectDamageHandler && relativeVelocity >= DamageThreshold)
+            if (objectDamageHandler && relativeVelocity >= damageThreshold)
             {
                 DamageDestructible(objectDamageHandler, relativeVelocity);
             }
 
-            if (!DisableCollisionsOnHitEnemy && collision.gameObject.CompareTag("EnemyBody") || collision.gameObject.CompareTag("EnemyHead"))
+            if (!disableCollisionsOnHitEnemy && collision.gameObject.CompareTag("EnemyBody") || collision.gameObject.CompareTag("EnemyHead"))
             {
-                if (relativeVelocity > DamageThreshold)
+                if (relativeVelocity > damageThreshold)
                 {
                     DamageEnemy(collision.collider, relativeVelocity, false);
                 }
@@ -147,33 +146,33 @@ namespace intheclouds
         // Handles damage caused by weapon. Disables collisions after valid hit
         private void OnTriggerEnter(Collider other)
         {
-            if (!DisableCollisionsOnHitEnemy || BaseDamage == 0 || justHit || !wieldingUser || !wieldingUser.CanPerformActions(RequiredAP))
+            if (!disableCollisionsOnHitEnemy || baseDamage == 0 || _justHit || !_wieldingUser || !_wieldingUser.CanPerformActions(requiredAP))
             {
                 return;
             }
 
             if (other.CompareTag("EnemyBody") || other.CompareTag("EnemyHead"))
             {
-                if (rb.velocity.magnitude > DamageThreshold || rb.angularVelocity.magnitude > DamageThreshold * 3)
+                if (_rb.velocity.magnitude > damageThreshold || _rb.angularVelocity.magnitude > damageThreshold * 3)
                 {
-                    DamageEnemy(other, rb.velocity.magnitude, true);
+                    DamageEnemy(other, _rb.velocity.magnitude, true);
                 }
             }
         }
 
         private void DamageDestructible(HVRDamageHandlerBase objectDamageHandler, float relativeVelocity)
         {
-            var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
+            var scaledDamage = (int) Math.Ceiling(baseDamage * (_wieldingUser.Strength * 0.105f));
             objectDamageHandler.TakeDamage(scaledDamage);
-            if (wieldingUser.InCombat)
+            if (_wieldingUser.InCombat)
             {
-                wieldingUser.UseAP(RequiredAP);
+                _wieldingUser.UseAP(requiredAP);
             }
 
             PlayVelocityBasedSFX(relativeVelocity, GenericHitClip, MinPitch, MaxPitch, MaxVolume);
-            justHit = true;
+            _justHit = true;
             AppliedDamage?.Invoke();
-            Invoke(nameof(ResetCollision), HitCooldown);
+            Invoke(nameof(ResetCollision), hitCooldown);
         }
 
 
@@ -183,36 +182,38 @@ namespace intheclouds
             if (!currentEnemyStats.isAlive) return;
 
             // 0.105 comes from dividing base strength (10) by 10 and multiplying 1.05 (5%+). every strength point is 5% damage boost
-            var scaledDamage = (int) Math.Ceiling(BaseDamage * (wieldingUser.Strength * 0.105f));
-            if (CanBackstab && wieldingUser.CanBackstab && wieldingUser.BackstabTargets.Contains(currentEnemyStats))
+            var scaledDamage = (int) Math.Ceiling(baseDamage * (_wieldingUser.Strength * 0.105f));
+            if (canBackstab && _wieldingUser.CanBackstab && _wieldingUser.BackstabTargets.Contains(currentEnemyStats))
             {
                 scaledDamage *= 2;
             }
-            currentEnemyStats.TakeDamage(wieldingUser, Helpers.CalculateDamageRange(scaledDamage, wieldingUser, CriticalDamageMultiplier),
-                DamageType, ScalingType, StatusEffect);
 
-            if (wieldingUser.InCombat)
+            currentEnemyStats.TakeDamage(_wieldingUser, Helpers.CalculateDamageRange(scaledDamage, _wieldingUser, criticalDamageMultiplier),
+                damageType, scalingType, statusEffect);
+
+            if (_wieldingUser.InCombat)
             {
-                wieldingUser.UseAP(RequiredAP);
+                _wieldingUser.UseAP(requiredAP);
             }
 
             PlayVelocityBasedSFX(relativeVelocity, HitEnemyClip, MinPitch, MaxPitch, MaxVolume);
-            justHit = true;
+            _justHit = true;
             if (ignoreCollisionsPostHit)
             {
-                enemyColliders = currentEnemyStats.GetComponentsInChildren<Collider>();
-                IgnoreCollision(enemyColliders);
+                _enemyColliders = currentEnemyStats.GetComponentsInChildren<Collider>();
+                IgnoreCollision(_enemyColliders);
             }
+
             AppliedDamage?.Invoke();
-            Invoke(nameof(ResetCollision), HitCooldown);
+            Invoke(nameof(ResetCollision), hitCooldown);
         }
-        
+
         public void IgnoreCollision(Collider[] other, bool ignore = true)
         {
             if (other == null) return;
             foreach (var otherCollider in other)
             {
-                foreach (var ourCollider in grabbable.Colliders)
+                foreach (var ourCollider in _grabbable.Colliders)
                 {
                     Physics.IgnoreCollision(otherCollider, ourCollider, ignore);
                 }
@@ -221,26 +222,32 @@ namespace intheclouds
 
         private void HandleImpactSFX(float relativeVelocity)
         {
-            if (!impactAudioSource || !impactAudioSource.isPlaying)
+            if (!_impactAudioSource || !_impactAudioSource.isPlaying)
             {
-                impactAudioSource = PlayVelocityBasedSFX(relativeVelocity, GenericHitClip, MinPitch, MaxPitch, MaxVolume);
+                _impactAudioSource = PlayVelocityBasedSFX(relativeVelocity, GenericHitClip, MinPitch, MaxPitch, MaxVolume);
             }
         }
 
         private void ResetCollision()
         {
-            justHit = false;
-            IgnoreCollision(enemyColliders, false);
-            enemyColliders = null;
+            _justHit = false;
+            IgnoreCollision(_enemyColliders, false);
+            _enemyColliders = null;
         }
 
-        private AudioSource PlayVelocityBasedSFX(float relativeVelocity, AudioClip clip, float minP, float maxP, float maxVol, float pitchModifier = 0.3f, float volumeModifier = 0.25f)
+        private AudioSource PlayVelocityBasedSFX(float relativeVelocity, AudioClip clip, float minP, float maxP, float maxVol, float pitchModifier = 0.3f,
+            float volumeModifier = 0.25f)
         {
+            if (!clip)
+            {
+                clip = GenericHitClip;
+            }
+
             if (clip)
             {
-                pitch = Mathf.Clamp(relativeVelocity * pitchModifier, minP, maxP);
-                volume = Mathf.Clamp(relativeVelocity * volumeModifier, 0, maxVol);
-                return SFXPlayer.Instance.PlaySFX(clip, transform.position, pitch, volume, 20);
+                _pitch = Mathf.Clamp(relativeVelocity * pitchModifier, minP, maxP);
+                _volume = Mathf.Clamp(relativeVelocity * volumeModifier, 0, maxVol);
+                return SFXPlayer.Instance.PlaySFX(clip, transform.position, _pitch, _volume, 20);
             }
 
             return null;
@@ -248,7 +255,12 @@ namespace intheclouds
 
         public string GetHoverInfo()
         {
-            return $"{name}, Damage: {BaseDamage}";
+            if (baseDamage > 0)
+            {
+                return $"{name}, Damage: {baseDamage}";
+            }
+
+            return $"{name}";
         }
     }
 }

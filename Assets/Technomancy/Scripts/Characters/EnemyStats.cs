@@ -93,13 +93,13 @@ namespace intheclouds
                 if (_turn)
                 {
                     statusEffectsContainer.StatusEffectCooldown();
-                    enemyAI.StartTurn();
+                    _enemyAI.StartTurn();
                     // todo: apply status effect damage and cooldown decrement here!
                 }
                 else
                 {
-                    enemyAI.EndTurn();
-                    GameManager.Instance.NextTurn = true;
+                    _enemyAI.EndTurn();
+                    GameManager.instance.NextTurn = true;
                     RefillAP();
                 }
             }
@@ -113,11 +113,11 @@ namespace intheclouds
                 _inCombat = value;
                 if (_inCombat)
                 {
-                    enemyAI.StartCombat();
+                    _enemyAI.StartCombat();
                 }
                 else
                 {
-                    enemyAI.EndCombat();
+                    _enemyAI.EndCombat();
                 }
             }
         }
@@ -141,14 +141,14 @@ namespace intheclouds
         public bool isAlive = true;
         public event Action EnemyDamaged;
         public event Action EnemyDied;
-        private EnemyAI enemyAI;
-        private Animator animator;
+        private EnemyAI _enemyAI;
+        private Animator _animator;
         
 
         private void Awake()
         {
-            enemyAI = GetComponent<EnemyAI>();
-            animator = GetComponent<Animator>();
+            _enemyAI = GetComponent<EnemyAI>();
+            _animator = GetComponent<Animator>();
             InitializeStats();
         }
 
@@ -222,7 +222,7 @@ namespace intheclouds
 
             if (!InCombat)
             {
-                GameManager.Instance.UpdateGameState(GameState.CombatStart);
+                GameManager.instance.UpdateGameState(GameState.CombatStart);
             }
             else if (CurrentHealth <= 0)
             {
@@ -257,17 +257,17 @@ namespace intheclouds
         {
             isAlive = false;
             CurrentHealth = 0;
-            enemyAI.DisableAIComponents();
+            _enemyAI.DisableAIComponents();
             SFXPlayer.Instance.PlaySFXRandomPitch(deadAudioClips[Random.Range(0, deadAudioClips.Length - 1)], transform.position, 0.9f, 1.1f, 0.4f, 20);
             EnemyDied?.Invoke();
-            foreach (var instancePlayer in GameManager.Instance.players)
+            foreach (var instancePlayer in GameManager.instance.players)
             {
-                instancePlayer.ObtainXP(statsSO.XPDefeated);
+                instancePlayer.ObtainXp(statsSO.XPDefeated);
             }
 
-            EnemyManager.Instance.EnemiesInCombat.Remove(this);
-            GameManager.Instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
-            GameManager.Instance.UpdateTurnOrderText(GameManager.Instance.turnOrderList);
+            EnemyManager.instance.EnemiesInCombat.Remove(this);
+            GameManager.instance.turnOrderList.Remove(new KeyValuePair<BaseStats, int>(this, wits));
+            GameManager.instance.UpdateTurnOrderText(GameManager.instance.turnOrderList);
         }
 
         #region Animation Events

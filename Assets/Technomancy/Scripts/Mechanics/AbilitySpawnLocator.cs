@@ -10,7 +10,7 @@ namespace intheclouds
 {
     public class AbilitySpawnLocator : MonoBehaviour
     {
-        public static AbilitySpawnLocator Instance;
+        public static AbilitySpawnLocator instance;
         [Header("Transforms / Components")]
         public Transform Camera;
         [FormerlySerializedAs("TeleportLineSourceLeft")]
@@ -48,7 +48,7 @@ namespace intheclouds
 
 
         [Header("CurveType")]
-        public HVRTeleportCurve CurveType;
+        public HvrTeleportCurve CurveType;
 
         [Range(90f, 179f)]
         public float MaxAngle = 179f;
@@ -222,10 +222,10 @@ namespace intheclouds
         protected bool PreviousAiming { get; set; }
 
         private readonly Collider[] _dummy = new Collider[1];
-        protected HVRInvalidTeleport _dummyInvalid;
+        protected HVRInvalidTeleport dummyInvalid;
 
-        protected float _timeSinceLastRotation;
-        protected Quaternion _previousPlayerRotation;
+        protected float timeSinceLastRotation;
+        protected Quaternion previousPlayerRotation;
 
         private void OnEnable()
         {
@@ -239,7 +239,7 @@ namespace intheclouds
 
         protected virtual void Awake()
         {
-            Instance = this;
+            instance = this;
             CharacterController = GetComponent<CharacterController>();
             CanSelect = true;
             if (!Camera)
@@ -312,16 +312,16 @@ namespace intheclouds
 
         protected virtual void CheckPlayerRotation()
         {
-            if (Player && Quaternion.Angle(Player.transform.rotation, _previousPlayerRotation) > 1f)
+            if (Player && Quaternion.Angle(Player.transform.rotation, previousPlayerRotation) > 1f)
             {
-                _timeSinceLastRotation = 0f;
+                timeSinceLastRotation = 0f;
             }
             else
             {
-                _timeSinceLastRotation += Time.deltaTime;
+                timeSinceLastRotation += Time.deltaTime;
             }
 
-            _previousPlayerRotation = Player.transform.rotation;
+            previousPlayerRotation = Player.transform.rotation;
         }
 
         protected virtual void EnabledCheck()
@@ -332,7 +332,7 @@ namespace intheclouds
                 return;
             }
 
-            if (PlayerRotateCheck && Player && _timeSinceLastRotation < RotationSelectionThreshold && !IsAiming)
+            if (PlayerRotateCheck && Player && timeSinceLastRotation < RotationSelectionThreshold && !IsAiming)
             {
                 Disable();
                 return;
@@ -585,7 +585,7 @@ namespace intheclouds
         /// <param name="hitObject">The gameobject that the final ray cast hit.</param>
         protected virtual bool CheckDestinationAllowed(GameObject hitObject, Vector3 destination)
         {
-            if (hitObject.TryGetComponent(out _dummyInvalid))
+            if (hitObject.TryGetComponent(out dummyInvalid))
                 return false;
 
             return (SelectableLayers & (1 << hitObject.layer)) != 0;
@@ -728,7 +728,7 @@ namespace intheclouds
 
         protected virtual void CalculateCurve(Vector3[] points)
         {
-            if (CurveType == HVRTeleportCurve.Ballistic)
+            if (CurveType == HvrTeleportCurve.Ballistic)
             {
                 GenerateBallisticCurve(points);
             }
@@ -831,7 +831,7 @@ namespace intheclouds
         }
     }
 
-    public enum HVRTeleportCurve
+    public enum HvrTeleportCurve
     {
         Ballistic,
         Bezier

@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public float DistanceEnemiesJoinCombat = 15f;
-    public static EnemyManager Instance;
+    public static EnemyManager instance;
     [field: SerializeField]
     public List<EnemyStats> EnemiesInCombat { get; private set; }
     [field: SerializeField]
@@ -14,13 +14,13 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
         Enemies = FindObjectsOfType<EnemyStats>(true).ToList();
     }
 
     public void PopulateEnemiesInCombatList()
     {
-        foreach (var playerStats in GameManager.Instance.players)
+        foreach (var playerStats in GameManager.instance.players)
         {
             foreach (var enemyStats in Enemies)
             {

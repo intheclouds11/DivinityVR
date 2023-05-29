@@ -11,58 +11,79 @@ namespace intheclouds
 {
     public class UserInventory : MonoBehaviour
     {
-        public HVRHandGrabber LeftHandGrabber;
-        public HVRHandGrabber RightHandGrabber;
-        public TriggerEvents LeftHandLockTrigger;
-        public TriggerEvents RightHandLockTrigger;
-        public TriggerEvents LeftHandSocketsTrigger;
-        public TriggerEvents RightHandSocketsTrigger;
-        private HVRSocket[] leftHandSockets;
-        private HVRSocket[] rightHandSockets;
-        private HVRSocketHoverScale[] leftHandSocketsActions;
-        private HVRSocketHoverScale[] rightHandSocketsActions;
-        private HighlightEffect leftHandLockTriggerHighlight;
-        private HighlightEffect rightHandLockTriggerHighlight;
-        private Coroutine hideLeftSocketsCoroutine;
-        private Coroutine hideRightSocketsCoroutine;
-        private bool leftHandCanEquip;
-        private bool rightHandCanEquip;
+        public static UserInventory instance;
+        public HVRHandGrabber leftHandGrabber;
+        public HVRHandGrabber rightHandGrabber;
+        public TriggerEvents leftHandLockTrigger;
+        public TriggerEvents rightHandLockTrigger;
+        public TriggerEvents leftHandSocketsTrigger;
+        public TriggerEvents rightHandSocketsTrigger;
+        
+        private HVRSocket[] _leftHandSockets;
+        private HVRSocket[] _rightHandSockets;
+        private HVRSocketHoverScale[] _leftHandSocketsActions;
+        private HVRSocketHoverScale[] _rightHandSocketsActions;
+        private HighlightEffect _leftHandLockTriggerHighlight;
+        private HighlightEffect _rightHandLockTriggerHighlight;
+        private Coroutine _hideLeftSocketsCoroutine;
+        private Coroutine _hideRightSocketsCoroutine;
+        private bool _leftHandCanEquip;
+        private bool _rightHandCanEquip;
+        private ITCHandGrabber[] _handGrabbers;
 
         private void Awake()
         {
-            leftHandSockets = LeftHandSocketsTrigger.GetComponentsInChildren<HVRSocket>(true);
-            rightHandSockets = RightHandSocketsTrigger.GetComponentsInChildren<HVRSocket>(true);
-            leftHandSocketsActions = LeftHandSocketsTrigger.GetComponentsInChildren<HVRSocketHoverScale>(true);
-            rightHandSocketsActions = RightHandSocketsTrigger.GetComponentsInChildren<HVRSocketHoverScale>(true);
-            leftHandLockTriggerHighlight = LeftHandLockTrigger.GetComponent<HighlightEffect>();
-            rightHandLockTriggerHighlight = RightHandLockTrigger.GetComponent<HighlightEffect>();
+            instance = this;
+            _handGrabbers = new[] {leftHandGrabber as ITCHandGrabber, rightHandGrabber as ITCHandGrabber};
 
-            LeftHandSocketsTrigger.HandTriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
-            LeftHandSocketsTrigger.HandTriggerExitEvent.AddListener(HandInventoryTriggerExit);
-            RightHandSocketsTrigger.HandTriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
-            RightHandSocketsTrigger.HandTriggerExitEvent.AddListener(HandInventoryTriggerExit);
-            LeftHandLockTrigger.HandExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
-            LeftHandLockTrigger.HandTriggerEnterEvent.AddListener(HandLockTriggerEnter);
-            LeftHandLockTrigger.HandTriggerExitEvent.AddListener(HandLockTriggerExit);
-            RightHandLockTrigger.HandExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
-            RightHandLockTrigger.HandTriggerEnterEvent.AddListener(HandLockTriggerEnter);
-            RightHandLockTrigger.HandTriggerExitEvent.AddListener(HandLockTriggerExit);
+            _leftHandSockets = leftHandSocketsTrigger.GetComponentsInChildren<HVRSocket>(true);
+            _rightHandSockets = rightHandSocketsTrigger.GetComponentsInChildren<HVRSocket>(true);
+            _leftHandSocketsActions = leftHandSocketsTrigger.GetComponentsInChildren<HVRSocketHoverScale>(true);
+            _rightHandSocketsActions = rightHandSocketsTrigger.GetComponentsInChildren<HVRSocketHoverScale>(true);
+            _leftHandLockTriggerHighlight = leftHandLockTrigger.GetComponent<HighlightEffect>();
+            _rightHandLockTriggerHighlight = rightHandLockTrigger.GetComponent<HighlightEffect>();
+
+            leftHandSocketsTrigger.HandTriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
+            leftHandSocketsTrigger.HandTriggerExitEvent.AddListener(HandInventoryTriggerExit);
+            rightHandSocketsTrigger.HandTriggerEnterEvent.AddListener(HandInventoryTriggerEnter);
+            rightHandSocketsTrigger.HandTriggerExitEvent.AddListener(HandInventoryTriggerExit);
+            leftHandLockTrigger.HandExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
+            leftHandLockTrigger.HandTriggerEnterEvent.AddListener(HandLockTriggerEnter);
+            leftHandLockTrigger.HandTriggerExitEvent.AddListener(HandLockTriggerExit);
+            rightHandLockTrigger.HandExceededRequiredTime.AddListener(HandLockTriggerExceededTime);
+            rightHandLockTrigger.HandTriggerEnterEvent.AddListener(HandLockTriggerEnter);
+            rightHandLockTrigger.HandTriggerExitEvent.AddListener(HandLockTriggerExit);
+        }
+
+        public bool IsHoldingWeapon()
+        {
+            foreach (var handGrabber in _handGrabbers)
+            {
+                if (!handGrabber.GrabbedTarget) continue;
+
+                handGrabber.GrabbedTarget.TryGetComponent(out ImpactHandler weapon);
+                if (weapon) return true;
+
+                break;
+            }
+
+            return false;
         }
 
         private void HandInventoryTriggerEnter(HVRHandSide handSide)
         {
             if (handSide == HVRHandSide.Left)
             {
-                if (RightHandGrabber.IsHovering || RightHandGrabber.ForceGrabber.IsHovering) return;
-                foreach (var leftHandSocket in leftHandSockets)
+                if (rightHandGrabber.IsHovering || rightHandGrabber.ForceGrabber.IsHovering) return;
+                foreach (var leftHandSocket in _leftHandSockets)
                 {
                     leftHandSocket.gameObject.SetActive(true);
                 }
             }
             else
             {
-                if (LeftHandGrabber.IsHovering || LeftHandGrabber.ForceGrabber.IsHovering) return;
-                foreach (var rightHandSocket in rightHandSockets)
+                if (leftHandGrabber.IsHovering || leftHandGrabber.ForceGrabber.IsHovering) return;
+                foreach (var rightHandSocket in _rightHandSockets)
                 {
                     rightHandSocket.gameObject.SetActive(true);
                 }
@@ -71,13 +92,13 @@ namespace intheclouds
 
         private void HandInventoryTriggerExit(HVRHandSide handSide)
         {
-            if (handSide == HVRHandSide.Left && hideLeftSocketsCoroutine == null)
+            if (handSide == HVRHandSide.Left && _hideLeftSocketsCoroutine == null)
             {
-                TryHideHandSockets(leftHandSockets, leftHandSocketsActions, true);
+                TryHideHandSockets(_leftHandSockets, _leftHandSocketsActions, true);
             }
-            else if (handSide == HVRHandSide.Right && hideRightSocketsCoroutine == null)
+            else if (handSide == HVRHandSide.Right && _hideRightSocketsCoroutine == null)
             {
-                TryHideHandSockets(rightHandSockets, rightHandSocketsActions, false);
+                TryHideHandSockets(_rightHandSockets, _rightHandSocketsActions, false);
             }
         }
 
@@ -89,11 +110,11 @@ namespace intheclouds
                 {
                     if (leftSockets)
                     {
-                        hideLeftSocketsCoroutine = StartCoroutine(HideSocketsWhenNotHovering(sockets, socketActions, true));
+                        _hideLeftSocketsCoroutine = StartCoroutine(HideSocketsWhenNotHovering(sockets, socketActions, true));
                     }
                     else
                     {
-                        hideRightSocketsCoroutine = StartCoroutine(HideSocketsWhenNotHovering(sockets, socketActions, false));
+                        _hideRightSocketsCoroutine = StartCoroutine(HideSocketsWhenNotHovering(sockets, socketActions, false));
                     }
 
                     return;
@@ -117,11 +138,11 @@ namespace intheclouds
 
             if (leftSockets)
             {
-                hideLeftSocketsCoroutine = null;
+                _hideLeftSocketsCoroutine = null;
             }
             else
             {
-                hideRightSocketsCoroutine = null;
+                _hideRightSocketsCoroutine = null;
             }
         }
 
@@ -139,22 +160,22 @@ namespace intheclouds
         {
             if (handSide == HVRHandSide.Left)
             {
-                leftHandCanEquip = LeftHandGrabber.GrabbedTarget && LeftHandGrabber.GrabbedTarget.Socketable;
-                if (!leftHandCanEquip) return;
-                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LeftHandLockTrigger.transform.position);
-                if (leftHandLockTriggerHighlight)
+                _leftHandCanEquip = leftHandGrabber.GrabbedTarget && leftHandGrabber.GrabbedTarget.Socketable;
+                if (!_leftHandCanEquip) return;
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, leftHandLockTrigger.transform.position);
+                if (_leftHandLockTriggerHighlight)
                 {
-                    leftHandLockTriggerHighlight.highlighted = true;
+                    _leftHandLockTriggerHighlight.highlighted = true;
                 }
             }
             else if (handSide == HVRHandSide.Right)
             {
-                rightHandCanEquip = RightHandGrabber.GrabbedTarget && RightHandGrabber.GrabbedTarget.Socketable;
-                if (!rightHandCanEquip) return;
-                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, RightHandLockTrigger.transform.position);
-                if (rightHandLockTriggerHighlight)
+                _rightHandCanEquip = rightHandGrabber.GrabbedTarget && rightHandGrabber.GrabbedTarget.Socketable;
+                if (!_rightHandCanEquip) return;
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, rightHandLockTrigger.transform.position);
+                if (_rightHandLockTriggerHighlight)
                 {
-                    rightHandLockTriggerHighlight.highlighted = true;
+                    _rightHandLockTriggerHighlight.highlighted = true;
                 }
             }
         }
@@ -163,38 +184,38 @@ namespace intheclouds
         {
             if (handSide == HVRHandSide.Left)
             {
-                if (LeftHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && leftHandCanEquip)
+                if (leftHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && _leftHandCanEquip)
                 {
-                    LeftHandGrabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
-                    LeftHandGrabber.GrabbedTarget.CanBeGrabbed = false;
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.Instance.Camera.transform.position, 1.2f, 1);
-                    Debug.Log($"Equipped: {LeftHandGrabber.GrabbedTarget}");
+                    leftHandGrabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
+                    leftHandGrabber.GrabbedTarget.CanBeGrabbed = false;
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.instance.Camera.transform.position, 1.2f, 1);
+                    Debug.Log($"Equipped: {leftHandGrabber.GrabbedTarget}");
                 }
-                else if (LeftHandGrabber.GrabTrigger == HVRGrabTrigger.ManualRelease)
+                else if (leftHandGrabber.GrabTrigger == HVRGrabTrigger.ManualRelease)
                 {
-                    LeftHandGrabber.GrabTrigger = HVRGrabTrigger.Toggle;
-                    LeftHandGrabber.GrabbedTarget.CanBeGrabbed = true;
-                    leftHandCanEquip = false;
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.Instance.Camera.transform.position, 0.8f, 1);
-                    Debug.Log($"Dequipped: {LeftHandGrabber.GrabbedTarget}");
+                    leftHandGrabber.GrabTrigger = HVRGrabTrigger.Toggle;
+                    leftHandGrabber.GrabbedTarget.CanBeGrabbed = true;
+                    _leftHandCanEquip = false;
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.instance.Camera.transform.position, 0.8f, 1);
+                    Debug.Log($"Dequipped: {leftHandGrabber.GrabbedTarget}");
                 }
             }
             else
             {
-                if (RightHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && rightHandCanEquip)
+                if (rightHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease && _rightHandCanEquip)
                 {
-                    RightHandGrabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
-                    RightHandGrabber.GrabbedTarget.CanBeGrabbed = false;
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.Instance.Camera.transform.position, 1.2f, 1);
-                    Debug.Log($"Equipped: {RightHandGrabber.GrabbedTarget}");
+                    rightHandGrabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
+                    rightHandGrabber.GrabbedTarget.CanBeGrabbed = false;
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.instance.Camera.transform.position, 1.2f, 1);
+                    Debug.Log($"Equipped: {rightHandGrabber.GrabbedTarget}");
                 }
-                else if (RightHandGrabber.GrabTrigger == HVRGrabTrigger.ManualRelease)
+                else if (rightHandGrabber.GrabTrigger == HVRGrabTrigger.ManualRelease)
                 {
-                    RightHandGrabber.GrabTrigger = HVRGrabTrigger.Toggle;
-                    RightHandGrabber.GrabbedTarget.CanBeGrabbed = true;
-                    rightHandCanEquip = false;
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.Instance.Camera.transform.position, 0.8f, 1);
-                    Debug.Log($"Dequipped: {RightHandGrabber.GrabbedTarget}");
+                    rightHandGrabber.GrabTrigger = HVRGrabTrigger.Toggle;
+                    rightHandGrabber.GrabbedTarget.CanBeGrabbed = true;
+                    _rightHandCanEquip = false;
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, LocalUserObjects.instance.Camera.transform.position, 0.8f, 1);
+                    Debug.Log($"Dequipped: {rightHandGrabber.GrabbedTarget}");
                 }
             }
         }
@@ -203,16 +224,16 @@ namespace intheclouds
         {
             if (handSide == HVRHandSide.Left)
             {
-                if (leftHandLockTriggerHighlight && LeftHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease)
+                if (_leftHandLockTriggerHighlight && leftHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease)
                 {
-                    leftHandLockTriggerHighlight.highlighted = false;
+                    _leftHandLockTriggerHighlight.highlighted = false;
                 }
             }
             else
             {
-                if (rightHandLockTriggerHighlight && RightHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease)
+                if (_rightHandLockTriggerHighlight && rightHandGrabber.GrabTrigger != HVRGrabTrigger.ManualRelease)
                 {
-                    rightHandLockTriggerHighlight.highlighted = false;
+                    _rightHandLockTriggerHighlight.highlighted = false;
                 }
             }
         }

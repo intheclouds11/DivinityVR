@@ -1042,7 +1042,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
                 {
                     _currentGrabControl = HoveredSocket.GrabControl;
 
-                    HoveredSocket.OnHandGrabberExited();
+                    HoveredSocket.OnHandGrabberExited(this);
 
                     if (HoveredSocket.InstantHandPose && PosableGrabPoint)
                     {
@@ -1163,7 +1163,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected virtual void UpdateGrabIndicator()
         {
-            if (!IsHovering || !_grabIndicator || !HoverTarget.ShowGrabIndicator)
+            if (!IsHovering || !_grabIndicator || !HoverTarget.ShowGrabIndicator || HoverTarget.IsSocketed)
                 return;
             
             if (_grabIndicator.LookAtCamera && HVRManager.Instance.Camera)
@@ -1433,7 +1433,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
             if (IsGrabbing || IsForceGrabbing || !CanGrabFromSocket(HoveredSocket) || closest != HoveredSocket)
             {
-                HoveredSocket.OnHandGrabberExited();
+                HoveredSocket.OnHandGrabberExited(this);
                 HoveredSocket = null;
 
                 if (HVRSettings.Instance.VerboseHandGrabberEvents)
@@ -1465,7 +1465,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
             if (closest)
             {
                 HoveredSocket = closest;
-                HoveredSocket.OnHandGrabberEntered();
+                HoveredSocket.OnHandGrabberEntered(this);
             }
         }
 

@@ -1,39 +1,38 @@
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace intheclouds
 {
     public class PlayerMovementAP : MonoBehaviour
     {
         public float playerLeanThreshold = 1;
-        public float APDistanceUnit = 3f;
-        public GameObject LastValidPositionMarker;
-        private HVRPlayerController playerController;
-        private PlayerStats playerStats;
-        private float APNeededForTeleport;
-        private ITCTeleporter teleporter;
-        private Vector3 currentPosition;
+        public float apDistanceUnit = 4f;
+        public GameObject lastValidPositionMarker;
+        
+        private HVRPlayerController _playerController;
+        private PlayerStats _playerStats;
+        private float _apNeededForTeleport;
+        private ITCTeleporter _teleporter;
+        private Vector3 _currentPosition;
 
         private void OnEnable()
         {
-            playerStats = LocalUserObjects.Instance.PlayerStats;
-            playerController = LocalUserObjects.Instance.ITCPlayerController;
-            playerController.MovementEnabled = false;
-            playerController.CanCrouch = false;
-            teleporter = LocalUserObjects.Instance.ITCTeleporter;
-            teleporter.BeforeTeleport.AddListener(BeforeTeleport);
-            teleporter.Dash = true;
-            currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
+            _playerStats = LocalUserObjects.instance.PlayerStats;
+            _playerController = LocalUserObjects.instance.ITCPlayerController;
+            _playerController.MovementEnabled = false;
+            _teleporter = LocalUserObjects.instance.ITCTeleporter;
+            _teleporter.BeforeTeleport.AddListener(BeforeTeleport);
+            _teleporter.Dash = true;
+            _currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         private void OnDisable()
         {
-            playerController.MovementEnabled = true;
-            playerController.CanCrouch = true;
+            _playerController.MovementEnabled = true;
 
-
-            teleporter.Dash = false;
-            teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
+            _teleporter.Dash = false;
+            _teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
         }
 
         private void Update()
@@ -41,58 +40,58 @@ namespace intheclouds
             CheckLean();
             CheckTeleport();
 
-            if (teleporter.TeleportState == TeleportState.Dashing)
+            if (_teleporter.TeleportState == TeleportState.Dashing)
             {
-                currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
+                _currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
             }
         }
 
         private void CheckTeleport()
         {
-            if (!playerStats.CanPerformActions()) return;
+            if (!_playerStats.CanPerformActions()) return;
 
-            if (teleporter.IsAiming)
+            if (_teleporter.IsAiming)
             {
-                LocalUserObjects.Instance.HUDController.ToggleTeleportCancelReminder(true);
-                APNeededForTeleport = teleporter.teleportPathLength / APDistanceUnit;
-                LocalUserObjects.Instance.HUDController.ShowPointerUI(ActionType.Movement, $"Teleport AP: {(int) Mathf.Ceil(APNeededForTeleport)}");
+                LocalUserObjects.instance.HUDController.ToggleTeleportCancelReminder(true);
+                _apNeededForTeleport = _teleporter.teleportPathLength / apDistanceUnit;
+                LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Movement, $"AP: {(int) Mathf.Ceil(_apNeededForTeleport)}");
 
-                if (playerStats.CurrentAP >= APNeededForTeleport)
+                if (_playerStats.CurrentAP >= _apNeededForTeleport)
                 {
-                    teleporter.playerHasEnoughAP = true;
+                    _teleporter.playerHasEnoughAP = true;
                 }
                 else
                 {
-                    teleporter.playerHasEnoughAP = false;
+                    _teleporter.playerHasEnoughAP = false;
                 }
             }
         }
 
         private void BeforeTeleport(Vector3 arg0)
         {
-            playerStats.UseAP((int) Mathf.Ceil(APNeededForTeleport));
+            _playerStats.UseAP((int) Mathf.Ceil(_apNeededForTeleport));
         }
 
         private void CheckLean()
         {
-            var distance = Vector3.Distance(playerController.transform.position, currentPosition);
+            var distance = Vector3.Distance(_playerController.transform.position, _currentPosition);
 
             if (distance > playerLeanThreshold)
             {
-                if (playerStats.Leaning) return;
-                LocalUserObjects.Instance.HUDController.ToggleLeanWarning(true);
-                LocalUserObjects.Instance.HVRPlayerInputs.UpdateInputs = false;
-                playerStats.Leaning = true;
-                LastValidPositionMarker.SetActive(true);
-                LastValidPositionMarker.transform.position = currentPosition;
+                if (_playerStats.Leaning) return;
+                LocalUserObjects.instance.HUDController.ToggleLeanWarning(true);
+                LocalUserObjects.instance.HVRPlayerInputs.UpdateInputs = false;
+                _playerStats.Leaning = true;
+                lastValidPositionMarker.SetActive(true);
+                lastValidPositionMarker.transform.position = _currentPosition;
             }
             else
             {
-                if (!playerStats.Leaning) return;
-                LocalUserObjects.Instance.HUDController.ToggleLeanWarning(false);
-                LocalUserObjects.Instance.HVRPlayerInputs.UpdateInputs = true;
-                playerStats.Leaning = false;
-                LastValidPositionMarker.SetActive(false);
+                if (!_playerStats.Leaning) return;
+                LocalUserObjects.instance.HUDController.ToggleLeanWarning(false);
+                LocalUserObjects.instance.HVRPlayerInputs.UpdateInputs = true;
+                _playerStats.Leaning = false;
+                lastValidPositionMarker.SetActive(false);
             }
         }
 

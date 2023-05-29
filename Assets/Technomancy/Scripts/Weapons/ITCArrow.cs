@@ -3,7 +3,6 @@ using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Weapons.Bow;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {

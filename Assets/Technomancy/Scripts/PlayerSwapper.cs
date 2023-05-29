@@ -1,4 +1,3 @@
-using System;
 using HighlightPlus;
 using HurricaneVR.Framework.Components;
 using HurricaneVR.Framework.Core;
@@ -8,7 +7,6 @@ using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.SpatialTracking;
 
 namespace intheclouds
@@ -20,124 +18,124 @@ namespace intheclouds
         public TextMeshProUGUI selectedPlayerText;
         public float firstNotchDistance = 0.5f;
         public float secondNotchDistance = 1f;
-        private PlayerStats currentControlledPlayer;
-        private PlayerStats selectedPlayer;
+        private PlayerStats _currentControlledPlayer;
+        private PlayerStats _selectedPlayer;
         // private HVRGrabbable grabbable;
-        private bool firstNotch;
-        private bool secondNotch;
-        private HighlightEffect highlightEffect;
-        private LineRenderer lineRenderer;
+        private bool _firstNotch;
+        private bool _secondNotch;
+        private HighlightEffect _highlightEffect;
+        private LineRenderer _lineRenderer;
 
         private void Start()
         {
             // Instance = this;
             // grabbable = GetComponent<HVRGrabbable>();
-            highlightEffect = GetComponent<HighlightEffect>();
-            lineRenderer = GetComponent<LineRenderer>();
+            _highlightEffect = GetComponent<HighlightEffect>();
+            _lineRenderer = GetComponent<LineRenderer>();
             socket.Grabbed.AddListener(OnSwapperReleased);
             socket.Released.AddListener(OnSwapperGrabbed);
             selectedPlayerText.gameObject.SetActive(false);
-            currentControlledPlayer = GameManager.Instance.controlledPlayer;
+            _currentControlledPlayer = GameManager.instance.controlledPlayer;
         }
 
         private void Update()
         {
             if (!socket.IsHoldActive)
             {
-                lineRenderer.enabled = true;
-                lineRenderer.SetPosition(0, socket.transform.position);
-                lineRenderer.SetPosition(1, transform.position);
+                _lineRenderer.enabled = true;
+                _lineRenderer.SetPosition(0, socket.transform.position);
+                _lineRenderer.SetPosition(1, transform.position);
                 selectedPlayerText.gameObject.SetActive(true);
             }
             else
             {
-                lineRenderer.enabled = false;
+                _lineRenderer.enabled = false;
                 selectedPlayerText.gameObject.SetActive(false);
                 return;
             }
 
             // at notches
-            if (GameManager.Instance.players.Count > 1 && !secondNotch && Vector3.Distance(transform.position, socket.transform.position) >= secondNotchDistance)
+            if (GameManager.instance.players.Count > 1 && !_secondNotch && Vector3.Distance(transform.position, socket.transform.position) >= secondNotchDistance)
             {
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position);
-                highlightEffect.glowHQColor = Color.yellow;
-                lineRenderer.endColor = Color.yellow;
-                secondNotch = true;
-                selectedPlayer = GameManager.Instance.players[1];
-                selectedPlayerText.text = selectedPlayer.Name;
+                _highlightEffect.glowHQColor = Color.yellow;
+                _lineRenderer.endColor = Color.yellow;
+                _secondNotch = true;
+                _selectedPlayer = GameManager.instance.players[1];
+                selectedPlayerText.text = _selectedPlayer.Name;
             }
-            else if (!firstNotch && Vector3.Distance(transform.position, socket.transform.position) >= firstNotchDistance)
+            else if (!_firstNotch && Vector3.Distance(transform.position, socket.transform.position) >= firstNotchDistance)
             {
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position, 0.8f, 1);
-                highlightEffect.glowHQColor = Color.blue;
-                lineRenderer.endColor = Color.blue;
-                firstNotch = true;
-                selectedPlayer = GameManager.Instance.players[0];
-                selectedPlayerText.text = selectedPlayer.Name;
+                _highlightEffect.glowHQColor = Color.blue;
+                _lineRenderer.endColor = Color.blue;
+                _firstNotch = true;
+                _selectedPlayer = GameManager.instance.players[0];
+                selectedPlayerText.text = _selectedPlayer.Name;
             }
 
             // in between notches
-            if (secondNotch && Vector3.Distance(transform.position, socket.transform.position) < secondNotchDistance)
+            if (_secondNotch && Vector3.Distance(transform.position, socket.transform.position) < secondNotchDistance)
             {
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position, 0.8f, 1);
-                highlightEffect.glowHQColor = Color.blue;
-                lineRenderer.endColor = Color.blue;
-                secondNotch = false;
+                _highlightEffect.glowHQColor = Color.blue;
+                _lineRenderer.endColor = Color.blue;
+                _secondNotch = false;
             }
-            else if (firstNotch && !secondNotch && Vector3.Distance(transform.position, socket.transform.position) < firstNotchDistance)
+            else if (_firstNotch && !_secondNotch && Vector3.Distance(transform.position, socket.transform.position) < firstNotchDistance)
             {
                 SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position, 0.6f, 1);
-                highlightEffect.glowHQColor = Color.white;
-                lineRenderer.endColor = Color.white;
-                firstNotch = false;
+                _highlightEffect.glowHQColor = Color.white;
+                _lineRenderer.endColor = Color.white;
+                _firstNotch = false;
             }
         }
 
         private void OnSwapperReleased(HVRGrabberBase grabber, HVRGrabbable hvrGrabbable)
         {
-            if (selectedPlayer == currentControlledPlayer)
+            if (_selectedPlayer == _currentControlledPlayer)
             {
                 Debug.Log("Already controlling selectedPlayer");
             }
             else
             {
-                if (secondNotch)
+                if (_secondNotch)
                 {
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.sparkleSFX, transform.position);
                     Debug.Log($"Swapped to Second notch!");
                     DisableCurrentPlayerObjects();
-                    EnableSwappedPlayerObjects(selectedPlayer);
-                    currentControlledPlayer.PlayerControlled = false;
-                    currentControlledPlayer = selectedPlayer;
-                    selectedPlayer.PlayerControlled = true;
+                    EnableSwappedPlayerObjects(_selectedPlayer);
+                    _currentControlledPlayer.PlayerControlled = false;
+                    _currentControlledPlayer = _selectedPlayer;
+                    _selectedPlayer.PlayerControlled = true;
                 }
-                else if (firstNotch)
+                else if (_firstNotch)
                 {
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.sparkleSFX, transform.position, 0.8f, 1);
                     Debug.Log($"Swapped to First notch!");
                     DisableCurrentPlayerObjects();
-                    EnableSwappedPlayerObjects(selectedPlayer);
-                    currentControlledPlayer.PlayerControlled = false;
-                    currentControlledPlayer = selectedPlayer;
-                    selectedPlayer.PlayerControlled = true;
+                    EnableSwappedPlayerObjects(_selectedPlayer);
+                    _currentControlledPlayer.PlayerControlled = false;
+                    _currentControlledPlayer = _selectedPlayer;
+                    _selectedPlayer.PlayerControlled = true;
                 }
             }
 
-            firstNotch = false;
-            secondNotch = false;
-            highlightEffect.highlighted = false;
-            highlightEffect.glowHQColor = Color.white;
-            lineRenderer.endColor = Color.white;
+            _firstNotch = false;
+            _secondNotch = false;
+            _highlightEffect.highlighted = false;
+            _highlightEffect.glowHQColor = Color.white;
+            _lineRenderer.endColor = Color.white;
         }
 
         private void OnSwapperGrabbed(HVRGrabberBase grabber, HVRGrabbable hvrGrabbable)
         {
-            highlightEffect.highlighted = true;
+            _highlightEffect.highlighted = true;
         }
 
         private void DisableCurrentPlayerObjects()
         {
-            var currentPlayerObjects = currentControlledPlayer.GetComponentInParent<LocalUserObjects>();
+            var currentPlayerObjects = _currentControlledPlayer.GetComponentInParent<LocalUserObjects>();
             currentPlayerObjects.PlayerStats.PlayerControlled = false;
             currentPlayerObjects.ITCPlayerController.enabled = false;
             currentPlayerObjects.HVRPlayerInputs.enabled = false;
@@ -175,7 +173,7 @@ namespace intheclouds
         {
             var swappedPlayerObjects = swappedPlayer.GetComponentInParent<LocalUserObjects>();
 
-            var turnOrderUI = currentControlledPlayer.GetComponentInParent<LocalUserObjects>().turnOrderUI;
+            var turnOrderUI = _currentControlledPlayer.GetComponentInParent<LocalUserObjects>().turnOrderUI;
             turnOrderUI.transform.SetParent(swappedPlayerObjects.Camera.transform);
             turnOrderUI.transform.localPosition = Vector3.zero;
             turnOrderUI.transform.localRotation = Quaternion.identity;
@@ -214,7 +212,7 @@ namespace intheclouds
                 }
             }
 
-            UserMenu.Instance.UserSetup(swappedPlayerObjects.PlayerStats);
+            UserMenu.instance.UserSetup(swappedPlayerObjects.PlayerStats);
         }
 
         // public void PlayerSwap()

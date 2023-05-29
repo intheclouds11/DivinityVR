@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -17,7 +15,7 @@ namespace intheclouds
         public AudioClip removedAudioClip;
         public GameObject removeVFX;
         public BaseStats caster;
-        private List<BaseStats> combatantsInTrigger = new List<BaseStats>();
+        private List<BaseStats> _combatantsInTrigger = new List<BaseStats>();
 
         private void OnTriggerEnter(Collider other)
         {
@@ -29,7 +27,7 @@ namespace intheclouds
             if (other.CompareTag("Player") || other.CompareTag("Enemy"))
             {
                 var combatant = other.gameObject.GetComponentInParent<BaseStats>();
-                combatantsInTrigger.Remove(combatant);
+                _combatantsInTrigger.Remove(combatant);
             }
         }
 
@@ -38,14 +36,14 @@ namespace intheclouds
             if (other.CompareTag("Player") || other.CompareTag("Enemy"))
             {
                 var combatant = other.gameObject.GetComponentInParent<BaseStats>();
-                foreach (var combatantInTrigger in combatantsInTrigger)
+                foreach (var combatantInTrigger in _combatantsInTrigger)
                 {
                     if (combatant == combatantInTrigger)
                     {
                         return;
                     }
                 }
-                combatantsInTrigger.Add(combatant);
+                _combatantsInTrigger.Add(combatant);
                 if (ScalingType == ScalingType.Pyrokinetic)
                 {
                     FireSurfaceDamage(combatant);

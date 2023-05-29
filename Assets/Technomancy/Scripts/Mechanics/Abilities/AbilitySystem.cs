@@ -15,10 +15,10 @@ namespace intheclouds
         public GameObject description;
         public HVRHandGrabber leftHandGrabber;
         public HVRHandGrabber rightHandGrabber;
-        private HVRController leftController;
-        private HVRController rightController;
-        private HVRController selectorHand;
-        private float cooldownTimerNoCombat;
+        private HVRController _leftController;
+        private HVRController _rightController;
+        private HVRController _selectorHand;
+        private float _cooldownTimerNoCombat;
         [Header("Debug")]
         public LocalUserObjects playerLUOs;
         public HVRGrabbable Grabbable;
@@ -38,8 +38,8 @@ namespace intheclouds
 
         private void Start()
         {
-            leftController = playerLUOs.HVRPlayerInputs.LeftController;
-            rightController = playerLUOs.HVRPlayerInputs.RightController;
+            _leftController = playerLUOs.HVRPlayerInputs.LeftController;
+            _rightController = playerLUOs.HVRPlayerInputs.RightController;
         }
 
         void Update()
@@ -63,21 +63,21 @@ namespace intheclouds
             {
                 if (!playerLUOs.leftHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActivated)
                 {
-                    ShowSelector(playerLUOs.leftHandAbilitySelectorSpawn.transform, leftController);
+                    ShowSelector(playerLUOs.leftHandAbilitySelectorSpawn.transform, _leftController);
                 }
                 else if (!playerLUOs.rightHandGrabber.IsGrabbing && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActivated)
                 {
-                    ShowSelector(playerLUOs.rightHandAbilitySelectorSpawn.transform, rightController);
+                    ShowSelector(playerLUOs.rightHandAbilitySelectorSpawn.transform, _rightController);
                 }
 
                 return;
             }
 
-            if (selectorHand == leftController && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActivated)
+            if (_selectorHand == _leftController && playerLUOs.HVRPlayerInputs.isLeftAbilitySelectorActivated)
             {
                 HideSelector();
             }
-            else if (selectorHand == rightController && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActivated)
+            else if (_selectorHand == _rightController && playerLUOs.HVRPlayerInputs.isRightAbilitySelectorActivated)
             {
                 HideSelector();
             }
@@ -85,7 +85,7 @@ namespace intheclouds
 
         public void ShowSelector(Transform spawnPoint, HVRController hand)
         {
-            selectorHand = hand;
+            _selectorHand = hand;
             transform.position = spawnPoint.position;
             var newEulerAngles = spawnPoint.eulerAngles;
             newEulerAngles = new Vector3(30, newEulerAngles.y, 0);
@@ -121,12 +121,12 @@ namespace intheclouds
             if (playerLUOs.PlayerStats.CanPerformActions() && !selectedAbility.gameObject.activeInHierarchy &&
                 selectedAbility.cooldownTimer == 0 && playerLUOs.PlayerStats.CurrentAP >= selectedAbility.requiredAP)
             {
-                if (leftController.TriggerButtonState.Active && leftController.GripButtonState.Active &&
+                if (_leftController.TriggerButtonState.Active && _leftController.GripButtonState.Active &&
                     !leftHandGrabber.TriggerHoverTarget && !leftHandGrabber.IsGrabbing)
                 {
                     StartCoroutine(EnableAbility(leftHandGrabber));
                 }
-                else if (rightController.TriggerButtonState.Active && rightController.GripButtonState.Active &&
+                else if (_rightController.TriggerButtonState.Active && _rightController.GripButtonState.Active &&
                          !rightHandGrabber.TriggerHoverTarget && !rightHandGrabber.IsGrabbing)
                 {
                     StartCoroutine(EnableAbility(rightHandGrabber));
@@ -149,13 +149,13 @@ namespace intheclouds
             
             if (selectedAbility.TryGetComponent(out HVRGrabbable grabbable))
             {
-                if (hand.Controller == leftController)
+                if (hand.Controller == _leftController)
                 {
                     selectedAbility.transform.position = playerLUOs.leftHandPalm.transform.position;
                     yield return null; // wait one frame so components can initialize
                     leftHandGrabber.Grab(grabbable, HVRGrabTrigger.Toggle);
                 }
-                else if (hand.Controller == rightController)
+                else if (hand.Controller == _rightController)
                 {
                     selectedAbility.transform.position = playerLUOs.rightHandPalm.transform.position;
                     yield return null; // wait one frame so components can initialize
@@ -164,11 +164,11 @@ namespace intheclouds
             }
             else
             {
-                if (hand.Controller == leftController)
+                if (hand.Controller == _leftController)
                 {
                     selectedAbility.transform.parent = playerLUOs.leftHandPalm.transform;
                 }
-                else if (hand.Controller == rightController)
+                else if (hand.Controller == _rightController)
                 {
                     selectedAbility.transform.parent = playerLUOs.rightHandPalm.transform;
                 }
@@ -194,14 +194,14 @@ namespace intheclouds
 
         private void AbilityCooldownExploration()
         {
-            if (cooldownTimerNoCombat < 2)
+            if (_cooldownTimerNoCombat < 2)
             {
-                cooldownTimerNoCombat += Time.deltaTime;
+                _cooldownTimerNoCombat += Time.deltaTime;
             }
-            else if (cooldownTimerNoCombat >= 2)
+            else if (_cooldownTimerNoCombat >= 2)
             {
                 AbilityCooldown();
-                cooldownTimerNoCombat = 0;
+                _cooldownTimerNoCombat = 0;
             }
         }
 

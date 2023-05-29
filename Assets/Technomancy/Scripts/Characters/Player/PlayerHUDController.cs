@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -14,6 +13,9 @@ namespace intheclouds
         public GameObject MovementIcon;
         public GameObject infoPopupParent;
         public GameObject infoPopupPrefab;
+        public Transform HudFollowPoint;
+        public float lerpFactor = 10f;
+        public float maxSmoothDampDistance = 0.1f;
 
         public List<ITCPopup> HoverInfoList; // should only be two, one for each hand
 
@@ -25,6 +27,7 @@ namespace intheclouds
         private GameObject LeanWarning;
         [SerializeField]
         private GameObject TeleportCancelReminder;
+        private Vector3 _velocity;
 
         private void Awake()
         {
@@ -38,20 +41,25 @@ namespace intheclouds
             PointerBackground.SetActive(false);
         }
 
+        private void Update()
+        {
+            var distanceFromFollowPoint = Mathf.Clamp(Vector3.Distance(transform.position, HudFollowPoint.position), 0, maxSmoothDampDistance);
+            var lerpTime = Time.deltaTime * lerpFactor * distanceFromFollowPoint;
+            transform.position = Vector3.SmoothDamp(transform.position, HudFollowPoint.position, ref _velocity, lerpTime);
+        }
+
         public void NewInfoPopup(string infoText, Color color)
         {
             var infoPopup = Instantiate(infoPopupPrefab, infoPopupParent.transform, false).GetComponent<ITCPopup>();
             infoPopup.TextMeshProUGUI.text = infoText;
             infoPopup.TextMeshProUGUI.color = color;
-            
-
         }
 
         public void ToggleLeanWarning(bool setActive)
         {
             LeanWarning.SetActive(setActive);
         }
-        
+
         public void ToggleTeleportCancelReminder(bool setActive)
         {
             TeleportCancelReminder.SetActive(setActive);
@@ -60,7 +68,7 @@ namespace intheclouds
         public void ShowPointerUI(ActionType type, string text)
         {
             // todo: add heal type check. Highest activation priority
-            
+
             if (type == ActionType.Attack && !MovementIcon.activeSelf)
             {
                 AttackIcon.SetActive(true);
@@ -79,7 +87,7 @@ namespace intheclouds
                 PointerBackground.SetActive(true);
                 PointerText.text = text;
             }
-        
+
             PointerUI.SetActive(true);
         }
 

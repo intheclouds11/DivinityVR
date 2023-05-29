@@ -1,7 +1,5 @@
-using System;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -17,37 +15,37 @@ namespace intheclouds
         public GameObject activeVFX;
         public GameObject activatedVFX;
         public BaseStats CombatantWhoApplied;
-        private BaseStats combatant;
-        private Transform originalParent;
-        private GameObject spawnedActiveVFX;
-        private GameObject spawnedActivatedVFX;
+        private BaseStats _combatant;
+        private Transform _originalParent;
+        private GameObject _spawnedActiveVFX;
+        private GameObject _spawnedActivatedVFX;
 
         private void OnDestroy()
         {
             if (type == StatusEffectType.Stunned)
             {
                 Debug.Log("Stun removed!");
-                combatant.Stun(false);
+                _combatant.Stun(false);
             }
 
-            if (spawnedActiveVFX)
+            if (_spawnedActiveVFX)
             {
-                var particles = spawnedActiveVFX.GetComponent<ParticleSystem>();
-                Destroy(spawnedActiveVFX, particles ? particles.main.duration - particles.time : 2f);
+                var particles = _spawnedActiveVFX.GetComponent<ParticleSystem>();
+                Destroy(_spawnedActiveVFX, particles ? particles.main.duration - particles.time : 2f);
             }
 
-            if (spawnedActivatedVFX)
+            if (_spawnedActivatedVFX)
             {
-                var particles = spawnedActivatedVFX.GetComponent<ParticleSystem>();
-                Destroy(spawnedActivatedVFX, particles ? particles.main.duration - particles.time : 2f);
+                var particles = _spawnedActivatedVFX.GetComponent<ParticleSystem>();
+                Destroy(_spawnedActivatedVFX, particles ? particles.main.duration - particles.time : 2f);
             }
         }
 
         public void StatusEffectConstructor(StatusEffect effect, bool preExisting = false)
         {
-            if (!combatant)
+            if (!_combatant)
             {
-                combatant = GetComponentInParent<BaseStats>();
+                _combatant = GetComponentInParent<BaseStats>();
             }
 
             type = effect.type;
@@ -67,23 +65,23 @@ namespace intheclouds
 
         public void ActivateStatusEffect(bool preExisting = false)
         {
-            int damage = (int) (effectAmount * (1 + combatant.level * 0.5f));
+            int damage = (int) (effectAmount * (1 + _combatant.level * 0.5f));
             
             if (type == StatusEffectType.Burning)
             {
-                combatant.TakeDamage(null, damage, DamageType.Magic, ScalingType.Pyrokinetic, null);
+                _combatant.TakeDamage(null, damage, DamageType.Magic, ScalingType.Pyrokinetic, null);
             }
             else if (type == StatusEffectType.Regenerating)
             {
-                combatant.Heal(effectAmount);
+                _combatant.Heal(effectAmount);
             }
             else if (type == StatusEffectType.Stunned)
             {
-                combatant.Stun(true);
+                _combatant.Stun(true);
             }
             else if (type == StatusEffectType.Bleeding)
             {
-                combatant.TakeDamage(null, damage, DamageType.Magic, ScalingType.None, null);
+                _combatant.TakeDamage(null, damage, DamageType.Magic, ScalingType.None, null);
             }
             else
             {
@@ -92,27 +90,27 @@ namespace intheclouds
 
             if (activatedClip)
             {
-                SFXPlayer.Instance.PlaySFX(activatedClip, combatant.attachToCombatantTransform.position, 1, 1);
+                SFXPlayer.Instance.PlaySFX(activatedClip, _combatant.attachToCombatantTransform.position, 1, 1);
             }
 
             if (!preExisting)
             {
-                if (activeVFX && !spawnedActiveVFX)
+                if (activeVFX && !_spawnedActiveVFX)
                 {
-                    spawnedActiveVFX = Instantiate(activeVFX, combatant.attachToCombatantTransform.position, Quaternion.identity, combatant.attachToCombatantTransform);
+                    _spawnedActiveVFX = Instantiate(activeVFX, _combatant.attachToCombatantTransform.position, Quaternion.identity, _combatant.attachToCombatantTransform);
                 }
 
                 if (activatedVFX)
                 {
-                    if (!spawnedActivatedVFX)
+                    if (!_spawnedActivatedVFX)
                     {
-                        spawnedActivatedVFX = Instantiate(activatedVFX, combatant.attachToCombatantTransform.position, Quaternion.identity,
-                            combatant.attachToCombatantTransform);
+                        _spawnedActivatedVFX = Instantiate(activatedVFX, _combatant.attachToCombatantTransform.position, Quaternion.identity,
+                            _combatant.attachToCombatantTransform);
                     }
                     else
                     {
-                        spawnedActivatedVFX.SetActive(false);
-                        spawnedActivatedVFX.SetActive(true);
+                        _spawnedActivatedVFX.SetActive(false);
+                        _spawnedActivatedVFX.SetActive(true);
                     }
                 }
             }

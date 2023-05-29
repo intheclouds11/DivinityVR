@@ -128,7 +128,7 @@ namespace intheclouds
         public virtual IEnumerator SkipTurn()
         {
             yield return new WaitForSeconds(1);
-            GameManager.Instance.ForceNextTurn();
+            GameManager.instance.ForceNextTurn();
         }
     }
 }

@@ -149,12 +149,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6850c20d116befd4388314dc66cdd402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticPopup: 0
+  TextMeshProUGUI: {fileID: 8664262483216651131}
+  MainCanvas: {fileID: 0}
+  scaleWithDistance: 0
+  scaleFactor:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   movingPopup: 1
+  translateSpeed: 0.5
   growingPopup: 1
   growingSpeed: 0.0008
-  translateSpeed: 0.5
   secondsToDestroy: 1.5
+  target: {fileID: 0}
 --- !u!114 &8843420424922002178
 MonoBehaviour:
   m_ObjectHideFlags: 0

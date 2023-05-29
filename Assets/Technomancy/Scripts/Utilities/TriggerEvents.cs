@@ -1,14 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using HighlightPlus;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
@@ -26,21 +21,21 @@ namespace intheclouds
         public UnityEvent<Collider> ExceededRequiredTime;
         public UnityEvent<Collider> TriggerEnterEvent;
         public UnityEvent<Collider> TriggerExitEvent;
-        private bool inTrigger;
-        private float timeInTrigger;
-        private bool ExceededTimeInTrigger;
-        private HVRHandSide handSide;
-        private bool userIsLooking;
-        private Transform cam;
+        private bool _inTrigger;
+        private float _timeInTrigger;
+        private bool _exceededTimeInTrigger;
+        private HVRHandSide _handSide;
+        private bool _userIsLooking;
+        private Transform _cam;
 
         private void Awake()
         {
             var hand = GetComponentInParent<HVRHandGrabber>();
             if (hand)
             {
-                handSide = hand.HandSide;
+                _handSide = hand.HandSide;
             }
-            cam = LocalUserObjects.Instance.Camera.transform;
+            _cam = LocalUserObjects.instance.Camera.transform;
         }
 
 
@@ -48,21 +43,21 @@ namespace intheclouds
         {
             if (requireUserLooking)
             {
-                if (Physics.SphereCast(cam.position, SphereCastRadius, cam.forward, out RaycastHit hitInfo, 1, ~LayerMask.NameToLayer("Hand"),
+                if (Physics.SphereCast(_cam.position, SphereCastRadius, _cam.forward, out RaycastHit hitInfo, 1, ~LayerMask.NameToLayer("Hand"),
                         QueryTriggerInteraction.Collide))
                 {
                     if (hitInfo.collider.gameObject == gameObject)
                     {
-                        userIsLooking = true;
+                        _userIsLooking = true;
                     }
                     else
                     {
-                        userIsLooking = false;
+                        _userIsLooking = false;
                     }
                 }
                 else
                 {
-                    userIsLooking = false;
+                    _userIsLooking = false;
                 }
             }
 
@@ -71,36 +66,36 @@ namespace intheclouds
                 return;
             }
 
-            if (inTrigger)
+            if (_inTrigger)
             {
-                timeInTrigger += Time.deltaTime;
+                _timeInTrigger += Time.deltaTime;
             }
             else
             {
-                ExceededTimeInTrigger = false;
-                timeInTrigger = 0;
+                _exceededTimeInTrigger = false;
+                _timeInTrigger = 0;
             }
 
-            if (!ExceededTimeInTrigger && RequiredTimeInTrigger > 0 && timeInTrigger >= RequiredTimeInTrigger)
+            if (!_exceededTimeInTrigger && RequiredTimeInTrigger > 0 && _timeInTrigger >= RequiredTimeInTrigger)
             {
-                HandExceededRequiredTime.Invoke(handSide);
-                ExceededTimeInTrigger = true;
+                HandExceededRequiredTime.Invoke(_handSide);
+                _exceededTimeInTrigger = true;
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (requireUserLooking && !userIsLooking)
+            if (requireUserLooking && !_userIsLooking)
             {
                 return;
             }
 
             if (other.CompareTag(TagToDetect))
             {
-                inTrigger = true;
+                _inTrigger = true;
                 if (TagToDetect == "HandTriggerCollider")
                 {
-                    HandTriggerEnterEvent.Invoke(handSide);
+                    HandTriggerEnterEvent.Invoke(_handSide);
                 }
                 else
                 {
@@ -113,10 +108,10 @@ namespace intheclouds
         {
             if (other.CompareTag(TagToDetect))
             {
-                inTrigger = false;
+                _inTrigger = false;
                 if (TagToDetect == "HandTriggerCollider")
                 {
-                    HandTriggerExitEvent.Invoke(handSide);
+                    HandTriggerExitEvent.Invoke(_handSide);
                 }
                 else
                 {

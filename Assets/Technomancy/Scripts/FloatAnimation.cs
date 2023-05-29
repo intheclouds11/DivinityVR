@@ -6,31 +6,31 @@ public class FloatAnimation : MonoBehaviour
     public Vector3 lerpTo;
     public float speed;
     public float maxHeight = 1f;
-    private float initialLocalPosY;
-    private bool goUp = true;
+    private float _initialLocalPosY;
+    private bool _goUp = true;
 
     private void Start()
     {
-        initialLocalPosY = transform.localPosition.y;
+        _initialLocalPosY = transform.localPosition.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (goUp)
+        if (_goUp)
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, transform.localPosition + lerpTo, speed * Time.deltaTime);
-            if (Math.Abs(transform.localPosition.y - (initialLocalPosY + maxHeight)) < 0.1)
+            if (Math.Abs(transform.localPosition.y - (_initialLocalPosY + maxHeight)) < 0.1)
             {
-                goUp = false;
+                _goUp = false;
             }
         }
         else
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, transform.localPosition - lerpTo, speed * Time.deltaTime);
-            if (Math.Abs(transform.localPosition.y - (initialLocalPosY - maxHeight)) < 0.1)
+            if (Math.Abs(transform.localPosition.y - (_initialLocalPosY - maxHeight)) < 0.1)
             {
-                goUp = true;
+                _goUp = true;
             }
         }
     }

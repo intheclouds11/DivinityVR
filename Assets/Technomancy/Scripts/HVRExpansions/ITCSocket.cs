@@ -1,38 +1,29 @@
-using HighlightPlus;
-using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
 
 namespace intheclouds
 {
     public class ITCSocket : HVRSocket
     {
-        private HighlightEffect highlightEffect;
-        private HighlightProfile prevHighlightProfile;
-        private bool wasHighlighted;
-        
-        
-        protected override void OnHoverEnter(HVRGrabbable grabbable)
+        public override void OnHandGrabberEntered(HVRGrabberBase grabber)
         {
-            base.OnHoverEnter(grabbable);
-            // highlightEffect = grabbable.GetComponent<HighlightEffect>();
-            // if (highlightEffect)
-            // {
-            //     prevHighlightProfile = highlightEffect.profile;
-            //     wasHighlighted = highlightEffect.highlighted;
-            //     highlightEffect.ProfileLoad(HighlightProfileManager.Instance.SocketHoverProfile);
-            //     highlightEffect.highlighted = true;
-            // }
+            base.OnHandGrabberEntered(grabber);
+
+            var itcGrabbable = GrabbedTarget as ITCGrabbable;
+            if (itcGrabbable)
+            {
+                itcGrabbable.SocketHighlight();
+            }
         }
 
-        protected override void OnHoverExit(HVRGrabbable grabbable)
+        public override void OnHandGrabberExited(HVRGrabberBase grabber)
         {
-            base.OnHoverExit(grabbable);
-            // if (highlightEffect)
-            // {
-            //     highlightEffect.highlighted = wasHighlighted;
-            //     highlightEffect.ProfileLoad(prevHighlightProfile);
-            //     highlightEffect = null;
-            // }
+            base.OnHandGrabberExited(grabber);
+            
+            var itcGrabbable = GrabbedTarget as ITCGrabbable;
+            if (itcGrabbable)
+            {
+                itcGrabbable.UnSocketHighlight();
+            }
         }
     }
 }

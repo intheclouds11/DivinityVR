@@ -649,12 +649,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3c8479b7ba10649a2b566f67145f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Amount: 25
-  col: {fileID: 7059603523623461341}
-  RequiredAP: 1
-  <Used>k__BackingField: 0
-  <Usable>k__BackingField: 0
+  type: 0
+  amount: 25
+  grabbableCollider: {fileID: 7059603523623461341}
+  requiredAP: 1
+  drinkClip: {fileID: 8300000, guid: 0cde1ac01749bc349a5c0468ce319ad6, type: 3}
+  liquidGO: {fileID: 1715180001998340920}
 --- !u!114 &5191789734684457707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,16 +667,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequiredAP: 1
-  CanBackstab: 0
-  BaseDamage: 1
-  CriticalDamageMultiplier: 1.8
-  DamageThreshold: 6
-  HitCooldown: 0.25
-  DamageType: 0
-  ScalingType: 0
-  StatusEffect: {fileID: 0}
-  DisableCollisionsOnHitEnemy: 0
+  requiredAP: 2
+  disableCollisionsOnHitEnemy: 0
+  canBackstab: 0
+  baseDamage: 1
+  criticalDamageMultiplier: 1.8
+  damageThreshold: 5
+  hitCooldown: 0.25
+  damageType: 0
+  scalingType: 0
+  statusEffect: {fileID: 0}
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: 7a15c0d8bcc45424abbbce85a52cd25f, type: 3}
   ImpactThreshold: 0.01
@@ -866,6 +866,18 @@ MonoBehaviour:
   Socketed:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5191789734684457707}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 262124062813967780}
         m_TargetAssemblyTypeName: intheclouds.Potion, Assembly-CSharp
         m_MethodName: ToggleTagOnSocketed
@@ -881,6 +893,18 @@ MonoBehaviour:
   UnSocketed:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5191789734684457707}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 262124062813967780}
         m_TargetAssemblyTypeName: intheclouds.Potion, Assembly-CSharp
         m_MethodName: ToggleTagOnSocketed
@@ -891,13 +915,15 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   GrabPointsMeta: []
   Grabbers: []
   HandGrabbers: []
   Stabbers: []
   Stabbable: {fileID: 0}
+  originalHighlightProfile: {fileID: 0}
+  wasHighlighted: 0
 --- !u!114 &1106110388625188651
 MonoBehaviour:
   m_ObjectHideFlags: 0

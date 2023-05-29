@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using HurricaneVR.Framework.Core;
 using UnityEngine;
@@ -8,12 +7,12 @@ namespace intheclouds
 {
     public class SceneLoader : MonoBehaviour
     {
-        public static SceneLoader Instance;
-        private bool fadeoutEnded;
+        public static SceneLoader instance;
+        private bool _fadeoutEnded;
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
         }
 
         private void OnEnable()
@@ -38,20 +37,20 @@ namespace intheclouds
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
             operation.allowSceneActivation = false;
 
-            while (!fadeoutEnded && !operation.isDone)
+            while (!_fadeoutEnded && !operation.isDone)
             {
                 yield return null;
             }
             
             operation.allowSceneActivation = true;
-            fadeoutEnded = false;
+            _fadeoutEnded = false;
             
             HVRManager.Instance.ScreenFader.Fade(0, 0.5f);
         }
 
         private void FadeEnded()
         {
-            fadeoutEnded = true;
+            _fadeoutEnded = true;
         }
     }
 }

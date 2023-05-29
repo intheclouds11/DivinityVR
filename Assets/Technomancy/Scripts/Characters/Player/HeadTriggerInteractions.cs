@@ -1,6 +1,3 @@
-using System.Collections;
-using HurricaneVR.Framework.Core;
-using HurricaneVR.Framework.Core.Sockets;
 using HurricaneVR.Framework.Core.Utils;
 using UnityEngine;
 
@@ -8,60 +5,85 @@ namespace intheclouds
 {
     public class HeadTriggerInteractions : MonoBehaviour
     {
-        private PlayerStats playerStats;
-        public AudioClip drinkClip;
-        private Potion potion;
+        public float handInTriggerMaxTime = 1f;
+        private PlayerStats _playerStats;
+        private Potion _potion;
+        private float _handInTriggerTime;
+        private bool _handInTrigger;
+        private ITCSocket _headSocket;
 
         private void Awake()
         {
-            playerStats = transform.GetComponentInParent<PlayerStats>();
+            _playerStats = transform.GetComponentInParent<PlayerStats>();
+            _headSocket = GetComponent<ITCSocket>();
+        }
+
+        private void Update()
+        {
+            HandInTriggerUpdate();
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Potion"))
             {
-                potion = other.transform.parent.GetComponent<Potion>();
-                if (!potion.Usable || potion.Used || potion.GetComponent<HVRGrabbable>().IsSocketed)
+                CheckPotionInteraction(other);
+            }
+            else if (other.CompareTag("HandTriggerCollider"))
+            {
+                if (_headSocket.IsGrabbing)
                 {
-                    return;
+                    _handInTrigger = true;
                 }
-
-                if (playerStats.Turn && playerStats.CurrentAP > potion.RequiredAP)
-                {
-                    playerStats.UseAP(potion.RequiredAP);
-                }
-                else if (playerStats.InCombat)
-                {
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.errorSFX, transform.position, 1, 0.5f, 10, false);
-                    return;
-                }
-
-                SFXPlayer.Instance.PlaySFX(drinkClip, transform.position, 1, 0.5f, 10, false);
-                potion.Used = true;
-                Destroy(potion.GetComponent<HVRTagSocketable>());
-                StartCoroutine(Drink());
             }
         }
 
-        private IEnumerator Drink()
+        private void OnTriggerExit(Collider other)
         {
-            yield return new WaitForSeconds(0.65f);
+            if (other.CompareTag("HandTriggerCollider"))
+            {
+                _headSocket.CanRemoveGrabbable = false;
+                _handInTrigger = false;
+            }
+        }
 
-            if (potion.Type == Potion.PotionType.Health)
+        private void HandInTriggerUpdate()
+        {
+            if (_handInTrigger)
             {
-                playerStats.Heal(potion.Amount);
+                if (_handInTriggerTime >= handInTriggerMaxTime && !_headSocket.CanRemoveGrabbable)
+                {
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, transform.position, 1, 0.5f, 10, false);
+                    _headSocket.CanRemoveGrabbable = true;
+                }
+
+                _handInTriggerTime += Time.deltaTime;
             }
-            else if (potion.Type == Potion.PotionType.MagicArmor)
+            else if (_handInTriggerTime > 0)
             {
-                playerStats.RestoreMagicArmor(potion.Amount);
+                _handInTriggerTime = 0;
             }
-            else if (potion.Type == Potion.PotionType.PhysicalArmor)
+        }
+
+        private void CheckPotionInteraction(Collider other)
+        {
+            _potion = other.transform.parent.GetComponent<Potion>();
+            if (_potion.Used || !_potion.Usable || _potion.grabbable.IsSocketed)
             {
-                playerStats.RestorePhysicalArmor(potion.Amount);
+                return;
             }
 
-            Destroy(potion.gameObject);
+            if (_playerStats.Turn && _playerStats.CurrentAP > _potion.requiredAP)
+            {
+                _playerStats.UseAP(_potion.requiredAP);
+            }
+            else if (_playerStats.InCombat)
+            {
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.errorSFX, transform.position, 1, 0.5f, 10, false);
+                return;
+            }
+
+            _potion.StartDrinkCoroutine(_playerStats);
         }
     }
 }

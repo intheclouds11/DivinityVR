@@ -9,25 +9,25 @@ namespace intheclouds
     {
         public List<StatusEffect> statusEffectList;
         public int explorationCooldownSpeed = 4;
-        private float cooldownTimerNoCombat;
-        private BaseStats combatant;
-        private TextMeshProUGUI textUI;
-        private string burningText;
-        private string regeneratingText;
-        private string wetText;
-        private string slowText;
-        private string stunnedText;
-        private string magicShellText;
+        private float _cooldownTimerNoCombat;
+        private BaseStats _combatant;
+        private TextMeshProUGUI _textUI;
+        private string _burningText;
+        private string _regeneratingText;
+        private string _wetText;
+        private string _slowText;
+        private string _stunnedText;
+        private string _magicShellText;
 
         private void Start()
         {
-            combatant = GetComponentInParent<BaseStats>();
-            textUI = combatant.statusEffectsText;
+            _combatant = GetComponentInParent<BaseStats>();
+            _textUI = _combatant.statusEffectsText;
         }
 
         void Update()
         {
-            if (!combatant.InCombat)
+            if (!_combatant.InCombat)
             {
                 StatusEffectCooldownExploration();
             }
@@ -35,14 +35,14 @@ namespace intheclouds
 
         public void StatusEffectCooldownExploration()
         {
-            if (cooldownTimerNoCombat < explorationCooldownSpeed)
+            if (_cooldownTimerNoCombat < explorationCooldownSpeed)
             {
-                cooldownTimerNoCombat += Time.deltaTime;
+                _cooldownTimerNoCombat += Time.deltaTime;
             }
-            else if (cooldownTimerNoCombat >= explorationCooldownSpeed)
+            else if (_cooldownTimerNoCombat >= explorationCooldownSpeed)
             {
                 StatusEffectCooldown();
-                cooldownTimerNoCombat = 0;
+                _cooldownTimerNoCombat = 0;
             }
         }
 
@@ -165,40 +165,40 @@ namespace intheclouds
 
         private void AddToTextUI(StatusEffect effect)
         {
-            if (textUI.text != "")
+            if (_textUI.text != "")
             {
-                textUI.text += $"\n";
+                _textUI.text += $"\n";
             }
 
             if (effect.type == StatusEffectType.Burning)
             {
-                burningText = $"{effect.type.ToString()} damages {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
-                textUI.text += burningText;
+                _burningText = $"{effect.type.ToString()} damages {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
+                _textUI.text += _burningText;
             }
             else if (effect.type == StatusEffectType.Regenerating)
             {
-                regeneratingText = $"{effect.type.ToString()} heals {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
-                textUI.text += regeneratingText;
+                _regeneratingText = $"{effect.type.ToString()} heals {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
+                _textUI.text += _regeneratingText;
             }
             else if (effect.type == StatusEffectType.MagicShell)
             {
-                magicShellText = $"{effect.type.ToString()} restores {effect.effectAmount} magic armor for {effect.cooldownTimer} more turn(s)";
-                textUI.text += magicShellText;
+                _magicShellText = $"{effect.type.ToString()} restores {effect.effectAmount} magic armor for {effect.cooldownTimer} more turn(s)";
+                _textUI.text += _magicShellText;
             }
             else if (effect.type == StatusEffectType.Wet)
             {
-                wetText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
-                textUI.text += wetText;
+                _wetText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+                _textUI.text += _wetText;
             }
             else if (effect.type == StatusEffectType.Slowed)
             {
-                slowText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
-                textUI.text += slowText;
+                _slowText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+                _textUI.text += _slowText;
             }
             else if (effect.type == StatusEffectType.Stunned)
             {
-                stunnedText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
-                textUI.text += stunnedText;
+                _stunnedText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+                _textUI.text += _stunnedText;
             }
         }
 
@@ -206,26 +206,26 @@ namespace intheclouds
         {
             if (effect.type == StatusEffectType.Burning)
             {
-                textUI.text = textUI.text.Replace(burningText, string.Empty);
+                _textUI.text = _textUI.text.Replace(_burningText, string.Empty);
             }
             else if (effect.type == StatusEffectType.Wet)
             {
-                textUI.text = textUI.text.Replace(wetText, string.Empty);
+                _textUI.text = _textUI.text.Replace(_wetText, string.Empty);
             }
             else if (effect.type == StatusEffectType.Slowed)
             {
-                textUI.text = textUI.text.Replace(slowText, string.Empty);
+                _textUI.text = _textUI.text.Replace(_slowText, string.Empty);
             }
             else if (effect.type == StatusEffectType.Regenerating)
             {
-                textUI.text = textUI.text.Replace(regeneratingText, string.Empty);
+                _textUI.text = _textUI.text.Replace(_regeneratingText, string.Empty);
             }
             else if (effect.type == StatusEffectType.Stunned)
             {
-                textUI.text = textUI.text.Replace(stunnedText, string.Empty);
+                _textUI.text = _textUI.text.Replace(_stunnedText, string.Empty);
             }
 
-            textUI.text = textUI.text.Replace(Environment.NewLine, "");
+            _textUI.text = _textUI.text.Replace(Environment.NewLine, "");
         }
     }
 }

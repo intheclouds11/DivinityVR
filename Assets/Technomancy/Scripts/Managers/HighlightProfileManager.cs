@@ -12,11 +12,11 @@ namespace intheclouds
         public HighlightProfile PoiseItemHandHoverProfile;
         public HighlightProfile PropHandHoverProfile;
 
-        public static HighlightProfileManager Instance;
+        public static HighlightProfileManager instance;
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
         }
     }
 }

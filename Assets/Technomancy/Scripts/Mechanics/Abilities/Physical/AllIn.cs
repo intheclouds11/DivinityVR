@@ -5,20 +5,19 @@ using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
 
 namespace intheclouds
 {
-    public class All_In : AbilityBase
+    public class AllIn : AbilityBase
     {
         public AudioClip appliedSFX;
-        private ImpactHandler weapon;
-        private HighlightEffect handHighlight;
+        private ImpactHandler _weapon;
+        private HighlightEffect _handHighlight;
 
         protected override void OnEnable()
         {
-            handHighlight = castingHand.gameObject.GetComponent<HighlightEffect>();
-            handHighlight.enabled = true;
+            _handHighlight = castingHand.gameObject.GetComponent<HighlightEffect>();
+            _handHighlight.enabled = true;
             base.OnEnable();
         }
 
@@ -26,12 +25,12 @@ namespace intheclouds
         {
             if (other.CompareTag("Sword"))
             {
-                weapon = other.gameObject.GetComponentInParent<ImpactHandler>();
+                _weapon = other.gameObject.GetComponentInParent<ImpactHandler>();
 
-                if (weapon != null)
+                if (_weapon != null)
                 {
                     ApplyToHeldWeapon();
-                    weapon.AppliedDamage += OnSwordAppliedDamage;
+                    _weapon.AppliedDamage += OnSwordAppliedDamage;
                 }
                 else
                 {
@@ -42,13 +41,13 @@ namespace intheclouds
         
         private void OnSwordAppliedDamage()
         {
-            weapon.AppliedDamage -= OnSwordAppliedDamage;
-            HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
+            _weapon.AppliedDamage -= OnSwordAppliedDamage;
+            HVRHandGrabber grabber = (HVRHandGrabber) _weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
             grabber.GrabTrigger = HVRGrabTrigger.Active;
-            weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = true;
-            weapon.BaseDamage -= (int) Math.Floor(weapon.BaseDamage * 0.25f);
-            weapon.GetComponent<HighlightEffect>().enabled = false;
-            weapon = null;
+            _weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = true;
+            _weapon.baseDamage -= (int) Math.Floor(_weapon.baseDamage * 0.25f);
+            _weapon.GetComponent<HighlightEffect>().enabled = false;
+            _weapon = null;
             GetComponent<BoxCollider>().enabled = true;
             OnAbilityUsed();
             ResetAbilityTransform();
@@ -56,20 +55,20 @@ namespace intheclouds
 
         private void ApplyToHeldWeapon()
         {
-            SFXPlayer.Instance.PlaySFX(appliedSFX, weapon.transform.position, 1f, 1f);
+            SFXPlayer.Instance.PlaySFX(appliedSFX, _weapon.transform.position, 1f, 1f);
             GetComponent<BoxCollider>().enabled = false;
             
-            HVRHandGrabber grabber = (HVRHandGrabber) weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
-            weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = false;
+            HVRHandGrabber grabber = (HVRHandGrabber) _weapon.GetComponent<HVRGrabbable>().PrimaryGrabber;
+            _weapon.GetComponent<HVRGrabbable>().CanBeGrabbed = false;
             grabber.GrabTrigger = HVRGrabTrigger.ManualRelease;
-            weapon.BaseDamage += (int) Math.Ceiling(weapon.BaseDamage * 0.25f);
-            weapon.GetComponent<HighlightEffect>().enabled = true;
+            _weapon.baseDamage += (int) Math.Ceiling(_weapon.baseDamage * 0.25f);
+            _weapon.GetComponent<HighlightEffect>().enabled = true;
             
-            handHighlight.enabled = false;
+            _handHighlight.enabled = false;
 
             if (activatedVFX != null)
             {
-                activatedVFX.transform.parent = weapon.gameObject.transform;
+                activatedVFX.transform.parent = _weapon.gameObject.transform;
                 activatedVFX.transform.localPosition = Vector3.zero;
                 activatedVFX.transform.localRotation = Quaternion.identity;
                 activatedVFX.SetActive(true);

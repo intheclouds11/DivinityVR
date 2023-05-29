@@ -6,13 +6,13 @@ namespace intheclouds
     {
         public void Toggle()
         {
-            if (transform.parent.name == "Visor Socket")
+            if (gameObject.layer != LayerMask.NameToLayer("InvisibleToMainCamera"))
             {
                 gameObject.layer = LayerMask.NameToLayer("InvisibleToMainCamera");
         
                 foreach (Transform child in gameObject.transform)
                 {
-                    if (null == child)
+                    if (!child)
                     {
                         continue;
                     }
@@ -27,7 +27,7 @@ namespace intheclouds
         
                 foreach (Transform child in gameObject.transform)
                 {
-                    if (null == child)
+                    if (!child)
                     {
                         continue;
                     }

@@ -1,18 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
-using UnityEngine;
 
 namespace intheclouds
 {
     public class ITCGrabbable : HVRGrabbable
     {
-        private HighlightEffect highlightEffect;
-        private HighlightProfile originalHighlightProfile;
-        private bool wasHighlighted;
+        public HighlightEffect highlightEffect { get; protected set; }
+        public HighlightProfile originalHighlightProfile;
+        public bool wasHighlighted;
 
 
         protected override void Awake()
@@ -34,7 +30,11 @@ namespace intheclouds
                 }
                 else
                 {
-                    OnSocketHoverEnter();
+                    var socket = grabber as ITCSocket;
+                    if (socket && socket.IsValid(this))
+                    {
+                        OnSocketHoverEnter();
+                    }
                 }
             }
             else if (grabber is ITCForceGrabber or HVRHandGrabber)
@@ -62,7 +62,11 @@ namespace intheclouds
                 }
                 else
                 {
-                    OnSocketHoverExit();
+                    var socket = grabber as ITCSocket;
+                    if (socket && socket.IsValid(this))
+                    {
+                        OnSocketHoverExit();
+                    }
                 }
 
                 hoveringGrabber = null;
@@ -123,20 +127,30 @@ namespace intheclouds
 
         private void OnSocketHoverEnter()
         {
-            if (highlightEffect)
-            {
-                originalHighlightProfile = highlightEffect.profile;
-                wasHighlighted = highlightEffect.highlighted;
-                highlightEffect.ProfileLoad(HighlightProfileManager.Instance.SocketHoverProfile);
-                highlightEffect.highlighted = true;
-            }
+            SocketHighlight();
         }
 
         private void OnSocketHoverExit()
         {
+            UnSocketHighlight();
+        }
+
+        public void SocketHighlight()
+        {
             if (highlightEffect)
             {
-                highlightEffect.highlighted = wasHighlighted;
+                originalHighlightProfile = highlightEffect.profile;
+                wasHighlighted = highlightEffect.highlighted;
+                highlightEffect.ProfileLoad(HighlightProfileManager.instance.SocketHoverProfile);
+                highlightEffect.highlighted = true;
+            }
+        }
+
+        public void UnSocketHighlight()
+        {
+            if (highlightEffect)
+            {
+                highlightEffect.highlighted = false;
                 highlightEffect.ProfileLoad(originalHighlightProfile);
             }
         }

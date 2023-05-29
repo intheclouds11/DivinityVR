@@ -6,16 +6,16 @@ namespace intheclouds
 {
     public class DesktopModeController : MonoBehaviour
     {
-        public static DesktopModeController Instance;
-        private Transform head;
-        private Transform leftController;
-        private Transform rightController;
+        public static DesktopModeController instance;
+        private Transform _head;
+        private Transform _leftController;
+        private Transform _rightController;
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
 
-            if (!Startup.Instance.isDesktopMode)
+            if (!Startup.instance.isDesktopMode)
             {
                 enabled = false;
                 return;
@@ -38,20 +38,20 @@ namespace intheclouds
 
         public void EnableDesktopControls()
         {
-            head = LocalUserObjects.Instance.Camera.transform;
-            leftController = LocalUserObjects.Instance.leftController;
-            rightController = LocalUserObjects.Instance.rightController;
+            _head = LocalUserObjects.instance.Camera.transform;
+            _leftController = LocalUserObjects.instance.leftController;
+            _rightController = LocalUserObjects.instance.rightController;
 
-            head.GetComponent<TrackedPoseDriver>().enabled = false;
-            leftController.GetComponent<TrackedPoseDriver>().enabled = false;
-            rightController.GetComponent<TrackedPoseDriver>().enabled = false;
+            _head.GetComponent<TrackedPoseDriver>().enabled = false;
+            _leftController.GetComponent<TrackedPoseDriver>().enabled = false;
+            _rightController.GetComponent<TrackedPoseDriver>().enabled = false;
         }
 
         public void DisableDesktopControls()
         {
-            leftController.GetComponent<TrackedPoseDriver>().enabled = true;
-            rightController.GetComponent<TrackedPoseDriver>().enabled = true;
-            head.GetComponent<TrackedPoseDriver>().enabled = true;
+            _leftController.GetComponent<TrackedPoseDriver>().enabled = true;
+            _rightController.GetComponent<TrackedPoseDriver>().enabled = true;
+            _head.GetComponent<TrackedPoseDriver>().enabled = true;
         }
     }
 }

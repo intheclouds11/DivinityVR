@@ -9,8 +9,8 @@ namespace intheclouds
         public SurfaceEffect surfaceEffect;
         public int maxSpawn;
         public float hitDistance = 10;
-        private int spawnedCount;
-        private WaitForSeconds delay = new(0.5f);
+        private int _spawnedCount;
+        private WaitForSeconds _delay = new(0.5f);
 
         private void Start()
         {
@@ -20,7 +20,7 @@ namespace intheclouds
 
         private void OnDisable()
         {
-            spawnedCount = 0;
+            _spawnedCount = 0;
             StopAllCoroutines();
         }
 
@@ -28,7 +28,7 @@ namespace intheclouds
         {
             bool alreadyWet;
 
-            foreach (PlayerStats player in GameManager.Instance.players)
+            foreach (PlayerStats player in GameManager.instance.players)
             {
                 alreadyWet = false;
                 foreach (var statusEffect in player.statusEffectsContainer.statusEffectList)
@@ -50,7 +50,7 @@ namespace intheclouds
                 }
             }
 
-            foreach (EnemyStats enemy in EnemyManager.Instance.Enemies)
+            foreach (EnemyStats enemy in EnemyManager.instance.Enemies)
             {
                 alreadyWet = false;
                 foreach (var statusEffect in enemy.statusEffectsContainer.statusEffectList)
@@ -72,13 +72,13 @@ namespace intheclouds
                 }
             }
 
-            yield return delay;
+            yield return _delay;
             StartCoroutine(CheckCombatantHitRange());
         }
 
         private IEnumerator SpawnWaterGround()
         {
-            if (spawnedCount >= maxSpawn)
+            if (_spawnedCount >= maxSpawn)
             {
                 yield break;
             }
@@ -91,22 +91,22 @@ namespace intheclouds
                 // Debug.Log($"SpawnWaterGround hit {hit.collider}");
                 if (hit.transform.TryGetComponent(out SurfaceEffect preexistingEffect))
                 {
-                    SurfaceEffectsContainer.Instance.RemoveSurfaceEffect(preexistingEffect);
+                    SurfaceEffectsContainer.instance.RemoveSurfaceEffect(preexistingEffect);
                 }
 
                 Vector3 targetLocation = hit.point;
                 var waterSurface = Instantiate(surfaceEffect.gameObject, targetLocation, Quaternion.identity);
                 var spawnedSurface = waterSurface.GetComponent<SurfaceEffect>();
                 spawnedSurface.cooldownTimer = spawnedSurface.cooldown;
-                SurfaceEffectsContainer.Instance.surfaceEffectsList.Add(spawnedSurface);
-                spawnedCount++;
+                SurfaceEffectsContainer.instance.surfaceEffectsList.Add(spawnedSurface);
+                _spawnedCount++;
             }
             else
             {
                 // Debug.LogError("Raycast failed to find ground");
             }
 
-            yield return delay;
+            yield return _delay;
             StartCoroutine(SpawnWaterGround());
         }
     }

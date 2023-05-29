@@ -9,23 +9,23 @@ namespace intheclouds
     public class CreditPickup : MonoBehaviour, IHoverableItem
     {
         public int credits;
-        private HVRGrabbable grabbable;
+        private HVRGrabbable _grabbable;
 
         private void Start()
         {
-            grabbable = GetComponent<HVRGrabbable>();
+            _grabbable = GetComponent<HVRGrabbable>();
         }
 
         private void Update()
         {
-            if (grabbable.HandGrabbers.Count > 0)
+            if (_grabbable.HandGrabbers.Count > 0)
             {
-                var hand = grabbable.HandGrabbers[0];
+                var hand = _grabbable.HandGrabbers[0];
                 var value = hand.Controller.ControllerType == HVRControllerType.Knuckles ? hand.Controller.GripForce : hand.Controller.Trigger;
 
                 if (value > 0.5f)
                 {
-                    LocalUserObjects.Instance.PlayerStats.UpdateCredits(credits);
+                    LocalUserObjects.instance.PlayerStats.UpdateCredits(credits);
                     SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.creditPickupSFX, transform.position);
                     hand.Controller.Vibrate(HVRInputManager.Instance.HandInputHaptics.ForceGrab);
                     Destroy(gameObject);

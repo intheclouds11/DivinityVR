@@ -6,41 +6,41 @@ using UnityEngine;
 
 public class SpiritMovement : MonoBehaviour
 {
-    private HVRPlayerController hvrPlayerController;
-    private CharacterController characterController;
-    private HVRPlayerInputs playerInputs;
+    private HVRPlayerController _hvrPlayerController;
+    private CharacterController _characterController;
+    private HVRPlayerInputs _playerInputs;
     public Transform hmdTransform;
     public List<GameObject> fadeGOs;
     public bool screenFadeOnCollision;
-    private float originalGravity;
-    private float originalMaxFallSpeed;
+    private float _originalGravity;
+    private float _originalMaxFallSpeed;
     public bool verticalMovementCameraBased;
     public float SmoothTurnThreshold = .5f;
     public float horizontalSpeed = 2;
     public float verticalSpeed = 2;
     public float forwardSpeed = 2;
     public float sprintSpeedMultipler = 2;
-    private bool isSprinting;
-    private float previousTurnAmount;
+    private bool _isSprinting;
+    private float _previousTurnAmount;
 
 
     private void Awake()
     {
-        hvrPlayerController = GetComponent<HVRPlayerController>();
-        characterController = GetComponent<CharacterController>();
-        playerInputs = GetComponent<HVRPlayerInputs>();
+        _hvrPlayerController = GetComponent<HVRPlayerController>();
+        _characterController = GetComponent<CharacterController>();
+        _playerInputs = GetComponent<HVRPlayerInputs>();
     }
 
     private void OnEnable()
     {
-        originalGravity = hvrPlayerController.Gravity;
-        originalMaxFallSpeed = hvrPlayerController.MaxFallSpeed;
+        _originalGravity = _hvrPlayerController.Gravity;
+        _originalMaxFallSpeed = _hvrPlayerController.MaxFallSpeed;
 
-        hvrPlayerController.CanJump = false;
-        hvrPlayerController.CanCrouch = false;
-        hvrPlayerController.Gravity = 0;
-        hvrPlayerController.MaxFallSpeed = 0;
-        characterController.enabled = false;
+        _hvrPlayerController.CanJump = false;
+        _hvrPlayerController.CanCrouch = false;
+        _hvrPlayerController.Gravity = 0;
+        _hvrPlayerController.MaxFallSpeed = 0;
+        _characterController.enabled = false;
         if (screenFadeOnCollision)
         {
             fadeGOs[0].GetComponent<HVRCanvasFade>().enabled = false;
@@ -56,11 +56,11 @@ public class SpiritMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        hvrPlayerController.CanJump = true;
-        hvrPlayerController.CanCrouch = true;
-        hvrPlayerController.Gravity = originalGravity;
-        hvrPlayerController.MaxFallSpeed = originalMaxFallSpeed;
-        characterController.enabled = true;
+        _hvrPlayerController.CanJump = true;
+        _hvrPlayerController.CanCrouch = true;
+        _hvrPlayerController.Gravity = _originalGravity;
+        _hvrPlayerController.MaxFallSpeed = _originalMaxFallSpeed;
+        _characterController.enabled = true;
         if (screenFadeOnCollision)
         {
             fadeGOs[0].GetComponent<HVRCanvasFade>().enabled = true;
@@ -78,35 +78,35 @@ public class SpiritMovement : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
-        previousTurnAmount = playerInputs.TurnAxis.x;
+        _previousTurnAmount = _playerInputs.TurnAxis.x;
     }
 
     void HandleMovement()
     {
-        if (playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
+        if (_playerInputs.LeftController.JoystickAxis.magnitude > 0.05f)
         {
-            if (playerInputs.LeftController.JoystickClicked)
+            if (_playerInputs.LeftController.JoystickClicked)
             {
-                isSprinting = true;
+                _isSprinting = true;
             }
         }
         else
         {
-            isSprinting = false;
+            _isSprinting = false;
         }
 
-        float xMovement = playerInputs.LeftController.JoystickAxis.x * Time.deltaTime * horizontalSpeed;
+        float xMovement = _playerInputs.LeftController.JoystickAxis.x * Time.deltaTime * horizontalSpeed;
         float yMovement = 0;
-        float zMovement = playerInputs.LeftController.JoystickAxis.y * Time.deltaTime * forwardSpeed;
+        float zMovement = _playerInputs.LeftController.JoystickAxis.y * Time.deltaTime * forwardSpeed;
         if (verticalMovementCameraBased)
         {
-            yMovement = playerInputs.LeftController.JoystickAxis.y * Time.deltaTime * hmdTransform.forward.y * verticalSpeed;
+            yMovement = _playerInputs.LeftController.JoystickAxis.y * Time.deltaTime * hmdTransform.forward.y * verticalSpeed;
         }
         else
         {
-            if (playerInputs.RightController.JoystickAxis.y > 0.2f || playerInputs.RightController.JoystickAxis.y < -0.2f)
+            if (_playerInputs.RightController.JoystickAxis.y > 0.2f || _playerInputs.RightController.JoystickAxis.y < -0.2f)
             {
-                yMovement = playerInputs.RightController.JoystickAxis.y * Time.deltaTime * verticalSpeed;
+                yMovement = _playerInputs.RightController.JoystickAxis.y * Time.deltaTime * verticalSpeed;
             }
         }
 
@@ -132,7 +132,7 @@ public class SpiritMovement : MonoBehaviour
         //     clampedZ = Mathf.Clamp(zMovement, -100f, 0f);
         // }
 
-        if (isSprinting)
+        if (_isSprinting)
         {
             transform.Translate(clampedX * sprintSpeedMultipler, clampedY * sprintSpeedMultipler, clampedZ * sprintSpeedMultipler);
         }
@@ -144,20 +144,20 @@ public class SpiritMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        var input = playerInputs.TurnAxis.x;
+        var input = _playerInputs.TurnAxis.x;
         
-        if (hvrPlayerController.RotationType == RotationType.Snap)
+        if (_hvrPlayerController.RotationType == RotationType.Snap)
         {
-            if (Math.Abs(input) < hvrPlayerController.SnapThreshold || Mathf.Abs(previousTurnAmount) > hvrPlayerController.SnapThreshold) return;
+            if (Math.Abs(input) < _hvrPlayerController.SnapThreshold || Mathf.Abs(_previousTurnAmount) > _hvrPlayerController.SnapThreshold) return;
 
-            var rotation = Quaternion.Euler(0, Mathf.Sign(input) * hvrPlayerController.SnapAmount, 0);
+            var rotation = Quaternion.Euler(0, Mathf.Sign(input) * _hvrPlayerController.SnapAmount, 0);
             transform.rotation *= rotation;
         }
         else
         {
             if (Math.Abs(input) < SmoothTurnThreshold) return;
 
-            var rotation = input * hvrPlayerController.SmoothTurnSpeed * Time.deltaTime;
+            var rotation = input * _hvrPlayerController.SmoothTurnSpeed * Time.deltaTime;
             var rotationVector = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + rotation, transform.eulerAngles.z);
             transform.rotation = Quaternion.Euler(rotationVector);
         }

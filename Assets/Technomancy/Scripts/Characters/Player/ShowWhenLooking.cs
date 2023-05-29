@@ -6,7 +6,7 @@ namespace intheclouds
     {
         public GameObject objectToShowAndHide;
         public LayerMask LayerMask;
-        private Ray ray;
+        private Ray _ray;
 
         private void Start()
         {

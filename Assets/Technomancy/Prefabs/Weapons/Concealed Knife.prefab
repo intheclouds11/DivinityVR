@@ -904,16 +904,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9efba2a97cf76646877e4f29b282b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequiredAP: 2
-  CanBackstab: 1
-  BaseDamage: 7
-  CriticalDamageMultiplier: 2
-  DamageThreshold: 7
-  HitCooldown: 0.25
-  DamageType: 0
-  ScalingType: 7
-  StatusEffect: {fileID: 4555541019295191222, guid: f3fcf21d38d627147bf1139edee82e7e, type: 3}
-  DisableCollisionsOnHitEnemy: 1
+  requiredAP: 2
+  disableCollisionsOnHitEnemy: 1
+  canBackstab: 1
+  baseDamage: 10
+  criticalDamageMultiplier: 2
+  damageThreshold: 7
+  hitCooldown: 0.25
+  damageType: 0
+  scalingType: 0
+  statusEffect: {fileID: 4555541019295191222, guid: f3fcf21d38d627147bf1139edee82e7e, type: 3}
   HitEnemyClip: {fileID: 0}
   GenericHitClip: {fileID: 8300000, guid: b14cae6eb0028da4d872edfa9c3e743f, type: 3}
   ImpactThreshold: 0.01
@@ -1030,15 +1030,41 @@ MonoBehaviour:
       m_Calls: []
   Socketed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6045938737642144187}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   UnSocketed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6045938737642144187}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   GrabPointsMeta: []
   Grabbers: []
   HandGrabbers: []
   Stabbers: []
   Stabbable: {fileID: 0}
+  originalHighlightProfile: {fileID: 0}
+  wasHighlighted: 0
 --- !u!54 &6288168976291376741
 Rigidbody:
   m_ObjectHideFlags: 0

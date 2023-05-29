@@ -11,25 +11,25 @@ namespace intheclouds
         public Color offensiveHighlightColor = new Color(1f, 0.2f, 0.2f);
         public Color supportHighlightColor = new Color(0.8f, 0.5f, 1);
         public BaseStats combatantSelected;
-        private LineRenderer lineRenderer;
-        private Color colorBeforePointedAt;
+        private LineRenderer _lineRenderer;
+        private Color _colorBeforePointedAt;
 
         private void Awake()
         {
-            lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer = GetComponent<LineRenderer>();
             pointerEndTransform.localPosition = maxDistanceVector;
         }
 
         private void Update()
         {
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, pointerEndTransform.position);
+            _lineRenderer.SetPosition(0, transform.position);
+            _lineRenderer.SetPosition(1, pointerEndTransform.position);
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, maxDistanceVector.z, layerMask, QueryTriggerInteraction.Ignore))
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     var hudText = $"Heal {hit.transform.GetComponentInParent<BaseStats>().Name} for 10 vit todo actual Vit...";
-                    LocalUserObjects.Instance.HUDController.ShowPointerUI(ActionType.Heal, hudText);
+                    LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Heal, hudText);
                     
                     combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
                     if (isOffensiveHighlight)
@@ -42,12 +42,12 @@ namespace intheclouds
                     }
 
                     combatantSelected.modelHighlightEffect.highlighted = true;
-                    colorBeforePointedAt = combatantSelected.modelHighlightEffect.outlineColor;
+                    _colorBeforePointedAt = combatantSelected.modelHighlightEffect.outlineColor;
                     combatantSelected.pointedAtByHand = true;
                     // Debug.Log($"abilitypointer hit valid target! {hit.transform.gameObject}", hit.transform);
                 }
 
-                lineRenderer.SetPosition(1, hit.point);
+                _lineRenderer.SetPosition(1, hit.point);
                 pointerEndTransform.position = hit.point;
             }
             else
@@ -55,9 +55,9 @@ namespace intheclouds
                 pointerEndTransform.localPosition = maxDistanceVector;
                 if (combatantSelected)
                 {
-                    LocalUserObjects.Instance.HUDController.HidePointerUI(ActionType.Heal);
+                    LocalUserObjects.instance.HUDController.HidePointerUI(ActionType.Heal);
                     combatantSelected.pointedAtByHand = false;
-                    combatantSelected.modelHighlightEffect.outlineColor = colorBeforePointedAt;
+                    combatantSelected.modelHighlightEffect.outlineColor = _colorBeforePointedAt;
                     combatantSelected.modelHighlightEffect.highlighted = false;
                     combatantSelected = null;
                 }

@@ -1,16 +1,14 @@
-using System;
 using HighlightPlus;
 using HurricaneVR.Framework.ControllerInput;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {
     public class LocalUserObjects : MonoBehaviour
     {
-        public static LocalUserObjects Instance;
+        public static LocalUserObjects instance;
         public PlayerStats PlayerStats;
         public ITCPlayerController ITCPlayerController;
         public ITCTeleporter ITCTeleporter;
@@ -43,7 +41,7 @@ namespace intheclouds
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
         }
     }
 }

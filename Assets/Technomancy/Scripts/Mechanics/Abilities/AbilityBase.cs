@@ -128,14 +128,14 @@ namespace intheclouds
             {
                 if (castingHand.Controller.Side == HVRHandSide.Left)
                 {
-                    AbilitySpawnLocator.Instance.SelectionLineSource = AbilitySpawnLocator.Instance.SelectionLineSourceRight;
+                    AbilitySpawnLocator.instance.SelectionLineSource = AbilitySpawnLocator.instance.SelectionLineSourceRight;
                 }
                 else
                 {
-                    AbilitySpawnLocator.Instance.SelectionLineSource = AbilitySpawnLocator.Instance.SelectionLineSourceLeft;
+                    AbilitySpawnLocator.instance.SelectionLineSource = AbilitySpawnLocator.instance.SelectionLineSourceLeft;
                 }
 
-                AbilitySpawnLocator.Instance.enabled = true;
+                AbilitySpawnLocator.instance.enabled = true;
             }
             else if (selectionType == SelectionType.Combatant)
             {
@@ -157,7 +157,7 @@ namespace intheclouds
         {
             if (selectionType == SelectionType.Location)
             {
-                AbilitySpawnLocator.Instance.enabled = false;
+                AbilitySpawnLocator.instance.enabled = false;
             }
             else if (selectionType == SelectionType.Combatant)
             {

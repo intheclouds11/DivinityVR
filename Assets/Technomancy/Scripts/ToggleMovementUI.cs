@@ -8,12 +8,12 @@ public class ToggleMovementUI : MonoBehaviour
     public float timeInTriggerRequired = 1;
     public float timeInTriggerRH;
     public bool inTriggerRH;
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
 
 
     private void Update()
     {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
         InputCheck();
     }
 
@@ -46,7 +46,7 @@ public class ToggleMovementUI : MonoBehaviour
 
     public void ToggleVisibility()
     {
-        audioSource.Play();
+        _audioSource.Play();
         if (!activated)
         {
             movementUI.SetActive(true);

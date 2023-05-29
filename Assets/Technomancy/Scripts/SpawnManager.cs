@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using HurricaneVR.Framework.Core.Player;
 using Pathfinding.RVO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,11 +18,11 @@ namespace intheclouds
         {
             MovePlayerToStartingSpawnPoint();
 
-            var playerRVOController = LocalUserObjects.Instance.ITCPlayerController.GetComponent<RVOController>();
+            var playerRvoController = LocalUserObjects.instance.ITCPlayerController.GetComponent<RVOController>();
 
-            if (FindFirstObjectByType<RVOSimulator>() && !playerRVOController.enabled)
+            if (FindFirstObjectByType<RVOSimulator>() && !playerRvoController.enabled)
             {
-                playerRVOController.enabled = true;
+                playerRvoController.enabled = true;
             }
         }
 
@@ -36,7 +34,7 @@ namespace intheclouds
         public static void MovePlayerToStartingSpawnPoint()
         {
             var spawnPoint = GetStartingPlayerSpawnPoint().transform;
-            LocalUserObjects.Instance.ITCTeleporter.Teleport(spawnPoint.position, spawnPoint.forward);
+            LocalUserObjects.instance.ITCTeleporter.Teleport(spawnPoint.position, spawnPoint.forward);
         }
 
         public static void RegisterUserSpawnPoint(PlayerSpawnPoint playerSpawnPoint)

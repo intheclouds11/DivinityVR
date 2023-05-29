@@ -1,19 +1,16 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.UI;
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
-using UnityEngine.Serialization;
 using UnityEngine.XR.Management;
 
 namespace intheclouds
 {
     public class Startup : MonoBehaviour
     {
-        public static Startup Instance;
+        public static Startup instance;
         
         [Header("Setup")]
         public InputSystemUIInputModule desktopModeInputModule;
@@ -33,7 +30,7 @@ namespace intheclouds
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
             
             if (!isDesktopMode)
             {
@@ -82,7 +79,7 @@ namespace intheclouds
         {
             if (PlayerPrefs.HasKey(SmoothRotationSettingKey))
             {
-                LocalUserObjects.Instance.ITCPlayerController.RotationType = (RotationType)PlayerPrefs.GetInt(SmoothRotationSettingKey);
+                LocalUserObjects.instance.ITCPlayerController.RotationType = (RotationType)PlayerPrefs.GetInt(SmoothRotationSettingKey);
             }
             if (PlayerPrefs.HasKey(DebugSettingKey))
             {

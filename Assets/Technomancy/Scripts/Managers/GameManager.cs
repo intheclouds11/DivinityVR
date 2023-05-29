@@ -7,11 +7,10 @@ using HurricaneVR.Framework.Core.Utils;
 using intheclouds;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager instance;
     public GameState state;
     public List<KeyValuePair<BaseStats, int>> turnOrderList;
     public List<PlayerStats> players;
@@ -29,15 +28,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI turnOrderText;
     public GameObject turnOrderUI;
 
-    private BaseStats firstCombatant;
-    private BaseStats previousCombatant;
-    private Coroutine turnOrderCoroutine;
-    private AudioSource audioSource;
+    private BaseStats _firstCombatant;
+    private BaseStats _previousCombatant;
+    private Coroutine _turnOrderCoroutine;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
-        Instance = this;
-        audioSource = GetComponent<AudioSource>();
+        instance = this;
+        _audioSource = GetComponent<AudioSource>();
         controlledPlayer = FindControlledPlayer();
     }
 
@@ -49,7 +48,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // Resume music after other audiosource finished
-        if (!audioSource.isPlaying && MusicAudioSource.gameObject.activeInHierarchy && !MusicAudioSource.isPlaying)
+        if (!_audioSource.isPlaying && MusicAudioSource.gameObject.activeInHierarchy && !MusicAudioSource.isPlaying)
         {
             MusicAudioSource.Play();
         }
@@ -101,8 +100,8 @@ public class GameManager : MonoBehaviour
             witsList.Add(player, player.Wits);
         }
 
-        EnemyManager.Instance.PopulateEnemiesInCombatList();
-        foreach (var enemy in EnemyManager.Instance.EnemiesInCombat)
+        EnemyManager.instance.PopulateEnemiesInCombatList();
+        foreach (var enemy in EnemyManager.instance.EnemiesInCombat)
         {
             enemy.InCombat = true;
             witsList.Add(enemy, enemy.wits);
@@ -117,7 +116,7 @@ public class GameManager : MonoBehaviour
         }
 
         turnOrderUI.SetActive(true);
-        turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine());
+        _turnOrderCoroutine = StartCoroutine(TurnOrderCoroutine());
     }
 
     private IEnumerator TurnOrderCoroutine()
@@ -129,18 +128,18 @@ public class GameManager : MonoBehaviour
             activeCombatant.Turn = true;
             NextTurn = false;
 
-            if (!firstCombatant)
+            if (!_firstCombatant)
             {
-                firstCombatant = activeCombatant;
+                _firstCombatant = activeCombatant;
             }
-            else if (activeCombatant == firstCombatant)
+            else if (activeCombatant == _firstCombatant)
             {
                 StartNewRound();
             }
 
             while (!NextTurn)
             {
-                if (!players.Any() || !EnemyManager.Instance.EnemiesInCombat.Any())
+                if (!players.Any() || !EnemyManager.instance.EnemiesInCombat.Any())
                 {
                     EndCombat();
                 }
@@ -152,14 +151,14 @@ public class GameManager : MonoBehaviour
             turnOrderList.Add(turnOrderList[0]);
             turnOrderList.Remove(turnOrderList[0]);
             
-            previousCombatant = activeCombatant;
-            SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.Instance.ITCPlayerController.transform.position, 1f, 1f, 10, false, false);
+            _previousCombatant = activeCombatant;
+            SFXPlayer.Instance.PlaySFX(nextTurnClip, LocalUserObjects.instance.ITCPlayerController.transform.position, 1f, 1f, 10, false, false);
         }
     }
 
     private static void StartNewRound()
     {
-        SurfaceEffectsContainer.Instance.Cooldown();
+        SurfaceEffectsContainer.instance.Cooldown();
     }
 
     private void EndCombat()
@@ -167,24 +166,24 @@ public class GameManager : MonoBehaviour
         if (!players.Any())
         {
             Debug.Log($"PLAYERS FELLED. RESTART FROM LAST SAVE");
-            audioSource.PlayOneShot(gameOverClip);
+            _audioSource.PlayOneShot(gameOverClip);
             MusicAudioSource.Stop();
-            if (!UserMenu.Instance.menuIsOpen)
+            if (!UserMenu.instance.menuIsOpen)
             {
-                UserMenu.Instance.ToggleMenu(true);
+                UserMenu.instance.ToggleMenu(true);
             }
         }
         else
         {
             Debug.Log($"ENEMIES FELLED. EXITING COMBAT");
-            audioSource.PlayOneShot(combatEndClip);
+            _audioSource.PlayOneShot(combatEndClip);
             MusicAudioSource.Pause();
         }
 
-        StopCoroutine(turnOrderCoroutine);
+        StopCoroutine(_turnOrderCoroutine);
         turnOrderUI.SetActive(false);
         turnOrderText.text = "";
-        firstCombatant = null;
+        _firstCombatant = null;
         activeCombatant = null;
 
         foreach (var player in players)
@@ -195,7 +194,7 @@ public class GameManager : MonoBehaviour
             player.Turn = false;
         }
 
-        foreach (var enemy in EnemyManager.Instance.EnemiesInCombat)
+        foreach (var enemy in EnemyManager.instance.EnemiesInCombat)
         {
             enemy.InCombat = false;
             enemy.Turn = false;
@@ -210,9 +209,9 @@ public class GameManager : MonoBehaviour
             highlight.highlighted = true;
         }
 
-        if (previousCombatant)
+        if (_previousCombatant)
         {
-            var highlightPrev = previousCombatant.GetComponentInChildren<HighlightEffect>();
+            var highlightPrev = _previousCombatant.GetComponentInChildren<HighlightEffect>();
             if (highlightPrev)
             {
                 highlightPrev.highlighted = false;
@@ -229,7 +228,7 @@ public class GameManager : MonoBehaviour
     public void EnemyJoinedCombat(EnemyStats enemyStats)
     {
         SFXPlayer.Instance.PlaySFX(enemyJoinedClip, enemyStats.transform.position, 1f, 1f, 10, false, false);
-        EnemyManager.Instance.EnemiesInCombat.Add(enemyStats);
+        EnemyManager.instance.EnemiesInCombat.Add(enemyStats);
         turnOrderList.Add(new KeyValuePair<BaseStats, int>(enemyStats, enemyStats.wits));
         UpdateTurnOrderText(turnOrderList);
         enemyStats.InCombat = true;

@@ -3,7 +3,6 @@ using HurricaneVR.Framework.Core.Player;
 using HurricaneVR.Framework.Core.Utils;
 using Sigtrap.VrTunnellingPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace intheclouds
 {

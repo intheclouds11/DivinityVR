@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using HurricaneVR.Framework.Core.Utils;
 using Pathfinding;
@@ -19,74 +18,74 @@ namespace intheclouds
         public AudioClip sheatheAudioClip;
         public AudioClip unsheatheAudioClip;
         
-        private EnemyStats enemyStats;
-        private AIDestinationSetter aiDestinationSetter;
-        private RichAI ai;
-        private Animator animator;
-        private float distanceToTarget;
-        private float distanceMoved;
-        private Vector3 previousPosition;
-        private bool hasAttacked;
-        private bool reachedTarget;
-        private PlayerStats targetedPlayer;
-        private SpiritWander targetedPlayerSW;
-        private bool wasMovingBeforeHit;
-        private static readonly int _isWalking = Animator.StringToHash("isWalking");
-        private static readonly int _isAttacking = Animator.StringToHash("isAttacking");
-        private static readonly int _isSheathing = Animator.StringToHash("isSheathing");
-        private static readonly int _isUnsheathing = Animator.StringToHash("isUnsheathing");
-        private static readonly int _isDead = Animator.StringToHash("isDead");
-        private static readonly int _isHit = Animator.StringToHash("isHit");
+        private EnemyStats _enemyStats;
+        private AIDestinationSetter _aiDestinationSetter;
+        private RichAI _ai;
+        private Animator _animator;
+        private float _distanceToTarget;
+        private float _distanceMoved;
+        private Vector3 _previousPosition;
+        private bool _hasAttacked;
+        private bool _reachedTarget;
+        private PlayerStats _targetedPlayer;
+        private SpiritWander _targetedPlayerSW;
+        private bool _wasMovingBeforeHit;
+        private static readonly int IsWalking = Animator.StringToHash("isWalking");
+        private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
+        private static readonly int IsSheathing = Animator.StringToHash("isSheathing");
+        private static readonly int IsUnsheathing = Animator.StringToHash("isUnsheathing");
+        private static readonly int IsDead = Animator.StringToHash("isDead");
+        private static readonly int IsHit = Animator.StringToHash("isHit");
 
 
         private void Awake()
         {
-            enemyStats = GetComponent<EnemyStats>();
-            animator = GetComponent<Animator>();
-            aiDestinationSetter = GetComponent<AIDestinationSetter>();
-            ai = GetComponent<RichAI>();
+            _enemyStats = GetComponent<EnemyStats>();
+            _animator = GetComponent<Animator>();
+            _aiDestinationSetter = GetComponent<AIDestinationSetter>();
+            _ai = GetComponent<RichAI>();
         }
 
         private void Start()
         {
-            enemyStats.EnemyDamaged += OnEnemyDamaged;
-            enemyStats.EnemyDied += OnEnemyDied;
+            _enemyStats.EnemyDamaged += OnEnemyDamaged;
+            _enemyStats.EnemyDied += OnEnemyDied;
         }
 
         private void OnEnemyDamaged()
         {
-            wasMovingBeforeHit = ai.canMove;
-            ai.canMove = false;
+            _wasMovingBeforeHit = _ai.canMove;
+            _ai.canMove = false;
             // animator.SetBool(_isAttacking, false);
             // animator.SetBool(_isWalking, false);
-            animator.SetBool(_isUnsheathing, false);
-            animator.SetBool(_isSheathing, false);
-            animator.SetBool(_isHit, true);
+            _animator.SetBool(IsUnsheathing, false);
+            _animator.SetBool(IsSheathing, false);
+            _animator.SetBool(IsHit, true);
         }
 
         private void OnEnemyDied()
         {
-            animator.SetBool(_isAttacking, false);
-            animator.SetBool(_isWalking, false);
-            animator.SetBool(_isUnsheathing, false);
-            animator.SetBool(_isSheathing, false);
-            animator.SetBool(_isHit, false);
-            animator.SetBool(_isDead, true);
+            _animator.SetBool(IsAttacking, false);
+            _animator.SetBool(IsWalking, false);
+            _animator.SetBool(IsUnsheathing, false);
+            _animator.SetBool(IsSheathing, false);
+            _animator.SetBool(IsHit, false);
+            _animator.SetBool(IsDead, true);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                if (!enemyStats.InCombat && attackOnSight)
+                if (!_enemyStats.InCombat && attackOnSight)
                 {
-                    if (!GameManager.Instance.activeCombatant)
+                    if (!GameManager.instance.activeCombatant)
                     {
-                        GameManager.Instance.UpdateGameState(GameState.CombatStart);
+                        GameManager.instance.UpdateGameState(GameState.CombatStart);
                     }
                     else
                     {
-                        GameManager.Instance.EnemyJoinedCombat(enemyStats);
+                        GameManager.instance.EnemyJoinedCombat(_enemyStats);
                     }
                 }
             }
@@ -94,9 +93,9 @@ namespace intheclouds
 
         private void Update()
         {
-            if (!enemyStats.Turn || !enemyStats.isAlive) return;
+            if (!_enemyStats.Turn || !_enemyStats.isAlive) return;
 
-            if (!GameManager.Instance.players.Any())
+            if (!GameManager.instance.players.Any())
             {
                 EndCombat();
                 enabled = false;
@@ -105,7 +104,7 @@ namespace intheclouds
 
             // todo: add other attacks based on what skills enemy has
 
-            if (!animator.GetBool(_isHit))
+            if (!_animator.GetBool(IsHit))
             {
                 BaseAttack();
             }
@@ -113,40 +112,40 @@ namespace intheclouds
 
         private void BaseAttack()
         {
-            if (!ai.reachedDestination && enemyStats.CurrentAP > 0)
+            if (!_ai.reachedDestination && _enemyStats.CurrentAP > 0)
             {
                 ChaseTarget();
             }
 
-            else if (enemyStats.CurrentAP >= 2 && !hasAttacked)
+            else if (_enemyStats.CurrentAP >= 2 && !_hasAttacked)
             {
                 AttackTarget();
             }
-            else if (enemyStats.CurrentAP < 2 && !hasAttacked)
+            else if (_enemyStats.CurrentAP < 2 && !_hasAttacked)
             {
-                GameManager.Instance.ForceNextTurn();
+                GameManager.instance.ForceNextTurn();
             }
 
-            if (ai.reachedDestination)
+            if (_ai.reachedDestination)
             {
-                ai.canMove = false;
+                _ai.canMove = false;
             }
         }
 
         public void StartCombat()
         {
-            if (enemyStats.weaponSheathed)
+            if (_enemyStats.weaponSheathed)
             {
-                animator.SetBool(_isUnsheathing, true);
+                _animator.SetBool(IsUnsheathing, true);
             }
         }
 
         public void StartTurn()
         {
-            if (enemyStats.Stunned)
+            if (_enemyStats.Stunned)
             {
                 enabled = false;
-                StartCoroutine(enemyStats.SkipTurn());
+                StartCoroutine(_enemyStats.SkipTurn());
                 return;
             }
             else
@@ -155,92 +154,92 @@ namespace intheclouds
             }
             if (targetNearestPlayer)
             {
-                targetedPlayer = FindNearestPlayer();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
+                _targetedPlayer = FindNearestPlayer();
+                _aiDestinationSetter.target = _targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
             else
             {
-                targetedPlayer = FindPlayerWithHighestHealth();
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
+                _targetedPlayer = FindPlayerWithHighestHealth();
+                _aiDestinationSetter.target = _targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
 
-            targetedPlayerSW = aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
-            if (targetedPlayerSW.isActivated)
+            _targetedPlayerSW = _aiDestinationSetter.target.GetComponentInParent<LocalUserObjects>().spiritWander;
+            if (_targetedPlayerSW.isActivated)
             {
-                aiDestinationSetter.target = targetedPlayerSW.spawnedGOs[0].transform;
+                _aiDestinationSetter.target = _targetedPlayerSW.spawnedGOs[0].transform;
             }
 
-            targetedPlayerSW.SpiritFormToggled += TargetSpiritFormToggled;
-            previousPosition = transform.position;
-            ai.canMove = false;
+            _targetedPlayerSW.SpiritFormToggled += TargetSpiritFormToggled;
+            _previousPosition = transform.position;
+            _ai.canMove = false;
         }
 
         private void TargetSpiritFormToggled()
         {
-            if (targetedPlayerSW.isActivated)
+            if (_targetedPlayerSW.isActivated)
             {
-                aiDestinationSetter.target = targetedPlayerSW.spawnedGOs[0].transform;
+                _aiDestinationSetter.target = _targetedPlayerSW.spawnedGOs[0].transform;
             }
             else
             {
-                aiDestinationSetter.target = targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
+                _aiDestinationSetter.target = _targetedPlayer.LocalUserObjects.ITCPlayerController.transform;
             }
         }
 
         public void EndTurn()
         {
             AttackAnimFinished();
-            animator.SetBool(_isWalking, false);
-            ai.canMove = false;
-            if (targetedPlayerSW)
+            _animator.SetBool(IsWalking, false);
+            _ai.canMove = false;
+            if (_targetedPlayerSW)
             {
-                targetedPlayerSW.SpiritFormToggled -= TargetSpiritFormToggled;
+                _targetedPlayerSW.SpiritFormToggled -= TargetSpiritFormToggled;
             }
         }
 
         public void EndCombat()
         {
-            animator.SetBool(_isAttacking, false);
-            animator.SetBool(_isWalking, false);
-            animator.SetBool(_isUnsheathing, false);
-            animator.SetBool(_isSheathing, true);
-            ai.canMove = false;
+            _animator.SetBool(IsAttacking, false);
+            _animator.SetBool(IsWalking, false);
+            _animator.SetBool(IsUnsheathing, false);
+            _animator.SetBool(IsSheathing, true);
+            _ai.canMove = false;
         }
 
         private void ChaseTarget()
         {
-            ai.canMove = true;
-            animator.SetBool(_isWalking, true);
+            _ai.canMove = true;
+            _animator.SetBool(IsWalking, true);
             TrackMovementApUsage();
         }
 
         private void TrackMovementApUsage()
         {
-            distanceMoved += Vector3.Distance(transform.position, previousPosition);
+            _distanceMoved += Vector3.Distance(transform.position, _previousPosition);
 
-            if (distanceMoved > 3)
+            if (_distanceMoved > 3)
             {
-                enemyStats.CurrentAP -= 1;
-                distanceMoved -= 3;
+                _enemyStats.CurrentAP -= 1;
+                _distanceMoved -= 3;
             }
 
-            previousPosition = transform.position;
+            _previousPosition = transform.position;
         }
 
         private void AttackTarget()
         {
-            enemyStats.CurrentAP -= 2;
-            ai.canMove = false;
-            hasAttacked = true;
-            animator.SetBool(_isWalking, false);
-            animator.SetBool(_isAttacking, true);
+            _enemyStats.CurrentAP -= 2;
+            _ai.canMove = false;
+            _hasAttacked = true;
+            _animator.SetBool(IsWalking, false);
+            _animator.SetBool(IsAttacking, true);
         }
 
         public PlayerStats FindPlayerWithHighestHealth()
         {
             int highestHealth = int.MinValue;
             PlayerStats highestHealthPlayer = null;
-            foreach (PlayerStats player in GameManager.Instance.players)
+            foreach (PlayerStats player in GameManager.instance.players)
             {
                 if (player.CurrentHealth > highestHealth)
                 {
@@ -256,7 +255,7 @@ namespace intheclouds
         {
             float shortestDistance = 0;
             PlayerStats nearestPlayer = null;
-            foreach (PlayerStats player in GameManager.Instance.players)
+            foreach (PlayerStats player in GameManager.instance.players)
             {
                 var dist = Vector3.Distance(player.LocalUserObjects.ITCPlayerController.transform.position, transform.position);
                 if (dist > shortestDistance)
@@ -271,8 +270,8 @@ namespace intheclouds
 
         public void DisableAIComponents()
         {
-            ai.enabled = false;
-            aiDestinationSetter.enabled = false;
+            _ai.enabled = false;
+            _aiDestinationSetter.enabled = false;
             GetComponent<RVOController>().enabled = false;
             GetComponent<Seeker>().enabled = false;
         }
@@ -281,7 +280,7 @@ namespace intheclouds
 
         public void EndUnsheathingAnimation()
         {
-            animator.SetBool(_isUnsheathing, false);
+            _animator.SetBool(IsUnsheathing, false);
         }
 
         public void PlayBaseAttackSwingSound()
@@ -298,62 +297,62 @@ namespace intheclouds
         {
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackHitAudioClip, transform, 0.9f, 1.1f, 0.5f, 20);
             PlayerStats player;
-            if (targetedPlayerSW.isActivated)
+            if (_targetedPlayerSW.isActivated)
             {
-                player = targetedPlayerSW.transform.GetComponentInParent<PlayerStats>();
+                player = _targetedPlayerSW.transform.GetComponentInParent<PlayerStats>();
             }
             else
             {
-                player = targetedPlayer;
+                player = _targetedPlayer;
             }
 
-            player.TakeDamage(enemyStats, enemyStats.baseDamage, DamageType.Physical, ScalingType.None, null);
+            player.TakeDamage(_enemyStats, _enemyStats.baseDamage, DamageType.Physical, ScalingType.None, null);
             if (player.CurrentHealth == 0)
             {
                 if (targetNearestPlayer)
                 {
-                    aiDestinationSetter.target = FindNearestPlayer()?.LocalUserObjects.waist.transform;
+                    _aiDestinationSetter.target = FindNearestPlayer()?.LocalUserObjects.waist.transform;
                 }
                 else
                 {
-                    aiDestinationSetter.target = FindPlayerWithHighestHealth()?.LocalUserObjects.waist.transform;
+                    _aiDestinationSetter.target = FindPlayerWithHighestHealth()?.LocalUserObjects.waist.transform;
                 }
             }
         }
 
         public void AttackAnimFinished()
         {
-            hasAttacked = false;
-            animator.SetBool(_isAttacking, false);
+            _hasAttacked = false;
+            _animator.SetBool(IsAttacking, false);
         }
         
         public void EndHitAnimation()
         {
-            animator.SetBool(_isHit, false);
-            if (wasMovingBeforeHit)
+            _animator.SetBool(IsHit, false);
+            if (_wasMovingBeforeHit)
             {
-                wasMovingBeforeHit = false;
-                ai.canMove = true;
+                _wasMovingBeforeHit = false;
+                _ai.canMove = true;
             }
         }
 
         public void AttachDetachWeapon()
         {
-            if (enemyStats.weaponSheathed)
+            if (_enemyStats.weaponSheathed)
             {
                 SFXPlayer.Instance.PlaySFXRandomPitchAttach(unsheatheAudioClip, transform, 1f, 1f, 1f, 20);
-                enemyStats.weapon.transform.SetParent(enemyStats.weaponUnsheatheParent.transform);
-                enemyStats.weaponSheathed = false;
+                _enemyStats.weapon.transform.SetParent(_enemyStats.weaponUnsheatheParent.transform);
+                _enemyStats.weaponSheathed = false;
             }
             else
             {
                 SFXPlayer.Instance.PlaySFXRandomPitchAttach(sheatheAudioClip, transform, 1f, 1f, 0.8f, 20);
-                enemyStats.weapon.transform.SetParent(enemyStats.weaponSheatheParent.transform);
-                enemyStats.weaponSheathed = true;
+                _enemyStats.weapon.transform.SetParent(_enemyStats.weaponSheatheParent.transform);
+                _enemyStats.weaponSheathed = true;
             }
 
-            enemyStats.weapon.transform.localPosition = Vector3.zero;
-            enemyStats.weapon.transform.localRotation = Quaternion.identity;
+            _enemyStats.weapon.transform.localPosition = Vector3.zero;
+            _enemyStats.weapon.transform.localRotation = Quaternion.identity;
         }
 
         #endregion

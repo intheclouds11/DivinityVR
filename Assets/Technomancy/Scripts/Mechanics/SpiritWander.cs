@@ -18,23 +18,23 @@ namespace intheclouds
         public float timeInTriggerLH;
         public float timeInTriggerRH;
         public List<GameObject> spawnedGOs;
-        private Transform[] originalParents;
-        private Vector3[] originalLocalPositions;
-        private Quaternion[] originalLocalRotations;
-        private Vector3 savedPhysicalPosition;
-        private Quaternion savedPhysicalRotation;
-        private Vector3 savedSpiritPosition;
-        private Quaternion savedSpiritRotation;
-        private LocalUserObjects playerLUOs;
-        private AudioSource audioSource;
+        private Transform[] _originalParents;
+        private Vector3[] _originalLocalPositions;
+        private Quaternion[] _originalLocalRotations;
+        private Vector3 _savedPhysicalPosition;
+        private Quaternion _savedPhysicalRotation;
+        private Vector3 _savedSpiritPosition;
+        private Quaternion _savedSpiritRotation;
+        private LocalUserObjects _playerLuOs;
+        private AudioSource _audioSource;
 
         public event Action SpiritFormToggled;
 
         private void Start()
         {
-            playerLUOs = transform.GetComponentInParent<LocalUserObjects>();
+            _playerLuOs = transform.GetComponentInParent<LocalUserObjects>();
             SaveOriginalTransforms();
-            audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -71,12 +71,12 @@ namespace intheclouds
 
         public void ToggleSpiritForm()
         {
-            if (!playerLUOs.PlayerStats.InCombat && !Startup.Instance.debugMode)
+            if (!_playerLuOs.PlayerStats.InCombat && !Startup.instance.debugMode)
             {
                 return;
             }
 
-            audioSource.Play();
+            _audioSource.Play();
             if (!isActivated)
             {
                 Separate();
@@ -98,21 +98,21 @@ namespace intheclouds
         {
             if (!isActivated)
             {
-                if (savedSpiritPosition != Vector3.zero && savedSpiritRotation != Quaternion.identity)
+                if (_savedSpiritPosition != Vector3.zero && _savedSpiritRotation != Quaternion.identity)
                 {
-                    playerLUOs.ITCPlayerController.transform.position = savedSpiritPosition;
-                    playerLUOs.ITCPlayerController.transform.rotation = savedSpiritRotation;
+                    _playerLuOs.ITCPlayerController.transform.position = _savedSpiritPosition;
+                    _playerLuOs.ITCPlayerController.transform.rotation = _savedSpiritRotation;
                 }
                 else
                 {
-                    playerLUOs.ITCPlayerController.transform.position = repositionTransformInitial.position;
+                    _playerLuOs.ITCPlayerController.transform.position = repositionTransformInitial.position;
                 }
             }
 
             else
             {
-                playerLUOs.ITCPlayerController.transform.position = savedPhysicalPosition;
-                playerLUOs.ITCPlayerController.transform.rotation = savedPhysicalRotation;
+                _playerLuOs.ITCPlayerController.transform.position = _savedPhysicalPosition;
+                _playerLuOs.ITCPlayerController.transform.rotation = _savedPhysicalRotation;
             }
         }
 
@@ -162,8 +162,8 @@ namespace intheclouds
         // Return to position and destroy spawnedObjs
         private void Reunite()
         {
-            savedSpiritPosition = playerLUOs.ITCPlayerController.transform.position;
-            savedSpiritRotation = playerLUOs.ITCPlayerController.transform.rotation;
+            _savedSpiritPosition = _playerLuOs.ITCPlayerController.transform.position;
+            _savedSpiritRotation = _playerLuOs.ITCPlayerController.transform.rotation;
 
             foreach (var spawnedGO in spawnedGOs)
             {
@@ -175,15 +175,15 @@ namespace intheclouds
 
         private void SaveOriginalTransforms()
         {
-            if (originalLocalPositions == null) originalLocalPositions = new Vector3[objectsToDeparent.Length];
-            if (originalLocalRotations == null) originalLocalRotations = new Quaternion[objectsToDeparent.Length];
-            savedPhysicalPosition = playerLUOs.ITCPlayerController.transform.position;
-            savedPhysicalRotation = playerLUOs.ITCPlayerController.transform.rotation;
+            if (_originalLocalPositions == null) _originalLocalPositions = new Vector3[objectsToDeparent.Length];
+            if (_originalLocalRotations == null) _originalLocalRotations = new Quaternion[objectsToDeparent.Length];
+            _savedPhysicalPosition = _playerLuOs.ITCPlayerController.transform.position;
+            _savedPhysicalRotation = _playerLuOs.ITCPlayerController.transform.rotation;
 
             for (int i = 0; i < objectsToDeparent.Length; i++)
             {
-                originalLocalPositions[i] = objectsToDeparent[i].transform.localPosition;
-                originalLocalRotations[i] = objectsToDeparent[i].transform.localRotation;
+                _originalLocalPositions[i] = objectsToDeparent[i].transform.localPosition;
+                _originalLocalRotations[i] = objectsToDeparent[i].transform.localRotation;
             }
         }
 
