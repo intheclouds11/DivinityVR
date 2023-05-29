@@ -15,7 +15,10 @@ namespace HurricaneVR.Framework.Integrations.FinalIK
 
         public void AfterTeleport()
         {
-            VRIK.solver.Reset();
+            if (gameObject.activeInHierarchy)
+            {
+                VRIK.solver.Reset();
+            }
         }
     }
 }

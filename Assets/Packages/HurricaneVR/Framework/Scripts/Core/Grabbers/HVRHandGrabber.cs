@@ -1293,7 +1293,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
             OnHoverHaptics();
 
-            if (grabbable.ShowGrabIndicator)
+            if (grabbable.ShowGrabIndicator && !grabbable.IsSocketed)
             {
                 if (grabbable.GrabIndicator)
                 {

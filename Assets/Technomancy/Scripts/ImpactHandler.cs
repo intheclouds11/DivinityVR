@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 namespace intheclouds
 {
-    public class ImpactHandler : MonoBehaviour
+    public class ImpactHandler : MonoBehaviour, IHoverableItem
     {
         #region Variables
 
@@ -209,12 +209,11 @@ namespace intheclouds
         
         public void IgnoreCollision(Collider[] other, bool ignore = true)
         {
-            for (var i = 0; i < other.Length; i++)
+            if (other == null) return;
+            foreach (var otherCollider in other)
             {
-                var otherCollider = other[i];
-                for (var j = 0; j < grabbable.Colliders.Count; j++)
+                foreach (var ourCollider in grabbable.Colliders)
                 {
-                    var ourCollider = grabbable.Colliders[j];
                     Physics.IgnoreCollision(otherCollider, ourCollider, ignore);
                 }
             }
@@ -245,6 +244,11 @@ namespace intheclouds
             }
 
             return null;
+        }
+
+        public string GetHoverInfo()
+        {
+            return $"{name}, Damage: {BaseDamage}";
         }
     }
 }

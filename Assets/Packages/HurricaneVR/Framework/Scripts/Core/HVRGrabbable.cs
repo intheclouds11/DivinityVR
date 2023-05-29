@@ -208,6 +208,9 @@ namespace HurricaneVR.Framework.Core
         #endregion
 
         #region Properties
+        
+        public HVRGrabberBase hoveringGrabber { get; protected set; }
+        public HVRGrabberBase secondHoveringHand { get; protected set; }
 
         public virtual bool IsMine { get; set; } = true;
 

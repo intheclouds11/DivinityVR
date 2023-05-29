@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace intheclouds
 {
-    public class ITCForceGrabber : HVRForceGrabber
+    public class ITCHandGrabber : HVRHandGrabber
     {
         public ITCPopup HoverInfo;
     }

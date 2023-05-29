@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace intheclouds
 {
-    public class CreditPickup : MonoBehaviour
+    public class CreditPickup : MonoBehaviour, IHoverableItem
     {
         public int credits;
         private HVRGrabbable grabbable;
@@ -31,6 +31,11 @@ namespace intheclouds
                     Destroy(gameObject);
                 }
             }
+        }
+
+        public string GetHoverInfo()
+        {
+            return $"Credits: {credits}";
         }
     }
 }

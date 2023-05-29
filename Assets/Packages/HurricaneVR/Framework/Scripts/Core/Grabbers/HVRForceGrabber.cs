@@ -739,6 +739,13 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         private IEnumerator ContinueAutoGrab(HVRGrabbable grabbable, HVRPosableGrabPoint grabPoint)
         {
+            // If grabbable gets destroyed mid grab, stop coroutine
+            if (!grabbable)
+            {
+                _additionalGrabRoutine = null;
+                yield break;
+            }
+            
             HandGrabber.DisableHandCollision(grabbable);
 
             var t = grabPoint ? grabPoint.transform : grabbable.transform;

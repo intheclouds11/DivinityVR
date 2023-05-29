@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Enemies = FindObjectsOfType<EnemyStats>().ToList();
+        Enemies = FindObjectsOfType<EnemyStats>(true).ToList();
     }
 
     public void PopulateEnemiesInCombatList()
@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
             foreach (var enemyStats in Enemies)
             {
                 var distanceFromEnemy = Vector3.Distance(playerStats.LocalUserObjects.ITCPlayerController.transform.position, enemyStats.transform.position);
-                if (distanceFromEnemy <= DistanceEnemiesJoinCombat)
+                if (distanceFromEnemy <= DistanceEnemiesJoinCombat && enemyStats.gameObject.activeSelf)
                 {
                     EnemiesInCombat.Add(enemyStats);
                 }

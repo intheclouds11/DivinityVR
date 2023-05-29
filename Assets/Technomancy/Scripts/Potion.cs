@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 namespace intheclouds
 {
-    public class Potion : MonoBehaviour
+    public class Potion : MonoBehaviour, IHoverableItem
     {
         public enum PotionType
         {
@@ -36,6 +36,11 @@ namespace intheclouds
             {
                 col.tag = "Potion";
             }
+        }
+
+        public string GetHoverInfo()
+        {
+            return $"{Type} Potion: +{Amount}";
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,6 +14,8 @@ namespace intheclouds
         public GameObject MovementIcon;
         public GameObject infoPopupParent;
         public GameObject infoPopupPrefab;
+
+        public List<ITCPopup> HoverInfoList; // should only be two, one for each hand
 
         [SerializeField]
         private GameObject PointerUI;

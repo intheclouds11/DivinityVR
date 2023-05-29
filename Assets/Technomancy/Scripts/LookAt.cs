@@ -1,3 +1,5 @@
+using HurricaneVR.Framework.Core;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace intheclouds
@@ -8,18 +10,17 @@ namespace intheclouds
 
         private void Start()
         {
-            if (target == null)
+            if (!target)
             {
-                target = GameManager.Instance.FindControlledPlayer().LocalUserObjects.Camera.transform;
+                target = HVRManager.Instance.Camera.transform;
             }
         }
 
         private void Update()
         {
-            if (target != null)
+            if (target)
             {
                 transform.rotation = Quaternion.LookRotation(transform.position - target.position);
-                // transform.LookAt(target.transform);
             }
         }
     }
