@@ -9,10 +9,10 @@ namespace intheclouds
         public float playerLeanThreshold = 1;
         public float apDistanceUnit = 4f;
         public GameObject lastValidPositionMarker;
-        
+
         private HVRPlayerController _playerController;
         private PlayerStats _playerStats;
-        private float _apNeededForTeleport;
+        public int apNeededForTeleport { get; private set; }
         private ITCTeleporter _teleporter;
         private Vector3 _currentPosition;
 
@@ -29,8 +29,8 @@ namespace intheclouds
 
         private void OnDisable()
         {
+            _teleporter.UpdateTeleporterColor(0);
             _playerController.MovementEnabled = true;
-
             _teleporter.Dash = false;
             _teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
         }
@@ -52,11 +52,13 @@ namespace intheclouds
 
             if (_teleporter.IsAiming)
             {
+                apNeededForTeleport = Mathf.CeilToInt(_teleporter.teleportPathLength / apDistanceUnit);
                 LocalUserObjects.instance.HUDController.ToggleTeleportCancelReminder(true);
-                _apNeededForTeleport = _teleporter.teleportPathLength / apDistanceUnit;
-                LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Movement, $"AP: {(int) Mathf.Ceil(_apNeededForTeleport)}");
+                LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Movement, $"AP: {(int) Mathf.Ceil(apNeededForTeleport)}");
 
-                if (_playerStats.CurrentAP >= _apNeededForTeleport)
+                _teleporter.UpdateTeleporterColor(apNeededForTeleport);
+
+                if (_playerStats.CurrentAP >= apNeededForTeleport)
                 {
                     _teleporter.playerHasEnoughAP = true;
                 }
@@ -69,7 +71,7 @@ namespace intheclouds
 
         private void BeforeTeleport(Vector3 arg0)
         {
-            _playerStats.UseAP((int) Mathf.Ceil(_apNeededForTeleport));
+            _playerStats.UseAP((int) Mathf.Ceil(apNeededForTeleport));
         }
 
         private void CheckLean()

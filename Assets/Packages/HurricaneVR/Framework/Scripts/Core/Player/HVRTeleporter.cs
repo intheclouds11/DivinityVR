@@ -32,7 +32,6 @@ namespace HurricaneVR.Framework.Core.Player
         public HVRPlayerController Player;
 
         [Header("Teleport Disable Checks")]
-
         [Tooltip("Should player rotation disable teleport aiming?")]
         public bool PlayerRotateCheck = true;
 
@@ -49,6 +48,9 @@ namespace HurricaneVR.Framework.Core.Player
         [Header("Visuals")]
         public Color ValidColor = new Color(2, 212, 186);
         public Color InvalidColor = new Color(221, 37, 37);
+        public Color oneAPColor;
+        public Color twoAPColor;
+        public Color threeAPColor;
         public LineRenderer LineRenderer;
         public LineRenderer DownRenderer;
         public LineRenderer TeleportPath;
@@ -87,7 +89,6 @@ namespace HurricaneVR.Framework.Core.Player
 
 
         [Header("Downward Ray cast")]
-
         [Tooltip("Max length of the downwards ray cast")]
         public float DownRayLength = 5f;
 
@@ -100,7 +101,6 @@ namespace HurricaneVR.Framework.Core.Player
         public float DashSpeed = 15f;
 
         [Header("Origin Line Of Sight")]
-
         [Tooltip("If true line of sight from the camera to the origin of the teleport line is required")]
         public bool RequireOriginLineOfSight;
 
@@ -109,8 +109,6 @@ namespace HurricaneVR.Framework.Core.Player
 
 
         [Header("Destination Line Of Sight")]
-
-
         [Tooltip("If true line of sight from the camera to the teleport destination is required")]
         public bool RequireDestinationLineOfSight;
 
@@ -124,7 +122,6 @@ namespace HurricaneVR.Framework.Core.Player
 
 
         [Header("Destination Validation")]
-
         [Tooltip("If true the fall distance from the bottom of the capsule cannot exceed MaxDropDistance")]
         public bool CheckDropDistance;
 
@@ -149,15 +146,13 @@ namespace HurricaneVR.Framework.Core.Player
         public CapsuleCollider Capsule;
 
 
-        public event Action BeforeTeleportAction; 
+        public event Action BeforeTeleportAction;
         public TeleportPositionUpdate BeforeTeleport = new TeleportPositionUpdate();
         public UnityEvent AfterTeleport = new UnityEvent();
         public TeleportPositionUpdate PositionUpdate = new TeleportPositionUpdate();
 
 
         [Header("Debugging")]
-
-
         public Vector3 DownHitNormal;
         public float SurfaceAngle;
         public bool IsDropDistanceValid;
@@ -188,6 +183,7 @@ namespace HurricaneVR.Framework.Core.Player
         /// The world position of the valid teleport destination
         /// </summary>
         public Vector3 TeleportDestination { get; protected set; }
+
         public float RotationModifier { get; protected set; }
         public Vector3 PreviousTeleportDestination { get; protected set; }
         public bool NewTeleportDestination { get; protected set; }
@@ -243,6 +239,7 @@ namespace HurricaneVR.Framework.Core.Player
         /// Normal of the plane hit by the valid raycast.
         /// </summary>
         public Vector3 SurfaceNormal { get; protected set; }
+
         private Vector3 lastHitForwardNormal;
 
         public Vector3 Origin => TeleportLineSource.position;
@@ -327,8 +324,6 @@ namespace HurricaneVR.Framework.Core.Player
         }
 
 
-
-
         public virtual void Enable()
         {
             CanTeleport = true;
@@ -356,6 +351,7 @@ namespace HurricaneVR.Framework.Core.Player
                 {
                     IsTeleportValid = false;
                 }
+
                 SurfaceAngle = Vector3.Angle(Vector3.up, SurfaceNormal);
                 CheckValidTeleportChanged(IsTeleportPreviouslyValid);
                 HandleValidStatus(IsTeleportValid);
@@ -458,7 +454,7 @@ namespace HurricaneVR.Framework.Core.Player
             HitPosition = LineRendererPoints[LineRendererPoints.Length - 1];
 
             IsRaycastValid = false;
-            
+
             for (var i = 0; i < LineRendererPoints.Length - 1; i++)
             {
                 var origin = LineRendererPoints[i];
@@ -472,7 +468,7 @@ namespace HurricaneVR.Framework.Core.Player
                     HitPosition = forwardHit.point - direction.normalized * CollisionBuffer;
                     HitCollider = forwardHit.collider;
                     lastHitForwardNormal = new Vector3(forwardHit.normal.x, 0, forwardHit.normal.z);
-                    destination = forwardHit.point;// + VerticalBuffer;
+                    destination = forwardHit.point; // + VerticalBuffer;
 
                     if (CheckValidDestination(HitCollider.gameObject, destination, forwardHit.normal))
                     {
@@ -492,7 +488,7 @@ namespace HurricaneVR.Framework.Core.Player
                 {
                     continue;
                 }
-                
+
                 DownHitCollider = downwardHit.collider;
                 LastDownwardPoint = downwardHit.point;
                 DownHitNormal = downwardHit.normal;
@@ -502,7 +498,7 @@ namespace HurricaneVR.Framework.Core.Player
                 {
                     continue;
                 }
-                
+
                 destination = downwardHit.point + lastHitForwardNormal * CollisionBufferFromWall;
                 LastValidDownwardPoint = LastDownwardPoint;
                 IsTeleportValid = true;
@@ -560,7 +556,6 @@ namespace HurricaneVR.Framework.Core.Player
 
         protected virtual void HandleValidStatus(bool valid)
         {
-
         }
 
         protected virtual void OnTeleportActivated()
@@ -603,6 +598,7 @@ namespace HurricaneVR.Framework.Core.Player
             {
                 TeleportPath.enabled = toggle;
             }
+
             if (DownRenderer)
             {
                 DownRenderer.enabled = toggle;
@@ -689,7 +685,7 @@ namespace HurricaneVR.Framework.Core.Player
 
             for (int i = 0; i < DestinationIntervals; i++)
             {
-                var offset = (float)i / DestinationIntervals * DestinationHeight;
+                var offset = (float) i / DestinationIntervals * DestinationHeight;
                 var direction = destination + new Vector3(0f, offset, 0f) - Camera.position;
                 if (!Physics.Raycast(Camera.transform.position, direction, direction.magnitude, ~DestinationIgnoreLayerMask, QueryTriggerInteraction.Ignore))
                 {
@@ -831,7 +827,7 @@ namespace HurricaneVR.Framework.Core.Player
                 length = hit.distance;
             }
 
-            var point = ray.GetPoint(length);// - CollisionBuffer);
+            var point = ray.GetPoint(length); // - CollisionBuffer);
 
             return point;
         }
@@ -845,6 +841,7 @@ namespace HurricaneVR.Framework.Core.Player
                 angle = MaxAngle;
                 return Vector3.RotateTowards(Vector3.down, Forward, Mathf.Deg2Rad * MaxAngle, 0f);
             }
+
             return Forward;
         }
 
@@ -1181,11 +1178,35 @@ namespace HurricaneVR.Framework.Core.Player
                 }
             }
         }
+
+        public void UpdateTeleporterColor(int apRequired)
+        {
+            var newColor = apRequired switch
+            {
+                0 => ValidColor,
+                1 => oneAPColor,
+                2 => twoAPColor,
+                3 => threeAPColor,
+                _ => ValidColor
+            };
+
+            if (LineRenderer.startColor != newColor)
+            {
+                LineRenderer.startColor = newColor;
+                LineRenderer.endColor = newColor;
+                DownRenderer.startColor = newColor;
+                DownRenderer.endColor = newColor;
+                TeleportPath.startColor = newColor;
+                TeleportPath.endColor = newColor;
+                TeleportMarker.UpdateMaterials(newColor);
+            }
+        }
     }
 
     public enum HVRTeleportCurve
     {
-        Ballistic, Bezier
+        Ballistic,
+        Bezier
     }
 
     public enum TeleportState
@@ -1199,6 +1220,5 @@ namespace HurricaneVR.Framework.Core.Player
     [Serializable]
     public class TeleportPositionUpdate : UnityEvent<Vector3>
     {
-
     }
 }

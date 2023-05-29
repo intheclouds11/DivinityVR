@@ -56,5 +56,9 @@ namespace HurricaneVR.Framework.Core.Player
         {
 
         }
+        
+        public virtual void UpdateMaterials(Color color)
+        {
+        }
     }
 }

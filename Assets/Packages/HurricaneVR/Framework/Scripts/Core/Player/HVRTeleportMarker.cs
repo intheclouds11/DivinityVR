@@ -53,13 +53,13 @@ namespace HurricaneVR.Framework.Core.Player
         {
             base.OnValidTeleportChanged(isTeleportValid);
 
-            UpdateMaterials();
+            UpdateMaterials(Color);
         }
 
-        protected virtual void UpdateMaterials()
+        public override void UpdateMaterials(Color color)
         {
-            if (RingMaterial) RingMaterial.color = Color;
-            if (ArrowMaterial) ArrowMaterial.color = Color;
+            if (RingMaterial) RingMaterial.color = color;
+            if (ArrowMaterial) ArrowMaterial.color = color;
         }
     }
 }
