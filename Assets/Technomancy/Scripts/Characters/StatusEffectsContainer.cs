@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,10 @@ namespace intheclouds
         {
             _combatant = GetComponentInParent<BaseStats>();
             _textUI = _combatant.statusEffectsText;
+            foreach (var statusEffect in statusEffectList)
+            {
+                TryAddStatusEffect(statusEffect, true);
+            }
         }
 
         void Update()
@@ -94,7 +99,7 @@ namespace intheclouds
             }
         }
 
-        public void TryAddStatusEffect(StatusEffect effect)
+        public void TryAddStatusEffect(StatusEffect effect, bool forceAdd = false)
         {
             if (!effect || effect.type == StatusEffectType.None)
             {
@@ -102,9 +107,8 @@ namespace intheclouds
                 return;
             }
 
-
             int applyChanceRange = new System.Random().Next(1, 101);
-            if (effect.ChanceToApply > 0 && applyChanceRange <= effect.ChanceToApply)
+            if (!forceAdd && effect.ChanceToApply > 0 && applyChanceRange <= effect.ChanceToApply)
             {
                 // Debug.Log($"effect.ChanceToApply {effect.ChanceToApply} < applyChanceRange {applyChanceRange}");
                 return;
@@ -121,7 +125,12 @@ namespace intheclouds
             {
                 var appliedEffect = gameObject.AddComponent<StatusEffect>();
                 appliedEffect.StatusEffectConstructor(effect);
-                statusEffectList.Add(appliedEffect);
+                bool alreadyInList = statusEffectList.Any(e => e.type == appliedEffect.type);
+                if (!alreadyInList)
+                {
+                    statusEffectList.Add(appliedEffect);
+                }
+
                 AddToTextUI(effect);
                 Debug.Log("status effect applied (first time)");
             }
@@ -163,69 +172,71 @@ namespace intheclouds
             }
         }
 
+        // Using HUD status effects UI
         private void AddToTextUI(StatusEffect effect)
         {
-            if (_textUI.text != "")
-            {
-                _textUI.text += $"\n";
-            }
-
-            if (effect.type == StatusEffectType.Burning)
-            {
-                _burningText = $"{effect.type.ToString()} damages {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
-                _textUI.text += _burningText;
-            }
-            else if (effect.type == StatusEffectType.Regenerating)
-            {
-                _regeneratingText = $"{effect.type.ToString()} heals {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
-                _textUI.text += _regeneratingText;
-            }
-            else if (effect.type == StatusEffectType.MagicShell)
-            {
-                _magicShellText = $"{effect.type.ToString()} restores {effect.effectAmount} magic armor for {effect.cooldownTimer} more turn(s)";
-                _textUI.text += _magicShellText;
-            }
-            else if (effect.type == StatusEffectType.Wet)
-            {
-                _wetText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
-                _textUI.text += _wetText;
-            }
-            else if (effect.type == StatusEffectType.Slowed)
-            {
-                _slowText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
-                _textUI.text += _slowText;
-            }
-            else if (effect.type == StatusEffectType.Stunned)
-            {
-                _stunnedText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
-                _textUI.text += _stunnedText;
-            }
+            // if (_textUI.text != "")
+            // {
+            //     _textUI.text += $"\n";
+            // }
+            //
+            // if (effect.type == StatusEffectType.Burning)
+            // {
+            //     _burningText = $"{effect.type.ToString()} damages {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
+            //     _textUI.text += _burningText;
+            // }
+            // else if (effect.type == StatusEffectType.Regenerating)
+            // {
+            //     _regeneratingText = $"{effect.type.ToString()} heals {effect.effectAmount} vitality for {effect.cooldownTimer} more turn(s)";
+            //     _textUI.text += _regeneratingText;
+            // }
+            // else if (effect.type == StatusEffectType.MagicShell)
+            // {
+            //     _magicShellText = $"{effect.type.ToString()} restores {effect.effectAmount} magic armor for {effect.cooldownTimer} more turn(s)";
+            //     _textUI.text += _magicShellText;
+            // }
+            // else if (effect.type == StatusEffectType.Wet)
+            // {
+            //     _wetText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+            //     _textUI.text += _wetText;
+            // }
+            // else if (effect.type == StatusEffectType.Slowed)
+            // {
+            //     _slowText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+            //     _textUI.text += _slowText;
+            // }
+            // else if (effect.type == StatusEffectType.Stunned)
+            // {
+            //     _stunnedText = $"{effect.type.ToString()}! for {effect.cooldownTimer} more turn(s)";
+            //     _textUI.text += _stunnedText;
+            // }
         }
 
+        // Using HUD status effects UI
         private void RemoveFromTextUI(StatusEffect effect)
         {
-            if (effect.type == StatusEffectType.Burning)
-            {
-                _textUI.text = _textUI.text.Replace(_burningText, string.Empty);
-            }
-            else if (effect.type == StatusEffectType.Wet)
-            {
-                _textUI.text = _textUI.text.Replace(_wetText, string.Empty);
-            }
-            else if (effect.type == StatusEffectType.Slowed)
-            {
-                _textUI.text = _textUI.text.Replace(_slowText, string.Empty);
-            }
-            else if (effect.type == StatusEffectType.Regenerating)
-            {
-                _textUI.text = _textUI.text.Replace(_regeneratingText, string.Empty);
-            }
-            else if (effect.type == StatusEffectType.Stunned)
-            {
-                _textUI.text = _textUI.text.Replace(_stunnedText, string.Empty);
-            }
-
-            _textUI.text = _textUI.text.Replace(Environment.NewLine, "");
+            // if (effect.type == StatusEffectType.Burning)
+            // {
+            //     _textUI.text = _textUI.text.Replace(_burningText, string.Empty);
+            // }
+            // else if (effect.type == StatusEffectType.Wet)
+            // {
+            //     _textUI.text = _textUI.text.Replace(_wetText, string.Empty);
+            // }
+            // else if (effect.type == StatusEffectType.Slowed)
+            // {
+            //     _textUI.text = _textUI.text.Replace(_slowText, string.Empty);
+            // }
+            // else if (effect.type == StatusEffectType.Regenerating)
+            // {
+            //     _textUI.text = _textUI.text.Replace(_regeneratingText, string.Empty);
+            // }
+            // else if (effect.type == StatusEffectType.Stunned)
+            // {
+            //     _textUI.text = _textUI.text.Replace(_stunnedText, string.Empty);
+            // }
+            //
+            // _textUI.text = _textUI.text.Replace(Environment.NewLine, "");
         }
     }
 }

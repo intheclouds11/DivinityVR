@@ -1191,7 +1191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238637224506910440}
   m_Layer: 0
-  m_Name: StartupObjects no IK
+  m_Name: StartupObjects old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

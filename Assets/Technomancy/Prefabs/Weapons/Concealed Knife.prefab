@@ -54,9 +54,9 @@ MonoBehaviour:
   RightAutoPose: 0
   SelectionIndex: 0
   PoseNames:
-  - 'Primary: Pilot combat knife'
+  - 'Primary: pose_combat_knife'
   PrimaryPose:
-    Pose: {fileID: 11400000, guid: 875fd140f49aa324e8142170f7535db6, type: 2}
+    Pose: {fileID: 11400000, guid: e143db252b1098d4b9ce517e4753b895, type: 2}
     Weight: 1
     Mask: 0
     Type: 0
@@ -171,9 +171,9 @@ MonoBehaviour:
   RightAutoPose: 0
   SelectionIndex: 0
   PoseNames:
-  - 'Primary: Pilot combat knife'
+  - 'Primary: pose_combat_knife'
   PrimaryPose:
-    Pose: {fileID: 11400000, guid: 875fd140f49aa324e8142170f7535db6, type: 2}
+    Pose: {fileID: 11400000, guid: e143db252b1098d4b9ce517e4753b895, type: 2}
     Weight: 1
     Mask: 0
     Type: 0

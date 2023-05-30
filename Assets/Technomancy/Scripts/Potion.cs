@@ -73,7 +73,7 @@ namespace intheclouds
 
         public string GetHoverInfo()
         {
-            return $"{type} Potion: +{amount}";
+            return Used ? $"Empty {type} Potion" : $"{type} Potion: +{amount}";
         }
     }
 }

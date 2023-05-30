@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  followTargetTransformUp: 0
 --- !u!1 &659389188918542906
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4928267162932389240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5828,10 +5829,11 @@ MonoBehaviour:
   _currentAP: 0
   _startingAP: 0
   _maxAP: 0
+  credits: 0
   _turn: 0
   _inCombat: 0
   <CanBackstab>k__BackingField: 0
-  <BackstabTarget>k__BackingField: {fileID: 0}
+  <BackstabTargets>k__BackingField: []
   Stunned: 0
   baseDamage: 10
   attacker: {fileID: 0}

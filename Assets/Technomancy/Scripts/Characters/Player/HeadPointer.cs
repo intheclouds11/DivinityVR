@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace intheclouds
@@ -6,12 +8,20 @@ namespace intheclouds
     {
         public float pointerRadius = 0.5f;
         public float pointerMaxDistance = 20;
-        public float maxDistanceToHoverEnemy = 1.5f;
+        public float maxDistanceToHoverEnemy = 10f;
+        public float maxDistanceToAttackEnemy = 1.5f;
         public LayerMask layerMask;
         public Color offensiveHighlightColor = new Color(1f, 0.2f, 0.2f);
         public Color supportHighlightColor = new Color(0.8f, 0.5f, 1);
         public Color neutralHighlightColor = new Color(0.1f, 0.5f, 0.2f);
         private BaseStats _combatantSelected;
+        private PlayerHUDController _hudController;
+
+
+        private void Awake()
+        {
+            _hudController = LocalUserObjects.instance.HUDController;
+        }
 
         private void Update()
         {
@@ -30,25 +40,39 @@ namespace intheclouds
             {
                 if (_combatantSelected)
                 {
-                    DeselectCombatant();
+                    OutOfHoverRange();
+                    OutOfAttackRange();
                 }
             }
         }
 
         private void HandlePointingAtEnemy(RaycastHit hit)
         {
-            if (Vector3.Distance(hit.transform.position, transform.position) <= maxDistanceToHoverEnemy)
+            _combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
+
+            if (Vector3.Distance(hit.transform.position, transform.position) <= maxDistanceToAttackEnemy)
             {
                 if (UserInventory.instance.IsHoldingWeapon())
                 {
-                    LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Attack, "AP: 2");
+                    _hudController.ShowPointerUI(ActionType.Attack, "AP: 2");
                 }
                 else
                 {
-                    LocalUserObjects.instance.HUDController.HidePointerUI(ActionType.Attack);
+                    _hudController.HidePointerUI(ActionType.Attack);
+                }
+            }
+            else
+            {
+                OutOfAttackRange();
+            }
+            
+            if (Vector3.Distance(hit.transform.position, transform.position) <= maxDistanceToHoverEnemy)
+            {
+                if (_combatantSelected.statusEffectsContainer.statusEffectList.Any())
+                {
+                    _hudController.ShowEnemyStatusEffectsUI(_combatantSelected.statusEffectsContainer.statusEffectList);
                 }
                 
-                _combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
                 if (!_combatantSelected.Turn && !_combatantSelected.pointedAtByHand)
                 {
                     if (_combatantSelected.TryGetComponent(out PlayerStats player))
@@ -71,18 +95,23 @@ namespace intheclouds
                     _combatantSelected.pointedAtByHead = true;
                 }
             }
-            else if (_combatantSelected)
+            else
             {
-                DeselectCombatant();
+                OutOfHoverRange();
             }
         }
 
-        private void DeselectCombatant()
+        private void OutOfHoverRange()
         {
-            LocalUserObjects.instance.HUDController.HidePointerUI(ActionType.Attack);
+            _hudController.HideEnemyStatusEffectsUI();
             _combatantSelected.pointedAtByHead = false;
             _combatantSelected.modelHighlightEffect.highlighted = false;
             _combatantSelected = null;
+        }
+
+        private void OutOfAttackRange()
+        {
+            _hudController.HidePointerUI(ActionType.Attack);
         }
     }
 }

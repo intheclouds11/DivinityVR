@@ -27,6 +27,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4912884389607003663, guid: cb7d0c8a1511aba40964b5389ac21d37, type: 3}
+      propertyPath: statusEffectList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912884389607003663, guid: cb7d0c8a1511aba40964b5389ac21d37, type: 3}
+      propertyPath: statusEffectList.Array.data[0]
+      value: 
+      objectReference: {fileID: 4555541019295191222, guid: f3fcf21d38d627147bf1139edee82e7e, type: 3}
+    - target: {fileID: 4912884389607003663, guid: cb7d0c8a1511aba40964b5389ac21d37, type: 3}
+      propertyPath: statusEffectList.Array.data[1]
+      value: 
+      objectReference: {fileID: 4555541019295191222, guid: 6c17be75040e1bd418a9a503e12ddab9, type: 3}
+    - target: {fileID: 4912884389607003663, guid: cb7d0c8a1511aba40964b5389ac21d37, type: 3}
+      propertyPath: statusEffectList.Array.data[2]
+      value: 
+      objectReference: {fileID: 4555541019295191222, guid: 17a9c8b1935ff8446a0e657e15289e26, type: 3}
     - target: {fileID: 6760092700078792674, guid: cb7d0c8a1511aba40964b5389ac21d37, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

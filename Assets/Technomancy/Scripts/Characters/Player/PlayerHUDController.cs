@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace intheclouds
     {
         public TextMeshProUGUI pointerText;
         public TextMeshProUGUI headSelectionText;
+        public TextMeshProUGUI pointerStatusEffectsText;
         public GameObject pointerBackground;
         public GameObject attackIcon;
         public GameObject movementIcon;
@@ -20,22 +22,20 @@ namespace intheclouds
 
         public List<ITCPopup> HoverInfoList; // should only be two, one for each hand
 
-        [field: SerializeField]
-        public GameObject PointerUI { get; private set; }
-        [field: SerializeField]
-        public GameObject PointerStatusEffects { get; private set; } // contains enemy/ally status effects. Self status effects on wrist still.
-        [field: SerializeField]
-        public GameObject LeanWarning { get; private set; }
-        [field: SerializeField]
-        public GameObject TeleportCancelReminder { get; private set; }
-        
+        [field: SerializeField] public GameObject PointerUI { get; private set; }
+        [field: SerializeField] public GameObject PointerStatusEffects { get; private set; } // contains enemy/ally status effects. Self status effects on wrist still.
+        [field: SerializeField] public GameObject LeanWarning { get; private set; }
+        [field: SerializeField] public GameObject TeleportCancelReminder { get; private set; }
+
         private Vector3 _velocity;
+        private List<StatusEffect> currentPointerStatusEffects = new List<StatusEffect>();
 
         private void Awake()
         {
             PointerUI.SetActive(false);
             LeanWarning.SetActive(false);
             TeleportCancelReminder.SetActive(false);
+            PointerStatusEffects.SetActive(false);
             headSelectionText.gameObject.SetActive(false);
             attackIcon.SetActive(false);
             movementIcon.SetActive(false);
@@ -121,6 +121,45 @@ namespace intheclouds
                     PointerUI.SetActive(false);
                 }
             }
+        }
+
+        public void ShowEnemyStatusEffectsUI(List<StatusEffect> statusEffects)
+        {
+            PointerStatusEffects.SetActive(true);
+            bool updateText = false;
+
+            if (currentPointerStatusEffects == null)
+            {
+                updateText = true;
+            }
+            else
+            {
+                foreach (var statusEffect in statusEffects)
+                {
+                    if (!currentPointerStatusEffects.Contains(statusEffect))
+                    {
+                        updateText = true;
+                        break;
+                    }
+                }
+            }
+
+            if (updateText)
+            {
+                pointerStatusEffectsText.text = String.Empty;
+                foreach (var statusEffect in statusEffects)
+                {
+                    pointerStatusEffectsText.text += $"{statusEffect.type} for {statusEffect.cooldownTimer} rounds \n";
+                }
+            }
+
+            currentPointerStatusEffects = statusEffects;
+        }
+
+        public void HideEnemyStatusEffectsUI()
+        {
+            PointerStatusEffects.SetActive(false);
+            currentPointerStatusEffects = null;
         }
     }
 }

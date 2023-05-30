@@ -18,7 +18,7 @@ namespace intheclouds
         public TriggerEvents rightHandLockTrigger;
         public TriggerEvents leftHandSocketsTrigger;
         public TriggerEvents rightHandSocketsTrigger;
-        
+
         private HVRSocket[] _leftHandSockets;
         private HVRSocket[] _rightHandSockets;
         private HVRSocketHoverScale[] _leftHandSocketsActions;
@@ -62,9 +62,10 @@ namespace intheclouds
                 if (!handGrabber.GrabbedTarget) continue;
 
                 handGrabber.GrabbedTarget.TryGetComponent(out ImpactHandler weapon);
-                if (weapon) return true;
-
-                break;
+                if (weapon)
+                {
+                    return true;
+                }
             }
 
             return false;
