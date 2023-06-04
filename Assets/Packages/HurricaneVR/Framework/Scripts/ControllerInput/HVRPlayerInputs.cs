@@ -258,6 +258,11 @@ namespace HurricaneVR.Framework.ControllerInput
             return side == HVRHandSide.Left ? IsLeftForceGrabActive : IsRightForceGrabActive;
         }
 
+        public bool CanHandHover(HVRHandSide side)
+        {
+            return side == HVRHandSide.Left ? LeftController.GripForce <= 0.05f : RightController.GripForce <= 0.05f;
+        }
+
         public bool GetHoldActive(HVRHandSide side)
         {
             return side == HVRHandSide.Left ? IsLeftHoldActive : IsRightHoldActive;

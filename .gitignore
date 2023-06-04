@@ -92,7 +92,6 @@ Assets/HurricaneVR/TechDemo/Assets/Interactables/
 Assets/HurricaneVR/TechDemo/Assets/SFX/
 Assets/HurricaneVR/TechDemo/TechnieHulls/
 Assets/Packages/VolumetricFog/
-Assets/Divinity 2 VR/Scenes/Celestial Beginnings/
 Assets/TextMesh Pro/
 Assets/VolumetricFog/
 Assets/SteamVR/Models/
@@ -125,7 +124,6 @@ Assets/AstarPathfindingProject/ExampleScenes/
 Assets/AstarPathfindingProject/
 Assets/AstarPathfindingProject.meta
 Assets/_Divinity 2 VR/Art Assets/
-Assets/_Divinity 2 VR/Scenes/Celestial Beginnings/
 Assets/Bakery/
 Assets/Editor/x64/Bakery/
 bakery_times.log
@@ -159,13 +157,8 @@ Assets/Packages/SteamVR/Extras/
 Assets/Packages/HighlightPlus/
 Assets/Packages/AstarPathfindingProject/
 Assets/Packages/SteamVR/OpenVRUnityXRPackage/
-Assets/Technomancy/Scenes/TitleScreen/
-Assets/Technomancy/Scenes/Celestial Beginnings/
 ProjectSettings/BurstAotSettings_StandaloneWindows.json
 ProjectSettings/CommonBurstAotSettings.json
-Assets/Technomancy/Scenes/Mining Encampment.unity
-Assets/Technomancy/Scenes/Mining Encampment.unity.meta
-Assets/Technomancy/Scenes/Mining Encampment/
 Assets/NaughtyAttributes/
 Assets/SolClovser/
 Assets/Import/
@@ -182,3 +175,6 @@ Assets/Packages/HurricaneVR/TechDemo/
 Assets/Packages/HurricaneVR/Framework/Materials/
 Assets/Packages/HurricaneVR/Framework/Textures/
 
+Assets/Technomancy/Scenes/Celestial Beginnings/
+Assets/Technomancy/Scenes/Mining Encampment/
+Assets/Technomancy/Scenes/TitleScreen/

@@ -864,7 +864,6 @@ GameObject:
   - component: {fileID: 1801293626453696670}
   - component: {fileID: 8432206239485372567}
   - component: {fileID: 4457577282351296633}
-  - component: {fileID: 4663612994417915179}
   - component: {fileID: 872773813777207446}
   m_Layer: 0
   m_Name: Concealed Knife
@@ -1210,19 +1209,6 @@ MonoBehaviour:
   Tags:
     Tags: {fileID: 11400000, guid: 93b162fb114a40d49bc7f23efb71dacd, type: 2}
     _data: 3
---- !u!114 &4663612994417915179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083926972510104583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9acbeaf1abf945cebc6d902c79e4c30c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Orientation: {fileID: 0}
 --- !u!114 &872773813777207446
 MonoBehaviour:
   m_ObjectHideFlags: 0

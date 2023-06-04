@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace HurricaneVR.Framework.Core.Player
 {
@@ -6,6 +7,7 @@ namespace HurricaneVR.Framework.Core.Player
     {
         public GameObject Arrow;
         public GameObject Ring;
+        public GameObject markerTrigger;
 
         public bool UseTeleporterColors = true;
         public Color ValidColor;
@@ -41,12 +43,14 @@ namespace HurricaneVR.Framework.Core.Player
         {
             if (Arrow) Arrow.SetActive(true);
             if (Ring) Ring.SetActive(true);
+            if (markerTrigger) markerTrigger.SetActive(true);
         }
 
         protected override void OnDeactivated()
         {
             if (Arrow) Arrow.SetActive(false);
             if (Ring) Ring.SetActive(false);
+            if (markerTrigger) markerTrigger.SetActive(false);
         }
 
         public override void OnValidTeleportChanged(bool isTeleportValid)

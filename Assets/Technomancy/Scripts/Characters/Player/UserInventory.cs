@@ -71,6 +71,22 @@ namespace intheclouds
             return false;
         }
 
+        public bool IsHoldingBackstabWeapon()
+        {
+            foreach (var handGrabber in _handGrabbers)
+            {
+                if (handGrabber.GrabbedTarget && handGrabber.GrabbedTarget.TryGetComponent(out ImpactHandler impactHandler))
+                {
+                    if (impactHandler.canBackstab)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private void HandInventoryTriggerEnter(HVRHandSide handSide)
         {
             if (handSide == HVRHandSide.Left)

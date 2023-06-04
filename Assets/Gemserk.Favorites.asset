@@ -15,3 +15,4 @@ MonoBehaviour:
   favoritesList:
   - reference: {fileID: 4238637224506910441, guid: e5a3c920fed452845be08758b782e2df, type: 3}
   - reference: {fileID: 4368201411671322487, guid: 0e9edfc614d0bb2489d27c12b2c8f09e, type: 3}
+  - reference: {fileID: 7183613918389418792, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}

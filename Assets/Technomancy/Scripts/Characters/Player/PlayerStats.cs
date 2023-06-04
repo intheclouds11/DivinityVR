@@ -18,8 +18,7 @@ namespace intheclouds
         private TextMeshProUGUI creditsText;
         [SerializeField]
         private AudioClip levelUpAudioClip;
-        [field: SerializeField]
-        public BlockIndicator BlockIndicator { get; private set; }
+        [field: SerializeField] public BlockIndicator BlockIndicator { get; private set; }
 
         #region Player Stats
 
@@ -202,18 +201,43 @@ namespace intheclouds
             _playerControlled = true;
         }
 
+        private void Update()
+        {
+            CheckCanBackstab();
+        }
+
+        private void CheckCanBackstab()
+        {
+            foreach (var backstabTarget in BackstabTargets)
+            {
+                backstabTarget.backstabTrigger.transform.GetChild(0).gameObject.SetActive(UserInventory.instance.IsHoldingBackstabWeapon());
+                CanBackstab = UserInventory.instance.IsHoldingBackstabWeapon();
+            }
+        }
+
         public void OnPlayerTriggerEnter(Collider col)
         {
-            CanBackstab = true;
-            var target = col.transform.GetComponentInParent<BaseStats>() as EnemyStats;
-            BackstabTargets.Add(target);
+            if (col.gameObject.layer == LayerMask.NameToLayer("BackstabTrigger"))
+            {
+                var target = col.transform.GetComponentInParent<BaseStats>() as EnemyStats;
+                if (target && target.isAlive)
+                {
+                    BackstabTargets.Add(target);
+                }
+            }
         }
 
         public void OnPlayerTriggerExit(Collider col)
         {
-            var target = col.transform.GetComponentInParent<BaseStats>() as EnemyStats;
-            BackstabTargets.Remove(target);
-            CanBackstab = BackstabTargets.Any();
+            if (col.gameObject.layer == LayerMask.NameToLayer("BackstabTrigger"))
+            {
+                var target = col.transform.GetComponentInParent<BaseStats>() as EnemyStats;
+                if (target && target.isAlive)
+                {
+                    BackstabTargets.Remove(target);
+                    col.transform.GetChild(0).gameObject.SetActive(false);
+                }
+            }
         }
 
         private void InitializeStats()

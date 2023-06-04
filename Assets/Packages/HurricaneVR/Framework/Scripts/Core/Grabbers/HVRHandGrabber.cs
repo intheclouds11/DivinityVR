@@ -816,7 +816,7 @@ namespace HurricaneVR.Framework.Core.Grabbers
 
         protected override bool CheckHover()
         {
-            if (!IsGripGrabActive)
+            if (Inputs.CanHandHover(HandSide))
             {
                 if (IsHovering || !AllowHovering)
                 {

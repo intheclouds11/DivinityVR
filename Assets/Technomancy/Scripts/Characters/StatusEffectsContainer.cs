@@ -108,7 +108,7 @@ namespace intheclouds
             }
 
             int applyChanceRange = new System.Random().Next(1, 101);
-            if (!forceAdd && effect.ChanceToApply > 0 && applyChanceRange <= effect.ChanceToApply)
+            if (!forceAdd && effect.ChanceToApply > 0 && effect.ChanceToApply < applyChanceRange)
             {
                 // Debug.Log($"effect.ChanceToApply {effect.ChanceToApply} < applyChanceRange {applyChanceRange}");
                 return;

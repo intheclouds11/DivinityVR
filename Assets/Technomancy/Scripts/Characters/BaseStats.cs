@@ -116,6 +116,7 @@ namespace intheclouds
         public TextMeshProUGUI statusEffectsText;
         public HighlightEffect modelHighlightEffect;
         public Transform attachToCombatantTransform;
+        public GameObject backstabTrigger;
 
         public virtual void TakeDamage(BaseStats attacker, int damage, DamageType damageType, ScalingType scalingType, StatusEffect statusEffect)
         {

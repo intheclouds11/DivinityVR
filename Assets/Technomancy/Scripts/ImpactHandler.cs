@@ -71,8 +71,17 @@ namespace intheclouds
         {
             _collisionEvents = GetComponent<HVRCollisionEvents>();
             _rb = GetComponent<Rigidbody>();
+            if (!_rb)
+            {
+                _rb = GetComponentInParent<Rigidbody>();
+            }
             _grabbable = GetComponent<HVRGrabbable>();
-            GetComponent<HVRGrabbable>().Grabbed.AddListener(AssignWielder);
+            if (_grabbable)
+            {
+                GetComponent<HVRGrabbable>().Grabbed.AddListener(AssignWielder);
+            }
+
+            _wieldingUser = GetComponentInParent<PlayerStats>();
         }
 
         private void AssignWielder(HVRGrabberBase grabber, HVRGrabbable grabbable)
@@ -87,6 +96,8 @@ namespace intheclouds
 
         private void HandleSwipeSFX()
         {
+            if (!_grabbable) return;
+            
             if (_grabbable.IsSocketed || !SwipeClip)
             {
                 return;
@@ -213,9 +224,12 @@ namespace intheclouds
             if (other == null) return;
             foreach (var otherCollider in other)
             {
-                foreach (var ourCollider in _grabbable.Colliders)
+                if (_grabbable)
                 {
-                    Physics.IgnoreCollision(otherCollider, ourCollider, ignore);
+                    foreach (var ourCollider in _grabbable.Colliders)
+                    {
+                        Physics.IgnoreCollision(otherCollider, ourCollider, ignore);
+                    }
                 }
             }
         }

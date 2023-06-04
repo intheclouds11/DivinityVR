@@ -8,77 +8,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84db45f1-4109-4b48-a1e1-7a6a002678f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Technomancy/Data/Highlight Profiles/Backstab Highlight.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Technomancy/Data/Highlight Profiles/Backstab Highlight.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleportMarker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleportMarker.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Divinity VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Resources/HVRSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Resources/HVRSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Art Assets/Materials/Transparent.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Art Assets/Materials/Transparent.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Enemies/Enemy 1 - mixamo lad/Animations/enemy attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Enemies/Enemy 1 - mixamo lad/Animations/enemy attack.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Enemies/Enemy 1 - mixamo lad/Enemy - Knight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Enemies/Enemy 1 - mixamo lad/Enemy - Knight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gemserk.Favorites.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gemserk.Favorites.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/ControllerInput/HVRPlayerInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRForceGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRForceGrabber.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Grabbers/HVRHandGrabber.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleportMarker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/HurricaneVR/Framework/Scripts/Core/Player/HVRTeleportMarker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Enemies/Enemy 1 - mixamo lad/Enemy - base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Enemies/Enemy 1 - mixamo lad/Enemy - base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/HurricaneVR intheclouds/Socketables.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/HurricaneVR intheclouds/Socketables.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Fireball/AbilitySlot - Fireball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Fireball/AbilitySlot - Fireball.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Fireball/Fireball Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Fireball/Fireball Ability.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Rain/AbilitySlot - Rain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Rain/AbilitySlot - Rain.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Rain/Rain Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Rain/Rain Ability.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Restoration/AbilitySlot - Restoration.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Restoration/AbilitySlot - Restoration.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Restoration/Restoration Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Magic/Restoration/Restoration Ability.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Physical/All In/AbilitySlot - All in.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Physical/All In/AbilitySlot - All in.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Physical/All In/All In Ability.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Abilities/Physical/All In/All In Ability.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/Player-Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/Player-Default.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/UI/UserMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/UI/UserMenu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/Player Objects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Player Objects/Player Objects.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Concealed Knife.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Stun Rod.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Stun Rod.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Sword - enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Prefabs/Weapons/Sword - enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Enemies.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Enemies/Knight stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Enemies/Knight stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Enemies/Mage stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Enemies/Mage stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Highlight Plus - Hand Augment.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Highlight Plus - Hand Augment.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/ITC Socketables.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/ITC Socketables.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Players.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Players/Bern Stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Players/Bern Stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Players/Paatri Stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Players/Paatri Stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Cork pose zone.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Cork pose zone.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Credit Grab pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Credit Grab pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Hilt Grab pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Hilt Grab pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot closed hand.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot closed hand.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot combat knife.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot combat knife.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot force grab pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot force grab pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot force hover pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot force hover pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot hand hover pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot hand hover pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot relaxed pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/Pilot relaxed pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/abilitygrabbable_pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/abilitygrabbable_pose.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/cork hold pose.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/ScriptableObjects/Poses/cork hold pose.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/BaseStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Enemies/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/EnemyStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/EnemyStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/HeadPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/HeadPointer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/LocalUserObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/LocalUserObjects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerMovementAP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerMovementAP.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/AbilityBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/AbilityBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Physical/AllIn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/Abilities/Physical/AllIn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/UserMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/UserMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Utilities/TriggerEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/UserInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/Player/UserInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/Characters/StatusEffectsContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Technomancy/Scripts/ImpactHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +36,80 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39284ffc1a024620800ee216902b908c136a18/61/b200a4cc/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/UniStorm Weather System/Scripts/System/UniStormSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Packages/VrTunnellingPro/Scripts/Tunnelling.cs" root0="FORCE_HIGHLIGHTING" />
@@ -100,6 +121,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCHandGrabber.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCPlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleportMarker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/HVRExpansions/ITCTeleporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/Mechanics/CreditPickup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Technomancy/Scripts/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -494,7 +516,8 @@
       <workItem from="1685836732262" duration="558000" />
       <workItem from="1685839456935" duration="6345000" />
       <workItem from="1685847183360" duration="6135000" />
-      <workItem from="1685892173843" duration="3726000" />
+      <workItem from="1685892173843" duration="10596000" />
+      <workItem from="1685903554724" duration="432000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
