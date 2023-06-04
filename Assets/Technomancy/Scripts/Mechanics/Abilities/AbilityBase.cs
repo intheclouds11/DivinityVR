@@ -1,3 +1,4 @@
+using System;
 using HurricaneVR.Framework.Core.Grabbers;
 using HurricaneVR.Framework.Core.Utils;
 using HurricaneVR.Framework.Shared;
@@ -40,6 +41,7 @@ namespace intheclouds
         [HideInInspector]
         public HVRHandGrabber castingHand;
         protected AbilityPointer abilityPointer;
+        private Transform _originalParent;
 
         protected virtual void OnEnable()
         {
@@ -49,6 +51,11 @@ namespace intheclouds
         protected virtual void OnDisable()
         {
             SelectorDeconfig();
+        }
+
+        private void Awake()
+        {
+            _originalParent = transform.parent;
         }
 
         private void Start()
@@ -68,7 +75,7 @@ namespace intheclouds
                 activatedVFX.transform.localRotation = Quaternion.identity;
                 activatedVFX.SetActive(false);
             }
-            
+
             abilitySlot.readyArt.SetActive(true);
             abilitySlot.cooldownArt.SetActive(false);
         }
@@ -79,7 +86,7 @@ namespace intheclouds
             {
                 SFXPlayer.Instance.PlaySFX(activatedSFX, transform.position);
             }
-            
+
             if (castingHand.Controller.Side == HVRHandSide.Left)
             {
                 caster.LocalUserObjects.leftHandGrabber.ForceRelease();
@@ -99,9 +106,9 @@ namespace intheclouds
         protected void ResetAbilityTransform()
         {
             gameObject.SetActive(false);
-            transform.parent = caster.LocalUserObjects.abilities.transform;
-            transform.position = caster.LocalUserObjects.abilities.transform.position;
-            transform.rotation = caster.LocalUserObjects.abilities.transform.rotation;
+            transform.parent = _originalParent;
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
         }
 
         public void ApplyScaling()

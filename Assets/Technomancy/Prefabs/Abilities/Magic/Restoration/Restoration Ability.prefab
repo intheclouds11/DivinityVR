@@ -4884,7 +4884,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.6308319, g: 0.04411763, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4988,9 +4988,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  GraphTimeMultiplier: 2
-  GraphIntensityMultiplier: 2
-  IsLoop: 0
+  GraphTimeMultiplier: 1.5
+  GraphIntensityMultiplier: 0.1
+  IsLoop: 1
   UseShadowsIfPossible: 1
   canUpdate: 0
 --- !u!114 &3255738974400126822
@@ -5347,7 +5347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7354398770313419795
 Transform:
   m_ObjectHideFlags: 0
@@ -5412,7 +5412,7 @@ MonoBehaviour:
   <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
-  TrackingType: 0
+  TrackingType: 1
   HoldType: 1
   GrabControl: 0
   OverrideGrabTrigger: 1
@@ -5537,7 +5537,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6f03f0fe557b5b94da902212452adae5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.845
   m_Pitch: 1
   Loop: 1
   Mute: 0

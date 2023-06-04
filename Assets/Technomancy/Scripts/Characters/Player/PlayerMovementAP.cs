@@ -97,6 +97,11 @@ namespace intheclouds
             }
         }
 
+        public void ResetCurrentPosition()
+        {
+            _currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
+        }
+
         public void StartTurn()
         {
         }

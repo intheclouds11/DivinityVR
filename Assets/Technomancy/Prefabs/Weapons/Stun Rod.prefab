@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1000702335652832185}
   m_Layer: 20
   m_Name: EnemyDamageTrigger
-  m_TagString: Sword
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 2622356009110306260}
   m_Layer: 20
   m_Name: Hilt Col
-  m_TagString: Sword
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 6294432716499618858}
   m_Layer: 20
   m_Name: Stun Rod
-  m_TagString: Sword
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

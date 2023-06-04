@@ -50,6 +50,13 @@ namespace intheclouds
         {
             _combatantSelected = hit.transform.GetComponentInParent<BaseStats>();
 
+            if (!_combatantSelected.isAlive)
+            {
+                OutOfAttackRange();
+                OutOfHoverRange();
+                return;
+            }
+            
             if (Vector3.Distance(hit.transform.position, transform.position) <= maxDistanceToAttackEnemy)
             {
                 if (UserInventory.instance.IsHoldingWeapon())

@@ -18,6 +18,8 @@ namespace intheclouds
         private TextMeshProUGUI creditsText;
         [SerializeField]
         private AudioClip levelUpAudioClip;
+        [field: SerializeField]
+        public BlockIndicator BlockIndicator { get; private set; }
 
         #region Player Stats
 
@@ -289,50 +291,68 @@ namespace intheclouds
                 statusEffect.CombatantWhoApplied = attacker;
             }
 
+            var totalDamage = damage;
+
+            if (BlockIndicator.inBothBlockTriggers)
+            {
+                totalDamage = Mathf.CeilToInt(totalDamage * 0.5f);
+                BlockIndicator.GoodBlockHighlight();
+                SFXPlayer.Instance.PlaySFXRandomPitch(blockAudioClips[Random.Range(0, blockAudioClips.Length - 1)],
+                    LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 1f);
+            }
+
             // todo: reduce damage based on character resistance to elemental type
 
             var hitPopupWorld = Instantiate(hitPopupPrefab, hitPopupsParent.transform, false);
-            hitPopupWorld.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+            hitPopupWorld.GetComponent<TextMeshProUGUI>().text = totalDamage.ToString();
 
             if (damageType == DamageType.Physical)
             {
-                if (CurrentPoise - damage >= 0)
+                if (CurrentPoise - totalDamage >= 0)
                 {
-                    CurrentPoise -= damage;
+                    CurrentPoise -= totalDamage;
                     hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.gray;
-                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.gray);
+                    LocalUserObjects.HUDController.NewInfoPopup($"{totalDamage}", Color.gray);
                 }
                 else
                 {
-                    CurrentHealth -= damage - CurrentPoise;
+                    CurrentHealth -= totalDamage - CurrentPoise;
                     CurrentPoise = 0;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
                     hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.red;
-                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.red);
+                    LocalUserObjects.HUDController.NewInfoPopup($"{totalDamage}", Color.red);
                 }
             }
             else if (damageType == DamageType.Magic)
             {
-                if (CurrentMagicArmor - damage >= 0)
+                if (CurrentMagicArmor - totalDamage >= 0)
                 {
-                    CurrentMagicArmor -= damage;
+                    CurrentMagicArmor -= totalDamage;
                     hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.blue;
-                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.blue);
+                    LocalUserObjects.HUDController.NewInfoPopup($"{totalDamage}", Color.blue);
                 }
                 else
                 {
-                    CurrentHealth -= damage - CurrentMagicArmor;
+                    CurrentHealth -= totalDamage - CurrentMagicArmor;
                     CurrentMagicArmor = 0;
                     statusEffectsContainer.TryAddStatusEffect(statusEffect);
                     hitPopupWorld.GetComponent<TextMeshProUGUI>().color = Color.red;
-                    LocalUserObjects.HUDController.NewInfoPopup($"{damage}", Color.red);
+                    LocalUserObjects.HUDController.NewInfoPopup($"{totalDamage}", Color.red);
                 }
             }
 
             if (CurrentHealth > 0)
             {
-                SFXPlayer.Instance.PlaySFXRandomPitch(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)],
-                    LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
+                if (BlockIndicator.inBothBlockTriggers)
+                {
+                    SFXPlayer.Instance.PlaySFXRandomPitch(hurtBlockedAudioClips[Random.Range(0, hurtBlockedAudioClips.Length - 1)],
+                        LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
+                }
+                else
+                {
+                    SFXPlayer.Instance.PlaySFXRandomPitch(hurtAudioClips[Random.Range(0, hurtAudioClips.Length - 1)],
+                        LocalUserObjects.ITCPlayerController.gameObject.transform.position, 0.85f, 1, 0.8f);
+                }
             }
             else
             {

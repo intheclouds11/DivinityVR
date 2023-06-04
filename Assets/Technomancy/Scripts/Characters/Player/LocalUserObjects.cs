@@ -35,7 +35,6 @@ namespace intheclouds
         public SpiritWander spiritWander;
         public HighlightEffect handAugmentHighlight;
         public AbilitySystem abilitySystem;
-        public GameObject abilities;
         public AbilityPointer leftAbilityPointer;
         public AbilityPointer rightAbilityPointer;
 

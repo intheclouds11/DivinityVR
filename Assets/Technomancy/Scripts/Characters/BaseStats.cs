@@ -18,6 +18,7 @@ namespace intheclouds
         protected int _currentHealth;
         [SerializeField]
         protected int _maxHealth;
+        public bool isAlive = true;
         [SerializeField]
         protected int _currentPoise;
         [SerializeField]
@@ -76,6 +77,10 @@ namespace intheclouds
         // Persuasion (needed for first encounter)
 
         [Header("Setup")]
+        [SerializeField]
+        protected AudioClip[] blockAudioClips;
+        [SerializeField]
+        protected AudioClip[] hurtBlockedAudioClips;
         [SerializeField]
         protected AudioClip[] hurtAudioClips;
         [SerializeField]

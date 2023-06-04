@@ -17,7 +17,7 @@ namespace intheclouds
         public AudioClip footstepAudioClip;
         public AudioClip sheatheAudioClip;
         public AudioClip unsheatheAudioClip;
-        
+
         private EnemyStats _enemyStats;
         private AIDestinationSetter _aiDestinationSetter;
         private RichAI _ai;
@@ -152,6 +152,7 @@ namespace intheclouds
             {
                 enabled = true;
             }
+
             if (targetNearestPlayer)
             {
                 _targetedPlayer = FindNearestPlayer();
@@ -293,6 +294,15 @@ namespace intheclouds
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(footstepAudioClip, transform, 0.95f, 1.0f, Random.Range(0.3f, 0.5f), 20);
         }
 
+        public void TogglePlayerBlockIndicator()
+        {
+            BlockIndicator indicator = _targetedPlayer.BlockIndicator;
+            if (_targetedPlayer && indicator)
+            {
+                indicator.ToggleIndicator(_enemyStats);
+            }
+        }
+
         public void DamagePlayer()
         {
             SFXPlayer.Instance.PlaySFXRandomPitchAttach(baseAttackHitAudioClip, transform, 0.9f, 1.1f, 0.5f, 20);
@@ -325,7 +335,7 @@ namespace intheclouds
             _hasAttacked = false;
             _animator.SetBool(IsAttacking, false);
         }
-        
+
         public void EndHitAnimation()
         {
             _animator.SetBool(IsHit, false);

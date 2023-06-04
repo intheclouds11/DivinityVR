@@ -28,7 +28,7 @@ namespace intheclouds
         private bool _userIsLooking;
         private Transform _cam;
 
-        private void Awake()
+        private void Start()
         {
             var hand = GetComponentInParent<HVRHandGrabber>();
             if (hand)
@@ -76,7 +76,7 @@ namespace intheclouds
                 _timeInTrigger = 0;
             }
 
-            if (!_exceededTimeInTrigger && RequiredTimeInTrigger > 0 && _timeInTrigger >= RequiredTimeInTrigger)
+            if (RequiredTimeInTrigger > 0 && !_exceededTimeInTrigger && _timeInTrigger >= RequiredTimeInTrigger)
             {
                 HandExceededRequiredTime.Invoke(_handSide);
                 _exceededTimeInTrigger = true;

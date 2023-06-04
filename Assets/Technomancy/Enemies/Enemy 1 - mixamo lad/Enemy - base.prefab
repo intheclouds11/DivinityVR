@@ -5854,6 +5854,7 @@ MonoBehaviour:
   Scoundrel: 0
   Retribution: 0
   Leadership: 0
+  blockAudioClips: []
   hurtAudioClips:
   - {fileID: 8300000, guid: 51ad56d3985e4bb41b7af67ff4713255, type: 3}
   - {fileID: 8300000, guid: 7f06b6bdbffa21442bf9ccbdd16eeeaf, type: 3}
@@ -5937,7 +5938,7 @@ MonoBehaviour:
   acceleration: 5
   rotationSpeed: 360
   slowdownTime: 0.5
-  endReachedDistance: 1.5
+  endReachedDistance: 2
   wallForce: 3
   wallDist: 1
   funnelSimplification: 0
@@ -6375,6 +6376,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6427913070431266104}
     m_Modifications:
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2937351252263892795}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2937351252263892795}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnWeaponTriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnWeaponTriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: intheclouds.EnemyStats, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: intheclouds.EnemyStats, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerExitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776576621416563832, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7149326092041240186, guid: 8e189621c2b16464da8c22c9daf877e7, type: 3}
       propertyPath: m_RootOrder
       value: 0

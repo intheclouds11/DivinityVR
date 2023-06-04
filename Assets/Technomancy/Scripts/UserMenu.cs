@@ -207,5 +207,10 @@ namespace intheclouds
         {
             Debug.Log("Starting Enemy Turn... (not implemented yet)");
         }
+
+        public void Button_ResetCenterBeacon()
+        {
+            _currentUserObjects.PlayerMovementAP.ResetCurrentPosition();
+        }
     }
 }

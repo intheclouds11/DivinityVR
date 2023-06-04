@@ -23,7 +23,7 @@ namespace intheclouds
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Sword"))
+            if (other.CompareTag("PlayerWeapon"))
             {
                 _weapon = other.gameObject.GetComponentInParent<ImpactHandler>();
 

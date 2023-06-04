@@ -138,9 +138,9 @@ namespace intheclouds
         public GameObject weapon;
         public GameObject weaponUnsheatheParent;
         public GameObject weaponSheatheParent;
-        public bool isAlive = true;
         public event Action EnemyDamaged;
         public event Action EnemyDied;
+        public bool playerBlocking { get; private set; }
         private EnemyAI _enemyAI;
         private Animator _animator;
         

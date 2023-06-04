@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - projectile
-  - Sword
   - Spawn at Runtime
   - Enemy
   - Left Hand
@@ -21,6 +20,7 @@ TagManager:
   - HandTriggerCollider
   - LeftHandInventory
   - RightHandInventory
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX

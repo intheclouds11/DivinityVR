@@ -16,15 +16,15 @@ MonoBehaviour:
   LocalRootDirectory: Assets\HurricaneVR\Framework\
   LocalResourcesDirectory: Assets\HurricaneVR\Framework\Resources\
   LocalRuntimePosesDirectory: Assets\HurricaneVR\Framework\Resources\RuntimePoses\
-  LocalPosesDirectory: 
+  LocalPosesDirectory: Assets\Technomancy\ScriptableObjects\Poses
   AutoApplyGrabbableLayer: 1
-  DefaultSocketableTags: {fileID: 0}
+  DefaultSocketableTags: {fileID: 11400000, guid: 93b162fb114a40d49bc7f23efb71dacd, type: 2}
   LeftHand: {fileID: 4172465882228960903, guid: 8beaacf77ac8d0d49a9b4284dc399aaf, type: 3}
   RightHand: {fileID: 5317784970213213621, guid: 08a9044b5c065044ab67f546bf6b04e9, type: 3}
   InverseKinematics: 0
   IKHandMirroring: 0
   FullBody: {fileID: 0}
-  HandPoseHandleOffset: {x: 0, y: 0.08, z: 0}
+  HandPoseHandleOffset: {x: 0, y: 0, z: 0}
   OpenHandPose: {fileID: 0}
   PoserShowsOneFinger: 0
   ThumbCurlType: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   PinkyStart: 1
   UseAttachedRigidBody: 0
   ComponentInParentFallback: 0
-  LineGrabTriggerLoose: 0
+  LineGrabTriggerLoose: 1
   DefaultJointSettings: {fileID: 11400000, guid: d420bd8890e2c264eb9ec97c4963f6ce, type: 2}
   LineGrabSettings: {fileID: 11400000, guid: 203d545f2b6cc724aa3a0d6e4fafd082, type: 2}
   VerboseGrabbableEvents: 0
