@@ -25,9 +25,9 @@ MonoBehaviour:
   TrackPadTouch: 12
   GripUseAnalog: 1
   TriggerUseAnalog: 1
-  GripThreshold: 0.2
+  GripThreshold: 0.18
   GripUseReleaseThreshold: 1
-  GripReleaseThreshold: 0.15
+  GripReleaseThreshold: 0.14
   GripRequireReset: 0
   TriggerThreshold: 0.7
   TriggerUseReleaseThreshold: 0

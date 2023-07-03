@@ -156,10 +156,17 @@ namespace intheclouds
                 }
                 else
                 {
-                    _playerMovementAP.enabled = false;
-                    _turn = false;
+                    ResetPlayerStatus();
                 }
             }
+        }
+
+        public void ResetPlayerStatus()
+        {
+            _playerMovementAP.enabled = false;
+            _turn = false;
+            Leaning = false;
+            RefillAP();
         }
 
         public bool PlayerControlled
@@ -239,7 +246,7 @@ namespace intheclouds
                 }
             }
         }
-
+        
         private void InitializeStats()
         {
             _playerMovementAP = LocalUserObjects.PlayerMovementAP;

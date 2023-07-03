@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         SurfaceEffectsContainer.instance.Cooldown();
     }
 
-    private void EndCombat()
+    public void EndCombat()
     {
         if (!players.Any())
         {
@@ -188,10 +188,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var player in players)
         {
-            player.CurrentAP = player.MaxAP;
             player.InCombat = false;
-            player.Leaning = false;
-            player.Turn = false;
         }
 
         foreach (var enemy in EnemyManager.instance.EnemiesInCombat)
@@ -199,6 +196,8 @@ public class GameManager : MonoBehaviour
             enemy.InCombat = false;
             enemy.Turn = false;
         }
+        
+        UpdateGameState(GameState.Exploration);
     }
 
     public void UpdateTurnOrderText(List<KeyValuePair<BaseStats, int>> turnOrder)

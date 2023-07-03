@@ -26,7 +26,7 @@ namespace intheclouds
             float newInput = GetSmoothedTurnAxis().x;
             float threshold = SmoothInputForSmoothTurn ? SmoothTurnThresholdSmoothed : SmoothTurnThreshold;
 
-            if (Math.Abs(input.x) < threshold || Mathf.Abs(input.y) > 0.5f || teleportCooldown > 0)
+            if (Math.Abs(input.x) < threshold || Mathf.Abs(input.y) > 0.95f || teleportCooldown > 0)
             {
                 if (TunnelTurningInput && TunnellingMobile.GetAngularVelocitySmoothed() <= 0.15f)
                 {

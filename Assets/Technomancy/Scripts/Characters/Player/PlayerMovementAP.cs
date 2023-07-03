@@ -12,9 +12,12 @@ namespace intheclouds
 
         private HVRPlayerController _playerController;
         private PlayerStats _playerStats;
-        public int apNeededForTeleport { get; private set; }
+        public int apRequiredRounded { get; private set; }
         private ITCTeleporter _teleporter;
         private Vector3 _currentPosition;
+        private float apRequiredNonRounded;
+        private float apRemainder;
+        private bool firstTeleport;
 
         private void OnEnable()
         {
@@ -23,15 +26,17 @@ namespace intheclouds
             _playerController.MovementEnabled = false;
             _teleporter = LocalUserObjects.instance.ITCTeleporter;
             _teleporter.BeforeTeleport.AddListener(BeforeTeleport);
-            _teleporter.Dash = true;
+            // _teleporter.Dash = true;
             _currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
+            apRemainder = 0;
+            firstTeleport = true;
         }
 
         private void OnDisable()
         {
-            _teleporter.UpdateTeleporterColor(0);
+            _teleporter.UpdateTeleporterColor(default);
             _playerController.MovementEnabled = true;
-            _teleporter.Dash = false;
+            // _teleporter.Dash = false;
             _teleporter.BeforeTeleport.RemoveListener(BeforeTeleport);
         }
 
@@ -52,13 +57,34 @@ namespace intheclouds
 
             if (_teleporter.IsAiming)
             {
-                apNeededForTeleport = Mathf.CeilToInt(_teleporter.teleportPathLength / apDistanceUnit);
+                if (firstTeleport)
+                {
+                    apRequiredNonRounded = _teleporter.teleportPathLength / apDistanceUnit;
+                    apRequiredRounded = Mathf.CeilToInt(apRequiredNonRounded);
+
+                }
+                else
+                {
+                    apRequiredNonRounded = _teleporter.teleportPathLength / apDistanceUnit - apRemainder;
+                    Debug.Log($"after first teleport apRequiredNonRounded: {apRequiredNonRounded}");
+                    if (apRequiredNonRounded <= 0)
+                    {
+                        apRequiredRounded = 0;
+                    }
+                    else
+                    {
+                        apRequiredRounded = Mathf.CeilToInt(apRequiredNonRounded);
+                    }
+                }
+                
+                // Debug.Log($"1 - _teleporter.teleportPathLength % apDistanceUnit / apDistanceUnit: {1 - _teleporter.teleportPathLength % apDistanceUnit / apDistanceUnit}");
+
                 LocalUserObjects.instance.HUDController.ToggleTeleportCancelReminder(true);
-                LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Movement, $"AP: {(int) Mathf.Ceil(apNeededForTeleport)}");
+                LocalUserObjects.instance.HUDController.ShowPointerUI(ActionType.Movement, $"AP: {apRequiredRounded}");
 
-                _teleporter.UpdateTeleporterColor(apNeededForTeleport);
+                _teleporter.UpdateTeleporterColor(apRequiredRounded);
 
-                if (_playerStats.CurrentAP >= apNeededForTeleport)
+                if (_playerStats.CurrentAP >= apRequiredRounded)
                 {
                     _teleporter.playerHasEnoughAP = true;
                 }
@@ -71,7 +97,9 @@ namespace intheclouds
 
         private void BeforeTeleport(Vector3 arg0)
         {
-            _playerStats.UseAP((int) Mathf.Ceil(apNeededForTeleport));
+            firstTeleport = false;
+            apRemainder = 1 - _teleporter.teleportPathLength % apDistanceUnit / apDistanceUnit;
+            _playerStats.UseAP(apRequiredRounded);
         }
 
         private void CheckLean()

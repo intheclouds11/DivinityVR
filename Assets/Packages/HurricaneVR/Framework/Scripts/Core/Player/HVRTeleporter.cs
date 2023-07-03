@@ -48,6 +48,7 @@ namespace HurricaneVR.Framework.Core.Player
         [Header("Visuals")]
         public Color ValidColor = new Color(2, 212, 186);
         public Color InvalidColor = new Color(221, 37, 37);
+        public Color zeroAPColor;
         public Color oneAPColor;
         public Color twoAPColor;
         public Color threeAPColor;
@@ -1183,7 +1184,7 @@ namespace HurricaneVR.Framework.Core.Player
         {
             var newColor = apRequired switch
             {
-                0 => ValidColor,
+                0 => zeroAPColor,
                 1 => oneAPColor,
                 2 => twoAPColor,
                 3 => threeAPColor,

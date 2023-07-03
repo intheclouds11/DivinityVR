@@ -503,6 +503,8 @@ MonoBehaviour:
   PlayerController: {fileID: 8638893798515355579}
   LeftHandGrabber: {fileID: 1871259696092610117}
   RightHandGrabber: {fileID: 7881834262813558667}
+  LeftForceGrabber: {fileID: 5548531957166008098}
+  RightForceGrabber: {fileID: 6007442528896707259}
   Camera: {fileID: 5951303569618951667}
   isDesktopMode: 0
   debugMode: 0
@@ -1833,6 +1835,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8882909764319459902, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
   m_PrefabInstance: {fileID: 3541542194371216305}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5548531957166008098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8945923155227419795, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+  m_PrefabInstance: {fileID: 3541542194371216305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3063cb9db120a024c8b1ba4c13558348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5951303569618951667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7183613917114605122, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
@@ -1854,6 +1867,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7183613918389418791, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
   m_PrefabInstance: {fileID: 3541542194371216305}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6007442528896707259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7095611402999277834, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}
+  m_PrefabInstance: {fileID: 3541542194371216305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3063cb9db120a024c8b1ba4c13558348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7881834262813558667 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6649550952121271354, guid: 1c0c3dc7f4cee2c40a51ebcad290eedd, type: 3}

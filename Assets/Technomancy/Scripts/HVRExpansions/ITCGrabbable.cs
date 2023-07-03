@@ -1,6 +1,9 @@
+using System.Collections;
 using HighlightPlus;
 using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Grabbers;
+using SolClovser.VRDebugGizmos;
+using UnityEngine;
 
 namespace intheclouds
 {
@@ -15,6 +18,7 @@ namespace intheclouds
         {
             base.Awake();
             highlightEffect = GetComponent<HighlightEffect>();
+            hasImpactHandler = GetComponentInParent<ImpactHandler>();
         }
 
         protected override void OnHoverEnter(HVRGrabberBase grabber)
@@ -154,5 +158,40 @@ namespace intheclouds
                 highlightEffect.ProfileLoad(originalHighlightProfile);
             }
         }
+        
+        // public void FollowHandDirectionAfterThrown(Transform handRaycastTransform)
+        // {
+        //     if (!followingHandDirection)
+        //     {
+        //         followingHandDirection = true;
+        //         waitForFollowHandDirection = true;
+        //         StartCoroutine(CoFollowHandDirectionAfterThrown(handRaycastTransform));
+        //     }
+        // }
+        
+        // public IEnumerator CoFollowHandDirectionAfterThrown(Transform handRaycastTransform)
+        // {
+        //     yield return new WaitForSeconds(0.1f);
+        //     
+        //     waitForFollowHandDirection = false;
+        //
+        //     while (followingHandDirection)
+        //     {
+        //         // todo: close but don't want to add forwards force
+        //         // Add force towards direction between hand and grabbable
+        //         var handDirInWorldSpace = handRaycastTransform.forward;
+        //         var handDirInGrabbableSpace = transform.InverseTransformDirection(handDirInWorldSpace);
+        //         var directionFromGrabbableToHand = Vector3.Normalize(handRaycastTransform.position - transform.position);
+        //         var dirProjectedOntoHandRightAxis = Vector3.Project(directionFromGrabbableToHand, handRaycastTransform.right);
+        //         var dirProjectedOntoHandUpAxis = Vector3.Project(directionFromGrabbableToHand, handRaycastTransform.up);
+        //         var newVector = dirProjectedOntoHandRightAxis + dirProjectedOntoHandUpAxis;
+        //         
+        //         Rigidbody.AddForce(handDirInWorldSpace * 0.2f, ForceMode.VelocityChange);
+        //         
+        //         VRDebugGizmos.DrawLine(this, "rb", transform.position, transform.position + handDirInWorldSpace, 0.1f, Color.blue);
+        //         Debug.Log($"Added force {handRaycastTransform.TransformDirection(handRaycastTransform.forward)} to {name}");
+        //         yield return new WaitForFixedUpdate();
+        //     }
+        // }
     }
 }

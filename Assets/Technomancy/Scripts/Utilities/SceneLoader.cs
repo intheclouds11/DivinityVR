@@ -25,16 +25,16 @@ namespace intheclouds
             HVRManager.Instance.ScreenFader.FadeEnd.RemoveListener(FadeEnded); 
         }
 
-        public void GoToSceneAsync(int sceneIndex)
+        public void GoToSceneAsync(string sceneName)
         {
-            StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
+            StartCoroutine(GoToSceneAsyncRoutine(sceneName));
         }
 
-        private IEnumerator GoToSceneAsyncRoutine(int sceneIndex)
+        private IEnumerator GoToSceneAsyncRoutine(string sceneName)
         {
             HVRManager.Instance.ScreenFader.Fade(1, 1);
             
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
             operation.allowSceneActivation = false;
 
             while (!_fadeoutEnded && !operation.isDone)

@@ -15038,7 +15038,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6921882747449717690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
+  m_Script: {fileID: 11500000, guid: 04999f3c2fd4bf2478d8c9c5efc1fe92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <CanBeGrabbed>k__BackingField: 1
@@ -15141,6 +15141,8 @@ MonoBehaviour:
   HandGrabbers: []
   Stabbers: []
   Stabbable: {fileID: 0}
+  originalHighlightProfile: {fileID: 0}
+  wasHighlighted: 0
 --- !u!54 &1200108098533851707
 Rigidbody:
   m_ObjectHideFlags: 0

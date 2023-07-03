@@ -11,7 +11,7 @@ namespace intheclouds
         
         public void Button_NewGame()
         {
-            SceneLoader.instance.GoToSceneAsync(1);
+            SceneLoader.instance.GoToSceneAsync("Celestial Hub");
             SFXPlayer.Instance.PlaySFXAttach(newGameButtonClip, SFXPlayer.Instance.transform, 1, 1f);
         }
 

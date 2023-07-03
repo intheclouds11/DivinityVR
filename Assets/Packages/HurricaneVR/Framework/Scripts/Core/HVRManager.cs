@@ -14,6 +14,8 @@ namespace HurricaneVR.Framework.Core
         public HVRPlayerController PlayerController;
         public HVRHandGrabber LeftHandGrabber;
         public HVRHandGrabber RightHandGrabber;
+        public HVRForceGrabber LeftForceGrabber;
+        public HVRForceGrabber RightForceGrabber;
         public Transform Camera;
         public HVRScreenFade ScreenFader { get; private set; }
         
@@ -75,6 +77,14 @@ namespace HurricaneVR.Framework.Core
         {
             if(ScreenFader)
                 ScreenFader.Fade(alpha, speed);
+        }
+
+        public void ToggleHandGrabbers(bool enable)
+        {
+            LeftHandGrabber.AllowHovering = enable;
+            RightHandGrabber.AllowHovering = enable;
+            LeftForceGrabber.AllowHovering = enable;
+            RightForceGrabber.AllowHovering = enable;
         }
     }
 }

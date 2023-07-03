@@ -47,6 +47,8 @@ namespace HurricaneVR.Framework.ControllerInput
         public HVRButtonState JumpState;
         public HVRButtonState CrouchState;
         public HVRButtonState StandState;
+        public HVRButtonState MenuButtonState;
+        public HVRButtonState SkipButtonState;
 
         public HVRButtonState LeftTriggerGrabState;
         public HVRButtonState RightTriggerGrabState;
@@ -104,6 +106,8 @@ namespace HurricaneVR.Framework.ControllerInput
             TurnAxis = GetTurnAxis(false);
             SmoothedTurnAxis = GetTurnAxis(true);
             MouseAxis = GetMouse(out IsMouseDown);
+            ResetState(ref MenuButtonState);
+            SetState(ref MenuButtonState, GetIsMenuButtonActive());
 
             if (!UpdateInputs)
                 return;
@@ -139,10 +143,12 @@ namespace HurricaneVR.Framework.ControllerInput
             ResetState(ref CrouchState);
             ResetState(ref StandState);
             ResetState(ref JumpState);
+            ResetState(ref SkipButtonState);
 
             SetState(ref CrouchState, IsCrouchActive);
             SetState(ref StandState, IsStandActivated);
             SetState(ref JumpState, IsJumpActivated);
+            SetState(ref SkipButtonState, GetIsSkipButtonActive());
         }
 
         protected virtual void AfterInputUpdate()
@@ -197,6 +203,16 @@ namespace HurricaneVR.Framework.ControllerInput
                 return true;
             }
             return false;
+        }
+
+        protected virtual bool GetIsMenuButtonActive()
+        {
+            return HVRInputManager.Instance.LeftController.SecondaryButtonState.Active;
+        }
+        
+        protected virtual bool GetIsSkipButtonActive()
+        {
+            return HVRInputManager.Instance.LeftController.PrimaryButtonState.Active;
         }
 
         protected virtual void GetForceGrabActivated(out bool left, out bool right)

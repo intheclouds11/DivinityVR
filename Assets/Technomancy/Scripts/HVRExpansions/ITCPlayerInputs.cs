@@ -3,6 +3,7 @@ using HurricaneVR.Framework.Core.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace intheclouds
 {
@@ -18,6 +19,12 @@ namespace intheclouds
         private GameManager _gameManager;
         private bool _triggeredPrimaryInput;
         private bool _triggeredSecondaryInput;
+
+        public void ResetUserMenuInputs()
+        {
+            _triggeredSecondaryInput = false;
+            _holdTimeLeftSecondaryButton = 0;
+        }
 
         private void Awake()
         {
@@ -49,7 +56,7 @@ namespace intheclouds
             {
                 UserMenu.instance.ToggleMenu();
             }
-            
+
             if (Keyboard.current.leftShiftKey.isPressed && Keyboard.current.backquoteKey.wasPressedThisFrame)
             {
                 UserMenu.instance.Toggle_DebugMode(!Startup.instance.debugMode);
@@ -60,61 +67,67 @@ namespace intheclouds
         {
             if (!UserMenu.instance.menuIsOpen)
             {
-                if (HVRInputManager.Instance.LeftController.SecondaryButtonState.Active && !_triggeredSecondaryInput)
+                if (LocalUserObjects.instance.HVRPlayerInputs.MenuButtonState.Active && !_triggeredSecondaryInput)
                 {
                     if (_holdTimeLeftSecondaryButton == 0)
                     {
                         MenuIcon.SetActive(true);
                         SFXPlayer.Instance.PlaySFX(MenuClip, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 1f, 0.5f, 10, false, false);
                     }
+
                     if (_holdTimeLeftSecondaryButton > holdTimeRequired)
                     {
                         UserMenu.instance.ToggleMenu();
                         MenuIcon.SetActive(false);
-                        // SFXPlayer.Instance.PlaySFX(, gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.7f, 0.5f, 10, false, false);
                         _holdTimeLeftSecondaryButton = 0;
                         _triggeredSecondaryInput = true;
+                        return;
                     }
 
                     _holdTimeLeftSecondaryButton += Time.deltaTime;
                 }
-                else if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustDeactivated)
+                else if (LocalUserObjects.instance.HVRPlayerInputs.MenuButtonState.JustDeactivated)
                 {
                     MenuIcon.SetActive(false);
                     _holdTimeLeftSecondaryButton = 0;
                     _triggeredSecondaryInput = false;
                 }
             }
-            else if (HVRInputManager.Instance.LeftController.SecondaryButtonState.JustActivated)
+            else if (LocalUserObjects.instance.HVRPlayerInputs.MenuButtonState.JustActivated)
             {
                 UserMenu.instance.ToggleMenu();
                 MenuIcon.SetActive(false);
-                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.8f, 0.5f, 10, false, false);
+                SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.8f, 0.5f, 10, false,
+                    false);
             }
         }
 
         private void CheckEndTurnButton()
         {
-            if (HVRInputManager.Instance.LeftController.PrimaryButtonState.JustDeactivated)
+            if (LocalUserObjects.instance.HVRPlayerInputs.SkipButtonState.JustDeactivated || LocalUserObjects.instance.HVRPlayerInputs.MenuButtonState.Active)
             {
                 _holdTimeLeftPrimaryButton = 0;
                 _triggeredPrimaryInput = false;
+                return;
             }
-            
+
             if (!_gameManager.activeCombatant || (!LocalUserObjects.instance.PlayerStats.Turn && !Startup.instance.debugMode))
             {
                 return;
             }
-            
-            if (HVRInputManager.Instance.LeftController.PrimaryButtonState.Active && !_triggeredPrimaryInput)
+
+            if (LocalUserObjects.instance.HVRPlayerInputs.SkipButtonState.Active && !_triggeredPrimaryInput)
             {
                 if (_holdTimeLeftPrimaryButton == 0)
                 {
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.8f, 0.5f, 10, false, false);
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 0.8f, 0.5f, 10, false,
+                        false);
                 }
+
                 if (_holdTimeLeftPrimaryButton > holdTimeRequired)
                 {
-                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 1, 0.5f, 10, false, false);
+                    SFXPlayer.Instance.PlaySFX(SFXPlayer.Instance.clickSFX, _gameManager.controlledPlayer.LocalUserObjects.Camera.transform.position, 1, 0.5f, 10, false,
+                        false);
                     _gameManager.ForceNextTurn();
                     _holdTimeLeftPrimaryButton = 0;
                     _triggeredPrimaryInput = true;

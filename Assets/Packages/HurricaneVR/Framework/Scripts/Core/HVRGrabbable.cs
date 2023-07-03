@@ -209,6 +209,8 @@ namespace HurricaneVR.Framework.Core
 
         #region Properties
         
+        public bool hasImpactHandler { get; protected set; }
+
         public HVRGrabberBase hoveringGrabber { get; protected set; }
         public HVRGrabberBase secondHoveringHand { get; protected set; }
 
@@ -413,6 +415,11 @@ namespace HurricaneVR.Framework.Core
             ProcessUpdate();
         }
 
+        protected bool followingHandDirection;
+        protected bool waitForFollowHandDirection = true;
+
+        
+
         private void CheckIfStabbing()
         {
             IsStabbing = false;
@@ -453,6 +460,12 @@ namespace HurricaneVR.Framework.Core
 
         protected virtual void OnCollisionEnter(Collision other)
         {
+            if (!IsHandGrabbed && followingHandDirection && !waitForFollowHandDirection)
+            {
+                followingHandDirection = false;
+                // Debug.LogWarning($"Collided, no longer adding force");
+            }
+
             Collided.Invoke(this);
         }
 

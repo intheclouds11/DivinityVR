@@ -144,6 +144,7 @@ namespace intheclouds
             selectedAbility.enabled = true;
             selectedAbility.castingHand = hand;
             selectedAbility.caster = playerLUOs.PlayerStats;
+            selectedAbility.transform.SetParent(null);
             selectedAbility.gameObject.SetActive(true);
 
             

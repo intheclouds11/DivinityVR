@@ -1,3 +1,4 @@
+using HurricaneVR.Framework.Core;
 using HurricaneVR.Framework.Core.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -72,24 +73,16 @@ namespace intheclouds
 
         private void ShowMenu()
         {
-            _currentUserObjects.ITCPlayerController.RotationEnabled = false;
-            _currentUserObjects.ITCPlayerController.MovementEnabled = false;
-            _currentUserObjects.ITCTeleporter.TeleportEnabled = false;
             transform.position = _spawnPoint.transform.position;
+            _currentUserObjects.HVRPlayerInputs.UpdateInputs = false;
+            HVRManager.Instance.ToggleHandGrabbers(false);
             _canvasGO.SetActive(true);
         }
 
         private void HideMenu()
         {
-            _currentUserObjects.ITCPlayerController.RotationEnabled = true;
-            if (!_currentUserObjects.PlayerStats.InCombat)
-            {
-                _currentUserObjects.ITCPlayerController.MovementEnabled = true;
-            }
-            if (_currentUserObjects.ITCTeleporter.InitialTeleportEnabled)
-            {
-                _currentUserObjects.ITCTeleporter.TeleportEnabled = true;
-            }
+            _currentUserObjects.HVRPlayerInputs.UpdateInputs = true;
+            HVRManager.Instance.ToggleHandGrabbers(true);
             _canvasGO.SetActive(false);
         }
 
@@ -156,6 +149,22 @@ namespace intheclouds
             {
                 controllerHint.SetActive(!controllerHint.activeSelf);
             }
+        }
+
+        public void Button_ConfirmReturnToHub()
+        {
+            if (GameManager.instance.state == GameState.CombatStart)
+            {
+                GameManager.instance.EndCombat();
+            }
+            else
+            {
+                _currentUserObjects.PlayerStats.ResetPlayerStatus();
+            }
+
+            ToggleMenu();
+            _currentUserObjects.ITCPlayerInputs.ResetUserMenuInputs();
+            SceneLoader.instance.GoToSceneAsync("Celestial Hub");
         }
 
         public void Toggle_FollowPlayer(bool toggle)

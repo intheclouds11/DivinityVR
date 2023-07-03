@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 708110700005693792}
   - component: {fileID: 7240657407672434094}
   - component: {fileID: 971824016497178810}
+  - component: {fileID: 9025187690728078332}
   m_Layer: 20
   m_Name: Cork
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebc937e678155e4d86feeb9248cca97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CanBeGrabbed>k__BackingField: 0
+  <CanBeGrabbed>k__BackingField: 1
   GrabBehaviour: 0
   PoseType: 0
   TrackingType: 1
@@ -403,6 +404,21 @@ MonoBehaviour:
   hitFxFadeOutDuration: 0.25
   hitFxColor: {r: 1, g: 1, b: 1, a: 1}
   hitFxRadius: 0.5
+--- !u!114 &9025187690728078332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337432935087128560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf858a0f4504aa4adf9207e33864cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Grabbable: {fileID: 4421302030831770175}
+  DropIfReleased: 0
+  GrabRequiredIfReleased: 0
 --- !u!1 &1715180001998340920
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,18 +813,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 8972012195471750353}
-        m_TargetAssemblyTypeName: HurricaneVR.Framework.Core.HVRGrabbable, HurricaneVR.Framework
-        m_MethodName: set_CanBeGrabbed
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 4421302030831770175}
         m_TargetAssemblyTypeName: HurricaneVR.Framework.Core.HVRGrabbable, HurricaneVR.Framework
         m_MethodName: set_UseColliderClosestPoint
@@ -827,18 +831,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1676813912595448083}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8972012195471750353}
-        m_TargetAssemblyTypeName: HurricaneVR.Framework.Core.HVRGrabbable, HurricaneVR.Framework
-        m_MethodName: set_CanBeGrabbed
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1431,7 +1423,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6099753868866768296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81ed24babdf5471dbf0b20a8d9f02ba1, type: 3}
   m_Name: 
@@ -1500,7 +1492,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0, y: 0.1861, z: 0}
   m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: 0, y: 0.18610024, z: 0}
+  - {x: 0, y: 0.1861, z: 0}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1

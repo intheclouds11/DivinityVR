@@ -261,7 +261,7 @@ namespace intheclouds
             {
                 _pitch = Mathf.Clamp(relativeVelocity * pitchModifier, minP, maxP);
                 _volume = Mathf.Clamp(relativeVelocity * volumeModifier, 0, maxVol);
-                return SFXPlayer.Instance.PlaySFX(clip, transform.position, _pitch, _volume, 20);
+                return SFXPlayer.Instance.PlaySFX(clip, transform.position, _pitch, _volume, 10);
             }
 
             return null;
