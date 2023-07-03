@@ -1,0 +1,30 @@
+{
+  "bc4213d4d51f1894386ea4ff198e9191": {
+    "sceneGuid": "2fe55c86f9461b340b619091416e87c0",
+    "uniqueCameraId": "bc4213d4d51f1894386ea4ff198e9191",
+    "name": "Birdseye",
+    "pointX": -1.99455309,
+    "pointY": -3.961729,
+    "pointZ": -1.38381,
+    "directionX": -0.262660474,
+    "directionY": 0.330117375,
+    "directionZ": -0.0961757153,
+    "directionW": -0.901533,
+    "zoom": 10.0,
+    "cameraMode": 2
+  },
+  "228a6f977e87899499322d5bb867fdef": {
+    "sceneGuid": "2fe55c86f9461b340b619091416e87c0",
+    "uniqueCameraId": "228a6f977e87899499322d5bb867fdef",
+    "name": "Player Start",
+    "pointX": -1.322718,
+    "pointY": -2.249875,
+    "pointZ": 8.058477,
+    "directionX": -0.122467741,
+    "directionY": 0.0595193543,
+    "directionZ": -0.00735590141,
+    "directionW": -0.9906462,
+    "zoom": 10.0,
+    "cameraMode": 2
+  }
+}
